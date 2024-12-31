@@ -2,7 +2,7 @@
 layout: post
 title: Leading vs. Lagging Indicators
 subtitle: Choosing the Right Metrics for Predictive Analytics
-tags: [data-analytics, statistics, metrics]
+tags: [data-analytics, statistics, metrics, popular]
 thumbnail-img: /assets/img/leading-vs-lagging-indicators-thumb.png
 comments: true
 mathjax: true

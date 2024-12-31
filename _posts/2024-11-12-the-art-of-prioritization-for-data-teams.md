@@ -5,7 +5,7 @@ subtitle: How Focusing on High-Impact Work Transforms Busy Teams into Effective 
 cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/2024-11-12-the-art-of-prioritization-for-data-teams-thumb.png
 share-img: /assets/img/path.jpg
-tags: [data-analytics, team-management]
+tags: [data-analytics, best-practices]
 author: Hasan J.
 ---
 
