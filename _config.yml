@@ -21,6 +21,7 @@ author: Hasan Jaffal
 
 navbar-links:
   About Me: "aboutme"
+  Office Hours: "officehours"
   
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
