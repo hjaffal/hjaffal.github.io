@@ -3,14 +3,14 @@ layout: post
 title: Leading vs. Lagging Indicators
 subtitle: Choosing the Right Metrics for Predictive Analytics
 tags: [data-analytics, statistics, metrics, popular]
-thumbnail-img: /assets/img/leading-vs-lagging-indicators-thumb.png
+thumbnail-img: /assets/img/posts/leading-vs-lagging-indicators-thumb.png
 comments: true
 mathjax: true
 author: Hasan J.
 ---
 In early 2024, Google faced a fascinating internal challenge: a sharp decline in employee morale and satisfaction despite strong financial performance. During an all-hands meeting, employees raised concerns about the lack of pay raises and ongoing cost-cutting measures. CEO Sundar Pichai and CFO Ruth Porat were confronted with tough questions about the disconnect between leadership and workforce sentiment. While lagging indicators like financial metrics showed a thriving business, leading indicators such as employee satisfaction surveys and participation in internal initiatives could have flagged the issue much earlier. [(Source)](https://nypost.com/2024/05/09/business/google-workers-complain-of-decline-in-morale-lack-of-pay-raise/?utm_source=hasanjaffal.com)
 
-![Leading vs. Lagging Indicators.](/assets/img/leading-vs-lagging-indicators.png)
+![Leading vs. Lagging Indicators.](/assets/img/posts/leading-vs-lagging-indicators.png)
 
 
 This real-life scenario highlights the importance of understanding **leading and lagging indicators**. Whether it’s managing employee satisfaction or preventing losses, relying solely on lagging metrics often means reacting to problems after they’ve escalated. By incorporating leading indicators, businesses can act proactively, making informed decisions to address issues before they impact the bottom line.

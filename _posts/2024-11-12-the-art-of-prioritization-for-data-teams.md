@@ -3,7 +3,7 @@ layout: post
 title: The Art of Prioritization
 subtitle: How Focusing on High-Impact Work Transforms Busy Teams into Effective Ones 
 cover-img: /assets/img/path.jpg
-thumbnail-img: /assets/img/2024-11-12-the-art-of-prioritization-for-data-teams-thumb.png
+thumbnail-img: /assets/img/posts/2024-11-12-the-art-of-prioritization-for-data-teams-thumb.png
 share-img: /assets/img/path.jpg
 tags: [data-analytics, best-practices]
 author: Hasan J.
@@ -13,7 +13,7 @@ In data teams, one of the biggest challenges is managing the endless flow of req
 
 The reality is that deciding **what not to do** is as important as deciding what to do. Data teams that focus on high-impact work, prioritize scalable solutions, and concentrate on core metrics can drive far greater value for the organization. Below, we’ll explore the pitfalls of saying “yes” to everything and the benefits of a focused approach to prioritization.
 
-![A team of data analysts collaborating around a laptop, with charts and graphs displayed on the screen, symbolizing strategic prioritization and impactful teamwork.](/assets/img/2024-11-12-the-art-of-prioritization-for-data-teams.png)
+![A team of data analysts collaborating around a laptop, with charts and graphs displayed on the screen, symbolizing strategic prioritization and impactful teamwork.](/assets/img/posts/2024-11-12-the-art-of-prioritization-for-data-teams.png)
 
 
 ## The Pitfalls of Saying Yes to Everything
