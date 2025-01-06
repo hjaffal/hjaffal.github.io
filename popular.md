@@ -1,10 +1,10 @@
 ---
 layout: page
 title: "Hi, I'm Hasan"
-subtitle: Sr Product Manager at Amazon
+subtitle: Data Services Manager at Amazon
 css: "/assets/css/index.css"
 share-img: /assets/img/deanimg.jpeg
-share-title: "Hasan Jaffal - Sr. Product Manager at Amazon"
+share-title: "Hasan Jaffal - Data Services Manager at Amazon"
 share-description: "data driven risk analytics in the loss prevention realm."
 chat_with_me_box: true
 cover-img:
