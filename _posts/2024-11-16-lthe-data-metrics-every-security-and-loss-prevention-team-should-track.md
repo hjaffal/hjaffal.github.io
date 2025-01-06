@@ -12,7 +12,7 @@ If you’re working in Security and Loss Prevention (S&LP), you know data isn’
 
 Let’s talk about the key metrics every S&LP team should focus on. We’ll look at four main categories: Incident Management, Compliance, Resource Management, and Cost Efficiency. Together, these metrics create a solid foundation for understanding what’s working, what’s not, and where to improve.
 
-![Leading vs. Lagging Indicators.](/assets/img/posts/2024-11-16-lthe-data-metrics-every-security-and-loss-prevention-team-should-track.png)
+![The Data Metrics Every Security and Loss Prevention Team Should Track.](/assets/img/posts/2024-11-16-lthe-data-metrics-every-security-and-loss-prevention-team-should-track.png)
 
 
 
@@ -80,4 +80,3 @@ In Security and Loss Prevention, data is more than just numbers on a screen—it
 The goal isn’t to track every metric imaginable but to zero in on the ones that provide real insights and drive action. Start with these categories, and you’ll find that your S&LP program isn’t just reacting to problems—it’s actively preventing them and continuously improving.
 
 With the right data, your team can confidently protect what matters most, creating a security strategy that’s efficient, effective, and built to last.
-```
