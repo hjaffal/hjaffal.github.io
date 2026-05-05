@@ -1,13 +1,32 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: About
+subtitle:
+chat_with_me_box: false
 ---
-**About Me**
 
-With 17 years of experience in software development and product innovation, I currently lead Amazon's Data Services team for Security and Loss Prevention (S&LP) in Luxembourg. My work focuses on harnessing data analytics, AI, and machine learning to protect Amazon's operations and secure the supply chain from end to end. My team is dedicated to delivering insights and solutions that proactively address security risks, reduce losses, and enhance the customer experience.
+I work at the intersection of data, AI, and operations.
 
-### My story
-My professional journey has taken me across diverse roles and industries. I served as Chief Product Officer at Nabed, a health-tech platform transforming educational services across the Middle East. Before that, I was a Senior Product and Program Manager at ArabiaGIS in Beirut, where I led innovative, mission-driven initiatives. Some of my key accomplishments include launching "Tahaki," a cloud-based platform for NGO monitoring and evaluation, and managing groundbreaking projects that seamlessly blended technology with social impact. My career has always been driven by a passion for innovation and a commitment to creating meaningful solutions.
-### Get Engaged
-Beyond my career, I am passionate about supporting NGOs. I volunteer my expertise to help organizations leverage technology for greater social good. If you're interested in collaborating on nonprofit projects involving data in Luxembourg or Lebanon—or simply want to connect—feel free to [book a 15-minute chat](/officehours) . Together, we can drive impactful change!
+My current focus is theft detection, fraud analytics, and loss prevention in complex supply chain environments. I am interested in how organizations detect risk earlier, reduce avoidable loss, and make better operational decisions using data.
+
+Most analytics work fails for a simple reason: it stops at reporting.
+
+A dashboard can show what happened. It does not guarantee action. It does not assign ownership. It does not decide which signal matters, which risk should be escalated, or which operational behavior needs to change.
+
+That is the space I write about.
+
+I focus on:
+
+- Theft and fraud signals
+- Loss prevention analytics
+- Risk detection
+- AI in operational decision-making
+- Supply chain abuse patterns
+- Analytics leadership
+- The gap between insight and action
+
+My goal is to help operators, analysts, and leaders think more clearly about how data works in real environments.
+
+Not in theory.
+
+In operations, where signals are messy, incentives matter, and decisions have consequences.
