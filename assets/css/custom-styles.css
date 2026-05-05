@@ -573,3 +573,94 @@ select:focus {
     padding: 24px;
   }
 }
+
+
+
+
+/* Emergency cold-gray override: removes old blue styling */
+
+a,
+a:visited,
+.post-read-more,
+.text-link,
+.blog-tags a,
+.post-preview a,
+.article-card h3 a {
+  color: #1e293b !important;
+}
+
+a:hover,
+.post-read-more:hover,
+.text-link:hover,
+.blog-tags a:hover,
+.post-preview a:hover,
+.article-card h3 a:hover {
+  color: #020617 !important;
+}
+
+.navbar,
+.navbar-custom,
+.navbar-default,
+.navbar-fixed-top {
+  background: #020617 !important;
+  border-color: #020617 !important;
+}
+
+.navbar a,
+.navbar-brand,
+.navbar-nav li a,
+.navbar-custom a,
+.navbar-custom .navbar-brand,
+.navbar-custom .nav li a {
+  color: #e2e8f0 !important;
+}
+
+.navbar a:hover,
+.navbar-brand:hover,
+.navbar-nav li a:hover,
+.navbar-custom a:hover,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .nav li a:hover {
+  color: #ffffff !important;
+}
+
+.button-primary,
+.btn-primary {
+  background: #020617 !important;
+  border-color: #020617 !important;
+  color: #ffffff !important;
+}
+
+.button-primary:hover,
+.btn-primary:hover {
+  background: #000000 !important;
+  border-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.intro-header {
+  background: #f8fafc !important;
+}
+
+.intro-header .page-heading h1,
+.intro-header .post-heading h1 {
+  color: #020617 !important;
+}
+
+.intro-header .page-heading .page-subheading,
+.intro-header .post-heading .post-subheading {
+  color: #334155 !important;
+}
+
+footer {
+  background: #020617 !important;
+  color: #94a3b8 !important;
+}
+
+footer a {
+  color: #e2e8f0 !important;
+}
+
+footer a:hover {
+  color: #ffffff !important;
+}
