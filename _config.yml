@@ -33,20 +33,20 @@ post_search: true
 edit_page_button: false
 navbar-var-length: false
 
-page-col: "#F8FAFC"
-text-col: "#0F172A"
+page-col: "#fafafa"
+text-col: "#1d1d1f"
 
-link-col: "#1E293B"
-hover-col: "#020617"
+link-col: "#1d1d1f"
+hover-col: "#0071e3"
 
-navbar-col: "#020617"
-navbar-text-col: "#E2E8F0"
-navbar-border-col: "#020617"
+navbar-col: "#1d1d1f"
+navbar-text-col: "#f5f5f7"
+navbar-border-col: "#1d1d1f"
 
-footer-col: "#020617"
-footer-text-col: "#94A3B8"
-footer-link-col: "#E2E8F0"
-footer-hover-col: "#FFFFFF"
+footer-col: "#1d1d1f"
+footer-text-col: "#a1a1a6"
+footer-link-col: "#f5f5f7"
+footer-hover-col: "#ffffff"
 
 site-css:
   - "/assets/css/custom-styles.css"
