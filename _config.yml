@@ -2,11 +2,10 @@ title: Hasan Jaffal
 author: Hasan Jaffal
 
 navbar-links:
-  Home: ""
   Writing: "writing"
+  Books: "books"
   About: "aboutme"
-  Office Hours: "officehours"
-  LinkedIn: "https://www.linkedin.com/in/jaffal"
+  Contact: "contact"
 
 avatar: "/assets/img/hasanjaffal.jpeg"
 round-avatar: false
@@ -29,24 +28,24 @@ title-on-all-pages: true
 excerpt_length: 45
 feed_show_excerpt: true
 feed_show_tags: false
-post_search: true
+post_search: false
 edit_page_button: false
 navbar-var-length: false
 
-page-col: "#fafafa"
-text-col: "#1d1d1f"
+page-col: "#FFFFFF"
+text-col: "#0F172A"
 
-link-col: "#1d1d1f"
-hover-col: "#0071e3"
+link-col: "#0F172A"
+hover-col: "#9333EA"
 
-navbar-col: "#1d1d1f"
-navbar-text-col: "#f5f5f7"
-navbar-border-col: "#1d1d1f"
+navbar-col: "#FFFFFF"
+navbar-text-col: "#0F172A"
+navbar-border-col: "#E2E8F0"
 
-footer-col: "#1d1d1f"
-footer-text-col: "#a1a1a6"
-footer-link-col: "#f5f5f7"
-footer-hover-col: "#ffffff"
+footer-col: "#0F172A"
+footer-text-col: "#94A3B8"
+footer-link-col: "#F1F5F9"
+footer-hover-col: "#9333EA"
 
 site-css:
   - "/assets/css/custom-styles.css"

@@ -1,0 +1,13 @@
+<div class="sidebar-recent">
+  <span class="card-label">RECENT ARTICLES</span>
+  <ul class="sidebar-recent-list">
+    {% for post in site.posts limit:5 %}
+    <li>
+      <a href="{{ post.url | relative_url }}" class="sidebar-recent-item">
+        <span class="sidebar-recent-title">{{ post.title }}</span>
+        <span class="sidebar-recent-date">{{ post.date | date: "%b %Y" | upcase }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

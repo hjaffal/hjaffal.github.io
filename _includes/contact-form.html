@@ -1,0 +1,18 @@
+<form action="https://formspree.io/f/mzdornen" method="POST" class="contact-form">
+  <input type="hidden" name="_next" value="/contact?message=ok">
+  <input type="hidden" name="_subject" value="New message from website">
+  <input type="text" name="_gotcha" style="display:none">
+  <div class="form-group">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your name" />
+  </div>
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" id="email" name="email" required placeholder="your@email.com" />
+  </div>
+  <div class="form-group">
+    <label for="message" class="form-label">Message</label>
+    <textarea id="message" name="message" rows="6" required placeholder="What's on your mind?"></textarea>
+  </div>
+  <button type="submit" class="contact-submit">Send Message</button>
+</form>

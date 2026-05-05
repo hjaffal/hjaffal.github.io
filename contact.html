@@ -1,0 +1,55 @@
+---
+layout: page
+title:
+subtitle:
+chat_with_me_box: false
+show-avatar: false
+permalink: /contact/
+---
+
+<section class="writing-page">
+  <div class="page-with-sidebar">
+    <div class="page-main">
+      <div class="contact-section">
+        <div class="books-header">
+          <span class="field-label">GET IN TOUCH</span>
+          <h2 class="field-title">Contact <em>Me.</em></h2>
+        </div>
+
+        <div id="contact-success-banner" class="contact-banner" style="display:none;">
+          <i class="fas fa-check-circle"></i>
+          <span>Thank you for your message! I'll get in touch soon.</span>
+        </div>
+
+        <p class="contact-intro">Choose how you'd like to connect.</p>
+
+        <div class="contact-options">
+          <div class="contact-option contact-option-active" id="opt-message">
+            <i class="fas fa-envelope"></i>
+            <div class="contact-option-text">
+              <strong>Send a message</strong>
+              <span>I'll respond within a few days</span>
+            </div>
+          </div>
+          <a href="/officehours" class="contact-option">
+            <i class="fas fa-calendar-check"></i>
+            <div class="contact-option-text">
+              <strong>Book an appointment</strong>
+              <span>Schedule a conversation directly</span>
+            </div>
+            <i class="fas fa-arrow-right contact-option-arrow"></i>
+          </a>
+        </div>
+
+        <div id="contact-form-area">
+          {% include contact-form.html %}
+        </div>
+      </div>
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-recent.html %}
+    </aside>
+  </div>
+</section>

@@ -1,69 +1,45 @@
-var custom = {
+document.addEventListener('DOMContentLoaded', function() {
 
-  scrollBoxCheck: false,
+  // Dark mode toggle
+  var toggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
 
-  init: function() {
+  // Check saved preference or system preference
+  var saved = localStorage.getItem('theme');
+  if (saved) {
+    html.setAttribute('data-theme', saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    html.setAttribute('data-theme', 'dark');
+  }
 
-    // Check if there is a scrollbox to initialize
-    if ($("#scroll-box").length > 0) {
-      if ($("article").length > 0) {
-        custom.scrollBoxCheck = Math.min(1500, $("article").offset().top + $("article").height() * 0.4);
-        $("#scroll-box-close").click(function() {
-          $("body").removeClass("scroll-box-on");
-        });
-      }
-    }
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
 
-    $(window).scroll(function() {
-      // Check if the scrollbox should be made visible
-      if (custom.scrollBoxCheck) {
-        if ($(window).scrollTop() > custom.scrollBoxCheck) {
-          custom.scrollBoxCheck = false;
-          $("body").addClass("scroll-box-on");
-        }
+  // Navbar subtle shadow on scroll
+  var navbar = document.querySelector('.navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) {
+        navbar.style.boxShadow = '0 1px 8px rgba(15, 23, 42, 0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
       }
     });
+  }
 
-    // Navbar scroll effect — slightly more opaque on scroll
-    var navbar = document.querySelector('.navbar');
-    if (navbar) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 40) {
-          navbar.style.background = 'rgba(29, 29, 31, 0.95)';
-        } else {
-          navbar.style.background = 'rgba(29, 29, 31, 0.88)';
-        }
-      });
-    }
-
-    // Intersection Observer for fade-in animations on cards
-    if ('IntersectionObserver' in window) {
-      var cards = document.querySelectorAll('.focus-card, .article-card, .proof-item');
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-      cards.forEach(function(card) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(16px)';
-        card.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        observer.observe(card);
-      });
-    }
-
-    // Google Analytics event tracking
-    if (typeof ga === "function") {
-      $("a[data-ga-event]").click(function() {
-        ga('send', 'event', $(this).data("ga-category"), $(this).data("ga-action"), $(this).data("ga-label"));
-      });
+  // Show success banner on contact page
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('message') === 'ok') {
+    var banner = document.getElementById('contact-success-banner');
+    if (banner) {
+      banner.style.display = 'flex';
     }
   }
-};
 
-document.addEventListener('DOMContentLoaded', custom.init);
+});

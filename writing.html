@@ -1,0 +1,43 @@
+---
+layout: page
+title:
+subtitle:
+chat_with_me_box: false
+show-avatar: false
+---
+
+<section class="writing-page">
+  <div class="page-with-sidebar">
+    <div class="page-main">
+      <div class="writing-essays">
+        <div class="writing-essays-header">
+          <span class="field-label">ESSAYS & ARTICLES</span>
+          <h2 class="field-title">Field <em>Intelligence.</em></h2>
+          <p class="writing-essays-intro">Writing on risk, fraud analytics, loss prevention, and operational decision-making.</p>
+        </div>
+
+        <div class="writing-essays-list">
+          {% for post in site.posts %}
+          <a href="{{ post.url | relative_url }}" class="writing-essay-item">
+            <div class="writing-essay-left">
+              <span class="field-card-tag">{{ post.tags[0] | default: "essay" | upcase }}</span>
+              <h3>{{ post.title }}</h3>
+              <p class="writing-essay-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            </div>
+            <div class="writing-essay-right">
+              <span class="field-card-date">{{ post.date | date: "%b %Y" | upcase }}</span>
+              <span class="field-card-arrow">→</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-recent.html %}
+      {% include featured-publication.html %}
+    </aside>
+  </div>
+</section>

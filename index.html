@@ -3,140 +3,79 @@ layout: page
 title:
 subtitle:
 share-img: /assets/img/hasanjaffal.jpeg
-share-title: "Hasan Jaffal - Data, AI, and Analytics for Real-World Operations"
-share-description: "Writing on risk, theft detection, fraud analytics, loss prevention, and operational decision-making."
+share-title: "Hasan Jaffal — Critical Systems Intelligence"
+share-description: "Scaling data strategy and risk automation for high-stakes operational environments."
 chat_with_me_box: false
+show-avatar: false
 ---
 
-<section class="hero-section">
-  <div class="hero-content">
-    <p class="eyebrow">Data · AI · Operations · Risk</p>
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="hero-diamond">●●</span>
+        <span>SYSTEMS INTELLIGENCE / RISK OPS</span>
+      </div>
 
-    <h1>Data, AI, and analytics for real-world operations</h1>
+      <h1 class="hero-headline">Critical<br><em>Systems Intelligence.</em></h1>
 
-    <p class="hero-subtitle">
-      I write about how organizations detect risk, reduce loss, and make better decisions using data.
-    </p>
+      <p class="hero-sub">
+        Scaling data strategy and risk automation for high-stakes operational environments.
+      </p>
 
-    <p class="hero-context">
-      Current focus: theft detection, fraud analytics, and loss prevention in complex supply chain environments.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#writing" class="button-primary">Read my writing</a>
-      <a href="/officehours" class="button-secondary">Book office hours →</a>
+      <a href="https://www.linkedin.com/in/jaffal" class="btn-linkedin" target="_blank" rel="noopener">
+        LINKEDIN PROFILE
+      </a>
     </div>
-  </div>
-</section>
 
-<section class="proof-strip">
-  <div class="proof-item">
-    <span>Role</span>
-    <strong>Data Services Manager</strong>
-  </div>
-
-  <div class="proof-item">
-    <span>Focus</span>
-    <strong>Risk, loss prevention, analytics</strong>
-  </div>
-
-  <div class="proof-item">
-    <span>Scope</span>
-    <strong>International operations</strong>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="section-inner narrow">
-    <h2>Most teams don't have a data problem. They have a decision problem.</h2>
-
-    <p>
-      Dashboards explain what happened. But operations fail when signals arrive too late, ownership is unclear, or teams can't convert insight into action.
-    </p>
-
-    <p>
-      I focus on the gap between data and decisions — how organizations detect risk earlier, prioritize the right problems, and act before losses scale.
-    </p>
-  </div>
-</section>
-
-<section class="content-section shaded">
-  <div class="section-inner">
-    <h2>What I write about</h2>
-
-    <div class="card-grid">
-      <div class="focus-card">
-        <h3>Theft and fraud signals</h3>
-        <p>How abnormal patterns, repeat behavior, and weak controls expose hidden risk in operations.</p>
+    <div class="hero-right">
+      <div class="hero-right-top">
+        <div class="pub-row">
+          <div class="pub-cover">
+            <img src="/assets/img/second-mind-cover.jpg" alt="The Second Mind book cover" />
+          </div>
+          <div class="pub-info">
+            <span class="card-label">LATEST PUBLICATION</span>
+            <h3 class="pub-title">Second Mind: Learning Machines, Human Meaning</h3>
+            <a href="https://www.amazon.com/Second-Mind-Learning-Machines-Human/dp/B0G1JC3FYC" class="pub-link" target="_blank" rel="noopener">View on Amazon →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="focus-card">
-        <h3>Risk and decision intelligence</h3>
-        <p>How analytics moves teams from reporting to prioritization, alerts, and action.</p>
-      </div>
-
-      <div class="focus-card">
-        <h3>Operational analytics</h3>
-        <p>How data work succeeds or fails when it meets real workflows, incentives, and pressure.</p>
+      <div class="hero-right-bottom">
+        <span class="card-label">THE SECOND MIND NEWSLETTER</span>
+        <p class="newsletter-desc">
+          Practical insights on data leadership and risk automation delivered to your inbox every other Tuesday.
+        </p>
+        <div class="newsletter-embed">
+          <iframe src="https://thesecondmind.substack.com/embed" width="100%" height="150" frameborder="0" scrolling="no" title="Substack Newsletter"></iframe>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="writing" class="content-section">
-  <div class="section-inner">
-    <div class="section-heading-row">
-      <h2>Featured writing</h2>
-      <a href="/writing" class="text-link">View all →</a>
+<section class="field-section">
+  <div class="field-header">
+    <div class="field-header-left">
+      <span class="field-label">FIELD INTELLIGENCE</span>
+      <h2 class="field-title">Inside the <em>Risk Environment.</em></h2>
     </div>
-
-    <div class="article-grid">
-      {% for post in site.posts limit:3 %}
-      <article class="article-card">
-        <p class="article-date">{{ post.date | date: site.date_format }}</p>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
-      </article>
-      {% endfor %}
-    </div>
+    <a href="/writing" class="field-view-all">READ MORE &nbsp;→</a>
   </div>
-</section>
 
-<section class="content-section dark-section">
-  <div class="section-inner narrow">
-    <h2>Office hours</h2>
-
-    <p>
-      I run limited office hours for operators, analysts, and leaders working on fraud, loss prevention, risk signals, and data-driven decision-making.
-    </p>
-
-    <a href="/officehours" class="button-primary light">Book a session →</a>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="section-inner narrow">
-    <h2>About</h2>
-
-    <p>
-      I work at the intersection of data, AI, and operations. My current focus is theft detection, fraud analytics, and loss prevention in international supply chains.
-    </p>
-
-    <p>
-      The broader problem I care about: how organizations use data to make better decisions under pressure.
-    </p>
-
-    <a href="/aboutme" class="text-link">More about my work →</a>
-  </div>
-</section>
-
-<section class="final-cta">
-  <div class="section-inner narrow">
-    <h2>If you work in operations, risk, or analytics — let's connect.</h2>
-
-    <div class="hero-actions centered">
-      <a href="https://www.linkedin.com/in/jaffal" class="button-primary">Connect on LinkedIn</a>
-      <a href="mailto:jaftalks@gmail.com" class="button-secondary">Email me</a>
-    </div>
+  <div class="field-grid">
+    {% for post in site.posts limit:3 %}
+    <a href="{{ post.url | relative_url }}" class="field-card">
+      <div class="field-card-top">
+        <span class="field-card-tag">{{ post.tags[0] | default: "essay" | upcase }}</span>
+        <h3 class="field-card-title">{{ post.title }}</h3>
+      </div>
+      <div class="field-card-bottom">
+        <span class="field-card-date">{{ post.date | date: "%b %Y" | upcase }}</span>
+        <span class="field-card-arrow">→</span>
+      </div>
+    </a>
+    {% endfor %}
   </div>
 </section>
