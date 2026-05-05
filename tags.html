@@ -1,6 +1,10 @@
 ---
 layout: page
-title: 'Tag Index'
+title:
+subtitle:
+chat_with_me_box: false
+show-avatar: false
+permalink: /tags/
 ---
 
 {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
@@ -12,25 +16,42 @@ title: 'Tag Index'
 {%- endcapture -%}
 {%- assign tags_list = site_tags | split:',' | sort -%}
 
-{%- for tag in tags_list -%}
-    <a href="#{{- tag -}}" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
-{%- endfor -%}
+<section class="writing-page">
+  <div class="page-with-sidebar">
+    <div class="page-main">
+      <div class="tags-section">
+        <div class="books-header">
+          <span class="field-label">BROWSE BY TOPIC</span>
+          <h2 class="field-title">Tags & <em>Topics.</em></h2>
+        </div>
 
-<div id="full-tags-list">
-{%- for tag in tags_list -%}
-    <h2 id="{{- tag -}}" class="linked-section">
-        <i class="fas fa-tag" aria-hidden="true"></i>
-        &nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})
-    </h2>
-    <div class="post-list">
-        {%- for post in site.tags[tag] -%}
-            <div class="tag-entry">
-                <a href="{{ post.url | relative_url }}">{{- post.title | strip_html -}}</a>
-                <div class="entry-date">
-                    <time datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: date_format -}}</time>
-                </div>
+        <div class="tags-cloud">
+          {%- for tag in tags_list -%}
+          <a href="#{{- tag -}}" class="tag-pill">{{ tag }} <span class="tag-count">{{ site.tags[tag].size }}</span></a>
+          {%- endfor -%}
+        </div>
+
+        <div class="tags-posts">
+          {%- for tag in tags_list -%}
+          <div class="tag-group" id="{{- tag -}}">
+            <h3 class="tag-group-title">{{ tag }}</h3>
+            <div class="tag-group-list">
+              {%- for post in site.tags[tag] -%}
+              <a href="{{ post.url | relative_url }}" class="tag-post-item">
+                <span class="tag-post-title">{{ post.title | strip_html }}</span>
+                <span class="tag-post-date">{{ post.date | date: "%b %Y" | upcase }}</span>
+              </a>
+              {%- endfor -%}
             </div>
-        {%- endfor -%}
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
     </div>
-{%- endfor -%}
-</div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-recent.html %}
+    </aside>
+  </div>
+</section>

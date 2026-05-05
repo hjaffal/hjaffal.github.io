@@ -126,9 +126,12 @@ em {
 .post-heading .post-meta {
   color: var(--text-soft);
   font-size: 0.82rem;
-  font-family: var(--mono);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 8px;
+  display: block;
 }
 
 .post-heading-tags {
@@ -614,6 +617,18 @@ em {
   line-height: 1.3;
   margin: 0;
   color: var(--dark);
+}
+
+.field-card-excerpt {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 8px 0 0;
+}
+
+.field-cta {
+  text-align: center;
+  padding: 48px 48px 0;
 }
 
 .field-card-arrow {
@@ -1267,6 +1282,13 @@ em {
   margin: 0;
 }
 
+.sidebar-pub-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 2px 0 0;
+}
+
 .sidebar-pub-link {
   font-size: 0.78rem;
   font-weight: 600;
@@ -1644,6 +1666,30 @@ select:focus {
   .book-item-cover {
     max-width: 180px;
   }
+
+  .officehours-embed iframe {
+    height: 1100px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .footer-left {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-sep {
+    display: none;
+  }
+
+  .footer-right {
+    justify-content: center;
+  }
 }
 
 /* Push content below fixed navbar — only on pages without a custom hero */
@@ -1980,4 +2026,95 @@ select:focus {
 .error-btn-secondary:hover {
   border-color: var(--accent);
   color: var(--accent) !important;
+}
+
+/* ===== TAGS PAGE ===== */
+
+.tags-section {
+  padding: 0;
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 48px;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--slate-border);
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dark) !important;
+  transition: all var(--transition);
+}
+
+.tag-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+.tag-count {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-soft);
+}
+
+.tags-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.tag-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--slate-border);
+}
+
+.tag-group-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tag-post-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--slate-border);
+  color: var(--dark) !important;
+  transition: opacity var(--transition);
+}
+
+.tag-post-item:last-child {
+  border-bottom: none;
+}
+
+.tag-post-item:hover {
+  opacity: 0.7;
+}
+
+.tag-post-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.tag-post-date {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  flex-shrink: 0;
 }

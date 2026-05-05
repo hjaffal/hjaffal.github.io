@@ -2,6 +2,7 @@
 layout: post
 title: The Art of Prioritization
 subtitle: How Focusing on High-Impact Work Transforms Busy Teams into Effective Ones 
+share-description: "Learn why data teams must prioritize high-impact work over endless requests, and how saying no drives better outcomes."
 cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/posts/2024-11-12-the-art-of-prioritization-for-data-teams-thumb.png
 share-img: /assets/img/path.jpg
