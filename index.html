@@ -67,6 +67,11 @@ show-avatar: false
   <div class="field-grid">
     {% for post in site.posts limit:3 %}
     <a href="{{ post.url | relative_url }}" class="field-card">
+      {% if post.thumbnail-img %}
+      <div class="field-card-img">
+        <img src="{{ post.thumbnail-img }}" alt="{{ post.title }}" />
+      </div>
+      {% endif %}
       <div class="field-card-top">
         <span class="field-card-tag">{{ post.tags[0] | default: "post" | upcase }}</span>
         <h3 class="field-card-title">{{ post.title }}</h3>

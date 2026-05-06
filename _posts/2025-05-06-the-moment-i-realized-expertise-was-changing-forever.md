@@ -3,11 +3,15 @@ layout: post
 title: The Moment I Realized Expertise Was Changing Forever
 subtitle:
 share-description: "A reflection on how AI is transforming the role of the expert — from having answers to creating meaning."
+thumbnail-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png
+share-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png
 tags: [ai, leadership, expertise]
 author: Hasan J.
 ---
 
 There is a moment in every career when something shifts quietly beneath your feet, and you realize the ground you have been standing on is no longer the same. For me, that moment happened in a room I had walked into with confidence many times before.
+
+![The Moment I Realized Expertise Was Changing Forever](/assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png)
 
 I was facilitating a leadership workshop on decision-making in the age of AI. Nothing unusual. I had prepared insights, frameworks, and examples the way I always did. But before I even spoke, one of the executives opened a live dashboard their new system had produced overnight. It had already analyzed the market, modeled scenarios, and suggested a strategic path forward. It took the room less than five minutes to absorb what would have once required days of human coordination.
 
