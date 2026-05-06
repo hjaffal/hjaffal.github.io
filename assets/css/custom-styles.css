@@ -2118,3 +2118,16 @@ select:focus {
   color: var(--text-soft);
   flex-shrink: 0;
 }
+
+/* Substack feed loading */
+
+.substack-loading {
+  padding: 24px 32px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+.substack-loading a {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
