@@ -3,7 +3,7 @@ layout: page
 title:
 subtitle:
 share-title: "Writing — Hasan Jaffal"
-share-description: "Essays on risk analytics, fraud detection, loss prevention, and data-driven operational decision-making."
+share-description: "Posts on risk analytics, fraud detection, loss prevention, and data-driven operational decision-making."
 chat_with_me_box: false
 show-avatar: false
 ---
@@ -13,7 +13,7 @@ show-avatar: false
     <div class="page-main">
       <div class="writing-essays">
         <div class="writing-essays-header">
-          <span class="field-label">ESSAYS & ARTICLES</span>
+          <span class="field-label">POSTS & ARTICLES</span>
           <h2 class="field-title">Field <em>Intelligence.</em></h2>
           <p class="writing-essays-intro">Writing on risk, fraud analytics, loss prevention, and operational decision-making.</p>
         </div>
@@ -22,7 +22,7 @@ show-avatar: false
           {% for post in site.posts %}
           <a href="{{ post.url | relative_url }}" class="writing-essay-item">
             <div class="writing-essay-left">
-              <span class="field-card-tag">{{ post.tags[0] | default: "essay" | upcase }}</span>
+              <span class="field-card-tag">{{ post.tags[0] | default: "post" | upcase }}</span>
               <h3>{{ post.title }}</h3>
               <p class="writing-essay-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
             </div>
