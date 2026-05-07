@@ -1,7 +1,10 @@
 <div class="sp-header">
   <div class="sp-header-inner">
     <a href="/sproochentest/" class="sp-header-brand">SproochenTest <span class="sp-header-brand-sub">Study Guide</span></a>
-    <nav class="sp-header-nav">
+    <button class="sp-menu-toggle" id="sp-menu-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="sp-header-nav" id="sp-header-nav">
       <a href="/sproochentest/gesondheet/" class="{% if page.layout == 'sproochentest-topic' %}sp-nav-active{% endif %}">Speaking</a>
       <a href="/sproochentest-image-description/" class="{% if page.url == '/sproochentest-image-description/' %}sp-nav-active{% endif %}">Describing Images</a>
       <a href="/sproochentest-listening-practice/" class="{% if page.url == '/sproochentest-listening-practice/' %}sp-nav-active{% endif %}">Listening</a>

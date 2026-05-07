@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+  // Sproochentest mobile menu toggle
+  var spMenuToggle = document.getElementById('sp-menu-toggle');
+  var spNav = document.getElementById('sp-header-nav');
+  if (spMenuToggle && spNav) {
+    spMenuToggle.addEventListener('click', function() {
+      spNav.classList.toggle('open');
+    });
+  }
+
   // Dark mode toggle
   var toggle = document.getElementById('theme-toggle');
   var html = document.documentElement;

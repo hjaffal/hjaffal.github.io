@@ -1,0 +1,53 @@
+<div class="sp-mobile-dropdown">
+  {% if include.type == "speaking" %}
+  <select class="sp-topic-select" onchange="if(this.value) window.location.href=this.value;">
+    <option value="">Select a topic...</option>
+    <option value="/sproochentest/gesondheet/" {% if page.url == '/sproochentest/gesondheet/' %}selected{% endif %}>Gesondheet</option>
+    <option value="/sproochentest/kaddoen/" {% if page.url == '/sproochentest/kaddoen/' %}selected{% endif %}>Kaddoen</option>
+    <option value="/sproochentest/kreativitaeit-hobbyen/" {% if page.url == '/sproochentest/kreativitaeit-hobbyen/' %}selected{% endif %}>Kreativitéit / Hobbyen</option>
+    <option value="/sproochentest/liesen/" {% if page.url == '/sproochentest/liesen/' %}selected{% endif %}>Liesen</option>
+    <option value="/sproochentest/medien-technologien/" {% if page.url == '/sproochentest/medien-technologien/' %}selected{% endif %}>Medien / Technologien</option>
+    <option value="/sproochentest/moud-kleeder/" {% if page.url == '/sproochentest/moud-kleeder/' %}selected{% endif %}>Moud & Kleeder</option>
+    <option value="/sproochentest/reesen-vakanz/" {% if page.url == '/sproochentest/reesen-vakanz/' %}selected{% endif %}>Reesen / Vakanz</option>
+    <option value="/sproochentest/sport/" {% if page.url == '/sproochentest/sport/' %}selected{% endif %}>Sport</option>
+    <option value="/sproochentest/sproochen/" {% if page.url == '/sproochentest/sproochen/' %}selected{% endif %}>Sproochen</option>
+    <option value="/sproochentest/akafen/" {% if page.url == '/sproochentest/akafen/' %}selected{% endif %}>Akafen</option>
+    <option value="/sproochentest/summer-wantar/" {% if page.url == '/sproochentest/summer-wantar/' %}selected{% endif %}>Summer / Wantar</option>
+    <option value="/sproochentest/wunnen/" {% if page.url == '/sproochentest/wunnen/' %}selected{% endif %}>Wunnen</option>
+    <option value="/sproochentest/tourismus/" {% if page.url == '/sproochentest/tourismus/' %}selected{% endif %}>Tourismus</option>
+    <option value="/sproochentest/musek/" {% if page.url == '/sproochentest/musek/' %}selected{% endif %}>Musek</option>
+    <option value="/sproochentest/transport/" {% if page.url == '/sproochentest/transport/' %}selected{% endif %}>Transport</option>
+  </select>
+  {% elsif include.type == "listening" %}
+  <select class="sp-topic-select" onchange="if(this.value) window.location.href=this.value;">
+    <option value="">Select an exercise...</option>
+    <option value="/sproochentest-listening-practice/" {% if page.url == '/sproochentest-listening-practice/' %}selected{% endif %}>Overview</option>
+    <option value="/sproochentest-listening/meng-lescht-vakanz/" {% if page.url == '/sproochentest-listening/meng-lescht-vakanz/' %}selected{% endif %}>1. Meng Lescht Vakanz</option>
+    <option value="/sproochentest-listening/sangen/" {% if page.url == '/sproochentest-listening/sangen/' %}selected{% endif %}>2. Sangen</option>
+    <option value="/sproochentest-listening/fitness/" {% if page.url == '/sproochentest-listening/fitness/' %}selected{% endif %}>3. Fitness</option>
+    <option value="/sproochentest-listening/op-wunnengssich/" {% if page.url == '/sproochentest-listening/op-wunnengssich/' %}selected{% endif %}>4. Op Wunnengssich</option>
+    <option value="/sproochentest-listening/bank-restaurant/" {% if page.url == '/sproochentest-listening/bank-restaurant/' %}selected{% endif %}>5. Bank / Restaurant</option>
+    <option value="/sproochentest-listening/all-dag/" {% if page.url == '/sproochentest-listening/all-dag/' %}selected{% endif %}>6. All Dag</option>
+    <option value="/sproochentest-listening/alldag-mat-kanner/" {% if page.url == '/sproochentest-listening/alldag-mat-kanner/' %}selected{% endif %}>7. Alldag mat Kanner</option>
+    <option value="/sproochentest-listening/kleng-accidenter/" {% if page.url == '/sproochentest-listening/kleng-accidenter/' %}selected{% endif %}>8. Kleng Accidenter</option>
+  </select>
+  {% elsif include.type == "images" %}
+  <select class="sp-topic-select" onchange="if(this.value) window.location.href=this.value;">
+    <option value="">Jump to section...</option>
+    <option value="#structure">Simple structure</option>
+    <option value="#start">Start the description</option>
+    <option value="#people">Describe the people</option>
+    <option value="#clothes">Describe the clothes</option>
+    <option value="#place">Describe the place</option>
+    <option value="#actions">Describe the actions</option>
+    <option value="#objects">Describe objects</option>
+    <option value="#weather">Describe the weather</option>
+    <option value="#opinion">Give an opinion</option>
+    <option value="#example">Full example</option>
+    <option value="#formula">Quick formula</option>
+    <option value="#grammar">Grammar tip</option>
+    <option value="#practice">Practice questions</option>
+  </select>
+  {% endif %}
+  <a href="/sproochentest/" class="sp-sidebar-back">← Back to Sproochentest</a>
+</div>
