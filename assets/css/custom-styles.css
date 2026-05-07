@@ -3926,3 +3926,27 @@ select:focus {
     display: block;
   }
 }
+
+/* Sproochentest hero links */
+.sp-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.sp-hero-links .sp-section-btn:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+@media (max-width: 600px) {
+  .sp-hero-links {
+    flex-direction: column;
+  }
+
+  .sp-hero-links .sp-section-btn {
+    text-align: center;
+  }
+}
