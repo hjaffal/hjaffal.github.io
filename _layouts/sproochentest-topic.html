@@ -1,0 +1,28 @@
+---
+layout: base
+---
+
+<style>.navbar { display: none !important; } footer.site-footer { display: none !important; }</style>
+
+{% include sproochentest-header.html %}
+
+<main class="container-fluid">
+  <div class="sp-topic-page">
+    <aside class="sp-topic-sidebar">
+      {% include sproochentest-sidebar.html %}
+    </aside>
+    <div class="sp-topic-main">
+      <div class="sp-topic-header">
+        <span class="field-label">A2 SPEAKING PRACTICE</span>
+        <h1 class="sp-topic-title">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="sp-topic-subtitle">{{ page.subtitle }}</p>{% endif %}
+      </div>
+      <div class="sp-topic-content">
+        {{ content }}
+      </div>
+      {% include sproochentest-newsletter.html %}
+    </div>
+  </div>
+</main>
+
+{% include sproochentest-footer.html %}

@@ -1,0 +1,23 @@
+---
+layout: base
+---
+
+<style>.navbar { display: none !important; } footer.site-footer { display: none !important; }</style>
+
+{% include sproochentest-header.html %}
+
+<main class="container-fluid">
+  <div class="sp-topic-page" style="grid-template-columns:1fr;">
+    <div class="sp-topic-main" style="max-width:700px;margin:0 auto;">
+      <div class="sp-topic-header">
+        <h1 class="sp-topic-title">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="sp-topic-subtitle">{{ page.subtitle }}</p>{% endif %}
+      </div>
+      <div class="sp-topic-content">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</main>
+
+{% include sproochentest-footer.html %}
