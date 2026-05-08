@@ -1,4 +1,4 @@
-name: Daily AI Draft Post
+name: Daily Blog Post
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  draft-post:
+  publish-post:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
           pip install --upgrade pip
           pip install openai python-slugify
 
-      - name: Generate AI blog post
+      - name: Generate blog post
         run: python scripts/generate_post.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -40,7 +40,7 @@ jobs:
 
           git add _posts/
 
-          git commit -m "Add daily AI post" || echo "No changes to commit"
+          git commit -m "Add daily blog post" || echo "No changes to commit"
 
           git pull --rebase origin master
           git push origin master
