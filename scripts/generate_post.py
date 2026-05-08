@@ -1,46 +1,124 @@
-name: Daily AI Draft Post
+from openai import OpenAI
+from slugify import slugify
+from datetime import datetime, timezone
+import os
+import json
+import re
 
-on:
-  schedule:
-    - cron: "0 6 * * *"
-  workflow_dispatch:
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-permissions:
-  contents: write
+TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-jobs:
-  draft-post:
-    runs-on: ubuntu-latest
+PROMPT = f"""
+You are writing for Hasan J., a senior operator in data analytics, AI, risk, fraud detection, security, and loss prevention.
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+Write one original blog post for a Jekyll website.
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+Audience:
+Analytics leaders, operations leaders, risk managers, fraud teams, security professionals, and senior decision-makers.
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install openai python-slugify
+Positioning:
+Expose where data, AI, dashboards, and leadership fail in real operations, especially under risk.
 
-      - name: Generate AI blog post
-        run: python scripts/generate_post.py
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+Core rules:
+- Do not include labels like Title, Hook, Context, Insight, or Takeaway in the article.
+- Do not sound generic.
+- Do not use corporate buzzwords.
+- Do not invent statistics.
+- Use concrete operational examples.
+- Use simple English.
+- Use short paragraphs.
+- Use a strong point of view.
+- Challenge a common belief.
+- Naturally include SEO-relevant topics:
+  AI operations,
+  data analytics,
+  dashboards,
+  risk detection,
+  fraud signals,
+  operational risk,
+  decision-making,
+  security,
+  loss prevention,
+  reporting,
+  intelligence.
+- Write 700 to 1000 words.
 
-      - name: Commit and push post
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+Structure requirements:
+- Strong headline
+- Short subtitle
+- Share description under 155 characters
+- 5 to 8 tags
+- Markdown body
+- Strong opening paragraph
+- One realistic operational example
+- Explain the hidden failure point
+- Explain what strong teams do differently
+- End with one forced-position question
 
-          git add _posts/
+Return ONLY valid JSON in this exact format:
 
-          git commit -m "Add daily post" || echo "No changes to commit"
+{{
+  "title": "string",
+  "subtitle": "string",
+  "share_description": "string",
+  "tags": ["tag1", "tag2"],
+  "body": "markdown content"
+}}
 
-          git pull --rebase origin master
-          git push origin master
+Date: {TODAY}
+"""
+
+response = client.responses.create(
+    model="gpt-5",
+    input=PROMPT
+)
+
+raw = response.output_text.strip()
+
+try:
+    data = json.loads(raw)
+except json.JSONDecodeError:
+    match = re.search(r"\{.*\}", raw, re.DOTALL)
+
+    if not match:
+        raise ValueError("Model did not return valid JSON")
+
+    data = json.loads(match.group(0))
+
+title = data["title"].strip()
+subtitle = data["subtitle"].strip()
+share_description = data["share_description"].strip()
+tags = data["tags"]
+body = data["body"].strip()
+
+slug = slugify(title)
+
+filename = f"_posts/{TODAY}-{slug}.md"
+
+def yaml_escape(value):
+    return str(value).replace('"', '\\"')
+
+tags_yaml = "\n".join(
+    [f"  - {yaml_escape(tag)}" for tag in tags]
+)
+
+markdown = f"""---
+layout: post
+title: "{yaml_escape(title)}"
+subtitle: "{yaml_escape(subtitle)}"
+share-description: "{yaml_escape(share_description)}"
+tags:
+{tags_yaml}
+author: Hasan J.
+---
+
+{body}
+"""
+
+os.makedirs("_posts", exist_ok=True)
+
+with open(filename, "w", encoding="utf-8") as f:
+    f.write(markdown)
+
+print(f"Created {filename}")
