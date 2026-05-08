@@ -4139,6 +4139,10 @@ select:focus {
     linear-gradient(135deg, rgba(147, 51, 234, 0.03) 0%, transparent 50%),
     linear-gradient(225deg, rgba(15, 23, 42, 0.03) 0%, transparent 50%),
     var(--slate-bg);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50% + 48px);
+  padding-right: calc(50vw - 50% + 48px);
 }
 
 .nl-simple-grid {
@@ -4256,4 +4260,10 @@ select:focus {
   .nl-simple-right {
     margin-left: 0;
   }
+}
+
+/* Newsletter page container fix */
+.container-fluid:has(.nl-simple) > .row > .col {
+  padding: 0;
+  max-width: 100%;
 }
