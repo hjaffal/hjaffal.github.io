@@ -4,69 +4,70 @@ from datetime import datetime, timezone
 import os
 import json
 import re
+import random
+import glob
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+PILLARS = [
+  "AI in real operations",
+    "analytics leadership",
+    "fraud detection",
+    "security and loss prevention",
+    "operational risk",
+    "decision-making under pressure",
+    "reporting versus intelligence",
+    "automation and human judgment",
+    "data quality ownership",
+    "leadership accountability",
+    "field execution gaps",
+    "early warning signals",
+    "escalation discipline",
+    "governance failure",
+    "risk culture"
+]
+
+pillar = random.choice(PILLARS)
+
+recent_titles = []
+post_files = sorted(glob.glob("_posts/*.md"), reverse=True)[:8]
+
+for file_path in post_files:
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            match = re.search(r'title:\s*"(.+?)"', f.read())
+            if match:
+                recent_titles.append(match.group(1))
+    except Exception:
+        pass
+
+recent_titles_text = "; ".join(recent_titles) if recent_titles else "None"
+
 PROMPT = f"""
-You are writing for Hasan J., a senior operator in data analytics, AI, risk, fraud detection, security, and loss prevention.
+Write one original blog post for Hasan J.
 
-Write one original blog post for a Jekyll website.
+Theme: {pillar}
 
-Audience:
-Analytics leaders, operations leaders, risk managers, fraud teams, security professionals, and senior decision-makers.
+Avoid repeating these recent titles:
+{recent_titles_text}
 
-Positioning:
-Expose where data, AI, dashboards, and leadership fail in real operations, especially under risk.
+Audience: senior leaders in analytics, operations, AI, fraud, security, and risk.
 
-Core rules:
-- Do not include labels like Title, Hook, Context, Insight, or Takeaway in the article.
-- Do not sound generic.
-- Do not use corporate buzzwords.
-- Do not invent statistics.
-- Use concrete operational examples.
-- Use simple English.
-- Use short paragraphs.
-- Use a strong point of view.
-- Challenge a common belief.
-- Naturally include SEO-relevant topics:
-  AI operations,
-  data analytics,
-  dashboards,
-  risk detection,
-  fraud signals,
-  operational risk,
-  decision-making,
-  security,
-  loss prevention,
-  reporting,
-  intelligence.
-- Write 700 to 1000 words.
+Rules:
+Simple English. Strong point of view. Practical operator tone. Concrete operational example.
+No hype. No buzzwords. No invented statistics. No labels like Hook, Insight, or Takeaway.
+Use natural SEO terms where relevant: AI operations, data analytics, risk detection, fraud signals, operational risk, security, loss prevention, reporting, intelligence.
+700-1000 words. Short paragraphs. End with one forced-position question.
 
-Structure requirements:
-- Strong headline
-- Short subtitle
-- Share description under 155 characters
-- 5 to 8 tags
-- Markdown body
-- Strong opening paragraph
-- One realistic operational example
-- Explain the hidden failure point
-- Explain what strong teams do differently
-- End with one forced-position question
-
-Return ONLY valid JSON in this exact format:
-
+Return only JSON:
 {{
-  "title": "string",
-  "subtitle": "string",
-  "share_description": "string",
-  "tags": ["tag1", "tag2"],
-  "body": "markdown content"
+  "title": "",
+  "subtitle": "",
+  "share_description": "",
+  "tags": [],
+  "body": ""
 }}
-
-Date: {TODAY}
 """
 
 response = client.responses.create(
@@ -80,10 +81,8 @@ try:
     data = json.loads(raw)
 except json.JSONDecodeError:
     match = re.search(r"\{.*\}", raw, re.DOTALL)
-
     if not match:
         raise ValueError("Model did not return valid JSON")
-
     data = json.loads(match.group(0))
 
 title = data["title"].strip()
@@ -93,15 +92,12 @@ tags = data["tags"]
 body = data["body"].strip()
 
 slug = slugify(title)
-
 filename = f"_posts/{TODAY}-{slug}.md"
 
 def yaml_escape(value):
     return str(value).replace('"', '\\"')
 
-tags_yaml = "\n".join(
-    [f"  - {yaml_escape(tag)}" for tag in tags]
-)
+tags_yaml = "\n".join([f"  - {yaml_escape(tag)}" for tag in tags])
 
 markdown = f"""---
 layout: post
