@@ -13,18 +13,18 @@ TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 PILLARS = [
   "AI in real operations",
     "analytics leadership",
-    "fraud detection",
+    "project management in the age of AI",
+    "product management role in the age of AI",
+    "Job safety in the age of AI",
     "security and loss prevention",
     "operational risk",
     "decision-making under pressure",
     "reporting versus intelligence",
-    "automation and human judgment",
-    "data quality ownership",
+    "data engineers and analyst role in AI",
     "leadership accountability",
     "field execution gaps",
     "early warning signals",
     "escalation discipline",
-    "governance failure",
     "risk culture"
 ]
 

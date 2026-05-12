@@ -6,6 +6,13 @@ layout: base
   <div class="page-with-sidebar">
     <div class="page-main post-main">
 
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
       <div class="post-heading">
         {% if page.tags.size > 0 %}
         <span class="post-heading-tags">
@@ -13,6 +20,9 @@ layout: base
         </span>
         {% endif %}
         <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="post-heading-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
         {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
         <span class="post-meta">Published on {{ page.date | date: date_format }}</span>
       </div>
