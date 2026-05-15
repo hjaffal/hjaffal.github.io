@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dashboards Don’t Stop Loss"
+title: "Build Controls, Not Charts: Designing Loss Prevention That Acts"
 subtitle: "Control does. Build for action, not for applause."
 share-description: "Dashboards don’t stop loss. Control does. Where AI ops fail on the floor—and how to design for action, latency, and authority."
 tags:

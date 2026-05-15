@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dashboards Don’t Stop Fraud. Decisions Do."
+title: "From Fraud Signal to Action: Why Decision Latency Costs More Than Bad Models"
 subtitle: "Why your best charts still lose money under fire"
 share-description: "Dashboards feel safe, but they delay action. Strong teams cut risk with fast decisions, runbooks, and authority, not prettier reporting."
 tags:

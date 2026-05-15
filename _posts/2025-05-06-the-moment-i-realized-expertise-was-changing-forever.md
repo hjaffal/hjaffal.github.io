@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Moment I Realized Expertise Was Changing Forever
+title: "How AI Is Redefining Expertise: From Having Answers to Creating Meaning"
 subtitle:
 share-description: "A reflection on how AI is transforming the role of the expert — from having answers to creating meaning."
 thumbnail-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png

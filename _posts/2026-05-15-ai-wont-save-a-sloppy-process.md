@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI Won’t Save a Sloppy Process"
+title: "AI Won't Save a Sloppy Process: Fix Your Workflow Before Deploying Models"
 subtitle: "What project managers must change before models touch real work"
 share-description: "AI changes the job for project managers: success depends less on model brilliance and more on tight operating process. Here’s what to fix before and after you switch it on."
 tags:

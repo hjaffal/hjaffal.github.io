@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Predictive Analytics in Security and Loss Prevention
+title: "Predictive Analytics for Security: From Reactive to Proactive Loss Prevention"
 subtitle: From Reactive to Proactive
 share-description: "How predictive analytics transforms security and loss prevention from reactive firefighting to proactive risk anticipation."
 cover-img: /assets/img/path.jpg

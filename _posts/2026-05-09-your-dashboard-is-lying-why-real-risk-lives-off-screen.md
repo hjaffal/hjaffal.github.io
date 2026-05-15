@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Your Dashboard Is Lying: Why Real Risk Lives Off-Screen"
+title: "The Blind Spots Your Dashboard Hides: Where Fraud Actually Lives"
 subtitle: "AI operations only work when the data meets the floor, not the board"
 share-description: "Dashboards look clean. Operations are not. Here’s where data, AI, and leadership miss real risk—and what strong teams change to stop loss."
 tags:

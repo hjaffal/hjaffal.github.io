@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dashboards Don’t Decide: Why Good Data Fails Under Real Risk"
+title: "Why Good Data Fails Under Real Risk: The Decision Authority Gap"
 subtitle: "Accuracy is cheap. Authority and timing are not."
 share-description: "Dashboards don’t decide under pressure. Why AI, data analytics, and risk detection fail—and how strong teams make decisions that stick."
 tags:
