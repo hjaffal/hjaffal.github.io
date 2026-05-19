@@ -10,73 +10,117 @@ import glob
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-TOPIC_SYSTEMS = [
+# Fixed topic/tag system — each post must use exactly one of these
+TOPICS = [
     {
-        "theme": "AI is removing work, not just improving work",
-        "stance": "Many jobs will shrink or disappear because AI removes tasks faster than companies redesign roles.",
-        "title_style": "direct warning"
+        "tag": "ai-in-operations",
+        "description": "AI in operations — practical guide for teams deploying AI in real workflows",
+        "angles": [
+            "How to deploy AI in operations without losing control",
+            "What operational teams get wrong when adopting AI",
+            "The gap between AI demos and AI in production operations",
+            "How to measure AI value in operations, not in slides",
+        ]
     },
     {
-        "theme": "The middle layer of knowledge work is exposed",
-        "stance": "Jobs built around summarizing, reporting, coordinating, and basic analysis are under serious pressure.",
-        "title_style": "plain and uncomfortable"
+        "tag": "ai-risk-management",
+        "description": "How AI creates and reduces risk in business operations",
+        "angles": [
+            "AI reduces some risks and creates new ones — how to manage both",
+            "The new risk surface AI introduces to operations",
+            "Why AI risk management is an operations problem, not a compliance checkbox",
+            "How to build risk controls around AI-driven decisions",
+        ]
     },
     {
-        "theme": "Data analysts must move beyond reporting",
-        "stance": "Analysts who only build dashboards are at risk. Analysts who define decisions, risks, and actions still matter.",
-        "title_style": "career risk"
+        "tag": "ai-in-loss-prevention",
+        "description": "AI applied to loss prevention, fraud detection, and shrink reduction",
+        "angles": [
+            "How AI changes the speed and accuracy of loss prevention",
+            "Where AI fails in loss prevention and what to do about it",
+            "Building an AI-assisted loss prevention program from scratch",
+            "The human-AI handoff in fraud and loss prevention",
+        ]
     },
     {
-        "theme": "AI will punish weak ownership",
-        "stance": "AI does not fix unclear accountability. It makes unclear accountability more dangerous.",
-        "title_style": "leadership truth"
+        "tag": "reporting-vs-intelligence",
+        "description": "The difference between reporting and actionable intelligence",
+        "angles": [
+            "Why most reporting is decoration and how to make it intelligence",
+            "How to turn dashboards into decision tools",
+            "The cost of reporting without action authority",
+            "What separates a report from operational intelligence",
+        ]
     },
     {
-        "theme": "Project managers in the AI age",
-        "stance": "Project managers who only track tasks are exposed. The valuable work is judgment, trade-offs, escalation, and alignment.",
-        "title_style": "role disruption"
+        "tag": "ai-human-judgment",
+        "description": "Where humans must stay in the loop when AI is involved",
+        "angles": [
+            "Decisions AI should never make alone",
+            "How to design human-in-the-loop systems that actually work",
+            "When to override AI and when to trust it",
+            "The judgment layer AI cannot replace",
+        ]
     },
     {
-        "theme": "Product managers in the AI age",
-        "stance": "Product managers who only write requirements are exposed. The value shifts to problem selection and decision quality.",
-        "title_style": "role disruption"
+        "tag": "predictive-risk-detection",
+        "description": "Predictive models for operational risk detection and early warning",
+        "angles": [
+            "How predictive models detect operational risk before it hits",
+            "Building early warning systems for fraud and loss",
+            "Why predictive risk detection fails without operational context",
+            "From reactive alerts to predictive risk containment",
+        ]
     },
     {
-        "theme": "AI and operational risk",
-        "stance": "AI can reduce manual work but increase risk when teams stop questioning outputs.",
-        "title_style": "risk warning"
+        "tag": "ai-governance-for-operations",
+        "description": "Simple AI governance operating model for real teams, not policy theory",
+        "angles": [
+            "AI governance that operators can actually follow",
+            "How to govern AI decisions without slowing operations",
+            "The minimum viable AI governance for operational teams",
+            "Why most AI governance frameworks fail on the floor",
+        ]
     },
     {
-        "theme": "Reporting is becoming cheap",
-        "stance": "When AI makes reporting easier, the scarce skill becomes deciding what matters and acting on it.",
-        "title_style": "market shift"
+        "tag": "analytics-operating-model",
+        "description": "How analytics teams should work, organize, and deliver value",
+        "angles": [
+            "How to structure an analytics team for decision impact",
+            "Why analytics teams fail when they optimize for output, not outcomes",
+            "The operating model that makes analytics teams indispensable",
+            "What analytics leaders must change to stay relevant",
+        ]
     },
     {
-        "theme": "Leadership accountability in AI transformation",
-        "stance": "Leaders cannot hide behind AI tools. They still own the decision, the trade-off, and the failure.",
-        "title_style": "executive accountability"
+        "tag": "security-data-analytics",
+        "description": "Security analytics — using data to protect assets and detect threats",
+        "angles": [
+            "How security teams should use data analytics to detect threats",
+            "Building a security analytics function from scratch",
+            "The metrics that matter in security data analytics",
+            "Where security analytics fails and how to fix it",
+        ]
     },
-    {
-        "theme": "The future of analytics work",
-        "stance": "Analytics jobs will split into two groups: people who operate tools and people who shape decisions.",
-        "title_style": "clear prediction"
-    }
 ]
 
 ARTICLE_FORMS = [
-    "make a blunt argument",
-    "explain who is at risk and who is not",
-    "challenge a comforting belief",
-    "describe a real operational failure",
-    "compare old work with future work",
-    "give a practical warning to leaders",
-    "explain what professionals must stop doing",
-    "explain what professionals must learn now"
+    "make a blunt argument with a clear position",
+    "explain a real operational failure and what to learn from it",
+    "give a practical playbook for operators",
+    "challenge a popular belief with evidence",
+    "compare what most teams do vs. what strong teams do",
+    "explain what leaders must change now",
+    "describe a decision framework for the topic",
+    "explain the hidden cost of getting this wrong",
 ]
 
-selected = random.choice(TOPIC_SYSTEMS)
+# Select topic and angle
+selected_topic = random.choice(TOPICS)
+selected_angle = random.choice(selected_topic["angles"])
 article_form = random.choice(ARTICLE_FORMS)
 
+# Get recent titles to avoid repetition
 recent_titles = []
 post_files = sorted(glob.glob("_posts/*.md"), reverse=True)[:15]
 
@@ -94,44 +138,38 @@ recent_titles_text = "; ".join(recent_titles) if recent_titles else "None"
 PROMPT = f"""
 Write one original blog post for Hasan J.
 
-Theme: {selected["theme"]}
-Stance: {selected["stance"]}
+Topic: {selected_topic["description"]}
+Angle: {selected_angle}
 Article form: {article_form}
-Title style: {selected["title_style"]}
+Tag to use: {selected_topic["tag"]}
 
 Avoid repeating these recent titles:
 {recent_titles_text}
 
 Audience:
-Leaders and professionals in AI, data, analytics, operations, risk, project management, and product management.
+Leaders and professionals in AI, data, analytics, operations, risk, security, loss prevention, and decision-making.
 
 Rules:
 - Be bold and direct.
 - Say the uncomfortable truth clearly.
-- Make it clear that many jobs and tasks are going away because of AI.
-- Do not soften the message with motivational language.
-- Do not claim every job is safe.
-- Do not claim AI only helps people work better.
-- Do not use vague titles.
-- The title must clearly state the argument.
-- Bad title: "The Future of Work"
-- Good title: "AI Will Remove Many Reporting Jobs. Pretending Otherwise Is Irresponsible."
 - Use simple English.
 - Use practical operator judgment.
 - Include one concrete workplace example.
 - Include one uncomfortable trade-off.
-- Explain who is most exposed.
-- Explain who is more protected.
-- Explain what strong leaders should do now.
-- No hype.
-- No corporate buzzwords.
-- No invented statistics.
+- Explain what strong teams do differently.
+- Explain what leaders should do now.
+- No hype. No corporate buzzwords. No invented statistics.
 - No labels like Hook, Insight, or Takeaway.
-- Use natural SEO wording where relevant:
-AI jobs, AI in operations, data analytics, operational risk, AI governance, reporting, intelligence, decision-making, automation, future of work.
-- 700 to 1000 words.
+- The title must clearly state the argument or value. Make it SEO-friendly.
+- Bad title: "The Future of Work"
+- Good title: "Why Predictive Risk Models Fail Without Operational Context"
+- Use natural SEO wording where relevant.
+- 500 to 600 words.
 - Short paragraphs.
 - End with one forced-position question.
+
+IMPORTANT: The "tags" field must contain ONLY this exact tag: "{selected_topic["tag"]}"
+Do not add any other tags.
 
 Return only valid JSON:
 
@@ -139,7 +177,7 @@ Return only valid JSON:
   "title": "",
   "subtitle": "",
   "share_description": "",
-  "tags": [],
+  "tags": ["{selected_topic["tag"]}"],
   "body": ""
 }}
 """
@@ -154,7 +192,7 @@ raw = response.output_text.strip()
 try:
     data = json.loads(raw)
 except json.JSONDecodeError:
-    match = re.search(r"\{.*\}", raw, re.DOTALL)
+    match = re.search(r"\{{.*\}}", raw, re.DOTALL)
     if not match:
         raise ValueError("Model did not return valid JSON")
     data = json.loads(match.group(0))
@@ -162,7 +200,8 @@ except json.JSONDecodeError:
 title = data["title"].strip()
 subtitle = data["subtitle"].strip()
 share_description = data["share_description"].strip()
-tags = data["tags"]
+# Force the tag to be only the selected one
+tags = [selected_topic["tag"]]
 body = data["body"].strip()
 
 slug = slugify(title)
@@ -192,3 +231,5 @@ with open(filename, "w", encoding="utf-8") as f:
     f.write(markdown)
 
 print(f"Created {filename}")
+print(f"Topic: {selected_topic['tag']}")
+print(f"Angle: {selected_angle}")
