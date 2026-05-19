@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+  <meta property="og:title" content="{{PAGE_TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{CANONICAL_URL}}">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script type="application/ld+json">
+  {{JSON_LD}}
+  </script>
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <nav class="breadcrumb">
+        <a href="/">Home</a> &rsaquo;
+        <a href="/ai-templates/">AI Templates</a> &rsaquo;
+        <span>{{TEMPLATE_TITLE}}</span>
+      </nav>
+      <h1>{{TEMPLATE_TITLE}}</h1>
+      <p class="description">{{TEMPLATE_DESCRIPTION}}</p>
+    </header>
+
+    <div class="template-meta">
+      <dl><dt>Category</dt><dd>{{CATEGORY}}</dd></dl>
+      <dl><dt>Audience</dt><dd>{{AUDIENCE}}</dd></dl>
+      <dl><dt>Last Updated</dt><dd>{{LAST_UPDATED}}</dd></dl>
+    </div>
+
+    {{PREVIEW_SECTION}}
+
+    <a href="{{DOWNLOAD_URL}}" class="download-btn" download>
+      &#11015; Download PDF
+    </a>
+
+    <article class="template-content">
+      {{CONTENT}}
+    </article>
+
+    {{RELATED_SECTION}}
+
+    <div class="newsletter-placeholder">
+      <h3>Get new templates in your inbox</h3>
+      <p>Subscribe to receive AI templates, frameworks, and operational guides.</p>
+      <!-- Newsletter embed goes here -->
+    </div>
+  </main>
+</body>
+</html>
