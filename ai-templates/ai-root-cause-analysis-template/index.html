@@ -1,0 +1,306 @@
+---
+layout: base
+---
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/ai-templates/">AI TEMPLATE</a> · <a href="/ai-templates/">RISK MANAGEMENT</a></span>
+        <h1>AI Root Cause Analysis Template</h1>
+        <p class="post-heading-subtitle">A structured investigation framework for operations teams. Move from symptoms to true root causes using the 5-Why chain, evidence grading, contributing factor mapping, and corrective action tracking.</p>
+        <span class="post-meta">Last updated May 19, 2026</span>
+      </div>
+
+      <!-- Meta cards -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 32px;">
+        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
+          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Category</span>
+          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">Risk Management</span>
+        </div>
+        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
+          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Audience</span>
+          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">Managers, Investigators, Ops</span>
+        </div>
+        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
+          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Format</span>
+          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">PDF · 8 pages</span>
+        </div>
+      </div>
+
+      <!-- Download -->
+      <button onclick="handleTemplateDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--dark);color:#fff;font-size:0.85rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:background 0.2s;margin-bottom:40px;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Template (PDF)
+      </button>
+
+      <!-- What's Inside -->
+      <div style="background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;padding:28px;margin-bottom:36px;">
+        <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 16px;">What's Inside</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">01</span>Incident Summary</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">02</span>Timeline of Events</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">03</span>5-Why Chain</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">04</span>Evidence Grading</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">05</span>Contributing Factor Map</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">06</span>Barrier Analysis</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">07</span>Root Cause Statement</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">08</span>Corrective Actions</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">09</span>Verification Plan</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">10</span>Lessons Learned</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">11</span>Recurrence Risk</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">12</span>AI Prompt</div>
+        </div>
+      </div>
+
+      <!-- Body cards -->
+      <div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+        <!-- Who & When -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">Who This Is For</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
+              <li>Operations managers</li>
+              <li>Quality & compliance leads</li>
+              <li>Incident investigators</li>
+              <li>Risk analysts</li>
+              <li>Process improvement teams</li>
+            </ul>
+          </div>
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">When To Use It</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
+              <li>After incidents or outages</li>
+              <li>Repeated process failures</li>
+              <li>Near-miss events</li>
+              <li>Customer-impacting defects</li>
+              <li>Post-mortem investigations</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Key Concepts -->
+        <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+          <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">Core Investigation Principles</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <span style="font-size:0.82rem;color:var(--dark);padding:8px 12px;background:var(--slate-bg);border-radius:6px;">Fix systems, not people</span>
+            <span style="font-size:0.82rem;color:var(--dark);padding:8px 12px;background:var(--slate-bg);border-radius:6px;">Evidence over opinion</span>
+            <span style="font-size:0.82rem;color:var(--dark);padding:8px 12px;background:var(--slate-bg);border-radius:6px;">Depth over speed</span>
+            <span style="font-size:0.82rem;color:var(--dark);padding:8px 12px;background:var(--slate-bg);border-radius:6px;">Verify before closing</span>
+            <span style="font-size:0.82rem;color:var(--dark);padding:8px 12px;background:var(--slate-bg);border-radius:6px;">Separate facts from assumptions</span>
+            <span style="font-size:0.82rem;color:var(--dark);padding:8px 12px;background:var(--slate-bg);border-radius:6px;">Map all contributing factors</span>
+          </div>
+        </div>
+
+        <!-- AI Prompt -->
+        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--slate-border);">
+          <div style="padding:14px 20px;background:var(--slate-bg);border-bottom:1px solid var(--slate-border);display:flex;align-items:center;justify-content:space-between;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0;">Copy-Paste AI Prompt</h3>
+            <button onclick="copyPrompt()" id="copy-prompt-btn" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:5px;font-size:0.72rem;font-weight:600;color:var(--dark);cursor:pointer;">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span id="copy-prompt-label">Copy</span>
+            </button>
+          </div>
+          <pre style="margin:0;padding:20px 24px;background:var(--dark);color:#E2E8F0;font-size:0.78rem;line-height:1.7;overflow-x:auto;" id="ai-prompt-block"><code>Act as a senior operations investigator.
+
+Conduct a Root Cause Analysis using the incident data below.
+Be rigorous. Separate facts from assumptions.
+
+Structure:
+1. Incident Summary (what, when, where, severity)
+2. Timeline of Events (sequence with evidence)
+3. 5-Why Chain (push past the obvious)
+4. Evidence Grading (rate each piece A through E)
+5. Contributing Factor Map (process, people, tech, controls)
+6. Barrier Analysis (what should have prevented this)
+7. Root Cause Statement (systemic, testable, actionable)
+8. Corrective Actions (immediate, short-term, systemic)
+9. Verification Plan (how to prove the fix works)
+10. Lessons Learned (what applies beyond this incident)
+11. Recurrence Risk (could this happen elsewhere)
+
+Rules:
+- Never blame a person. Find the system failure.
+- Grade every piece of evidence.
+- If evidence is weak, say so explicitly.
+- Every action must have an owner and deadline.
+- The root cause must be fixable and testable.
+
+Incident data: [PASTE HERE]
+Timeline: [PASTE HERE]
+Known facts: [PASTE HERE]
+Assumptions: [PASTE HERE]
+Previous similar incidents: [PASTE HERE]</code></pre>
+        </div>
+
+        <!-- Mistakes & Tips -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#DC2626;margin:0 0 12px;">Common Mistakes</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
+              <li>Stopping at the first "why"</li>
+              <li>Blaming people instead of systems</li>
+              <li>Confusing correlation with causation</li>
+              <li>Accepting testimony as fact</li>
+              <li>Closing before verifying the fix</li>
+              <li>Ignoring contributing factors</li>
+              <li>Writing RCA for compliance, not learning</li>
+            </ul>
+          </div>
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#16A34A;margin:0 0 12px;">Best Practices</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
+              <li>Start with timeline, not conclusions</li>
+              <li>Grade every piece of evidence</li>
+              <li>Check all 4 barrier types</li>
+              <li>Write root cause as testable hypothesis</li>
+              <li>Schedule verification date now</li>
+              <li>Share lessons across teams</li>
+              <li>Track recurrence as success metric</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Download CTA -->
+      <div style="margin:48px 0 32px;padding:32px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;text-align:center;">
+        <p style="font-size:0.92rem;color:#E2E8F0;margin:0 0 16px;">Download the full 8-page investigation template with tables, evidence grading, and verification plans.</p>
+        <button onclick="handleTemplateDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#fff;color:var(--dark);font-size:0.85rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Template (PDF)
+        </button>
+      </div>
+
+      <!-- Related -->
+      <div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
+        <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin:0 0 12px;">Related Templates</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <a href="/ai-templates/ai-weekly-business-review-template/" style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);text-decoration:none;">Weekly Business Review</a>
+          <span style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);">AI Risk Assessment (soon)</span>
+          <span style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);">AI Dashboard Review (soon)</span>
+          <span style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);">AI Executive Summary (soon)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-templates.html %}
+      {% include sidebar-recent.html %}
+    </aside>
+  </div>
+</main>
+
+<!-- Email gate modal -->
+<div id="template-download-gate" style="display:none;">
+  <div onclick="closeGate()" style="position:fixed;inset:0;background:rgba(15,23,42,0.6);backdrop-filter:blur(4px);z-index:9998;"></div>
+  <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:40px 36px;max-width:400px;width:90%;z-index:9999;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,0.15);">
+    <button onclick="closeGate()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;color:var(--text-soft);cursor:pointer;line-height:1;">&times;</button>
+    <div style="width:56px;height:56px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <h3 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 8px;">Enter your email to download</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 24px;line-height:1.5;">Get the template and receive new AI templates and operational guides.</p>
+    <form id="template-gate-form" onsubmit="submitGateEmail(event)" style="display:flex;gap:8px;">
+      <input type="email" id="template-gate-email" placeholder="your@email.com" required style="flex:1;padding:10px 14px;border:1px solid var(--slate-border);border-radius:8px;font-size:0.88rem;outline:none;">
+      <button type="submit" style="padding:10px 18px;background:#9333EA;color:#fff;border:none;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;">Download</button>
+    </form>
+    <p style="font-size:0.72rem;color:var(--text-soft);margin:14px 0 0;">One-time only. After this you can download all templates directly.</p>
+  </div>
+</div>
+
+<script>
+var TEMPLATE_FILE = '/ai-templates-section/pdf/ai-root-cause-analysis-template.pdf';
+
+function handleTemplateDownload() {
+  if (localStorage.getItem('tpl_subscribed')) {
+    triggerFile(TEMPLATE_FILE);
+  } else {
+    document.getElementById('template-download-gate').style.display = 'block';
+    document.getElementById('template-gate-email').focus();
+  }
+}
+
+function closeGate() {
+  document.getElementById('template-download-gate').style.display = 'none';
+}
+
+function submitGateEmail(e) {
+  e.preventDefault();
+  var email = document.getElementById('template-gate-email').value;
+  if (!email) return;
+  localStorage.setItem('tpl_subscribed', '1');
+  localStorage.setItem('tpl_email', email);
+
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.name = 'tpl-sub-frame';
+  document.body.appendChild(iframe);
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://embeds.beehiiv.com/subscribe';
+  form.target = 'tpl-sub-frame';
+  var pub = document.createElement('input');
+  pub.name = 'publication_id'; pub.value = 'd805d78f-acff-4c2b-b871-fe65ff327886';
+  form.appendChild(pub);
+  var em = document.createElement('input');
+  em.name = 'email'; em.value = email;
+  form.appendChild(em);
+  var utm = document.createElement('input');
+  utm.name = 'utm_source'; utm.value = 'template_download';
+  form.appendChild(utm);
+  document.body.appendChild(form);
+  form.submit();
+  setTimeout(function() { document.body.removeChild(form); document.body.removeChild(iframe); }, 3000);
+
+  var fileToDownload = TEMPLATE_FILE;
+  closeGate();
+  triggerFile(fileToDownload);
+}
+
+function triggerFile(file) {
+  var a = document.createElement('a');
+  a.href = file; a.download = '';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+function copyPrompt() {
+  var block = document.getElementById('ai-prompt-block');
+  var text = block.innerText || block.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var label = document.getElementById('copy-prompt-label');
+    var btn = document.getElementById('copy-prompt-btn');
+    label.textContent = 'Copied!';
+    btn.style.borderColor = '#9333EA';
+    btn.style.color = '#9333EA';
+    setTimeout(function() { label.textContent = 'Copy'; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+  });
+}
+
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeGate(); });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "AI Root Cause Analysis Template",
+  "description": "A structured investigation framework for operations teams to move from symptoms to true root causes.",
+  "author": { "@type": "Person", "name": "Hasan Jaffal" },
+  "dateModified": "2026-05-19",
+  "url": "https://www.hasanjaffal.com/ai-templates/ai-root-cause-analysis-template/",
+  "genre": "Risk Management",
+  "audience": { "@type": "Audience", "audienceType": "Managers, investigators, operations teams" }
+}
+</script>

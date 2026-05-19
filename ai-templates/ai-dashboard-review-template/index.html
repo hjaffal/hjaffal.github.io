@@ -1,0 +1,258 @@
+---
+layout: base
+---
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/ai-templates/">AI TEMPLATE</a> · <a href="/ai-templates/">REPORTING</a></span>
+        <h1>AI Dashboard Review Template</h1>
+        <p class="post-heading-subtitle">Turn dashboard data into executive-ready narrative. A structured framework for interpreting metrics, detecting anomalies, explaining context, and recommending actions.</p>
+        <span class="post-meta">Last updated May 20, 2026</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 32px;">
+        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
+          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Category</span>
+          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">Reporting & Analytics</span>
+        </div>
+        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
+          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Audience</span>
+          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">Analysts, Managers, Data Leads</span>
+        </div>
+        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
+          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Format</span>
+          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">PDF · 7 pages</span>
+        </div>
+      </div>
+
+      <button onclick="handleTemplateDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--dark);color:#fff;font-size:0.85rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:background 0.2s;margin-bottom:40px;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Template (PDF)
+      </button>
+
+      <!-- What's Inside -->
+      <div style="background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;padding:28px;margin-bottom:36px;">
+        <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 16px;">What's Inside</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">01</span>Dashboard Health Check</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">02</span>Metric Inventory</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">03</span>Anomaly Detection</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">04</span>Context Layer</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">05</span>"So What?" Framework</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">06</span>Metric Relationships</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">07</span>Narrative Summary</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">08</span>Audience-Specific Views</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">09</span>Action Items</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">10</span>Dashboard Improvement Log</div>
+        </div>
+      </div>
+
+      <div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">Who This Is For</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
+              <li>Data analysts & leads</li>
+              <li>Operations managers</li>
+              <li>Business intelligence teams</li>
+              <li>Anyone presenting dashboards</li>
+              <li>Leaders receiving reports</li>
+            </ul>
+          </div>
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">When To Use It</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
+              <li>Weekly metric reviews</li>
+              <li>Stakeholder presentations</li>
+              <li>Performance deep-dives</li>
+              <li>Board or exec updates</li>
+              <li>Quarterly business reviews</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+          <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">The "So What?" Framework</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 12px;">For every insight, answer these three questions:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div style="padding:12px;background:var(--slate-bg);border-radius:8px;text-align:center;">
+              <span style="display:block;font-size:0.68rem;font-weight:700;color:var(--accent);margin-bottom:4px;">1</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">What happened?</span>
+            </div>
+            <div style="padding:12px;background:var(--slate-bg);border-radius:8px;text-align:center;">
+              <span style="display:block;font-size:0.68rem;font-weight:700;color:var(--accent);margin-bottom:4px;">2</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">Why does it matter?</span>
+            </div>
+            <div style="padding:12px;background:var(--slate-bg);border-radius:8px;text-align:center;">
+              <span style="display:block;font-size:0.68rem;font-weight:700;color:var(--accent);margin-bottom:4px;">3</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">What should we do?</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Prompt -->
+        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--slate-border);">
+          <div style="padding:14px 20px;background:var(--slate-bg);border-bottom:1px solid var(--slate-border);display:flex;align-items:center;justify-content:space-between;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0;">Copy-Paste AI Prompt</h3>
+            <button onclick="copyPrompt()" id="copy-prompt-btn" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:5px;font-size:0.72rem;font-weight:600;color:var(--dark);cursor:pointer;">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span id="copy-prompt-label">Copy</span>
+            </button>
+          </div>
+          <pre style="margin:0;padding:20px 24px;background:var(--dark);color:#E2E8F0;font-size:0.78rem;line-height:1.7;overflow-x:auto;" id="ai-prompt-block"><code>Act as a senior data analytics leader.
+
+Review the dashboard data below and produce an executive-ready
+narrative that turns numbers into decisions.
+
+Structure:
+1. Dashboard Health Check (data freshness, gaps, filters)
+2. Metric Inventory (current vs target, status)
+3. Anomaly Detection (spikes, drops, trend breaks, divergences)
+4. Context Layer (business reasons behind movements)
+5. "So What?" Analysis (what happened, why it matters, what to do)
+6. Metric Relationships (correlations that held or broke)
+7. Narrative Summary (situation, changes, risks, focus)
+8. Audience-Specific Takeaways (exec vs manager vs analyst)
+9. Action Items (specific, owned, time-bound)
+10. Dashboard Improvement Notes (what to fix next time)
+
+Rules:
+- Lead with insight, not description.
+- Every metric needs context. Numbers alone are noise.
+- Flag anomalies explicitly. Do not bury them.
+- Separate facts from interpretation.
+- End with actions, not observations.
+- If data is missing or stale, say so upfront.
+
+Dashboard data: [PASTE METRICS HERE]
+Time period: [PASTE PERIOD]
+Business context: [PASTE CONTEXT]
+Known issues: [PASTE KNOWN ISSUES]</code></pre>
+        </div>
+
+        <!-- Mistakes & Tips -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#DC2626;margin:0 0 12px;">Common Mistakes</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
+              <li>Describing charts instead of interpreting them</li>
+              <li>Presenting all metrics equally</li>
+              <li>Ignoring broken correlations</li>
+              <li>Showing green/red without context</li>
+              <li>Averaging away important spikes</li>
+              <li>No actions produced from the review</li>
+              <li>Never improving the dashboard itself</li>
+            </ul>
+          </div>
+          <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+            <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#16A34A;margin:0 0 12px;">Best Practices</h3>
+            <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
+              <li>Start with anomalies, not summaries</li>
+              <li>Add context to every movement</li>
+              <li>Use "So What?" for every insight</li>
+              <li>Show metric relationships</li>
+              <li>Tailor depth to your audience</li>
+              <li>Produce at least one action per review</li>
+              <li>Kill metrics nobody acts on</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download CTA -->
+      <div style="margin:48px 0 32px;padding:32px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;text-align:center;">
+        <p style="font-size:0.92rem;color:#E2E8F0;margin:0 0 16px;">Download the full 7-page template with anomaly detection tables, narrative frameworks, and audience guides.</p>
+        <button onclick="handleTemplateDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#fff;color:var(--dark);font-size:0.85rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Template (PDF)
+        </button>
+      </div>
+
+      <!-- Related -->
+      <div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
+        <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin:0 0 12px;">Related Templates</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <a href="/ai-templates/ai-weekly-business-review-template/" style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);text-decoration:none;">Weekly Business Review</a>
+          <a href="/ai-templates/ai-root-cause-analysis-template/" style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);text-decoration:none;">Root Cause Analysis</a>
+          <span style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);">AI Risk Assessment (soon)</span>
+          <span style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);">AI Executive Summary (soon)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-templates.html %}
+      {% include sidebar-recent.html %}
+    </aside>
+  </div>
+</main>
+
+<!-- Email gate modal -->
+<div id="template-download-gate" style="display:none;">
+  <div onclick="closeGate()" style="position:fixed;inset:0;background:rgba(15,23,42,0.6);backdrop-filter:blur(4px);z-index:9998;"></div>
+  <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:40px 36px;max-width:400px;width:90%;z-index:9999;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,0.15);">
+    <button onclick="closeGate()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;color:var(--text-soft);cursor:pointer;line-height:1;">&times;</button>
+    <div style="width:56px;height:56px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <h3 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 8px;">Enter your email to download</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 24px;line-height:1.5;">Get the template and receive new AI templates and operational guides.</p>
+    <form id="template-gate-form" onsubmit="submitGateEmail(event)" style="display:flex;gap:8px;">
+      <input type="email" id="template-gate-email" placeholder="your@email.com" required style="flex:1;padding:10px 14px;border:1px solid var(--slate-border);border-radius:8px;font-size:0.88rem;outline:none;">
+      <button type="submit" style="padding:10px 18px;background:#9333EA;color:#fff;border:none;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;">Download</button>
+    </form>
+    <p style="font-size:0.72rem;color:var(--text-soft);margin:14px 0 0;">One-time only. After this you can download all templates directly.</p>
+  </div>
+</div>
+
+<script>
+var TEMPLATE_FILE = '/ai-templates-section/pdf/ai-dashboard-review-template.pdf';
+
+function handleTemplateDownload() {
+  if (localStorage.getItem('tpl_subscribed')) { triggerFile(TEMPLATE_FILE); }
+  else { document.getElementById('template-download-gate').style.display = 'block'; document.getElementById('template-gate-email').focus(); }
+}
+function closeGate() { document.getElementById('template-download-gate').style.display = 'none'; }
+function submitGateEmail(e) {
+  e.preventDefault();
+  var email = document.getElementById('template-gate-email').value;
+  if (!email) return;
+  localStorage.setItem('tpl_subscribed', '1');
+  localStorage.setItem('tpl_email', email);
+  var iframe = document.createElement('iframe'); iframe.style.display='none'; iframe.name='tpl-sub-frame'; document.body.appendChild(iframe);
+  var form = document.createElement('form'); form.method='POST'; form.action='https://embeds.beehiiv.com/subscribe'; form.target='tpl-sub-frame';
+  var pub = document.createElement('input'); pub.name='publication_id'; pub.value='d805d78f-acff-4c2b-b871-fe65ff327886'; form.appendChild(pub);
+  var em = document.createElement('input'); em.name='email'; em.value=email; form.appendChild(em);
+  var utm = document.createElement('input'); utm.name='utm_source'; utm.value='template_download'; form.appendChild(utm);
+  document.body.appendChild(form); form.submit();
+  setTimeout(function(){document.body.removeChild(form);document.body.removeChild(iframe);},3000);
+  var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
+}
+function triggerFile(file) { var a=document.createElement('a'); a.href=file; a.download=''; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
+function copyPrompt() {
+  var block = document.getElementById('ai-prompt-block');
+  navigator.clipboard.writeText(block.innerText||block.textContent).then(function(){
+    var l=document.getElementById('copy-prompt-label'),b=document.getElementById('copy-prompt-btn');
+    l.textContent='Copied!'; b.style.borderColor='#9333EA'; b.style.color='#9333EA';
+    setTimeout(function(){l.textContent='Copy';b.style.borderColor='';b.style.color='';},2000);
+  });
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGate();});
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CreativeWork","name":"AI Dashboard Review Template","description":"A structured framework for turning dashboard data into executive-ready narrative with anomaly detection, context, and actions.","author":{"@type":"Person","name":"Hasan Jaffal"},"dateModified":"2026-05-20","url":"https://www.hasanjaffal.com/ai-templates/ai-dashboard-review-template/","genre":"Reporting","audience":{"@type":"Audience","audienceType":"Analysts, managers, data leads"}}
+</script>
