@@ -39,6 +39,19 @@ chat_with_me_box: false
   </button>
 </div>
 
+<div class="sp-phrase-card" style="display:flex;align-items:center;gap:20px;padding:24px;">
+  <div style="flex-shrink:0;width:56px;height:56px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+    <i class="fas fa-file-pdf" style="font-size:1.4rem;color:#FFFFFF;"></i>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin:0 0 4px;">Picture Description Master Sheet</h4>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">Complete cheat sheet for describing any image — structure, vocabulary, weather, clothing, colors, ready-made sentences, opinion phrases, and emergency fillers.</p>
+  </div>
+  <button class="sp-download-btn" data-file="/assets/pdf/Sproochentest Picture Description Guide.pdf" onclick="handleDownload(this)">
+    <i class="fas fa-download" style="font-size:0.75rem;"></i> Download PDF
+  </button>
+</div>
+
 <!-- Email gate modal -->
 <div id="sp-download-gate" class="sp-download-gate" style="display:none;">
   <div class="sp-download-gate-backdrop" onclick="closeDownloadGate()"></div>
