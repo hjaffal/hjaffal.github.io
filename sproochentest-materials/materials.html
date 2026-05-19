@@ -11,12 +11,284 @@ chat_with_me_box: false
 
 <p class="sp-topic-subtitle">Downloadable resources to support your Sproochentest preparation.</p>
 
-<div class="sp-phrase-card" style="text-align:center;padding:48px 24px;">
-  <i class="fas fa-tools" style="font-size:2rem;color:var(--accent);margin-bottom:16px;display:block;"></i>
-  <h3 style="font-size:1.1rem;font-weight:700;color:var(--dark);margin:0 0 12px;">Coming Soon</h3>
-  <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 20px;">We're preparing study materials to help you practise more effectively.</p>
-  <p style="font-size:0.85rem;color:var(--text-soft);margin:0;">Planned materials:</p>
-  <ul style="list-style:none;padding:16px 0 0;margin:0;text-align:left;max-width:320px;margin:16px auto 0;">
+<h3 class="sp-img-section-title" style="border-top:none;padding-top:0;">Available Downloads</h3>
+
+<div class="sp-phrase-card" style="display:flex;align-items:center;gap:20px;padding:24px;">
+  <div style="flex-shrink:0;width:56px;height:56px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+    <i class="fas fa-file-pdf" style="font-size:1.4rem;color:#FFFFFF;"></i>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin:0 0 4px;">Adjective Declension Guide</h4>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">A2 speaking exam — correct adjective endings for image description, clothing, and objects. Includes tables, sentence patterns, common mistakes, and practice exercises.</p>
+  </div>
+  <button class="sp-download-btn" data-file="/assets/pdf/Sproochentest Adjective Guide.pdf" onclick="handleDownload(this)">
+    <i class="fas fa-download" style="font-size:0.75rem;"></i> Download PDF
+  </button>
+</div>
+
+<div class="sp-phrase-card" style="display:flex;align-items:center;gap:20px;padding:24px;">
+  <div style="flex-shrink:0;width:56px;height:56px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+    <i class="fas fa-file-pdf" style="font-size:1.4rem;color:#FFFFFF;"></i>
+  </div>
+  <div style="flex:1;min-width:0;">
+    <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin:0 0 4px;">Articles & Prepositions Guide</h4>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">an, am, op, um, un, mam, vum, bei, zu — step-by-step rules for location, movement, transport, countries, and cities. Includes contractions, picture description patterns, and common mistakes.</p>
+  </div>
+  <button class="sp-download-btn" data-file="/assets/pdf/Sproochentest Articles and Prepositions Guide.pdf" onclick="handleDownload(this)">
+    <i class="fas fa-download" style="font-size:0.75rem;"></i> Download PDF
+  </button>
+</div>
+
+<!-- Email gate modal -->
+<div id="sp-download-gate" class="sp-download-gate" style="display:none;">
+  <div class="sp-download-gate-backdrop" onclick="closeDownloadGate()"></div>
+  <div class="sp-download-gate-modal">
+    <button class="sp-download-gate-close" onclick="closeDownloadGate()">&times;</button>
+    <div class="sp-download-gate-icon">
+      <i class="fas fa-envelope"></i>
+    </div>
+    <h3>Enter your email to download</h3>
+    <p>Get the file and receive Sproochentest updates, new topics, and practice materials.</p>
+    <form id="sp-download-form" onsubmit="submitDownloadEmail(event)">
+      <input type="email" id="sp-download-email" placeholder="your@email.com" required>
+      <button type="submit">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </form>
+    <p class="sp-download-gate-note">One-time only. After this you can download all files directly.</p>
+  </div>
+</div>
+
+<style>
+.sp-download-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--dark);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sp-download-btn:hover {
+  background: #9333EA;
+}
+
+.sp-download-gate-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+}
+
+.sp-download-gate-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px 36px;
+  max-width: 400px;
+  width: 90%;
+  z-index: 9999;
+  text-align: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .sp-download-gate-modal {
+  background: #1E293B;
+}
+
+.sp-download-gate-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-soft);
+  cursor: pointer;
+  line-height: 1;
+}
+.sp-download-gate-close:hover {
+  color: var(--dark);
+}
+
+.sp-download-gate-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.sp-download-gate-icon i {
+  font-size: 1.3rem;
+  color: #FFFFFF;
+}
+
+.sp-download-gate-modal h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px;
+}
+
+.sp-download-gate-modal > p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+#sp-download-form {
+  display: flex;
+  gap: 8px;
+}
+
+#sp-download-form input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  background: var(--white);
+  color: var(--dark);
+  outline: none;
+  transition: border-color 0.2s;
+}
+#sp-download-form input:focus {
+  border-color: #9333EA;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+}
+
+#sp-download-form button {
+  padding: 10px 18px;
+  background: #9333EA;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+#sp-download-form button:hover {
+  background: #7C22CB;
+}
+
+.sp-download-gate-note {
+  font-size: 0.75rem !important;
+  color: var(--text-soft) !important;
+  margin: 14px 0 0 !important;
+}
+</style>
+
+<script>
+var pendingDownloadFile = null;
+
+function handleDownload(btn) {
+  var file = btn.getAttribute('data-file');
+  if (localStorage.getItem('sp_subscribed')) {
+    // Already subscribed, download directly
+    triggerDownload(file);
+  } else {
+    // Show email gate
+    pendingDownloadFile = file;
+    document.getElementById('sp-download-gate').style.display = 'block';
+    document.getElementById('sp-download-email').focus();
+  }
+}
+
+function closeDownloadGate() {
+  document.getElementById('sp-download-gate').style.display = 'none';
+  pendingDownloadFile = null;
+}
+
+function submitDownloadEmail(e) {
+  e.preventDefault();
+  var email = document.getElementById('sp-download-email').value;
+  if (!email) return;
+
+  // Store subscription state
+  localStorage.setItem('sp_subscribed', '1');
+  localStorage.setItem('sp_email', email);
+
+  // Subscribe via hidden iframe to Beehiiv form
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.name = 'sp-subscribe-frame';
+  document.body.appendChild(iframe);
+
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://embeds.beehiiv.com/subscribe';
+  form.target = 'sp-subscribe-frame';
+
+  var pubInput = document.createElement('input');
+  pubInput.name = 'publication_id';
+  pubInput.value = 'd805d78f-acff-4c2b-b871-fe65ff327886';
+  form.appendChild(pubInput);
+
+  var emailInput = document.createElement('input');
+  emailInput.name = 'email';
+  emailInput.value = email;
+  form.appendChild(emailInput);
+
+  var utmInput = document.createElement('input');
+  utmInput.name = 'utm_source';
+  utmInput.value = 'materials_download';
+  form.appendChild(utmInput);
+
+  document.body.appendChild(form);
+  form.submit();
+
+  // Clean up after a moment
+  setTimeout(function() {
+    document.body.removeChild(form);
+    document.body.removeChild(iframe);
+  }, 3000);
+
+  // Trigger download first, then close modal
+  var fileToDownload = pendingDownloadFile;
+  closeDownloadGate();
+  triggerDownload(fileToDownload);
+}
+
+function triggerDownload(file) {
+  var a = document.createElement('a');
+  a.href = file;
+  a.download = '';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDownloadGate();
+});
+</script>
+
+<h3 class="sp-img-section-title">Coming Soon</h3>
+
+<div class="sp-phrase-card" style="padding:24px;">
+  <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 16px;">More materials are being prepared:</p>
+  <ul style="list-style:none;padding:0;margin:0;">
     <li style="padding:8px 0;border-bottom:1px solid var(--slate-border);font-size:0.85rem;color:var(--text-muted);">A2 speaking answer templates</li>
     <li style="padding:8px 0;border-bottom:1px solid var(--slate-border);font-size:0.85rem;color:var(--text-muted);">Picture-description cheat sheet</li>
     <li style="padding:8px 0;border-bottom:1px solid var(--slate-border);font-size:0.85rem;color:var(--text-muted);">100 useful Sproochentest words</li>
