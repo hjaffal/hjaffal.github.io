@@ -21,7 +21,7 @@ PURPLE_LIGHT = (247, 243, 254)
 class WBR(FPDF):
     def __init__(self):
         super().__init__()
-        self.set_auto_page_break(auto=True, margin=22)
+        self.set_auto_page_break(auto=False)
         self.add_font('A', '', FONT_DIR + 'Arial Unicode.ttf')
         self.add_font('A', 'B', FONT_DIR + 'Arial Bold.ttf')
         self.add_font('A', 'I', FONT_DIR + 'Arial Italic.ttf')
@@ -68,10 +68,10 @@ class WBR(FPDF):
     def bullet(self, text):
         self.set_font('A', '', 8.5)
         self.set_text_color(*DARK_SOFT)
-        x = self.get_x()
-        self.set_x(x + 4)
-        self.cell(4, 4.2, chr(8226))
-        self.multi_cell(158, 4.2, text)
+        self.set_x(24)
+        self.cell(4, 4.2, chr(8226), new_x='RIGHT', new_y='TOP')
+        self.multi_cell(146, 4.2, text)
+        self.set_x(20)
 
     def note(self, bold, rest):
         x, y = self.get_x(), self.get_y()
@@ -98,6 +98,7 @@ class WBR(FPDF):
         self.set_font('A', '', 8)
         self.set_text_color(*DARK_SOFT)
         self.multi_cell(160, 4, text)
+        self.set_y(y + 14)
         self.set_y(y + 14)
 
     def tbl(self, headers, rows, widths, highlight_col=None):
