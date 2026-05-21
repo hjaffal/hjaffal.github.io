@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Sproochen"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Sproochen (Languages) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/sproochen/
 show-avatar: false
 chat_with_me_box: false

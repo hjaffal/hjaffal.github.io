@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Summer / Wantar"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Summer & Wanter (Summer & Winter) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/summer-wantar/
 show-avatar: false
 chat_with_me_box: false

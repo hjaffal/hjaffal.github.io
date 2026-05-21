@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Sport"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Sport (Sports & Fitness) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/sport/
 show-avatar: false
 chat_with_me_box: false

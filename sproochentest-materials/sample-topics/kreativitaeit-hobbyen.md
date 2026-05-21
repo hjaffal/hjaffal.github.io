@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Kreativitéit / Hobbyen"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Hobbyen (Hobbies & Creativity) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/kreativitaeit-hobbyen/
 show-avatar: false
 chat_with_me_box: false

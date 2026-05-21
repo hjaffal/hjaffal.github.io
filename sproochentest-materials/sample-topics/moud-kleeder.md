@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Moud & Kleeder"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Moud & Kleeder (Fashion & Clothes) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/moud-kleeder/
 show-avatar: false
 chat_with_me_box: false

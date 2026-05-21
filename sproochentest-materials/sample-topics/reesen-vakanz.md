@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Reesen / Vakanz"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Reesen & Vakanz (Travel & Holidays) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/reesen-vakanz/
 show-avatar: false
 chat_with_me_box: false

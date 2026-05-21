@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Tourismus am Heemechtsland"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Tourismus am Heemechtsland (Tourism in Luxembourg) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/tourismus/
 show-avatar: false
 chat_with_me_box: false

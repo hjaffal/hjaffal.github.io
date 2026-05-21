@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Akafen"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Akafen (Shopping) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/akafen/
 show-avatar: false
 chat_with_me_box: false

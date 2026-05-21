@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Wunnen"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Wunnen (Housing & Living) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/wunnen/
 show-avatar: false
 chat_with_me_box: false

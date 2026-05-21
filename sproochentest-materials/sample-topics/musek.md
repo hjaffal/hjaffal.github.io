@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Musek"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Musek (Music) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/musek/
 show-avatar: false
 chat_with_me_box: false

@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Transportmëttelen"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Transportmëttelen (Transport) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/transport/
 show-avatar: false
 chat_with_me_box: false

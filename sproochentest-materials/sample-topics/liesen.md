@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Liesen"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Liesen (Reading) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/liesen/
 show-avatar: false
 chat_with_me_box: false

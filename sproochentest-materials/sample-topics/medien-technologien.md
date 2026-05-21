@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Medien / Technologien"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Medien & Technologien (Media & Technology) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/medien-technologien/
 show-avatar: false
 chat_with_me_box: false

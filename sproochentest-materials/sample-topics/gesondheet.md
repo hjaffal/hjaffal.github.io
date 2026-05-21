@@ -1,7 +1,7 @@
 ---
 layout: sproochentest-topic
-title: "Gesondheet"
-subtitle: "Sproochentest A2 Speaking — Sample Questions"
+title: "Gesondheet (Health) — Sproochentest Speaking Practice"
+subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/gesondheet/
 show-avatar: false
 chat_with_me_box: false
