@@ -3093,6 +3093,17 @@ select:focus {
   .sp-plan { grid-template-columns: 1fr; }
   .sp-container { padding: 0 20px; }
   .sp-section { padding: 40px 0; }
+
+  .sp-download-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+
+  .sp-download-card .sp-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ===== SPROOCHENTEST TOPIC PAGES ===== */
