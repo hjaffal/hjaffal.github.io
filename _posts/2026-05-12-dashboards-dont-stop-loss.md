@@ -4,14 +4,8 @@ title: "Build Controls, Not Charts: Designing Loss Prevention That Acts"
 subtitle: "Control does. Build for action, not for applause."
 share-description: "Dashboards don’t stop loss. Control does. Where AI ops fail on the floor—and how to design for action, latency, and authority."
 tags:
-  - AI operations
-  - data analytics
-  - risk detection
-  - fraud signals
-  - operational risk
-  - security
-  - loss prevention
-  - decision-making
+  - risk-intelligence
+  - decision-authority
 author: Hasan J.
 ---
 

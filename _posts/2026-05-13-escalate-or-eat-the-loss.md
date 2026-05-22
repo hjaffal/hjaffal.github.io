@@ -4,14 +4,7 @@ title: "Escalate or Eat the Loss: Why Risk Signals Fail Without Decision Authori
 subtitle: "Risk signals don’t save projects. Escalation discipline does."
 share-description: "A blunt look at why predictive analytics and AI operations fail under real risk: without an explicit, enforced escalation path with authority, your alerts are noise."
 tags:
-  - AI operations
-  - operational risk
-  - project management
-  - data analytics
-  - predictive analytics
-  - data governance
-  - decision-making
-  - reporting
+  - decision-authority
 author: Hasan J.
 ---
 

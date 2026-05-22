@@ -4,14 +4,8 @@ title: "From Fraud Signal to Action: Why Decision Latency Costs More Than Bad Mo
 subtitle: "Why your best charts still lose money under fire"
 share-description: "Dashboards feel safe, but they delay action. Strong teams cut risk with fast decisions, runbooks, and authority, not prettier reporting."
 tags:
-  - ai operations
-  - data analytics
-  - dashboards
-  - risk detection
-  - fraud
-  - security
-  - loss prevention
-  - decision-making
+  - decision-authority
+  - risk-intelligence
 author: Hasan J.
 ---
 

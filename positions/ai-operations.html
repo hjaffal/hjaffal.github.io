@@ -1,0 +1,83 @@
+---
+layout: base
+title: "AI Operations"
+share-title: "AI Operations — Hasan Jaffal"
+share-description: "AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale."
+permalink: /positions/ai-operations/
+---
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/writing">POSITION 01</a></span>
+        <h1>AI exposes weak operations</h1>
+        <p class="post-heading-subtitle">AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale. Models amplify whatever system they enter — including the broken ones.</p>
+      </div>
+
+      <!-- Position nav -->
+      <div style="display:flex;gap:8px;margin:24px 0 40px;flex-wrap:wrap;">
+        <span style="padding:6px 12px;background:var(--dark);color:#fff;font-size:0.7rem;font-weight:600;border-radius:5px;">ai-operations</span>
+        <a href="/positions/decision-authority/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">decision-authority</a>
+        <a href="/positions/risk-intelligence/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">risk-intelligence</a>
+        <a href="/positions/ai-and-work/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">ai-and-work</a>
+      </div>
+
+      <!-- The argument -->
+      <div class="blog-post">
+        <h2>The argument</h2>
+        <p>Most teams believe AI will make their operations better. The uncomfortable truth is different: AI makes weak operations <em>visible</em>. If your processes are unclear, if ownership is distributed across too many people, if escalation requires a meeting — AI will not fix that. It will surface the failure faster, at higher volume, and with less room to hide.</p>
+        <p>The teams that succeed with AI in operations are the ones who fix the operating model first. They clarify who owns what, they shorten the path from signal to action, and they design for speed under uncertainty. Then AI becomes a force multiplier. Without that foundation, it becomes an expensive mirror.</p>
+
+        <h2>Articles in this position</h2>
+      </div>
+
+      <!-- Posts -->
+      <div style="margin-bottom:48px;">
+        {% for post in site.tags['ai-operations'] %}
+        <a href="{{ post.url | relative_url }}" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;margin-bottom:6px;background:var(--slate-bg);border-radius:8px;color:var(--dark);text-decoration:none;border:1px solid var(--slate-border);transition:border-color 0.2s;">
+          <div style="flex:1;min-width:0;">
+            <span style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:2px;">{{ post.title }}</span>
+            <span style="font-size:0.72rem;color:var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
+          </div>
+          <span style="font-size:0.65rem;color:var(--text-soft);flex-shrink:0;margin-left:16px;">{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
+        {% endfor %}
+      </div>
+
+      <!-- Cross-links -->
+      <div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
+        <h3 style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 14px;">Other positions</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <a href="/positions/decision-authority/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;">
+            <span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 02</span>
+            <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">Signals need authority</span>
+          </a>
+          <a href="/positions/risk-intelligence/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;">
+            <span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 03</span>
+            <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">Reporting is not intelligence</span>
+          </a>
+          <a href="/positions/ai-and-work/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;">
+            <span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 04</span>
+            <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">AI is changing the skill floor</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-recent.html %}
+      {% include sidebar-templates.html %}
+    </aside>
+  </div>
+</main>

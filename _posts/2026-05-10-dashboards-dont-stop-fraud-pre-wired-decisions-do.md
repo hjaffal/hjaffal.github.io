@@ -4,14 +4,7 @@ title: "Pre-Wired Controls: How to Stop Fraud Before the Meeting Starts"
 subtitle: "Why your best charts and models fail in the hour that matters, and what operators wire in before the hit."
 share-description: "Dashboards don’t stop fraud. Pre-wired controls and decision latency do. A field-tested playbook for risk, security, and loss prevention teams."
 tags:
-  - AI operations
-  - risk detection
-  - fraud
-  - security
-  - data analytics
-  - loss prevention
-  - dashboards
-  - operational risk
+  - risk-intelligence
 author: Hasan J.
 ---
 

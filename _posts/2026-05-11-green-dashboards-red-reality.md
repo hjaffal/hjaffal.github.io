@@ -4,14 +4,8 @@ title: "Green Metrics, Real Losses: Why AI Freezes When Risk Moves Fast"
 subtitle: "Why your AI and analytics freeze while losses move fast"
 share-description: "Dashboards look green while risk grows. A field-tested view on AI operations, data analytics, and loss prevention when decisions must happen in minutes."
 tags:
-  - AI operations
-  - data analytics
-  - dashboards
-  - risk detection
-  - fraud
-  - security
-  - loss prevention
-  - decision-making
+  - decision-authority
+  - risk-intelligence
 author: Hasan J.
 ---
 

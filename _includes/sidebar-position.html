@@ -1,0 +1,11 @@
+{% assign post_tag = page.tags[0] %}
+{% if post_tag %}
+<div class="sidebar-section" style="margin-bottom:28px;">
+  <a href="/positions/{{ post_tag }}/" style="display:block;padding:20px;background:var(--dark);border-radius:10px;text-decoration:none;">
+    <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9333EA;display:block;margin-bottom:8px;">POSITION</span>
+    <span style="font-size:0.9rem;font-weight:700;color:#F8FAFC;display:block;margin-bottom:6px;">{{ post_tag }}</span>
+    <span style="font-size:0.72rem;color:#94A3B8;line-height:1.5;display:block;">{% if post_tag == 'ai-operations' %}AI does not repair unclear ownership or broken workflows. It exposes them.{% elsif post_tag == 'decision-authority' %}A risk signal has no value if nobody can act on it.{% elsif post_tag == 'risk-intelligence' %}Reporting explains what happened. Intelligence changes what happens next.{% elsif post_tag == 'ai-and-work' %}AI exposes people who only operate tools. Judgment is harder to replace.{% endif %}</span>
+    <span style="display:block;margin-top:10px;font-size:0.7rem;font-weight:600;color:#9333EA;">Explore this position →</span>
+  </a>
+</div>
+{% endif %}

@@ -4,14 +4,7 @@ title: "Why Good Data Fails Under Real Risk: The Decision Authority Gap"
 subtitle: "Accuracy is cheap. Authority and timing are not."
 share-description: "Dashboards don’t decide under pressure. Why AI, data analytics, and risk detection fail—and how strong teams make decisions that stick."
 tags:
-  - AI operations
-  - data analytics
-  - risk detection
-  - fraud
-  - security
-  - loss prevention
-  - operations
-  - decision-making
+  - decision-authority
 author: Hasan J.
 ---
 

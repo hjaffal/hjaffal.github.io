@@ -1,0 +1,65 @@
+---
+layout: base
+title: "Risk Intelligence"
+share-title: "Risk Intelligence — Hasan Jaffal"
+share-description: "Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration."
+permalink: /positions/risk-intelligence/
+---
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/writing">POSITION 03</a></span>
+        <h1>Reporting is not intelligence</h1>
+        <p class="post-heading-subtitle">Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration. The difference is whether your data moves a lever or fills a slide.</p>
+      </div>
+
+      <div style="display:flex;gap:8px;margin:24px 0 40px;flex-wrap:wrap;">
+        <a href="/positions/ai-operations/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">ai-operations</a>
+        <a href="/positions/decision-authority/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">decision-authority</a>
+        <span style="padding:6px 12px;background:var(--dark);color:#fff;font-size:0.7rem;font-weight:600;border-radius:5px;">risk-intelligence</span>
+        <a href="/positions/ai-and-work/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">ai-and-work</a>
+      </div>
+
+      <div class="blog-post">
+        <h2>The argument</h2>
+        <p>Most organizations confuse reporting with intelligence. They build dashboards, track metrics, and produce weekly slides — then wonder why risk still surprises them. The problem is not data quality. It is that reporting is backward-looking by design.</p>
+        <p>Intelligence is different. It is forward-looking, action-bound, and time-sensitive. It answers: what is changing, what does it mean, and what should we do in the next hour? If your analytics function cannot answer those questions under pressure, you have a reporting team, not an intelligence function.</p>
+
+        <h2>Articles in this position</h2>
+      </div>
+
+      <div style="margin-bottom:48px;">
+        {% for post in site.tags['risk-intelligence'] %}
+        <a href="{{ post.url | relative_url }}" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;margin-bottom:6px;background:var(--slate-bg);border-radius:8px;color:var(--dark);text-decoration:none;border:1px solid var(--slate-border);">
+          <div style="flex:1;min-width:0;">
+            <span style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:2px;">{{ post.title }}</span>
+            <span style="font-size:0.72rem;color:var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
+          </div>
+          <span style="font-size:0.65rem;color:var(--text-soft);flex-shrink:0;margin-left:16px;">{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
+        {% endfor %}
+      </div>
+
+      <div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
+        <h3 style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 14px;">Other positions</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <a href="/positions/ai-operations/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;"><span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 01</span><span style="font-size:0.82rem;font-weight:600;color:var(--dark);">AI exposes weak operations</span></a>
+          <a href="/positions/decision-authority/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;"><span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 02</span><span style="font-size:0.82rem;font-weight:600;color:var(--dark);">Signals need authority</span></a>
+          <a href="/positions/ai-and-work/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;"><span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 04</span><span style="font-size:0.82rem;font-weight:600;color:var(--dark);">AI is changing the skill floor</span></a>
+        </div>
+      </div>
+
+    </div>
+    <aside class="page-sidebar">{% include newsletter.html %}{% include sidebar-recent.html %}{% include sidebar-templates.html %}</aside>
+  </div>
+</main>

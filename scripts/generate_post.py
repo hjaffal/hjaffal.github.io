@@ -10,174 +10,171 @@ import glob
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-# Fixed topic/tag system — each post must use exactly one of these
-TOPICS = [
+# The 4 canonical positions — each post must use exactly one
+POSITIONS = [
     {
-        "tag": "ai-in-operations",
-        "description": "AI in operations — practical guide for teams deploying AI in real workflows",
+        "tag": "ai-operations",
+        "position": "AI exposes weak operations",
+        "thesis": "AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale.",
         "angles": [
-            "How to deploy AI in operations without losing control",
-            "What operational teams get wrong when adopting AI",
-            "The gap between AI demos and AI in production operations",
-            "How to measure AI value in operations, not in slides",
+            "A specific failure where AI amplified a broken process instead of fixing it",
+            "How to audit your operating model before deploying AI",
+            "The difference between AI-ready and AI-dependent organizations",
+            "Why AI projects fail in operations: the process gap nobody talks about",
+            "What happens when you deploy a model into a team with no escalation path",
+            "The operating model checklist: what must be true before AI adds value",
+            "How strong teams use AI as a stress test for their workflows",
+            "Why the best AI teams spend 80% of their time on process, not models",
+            "The hidden cost of deploying AI into unclear ownership structures",
+            "How to design AI-assisted operations that degrade gracefully under pressure",
         ]
     },
     {
-        "tag": "ai-risk-management",
-        "description": "How AI creates and reduces risk in business operations",
+        "tag": "decision-authority",
+        "position": "Signals need authority",
+        "thesis": "A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat.",
         "angles": [
-            "AI reduces some risks and creates new ones — how to manage both",
-            "The new risk surface AI introduces to operations",
-            "Why AI risk management is an operations problem, not a compliance checkbox",
-            "How to build risk controls around AI-driven decisions",
+            "A real incident where detection worked but decision authority failed",
+            "How to pre-commit decision rights before the next crisis",
+            "The anatomy of a slow decision: where organizations lose time under risk",
+            "Why dashboards create the illusion of control without the reality of action",
+            "How to design a decision system that works at 2am with no manager online",
+            "The cost of one extra approval step during a live fraud attack",
+            "What military decision-making teaches us about operational risk response",
+            "How to measure decision latency and why it matters more than model accuracy",
+            "The difference between a status update and a decision meeting",
+            "Why the person who sees the signal should be the person who pulls the lever",
         ]
     },
     {
-        "tag": "ai-in-loss-prevention",
-        "description": "AI applied to loss prevention, fraud detection, and shrink reduction",
+        "tag": "risk-intelligence",
+        "position": "Reporting is not intelligence",
+        "thesis": "Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration.",
         "angles": [
-            "How AI changes the speed and accuracy of loss prevention",
-            "Where AI fails in loss prevention and what to do about it",
-            "Building an AI-assisted loss prevention program from scratch",
-            "The human-AI handoff in fraud and loss prevention",
+            "How to convert a weekly report into an intelligence product",
+            "The 3 questions every metric must answer to qualify as intelligence",
+            "Why most dashboards are museums: pretty, historical, and useless under pressure",
+            "How to build a risk intelligence function from a reporting team",
+            "The difference between a metric that informs and a metric that triggers",
+            "What loss prevention teams can teach data teams about actionable intelligence",
+            "How to kill metrics that nobody acts on without losing organizational trust",
+            "The intelligence loop: from signal to action to feedback in under 5 minutes",
+            "Why your best analysts are wasted on reporting and how to fix it",
+            "How to present risk intelligence to leaders who only understand dashboards",
         ]
     },
     {
-        "tag": "reporting-vs-intelligence",
-        "description": "The difference between reporting and actionable intelligence",
+        "tag": "ai-and-work",
+        "position": "AI is changing the skill floor",
+        "thesis": "AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate.",
         "angles": [
-            "Why most reporting is decoration and how to make it intelligence",
-            "How to turn dashboards into decision tools",
-            "The cost of reporting without action authority",
-            "What separates a report from operational intelligence",
-        ]
-    },
-    {
-        "tag": "ai-human-judgment",
-        "description": "Where humans must stay in the loop when AI is involved",
-        "angles": [
-            "Decisions AI should never make alone",
-            "How to design human-in-the-loop systems that actually work",
-            "When to override AI and when to trust it",
-            "The judgment layer AI cannot replace",
-        ]
-    },
-    {
-        "tag": "predictive-risk-detection",
-        "description": "Predictive models for operational risk detection and early warning",
-        "angles": [
-            "How predictive models detect operational risk before it hits",
-            "Building early warning systems for fraud and loss",
-            "Why predictive risk detection fails without operational context",
-            "From reactive alerts to predictive risk containment",
-        ]
-    },
-    {
-        "tag": "ai-governance-for-operations",
-        "description": "Simple AI governance operating model for real teams, not policy theory",
-        "angles": [
-            "AI governance that operators can actually follow",
-            "How to govern AI decisions without slowing operations",
-            "The minimum viable AI governance for operational teams",
-            "Why most AI governance frameworks fail on the floor",
-        ]
-    },
-    {
-        "tag": "analytics-operating-model",
-        "description": "How analytics teams should work, organize, and deliver value",
-        "angles": [
-            "How to structure an analytics team for decision impact",
-            "Why analytics teams fail when they optimize for output, not outcomes",
-            "The operating model that makes analytics teams indispensable",
-            "What analytics leaders must change to stay relevant",
-        ]
-    },
-    {
-        "tag": "security-data-analytics",
-        "description": "Security analytics — using data to protect assets and detect threats",
-        "angles": [
-            "How security teams should use data analytics to detect threats",
-            "Building a security analytics function from scratch",
-            "The metrics that matter in security data analytics",
-            "Where security analytics fails and how to fix it",
+            "The specific tasks AI is removing from analyst roles right now",
+            "What 'judgment work' actually looks like in practice — concrete examples",
+            "How to transition from tool operator to decision shaper in 6 months",
+            "Why the middle layer of knowledge work is the most exposed to AI",
+            "The new career moat: owning outcomes, not outputs",
+            "How AI changes what 'senior' means in analytics and operations",
+            "What hiring managers actually look for now that AI handles the basics",
+            "The uncomfortable conversation: which roles on your team are exposed",
+            "How to build a career around judgment when AI handles execution",
+            "Why the best operators will use AI as leverage, not as a replacement for thinking",
         ]
     },
 ]
 
 ARTICLE_FORMS = [
-    "make a blunt argument with a clear position",
-    "explain a real operational failure and what to learn from it",
-    "give a practical playbook for operators",
-    "challenge a popular belief with evidence",
-    "compare what most teams do vs. what strong teams do",
-    "explain what leaders must change now",
-    "describe a decision framework for the topic",
-    "explain the hidden cost of getting this wrong",
+    "Tell a specific story from the field, then extract the principle",
+    "Challenge a popular belief with a concrete counter-example",
+    "Compare what average teams do vs what strong teams do — be specific",
+    "Describe a decision framework and show how to apply it under pressure",
+    "Explain the hidden cost of getting this wrong — use numbers or timelines",
+    "Write a practical playbook: 5-7 steps an operator can follow this week",
+    "Analyze a common failure pattern and explain the systemic root cause",
+    "Make a prediction about what will change in the next 12 months and why",
+    "Explain what leaders must stop doing immediately and what to do instead",
+    "Describe the minimum viable version of a system that actually works",
 ]
 
-# Select topic and angle
-selected_topic = random.choice(TOPICS)
-selected_angle = random.choice(selected_topic["angles"])
-article_form = random.choice(ARTICLE_FORMS)
+TONES = [
+    "Direct and blunt. No softening. Say the uncomfortable thing.",
+    "Analytical and precise. Use structure. Show the logic.",
+    "Narrative-driven. Start with a scene. Make the reader feel the pressure.",
+    "Practical and operator-focused. Every paragraph must be actionable.",
+    "Contrarian. Take the opposite position from conventional wisdom.",
+]
+
+# Select randomly
+selected_position = random.choice(POSITIONS)
+selected_angle = random.choice(selected_position["angles"])
+selected_form = random.choice(ARTICLE_FORMS)
+selected_tone = random.choice(TONES)
 
 # Get recent titles to avoid repetition
 recent_titles = []
-post_files = sorted(glob.glob("_posts/*.md"), reverse=True)[:15]
+post_files = sorted(glob.glob("_posts/*.md"), reverse=True)[:20]
 
 for file_path in post_files:
     try:
         with open(file_path, "r", encoding="utf-8") as f:
-            match = re.search(r'title:\s*"(.+?)"', f.read())
+            content = f.read()
+            match = re.search(r'title:\s*"(.+?)"', content)
             if match:
                 recent_titles.append(match.group(1))
     except Exception:
         pass
 
-recent_titles_text = "; ".join(recent_titles) if recent_titles else "None"
+recent_titles_text = "\n".join([f"- {t}" for t in recent_titles]) if recent_titles else "None"
 
 PROMPT = f"""
-Write one original blog post for Hasan J.
+Write one original blog post for Hasan Jaffal.
 
-Topic: {selected_topic["description"]}
-Angle: {selected_angle}
-Article form: {article_form}
-Tag to use: {selected_topic["tag"]}
+POSITION: {selected_position["position"]}
+THESIS: {selected_position["thesis"]}
+ANGLE: {selected_angle}
+FORM: {selected_form}
+TONE: {selected_tone}
 
-Avoid repeating these recent titles:
+TAG (use exactly this): {selected_position["tag"]}
+
+AVOID these recent titles — do NOT repeat similar ideas:
 {recent_titles_text}
 
-Audience:
+AUDIENCE:
 Leaders and professionals in AI, data, analytics, operations, risk, security, loss prevention, and decision-making.
 
-Rules:
-- Be bold and direct.
-- Say the uncomfortable truth clearly.
-- Use simple English.
-- Use practical operator judgment.
-- Include one concrete workplace example.
-- Include one uncomfortable trade-off.
-- Explain what strong teams do differently.
-- Explain what leaders should do now.
+CONTENT RULES:
+- The article must explore the ANGLE specifically. Do not write a generic piece about the position.
+- Include one concrete workplace example or scenario (not hypothetical — make it feel real).
+- Include one uncomfortable trade-off that the reader must face.
+- Explain what strong teams do differently from average teams.
+- End with one forced-position question that makes the reader choose a side.
+- Do NOT repeat the same structure as previous posts. Vary your opening, your examples, and your conclusions.
+
+WRITING RULES:
+- 700 to 1000 words.
+- Short paragraphs (2-4 sentences max).
 - No hype. No corporate buzzwords. No invented statistics.
-- No labels like Hook, Insight, or Takeaway.
-- The title must clearly state the argument or value. Make it SEO-friendly.
-- Bad title: "The Future of Work"
-- Good title: "Why Predictive Risk Models Fail Without Operational Context"
-- Use natural SEO wording where relevant.
-- 500 to 600 words.
-- Short paragraphs.
-- End with one forced-position question.
+- No labels like "Hook," "Insight," "Takeaway," or "Key Point."
+- Use simple English. Write like an operator, not a consultant.
+- The title must clearly state the argument. Make it SEO-friendly and specific.
+- Bad title: "The Future of AI in Operations"
+- Good title: "Why AI Projects Fail When Nobody Owns the Escalation Path"
 
-IMPORTANT: The "tags" field must contain ONLY this exact tag: "{selected_topic["tag"]}"
-Do not add any other tags.
+DIVERSITY INSTRUCTIONS:
+- If the tone is narrative, start with a scene or moment.
+- If the tone is analytical, start with a claim and immediately support it.
+- If the tone is contrarian, start by stating what most people believe, then disagree.
+- If the tone is practical, start with the action and explain why after.
+- Vary sentence length. Mix short punches with longer explanations.
+- Do NOT use the same opening pattern as previous posts.
 
-Return only valid JSON:
+Return ONLY valid JSON:
 
 {{
   "title": "",
   "subtitle": "",
   "share_description": "",
-  "tags": ["{selected_topic["tag"]}"],
+  "tags": ["{selected_position["tag"]}"],
   "body": ""
 }}
 """
@@ -192,7 +189,7 @@ raw = response.output_text.strip()
 try:
     data = json.loads(raw)
 except json.JSONDecodeError:
-    match = re.search(r"\{{.*\}}", raw, re.DOTALL)
+    match = re.search(r"\{.*\}", raw, re.DOTALL)
     if not match:
         raise ValueError("Model did not return valid JSON")
     data = json.loads(match.group(0))
@@ -200,8 +197,8 @@ except json.JSONDecodeError:
 title = data["title"].strip()
 subtitle = data["subtitle"].strip()
 share_description = data["share_description"].strip()
-# Force the tag to be only the selected one
-tags = [selected_topic["tag"]]
+# Force the tag to be only the selected position
+tags = [selected_position["tag"]]
 body = data["body"].strip()
 
 slug = slugify(title)
@@ -210,7 +207,7 @@ filename = f"_posts/{TODAY}-{slug}.md"
 def yaml_escape(value):
     return str(value).replace('"', '\\"')
 
-tags_yaml = "\n".join([f"  - {yaml_escape(tag)}" for tag in tags])
+tags_yaml = "\n".join([f"  - {tag}" for tag in tags])
 
 markdown = f"""---
 layout: post
@@ -230,6 +227,8 @@ os.makedirs("_posts", exist_ok=True)
 with open(filename, "w", encoding="utf-8") as f:
     f.write(markdown)
 
-print(f"Created {filename}")
-print(f"Topic: {selected_topic['tag']}")
+print(f"Created: {filename}")
+print(f"Position: {selected_position['tag']}")
 print(f"Angle: {selected_angle}")
+print(f"Form: {selected_form}")
+print(f"Tone: {selected_tone}")

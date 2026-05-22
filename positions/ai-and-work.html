@@ -1,0 +1,65 @@
+---
+layout: base
+title: "AI and Work"
+share-title: "AI and Work — Hasan Jaffal"
+share-description: "AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate."
+permalink: /positions/ai-and-work/
+---
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/writing">POSITION 04</a></span>
+        <h1>AI is changing the skill floor</h1>
+        <p class="post-heading-subtitle">AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate. The split between tool operators and decision shapers is already happening.</p>
+      </div>
+
+      <div style="display:flex;gap:8px;margin:24px 0 40px;flex-wrap:wrap;">
+        <a href="/positions/ai-operations/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">ai-operations</a>
+        <a href="/positions/decision-authority/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">decision-authority</a>
+        <a href="/positions/risk-intelligence/" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">risk-intelligence</a>
+        <span style="padding:6px 12px;background:var(--dark);color:#fff;font-size:0.7rem;font-weight:600;border-radius:5px;">ai-and-work</span>
+      </div>
+
+      <div class="blog-post">
+        <h2>The argument</h2>
+        <p>AI is not replacing all jobs equally. It is replacing the tasks that require pattern-matching, summarizing, and tool operation — the work that many analysts, coordinators, and report builders do daily. The people who are safer are those who own decisions: they set thresholds, manage trade-offs, escalate under uncertainty, and take responsibility for outcomes.</p>
+        <p>This is not a future prediction. It is happening now. The question for every professional is: does my role depend on operating a tool, or on making a judgment that a tool cannot?</p>
+
+        <h2>Articles in this position</h2>
+      </div>
+
+      <div style="margin-bottom:48px;">
+        {% for post in site.tags['ai-and-work'] %}
+        <a href="{{ post.url | relative_url }}" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;margin-bottom:6px;background:var(--slate-bg);border-radius:8px;color:var(--dark);text-decoration:none;border:1px solid var(--slate-border);">
+          <div style="flex:1;min-width:0;">
+            <span style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:2px;">{{ post.title }}</span>
+            <span style="font-size:0.72rem;color:var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
+          </div>
+          <span style="font-size:0.65rem;color:var(--text-soft);flex-shrink:0;margin-left:16px;">{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
+        {% endfor %}
+      </div>
+
+      <div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
+        <h3 style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 14px;">Other positions</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <a href="/positions/ai-operations/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;"><span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 01</span><span style="font-size:0.82rem;font-weight:600;color:var(--dark);">AI exposes weak operations</span></a>
+          <a href="/positions/decision-authority/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;"><span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 02</span><span style="font-size:0.82rem;font-weight:600;color:var(--dark);">Signals need authority</span></a>
+          <a href="/positions/risk-intelligence/" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;"><span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION 03</span><span style="font-size:0.82rem;font-weight:600;color:var(--dark);">Reporting is not intelligence</span></a>
+        </div>
+      </div>
+
+    </div>
+    <aside class="page-sidebar">{% include newsletter.html %}{% include sidebar-recent.html %}{% include sidebar-templates.html %}</aside>
+  </div>
+</main>

@@ -3,68 +3,90 @@ layout: page
 title:
 subtitle:
 share-title: "Writing — Hasan Jaffal"
-share-description: "Posts on risk analytics, fraud detection, loss prevention, and data-driven operational decision-making."
+share-description: "Where data, AI, dashboards, and leadership fail under real risk. Writing for leaders who need decisions before problems become obvious."
 chat_with_me_box: false
 show-avatar: false
+permalink: /writing/
 ---
 
-<section class="writing-page">
-  <div class="page-with-sidebar">
-    <div class="page-main">
-      <div class="writing-essays">
-        <div class="writing-essays-header">
-          <span class="field-label">POSTS & ARTICLES</span>
-          <h2 class="field-title">Field <em>Intelligence.</em></h2>
-          <p class="writing-essays-intro">Writing on risk, fraud analytics, loss prevention, and operational decision-making.</p>
-        </div>
+<!-- Hero -->
+<section style="padding:72px 0 56px;text-align:center;max-width:680px;margin:0 auto;">
+  <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;">FIELD INTELLIGENCE</span>
+  <h1 style="font-size:clamp(30px,4.5vw,48px);font-weight:800;letter-spacing:-0.04em;line-height:1.08;color:var(--dark);margin:0 0 18px;">Four positions.<br>One operating <em style="color:var(--accent);font-style:italic;">thesis.</em></h1>
+  <p style="font-size:1rem;color:var(--text-muted);line-height:1.7;margin:0 auto;max-width:520px;">I write about where AI, dashboards, data signals, and leadership fail in real operations. Each position is a lens — backed by articles, field experience, and uncomfortable trade-offs.</p>
+</section>
 
-        <div class="writing-essays-list">
-          {% for post in site.posts %}
-          <a href="{{ post.url | relative_url }}" class="writing-essay-item">
-            <div class="writing-essay-thumb">
-              {% if post.thumbnail-img %}
-              <img src="{{ post.thumbnail-img }}" alt="{{ post.title }}" loading="lazy">
-              {% else %}
-              <div class="writing-essay-thumb-placeholder">
-                <span>{{ post.title | truncate: 1, "" }}</span>
-              </div>
-              {% endif %}
-            </div>
-            <div class="writing-essay-left">
-              <span class="field-card-tag">{{ post.tags[0] | default: "post" | upcase }}</span>
-              <h3>{{ post.title }}</h3>
-              <p class="writing-essay-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-            </div>
-            <div class="writing-essay-right">
-              <div class="writing-essay-date">
-                <span class="writing-essay-date-day">{{ post.date | date: "%d" }}</span>
-                <span class="writing-essay-date-month">{{ post.date | date: "%b" }}</span>
-                <span class="writing-essay-date-year">{{ post.date | date: "%Y" }}</span>
-              </div>
-              <span class="field-card-arrow">→</span>
-            </div>
-          </a>
-          {% endfor %}
-        </div>
+<!-- Position cards -->
+<section style="padding:0 0 72px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:900px;margin:0 auto;border:1px solid var(--slate-border);border-radius:16px;overflow:hidden;">
+
+    <a href="/positions/ai-operations/" style="display:block;text-decoration:none;padding:36px 32px;border-right:1px solid var(--slate-border);border-bottom:1px solid var(--slate-border);background:var(--white);transition:background 0.2s;">
+      <span style="display:inline-block;width:32px;height:32px;background:var(--dark);border-radius:8px;color:#9333EA;font-size:0.75rem;font-weight:800;line-height:32px;text-align:center;margin-bottom:16px;">01</span>
+      <span style="display:block;font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">ai-operations</span>
+      <h2 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 10px;line-height:1.3;">AI exposes weak operations</h2>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 18px;line-height:1.6;">AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:0.75rem;font-weight:600;color:var(--accent);">Read articles →</span>
+        <span style="font-size:0.68rem;color:var(--text-soft);">{{ site.tags['ai-operations'].size }} posts</span>
       </div>
+    </a>
 
-      <div class="writing-essays" style="margin-top: 48px;">
-        <div class="writing-essays-header">
-          <span class="field-label">THE SECOND MIND NEWSLETTER</span>
-          <h2 class="field-title">From <em>Substack.</em></h2>
-        </div>
-
-        <div class="writing-essays-list" id="substack-feed">
-          <div class="substack-loading">Loading newsletter posts...</div>
-        </div>
+    <a href="/positions/decision-authority/" style="display:block;text-decoration:none;padding:36px 32px;border-bottom:1px solid var(--slate-border);background:var(--white);transition:background 0.2s;">
+      <span style="display:inline-block;width:32px;height:32px;background:var(--dark);border-radius:8px;color:#9333EA;font-size:0.75rem;font-weight:800;line-height:32px;text-align:center;margin-bottom:16px;">02</span>
+      <span style="display:block;font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">decision-authority</span>
+      <h2 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 10px;line-height:1.3;">Signals need authority</h2>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 18px;line-height:1.6;">A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:0.75rem;font-weight:600;color:var(--accent);">Read articles →</span>
+        <span style="font-size:0.68rem;color:var(--text-soft);">{{ site.tags['decision-authority'].size }} posts</span>
       </div>
+    </a>
+
+    <a href="/positions/risk-intelligence/" style="display:block;text-decoration:none;padding:36px 32px;border-right:1px solid var(--slate-border);background:var(--white);transition:background 0.2s;">
+      <span style="display:inline-block;width:32px;height:32px;background:var(--dark);border-radius:8px;color:#9333EA;font-size:0.75rem;font-weight:800;line-height:32px;text-align:center;margin-bottom:16px;">03</span>
+      <span style="display:block;font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">risk-intelligence</span>
+      <h2 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 10px;line-height:1.3;">Reporting is not intelligence</h2>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 18px;line-height:1.6;">Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:0.75rem;font-weight:600;color:var(--accent);">Read articles →</span>
+        <span style="font-size:0.68rem;color:var(--text-soft);">{{ site.tags['risk-intelligence'].size }} posts</span>
+      </div>
+    </a>
+
+    <a href="/positions/ai-and-work/" style="display:block;text-decoration:none;padding:36px 32px;background:var(--white);transition:background 0.2s;">
+      <span style="display:inline-block;width:32px;height:32px;background:var(--dark);border-radius:8px;color:#9333EA;font-size:0.75rem;font-weight:800;line-height:32px;text-align:center;margin-bottom:16px;">04</span>
+      <span style="display:block;font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">ai-and-work</span>
+      <h2 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 10px;line-height:1.3;">AI is changing the skill floor</h2>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 18px;line-height:1.6;">AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:0.75rem;font-weight:600;color:var(--accent);">Read articles →</span>
+        <span style="font-size:0.68rem;color:var(--text-soft);">{{ site.tags['ai-and-work'].size }} posts</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- All posts -->
+<section style="padding:48px 0 72px;border-top:1px solid var(--slate-border);">
+  <div style="max-width:740px;margin:0 auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;">
+      <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-soft);">ALL ARTICLES</span>
+      <span style="font-size:0.68rem;color:var(--text-soft);">{{ site.posts.size }} posts</span>
     </div>
-
-    <aside class="page-sidebar">
-      {% include newsletter.html %}
-      {% include sidebar-recent.html %}
-      {% include sidebar-templates.html %}
-      {% include featured-publication.html %}
-    </aside>
+    {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:16px 20px;margin-bottom:8px;background:var(--slate-bg);border-radius:10px;color:var(--dark);text-decoration:none;transition:background 0.15s;border:1px solid transparent;">
+      <div style="min-width:0;">
+        <span style="font-size:0.88rem;font-weight:600;display:block;line-height:1.35;margin-bottom:4px;">{{ post.title }}</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          {% for tag in post.tags %}
+          <span style="font-size:0.62rem;font-weight:600;color:var(--accent);background:rgba(147,51,234,0.06);padding:2px 7px;border-radius:3px;">{{ tag }}</span>
+          {% endfor %}
+          <span style="font-size:0.62rem;color:var(--text-soft);">{{ post.date | date: "%b %d, %Y" }}</span>
+        </div>
+      </div>
+      <span style="font-size:0.85rem;color:var(--text-soft);">→</span>
+    </a>
+    {% endfor %}
   </div>
 </section>

@@ -1,0 +1,28 @@
+{% assign post_tag = page.tags[0] %}
+{% if post_tag %}
+<div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--slate-border);">
+  <h3 style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 20px;">Continue reading in this position</h3>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+    {% assign count = 0 %}
+    {% for related in site.tags[post_tag] %}
+      {% if related.url != page.url and count < 4 %}
+      <a href="{{ related.url | relative_url }}" style="display:block;padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;transition:border-color 0.2s;">
+        <span style="font-size:0.82rem;font-weight:600;color:var(--dark);display:block;line-height:1.35;margin-bottom:4px;">{{ related.title }}</span>
+        <span style="font-size:0.68rem;color:var(--text-soft);">{{ related.date | date: "%b %d, %Y" }}</span>
+      </a>
+      {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Cross-position link -->
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <span style="font-size:0.68rem;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.08em;">Explore other positions:</span>
+    {% if post_tag != 'ai-operations' %}<a href="/positions/ai-operations/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">ai-operations</a>{% endif %}
+    {% if post_tag != 'decision-authority' %}<a href="/positions/decision-authority/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">decision-authority</a>{% endif %}
+    {% if post_tag != 'risk-intelligence' %}<a href="/positions/risk-intelligence/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">risk-intelligence</a>{% endif %}
+    {% if post_tag != 'ai-and-work' %}<a href="/positions/ai-and-work/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">ai-and-work</a>{% endif %}
+  </div>
+</div>
+{% endif %}

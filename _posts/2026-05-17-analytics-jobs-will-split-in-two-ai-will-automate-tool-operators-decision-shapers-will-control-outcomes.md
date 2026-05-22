@@ -4,18 +4,7 @@ title: "Analytics Jobs Will Split in Two. AI Will Automate Tool Operators; Decis
 subtitle: "If your day is dashboards and queries, you are exposed. If you own thresholds, budgets, and trade-offs, you are safer."
 share-description: "AI is cutting reporting roles. The remaining analytics jobs will be people who shape decisions, not just run tools."
 tags:
-  - AI jobs
-  - AI in operations
-  - data analytics
-  - operational risk
-  - AI governance
-  - reporting
-  - intelligence
-  - decision-making
-  - automation
-  - future of work
-  - product management
-  - project management
+  - ai-and-work
 author: Hasan J.
 ---
 

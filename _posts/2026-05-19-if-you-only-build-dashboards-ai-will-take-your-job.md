@@ -4,15 +4,8 @@ title: "If You Only Build Dashboards, AI Will Take Your Job"
 subtitle: "Decide, own risk, and trigger actions—or be automated"
 share-description: "AI is removing dashboard-only roles. Analysts who define decisions, risks, and actions still matter. Leaders must move teams from reporting to control."
 tags:
-  - AI jobs
-  - data analytics
-  - AI in operations
-  - operational risk
-  - decision-making
-  - automation
-  - future of work
-  - AI governance
-  - reporting
+  - ai-and-work
+  - decision-authority
 author: Hasan J.
 ---
 

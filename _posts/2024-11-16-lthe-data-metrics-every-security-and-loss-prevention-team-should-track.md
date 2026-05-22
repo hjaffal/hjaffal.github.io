@@ -3,7 +3,7 @@ layout: post
 title: "12 Key Metrics Every Security and Loss Prevention Team Should Track"
 subtitle: Choosing the Right Metrics for Loss Prevention
 share-description: "The essential metrics every security and loss prevention team should track across incident management, compliance, resources, and cost efficiency."
-tags: [data-analytics, statistics, metrics, popular]
+tags: [risk-intelligence]
 thumbnail-img: /assets/img/posts/2024-11-16-lthe-data-metrics-every-security-and-loss-prevention-team-should-track-thumb.png
 comments: true
 mathjax: true

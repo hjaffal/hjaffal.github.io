@@ -1,0 +1,18 @@
+{% assign post_tag = page.tags[0] %}
+{% if post_tag %}
+<div class="sidebar-section" style="margin-top:28px;">
+  <span class="card-label">RELATED ARTICLES</span>
+  <div style="margin-top:10px;">
+    {% assign count = 0 %}
+    {% for related in site.tags[post_tag] %}
+      {% if related.url != page.url and count < 4 %}
+      <a href="{{ related.url | relative_url }}" style="display:block;padding:10px 0;border-bottom:1px solid var(--slate-border);text-decoration:none;">
+        <span style="font-size:0.8rem;font-weight:500;color:var(--dark);line-height:1.35;display:block;">{{ related.title }}</span>
+        <span style="font-size:0.65rem;color:var(--text-soft);">{{ related.date | date: "%b %d, %Y" }}</span>
+      </a>
+      {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
