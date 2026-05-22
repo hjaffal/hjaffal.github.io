@@ -6,6 +6,12 @@ share-description: "AI does not repair unclear ownership, slow escalation, or br
 permalink: /positions/ai-operations/
 ---
 
+<!-- TODO: Restructure these UI elements into reusable _includes components:
+     - Position nav bar (tag pills with active state)
+     - Article list rows (title, excerpt, date, arrow)
+     - Cross-links grid (other positions)
+     This will reduce duplication across the 4 position pages. -->
+
 <main class="post-layout-wrapper">
   <div class="page-with-sidebar">
     <div class="page-main post-main">
@@ -48,7 +54,10 @@ permalink: /positions/ai-operations/
             <span style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:2px;">{{ post.title }}</span>
             <span style="font-size:0.72rem;color:var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
           </div>
-          <span class="position-article-date" style="font-size:0.65rem;color:var(--text-soft);flex-shrink:0;margin-left:16px;">{{ post.date | date: "%b %d, %Y" }}</span>
+          <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:16px;">
+            <span class="position-article-date" style="font-size:0.65rem;color:var(--text-soft);">{{ post.date | date: "%b %d, %Y" }}</span>
+            <span style="font-size:0.85rem;color:var(--text-soft);">→</span>
+          </div>
         </a>
         {% endfor %}
       </div>
