@@ -1,0 +1,370 @@
+---
+layout: page
+title:
+subtitle:
+share-title: "Future-Proof Skills Assessment: What Should You Learn in the Age of AI?"
+share-description: "Assess your AI literacy, judgment, business understanding, and communication skills to see what you need to learn to future-proof your career."
+chat_with_me_box: false
+show-avatar: false
+permalink: /tools/future-proof-skills-assessment/
+---
+
+<style>
+.fps-wrap { max-width: 640px; margin: 0 auto; padding: 40px 0 80px; }
+.fps-header { text-align: center; margin-bottom: 40px; }
+.fps-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 12px; }
+.fps-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; color: var(--dark); margin: 0 0 12px; }
+.fps-sub { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+.fps-progress { display: flex; gap: 4px; margin-bottom: 32px; }
+.fps-progress-bar { flex: 1; height: 4px; border-radius: 2px; background: var(--slate-border); transition: background 0.3s; }
+.fps-progress-bar.active { background: var(--accent); }
+.fps-step { display: none; }
+.fps-step.visible { display: block; }
+.fps-question { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 0 0 20px; line-height: 1.35; }
+.fps-options { display: flex; flex-direction: column; gap: 10px; }
+.fps-option { display: block; padding: 16px 20px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 10px; font-size: 0.88rem; color: var(--dark); cursor: pointer; transition: border-color 0.2s, background 0.2s; line-height: 1.4; }
+.fps-option:hover { border-color: var(--accent); }
+.fps-option.selected { border-color: var(--accent); background: rgba(147,51,234,0.06); }
+.fps-nav { display: flex; justify-content: space-between; margin-top: 28px; }
+.fps-btn { padding: 11px 24px; font-size: 0.8rem; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
+.fps-btn-next { background: var(--accent); color: #fff; }
+.fps-btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+.fps-btn-back { background: var(--slate-bg); border: 1px solid var(--slate-border); color: var(--dark); }
+.fps-result { text-align: center; }
+.fps-result-band { font-size: 1.6rem; font-weight: 800; color: var(--accent); margin: 0 0 8px; }
+.fps-result-score { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px; }
+.fps-result-desc { font-size: 0.92rem; color: var(--dark); line-height: 1.6; margin: 0 0 28px; text-align: left; }
+.fps-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; text-align: left; }
+.fps-cat-card { padding: 14px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 8px; }
+.fps-cat-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-soft); display: block; margin-bottom: 4px; }
+.fps-cat-value { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
+.fps-skills { text-align: left; margin-bottom: 32px; }
+.fps-skills h3 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin: 0 0 12px; }
+.fps-skill-item { padding: 10px 14px; background: var(--slate-bg); border-radius: 6px; margin-bottom: 6px; font-size: 0.85rem; color: var(--dark); font-weight: 500; }
+.fps-email-box { padding: 24px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 12px; margin-top: 28px; }
+.fps-email-box h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
+.fps-email-box p { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 14px; }
+.fps-email-form { display: flex; gap: 8px; }
+.fps-email-form input { flex: 1; padding: 10px 14px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.85rem; outline: none; }
+.fps-email-form input:focus { border-color: var(--accent); }
+.fps-email-form button { padding: 10px 18px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.fps-faq { margin-top: 64px; border-top: 1px solid var(--slate-border); padding-top: 40px; }
+.fps-faq h2 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin: 0 0 24px; }
+.fps-faq-item { margin-bottom: 20px; }
+.fps-faq-item h3 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin: 0 0 6px; }
+.fps-faq-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+</style>
+
+<div class="fps-wrap">
+  <div class="fps-header">
+    <span class="fps-label">INTERACTIVE ASSESSMENT</span>
+    <h1 class="fps-title">Future-Proof Skills Assessment</h1>
+    <p class="fps-sub">AI is not only removing tasks. It is changing the skill floor. This assessment helps you see whether your current skills make you exposed, adaptable, or harder to replace.</p>
+  </div>
+
+  <div class="fps-progress" id="fps-progress"></div>
+  <div id="fps-container"></div>
+
+  <!-- FAQ -->
+  <div class="fps-faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="fps-faq-item">
+      <h3>What are future-proof skills?</h3>
+      <p>Future-proof skills are skills that stay valuable as AI automates routine work. They include judgment, communication, business understanding, problem-solving, and AI literacy.</p>
+    </div>
+    <div class="fps-faq-item">
+      <h3>Can AI replace my job?</h3>
+      <p>AI is more likely to replace tasks before it replaces full jobs. People who only execute repeatable tasks are more exposed. People who use judgment, influence decisions, and connect work to business outcomes are harder to replace.</p>
+    </div>
+    <div class="fps-faq-item">
+      <h3>What skills should I learn because of AI?</h3>
+      <p>Start with AI literacy, analytical thinking, decision-making, business understanding, communication, and process improvement.</p>
+    </div>
+    <div class="fps-faq-item">
+      <h3>How long does the assessment take?</h3>
+      <p>The assessment takes about 3 to 5 minutes.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+var jobFamilies = ['data','operations','manager','product','admin','marketing','technical','other'];
+var jobLabels = ['Data / Analytics / BI','Operations / Process / Program','Manager / Team Leader','Product / Project / Strategy','Admin / Support / Coordination','Marketing / Content / Communication','Technical / Engineering','Other / Not sure'];
+var seniorityLabels = ['Early career','Mid-level','Senior individual contributor','Manager','Senior leader'];
+
+var coreQuestions = [
+  {q:'When you use AI at work, what do you mostly use it for?',cat:'ai-literacy',opts:['I rarely use AI','Simple tasks like rewriting, summaries, or translations','Drafting, analysis, planning, or problem-solving','Improving workflows, decisions, or team output']},
+  {q:'If AI gives you a strong answer, what do you usually do?',cat:'judgment',opts:['Use it as-is','Quickly check if it sounds right','Verify key facts, logic, and assumptions','Test it against data, context, risks, and edge cases']},
+  {q:'Which statement best describes your current work?',cat:'decision-value',opts:['I mostly complete assigned tasks','I improve how tasks are done','I help decide what should be done','I shape priorities, trade-offs, and decisions']},
+  {q:'When a problem appears, what do you usually produce?',cat:'problem-solving',opts:['A description of the issue','A summary with some data','A recommendation with options','A decision path with risks, trade-offs, and next actions']},
+  {q:'How well do you understand the business impact of your work?',cat:'business-judgment',opts:['I mostly focus on my tasks','I understand my team\'s goals','I connect my work to cost, quality, speed, risk, or customers','I can explain how my work affects business decisions']},
+  {q:'If your task was automated tomorrow, what would still make you valuable?',cat:'future-proofing',opts:['I am not sure','I know the process well','I can solve exceptions and improve the process','I can connect tools, people, risks, and decisions']},
+  {q:'How do you communicate complex work?',cat:'communication',opts:['I share details and let others decide','I summarize the main points','I explain the issue, impact, and recommendation','I adapt the message based on the audience and decision needed']},
+  {q:'When priorities conflict, what do you do?',cat:'decision-judgment',opts:['Wait for direction','Choose what feels most urgent','Compare impact, risk, and effort','Make trade-offs explicit and align stakeholders']}
+];
+
+var roleQuestions = {
+  data:[
+    {q:'What do you mainly deliver?',cat:'decision-value',opts:['Reports or dashboards','Data pulls and recurring metrics','Analysis with insights','Decision recommendations and action triggers']},
+    {q:'What happens after your analysis is shared?',cat:'business-judgment',opts:['I do not usually know','Stakeholders review it','It supports discussion','It triggers decisions, actions, or escalation']},
+    {q:'How do you define a useful metric?',cat:'problem-solving',opts:['It is accurate','It is easy to track','It explains performance','It changes a decision or action']},
+    {q:'How exposed is your work to AI automation?',cat:'future-proofing',opts:['Very exposed, mostly reporting or repetitive work','Somewhat exposed, but I understand the data','Less exposed, I interpret signals and context','Harder to replace, I shape decisions and influence action']}
+  ],
+  operations:[
+    {q:'What do you understand best in your work?',cat:'business-judgment',opts:['My own task','My team\'s process','The full workflow and its weak points','The system, incentives, risks, and decision points']},
+    {q:'When a process fails, what do you usually identify?',cat:'problem-solving',opts:['The visible issue','The person or team involved','The root cause','The system weakness and prevention action']},
+    {q:'How do you use data in operations?',cat:'ai-literacy',opts:['I rarely use data','I check reports','I use data to find issues','I use data to trigger action and improve controls']},
+    {q:'What would make you harder to replace?',cat:'future-proofing',opts:['Working faster','Knowing the process better','Solving exceptions and improving handoffs','Designing better workflows and decision paths']}
+  ],
+  manager:[
+    {q:'What do you mainly manage?',cat:'decision-value',opts:['Tasks and deadlines','Team output','Priorities, risks, and performance','Decisions, trade-offs, and capability building']},
+    {q:'How do you use AI with your team?',cat:'ai-literacy',opts:['We do not use it','Some people use it individually','We use it to improve productivity','We redesign work around it while managing risk']},
+    {q:'When performance drops, what do you look at first?',cat:'judgment',opts:['Who caused the issue','Whether tasks were completed','Process gaps and workload','System causes, incentives, ownership, and controls']},
+    {q:'What skill will matter most for your role in the age of AI?',cat:'future-proofing',opts:['Knowing more tools','Tracking work more closely','Coaching people to use AI better','Building judgment, ownership, and decision quality in the team']}
+  ],
+  product:[
+    {q:'What do you mostly translate?',cat:'decision-value',opts:['Tasks into plans','Stakeholder requests into roadmaps','Problems into priorities','Ambiguity into decisions, trade-offs, and execution paths']},
+    {q:'How do you decide what matters?',cat:'decision-judgment',opts:['Stakeholder urgency','Leadership direction','Impact and feasibility','Impact, risk, timing, trade-offs, and system effects']},
+    {q:'How do you use AI in planning?',cat:'ai-literacy',opts:['I do not use it','Drafting and summarizing','Research, analysis, and scenario planning','Testing assumptions, options, and execution risks']},
+    {q:'What makes your role harder to automate?',cat:'future-proofing',opts:['Managing timelines','Coordinating stakeholders','Understanding business priorities','Making judgment calls across uncertainty, risk, and trade-offs']}
+  ],
+  admin:[
+    {q:'How much of your work is repetitive?',cat:'future-proofing',opts:['Most of it','About half','Some, but I also solve exceptions','I improve workflows and prevent recurring issues']},
+    {q:'How do you handle requests?',cat:'problem-solving',opts:['I process them','I prioritize them by urgency','I identify patterns and recurring problems','I improve the process so fewer issues repeat']},
+    {q:'How do you use AI?',cat:'ai-literacy',opts:['I do not use it','Writing, summaries, or formatting','Organizing work and improving speed','Automating repetitive parts and improving service quality']},
+    {q:'What would make your work harder to replace?',cat:'communication',opts:['Being reliable','Being fast','Solving unusual cases','Owning process improvement and stakeholder communication']}
+  ],
+  marketing:[
+    {q:'What do you mainly create?',cat:'decision-value',opts:['Content based on instructions','Drafts and campaign material','Messaging based on audience needs','Positioning, narrative, and decision-driving communication']},
+    {q:'How do you use AI in content work?',cat:'ai-literacy',opts:['I do not use it','Drafting and editing','Research, ideation, and repurposing','Testing angles, audience fit, and strategic positioning']},
+    {q:'What makes your communication valuable?',cat:'communication',opts:['It is clear','It looks professional','It reaches the right audience','It changes perception, behavior, or decisions']},
+    {q:'What is most exposed to AI in your work?',cat:'future-proofing',opts:['Most of my work','Basic writing and editing','Repetitive content production','Low-judgment content without clear strategy']}
+  ],
+  technical:[
+    {q:'What do you mostly focus on?',cat:'decision-value',opts:['Building assigned tasks','Writing reliable code or systems','Solving technical problems','Connecting technical choices to product, risk, scale, and business impact']},
+    {q:'How do you use AI in technical work?',cat:'ai-literacy',opts:['I do not use it','Code suggestions and debugging','Design options, testing, and documentation','Architecture thinking, risk review, and faster experimentation']},
+    {q:'What makes your technical work valuable?',cat:'business-judgment',opts:['It works','It is efficient and reliable','It solves the right problem','It balances reliability, scale, security, cost, and user impact']},
+    {q:'What is hardest for AI to replace in your role?',cat:'future-proofing',opts:['Coding speed','Tool knowledge','Debugging complex issues','System design, judgment, trade-offs, and ownership']}
+  ]
+};
+roleQuestions['other'] = roleQuestions['operations'];
+
+var state = {jobFamily:null,seniority:null,answers:[],currentStep:0};
+var totalSteps = 14;
+var container = document.getElementById('fps-container');
+var progressEl = document.getElementById('fps-progress');
+
+function buildProgress(){
+  progressEl.innerHTML='';
+  for(var i=0;i<totalSteps;i++){
+    var bar=document.createElement('div');
+    bar.className='fps-progress-bar'+(i<state.currentStep?' active':'');
+    progressEl.appendChild(bar);
+  }
+}
+
+function render(){
+  buildProgress();
+  if(state.currentStep===0) renderJobFamily();
+  else if(state.currentStep===1) renderSeniority();
+  else if(state.currentStep<10) renderCoreQ(state.currentStep-2);
+  else if(state.currentStep<14) renderRoleQ(state.currentStep-10);
+  else renderResult();
+}
+
+function renderJobFamily(){
+  var html='<div class="fps-step visible"><p class="fps-question">Which type of work best describes your current role?</p><div class="fps-options">';
+  for(var i=0;i<jobLabels.length;i++){
+    var sel=state.jobFamily===i?' selected':'';
+    html+='<div class="fps-option'+sel+'" data-idx="'+i+'">'+jobLabels[i]+'</div>';
+  }
+  html+='</div><div class="fps-nav"><div></div><button class="fps-btn fps-btn-next" '+(state.jobFamily===null?'disabled':'')+'>Next</button></div></div>';
+  container.innerHTML=html;
+  container.querySelectorAll('.fps-option').forEach(function(el){
+    el.onclick=function(){state.jobFamily=parseInt(this.dataset.idx);render();};
+  });
+  container.querySelector('.fps-btn-next').onclick=function(){if(state.jobFamily!==null){state.currentStep=1;render();}};
+}
+
+function renderSeniority(){
+  var html='<div class="fps-step visible"><p class="fps-question">What is your seniority level?</p><div class="fps-options">';
+  for(var i=0;i<seniorityLabels.length;i++){
+    var sel=state.seniority===i?' selected':'';
+    html+='<div class="fps-option'+sel+'" data-idx="'+i+'">'+seniorityLabels[i]+'</div>';
+  }
+  html+='</div><div class="fps-nav"><button class="fps-btn fps-btn-back">Back</button><button class="fps-btn fps-btn-next" '+(state.seniority===null?'disabled':'')+'>Next</button></div></div>';
+  container.innerHTML=html;
+  container.querySelectorAll('.fps-option').forEach(function(el){
+    el.onclick=function(){state.seniority=parseInt(this.dataset.idx);render();};
+  });
+  container.querySelector('.fps-btn-back').onclick=function(){state.currentStep=0;render();};
+  container.querySelector('.fps-btn-next').onclick=function(){if(state.seniority!==null){state.currentStep=2;render();}};
+}
+
+function renderCoreQ(idx){
+  var q=coreQuestions[idx];
+  renderQuestion(q,idx,state.currentStep);
+}
+
+function renderRoleQ(idx){
+  var family=jobFamilies[state.jobFamily];
+  var q=roleQuestions[family][idx];
+  renderQuestion(q,8+idx,state.currentStep);
+}
+
+function renderQuestion(q,ansIdx,step){
+  var current=state.answers[ansIdx]!==undefined?state.answers[ansIdx]:null;
+  var html='<div class="fps-step visible"><p class="fps-question">'+q.q+'</p><div class="fps-options">';
+  for(var i=0;i<q.opts.length;i++){
+    var sel=current===i?' selected':'';
+    html+='<div class="fps-option'+sel+'" data-idx="'+i+'">'+q.opts[i]+'</div>';
+  }
+  html+='</div><div class="fps-nav"><button class="fps-btn fps-btn-back">Back</button><button class="fps-btn fps-btn-next" '+(current===null?'disabled':'')+'>Next</button></div></div>';
+  container.innerHTML=html;
+  container.querySelectorAll('.fps-option').forEach(function(el){
+    el.onclick=function(){state.answers[ansIdx]=parseInt(this.dataset.idx);render();};
+  });
+  container.querySelector('.fps-btn-back').onclick=function(){state.currentStep=step-1;render();};
+  container.querySelector('.fps-btn-next').onclick=function(){if(state.answers[ansIdx]!==undefined){state.currentStep=step+1;render();}};
+}
+
+function renderResult(){
+  progressEl.innerHTML='';
+  var family=jobFamilies[state.jobFamily];
+  var allQ=coreQuestions.concat(roleQuestions[family]);
+  var score=0;
+  var catScores={};
+  for(var i=0;i<12;i++){
+    var cat=allQ[i].cat;
+    var val=state.answers[i]||0;
+    score+=val;
+    if(!catScores[cat])catScores[cat]={total:0,count:0};
+    catScores[cat].total+=val;
+    catScores[cat].count++;
+  }
+
+  var band,desc;
+  if(score<=12){band='Exposed';desc='Your current skillset is too task-based. AI can replace or reduce parts of your work unless you build stronger judgment, AI fluency, communication, and business understanding.';}
+  else if(score<=25){band='Adaptable';desc='You have useful skills, but your value still depends too much on execution. You need to move toward decision support, process improvement, and AI-enabled work.';}
+  else{band='Harder to Replace';desc='You are building skills that survive automation: judgment, context, communication, trade-offs, and ownership. Keep improving your AI fluency and decision impact.';}
+
+  var strongest=null,weakest=null,sMax=-1,sMin=99;
+  for(var c in catScores){
+    var avg=catScores[c].total/catScores[c].count;
+    if(avg>sMax){sMax=avg;strongest=c;}
+    if(avg<sMin){sMin=avg;weakest=c;}
+  }
+
+  var skills=[];
+  if(weakest==='ai-literacy')skills=['AI-assisted problem solving','Prompting and verification','AI workflow design'];
+  else if(weakest==='judgment'||weakest==='decision-judgment')skills=['Decision-making under uncertainty','Trade-off analysis','Risk-based prioritization'];
+  else if(weakest==='business-judgment')skills=['Business impact thinking','Process understanding','Cost, risk, quality, and customer impact analysis'];
+  else if(weakest==='communication')skills=['Executive communication','Recommendation writing','Stakeholder influence'];
+  else skills=['Root cause analysis','Process improvement','Systems thinking'];
+
+  var html='<div class="fps-step visible fps-result">';
+  html+='<p class="fps-result-band">'+band+'</p>';
+  html+='<p class="fps-result-score">Score: '+score+' / 36</p>';
+  html+='<p class="fps-result-desc">'+desc+'</p>';
+  html+='<div class="fps-cats">';
+  html+='<div class="fps-cat-card"><span class="fps-cat-label">Strongest</span><span class="fps-cat-value">'+strongest+'</span></div>';
+  html+='<div class="fps-cat-card"><span class="fps-cat-label">Weakest</span><span class="fps-cat-value">'+weakest+'</span></div>';
+  html+='</div>';
+  html+='<div class="fps-skills"><h3>Recommended skills to learn next</h3>';
+  for(var s=0;s<skills.length;s++){html+='<div class="fps-skill-item">'+skills[s]+'</div>';}
+  html+='</div>';
+  html+='<div class="fps-email-box"><h3>Get the full Future-Proof Skills Guide</h3><p>Enter your email to receive the complete guide with learning paths and action steps.</p>';
+  html+='<form class="fps-email-form" id="fps-email-form"><input type="email" placeholder="your@email.com" required id="fps-email-input"><button type="submit">Send guide</button></form>';
+  html+='<p id="fps-email-msg" style="display:none;font-size:0.78rem;color:var(--accent);margin:10px 0 0;font-weight:500;"></p>';
+  html+='</div></div>';
+  container.innerHTML=html;
+
+  document.getElementById('fps-email-form').onsubmit=function(e){
+    e.preventDefault();
+    var email=document.getElementById('fps-email-input').value;
+    if(!email)return;
+    // Store subscription
+    localStorage.setItem('tpl_subscribed','1');
+    localStorage.setItem('tpl_email',email);
+    // Subscribe via Beehiiv
+    var iframe=document.createElement('iframe');iframe.style.display='none';iframe.name='fps-frame';document.body.appendChild(iframe);
+    var form=document.createElement('form');form.method='POST';form.action='https://embeds.beehiiv.com/subscribe';form.target='fps-frame';
+    var pub=document.createElement('input');pub.name='publication_id';pub.value='d805d78f-acff-4c2b-b871-fe65ff327886';form.appendChild(pub);
+    var em=document.createElement('input');em.name='email';em.value=email;form.appendChild(em);
+    var utm=document.createElement('input');utm.name='utm_source';utm.value='skills_assessment';form.appendChild(utm);
+    document.body.appendChild(form);form.submit();
+    setTimeout(function(){document.body.removeChild(form);document.body.removeChild(iframe);},3000);
+
+    // Map job family to valid backend values
+    var jobFamilyMap = {
+      'data': 'data_analytics_bi',
+      'operations': 'operations_process_program',
+      'manager': 'manager_team_leader',
+      'product': 'product_project_strategy',
+      'admin': 'admin_support_coordination',
+      'marketing': 'marketing_content_communication',
+      'technical': 'technical_engineering',
+      'other': 'other_not_sure'
+    };
+
+    // Map result band
+    var bandMap = {
+      'Exposed': 'exposed',
+      'Adaptable': 'adaptable',
+      'Harder to Replace': 'harder_to_replace'
+    };
+
+    // Send results via Firebase Cloud Function (callable)
+    var callData = {
+      email: email,
+      score: score,
+      resultBand: bandMap[band] || band.toLowerCase().replace(/ /g,'_'),
+      jobFamily: jobFamilyMap[jobFamilies[state.jobFamily]] || 'other_not_sure',
+      weakestCategory: weakest.replace(/-/g,'_'),
+      strongestCategory: strongest.replace(/-/g,'_')
+    };
+
+    fetch('https://sendfutureproofskillsguide-vgheoh5xza-ew.a.run.app', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({data: callData})
+    }).then(function(res){
+      if(res.ok){
+        document.getElementById('fps-email-msg').style.display='block';
+        document.getElementById('fps-email-msg').textContent='Guide sent. Check your inbox.';
+        document.getElementById('fps-email-form').style.display='none';
+      } else {
+        document.getElementById('fps-email-msg').style.display='block';
+        document.getElementById('fps-email-msg').textContent='Email could not be sent. Try again.';
+        document.getElementById('fps-email-msg').style.color='#DC2626';
+      }
+    }).catch(function(){
+      document.getElementById('fps-email-msg').style.display='block';
+      document.getElementById('fps-email-msg').textContent='Email could not be sent. Try again.';
+      document.getElementById('fps-email-msg').style.color='#DC2626';
+    });
+
+    // Show pending state
+    document.getElementById('fps-email-msg').style.display='block';
+    document.getElementById('fps-email-msg').textContent='Sending...';
+    document.getElementById('fps-email-msg').style.color='var(--text-muted)';
+  };
+}
+
+render();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What are future-proof skills?", "acceptedAnswer": {"@type": "Answer", "text": "Future-proof skills are skills that stay valuable as AI automates routine work. They include judgment, communication, business understanding, problem-solving, and AI literacy."}},
+    {"@type": "Question", "name": "Can AI replace my job?", "acceptedAnswer": {"@type": "Answer", "text": "AI is more likely to replace tasks before it replaces full jobs. People who only execute repeatable tasks are more exposed. People who use judgment, influence decisions, and connect work to business outcomes are harder to replace."}},
+    {"@type": "Question", "name": "What skills should I learn because of AI?", "acceptedAnswer": {"@type": "Answer", "text": "Start with AI literacy, analytical thinking, decision-making, business understanding, communication, and process improvement."}},
+    {"@type": "Question", "name": "How long does the assessment take?", "acceptedAnswer": {"@type": "Answer", "text": "The assessment takes about 3 to 5 minutes."}}
+  ]
+}
+</script>
