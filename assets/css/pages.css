@@ -1291,3 +1291,324 @@ footer.site-footer {
   .nl-cta-final { padding: 48px 32px; }
 }
 
+
+/* ===== HOMEPAGE ===== */
+
+.hp-hero {
+  padding: 72px 48px 64px;
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  position: relative;
+  overflow: hidden;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hp-hero-orb-1 {
+  position: absolute;
+  top: -100px;
+  right: -50px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%);
+}
+
+.hp-hero-orb-2 {
+  position: absolute;
+  bottom: -80px;
+  left: -30px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 70%);
+}
+
+.hp-hero-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+}
+
+.hp-hero-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #9333EA;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.hp-hero-title {
+  font-size: clamp(26px, 3.8vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #F8FAFC;
+  margin: 0 0 20px;
+}
+
+.hp-hero-title span { color: #9333EA; }
+
+.hp-hero-desc {
+  font-size: 0.95rem;
+  color: #CBD5E1;
+  line-height: 1.7;
+  margin: 0 0 12px;
+  max-width: 480px;
+}
+
+.hp-hero-audience {
+  font-size: 0.82rem;
+  color: #64748B;
+  margin: 0 0 28px;
+}
+
+.hp-hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hp-hero-cta-primary {
+  padding: 11px 22px;
+  background: #9333EA;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.hp-hero-cta-ghost {
+  padding: 11px 22px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #CBD5E1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.hp-proof-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 32px 28px;
+}
+
+.hp-proof-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.hp-proof-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(147,51,234,0.4);
+}
+
+.hp-proof-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  display: block;
+}
+
+.hp-proof-role {
+  font-size: 0.7rem;
+  color: #94A3B8;
+}
+
+.hp-proof-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hp-proof-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hp-proof-dot {
+  color: #9333EA;
+  font-size: 0.7rem;
+  margin-top: 3px;
+}
+
+.hp-proof-text {
+  font-size: 0.8rem;
+  color: #CBD5E1;
+  line-height: 1.5;
+}
+
+.hp-proof-text em { color: #F8FAFC; }
+
+/* Positions section */
+.hp-positions {
+  padding: 56px 48px;
+  background: var(--white);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hp-positions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.hp-position-card {
+  display: block;
+  text-decoration: none;
+  color: var(--dark);
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: border-color 0.2s;
+}
+
+.hp-position-card:hover {
+  border-color: var(--accent);
+}
+
+.hp-position-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.hp-position-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--dark);
+  border-radius: 6px;
+  color: #9333EA;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.hp-position-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hp-position-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.hp-position-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.hp-position-cta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Assessment CTA */
+.hp-assessment {
+  padding: 56px 48px;
+  background: var(--slate-bg);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  text-align: center;
+}
+
+.hp-assessment-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Book section */
+.hp-book {
+  padding: 64px 48px;
+  background: var(--white);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hp-book-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.hp-book-cover {
+  width: 140px;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+/* Newsletter section */
+.hp-newsletter {
+  padding: 64px 48px;
+  background: var(--slate-bg);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hp-newsletter-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hp-newsletter-form {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 12px;
+}
+
+/* Homepage responsive */
+@media screen and (max-width: 960px) {
+  .hp-hero { padding: 56px 32px 48px; }
+  .hp-hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .hp-positions { padding: 40px 24px; }
+  .hp-positions-grid { grid-template-columns: 1fr 1fr !important; }
+  .hp-book { padding: 48px 24px; }
+  .hp-book-grid { flex-direction: column !important; text-align: center; gap: 24px !important; }
+  .hp-newsletter { padding: 48px 24px; }
+  .hp-newsletter-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .hp-assessment { padding: 40px 24px; }
+}
+
+@media screen and (max-width: 600px) {
+  .hp-positions-grid { grid-template-columns: 1fr !important; }
+  .hp-hero-ctas { flex-direction: column; align-items: flex-start; }
+}
