@@ -59,7 +59,7 @@ function submitContactForm(e) {
   btn.innerHTML = '<svg width="15" height="15" style="animation:spin 1s linear infinite" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4m-3.93 7.07l-2.83-2.83M7.76 7.76L4.93 4.93"/></svg> Sending...';
   errorEl.style.display = 'none';
 
-  fetch('https://sendcontactmessage-vgheoh5xza-ew.a.run.app', {
+  fetch('{{ site.data.firebase.fn_contact }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({data: {name: name, email: email, message: message}})
