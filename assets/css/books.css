@@ -1,0 +1,204 @@
+/* ===== BOOKS PAGE ===== */
+
+.books-section {
+  padding: 0;
+  background: transparent;
+}
+
+.books-header {
+  margin-bottom: 56px;
+}
+
+.books-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.book-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 40px;
+  border: 1px solid var(--slate-border);
+  transition: box-shadow var(--transition);
+}
+
+.book-item:hover {
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+}
+
+.book-item-cover {
+  width: 100%;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.1);
+}
+
+.book-item-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.book-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.book-item-badge {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.book-item-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--dark);
+}
+
+.book-item-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 4px 0 16px;
+}
+
+.book-item-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+
+.book-item-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.book-theme-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border: 1px solid var(--slate-border);
+  border-radius: 2px;
+}
+
+.book-item-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark) !important;
+  border-bottom: 2px solid var(--dark);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.book-item-link:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent);
+}
+
+/* Book metadata panel */
+
+.book-meta-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0;
+  margin-top: 28px;
+  border: 1px solid var(--slate-border);
+}
+
+.book-meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--slate-border);
+  border-right: 1px solid var(--slate-border);
+  text-align: center;
+}
+
+.book-meta-icon {
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  margin: 6px 0;
+  text-align: center;
+}
+
+.book-meta-item:last-child {
+  border-right: none;
+}
+
+.book-meta-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.book-meta-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* ===== DARK MODE ===== */
+
+[data-theme="dark"] .book-item {
+  border-color: #334155;
+}
+
+[data-theme="dark"] .book-item-title {
+  color: #F1F5F9;
+}
+
+[data-theme="dark"] .book-item-desc {
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .book-item-link {
+  color: #F1F5F9 !important;
+  border-bottom-color: #F1F5F9;
+}
+
+[data-theme="dark"] .book-theme-tag {
+  border-color: #334155;
+  color: #94A3B8;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media screen and (max-width: 600px) {
+  .books-section {
+    padding: 48px 20px 64px;
+  }
+
+  .book-item {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .book-item-cover {
+    max-width: 180px;
+  }
+}

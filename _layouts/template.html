@@ -1,5 +1,7 @@
 ---
 layout: base
+css:
+  - "/assets/css/template.css"
 ---
 
 <main class="post-layout-wrapper">
@@ -81,20 +83,20 @@ layout: base
 </main>
 
 <!-- Email gate modal -->
-<div id="template-download-gate" style="display:none;">
-  <div onclick="closeGate()" style="position:fixed;inset:0;background:rgba(15,23,42,0.6);backdrop-filter:blur(4px);z-index:9998;"></div>
-  <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:40px 36px;max-width:400px;width:90%;z-index:9999;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,0.15);">
-    <button onclick="closeGate()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;color:var(--text-soft);cursor:pointer;line-height:1;">&times;</button>
-    <div style="width:56px;height:56px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+<div id="template-download-gate" class="tpl-gate">
+  <div onclick="closeGate()" class="tpl-gate-overlay"></div>
+  <div class="tpl-gate-modal">
+    <button onclick="closeGate()" class="tpl-gate-close">&times;</button>
+    <div class="tpl-gate-icon">
       <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </div>
-    <h3 style="font-size:1.15rem;font-weight:700;color:var(--dark);margin:0 0 8px;">Enter your email to download</h3>
-    <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 24px;line-height:1.5;">Get the template and receive new AI templates and operational guides.</p>
-    <form id="template-gate-form" onsubmit="submitGateEmail(event)" style="display:flex;gap:8px;">
-      <input type="email" id="template-gate-email" placeholder="your@email.com" required style="flex:1;padding:10px 14px;border:1px solid var(--slate-border);border-radius:8px;font-size:0.88rem;outline:none;">
-      <button type="submit" style="padding:10px 18px;background:#9333EA;color:#fff;border:none;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;">Download</button>
+    <h3 class="tpl-gate-title">Enter your email to download</h3>
+    <p class="tpl-gate-desc">Get the template and receive new AI templates and operational guides.</p>
+    <form id="template-gate-form" onsubmit="submitGateEmail(event)" class="tpl-gate-form">
+      <input type="email" id="template-gate-email" placeholder="your@email.com" required class="tpl-gate-input">
+      <button type="submit" class="tpl-gate-submit">Download</button>
     </form>
-    <p style="font-size:0.72rem;color:var(--text-soft);margin:14px 0 0;">One-time only. After this you can download all templates directly.</p>
+    <p class="tpl-gate-note">One-time only. After this you can download all templates directly.</p>
   </div>
 </div>
 

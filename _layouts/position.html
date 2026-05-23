@@ -1,12 +1,9 @@
 ---
 layout: base
+css:
+  - "/assets/css/post.css"
+  - "/assets/css/position.css"
 ---
-
-<!-- TODO: Restructure these UI elements into reusable _includes components:
-     - Position nav bar (tag pills with active state) ✅ Done
-     - Article list rows (title, excerpt, date, arrow) ✅ Done
-     - Cross-links grid (other positions) ✅ Done
--->
 
 <main class="post-layout-wrapper">
   <div class="page-with-sidebar">
@@ -34,28 +31,28 @@ layout: base
       </div>
 
       {% if page.featured_guide %}
-      <a href="{{ page.featured_guide.url }}" style="display:flex;align-items:center;gap:16px;padding:20px;margin-bottom:20px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:10px;text-decoration:none;">
-        <div style="width:40px;height:40px;background:rgba(147,51,234,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-size:0.9rem;color:#9333EA;">&#9889;</span>
+      <a href="{{ page.featured_guide.url }}" class="pos-featured-guide">
+        <div class="pos-featured-icon">
+          <span>&#9889;</span>
         </div>
-        <div style="flex:1;">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#9333EA;display:block;margin-bottom:4px;">GUIDE</span>
-          <span style="font-size:0.88rem;font-weight:600;color:#F8FAFC;display:block;">{{ page.featured_guide.title }}</span>
+        <div class="pos-featured-content">
+          <span class="pos-featured-label">GUIDE</span>
+          <span class="pos-featured-title">{{ page.featured_guide.title }}</span>
         </div>
-        <span style="font-size:0.75rem;color:#94A3B8;">→</span>
+        <span class="pos-featured-arrow">→</span>
       </a>
       {% endif %}
 
-      <div style="margin-bottom:48px;">
+      <div class="pos-articles-list">
         {% for post in site.tags[page.position_tag] %}
-        <a href="{{ post.url | relative_url }}" class="position-article-row" style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;margin-bottom:6px;background:var(--slate-bg);border-radius:8px;color:var(--dark);text-decoration:none;border:1px solid var(--slate-border);transition:border-color 0.2s;">
-          <div style="flex:1;min-width:0;">
-            <span style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:2px;">{{ post.title }}</span>
-            <span style="font-size:0.72rem;color:var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
+        <a href="{{ post.url | relative_url }}" class="pos-article-row">
+          <div class="pos-article-info">
+            <span class="pos-article-title">{{ post.title }}</span>
+            <span class="pos-article-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:16px;">
-            <span class="position-article-date" style="font-size:0.65rem;color:var(--text-soft);">{{ post.date | date: "%b %d, %Y" }}</span>
-            <span style="font-size:0.85rem;color:var(--text-soft);">→</span>
+          <div class="pos-article-meta">
+            <span class="pos-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
+            <span class="pos-article-arrow">→</span>
           </div>
         </a>
         {% endfor %}
