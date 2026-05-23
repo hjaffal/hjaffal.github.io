@@ -1,0 +1,27 @@
+- tag: ai-operations
+  number: "01"
+  title: "AI exposes weak operations"
+  thesis: "AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale."
+  cta: "Explore AI operations"
+  url: "/positions/ai-operations/"
+
+- tag: decision-authority
+  number: "02"
+  title: "Signals need authority"
+  thesis: "A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat."
+  cta: "Explore decision authority"
+  url: "/positions/decision-authority/"
+
+- tag: risk-intelligence
+  number: "03"
+  title: "Reporting is not intelligence"
+  thesis: "Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration."
+  cta: "Explore risk intelligence"
+  url: "/positions/risk-intelligence/"
+
+- tag: ai-and-work
+  number: "04"
+  title: "AI is changing the skill floor"
+  thesis: "AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate."
+  cta: "Explore AI and work"
+  url: "/positions/ai-and-work/"

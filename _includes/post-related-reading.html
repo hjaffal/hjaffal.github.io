@@ -16,13 +16,14 @@
     {% endfor %}
   </div>
 
-  <!-- Cross-position link -->
+  <!-- Cross-position links from data -->
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
     <span style="font-size:0.68rem;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.08em;">Explore other positions:</span>
-    {% if post_tag != 'ai-operations' %}<a href="/positions/ai-operations/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">ai-operations</a>{% endif %}
-    {% if post_tag != 'decision-authority' %}<a href="/positions/decision-authority/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">decision-authority</a>{% endif %}
-    {% if post_tag != 'risk-intelligence' %}<a href="/positions/risk-intelligence/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">risk-intelligence</a>{% endif %}
-    {% if post_tag != 'ai-and-work' %}<a href="/positions/ai-and-work/" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">ai-and-work</a>{% endif %}
+    {% for p in site.data.positions %}
+      {% if p.tag != post_tag %}
+      <a href="{{ p.url }}" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">{{ p.tag }}</a>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 {% endif %}
