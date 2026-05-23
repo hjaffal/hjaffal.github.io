@@ -49,7 +49,12 @@ footer-link-col: "#F1F5F9"
 footer-hover-col: "#9333EA"
 
 site-css:
-  - "/assets/css/custom-styles.css"
+  - "/assets/css/base.css"
+  - "/assets/css/layout.css"
+  - "/assets/css/components.css"
+  - "/assets/css/pages.css"
+  - "/assets/css/dark-mode.css"
+  - "/assets/css/sproochentest.css"
 
 site-js:
   - "/assets/js/custom-script.js"

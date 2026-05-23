@@ -44,6 +44,8 @@
 </div>
 
 <script>
+/* Contact form logic — kept inline because it uses Liquid variables (site.data.firebase).
+   To extract: set window.CONTACT_URL in a <script> block, then load contact.js externally. */
 function submitContactForm(e) {
   e.preventDefault();
   var name = document.getElementById('contact-name').value.trim();

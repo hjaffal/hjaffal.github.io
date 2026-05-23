@@ -1,0 +1,165 @@
+/* =========================================================
+   Hasan Jaffal — Tactical Minimalist Homepage
+   Palette: White / Dark #0F172A / Accent #9333EA / Slate #F1F5F9
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --white: #FFFFFF;
+  --dark: #0F172A;
+  --dark-soft: #1E293B;
+  --accent: #9333EA;
+  --accent-hover: #7C22CB;
+  --slate-bg: #F8FAFC;
+  --slate-bg2: #F1F5F9;
+
+  --slate-border: #E2E8F0;
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --text-soft: #94A3B8;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --transition: 0.2s ease;
+}
+
+/* Global */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-main);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p { margin-bottom: 1rem; }
+
+a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--accent); }
+
+h1, h2, h3, h4 {
+  font-family: var(--sans);
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+::selection {
+  background: rgba(147, 51, 234, 0.12);
+  color: var(--dark);
+}
+
+/* Hide Beautiful Jekyll defaults */
+
+.intro-header {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  background: none !important;
+  text-align: left !important;
+}
+
+.intro-header .container-md {
+  padding: 0;
+}
+
+.intro-header .row {
+  margin: 0;
+}
+
+.intro-header .col-xl-8,
+.intro-header .col-lg-10 {
+  max-width: 100%;
+  flex: 0 0 100%;
+  padding: 0;
+}
+
+.intro-header hr.small {
+  display: none;
+}
+
+/* Hide empty title (homepage/custom pages with no title) */
+.page-heading h1:empty,
+.page-heading h1 br:only-child {
+  display: none;
+}
+
+/* Hide the heading container when title is empty */
+.page-heading:has(h1 br:only-child) {
+  display: none;
+}
+
+.page-heading,
+.post-heading {
+  text-align: left;
+  padding: 20px 0 16px;
+}
+
+.page-heading h1,
+.post-heading h1 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--dark);
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+.post-heading .post-meta {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 8px;
+  display: block;
+}
+
+.post-heading-tags {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.post-heading-tags a {
+  color: var(--accent) !important;
+  transition: opacity var(--transition);
+}
+
+.post-heading-tags a:hover {
+  opacity: 0.7;
+}
+
+.page-subheading {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+.avatar-container { display: none !important; }
+

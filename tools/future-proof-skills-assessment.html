@@ -88,6 +88,8 @@ permalink: /tools/future-proof-skills-assessment/
 </div>
 
 <script>
+/* Assessment logic — kept inline because it uses Liquid variables (site.data.firebase).
+   To extract: set window.FPS_CONFIG = {...} in a <script> block, then load assessment.js externally. */
 (function(){
 var jobFamilies = ['data','operations','manager','product','admin','marketing','technical','other'];
 var jobLabels = ['Data / Analytics / BI','Operations / Process / Program','Manager / Team Leader','Product / Project / Strategy','Admin / Support / Coordination','Marketing / Content / Communication','Technical / Engineering','Other / Not sure'];
