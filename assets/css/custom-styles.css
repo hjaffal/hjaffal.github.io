@@ -4753,3 +4753,47 @@ select:focus {
 .hp-newsletter { padding: 64px 48px; background: var(--slate-bg); margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .hp-newsletter-grid { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .hp-newsletter-form { padding: 28px; background: var(--white); border: 1px solid var(--slate-border); border-radius: 12px; }
+
+/* ===== MOBILE FIXES FOR INLINE GRIDS ===== */
+@media screen and (max-width: 640px) {
+  /* Template meta cards (3-col → 1-col) */
+  .post-main [style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Any 2-col grid inside post-main → 1-col */
+  .post-main [style*="grid-template-columns:1fr 1fr"],
+  .blog-post [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 3-col grids (So What framework) */
+  .blog-post [style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About page position cards */
+  .about-content [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Writing page article rows */
+  .writing-page [style*="grid-template-columns:1fr auto"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Position crosslinks (3-col → 1-col) */
+  [style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hero padding reduction */
+  .hp-hero { padding: 48px 20px 40px !important; }
+  .hp-positions { padding: 40px 20px !important; }
+  .hp-assessment { padding: 40px 20px !important; }
+  .hp-book { padding: 40px 20px !important; }
+  .hp-newsletter { padding: 40px 20px !important; }
+
+  /* Position page nav pills wrap */
+  .position-article-date { display: none; }
+}
