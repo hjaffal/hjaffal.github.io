@@ -114,13 +114,12 @@ function submitGateEmail(e) {
   if (!email) return;
   localStorage.setItem('tpl_subscribed', '1');
   localStorage.setItem('tpl_email', email);
-  var iframe = document.createElement('iframe'); iframe.style.display='none'; iframe.name='tpl-sub-frame'; document.body.appendChild(iframe);
-  var form = document.createElement('form'); form.method='POST'; form.action='https://embeds.beehiiv.com/subscribe'; form.target='tpl-sub-frame';
-  var pub = document.createElement('input'); pub.name='publication_id'; pub.value='{{ site.data.firebase.beehiiv_desktop }}'; form.appendChild(pub);
-  var em = document.createElement('input'); em.name='email'; em.value=email; form.appendChild(em);
-  var utm = document.createElement('input'); utm.name='utm_source'; utm.value='template_download'; form.appendChild(utm);
-  document.body.appendChild(form); form.submit();
-  setTimeout(function(){document.body.removeChild(form);document.body.removeChild(iframe);},3000);
+  // Subscribe via API
+  fetch('{{ site.data.firebase.fn_subscribe }}', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({data: {email: email, utm_source: 'template_download'}})
+  }).catch(function(){});
   var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
 }
 function triggerFile(file) { var a=document.createElement('a'); a.href=file; a.download=''; document.body.appendChild(a); a.click(); document.body.removeChild(a); }

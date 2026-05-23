@@ -3,6 +3,8 @@ const { defineSecret } = require("firebase-functions/params");
 const { Resend } = require("resend");
 
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
+const BEEHIIV_API_KEY = defineSecret("BEEHIIV_API_KEY");
+const BEEHIIV_PUBLICATION_ID = defineSecret("BEEHIIV_PUBLICATION_ID");
 
 const VALID_BANDS = ["exposed", "adaptable", "harder_to_replace"];
 const VALID_FAMILIES = [
@@ -16,7 +18,7 @@ const VALID_CATEGORIES = [
 ];
 
 exports.sendFutureProofSkillsGuide = onRequest(
-  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
+  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY, BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID] },
   async (req, res) => {
     if (req.method !== "POST") {
       res.status(405).json({ error: "Method not allowed" });
@@ -100,17 +102,41 @@ exports.sendFutureProofSkillsGuide = onRequest(
     `;
 
     try {
+      // Subscribe to Beehiiv newsletter
+      const beehiivRes = await fetch(
+        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
+        {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            reactivate_existing: true,
+            send_welcome_email: true,
+            utm_source: "skills_assessment",
+            double_opt_override: "off"
+          })
+        }
+      );
+      if (!beehiivRes.ok) {
+        console.error("Beehiiv subscription error:", await beehiivRes.text());
+      }
+
+      // Send guide email via Resend
       const resend = new Resend(RESEND_API_KEY.value());
       await resend.emails.send({
         from: "Hasan Jaffal <hasan@hasanjaffal.com>",
         to: email,
+        cc: "jaftalks@gmail.com",
         subject: "Your Future-Proof Skills Assessment Result",
         html: htmlBody
       });
 
       res.status(200).json({ result: "success" });
     } catch (err) {
-      console.error("Resend error:", err);
+      console.error("Send error:", err);
       res.status(500).json({ error: "Failed to send email" });
     }
   }
@@ -118,7 +144,7 @@ exports.sendFutureProofSkillsGuide = onRequest(
 
 
 exports.sendContactMessage = onRequest(
-  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
+  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY, BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID] },
   async (req, res) => {
     if (req.method !== "POST") {
       res.status(405).json({ error: "Method not allowed" });
@@ -154,6 +180,29 @@ exports.sendContactMessage = onRequest(
     `;
 
     try {
+      // Subscribe to Beehiiv newsletter
+      const beehiivRes = await fetch(
+        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
+        {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            reactivate_existing: true,
+            send_welcome_email: true,
+            utm_source: "contact_form",
+            double_opt_override: "off"
+          })
+        }
+      );
+      if (!beehiivRes.ok) {
+        console.error("Beehiiv subscription error:", await beehiivRes.text());
+      }
+
+      // Send contact message via Resend
       const resend = new Resend(RESEND_API_KEY.value());
       await resend.emails.send({
         from: "Website Contact <hasan@hasanjaffal.com>",
@@ -165,8 +214,60 @@ exports.sendContactMessage = onRequest(
 
       res.status(200).json({ result: "success" });
     } catch (err) {
-      console.error("Resend error:", err);
+      console.error("Send error:", err);
       res.status(500).json({ error: "Failed to send" });
+    }
+  }
+);
+
+
+exports.subscribeNewsletter = onRequest(
+  { region: "europe-west1", cors: true, secrets: [BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID] },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const body = req.body.data || req.body;
+    const { email, utm_source } = body;
+
+    // Validate email
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      res.status(400).json({ error: "Invalid email" });
+      return;
+    }
+
+    try {
+      const beehiivRes = await fetch(
+        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
+        {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            reactivate_existing: true,
+            send_welcome_email: true,
+            utm_source: utm_source || "website",
+            double_opt_override: "off"
+          })
+        }
+      );
+
+      if (!beehiivRes.ok) {
+        const errBody = await beehiivRes.text();
+        console.error("Beehiiv subscription error:", errBody);
+        res.status(500).json({ error: "Subscription failed" });
+        return;
+      }
+
+      res.status(200).json({ result: "success" });
+    } catch (err) {
+      console.error("Subscribe error:", err);
+      res.status(500).json({ error: "Subscription failed" });
     }
   }
 );

@@ -291,16 +291,6 @@ function renderResult(){
     // Store subscription
     localStorage.setItem('tpl_subscribed','1');
     localStorage.setItem('tpl_email',email);
-    // Subscribe via Beehiiv embed API
-    fetch('https://embeds.beehiiv.com/api/v1/subscriptions', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        form_id: '{{ site.data.firebase.beehiiv_desktop }}',
-        email: email,
-        utm_source: 'skills_assessment'
-      })
-    }).catch(function(){});
 
     // Map job family to valid backend values
     var jobFamilyMap = {

@@ -1487,3 +1487,70 @@ select:focus {
     padding: 40px 20px;
   }
 }
+
+/* ===== NEWSLETTER SUBSCRIBE FORM ===== */
+
+.nl-subscribe-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nl-subscribe-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 11px 14px;
+  border: 1px solid var(--slate-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--sans);
+  color: var(--text-main);
+  background: var(--white);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.nl-subscribe-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+}
+
+.nl-subscribe-btn {
+  padding: 11px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition);
+}
+
+.nl-subscribe-btn:hover {
+  background: var(--accent-hover);
+}
+
+.nl-subscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nl-subscribe-msg {
+  width: 100%;
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 480px) {
+  .nl-subscribe-form {
+    flex-direction: column;
+  }
+
+  .nl-subscribe-input {
+    min-width: 100%;
+  }
+}

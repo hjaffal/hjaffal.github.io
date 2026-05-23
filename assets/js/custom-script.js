@@ -1,3 +1,49 @@
+// Global newsletter subscribe handler
+function handleNewsletterSubscribe(e, form, source) {
+  e.preventDefault();
+  var email = form.querySelector('input[type="email"]').value;
+  var msg = form.querySelector('.nl-subscribe-msg');
+  var btn = form.querySelector('button[type="submit"]');
+  if (!email) return false;
+
+  btn.disabled = true;
+  btn.textContent = 'Subscribing...';
+  msg.style.display = 'none';
+
+  var fnUrl = document.querySelector('meta[name="fn-subscribe"]');
+  var url = fnUrl ? fnUrl.getAttribute('content') : '';
+
+  fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({data: {email: email, utm_source: source || 'website'}})
+  }).then(function(res) {
+    if (res.ok) {
+      msg.style.display = 'block';
+      msg.textContent = 'You are subscribed.';
+      msg.style.color = 'var(--accent, #9333EA)';
+      btn.textContent = 'Subscribed';
+      localStorage.setItem('tpl_subscribed', '1');
+      localStorage.setItem('tpl_email', email);
+      form.querySelector('input[type="email"]').disabled = true;
+    } else {
+      msg.style.display = 'block';
+      msg.textContent = 'Something went wrong. Try again.';
+      msg.style.color = '#DC2626';
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+    }
+  }).catch(function() {
+    msg.style.display = 'block';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.style.color = '#DC2626';
+    btn.disabled = false;
+    btn.textContent = 'Subscribe';
+  });
+
+  return false;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
   // Sproochentest mobile menu toggle

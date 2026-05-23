@@ -1,7 +1,9 @@
 <div class="sidebar-newsletter">
   <span class="card-label">THE SECOND MIND NEWSLETTER</span>
   <p class="sidebar-newsletter-desc">Risk, intelligence, AI, and decisions before problems become obvious.</p>
-  <div class="newsletter-embed">
-    <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="{{ site.data.firebase.beehiiv_mobile }}"></script>
-  </div>
+  <form class="nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this)">
+    <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
+    <button type="submit" class="nl-subscribe-btn">Subscribe</button>
+    <p class="nl-subscribe-msg" style="display:none;"></p>
+  </form>
 </div>

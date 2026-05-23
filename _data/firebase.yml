@@ -5,3 +5,4 @@ beehiiv_mobile: "c48f5bc1-80ee-479b-b238-d7fe9d839504"
 # Firebase Cloud Function URLs
 fn_skills_guide: "https://sendfutureproofskillsguide-vgheoh5xza-ew.a.run.app"
 fn_contact: "https://sendcontactmessage-vgheoh5xza-ew.a.run.app"
+fn_subscribe: "https://subscribenewsletter-vgheoh5xza-ew.a.run.app"
