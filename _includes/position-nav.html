@@ -2,12 +2,12 @@
   Position navigation bar — shows all 4 positions as pills, highlights the active one.
   Usage: {% include position-nav.html active="ai-operations" %}
 {% endcomment %}
-<div style="display:flex;gap:8px;margin:24px 0 40px;flex-wrap:wrap;">
+<div class="pos-nav">
   {% for p in site.data.positions %}
     {% if p.tag == include.active %}
-    <span style="padding:6px 12px;background:#0F172A;color:#fff;font-size:0.7rem;font-weight:600;border-radius:5px;">{{ p.tag }}</span>
+    <span class="pos-nav-active">{{ p.tag }}</span>
     {% else %}
-    <a href="{{ p.url }}" style="padding:6px 12px;background:var(--slate-bg);border:1px solid var(--slate-border);color:var(--dark);font-size:0.7rem;font-weight:500;border-radius:5px;text-decoration:none;">{{ p.tag }}</a>
+    <a href="{{ p.url }}" class="pos-nav-link">{{ p.tag }}</a>
     {% endif %}
   {% endfor %}
 </div>

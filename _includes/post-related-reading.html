@@ -1,27 +1,26 @@
 {% assign post_tag = page.tags[0] %}
 {% if post_tag %}
-<div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--slate-border);">
-  <h3 style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 20px;">Continue reading in this position</h3>
+<div class="post-related">
+  <h3 class="post-related-title">Continue reading in this position</h3>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+  <div class="post-related-grid">
     {% assign count = 0 %}
     {% for related in site.tags[post_tag] %}
       {% if related.url != page.url and count < 4 %}
-      <a href="{{ related.url | relative_url }}" style="display:block;padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;transition:border-color 0.2s;">
-        <span style="font-size:0.82rem;font-weight:600;color:var(--dark);display:block;line-height:1.35;margin-bottom:4px;">{{ related.title }}</span>
-        <span style="font-size:0.68rem;color:var(--text-soft);">{{ related.date | date: "%b %d, %Y" }}</span>
+      <a href="{{ related.url | relative_url }}" class="post-related-card">
+        <span class="post-related-card-title">{{ related.title }}</span>
+        <span class="post-related-card-date">{{ related.date | date: "%b %d, %Y" }}</span>
       </a>
       {% assign count = count | plus: 1 %}
       {% endif %}
     {% endfor %}
   </div>
 
-  <!-- Cross-position links from data -->
-  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-    <span style="font-size:0.68rem;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.08em;">Explore other positions:</span>
+  <div class="post-related-positions">
+    <span class="post-related-positions-label">Explore other positions:</span>
     {% for p in site.data.positions %}
       {% if p.tag != post_tag %}
-      <a href="{{ p.url }}" style="font-size:0.72rem;padding:5px 10px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:5px;color:var(--dark);text-decoration:none;">{{ p.tag }}</a>
+      <a href="{{ p.url }}">{{ p.tag }}</a>
       {% endif %}
     {% endfor %}
   </div>

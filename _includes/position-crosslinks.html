@@ -2,14 +2,14 @@
   Cross-links grid — shows the other 3 positions.
   Usage: {% include position-crosslinks.html active="ai-operations" %}
 {% endcomment %}
-<div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
-  <h3 style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 14px;">Other positions</h3>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+<div class="pos-crosslinks">
+  <h3 class="pos-crosslinks-title">Other positions</h3>
+  <div class="pos-crosslinks-grid">
     {% for p in site.data.positions %}
       {% if p.tag != include.active %}
-      <a href="{{ p.url }}" style="padding:14px;background:var(--white);border:1px solid var(--slate-border);border-radius:8px;text-decoration:none;">
-        <span style="font-size:0.68rem;color:var(--text-soft);display:block;margin-bottom:4px;">POSITION {{ p.number }}</span>
-        <span style="font-size:0.82rem;font-weight:600;color:var(--dark);">{{ p.title }}</span>
+      <a href="{{ p.url }}" class="pos-crosslinks-card">
+        <span class="pos-crosslinks-num">POSITION {{ p.number }}</span>
+        <span class="pos-crosslinks-name">{{ p.title }}</span>
       </a>
       {% endif %}
     {% endfor %}

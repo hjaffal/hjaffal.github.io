@@ -21,23 +21,23 @@ layout: base
       </div>
 
       <!-- Meta cards -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 32px;">
-        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
-          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Category</span>
-          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">{{ page.template_category }}</span>
+      <div class="tpl-meta-grid">
+        <div class="tpl-meta-card">
+          <span class="tpl-meta-label">Category</span>
+          <span class="tpl-meta-value">{{ page.template_category }}</span>
         </div>
-        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
-          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Audience</span>
-          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">{{ page.template_audience }}</span>
+        <div class="tpl-meta-card">
+          <span class="tpl-meta-label">Audience</span>
+          <span class="tpl-meta-value">{{ page.template_audience }}</span>
         </div>
-        <div style="padding:16px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:8px;">
-          <span style="display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-soft);margin-bottom:4px;">Format</span>
-          <span style="font-size:0.88rem;font-weight:600;color:var(--dark);">{{ page.template_format }}</span>
+        <div class="tpl-meta-card">
+          <span class="tpl-meta-label">Format</span>
+          <span class="tpl-meta-value">{{ page.template_format }}</span>
         </div>
       </div>
 
       <!-- Download -->
-      <button onclick="handleTemplateDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--dark);color:#fff;font-size:0.85rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:background 0.2s;margin-bottom:40px;">
+      <button onclick="handleTemplateDownload()" class="tpl-download-btn">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download Template (PDF)
       </button>
@@ -46,26 +46,26 @@ layout: base
       {{ content }}
 
       <!-- Download CTA -->
-      <div style="margin:48px 0 32px;padding:32px;background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;text-align:center;">
-        <p style="font-size:0.92rem;color:#E2E8F0;margin:0 0 16px;">{{ page.template_cta_text | default: "Download the full template with tables, examples, and best practices." }}</p>
-        <button onclick="handleTemplateDownload()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#fff;color:var(--dark);font-size:0.85rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;">
+      <div class="tpl-download-cta">
+        <p>{{ page.template_cta_text | default: "Download the full template with tables, examples, and best practices." }}</p>
+        <button onclick="handleTemplateDownload()">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Template (PDF)
         </button>
       </div>
 
       <!-- Related -->
-      <div style="padding:24px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;">
-        <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin:0 0 12px;">Related Templates</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div class="tpl-related">
+        <h3>Related Templates</h3>
+        <div class="tpl-related-grid">
           {% if page.permalink != '/ai-templates/ai-weekly-business-review-template/' %}
-          <a href="/ai-templates/ai-weekly-business-review-template/" style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);text-decoration:none;">Weekly Business Review</a>
+          <a href="/ai-templates/ai-weekly-business-review-template/" class="tpl-related-link">Weekly Business Review</a>
           {% endif %}
           {% if page.permalink != '/ai-templates/ai-root-cause-analysis-template/' %}
-          <a href="/ai-templates/ai-root-cause-analysis-template/" style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);text-decoration:none;">Root Cause Analysis</a>
+          <a href="/ai-templates/ai-root-cause-analysis-template/" class="tpl-related-link">Root Cause Analysis</a>
           {% endif %}
           {% if page.permalink != '/ai-templates/ai-dashboard-review-template/' %}
-          <a href="/ai-templates/ai-dashboard-review-template/" style="font-size:0.82rem;padding:8px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:6px;color:var(--dark);text-decoration:none;">Dashboard Review</a>
+          <a href="/ai-templates/ai-dashboard-review-template/" class="tpl-related-link">Dashboard Review</a>
           {% endif %}
         </div>
       </div>
