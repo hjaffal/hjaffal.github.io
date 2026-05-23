@@ -27,29 +27,13 @@ show-avatar: false
       </div>
     </div>
 
-    <div class="hp-proof-card">
-      <div class="hp-proof-header">
-        <img src="/assets/img/hasanjaffal.jpeg" alt="Hasan Jaffal, AI risk intelligence and data operations leader" class="hp-proof-avatar">
-        <div>
-          <span class="hp-proof-name">Hasan Jaffal</span>
-          <span class="hp-proof-role">Data, AI & Risk Operations</span>
-        </div>
-      </div>
-      <div class="hp-proof-list">
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-proof-text">Data and business intelligence leader</span></div>
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-proof-text">Author of <em>The Second Mind</em></span></div>
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-proof-text">Weekly writing on AI, risk, and operational decision-making</span></div>
-      </div>
-    </div>
+    {% include dark-card-bullets.html name="Hasan Jaffal" role="Data, AI & Risk Operations" avatar="/assets/img/hasanjaffal.jpeg" items="Data and business intelligence leader|Author of <em>The Second Mind</em>|Weekly writing on AI, risk, and operational decision-making" %}
   </div>
 </section>
 
 <!-- POSITIONS -->
 <section class="hp-positions">
-  <div style="margin-bottom:24px;">
-    <span class="field-label">CORE POSITIONS</span>
-    <h2 class="field-title">What I <em>Stand For.</em></h2>
-  </div>
+  {% include section-header.html label="CORE POSITIONS" title="What I" em="Stand For." %}
   <div class="hp-positions-grid">
     {% for p in site.data.positions %}
     <a href="{{ p.url }}" class="hp-position-card">

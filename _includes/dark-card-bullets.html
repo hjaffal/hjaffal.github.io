@@ -1,0 +1,20 @@
+{% comment %}
+  Dark proof card with avatar + name + bullet list.
+  Usage: {% include dark-card-bullets.html name="Hasan Jaffal" role="Data, AI & Risk Operations" avatar="/assets/img/hasanjaffal.jpeg" items="Item 1|Item 2|Item 3" %}
+  Items are pipe-separated. Use <em> for emphasis in items.
+{% endcomment %}
+{% assign bullet_items = include.items | split: "|" %}
+<div class="hp-proof-card">
+  <div class="hp-proof-header">
+    <img src="{{ include.avatar }}" alt="{{ include.name }}" class="hp-proof-avatar">
+    <div>
+      <span class="hp-proof-name">{{ include.name }}</span>
+      <span class="hp-proof-role">{{ include.role }}</span>
+    </div>
+  </div>
+  <div class="hp-proof-list">
+    {% for item in bullet_items %}
+    <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-proof-text">{{ item }}</span></div>
+    {% endfor %}
+  </div>
+</div>

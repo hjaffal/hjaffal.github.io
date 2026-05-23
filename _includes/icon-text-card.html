@@ -1,0 +1,13 @@
+{% comment %}
+  Icon + text + optional CTA card (used in about page "What you'll find" section).
+  Usage: {% include icon-text-card.html icon_svg="<svg>...</svg>" title="Writing" desc="Articles organized by position." url="/writing" %}
+{% endcomment %}
+<a href="{{ include.url }}" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;text-decoration:none;">
+  <div style="width:36px;height:36px;background:#0F172A;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+    {{ include.icon_svg }}
+  </div>
+  <div>
+    <span style="font-size:0.85rem;font-weight:600;color:var(--dark);display:block;">{{ include.title }}</span>
+    <span style="font-size:0.72rem;color:var(--text-muted);">{{ include.desc }}</span>
+  </div>
+</a>
