@@ -1,0 +1,16 @@
+{% comment %}
+  AI Prompt block with copy button for template pages.
+  Usage: {% include template-prompt.html %}
+  The prompt text must be in the page content wrapped in: <pre id="ai-prompt-block"><code>...</code></pre>
+  This component provides the header bar with copy button.
+{% endcomment %}
+<div style="border-radius:10px;overflow:hidden;border:1px solid var(--slate-border);">
+  <div style="padding:14px 20px;background:var(--slate-bg);border-bottom:1px solid var(--slate-border);display:flex;align-items:center;justify-content:space-between;">
+    <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0;">Copy-Paste AI Prompt</h3>
+    <button onclick="copyPrompt()" id="copy-prompt-btn" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:5px;font-size:0.72rem;font-weight:600;color:var(--dark);cursor:pointer;">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span id="copy-prompt-label">Copy</span>
+    </button>
+  </div>
+  <pre style="margin:0;padding:20px 24px;background:var(--dark);color:#E2E8F0;font-size:0.78rem;line-height:1.7;overflow-x:auto;" id="ai-prompt-block"><code>{{ include.prompt }}</code></pre>
+</div>

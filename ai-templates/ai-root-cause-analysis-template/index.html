@@ -12,52 +12,85 @@ template_format: "PDF · 8 pages"
 template_updated: "May 19, 2026"
 template_pdf: "/assets/pdf/ai-root-cause-analysis-template.pdf"
 template_cta_text: "Download the full 8-page investigation template with tables, evidence grading, and verification plans."
+whats_inside:
+  - Incident Summary
+  - Timeline of Events
+  - 5-Why Chain
+  - Evidence Grading
+  - Contributing Factor Map
+  - Barrier Analysis
+  - Root Cause Statement
+  - Corrective Actions
+  - Verification Plan
+  - Lessons Learned
+  - Recurrence Risk
+  - AI Prompt
+who_for:
+  - Operations managers
+  - Quality & compliance leads
+  - Incident investigators
+  - Risk analysts
+  - Process improvement teams
+when_to_use:
+  - After incidents or outages
+  - Repeated process failures
+  - Near-miss events
+  - Customer-impacting defects
+  - Post-mortem investigations
+mistakes:
+  - Stopping at the first "why"
+  - Blaming people instead of systems
+  - Confusing correlation with causation
+  - Accepting testimony as fact
+  - Closing before verifying the fix
+  - Ignoring contributing factors
+  - Writing RCA for compliance, not learning
+tips:
+  - Start with timeline, not conclusions
+  - Grade every piece of evidence
+  - Check all 4 barrier types
+  - Write root cause as testable hypothesis
+  - Schedule verification date now
+  - Share lessons across teams
+  - Track recurrence as success metric
+prompt: |
+  Act as a senior operations investigator.
+
+  Conduct a Root Cause Analysis using the incident data below.
+  Be rigorous. Separate facts from assumptions.
+
+  Structure:
+  1. Incident Summary (what, when, where, severity)
+  2. Timeline of Events (sequence with evidence)
+  3. 5-Why Chain (push past the obvious)
+  4. Evidence Grading (rate each piece A through E)
+  5. Contributing Factor Map (process, people, tech, controls)
+  6. Barrier Analysis (what should have prevented this)
+  7. Root Cause Statement (systemic, testable, actionable)
+  8. Corrective Actions (immediate, short-term, systemic)
+  9. Verification Plan (how to prove the fix works)
+  10. Lessons Learned (what applies beyond this incident)
+  11. Recurrence Risk (could this happen elsewhere)
+
+  Rules:
+  - Never blame a person. Find the system failure.
+  - Grade every piece of evidence.
+  - If evidence is weak, say so explicitly.
+  - Every action must have an owner and deadline.
+  - The root cause must be fixable and testable.
+
+  Incident data: [PASTE HERE]
+  Timeline: [PASTE HERE]
+  Known facts: [PASTE HERE]
+  Assumptions: [PASTE HERE]
+  Previous similar incidents: [PASTE HERE]
 ---
 
-<!-- What's Inside -->
-<div style="background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;padding:28px;margin-bottom:36px;">
-  <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 16px;">What's Inside</h3>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">01</span>Incident Summary</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">02</span>Timeline of Events</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">03</span>5-Why Chain</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">04</span>Evidence Grading</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">05</span>Contributing Factor Map</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">06</span>Barrier Analysis</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">07</span>Root Cause Statement</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">08</span>Corrective Actions</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">09</span>Verification Plan</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">10</span>Lessons Learned</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">11</span>Recurrence Risk</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">12</span>AI Prompt</div>
-  </div>
-</div>
+{% include template-whats-inside.html items=page.whats_inside %}
 
 <div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
 
-  <!-- Who & When -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">Who This Is For</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
-        <li>Operations managers</li>
-        <li>Quality & compliance leads</li>
-        <li>Incident investigators</li>
-        <li>Risk analysts</li>
-        <li>Process improvement teams</li>
-      </ul>
-    </div>
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">When To Use It</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
-        <li>After incidents or outages</li>
-        <li>Repeated process failures</li>
-        <li>Near-miss events</li>
-        <li>Customer-impacting defects</li>
-        <li>Post-mortem investigations</li>
-      </ul>
-    </div>
-  </div>
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
 
   <!-- Core Principles -->
   <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
@@ -72,74 +105,9 @@ template_cta_text: "Download the full 8-page investigation template with tables,
     </div>
   </div>
 
-  <!-- AI Prompt -->
-  <div style="border-radius:10px;overflow:hidden;border:1px solid var(--slate-border);">
-    <div style="padding:14px 20px;background:var(--slate-bg);border-bottom:1px solid var(--slate-border);display:flex;align-items:center;justify-content:space-between;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0;">Copy-Paste AI Prompt</h3>
-      <button onclick="copyPrompt()" id="copy-prompt-btn" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:5px;font-size:0.72rem;font-weight:600;color:var(--dark);cursor:pointer;">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        <span id="copy-prompt-label">Copy</span>
-      </button>
-    </div>
-    <pre style="margin:0;padding:20px 24px;background:var(--dark);color:#E2E8F0;font-size:0.78rem;line-height:1.7;overflow-x:auto;" id="ai-prompt-block"><code>Act as a senior operations investigator.
+  {% include template-prompt.html prompt=page.prompt %}
 
-Conduct a Root Cause Analysis using the incident data below.
-Be rigorous. Separate facts from assumptions.
-
-Structure:
-1. Incident Summary (what, when, where, severity)
-2. Timeline of Events (sequence with evidence)
-3. 5-Why Chain (push past the obvious)
-4. Evidence Grading (rate each piece A through E)
-5. Contributing Factor Map (process, people, tech, controls)
-6. Barrier Analysis (what should have prevented this)
-7. Root Cause Statement (systemic, testable, actionable)
-8. Corrective Actions (immediate, short-term, systemic)
-9. Verification Plan (how to prove the fix works)
-10. Lessons Learned (what applies beyond this incident)
-11. Recurrence Risk (could this happen elsewhere)
-
-Rules:
-- Never blame a person. Find the system failure.
-- Grade every piece of evidence.
-- If evidence is weak, say so explicitly.
-- Every action must have an owner and deadline.
-- The root cause must be fixable and testable.
-
-Incident data: [PASTE HERE]
-Timeline: [PASTE HERE]
-Known facts: [PASTE HERE]
-Assumptions: [PASTE HERE]
-Previous similar incidents: [PASTE HERE]</code></pre>
-  </div>
-
-  <!-- Mistakes & Tips -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#DC2626;margin:0 0 12px;">Common Mistakes</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
-        <li>Stopping at the first "why"</li>
-        <li>Blaming people instead of systems</li>
-        <li>Confusing correlation with causation</li>
-        <li>Accepting testimony as fact</li>
-        <li>Closing before verifying the fix</li>
-        <li>Ignoring contributing factors</li>
-        <li>Writing RCA for compliance, not learning</li>
-      </ul>
-    </div>
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#16A34A;margin:0 0 12px;">Best Practices</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
-        <li>Start with timeline, not conclusions</li>
-        <li>Grade every piece of evidence</li>
-        <li>Check all 4 barrier types</li>
-        <li>Write root cause as testable hypothesis</li>
-        <li>Schedule verification date now</li>
-        <li>Share lessons across teams</li>
-        <li>Track recurrence as success metric</li>
-      </ul>
-    </div>
-  </div>
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
 
 </div>
 

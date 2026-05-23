@@ -1,0 +1,12 @@
+{% comment %}
+  What's Inside grid for template pages.
+  Usage: {% include template-whats-inside.html items=page.whats_inside %}
+{% endcomment %}
+<div style="background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;padding:28px;margin-bottom:36px;">
+  <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 16px;">What's Inside</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    {% for item in include.items %}
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>{{ item }}</div>
+    {% endfor %}
+  </div>
+</div>

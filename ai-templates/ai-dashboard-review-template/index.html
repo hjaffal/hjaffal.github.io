@@ -12,50 +12,82 @@ template_format: "PDF · 7 pages"
 template_updated: "May 20, 2026"
 template_pdf: "/assets/pdf/ai-dashboard-review-template.pdf"
 template_cta_text: "Download the full 7-page template with anomaly detection tables, narrative frameworks, and audience guides."
+whats_inside:
+  - Dashboard Health Check
+  - Metric Inventory
+  - Anomaly Detection
+  - Context Layer
+  - '"So What?" Framework'
+  - Metric Relationships
+  - Narrative Summary
+  - Audience-Specific Views
+  - Action Items
+  - Dashboard Improvement Log
+who_for:
+  - Data analysts & leads
+  - Operations managers
+  - Business intelligence teams
+  - Anyone presenting dashboards
+  - Leaders receiving reports
+when_to_use:
+  - Weekly metric reviews
+  - Stakeholder presentations
+  - Performance deep-dives
+  - Board or exec updates
+  - Quarterly business reviews
+mistakes:
+  - Describing charts instead of interpreting them
+  - Presenting all metrics equally
+  - Ignoring broken correlations
+  - Showing green/red without context
+  - Averaging away important spikes
+  - No actions produced from the review
+  - Never improving the dashboard itself
+tips:
+  - Start with anomalies, not summaries
+  - Add context to every movement
+  - Use "So What?" for every insight
+  - Show metric relationships
+  - Tailor depth to your audience
+  - Produce at least one action per review
+  - Kill metrics nobody acts on
+prompt: |
+  Act as a senior data analytics leader.
+
+  Review the dashboard data below and produce an executive-ready
+  narrative that turns numbers into decisions.
+
+  Structure:
+  1. Dashboard Health Check (data freshness, gaps, filters)
+  2. Metric Inventory (current vs target, status)
+  3. Anomaly Detection (spikes, drops, trend breaks, divergences)
+  4. Context Layer (business reasons behind movements)
+  5. "So What?" Analysis (what happened, why it matters, what to do)
+  6. Metric Relationships (correlations that held or broke)
+  7. Narrative Summary (situation, changes, risks, focus)
+  8. Audience-Specific Takeaways (exec vs manager vs analyst)
+  9. Action Items (specific, owned, time-bound)
+  10. Dashboard Improvement Notes (what to fix next time)
+
+  Rules:
+  - Lead with insight, not description.
+  - Every metric needs context. Numbers alone are noise.
+  - Flag anomalies explicitly. Do not bury them.
+  - Separate facts from interpretation.
+  - End with actions, not observations.
+  - If data is missing or stale, say so upfront.
+
+  Dashboard data: [PASTE METRICS HERE]
+  Time period: [PASTE PERIOD]
+  Business context: [PASTE CONTEXT]
+  Known issues: [PASTE KNOWN ISSUES]
 ---
 
-<!-- What's Inside -->
-<div style="background:var(--slate-bg);border:1px solid var(--slate-border);border-radius:10px;padding:28px;margin-bottom:36px;">
-  <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 16px;">What's Inside</h3>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">01</span>Dashboard Health Check</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">02</span>Metric Inventory</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">03</span>Anomaly Detection</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">04</span>Context Layer</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">05</span>"So What?" Framework</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">06</span>Metric Relationships</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">07</span>Narrative Summary</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">08</span>Audience-Specific Views</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">09</span>Action Items</div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--white);border-radius:6px;border:1px solid var(--slate-border);font-size:0.82rem;font-weight:500;color:var(--dark);"><span style="color:var(--accent);font-weight:700;font-size:0.75rem;width:18px;">10</span>Dashboard Improvement Log</div>
-  </div>
-</div>
+{% include template-whats-inside.html items=page.whats_inside %}
 
 <div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
 
-  <!-- Who & When -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">Who This Is For</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
-        <li>Data analysts & leads</li>
-        <li>Operations managers</li>
-        <li>Business intelligence teams</li>
-        <li>Anyone presenting dashboards</li>
-        <li>Leaders receiving reports</li>
-      </ul>
-    </div>
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">When To Use It</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.85rem;line-height:2;color:var(--dark);">
-        <li>Weekly metric reviews</li>
-        <li>Stakeholder presentations</li>
-        <li>Performance deep-dives</li>
-        <li>Board or exec updates</li>
-        <li>Quarterly business reviews</li>
-      </ul>
-    </div>
-  </div>
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
 
   <!-- So What Framework -->
   <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
@@ -77,73 +109,9 @@ template_cta_text: "Download the full 7-page template with anomaly detection tab
     </div>
   </div>
 
-  <!-- AI Prompt -->
-  <div style="border-radius:10px;overflow:hidden;border:1px solid var(--slate-border);">
-    <div style="padding:14px 20px;background:var(--slate-bg);border-bottom:1px solid var(--slate-border);display:flex;align-items:center;justify-content:space-between;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0;">Copy-Paste AI Prompt</h3>
-      <button onclick="copyPrompt()" id="copy-prompt-btn" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--white);border:1px solid var(--slate-border);border-radius:5px;font-size:0.72rem;font-weight:600;color:var(--dark);cursor:pointer;">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        <span id="copy-prompt-label">Copy</span>
-      </button>
-    </div>
-    <pre style="margin:0;padding:20px 24px;background:var(--dark);color:#E2E8F0;font-size:0.78rem;line-height:1.7;overflow-x:auto;" id="ai-prompt-block"><code>Act as a senior data analytics leader.
+  {% include template-prompt.html prompt=page.prompt %}
 
-Review the dashboard data below and produce an executive-ready
-narrative that turns numbers into decisions.
-
-Structure:
-1. Dashboard Health Check (data freshness, gaps, filters)
-2. Metric Inventory (current vs target, status)
-3. Anomaly Detection (spikes, drops, trend breaks, divergences)
-4. Context Layer (business reasons behind movements)
-5. "So What?" Analysis (what happened, why it matters, what to do)
-6. Metric Relationships (correlations that held or broke)
-7. Narrative Summary (situation, changes, risks, focus)
-8. Audience-Specific Takeaways (exec vs manager vs analyst)
-9. Action Items (specific, owned, time-bound)
-10. Dashboard Improvement Notes (what to fix next time)
-
-Rules:
-- Lead with insight, not description.
-- Every metric needs context. Numbers alone are noise.
-- Flag anomalies explicitly. Do not bury them.
-- Separate facts from interpretation.
-- End with actions, not observations.
-- If data is missing or stale, say so upfront.
-
-Dashboard data: [PASTE METRICS HERE]
-Time period: [PASTE PERIOD]
-Business context: [PASTE CONTEXT]
-Known issues: [PASTE KNOWN ISSUES]</code></pre>
-  </div>
-
-  <!-- Mistakes & Tips -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#DC2626;margin:0 0 12px;">Common Mistakes</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
-        <li>Describing charts instead of interpreting them</li>
-        <li>Presenting all metrics equally</li>
-        <li>Ignoring broken correlations</li>
-        <li>Showing green/red without context</li>
-        <li>Averaging away important spikes</li>
-        <li>No actions produced from the review</li>
-        <li>Never improving the dashboard itself</li>
-      </ul>
-    </div>
-    <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
-      <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#16A34A;margin:0 0 12px;">Best Practices</h3>
-      <ul style="padding-left:16px;margin:0;font-size:0.82rem;line-height:2;color:var(--dark);">
-        <li>Start with anomalies, not summaries</li>
-        <li>Add context to every movement</li>
-        <li>Use "So What?" for every insight</li>
-        <li>Show metric relationships</li>
-        <li>Tailor depth to your audience</li>
-        <li>Produce at least one action per review</li>
-        <li>Kill metrics nobody acts on</li>
-      </ul>
-    </div>
-  </div>
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
 
 </div>
 
