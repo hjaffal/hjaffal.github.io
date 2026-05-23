@@ -48,6 +48,14 @@ a {
 }
 a:hover { color: var(--accent); }
 
+/* Prevent hover color override on buttons */
+a[style*="background"]:hover,
+.btn-linkedin:hover,
+.hp-hero-cta-primary:hover,
+.hp-hero-cta-ghost:hover,
+.hp-position-card:hover .hp-position-title,
+.hp-position-card:hover .hp-position-desc { color: inherit; }
+
 h1, h2, h3, h4 {
   font-family: var(--sans);
   color: var(--text-main);
@@ -4710,7 +4718,9 @@ select:focus {
 .hp-hero-audience { font-size: 0.82rem; color: #64748B; margin: 0 0 28px; }
 .hp-hero-ctas { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .hp-hero-cta-primary { padding: 11px 22px; background: #9333EA; color: #fff; font-size: 0.78rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
+.hp-hero-cta-primary:hover { background: #7C22CB; color: #fff !important; }
 .hp-hero-cta-ghost { padding: 11px 22px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #CBD5E1; font-size: 0.78rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
+.hp-hero-cta-ghost:hover { background: rgba(255,255,255,0.14); color: #F8FAFC !important; }
 .hp-proof-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 32px 28px; }
 .hp-proof-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .hp-proof-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(147,51,234,0.4); }
