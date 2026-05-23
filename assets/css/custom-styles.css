@@ -4796,4 +4796,9 @@ select:focus {
 
   /* Position page nav pills wrap */
   .position-article-date { display: none; }
+
+  /* About sproochentest section — stack flag on top */
+  .about-sproochentest-row {
+    flex-direction: column !important;
+  }
 }

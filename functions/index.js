@@ -79,11 +79,11 @@ exports.sendFutureProofSkillsGuide = onRequest(
         </div>
 
         <div style="display:flex;gap:12px;margin-bottom:24px;">
-          <div style="flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;">
+          <div style="flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;margin-right:6px;">
             <p style="font-size:11px;color:#94A3B8;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.05em;">Strongest</p>
             <p style="font-size:14px;font-weight:600;color:#0F172A;margin:0;">${strongDisplay}</p>
           </div>
-          <div style="flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;">
+          <div style="flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;margin-left:6px;">
             <p style="font-size:11px;color:#94A3B8;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.05em;">Weakest</p>
             <p style="font-size:14px;font-weight:600;color:#0F172A;margin:0;">${weakDisplay}</p>
           </div>
