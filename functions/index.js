@@ -980,3 +980,59 @@ exports.shareToolWithFriend = onRequest(
     }
   }
 );
+
+
+// ===== GENERATE ROLE TASKS =====
+
+exports.generateRoleTasks = onRequest(
+  {
+    region: "europe-west1",
+    cors: true,
+    timeoutSeconds: 30,
+    secrets: [GEMINI_API_KEY]
+  },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const body = req.body.data || req.body;
+    const { jobTitle, industry, seniority, country } = body;
+
+    if (!jobTitle || !industry || !seniority) {
+      res.status(400).json({ error: "Missing required fields" });
+      return;
+    }
+
+    try {
+      const { GoogleGenerativeAI } = require("@google/generative-ai");
+      const genAI = new GoogleGenerativeAI(GEMINI_API_KEY.value());
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+      const prompt = `List 10-15 typical daily tasks for a ${seniority.replace(/_/g, " ")} ${jobTitle} working in ${industry}${country ? " in " + country : ""}. 
+
+Return ONLY a JSON array of short task descriptions. Each task should be 5-12 words. Be specific to this role and industry. Do not include generic tasks like "attend meetings" unless they are specific to the role.
+
+Example format: ["Review daily sales reports", "Approve team expense claims", "Present KPIs to leadership"]
+
+Return ONLY the JSON array, no markdown, no explanation.`;
+
+      const result = await model.generateContent(prompt);
+      let text = result.response.text().trim();
+      if (text.startsWith("```")) {
+        text = text.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
+      }
+      const tasks = JSON.parse(text);
+
+      if (!Array.isArray(tasks) || tasks.length === 0) {
+        throw new Error("Invalid response");
+      }
+
+      res.status(200).json({ tasks: tasks.slice(0, 15) });
+    } catch (err) {
+      console.error("Generate tasks error:", err.message);
+      res.status(500).json({ error: "Could not generate tasks" });
+    }
+  }
+);

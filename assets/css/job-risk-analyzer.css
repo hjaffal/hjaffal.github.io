@@ -291,3 +291,68 @@
 @media (max-width: 480px) {
   .jra-share-form { flex-direction: column; }
 }
+
+
+/* Generate tasks */
+.jra-tasks-generate {
+  margin-bottom: 10px;
+}
+.jra-gen-btn {
+  padding: 8px 16px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.jra-gen-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.jra-gen-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.jra-gen-btn i {
+  font-size: 0.75rem;
+}
+
+/* Tasks checklist */
+.jra-tasks-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 14px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+}
+.jra-check-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: var(--dark);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.jra-check-item:hover {
+  border-color: var(--accent);
+}
+.jra-check-item input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--accent);
+  margin: 0;
+}

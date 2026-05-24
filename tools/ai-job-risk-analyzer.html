@@ -72,7 +72,12 @@ css:
 
       <div class="jra-field">
         <label for="jra-tasks">What are your main daily tasks? <span class="jra-req">*</span></label>
+        <div class="jra-tasks-generate">
+          <button type="button" class="jra-gen-btn" id="jra-gen-tasks" disabled><i class="fas fa-wand-magic-sparkles"></i> Generate typical tasks for my role</button>
+        </div>
+        <div class="jra-tasks-checklist" id="jra-tasks-checklist" style="display:none;"></div>
         <textarea id="jra-tasks" required minlength="10" maxlength="2000" rows="4" placeholder="Describe what you do day-to-day. The more specific, the better the analysis."></textarea>
+        <p class="jra-tasks-hint" id="jra-tasks-hint" style="display:none;font-size:0.75rem;color:var(--text-soft);margin-top:6px;">Uncheck tasks that don't apply. Add your own specific tasks in the text box above.</p>
       </div>
 
       <div class="jra-row">
@@ -175,6 +180,79 @@ css:
   var successEl = document.getElementById('jra-success');
   var fnUrl = document.querySelector('meta[name="fn-job-risk"]');
   var url = fnUrl ? fnUrl.getAttribute('content') : '';
+
+  // Enable/disable generate tasks button based on required fields
+  var genBtn = document.getElementById('jra-gen-tasks');
+  var fieldsForGen = ['jra-job-title','jra-industry','jra-seniority','jra-country'];
+  fieldsForGen.forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('input', checkGenBtn);
+    el.addEventListener('change', checkGenBtn);
+  });
+  function checkGenBtn(){
+    var filled = fieldsForGen.every(function(id){return document.getElementById(id).value.trim().length > 0;});
+    genBtn.disabled = !filled;
+  }
+
+  // Generate tasks via Gemini
+  genBtn.addEventListener('click', function(){
+    genBtn.disabled = true;
+    genBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Generating...';
+    var jobTitle = document.getElementById('jra-job-title').value.trim();
+    var industry = document.getElementById('jra-industry').value.trim();
+    var seniority = document.getElementById('jra-seniority').value;
+    var country = document.getElementById('jra-country').value.trim();
+
+    var fnUrl = document.querySelector('meta[name="fn-gen-tasks"]');
+    fetch(fnUrl ? fnUrl.getAttribute('content') : '', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({data: {jobTitle: jobTitle, industry: industry, seniority: seniority, country: country}})
+    }).then(function(r){
+      if(!r.ok) throw new Error();
+      return r.json();
+    }).then(function(data){
+      var tasks = data.tasks || [];
+      var checklist = document.getElementById('jra-tasks-checklist');
+      checklist.innerHTML = tasks.map(function(t, i){
+        return '<label class="jra-check-item"><input type="checkbox" checked data-task="'+i+'" class="jra-task-check"><span>'+escH(t)+'</span></label>';
+      }).join('');
+      checklist.style.display = 'block';
+      document.getElementById('jra-tasks-hint').style.display = 'block';
+      updateTasksTextarea();
+
+      // Listen for checkbox changes
+      checklist.querySelectorAll('input').forEach(function(cb){
+        cb.addEventListener('change', updateTasksTextarea);
+      });
+
+      genBtn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Regenerate tasks';
+      genBtn.disabled = false;
+    }).catch(function(){
+      genBtn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Generate typical tasks for my role';
+      genBtn.disabled = false;
+      alert('Could not generate tasks. Please try again or type them manually.');
+    });
+  });
+
+  function updateTasksTextarea(){
+    var checked = [];
+    document.querySelectorAll('.jra-task-check:checked').forEach(function(cb){
+      checked.push(cb.parentElement.querySelector('span').textContent);
+    });
+    var textarea = document.getElementById('jra-tasks');
+    var manual = textarea.getAttribute('data-manual') || '';
+    textarea.value = checked.join(', ') + (manual ? ', ' + manual : '');
+  }
+
+  // Track manual additions
+  document.getElementById('jra-tasks').addEventListener('input', function(){
+    var checklist = document.getElementById('jra-tasks-checklist');
+    if(checklist.style.display === 'none') return;
+    // Don't override if checklist is active — user can add at the end
+  });
+
+  function escH(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 
   // Enable/disable button based on consent
   var consentCheckbox = document.getElementById('jra-consent');
