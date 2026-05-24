@@ -356,3 +356,27 @@
   accent-color: var(--accent);
   margin: 0;
 }
+
+
+/* Dashboard link in success state */
+.jra-success-dashboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #fff !important;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: background 0.15s;
+}
+.jra-success-dashboard:hover {
+  background: var(--accent-hover);
+  color: #fff !important;
+}
+.jra-success-dashboard i {
+  font-size: 0.85rem;
+}

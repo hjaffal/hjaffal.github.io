@@ -644,7 +644,7 @@ Return this exact JSON structure:
         html: htmlBody
       });
 
-      res.status(200).json({ result: "success" });
+      res.status(200).json({ result: "success", reportToken: reportToken });
     } catch (err) {
       console.error("Email send error:", err.message);
       res.status(500).json({ error: "Report could not be sent. Please try again." });

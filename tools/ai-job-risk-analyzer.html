@@ -134,7 +134,8 @@ css:
   <div class="jra-success" id="jra-success" style="display:none;">
     <div class="jra-success-icon"><i class="fas fa-check-circle"></i></div>
     <h2 class="jra-success-title">Your report has been sent to your email.</h2>
-    <p class="jra-success-desc">Check your inbox for your personalized AI Job Risk Report with your risk score, exposed tasks, skill gaps, and 30-day action plan.</p>
+    <p class="jra-success-desc">Check your inbox for a summary. Your full interactive dashboard is ready now.</p>
+    <a href="#" class="jra-success-dashboard" id="jra-dashboard-link"><i class="fas fa-chart-pie"></i> Open My Dashboard →</a>
 
     <div class="jra-share-box">
       <h3 class="jra-share-title"><i class="fas fa-user-plus"></i> Know someone who should try this?</h3>
@@ -319,8 +320,13 @@ css:
       }})
     }).then(function(res) {
       if (res.ok) {
-        form.style.display = 'none';
-        successEl.style.display = 'block';
+        return res.json().then(function(data) {
+          form.style.display = 'none';
+          successEl.style.display = 'block';
+          if (data.reportToken) {
+            document.getElementById('jra-dashboard-link').href = '/tools/ai-job-risk-report/?token=' + data.reportToken;
+          }
+        });
       } else {
         return res.json().then(function(data) {
           showError(data.error || 'Something went wrong. Please try again.');
