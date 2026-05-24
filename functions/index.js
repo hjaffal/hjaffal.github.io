@@ -497,73 +497,16 @@ Return this exact JSON structure:
       return;
     }
 
-    // 3. Send email with results
+    // 3. Generate secure report token and save to Firestore
+    const crypto = require("crypto");
+    const reportToken = crypto.randomBytes(32).toString("hex");
+    const tokenHash = crypto.createHash("sha256").update(reportToken).digest("hex");
+    const reportUrl = `https://hasanjaffal.com/tools/ai-job-risk-report/?token=${reportToken}`;
+
     try {
-      const resend = new Resend(RESEND_API_KEY.value());
-
-      const riskColor = analysis.risk_level === "High" ? "#DC2626" :
-                        analysis.risk_level === "Medium" ? "#D97706" : "#16A34A";
-
-      const listItems = (arr) => arr && arr.length > 0
-        ? arr.map(item => `<li style="padding:4px 0;font-size:14px;color:#334155;">${item}</li>`).join("")
-        : "<li style='padding:4px 0;font-size:14px;color:#94A3B8;'>None identified</li>";
-
-      const htmlBody = `
-        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;">
-          <h1 style="font-size:22px;font-weight:800;color:#0F172A;margin:0 0 8px;">Your AI Job Risk Report</h1>
-          <p style="font-size:14px;color:#64748B;margin:0 0 28px;">Hi ${firstName}, here is your personalized analysis.</p>
-
-          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:24px;margin-bottom:24px;">
-            <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;"><tr>
-              <td style="width:56px;height:56px;border-radius:50%;background:${riskColor};text-align:center;vertical-align:middle;">
-                <span style="font-size:18px;font-weight:800;color:#fff;">${analysis.risk_score}</span>
-              </td>
-              <td style="padding-left:16px;vertical-align:middle;">
-                <p style="font-size:12px;color:#64748B;margin:0 0 2px;text-transform:uppercase;letter-spacing:0.05em;">Risk Level</p>
-                <p style="font-size:20px;font-weight:800;color:${riskColor};margin:0;">${analysis.risk_level}</p>
-              </td>
-            </tr></table>
-            <p style="font-size:14px;color:#334155;line-height:1.6;margin:0;">${analysis.summary}</p>
-          </div>
-
-          <h2 style="font-size:15px;font-weight:700;color:#0F172A;margin:24px 0 8px;">Tasks Most Exposed to AI</h2>
-          <ul style="padding-left:18px;margin:0 0 20px;">${listItems(analysis.exposed_tasks)}</ul>
-
-          <h2 style="font-size:15px;font-weight:700;color:#0F172A;margin:24px 0 8px;">Tasks Where Human Judgment Still Matters</h2>
-          <ul style="padding-left:18px;margin:0 0 20px;">${listItems(analysis.protected_tasks)}</ul>
-
-          <h2 style="font-size:15px;font-weight:700;color:#0F172A;margin:24px 0 8px;">Skill Gaps</h2>
-          <ul style="padding-left:18px;margin:0 0 20px;">${listItems(analysis.skill_gaps)}</ul>
-
-          <h2 style="font-size:15px;font-weight:700;color:#0F172A;margin:24px 0 8px;">Recommended Skills to Build</h2>
-          <ul style="padding-left:18px;margin:0 0 20px;">${listItems(analysis.recommended_skills)}</ul>
-
-          <h2 style="font-size:15px;font-weight:700;color:#0F172A;margin:24px 0 8px;">Your 30-Day Plan</h2>
-          <ol style="padding-left:18px;margin:0 0 20px;">${listItems(analysis.thirty_day_plan)}</ol>
-
-          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px;margin:28px 0;">
-            <p style="font-size:14px;font-weight:700;color:#0F172A;margin:0 0 6px;">${analysis.final_advice}</p>
-          </div>
-
-          <div style="border-top:1px solid #E2E8F0;padding-top:24px;margin-top:32px;">
-            <p style="font-size:13px;color:#64748B;line-height:1.6;margin:0 0 12px;">I write about where AI, data, dashboards, and leadership fail in real operations, and what professionals can do about it.</p>
-            <a href="https://hasanjaffal.com/writing/" style="display:inline-block;padding:10px 20px;background:#0F172A;color:#ffffff;font-size:13px;font-weight:600;border-radius:6px;text-decoration:none;">Read more on hasanjaffal.com</a>
-          </div>
-
-          <p style="font-size:11px;color:#94A3B8;margin:24px 0 0;">— Hasan Jaffal · hasanjaffal.com<br>You received this because you used the AI Job Risk Analyzer and agreed to receive your report by email.</p>
-        </div>
-      `;
-
-      await resend.emails.send({
-        from: "Hasan Jaffal <hasan@hasanjaffal.com>",
-        to: normalizedEmail,
-        cc: "jaftalks@gmail.com",
-        subject: "Your AI Job Risk Report",
-        html: htmlBody
-      });
-
-      // Store submission in Firestore
+      // Store full report in Firestore
       await db.collection("job_risk_submissions").add({
+        tokenHash: tokenHash,
         name: name.trim(),
         email: normalizedEmail,
         jobTitle: jobTitle.trim(),
@@ -585,7 +528,94 @@ Return this exact JSON structure:
           thirtyDayPlan: analysis.thirty_day_plan || [],
           finalAdvice: analysis.final_advice || ""
         },
-        submittedAt: admin.firestore.FieldValue.serverTimestamp()
+        reportEmailSentAt: admin.firestore.FieldValue.serverTimestamp(),
+        submittedAt: admin.firestore.FieldValue.serverTimestamp(),
+        viewCount: 0
+      });
+
+      // 4. Send short summary email with CTA
+      const resend = new Resend(RESEND_API_KEY.value());
+      const riskColor = analysis.risk_level === "High" ? "#DC2626" :
+                        analysis.risk_level === "Medium" ? "#D97706" : "#0D9488";
+      const riskBg = analysis.risk_level === "High" ? "#FEF2F2" :
+                     analysis.risk_level === "Medium" ? "#FEF3C7" : "#F0FDF4";
+
+      const topExposed = (analysis.exposed_tasks || []).slice(0, 3);
+      const topSkills = (analysis.recommended_skills || []).slice(0, 3);
+
+      const exposedHtml = topExposed.map(t =>
+        `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">⚠ ${t}</td></tr>`
+      ).join("");
+
+      const skillsHtml = topSkills.map(s =>
+        `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">→ ${s}</td></tr>`
+      ).join("");
+
+      const htmlBody = `
+<div style="background:#F4F7FB;padding:0;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F4F7FB;">
+<tr><td align="center" style="padding:24px 16px;">
+<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,0.06);">
+
+<!-- Header -->
+<tr><td style="background:#0F172A;padding:24px 32px;border-bottom:3px solid #0D9488;">
+  <p style="margin:0 0 2px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#0D9488;">HASAN JAFFAL</p>
+  <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#F8FAFC;">Your AI Job Risk Report is Ready</p>
+  <p style="margin:0;font-size:12px;color:#94A3B8;">Personalized analysis for ${firstName}</p>
+</td></tr>
+
+<!-- Score -->
+<tr><td style="padding:32px;text-align:center;">
+  <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 14px;">
+    <tr><td style="width:88px;height:88px;border-radius:50%;border:6px solid ${riskColor};text-align:center;vertical-align:middle;line-height:76px;">
+      <span style="font-size:36px;font-weight:800;color:#0F172A;">${analysis.risk_score}</span>
+    </td></tr>
+  </table>
+  <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 12px;">
+    <tr><td style="padding:5px 14px;background:${riskBg};border-radius:16px;">
+      <span style="font-size:12px;font-weight:700;color:${riskColor};">● ${analysis.risk_level.toUpperCase()} RISK</span>
+    </td></tr>
+  </table>
+  <p style="margin:0;font-size:13px;color:#64748B;line-height:1.5;max-width:420px;margin:0 auto;">${analysis.summary}</p>
+</td></tr>
+
+<!-- Exposed Tasks -->
+<tr><td style="padding:0 32px 24px;">
+  <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#DC2626;">TOP EXPOSED TASKS</p>
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">${exposedHtml}</table>
+</td></tr>
+
+<!-- Recommended Skills -->
+<tr><td style="padding:0 32px 28px;">
+  <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#0D9488;">SKILLS TO BUILD</p>
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">${skillsHtml}</table>
+</td></tr>
+
+<!-- CTA -->
+<tr><td style="padding:24px 32px;text-align:center;background:#F8FAFC;border-top:1px solid #E2E8F0;">
+  <p style="margin:0 0 16px;font-size:14px;font-weight:600;color:#0F172A;">Your full interactive dashboard is ready.</p>
+  <a href="${reportUrl}" style="display:inline-block;padding:14px 32px;background:#0D9488;color:#ffffff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;">View Your Full AI Risk Dashboard →</a>
+  <p style="margin:14px 0 0;font-size:11px;color:#94A3B8;">Includes detailed charts, skill gap analysis, and your 30-day action plan.</p>
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="padding:24px 32px;border-top:1px solid #E2E8F0;text-align:center;">
+  <p style="margin:0 0 8px;font-size:12px;color:#64748B;line-height:1.5;">I write about where AI, data, dashboards, and leadership fail in real operations — and what professionals can do about it.</p>
+  <a href="https://hasanjaffal.com/writing/" style="font-size:12px;color:#0D9488;font-weight:600;text-decoration:none;">Read more on hasanjaffal.com →</a>
+  <p style="margin:16px 0 0;font-size:10px;color:#94A3B8;">You received this because you used the AI Job Risk Analyzer.<br>This report is private to ${normalizedEmail}.</p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</div>`;
+
+      await resend.emails.send({
+        from: "Hasan Jaffal <hasan@hasanjaffal.com>",
+        to: normalizedEmail,
+        cc: "jaftalks@gmail.com",
+        subject: `Your AI Job Risk Score: ${analysis.risk_score}/100 — ${analysis.risk_level} Risk`,
+        html: htmlBody
       });
 
       res.status(200).json({ result: "success" });
@@ -597,3 +627,59 @@ Return this exact JSON structure:
 );
 
 // v2 - added Firestore storage
+
+// ===== GET JOB RISK REPORT (token-based access) =====
+
+exports.getJobRiskReport = onRequest(
+  { region: "europe-west1", cors: true },
+  async (req, res) => {
+    if (req.method !== "GET" && req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const token = req.query.token || (req.body && req.body.token);
+    if (!token || typeof token !== "string" || token.length !== 64) {
+      res.status(400).json({ error: "Invalid or missing token" });
+      return;
+    }
+
+    const crypto = require("crypto");
+    const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
+
+    try {
+      const snapshot = await db.collection("job_risk_submissions")
+        .where("tokenHash", "==", tokenHash)
+        .limit(1)
+        .get();
+
+      if (snapshot.empty) {
+        res.status(404).json({ error: "Report not found" });
+        return;
+      }
+
+      const doc = snapshot.docs[0];
+      const data = doc.data();
+
+      // Update view tracking
+      await doc.ref.update({
+        lastViewedAt: admin.firestore.FieldValue.serverTimestamp(),
+        viewCount: admin.firestore.FieldValue.increment(1)
+      });
+
+      // Return report data (exclude sensitive fields)
+      res.status(200).json({
+        name: data.name,
+        jobTitle: data.jobTitle,
+        industry: data.industry,
+        seniority: data.seniority,
+        country: data.country,
+        result: data.result,
+        submittedAt: data.submittedAt ? data.submittedAt.toDate().toISOString() : null
+      });
+    } catch (err) {
+      console.error("Get report error:", err.message);
+      res.status(500).json({ error: "Could not load report" });
+    }
+  }
+);

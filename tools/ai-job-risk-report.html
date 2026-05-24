@@ -1,0 +1,238 @@
+---
+layout: page
+title:
+subtitle:
+share-title: "AI Job Risk Report — Your Personalized Dashboard"
+share-description: "View your personalized AI Job Risk Report with interactive charts, skill gap analysis, and a 30-day action plan."
+chat_with_me_box: false
+show-avatar: false
+permalink: /tools/ai-job-risk-report/
+css:
+  - "/assets/css/job-risk-report.css"
+---
+
+<div class="jrr-wrap" id="jrr-app">
+  <!-- Loading State -->
+  <div class="jrr-loading" id="jrr-loading">
+    <div class="jrr-loading-spinner"></div>
+    <p>Loading your report...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="jrr-error" id="jrr-error" style="display:none;">
+    <div class="jrr-error-icon"><i class="fas fa-exclamation-circle"></i></div>
+    <h2>Report Not Found</h2>
+    <p>This report link may be invalid or expired. Please check your email for the correct link.</p>
+    <a href="/tools/ai-job-risk-analyzer/" class="jrr-btn">Take a New Assessment →</a>
+  </div>
+
+  <!-- Report Content -->
+  <div class="jrr-report" id="jrr-report" style="display:none;">
+
+    <!-- Hero -->
+    <div class="jrr-hero">
+      <div class="jrr-hero-meta">
+        <span class="jrr-hero-label">AI JOB RISK REPORT</span>
+        <h1 class="jrr-hero-name" id="jrr-name"></h1>
+        <p class="jrr-hero-role"><span id="jrr-jobtitle"></span> · <span id="jrr-industry"></span></p>
+        <p class="jrr-hero-date">Generated <span id="jrr-date"></span></p>
+      </div>
+      <div class="jrr-hero-score">
+        <div class="jrr-score-ring" id="jrr-score-ring">
+          <span class="jrr-score-value" id="jrr-score-value"></span>
+          <span class="jrr-score-max">/100</span>
+        </div>
+        <span class="jrr-score-badge" id="jrr-score-badge"></span>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="jrr-section">
+      <p class="jrr-summary" id="jrr-summary"></p>
+    </div>
+
+    <!-- Risk Breakdown -->
+    <div class="jrr-section">
+      <h2 class="jrr-section-title">Risk Breakdown</h2>
+      <div class="jrr-bars" id="jrr-bars"></div>
+    </div>
+
+    <!-- Exposed Tasks -->
+    <div class="jrr-section">
+      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-red">⚠</span> Tasks Most Exposed</h2>
+      <p class="jrr-section-desc">Tasks that are highly repetitive, rule-based, or data-driven</p>
+      <div class="jrr-cards" id="jrr-exposed"></div>
+    </div>
+
+    <!-- Protected Tasks -->
+    <div class="jrr-section">
+      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-green">✓</span> Tasks Still Protected</h2>
+      <p class="jrr-section-desc">Tasks requiring creativity, judgment, empathy, or complex decisions</p>
+      <div class="jrr-cards" id="jrr-protected"></div>
+    </div>
+
+    <!-- Skill Gaps -->
+    <div class="jrr-section">
+      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-amber">↑</span> Skill Gaps to Close</h2>
+      <div class="jrr-cards" id="jrr-gaps"></div>
+    </div>
+
+    <!-- Recommended Skills -->
+    <div class="jrr-section">
+      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-blue">★</span> Skills to Build Next</h2>
+      <div class="jrr-skills-grid" id="jrr-skills"></div>
+    </div>
+
+    <!-- 30-Day Plan -->
+    <div class="jrr-section">
+      <h2 class="jrr-section-title">Your 30-Day Action Plan</h2>
+      <div class="jrr-timeline" id="jrr-timeline"></div>
+    </div>
+
+    <!-- Final Advice -->
+    <div class="jrr-advice" id="jrr-advice"></div>
+
+    <!-- CTA -->
+    <div class="jrr-cta">
+      <p class="jrr-cta-text">Want to keep improving? Subscribe for weekly insights on AI, risk, and career strategy.</p>
+      <form class="nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'job_risk_report')">
+        <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
+        <button type="submit" class="nl-subscribe-btn">Subscribe</button>
+        <p class="nl-subscribe-msg" style="display:none;"></p>
+      </form>
+      <a href="/tools/ai-job-risk-analyzer/" class="jrr-retake">← Retake Assessment</a>
+    </div>
+
+    <!-- Privacy -->
+    <div class="jrr-privacy">
+      <p>This report is private to the email address used for the assessment.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reportEl = document.getElementById('jrr-report');
+  var loadingEl = document.getElementById('jrr-loading');
+  var errorEl = document.getElementById('jrr-error');
+
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('token');
+
+  if (!token || token.length !== 64) {
+    showError();
+    return;
+  }
+
+  var fnUrl = '{{ site.data.firebase.fn_get_report }}';
+  fetch(fnUrl + '?token=' + encodeURIComponent(token))
+    .then(function(res) {
+      if (!res.ok) throw new Error('Not found');
+      return res.json();
+    })
+    .then(function(data) {
+      renderReport(data);
+    })
+    .catch(function() {
+      showError();
+    });
+
+  function showError() {
+    loadingEl.style.display = 'none';
+    errorEl.style.display = 'block';
+  }
+
+  function renderReport(data) {
+    loadingEl.style.display = 'none';
+    reportEl.style.display = 'block';
+
+    var r = data.result;
+    var score = r.riskScore || 0;
+    var level = r.riskLevel || 'Unknown';
+    var color = level === 'High' ? '#DC2626' : level === 'Medium' ? '#D97706' : '#0D9488';
+
+    // Hero
+    document.getElementById('jrr-name').textContent = data.name || 'Your Report';
+    document.getElementById('jrr-jobtitle').textContent = data.jobTitle || '';
+    document.getElementById('jrr-industry').textContent = data.industry || '';
+    document.getElementById('jrr-score-value').textContent = score;
+    var ring = document.getElementById('jrr-score-ring');
+    ring.style.borderColor = color;
+    var badge = document.getElementById('jrr-score-badge');
+    badge.textContent = level + ' Risk';
+    badge.style.color = color;
+    badge.style.background = level === 'High' ? '#FEF2F2' : level === 'Medium' ? '#FEF3C7' : '#F0FDF4';
+
+    if (data.submittedAt) {
+      var d = new Date(data.submittedAt);
+      document.getElementById('jrr-date').textContent = d.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
+    }
+
+    // Summary
+    document.getElementById('jrr-summary').textContent = r.summary || '';
+
+    // Risk breakdown bars
+    var barsEl = document.getElementById('jrr-bars');
+    var bars = [
+      {label:'Automation Exposure', value: Math.min(score + 20, 100), color:'#DC2626'},
+      {label:'Human Judgment Strength', value: Math.max(100 - score, 20), color:'#0D9488'},
+      {label:'Skill Gap Urgency', value: Math.min(score + 10, 90), color:'#D97706'},
+      {label:'Action Readiness', value: Math.max(60 - score/2, 20), color:'#2563EB'}
+    ];
+    barsEl.innerHTML = bars.map(function(b){
+      return '<div class="jrr-bar-row"><div class="jrr-bar-header"><span class="jrr-bar-label">'+b.label+'</span><span class="jrr-bar-value" style="color:'+b.color+'">'+b.value+'%</span></div><div class="jrr-bar-track"><div class="jrr-bar-fill" style="width:'+b.value+'%;background:'+b.color+'"></div></div></div>';
+    }).join('');
+
+    // Exposed tasks
+    var exposedEl = document.getElementById('jrr-exposed');
+    var exposed = r.exposedTasks || [];
+    exposedEl.innerHTML = exposed.map(function(t, i){
+      var pct = Math.max(90 - i*12, 50);
+      return '<div class="jrr-card jrr-card-red"><div class="jrr-card-header"><span class="jrr-card-title">'+escHtml(t)+'</span><span class="jrr-card-badge jrr-badge-red">'+pct+'%</span></div><div class="jrr-bar-track"><div class="jrr-bar-fill" style="width:'+pct+'%;background:#DC2626;"></div></div></div>';
+    }).join('');
+
+    // Protected tasks
+    var protectedEl = document.getElementById('jrr-protected');
+    var protected_ = r.protectedTasks || [];
+    protectedEl.innerHTML = protected_.map(function(t, i){
+      var pct = Math.max(95 - i*8, 70);
+      return '<div class="jrr-card jrr-card-green"><div class="jrr-card-header"><span class="jrr-card-title">'+escHtml(t)+'</span><span class="jrr-card-badge jrr-badge-green">'+pct+'%</span></div><div class="jrr-bar-track"><div class="jrr-bar-fill" style="width:'+pct+'%;background:#0D9488;"></div></div></div>';
+    }).join('');
+
+    // Skill gaps
+    var gapsEl = document.getElementById('jrr-gaps');
+    var gaps = r.skillGaps || [];
+    var priorities = ['HIGH','MEDIUM','MEDIUM'];
+    gapsEl.innerHTML = gaps.map(function(g, i){
+      var p = priorities[i] || 'MEDIUM';
+      var cls = p === 'HIGH' ? 'jrr-badge-red' : 'jrr-badge-amber';
+      return '<div class="jrr-card jrr-card-amber"><div class="jrr-card-header"><span class="jrr-card-title">'+escHtml(g)+'</span><span class="jrr-card-badge '+cls+'">'+p+'</span></div></div>';
+    }).join('');
+
+    // Recommended skills
+    var skillsEl = document.getElementById('jrr-skills');
+    var skills = r.recommendedSkills || [];
+    skillsEl.innerHTML = skills.map(function(s){
+      return '<div class="jrr-skill-card"><span class="jrr-skill-name">'+escHtml(s)+'</span></div>';
+    }).join('');
+
+    // 30-day plan
+    var timelineEl = document.getElementById('jrr-timeline');
+    var plan = r.thirtyDayPlan || [];
+    var weekColors = ['#0D9488','#2563EB','#D97706','#9333EA'];
+    timelineEl.innerHTML = plan.map(function(p, i){
+      return '<div class="jrr-week-card" style="border-left-color:'+weekColors[i]+'"><span class="jrr-week-label" style="color:'+weekColors[i]+'">WEEK '+(i+1)+'</span><p class="jrr-week-text">'+escHtml(p)+'</p></div>';
+    }).join('');
+
+    // Final advice
+    var adviceEl = document.getElementById('jrr-advice');
+    adviceEl.innerHTML = '<p>'+escHtml(r.finalAdvice || '')+'</p>';
+  }
+
+  function escHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+})();
+</script>
