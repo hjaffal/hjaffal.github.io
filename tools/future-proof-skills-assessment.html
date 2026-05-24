@@ -46,10 +46,14 @@ css:
 .fps-email-box { padding: 24px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 12px; margin-top: 28px; }
 .fps-email-box h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
 .fps-email-box p { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 14px; }
-.fps-email-form { display: flex; gap: 8px; }
-.fps-email-form input { flex: 1; padding: 10px 14px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.85rem; outline: none; }
-.fps-email-form input:focus { border-color: var(--accent); }
-.fps-email-form button { padding: 10px 18px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.fps-email-form { display: flex; flex-direction: column; }
+.fps-email-form input[type="text"],
+.fps-email-form input[type="email"] { width: 100%; padding: 10px 14px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.85rem; outline: none; margin-bottom: 8px; box-sizing: border-box; }
+.fps-email-form input[type="text"]:focus,
+.fps-email-form input[type="email"]:focus { border-color: var(--accent); }
+.fps-email-form input[type="checkbox"] { width: 16px; height: 16px; margin: 0; flex-shrink: 0; }
+.fps-email-form button { width: 100%; padding: 12px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.fps-email-form button:disabled { opacity: 0.4; cursor: not-allowed; }
 .fps-faq { margin-top: 64px; border-top: 1px solid var(--slate-border); padding-top: 40px; }
 .fps-faq h2 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin: 0 0 24px; }
 .fps-faq-item { margin-bottom: 20px; }
@@ -278,16 +282,35 @@ function renderResult(){
   html+='<div class="fps-skills"><h3>Recommended skills to learn next</h3>';
   for(var s=0;s<skills.length;s++){html+='<div class="fps-skill-item">'+skills[s]+'</div>';}
   html+='</div>';
-  html+='<div class="fps-email-box"><h3>Get the full Future-Proof Skills Guide</h3><p>Enter your email to receive the complete guide with learning paths and action steps.</p>';
-  html+='<form class="fps-email-form" id="fps-email-form"><input type="email" placeholder="your@email.com" required id="fps-email-input"><button type="submit">Send guide</button></form>';
+  html+='<div class="fps-email-box"><h3>Get the full Future-Proof Skills Guide</h3><p>Enter your details to receive the complete guide with learning paths and action steps.</p>';
+  html+='<form class="fps-email-form" id="fps-email-form">';
+  html+='<input type="text" placeholder="Full name" required id="fps-name-input">';
+  html+='<input type="email" placeholder="your@email.com" required id="fps-email-input">';
+  html+='<input type="text" placeholder="Job title" required id="fps-jobtitle-input">';
+  html+='<input type="text" placeholder="Country or region" required id="fps-country-input">';
+  html+='<label style="display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:var(--text-muted);margin:4px 0 14px;cursor:pointer;"><input type="checkbox" id="fps-consent" style="margin-top:2px;accent-color:var(--accent);"><span>I agree to receive the newsletter and my personalized guide by email.</span></label>';
+  html+='<button type="submit" id="fps-submit-btn" disabled>Send guide</button>';
+  html+='</form>';
   html+='<p id="fps-email-msg" style="display:none;font-size:0.78rem;color:var(--accent);margin:10px 0 0;font-weight:500;"></p>';
   html+='</div></div>';
   container.innerHTML=html;
 
+  // Enable/disable button based on consent
+  var consentBox = document.getElementById('fps-consent');
+  var submitBtn = document.getElementById('fps-submit-btn');
+  consentBox.onchange = function() {
+    submitBtn.disabled = !consentBox.checked;
+    submitBtn.style.opacity = consentBox.checked ? '1' : '0.4';
+  };
+
   document.getElementById('fps-email-form').onsubmit=function(e){
     e.preventDefault();
-    var email=document.getElementById('fps-email-input').value;
-    if(!email)return;
+    var name=document.getElementById('fps-name-input').value.trim();
+    var email=document.getElementById('fps-email-input').value.trim();
+    var jobTitle=document.getElementById('fps-jobtitle-input').value.trim();
+    var country=document.getElementById('fps-country-input').value.trim();
+    if(!name||!email||!jobTitle||!country)return;
+    if(!document.getElementById('fps-consent').checked)return;
     // Store subscription
     localStorage.setItem('tpl_subscribed','1');
     localStorage.setItem('tpl_email',email);
@@ -313,7 +336,10 @@ function renderResult(){
 
     // Send results via Firebase Cloud Function (callable)
     var callData = {
+      name: name,
       email: email,
+      jobTitle: jobTitle,
+      country: country,
       score: score,
       resultBand: bandMap[band] || band.toLowerCase().replace(/ /g,'_'),
       jobFamily: jobFamilyMap[jobFamilies[state.jobFamily]] || 'other_not_sure',

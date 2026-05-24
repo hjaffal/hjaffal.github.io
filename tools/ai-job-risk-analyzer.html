@@ -1,0 +1,270 @@
+---
+layout: page
+title:
+subtitle:
+share-title: "AI Job Risk Analyzer — How Exposed Is Your Role?"
+share-description: "Get a personalized AI risk analysis for your job. Understand which tasks are exposed, which skills to build, and get a 30-day action plan sent to your email."
+chat_with_me_box: false
+show-avatar: false
+permalink: /tools/ai-job-risk-analyzer/
+css:
+  - "/assets/css/job-risk-analyzer.css"
+---
+
+<div class="jra-wrap">
+  <div class="jra-header">
+    <span class="jra-label">AI-POWERED ANALYSIS</span>
+    <h1 class="jra-title">AI Job Risk Analyzer</h1>
+    <p class="jra-sub">Find out how exposed your role is to AI automation. Get a personalized report with your risk score, exposed tasks, skill gaps, and a 30-day action plan — sent directly to your email.</p>
+  </div>
+
+  <form id="jra-form" class="jra-form" novalidate>
+    <!-- Honeypot -->
+    <input type="text" name="website" id="jra-honeypot" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off">
+
+    <div class="jra-section">
+      <h2 class="jra-section-title">About You</h2>
+
+      <div class="jra-field">
+        <label for="jra-name">Full name <span class="jra-req">*</span></label>
+        <input type="text" id="jra-name" required maxlength="200" placeholder="Your full name">
+      </div>
+
+      <div class="jra-field">
+        <label for="jra-email">Email <span class="jra-req">*</span></label>
+        <input type="email" id="jra-email" required placeholder="your@email.com">
+      </div>
+
+      <div class="jra-row">
+        <div class="jra-field">
+          <label for="jra-job-title">Job title <span class="jra-req">*</span></label>
+          <input type="text" id="jra-job-title" required maxlength="200" placeholder="e.g. Data Analyst">
+        </div>
+        <div class="jra-field">
+          <label for="jra-industry">Industry <span class="jra-req">*</span></label>
+          <input type="text" id="jra-industry" required maxlength="200" placeholder="e.g. Financial Services">
+        </div>
+      </div>
+
+      <div class="jra-row">
+        <div class="jra-field">
+          <label for="jra-seniority">Seniority level <span class="jra-req">*</span></label>
+          <select id="jra-seniority" required>
+            <option value="">Select...</option>
+            <option value="entry_level">Entry level</option>
+            <option value="specialist">Specialist</option>
+            <option value="manager">Manager</option>
+            <option value="senior_manager">Senior manager</option>
+            <option value="director">Director</option>
+            <option value="executive">Executive</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="jra-field">
+          <label for="jra-country">Country or region <span class="jra-req">*</span></label>
+          <input type="text" id="jra-country" required maxlength="100" placeholder="e.g. Luxembourg">
+        </div>
+      </div>
+    </div>
+
+    <div class="jra-section">
+      <h2 class="jra-section-title">Your Work & AI</h2>
+
+      <div class="jra-field">
+        <label for="jra-tasks">What are your main daily tasks? <span class="jra-req">*</span></label>
+        <textarea id="jra-tasks" required minlength="10" maxlength="2000" rows="4" placeholder="Describe what you do day-to-day. The more specific, the better the analysis."></textarea>
+      </div>
+
+      <div class="jra-row">
+        <div class="jra-field">
+          <label for="jra-concern">Biggest AI concern <span class="jra-req">*</span></label>
+          <select id="jra-concern" required>
+            <option value="">Select...</option>
+            <option value="job_automated">My job may be automated</option>
+            <option value="skills_outdated">My skills may become outdated</option>
+            <option value="team_no_ai">My team does not know how to use AI</option>
+            <option value="company_too_fast">My company is moving too fast with AI</option>
+            <option value="company_too_slow">My company is moving too slowly with AI</option>
+            <option value="dont_know_where_to_start">I do not know where to start</option>
+          </select>
+        </div>
+        <div class="jra-field">
+          <label for="jra-usage">Current AI usage <span class="jra-req">*</span></label>
+          <select id="jra-usage" required>
+            <option value="">Select...</option>
+            <option value="no_ai">I do not use AI yet</option>
+            <option value="occasionally">I use AI occasionally</option>
+            <option value="weekly">I use AI weekly</option>
+            <option value="daily">I use AI daily</option>
+            <option value="manage_ai">I manage AI-related work</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="jra-field">
+        <label for="jra-skills">Skills you want to build <span class="jra-opt">(optional)</span></label>
+        <textarea id="jra-skills" maxlength="1000" rows="2" placeholder="e.g. prompt engineering, data storytelling, AI strategy"></textarea>
+      </div>
+    </div>
+
+    <div class="jra-section">
+      <div class="jra-consent">
+        <label class="jra-checkbox-label">
+          <input type="checkbox" id="jra-consent" required>
+          <span>I agree to receive the newsletter and my personalized AI report by email. <span class="jra-req">*</span></span>
+        </label>
+      </div>
+
+      <button type="submit" class="jra-submit" id="jra-submit" disabled>
+        <span class="jra-submit-text">Analyze My Role</span>
+        <span class="jra-submit-loading" style="display:none;">
+          <i class="fas fa-circle-notch fa-spin"></i> Generating report...
+        </span>
+      </button>
+
+      <p class="jra-error" id="jra-error" style="display:none;"></p>
+    </div>
+  </form>
+
+  <div class="jra-success" id="jra-success" style="display:none;">
+    <div class="jra-success-icon"><i class="fas fa-check-circle"></i></div>
+    <h2 class="jra-success-title">Your report has been sent to your email.</h2>
+    <p class="jra-success-desc">Check your inbox for your personalized AI Job Risk Report with your risk score, exposed tasks, skill gaps, and 30-day action plan.</p>
+    <a href="/tools/" class="jra-success-link">← Back to Tools</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="jra-faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="jra-faq-item">
+      <h3>How does this work?</h3>
+      <p>You fill in details about your role and tasks. Our AI analyzes your profile against current automation trends and sends you a personalized report by email.</p>
+    </div>
+    <div class="jra-faq-item">
+      <h3>Is my data stored?</h3>
+      <p>Your form inputs are sent to generate the report and are not stored after the email is sent. Your email is added to the newsletter if you consent.</p>
+    </div>
+    <div class="jra-faq-item">
+      <h3>How accurate is the risk score?</h3>
+      <p>The score is an estimate based on current AI capabilities and trends. It is not a prediction. Use it as a starting point for planning, not as a certainty.</p>
+    </div>
+    <div class="jra-faq-item">
+      <h3>How long does it take?</h3>
+      <p>The form takes about 3 minutes. Your report arrives by email within 1–2 minutes after submission.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var form = document.getElementById('jra-form');
+  var submitBtn = document.getElementById('jra-submit');
+  var errorEl = document.getElementById('jra-error');
+  var successEl = document.getElementById('jra-success');
+  var fnUrl = document.querySelector('meta[name="fn-job-risk"]');
+  var url = fnUrl ? fnUrl.getAttribute('content') : '';
+
+  // Enable/disable button based on consent
+  var consentCheckbox = document.getElementById('jra-consent');
+  consentCheckbox.addEventListener('change', function() {
+    submitBtn.disabled = !consentCheckbox.checked;
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    errorEl.style.display = 'none';
+
+    // Validate
+    var name = document.getElementById('jra-name').value.trim();
+    var email = document.getElementById('jra-email').value.trim();
+    var jobTitle = document.getElementById('jra-job-title').value.trim();
+    var industry = document.getElementById('jra-industry').value.trim();
+    var seniority = document.getElementById('jra-seniority').value;
+    var country = document.getElementById('jra-country').value.trim();
+    var mainTasks = document.getElementById('jra-tasks').value.trim();
+    var aiConcern = document.getElementById('jra-concern').value;
+    var aiUsage = document.getElementById('jra-usage').value;
+    var skillsToLearn = document.getElementById('jra-skills').value.trim();
+    var consent = document.getElementById('jra-consent').checked;
+    var honeypot = document.getElementById('jra-honeypot').value;
+
+    if (!name || !email || !jobTitle || !industry || !seniority || !country || !mainTasks || !aiConcern || !aiUsage) {
+      showError('Please fill in all required fields.');
+      return;
+    }
+    if (mainTasks.length < 10) {
+      showError('Please describe your main tasks in more detail (at least 10 characters).');
+      return;
+    }
+    if (!consent) {
+      showError('Please agree to receive the newsletter and your report by email.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('Please enter a valid email address.');
+      return;
+    }
+
+    // Disable and show loading
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.jra-submit-text').style.display = 'none';
+    submitBtn.querySelector('.jra-submit-loading').style.display = 'inline';
+
+    fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({data: {
+        name: name,
+        email: email,
+        jobTitle: jobTitle,
+        industry: industry,
+        seniority: seniority,
+        country: country,
+        mainTasks: mainTasks,
+        aiConcern: aiConcern,
+        aiUsage: aiUsage,
+        skillsToLearn: skillsToLearn,
+        consent: consent,
+        honeypot: honeypot
+      }})
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        return res.json().then(function(data) {
+          showError(data.error || 'Something went wrong. Please try again.');
+          resetBtn();
+        });
+      }
+    }).catch(function() {
+      showError('Could not connect. Please check your internet and try again.');
+      resetBtn();
+    });
+  });
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+
+  function resetBtn() {
+    submitBtn.disabled = false;
+    submitBtn.querySelector('.jra-submit-text').style.display = 'inline';
+    submitBtn.querySelector('.jra-submit-loading').style.display = 'none';
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How does the AI Job Risk Analyzer work?", "acceptedAnswer": {"@type": "Answer", "text": "You fill in details about your role and tasks. Our AI analyzes your profile against current automation trends and sends you a personalized report by email."}},
+    {"@type": "Question", "name": "Is my data stored?", "acceptedAnswer": {"@type": "Answer", "text": "Your form inputs are sent to generate the report and are not stored after the email is sent. Your email is added to the newsletter if you consent."}},
+    {"@type": "Question", "name": "How accurate is the AI job risk score?", "acceptedAnswer": {"@type": "Answer", "text": "The score is an estimate based on current AI capabilities and trends. It is not a prediction. Use it as a starting point for planning, not as a certainty."}},
+    {"@type": "Question", "name": "How long does the AI Job Risk Analyzer take?", "acceptedAnswer": {"@type": "Answer", "text": "The form takes about 3 minutes. Your report arrives by email within 1-2 minutes after submission."}}
+  ]
+}
+</script>
