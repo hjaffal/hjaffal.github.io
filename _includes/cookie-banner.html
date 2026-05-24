@@ -1,0 +1,17 @@
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0F172A;border-top:1px solid #334155;padding:14px 24px;font-family:var(--sans, -apple-system, sans-serif);">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <p style="margin:0;font-size:0.82rem;color:#CBD5E1;line-height:1.5;">This site uses cookies and analytics to improve your experience. By continuing to use this site, you agree to our use of cookies.</p>
+    <button id="cookie-accept" style="padding:8px 20px;background:#9333EA;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;white-space:nowrap;">OK</button>
+  </div>
+</div>
+<script>
+(function(){
+  if(!localStorage.getItem('cookie_accepted')){
+    document.getElementById('cookie-banner').style.display='block';
+  }
+  document.getElementById('cookie-accept').addEventListener('click',function(){
+    localStorage.setItem('cookie_accepted','1');
+    document.getElementById('cookie-banner').style.display='none';
+  });
+})();
+</script>
