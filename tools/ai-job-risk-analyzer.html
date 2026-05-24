@@ -19,8 +19,10 @@ css:
   </div>
 
   <form id="jra-form" class="jra-form" novalidate>
-    <!-- Honeypot -->
-    <input type="text" name="website" id="jra-honeypot" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off">
+    <!-- Honeypot - hidden via multiple methods to prevent autofill -->
+    <div style="display:none !important;visibility:hidden;height:0;width:0;overflow:hidden;" aria-hidden="true">
+      <input type="text" name="fax_number" id="jra-honeypot" tabindex="-1" autocomplete="off" value="">
+    </div>
 
     <div class="jra-section">
       <h2 class="jra-section-title">About You</h2>
@@ -278,6 +280,10 @@ css:
     var skillsToLearn = document.getElementById('jra-skills').value.trim();
     var consent = document.getElementById('jra-consent').checked;
     var honeypot = document.getElementById('jra-honeypot').value;
+    // Reset honeypot if browser autofilled it (Samsung/Android issue)
+    if (honeypot && document.getElementById('jra-honeypot').offsetParent === null) {
+      honeypot = '';
+    }
 
     if (!name || !email || !jobTitle || !industry || !seniority || !country || !mainTasks || !aiConcern || !aiUsage) {
       showError('Please fill in all required fields.');
