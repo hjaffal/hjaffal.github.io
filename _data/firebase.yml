@@ -1,7 +1,3 @@
-# Beehiiv newsletter form IDs
-beehiiv_desktop: "d805d78f-acff-4c2b-b871-fe65ff327886"
-beehiiv_mobile: "c48f5bc1-80ee-479b-b238-d7fe9d839504"
-
 # Firebase Cloud Function URLs
 fn_skills_guide: "https://sendfutureproofskillsguide-vgheoh5xza-ew.a.run.app"
 fn_contact: "https://sendcontactmessage-vgheoh5xza-ew.a.run.app"
@@ -11,3 +7,16 @@ fn_get_report: "https://getjobriskreport-vgheoh5xza-ew.a.run.app"
 fn_rerun_report: "https://rerunjobriskanalysis-vgheoh5xza-ew.a.run.app"
 fn_share_tool: "https://sharetoolwithfriend-vgheoh5xza-ew.a.run.app"
 fn_gen_tasks: "https://generateroletasks-vgheoh5xza-ew.a.run.app"
+
+# Newsletter management
+fn_newsletter_preferences: "https://newsletterpreferences-vgheoh5xza-ew.a.run.app"
+fn_send_newsletter: "https://sendnewsletter-vgheoh5xza-ew.a.run.app"
+fn_track_open: "https://trackopen-vgheoh5xza-ew.a.run.app"
+fn_track_click: "https://trackclick-vgheoh5xza-ew.a.run.app"
+fn_handle_bounce: "https://handlebounce-vgheoh5xza-ew.a.run.app"
+fn_get_analytics: "https://getanalytics-vgheoh5xza-ew.a.run.app"
+fn_manage_subscribers: "https://managesubscribers-vgheoh5xza-ew.a.run.app"
+fn_import_subscribers: "https://importsubscribers-vgheoh5xza-ew.a.run.app"
+
+# Firebase web config (API key is safe to expose — restricted by domain)
+firebase_api_key: "AIzaSyAc7rsjmMeWjR5AzBEOWZfFzRjOQdNZtoQ"

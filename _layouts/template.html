@@ -90,9 +90,10 @@ css:
     <div class="tpl-gate-icon">
       <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </div>
-    <h3 class="tpl-gate-title">Enter your email to download</h3>
+    <h3 class="tpl-gate-title">Enter your details to download</h3>
     <p class="tpl-gate-desc">Get the template and receive new AI templates and operational guides.</p>
     <form id="template-gate-form" onsubmit="submitGateEmail(event)" class="tpl-gate-form">
+      <input type="text" id="template-gate-name" placeholder="Your name" required class="tpl-gate-input">
       <input type="email" id="template-gate-email" placeholder="your@email.com" required class="tpl-gate-input">
       <button type="submit" class="tpl-gate-submit">Download</button>
     </form>
@@ -110,6 +111,7 @@ function handleTemplateDownload() {
 function closeGate() { document.getElementById('template-download-gate').style.display = 'none'; }
 function submitGateEmail(e) {
   e.preventDefault();
+  var name = document.getElementById('template-gate-name').value;
   var email = document.getElementById('template-gate-email').value;
   if (!email) return;
   localStorage.setItem('tpl_subscribed', '1');
@@ -118,7 +120,7 @@ function submitGateEmail(e) {
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({data: {email: email, utm_source: 'template_download'}})
+    body: JSON.stringify({email: email, name: name, utm_source: 'template_download'})
   }).catch(function(){});
   var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
 }

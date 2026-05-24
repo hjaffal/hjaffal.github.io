@@ -48,6 +48,7 @@ permalink: /future-proof-skills/
         <p class="gated-cta-text">Subscribe to read the full article.</p>
         <div class="gated-form">
           <form class="nl-subscribe-form" onsubmit="return handleGatedSubscribe(event, this)">
+            <input type="text" placeholder="Your name" required class="nl-subscribe-input">
             <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
             <button type="submit" class="nl-subscribe-btn">Subscribe & Read</button>
             <p class="nl-subscribe-msg" style="display:none;"></p>
@@ -159,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function handleGatedSubscribe(e, form) {
   e.preventDefault();
+  var name = form.querySelector('input[type="text"]').value;
   var email = form.querySelector('input[type="email"]').value;
   var msg = form.querySelector('.nl-subscribe-msg');
   var btn = form.querySelector('button[type="submit"]');
@@ -170,7 +172,7 @@ function handleGatedSubscribe(e, form) {
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({data: {email: email, utm_source: 'gated_content'}})
+    body: JSON.stringify({email: email, name: name, utm_source: 'gated_content'})
   }).then(function(res) {
     if (res.ok) {
       localStorage.setItem('gated_unlocked', 'true');

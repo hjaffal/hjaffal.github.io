@@ -1,0 +1,1017 @@
+---
+layout: default
+title: Newsletter Admin
+share-title: "Newsletter Admin"
+chat_with_me_box: false
+show-avatar: false
+sitemap: false
+full-width: true
+head-extra:
+  - noindex.html
+ext-css:
+  - "https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+css:
+  - "/assets/css/newsletter-admin.css"
+---
+
+<!-- Auth: Sign-in (shown when not authenticated) -->
+<div id="nla-auth" class="nla-auth">
+  <h2 class="nla-auth-title">Sign in to continue</h2>
+  <p class="nla-auth-desc">Only authorized administrators can access this dashboard.</p>
+  <button class="nla-google-btn" id="nla-google-signin" type="button" aria-label="Sign in with Google">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+    Sign in with Google
+  </button>
+</div>
+
+<!-- Authenticated dashboard with sidebar -->
+<div id="nla-dashboard" class="nla-layout" hidden>
+  <!-- Mobile hamburger -->
+  <button class="nla-mobile-toggle" id="nla-mobile-toggle" type="button" aria-label="Toggle menu">☰</button>
+  <div class="nla-sidebar-overlay" id="nla-sidebar-overlay"></div>
+
+  <aside class="nla-sidebar" id="nla-sidebar">
+    <div class="nla-sidebar-header">
+      <div class="nla-sidebar-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#9333EA"/>
+          <path d="M7 11l9 6 9-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="7" y="9" width="18" height="14" rx="2" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <span class="nla-sidebar-logo-text">Admin</span>
+      </div>
+    </div>
+    <nav class="nla-sidebar-nav">
+      <button class="nla-nav-item active" data-panel="overview" type="button">
+        <span class="nla-nav-icon">📊</span> Overview
+      </button>
+      <button class="nla-nav-item" data-panel="compose" type="button">
+        <span class="nla-nav-icon">✉️</span> Compose
+      </button>
+      <button class="nla-nav-item" data-panel="subscribers" type="button">
+        <span class="nla-nav-icon">👥</span> Subscribers
+      </button>
+      <button class="nla-nav-item" data-panel="analytics" type="button">
+        <span class="nla-nav-icon">📈</span> Analytics
+      </button>
+      <button class="nla-nav-item" data-panel="import" type="button">
+        <span class="nla-nav-icon">📥</span> Import
+      </button>
+    </nav>
+    <div class="nla-sidebar-links">
+      <a href="/" class="nla-sidebar-link" target="_blank">🌐 Public Website</a>
+      <div class="nla-sidebar-submenu">
+        <button class="nla-sidebar-submenu-title" id="config-toggle" type="button">⚙️ Config <span class="nla-submenu-arrow">›</span></button>
+        <div class="nla-submenu-items" id="config-items" hidden>
+          <a href="https://www.godaddy.com/" class="nla-sidebar-link nla-sidebar-sublink" target="_blank" rel="noopener">GoDaddy</a>
+          <a href="https://resend.com/" class="nla-sidebar-link nla-sidebar-sublink" target="_blank" rel="noopener">Resend</a>
+          <a href="https://console.firebase.google.com/" class="nla-sidebar-link nla-sidebar-sublink" target="_blank" rel="noopener">Firebase Console</a>
+        </div>
+      </div>
+    </div>
+    <div class="nla-sidebar-footer">
+      <span class="nla-user-email" id="nla-user-email"></span>
+      <button class="nla-signout-btn" id="nla-signout" type="button">Sign Out</button>
+    </div>
+  </aside>
+
+  <main class="nla-main">
+
+    <!-- Overview Panel -->
+    <div class="nla-panel active" id="panel-overview">
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Overview</h1>
+        <p class="nla-panel-desc">Your newsletter at a glance.</p>
+      </div>
+      <div id="overview-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading overview"></div>
+        <p>Loading overview…</p>
+      </div>
+      <div id="overview-error" class="nla-error" hidden></div>
+      <div id="overview-content" hidden>
+        <div class="nla-stats" id="overview-stats"></div>
+        <h3 class="nla-section-title">Recent Editions</h3>
+        <div id="overview-grid"></div>
+      </div>
+    </div>
+
+    <!-- Compose Panel -->
+    <div class="nla-panel" id="panel-compose" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Compose Newsletter</h1>
+        <p class="nla-panel-desc">Create and send a new edition to your subscribers.</p>
+      </div>
+      <div id="compose-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading posts"></div>
+        <p>Loading posts…</p>
+      </div>
+      <div id="compose-error" class="nla-error" hidden></div>
+      <div id="compose-content" hidden>
+        <form id="compose-form" aria-label="Compose newsletter">
+
+          <!-- Content Section -->
+          <div class="nla-card">
+            <div class="nla-card-header">Content</div>
+            <div class="nla-form-group">
+              <label class="nla-label" for="compose-subject">Subject Line</label>
+              <input class="nla-input" type="text" id="compose-subject" required placeholder="The Second Mind #__ — …">
+            </div>
+            <div class="nla-form-group">
+              <label class="nla-label">Intro Text (optional — appears before posts)</label>
+              <div class="nla-editor-toolbar">
+                <button type="button" class="nla-editor-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+                <button type="button" class="nla-editor-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+                <button type="button" class="nla-editor-btn" data-cmd="insertUnorderedList" title="Bullet List">•</button>
+                <button type="button" class="nla-editor-btn" data-cmd="insertOrderedList" title="Numbered List">1.</button>
+                <button type="button" class="nla-editor-btn" data-cmd="createLink" title="Link">🔗</button>
+              </div>
+              <div class="nla-editor" id="compose-intro" contenteditable="true" aria-label="Intro text editor" placeholder="Write a personal note, update, or any content you want to share…"></div>
+            </div>
+          </div>
+
+          <!-- Posts Section -->
+          <div class="nla-card">
+            <div class="nla-card-header">Posts</div>
+            <div class="nla-form-group">
+              <label class="nla-label">Select Posts (check to include, radio for featured)</label>
+              <div class="nla-post-list" id="compose-posts" role="group" aria-label="Available posts"></div>
+            </div>
+          </div>
+
+          <!-- Tool Invitation Section -->
+          <div class="nla-card">
+            <div class="nla-card-header">Tool Invitation</div>
+            <div class="nla-tool-section">
+              <div class="nla-tool-section-title">Optional — promote a tool in this edition</div>
+              <div class="nla-tool-fields">
+                <div class="nla-form-group">
+                  <label class="nla-label" for="tool-select">Select a Tool</label>
+                  <select class="nla-select" id="tool-select">
+                    <option value="">None</option>
+                    <option value="ai-job-risk" data-name="AI Job Risk Assessment" data-desc="Find out how exposed your role is to AI automation." data-url="https://hasanjaffal.com/ai-job-risk-analyzer/">AI Job Risk Assessment</option>
+                    <option value="future-proof-skills" data-name="Future-Proof Skills Assessment" data-desc="Discover which skills will keep you relevant as AI reshapes work." data-url="https://hasanjaffal.com/tools/future-proof-skills-assessment/">Future-Proof Skills Assessment</option>
+                  </select>
+                </div>
+                <div class="nla-form-group">
+                  <label class="nla-label" for="tool-name">Tool Name</label>
+                  <input class="nla-input" type="text" id="tool-name" placeholder="AI Job Risk Assessment">
+                </div>
+                <div class="nla-form-group">
+                  <label class="nla-label" for="tool-desc">Description</label>
+                  <input class="nla-input" type="text" id="tool-desc" placeholder="Find out how exposed your role is…">
+                </div>
+                <div class="nla-form-group">
+                  <label class="nla-label" for="tool-url">URL</label>
+                  <input class="nla-input" type="url" id="tool-url" placeholder="https://hasanjaffal.com/ai-job-risk-analyzer/">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audience Section -->
+          <div class="nla-card">
+            <div class="nla-card-header">Audience</div>
+            <div class="nla-form-group">
+              <label class="nla-label">Segments</label>
+              <div class="nla-segment-checks">
+                <label class="nla-check-label"><input type="checkbox" id="seg-main" value="main_website" checked> Main Website (The Second Mind)</label>
+                <label class="nla-check-label"><input type="checkbox" id="seg-sproochentest" value="sproochentest_prep"> Sproochentest Prep</label>
+                <label class="nla-check-label"><input type="checkbox" id="seg-testing" value="testing"> Testing</label>
+              </div>
+            </div>
+          </div>
+
+          <div id="compose-send-error" class="nla-error" hidden></div>
+          <div id="compose-send-success" class="nla-success" hidden></div>
+
+          <button class="nla-btn nla-btn-primary" type="submit" id="compose-send-btn">Send Newsletter</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Subscribers Panel -->
+    <div class="nla-panel" id="panel-subscribers" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Subscribers <span class="nla-panel-count" id="sub-total-count"></span></h1>
+        <p class="nla-panel-desc">Manage your subscriber list, add new contacts, and export data.</p>
+      </div>
+      <div class="nla-add-form">
+        <input class="nla-input" type="email" id="sub-add-email" placeholder="Add subscriber email…" aria-label="Email address to add">
+        <input class="nla-input" type="text" id="sub-add-name" placeholder="Name (optional)" aria-label="Subscriber name">
+        <button class="nla-btn nla-btn-primary" type="button" id="sub-add-btn">Add</button>
+      </div>
+      <div class="nla-sub-toolbar">
+        <select class="nla-select nla-filter-select" id="sub-filter-segment" aria-label="Filter by segment">
+          <option value="">All segments</option>
+          <option value="main_website">Main Website</option>
+          <option value="sproochentest_prep">Sproochentest Prep</option>
+          <option value="testing">Testing</option>
+        </select>
+        <button class="nla-btn nla-btn-secondary" type="button" id="sub-export-btn">Export CSV</button>
+      </div>
+      <div id="sub-error" class="nla-error" hidden></div>
+      <div id="sub-success" class="nla-success" hidden></div>
+      <div id="sub-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading subscribers"></div>
+        <p>Loading subscribers…</p>
+      </div>
+      <div id="sub-content" hidden>
+        <div id="sub-grid"></div>
+        <div id="sub-empty" class="nla-empty" hidden>
+          <div class="nla-empty-icon">👥</div>
+          No subscribers found.
+        </div>
+      </div>
+
+      <!-- Edit form (shown when editing a subscriber) -->
+      <div id="sub-edit-form" class="nla-edit-form" hidden>
+        <h4>Edit Subscriber</h4>
+        <div class="nla-edit-fields">
+          <div class="nla-form-group">
+            <label class="nla-label" for="edit-email">Email (read-only)</label>
+            <input class="nla-input" type="email" id="edit-email" readonly>
+          </div>
+          <div class="nla-form-group">
+            <label class="nla-label" for="edit-name">Name</label>
+            <input class="nla-input" type="text" id="edit-name" placeholder="Subscriber name">
+          </div>
+          <div class="nla-form-group">
+            <label class="nla-label" for="edit-status">Status</label>
+            <select class="nla-select" id="edit-status">
+              <option value="active">Active</option>
+              <option value="unsubscribed">Unsubscribed</option>
+              <option value="bounced">Bounced</option>
+              <option value="complained">Complained</option>
+            </select>
+          </div>
+          <div class="nla-form-group">
+            <label class="nla-label">Segments</label>
+            <div class="nla-segment-checks">
+              <label class="nla-check-label"><input type="checkbox" id="edit-seg-main" value="main_website"> Main Website</label>
+              <label class="nla-check-label"><input type="checkbox" id="edit-seg-sproochentest" value="sproochentest_prep"> Sproochentest Prep</label>
+              <label class="nla-check-label"><input type="checkbox" id="edit-seg-testing" value="testing"> Testing</label>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="edit-sub-id">
+        <div class="nla-edit-actions">
+          <button class="nla-btn nla-btn-primary" type="button" id="edit-save-btn">Save</button>
+          <button class="nla-btn nla-btn-secondary" type="button" id="edit-cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Panel -->
+    <div class="nla-panel" id="panel-analytics" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Analytics</h1>
+        <p class="nla-panel-desc">Track performance across all your newsletter editions.</p>
+      </div>
+      <div id="analytics-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading analytics"></div>
+        <p>Loading analytics…</p>
+      </div>
+      <div id="analytics-error" class="nla-error" hidden></div>
+      <div id="analytics-list" hidden>
+        <div id="analytics-grid"></div>
+      </div>
+      <div id="analytics-detail" hidden></div>
+    </div>
+
+    <!-- Import Panel -->
+    <div class="nla-panel" id="panel-import" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Import Subscribers</h1>
+        <p class="nla-panel-desc">Bulk import subscribers from a JSON array.</p>
+      </div>
+      <div class="nla-card">
+        <div class="nla-card-header">JSON Data</div>
+        <div class="nla-form-group">
+          <label class="nla-label" for="import-json">Paste JSON Array</label>
+          <textarea class="nla-textarea" id="import-json" placeholder='[{"email":"user@example.com","status":"active","utm_source":"beehiiv","subscribedAt":"2024-01-15T10:00:00Z"}]'></textarea>
+          <p class="nla-import-help">Each object needs at minimum an <code>email</code> field. Optional: <code>status</code>, <code>utm_source</code>, <code>subscribedAt</code>.</p>
+        </div>
+      </div>
+      <div id="import-error" class="nla-error" hidden></div>
+      <div id="import-success" class="nla-success" hidden></div>
+
+      <div id="import-result" hidden>
+        <div class="nla-import-result">
+          <div class="nla-import-stat imported">
+            <div class="nla-import-stat-value" id="import-imported">0</div>
+            <div class="nla-import-stat-label">Imported</div>
+          </div>
+          <div class="nla-import-stat skipped">
+            <div class="nla-import-stat-value" id="import-skipped">0</div>
+            <div class="nla-import-stat-label">Skipped</div>
+          </div>
+          <div class="nla-import-stat rejected">
+            <div class="nla-import-stat-value" id="import-rejected">0</div>
+            <div class="nla-import-stat-label">Rejected</div>
+          </div>
+        </div>
+      </div>
+      <button class="nla-btn nla-btn-primary" type="button" id="import-btn">Import Subscribers</button>
+    </div>
+
+  </main>
+</div><!-- end .nla-layout -->
+
+<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "{{ site.data.firebase.firebase_api_key }}",
+  authDomain: "hasanjaffal.firebaseapp.com",
+  projectId: "hasanjaffal"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const API = {
+  send: "{{ site.data.firebase.fn_send_newsletter }}",
+  analytics: "{{ site.data.firebase.fn_get_analytics }}",
+  subscribers: "{{ site.data.firebase.fn_manage_subscribers }}",
+  import: "{{ site.data.firebase.fn_import_subscribers }}"
+};
+
+let currentToken = null;
+
+// Utility
+async function getToken() {
+  const user = auth.currentUser;
+  if (!user) return null;
+  currentToken = await user.getIdToken();
+  return currentToken;
+}
+
+async function apiFetch(url, options = {}) {
+  const token = await getToken();
+  if (!token) throw new Error('Not authenticated');
+  const headers = { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', ...options.headers };
+  const res = await fetch(url, { ...options, headers });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || 'Request failed (' + res.status + ')');
+  }
+  return res.json();
+}
+
+function show(el) { el.hidden = false; }
+function hide(el) { el.hidden = true; }
+function $(id) { return document.getElementById(id); }
+
+// Auth
+const authEl = $('nla-auth');
+const dashEl = $('nla-dashboard');
+
+$('nla-google-signin').addEventListener('click', () => {
+  signInWithPopup(auth, provider).catch(err => {
+    console.error('Sign-in error:', err);
+  });
+});
+
+$('nla-signout').addEventListener('click', () => {
+  signOut(auth);
+});
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    hide(authEl);
+    show(dashEl);
+    $('nla-user-email').textContent = user.email;
+    loadOverview();
+  } else {
+    show(authEl);
+    hide(dashEl);
+    currentToken = null;
+  }
+});
+
+// Sidebar navigation
+const navItems = document.querySelectorAll('.nla-nav-item');
+const panels = document.querySelectorAll('.nla-panel');
+
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    navItems.forEach(n => n.classList.remove('active'));
+    panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+    item.classList.add('active');
+    const panelId = 'panel-' + item.dataset.panel;
+    const panel = $(panelId);
+    panel.classList.add('active');
+    panel.hidden = false;
+
+    const id = item.dataset.panel;
+    if (id === 'overview') loadOverview();
+    else if (id === 'compose') loadPosts();
+    else if (id === 'subscribers') loadSubscribers();
+    else if (id === 'analytics') loadAnalytics();
+
+    // Close mobile sidebar
+    $('nla-sidebar').classList.remove('open');
+    $('nla-sidebar-overlay').classList.remove('open');
+  });
+});
+
+// Mobile sidebar toggle
+$('nla-mobile-toggle').addEventListener('click', () => {
+  $('nla-sidebar').classList.toggle('open');
+  $('nla-sidebar-overlay').classList.toggle('open');
+});
+$('nla-sidebar-overlay').addEventListener('click', () => {
+  $('nla-sidebar').classList.remove('open');
+  $('nla-sidebar-overlay').classList.remove('open');
+});
+
+// Config submenu toggle
+$('config-toggle').addEventListener('click', () => {
+  const items = $('config-items');
+  const arrow = $('config-toggle').querySelector('.nla-submenu-arrow');
+  items.hidden = !items.hidden;
+  arrow.textContent = items.hidden ? '›' : '‹';
+});
+
+// Overview
+async function loadOverview() {
+  const loading = $('overview-loading');
+  const error = $('overview-error');
+  const content = $('overview-content');
+  show(loading); hide(error); hide(content);
+
+  try {
+    const data = await apiFetch(API.analytics + '?type=overview');
+    const statsHtml = `
+      <div class="nla-stat-card"><p class="nla-stat-label">Active</p><p class="nla-stat-value">${data.totalActive || 0}</p></div>
+      <div class="nla-stat-card"><p class="nla-stat-label">Unsubscribed</p><p class="nla-stat-value">${data.totalUnsubscribed || 0}</p></div>
+      <div class="nla-stat-card"><p class="nla-stat-label">Bounced</p><p class="nla-stat-value">${data.totalBounced || 0}</p></div>
+    `;
+    $('overview-stats').innerHTML = statsHtml;
+
+    const editions = await apiFetch(API.analytics + '?type=editions');
+    const recentEditions = (editions.editions || []).slice(0, 5);
+
+    // Destroy existing overview grid
+    if (window.overviewGrid) { window.overviewGrid.destroy(); window.overviewGrid = null; }
+
+    if (recentEditions.length === 0) {
+      $('overview-grid').innerHTML = '<div class="nla-empty">No editions yet.</div>';
+    } else {
+      window.overviewGrid = new gridjs.Grid({
+        columns: [
+          { name: 'Subject', sort: true },
+          { name: 'Sent', sort: true },
+          { name: 'Recipients', sort: true },
+          { name: 'Open Rate', sort: true },
+          { name: 'Click Rate', sort: true },
+          { name: '', sort: false, formatter: (_, row) => {
+            const id = row.cells[6].data;
+            return gridjs.html(`<button class="nla-btn-sm" onclick="viewEditionFromOverview('${id}')">Details</button>`);
+          }},
+          { name: 'id', hidden: true }
+        ],
+        data: recentEditions.map(e => [
+          e.subject,
+          formatDate(e.sentAt),
+          e.recipientCount,
+          e.openRate != null ? e.openRate.toFixed(1) + '%' : '—',
+          e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—',
+          '',
+          e.id
+        ]),
+        search: false,
+        sort: true,
+        pagination: false,
+        className: { container: 'nla-gridjs' }
+      }).render($('overview-grid'));
+    }
+
+    hide(loading); show(content);
+  } catch (err) {
+    hide(loading);
+    error.textContent = err.message;
+    show(error);
+  }
+}
+
+// Compose
+let postsData = [];
+
+async function loadPosts() {
+  const loading = $('compose-loading');
+  const error = $('compose-error');
+  const content = $('compose-content');
+  show(loading); hide(error); hide(content);
+
+  try {
+    const data = await apiFetch(API.send + '?action=listPosts');
+    postsData = data.posts || [];
+    const postsHtml = postsData.map((p, i) => `
+      <div class="nla-post-item">
+        <input type="checkbox" id="post-check-${i}" value="${i}" aria-label="Include ${escHtml(p.title)}">
+        <div class="nla-post-info">
+          <div class="nla-post-title">${escHtml(p.title)}</div>
+          <div class="nla-post-date">${p.date || ''}</div>
+        </div>
+        <div class="nla-post-featured">
+          <label class="nla-featured-radio">
+            <input type="radio" name="featured" value="${i}" aria-label="Feature ${escHtml(p.title)}">
+            Featured
+          </label>
+        </div>
+      </div>
+    `).join('');
+    $('compose-posts').innerHTML = postsHtml || '<p class="nla-empty">No posts available.</p>';
+    hide(loading); show(content);
+  } catch (err) {
+    hide(loading);
+    error.textContent = err.message;
+    show(error);
+  }
+}
+
+// Tool dropdown auto-fill
+$('tool-select').addEventListener('change', function() {
+  const opt = this.options[this.selectedIndex];
+  if (this.value) {
+    $('tool-name').value = opt.dataset.name || '';
+    $('tool-desc').value = opt.dataset.desc || '';
+    $('tool-url').value = opt.dataset.url || '';
+  } else {
+    $('tool-name').value = '';
+    $('tool-desc').value = '';
+    $('tool-url').value = '';
+  }
+});
+
+// Rich text editor toolbar
+document.querySelectorAll('.nla-editor-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const cmd = this.dataset.cmd;
+    if (cmd === 'createLink') {
+      const url = prompt('Enter URL:');
+      if (url) document.execCommand(cmd, false, url);
+    } else {
+      document.execCommand(cmd, false, null);
+    }
+    $('compose-intro').focus();
+  });
+});
+
+$('compose-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const sendErr = $('compose-send-error');
+  const sendOk = $('compose-send-success');
+  const btn = $('compose-send-btn');
+  hide(sendErr); hide(sendOk);
+
+  const subject = $('compose-subject').value.trim();
+  const introHtml = $('compose-intro').innerHTML.trim();
+  const introText = $('compose-intro').textContent.trim();
+  const segments = [];
+  if ($('seg-main').checked) segments.push('main_website');
+  if ($('seg-sproochentest').checked) segments.push('sproochentest_prep');
+  if ($('seg-testing').checked) segments.push('testing');
+  const checked = document.querySelectorAll('#compose-posts input[type="checkbox"]:checked');
+  const featuredRadio = document.querySelector('#compose-posts input[name="featured"]:checked');
+
+  if (!subject) { sendErr.textContent = 'Subject is required.'; show(sendErr); return; }
+  if (checked.length === 0 && !introText) { sendErr.textContent = 'Add intro text or select at least one post.'; show(sendErr); return; }
+  if (segments.length === 0) { sendErr.textContent = 'Select at least one segment.'; show(sendErr); return; }
+
+  const selectedPosts = Array.from(checked).map(cb => {
+    const p = postsData[parseInt(cb.value)];
+    return { title: p.title, excerpt: p.excerpt || '', url: p.url };
+  });
+  let featuredPost = null;
+  if (featuredRadio) {
+    const fp = postsData[parseInt(featuredRadio.value)];
+    featuredPost = { title: fp.title, excerpt: fp.excerpt || '', url: fp.url };
+  }
+
+  let toolInvitation = null;
+  const toolName = $('tool-name').value.trim();
+  const toolUrl = $('tool-url').value.trim();
+  if (toolName && toolUrl) {
+    toolInvitation = { name: toolName, description: $('tool-desc').value.trim(), url: toolUrl };
+  }
+
+  if (!confirm('Send newsletter to ' + segments.join(' + ') + ' with subject:\n\n' + subject + '\n\nProceed?')) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  let totalRecipients = 0;
+  let editionIds = [];
+  try {
+    for (const segment of segments) {
+      const result = await apiFetch(API.send, {
+        method: 'POST',
+        body: JSON.stringify({ subject, introHtml: introText ? introHtml : null, posts: selectedPosts, featuredPost, toolInvitation, segment })
+      });
+      totalRecipients += (result.recipientCount || 0);
+      if (result.editionId) editionIds.push(result.editionId);
+    }
+    sendOk.textContent = 'Sent to ' + totalRecipients + ' recipients across ' + segments.length + ' segment(s).';
+    show(sendOk);
+  } catch (err) {
+    sendErr.textContent = err.message;
+    show(sendErr);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Newsletter';
+  }
+});
+
+// Subscribers
+let subscribersCache = [];
+
+async function loadSubscribers() {
+  const loading = $('sub-loading');
+  const content = $('sub-content');
+  const error = $('sub-error');
+  show(loading); hide(content); hide(error); hide($('sub-success')); hide($('sub-edit-form'));
+
+  try {
+    let url = API.subscribers + '?action=list';
+
+    const data = await apiFetch(url);
+    let subs = data.subscribers || [];
+
+    // Apply segment filter client-side
+    const segmentFilter = $('sub-filter-segment').value;
+    if (segmentFilter) {
+      subs = subs.filter(s => (s.segments || []).includes(segmentFilter));
+    }
+
+    subscribersCache = subs;
+    $('sub-total-count').textContent = '(' + subs.length + ')';
+
+    if (subs.length === 0) {
+      if (window.subGrid) { window.subGrid.destroy(); window.subGrid = null; }
+      $('sub-grid').innerHTML = '';
+      hide(loading); show(content); show($('sub-empty'));
+      return;
+    }
+    hide($('sub-empty'));
+
+    // Destroy existing Grid.js instance
+    if (window.subGrid) { window.subGrid.destroy(); window.subGrid = null; }
+
+    hide(loading); show(content);
+
+    // Initialize Grid.js
+    window.subGrid = new gridjs.Grid({
+      columns: [
+        { name: 'Email', sort: true },
+        { name: 'Name', sort: true },
+        { name: 'Status', sort: true, formatter: (cell) => gridjs.html(`<span class="nla-badge nla-badge-${cell}">${cell}</span>`) },
+        { name: 'Segments', sort: true },
+        { name: 'Subscribed', sort: true },
+        { name: 'Actions', sort: false, formatter: (_, row) => {
+          const id = row.cells[6].data;
+          const email = row.cells[0].data;
+          const status = row.cells[2].data;
+          return gridjs.html(`
+            <div class="nla-table-actions">
+              <button class="nla-btn-sm" data-action="edit" data-id="${id}">Edit</button>
+              ${status === 'active' ? `<button class="nla-btn-sm" data-action="deactivate" data-id="${id}">Deactivate</button>` : ''}
+              <button class="nla-btn-sm danger" data-action="delete" data-id="${id}" data-email="${email}">Delete</button>
+            </div>
+          `);
+        }},
+        { name: 'id', hidden: true }
+      ],
+      data: subs.map(s => [
+        s.email,
+        s.name || '',
+        s.status,
+        (s.segments || []).join(', '),
+        formatDate(s.subscribedAt),
+        '',
+        s.id
+      ]),
+      search: { enabled: true, placeholder: 'Search subscribers...' },
+      sort: true,
+      pagination: { enabled: true, limit: 25 },
+      className: {
+        container: 'nla-gridjs',
+        table: 'nla-gridjs-table',
+        th: 'nla-gridjs-th',
+        td: 'nla-gridjs-td',
+      }
+    }).render($('sub-grid'));
+  } catch (err) {
+    hide(loading);
+    error.textContent = err.message;
+    show(error);
+  }
+}
+
+// Segment filter
+$('sub-filter-segment').addEventListener('change', loadSubscribers);
+
+// Export CSV
+$('sub-export-btn').addEventListener('click', () => {
+  if (!subscribersCache.length) return;
+  const headers = ['email', 'name', 'status', 'segments', 'utmSource', 'subscribedAt'];
+  const csvRows = [headers.join(',')];
+  for (const s of subscribersCache) {
+    const row = [
+      '"' + (s.email || '').replace(/"/g, '""') + '"',
+      '"' + (s.name || '').replace(/"/g, '""') + '"',
+      s.status || '',
+      '"' + (s.segments || []).join('; ') + '"',
+      s.utmSource || '',
+      s.subscribedAt || ''
+    ];
+    csvRows.push(row.join(','));
+  }
+  const csv = csvRows.join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'subscribers_' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+$('sub-add-btn').addEventListener('click', async () => {
+  const email = $('sub-add-email').value.trim();
+  const name = $('sub-add-name').value.trim();
+  const error = $('sub-error');
+  const success = $('sub-success');
+  hide(error); hide(success);
+  if (!email) { error.textContent = 'Enter an email address.'; show(error); return; }
+
+  try {
+    await apiFetch(API.subscribers + '?action=add', { method: 'POST', body: JSON.stringify({ action: 'add', email, name }) });
+    success.textContent = 'Subscriber added: ' + email;
+    show(success);
+    $('sub-add-email').value = '';
+    $('sub-add-name').value = '';
+    loadSubscribers();
+  } catch (err) {
+    error.textContent = err.message;
+    show(error);
+  }
+});
+
+// Event delegation for subscriber table actions
+document.addEventListener('click', async function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const action = btn.dataset.action;
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  if (action === 'edit') {
+    const sub = subscribersCache.find(s => s.id === id);
+    if (!sub) return;
+    $('edit-sub-id').value = id;
+    $('edit-email').value = sub.email;
+    $('edit-name').value = sub.name || '';
+    $('edit-status').value = sub.status;
+    $('edit-seg-main').checked = (sub.segments || []).includes('main_website');
+    $('edit-seg-sproochentest').checked = (sub.segments || []).includes('sproochentest_prep');
+    $('edit-seg-testing').checked = (sub.segments || []).includes('testing');
+    show($('sub-edit-form'));
+    $('sub-edit-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } else if (action === 'deactivate') {
+    if (!confirm('Deactivate this subscriber?')) return;
+    try {
+      await apiFetch(API.subscribers + '?action=deactivate', { method: 'POST', body: JSON.stringify({ action: 'deactivate', id }) });
+      loadSubscribers();
+    } catch (err) {
+      $('sub-error').textContent = err.message;
+      show($('sub-error'));
+    }
+
+  } else if (action === 'delete') {
+    const email = btn.dataset.email || '';
+    if (!confirm('Permanently delete ' + email + '? This cannot be undone.')) return;
+    try {
+      await apiFetch(API.subscribers + '?action=delete', { method: 'POST', body: JSON.stringify({ action: 'delete', id }) });
+      loadSubscribers();
+    } catch (err) {
+      $('sub-error').textContent = err.message;
+      show($('sub-error'));
+    }
+  }
+});
+
+$('edit-cancel-btn').addEventListener('click', () => {
+  hide($('sub-edit-form'));
+});
+
+$('edit-save-btn').addEventListener('click', async () => {
+  const id = $('edit-sub-id').value;
+  const name = $('edit-name').value.trim();
+  const segments = [];
+  if ($('edit-seg-main').checked) segments.push('main_website');
+  if ($('edit-seg-sproochentest').checked) segments.push('sproochentest_prep');
+  if ($('edit-seg-testing').checked) segments.push('testing');
+
+  const error = $('sub-error');
+  const success = $('sub-success');
+  hide(error); hide(success);
+
+  try {
+    await apiFetch(API.subscribers + '?action=update', {
+      method: 'POST',
+      body: JSON.stringify({ action: 'update', id, name, segments })
+    });
+    success.textContent = 'Subscriber updated successfully.';
+    show(success);
+    hide($('sub-edit-form'));
+    loadSubscribers();
+  } catch (err) {
+    error.textContent = err.message;
+    show(error);
+  }
+});
+
+// Analytics
+async function loadAnalytics() {
+  const loading = $('analytics-loading');
+  const error = $('analytics-error');
+  const list = $('analytics-list');
+  const detail = $('analytics-detail');
+  show(loading); hide(error); hide(list); hide(detail);
+
+  try {
+    const data = await apiFetch(API.analytics + '?type=editions');
+    const editions = data.editions || [];
+
+    // Destroy existing Grid.js instance
+    if (window.analyticsGrid) {
+      window.analyticsGrid.destroy();
+      window.analyticsGrid = null;
+    }
+
+    hide(loading); show(list);
+
+    if (editions.length === 0) {
+      $('analytics-grid').innerHTML = '<div class="nla-empty">No editions yet.</div>';
+      return;
+    }
+
+    // Initialize Grid.js for analytics
+    window.analyticsGrid = new gridjs.Grid({
+      columns: [
+        { name: 'Subject', sort: true },
+        { name: 'Sent', sort: true },
+        { name: 'Recipients', sort: true },
+        { name: 'Open Rate', sort: true },
+        { name: 'Click Rate', sort: true },
+        { name: 'Actions', sort: false, formatter: (_, row) => {
+          const id = row.cells[6].data;
+          return gridjs.html(`<button class="nla-btn-sm" onclick="viewEdition('${id}')">Detail</button>`);
+        }},
+        { name: 'id', hidden: true }
+      ],
+      data: editions.map(e => [
+        e.subject,
+        formatDate(e.sentAt),
+        e.recipientCount,
+        e.openRate != null ? e.openRate.toFixed(1) + '%' : '—',
+        e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—',
+        '',
+        e.id
+      ]),
+      search: { enabled: true, placeholder: 'Search editions...' },
+      sort: true,
+      pagination: { enabled: true, limit: 15 },
+      className: {
+        container: 'nla-gridjs',
+        table: 'nla-gridjs-table',
+        th: 'nla-gridjs-th',
+        td: 'nla-gridjs-td',
+      }
+    }).render($('analytics-grid'));
+  } catch (err) {
+    hide(loading);
+    error.textContent = err.message;
+    show(error);
+  }
+}
+
+window.viewEditionFromOverview = function(id) {
+  // Switch to analytics panel
+  navItems.forEach(n => n.classList.remove('active'));
+  panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+  document.querySelector('[data-panel="analytics"]').classList.add('active');
+  const panel = $('panel-analytics');
+  panel.classList.add('active');
+  panel.hidden = false;
+  // Show detail directly
+  hide($('analytics-loading'));
+  hide($('analytics-list'));
+  viewEdition(id);
+};
+
+window.viewEdition = async function(id) {
+  const list = $('analytics-list');
+  const detail = $('analytics-detail');
+  const error = $('analytics-error');
+  hide(list); hide(error);
+
+  detail.innerHTML = '<div class="nla-loading"><div class="nla-spinner"></div><p>Loading edition…</p></div>';
+  show(detail);
+
+  try {
+    const data = await apiFetch(API.analytics + '?type=edition&id=' + encodeURIComponent(id));
+    const linksHtml = (data.clickedLinks || []).map(l => `
+      <tr><td>${escHtml(l.url)}</td><td>${l.clicks}</td></tr>
+    `).join('');
+
+    detail.innerHTML = `
+      <button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button>
+      <div class="nla-edition-detail">
+        <h3 class="nla-edition-subject">${escHtml(data.subject)}</h3>
+        <p class="nla-edition-meta">Sent ${formatDate(data.sentAt)} · Segment: ${data.segment || '—'}</p>
+        <div class="nla-edition-stats">
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.totalRecipients || 0}</div><div class="nla-edition-stat-label">Recipients</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.uniqueOpens || 0}</div><div class="nla-edition-stat-label">Opens</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.openRate != null ? data.openRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Open Rate</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.uniqueClicks || 0}</div><div class="nla-edition-stat-label">Clicks</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.clickRate != null ? data.clickRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Click Rate</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.failedSends || 0}</div><div class="nla-edition-stat-label">Failed</div></div>
+        </div>
+        ${linksHtml ? '<h4 class="nla-section-title">Clicked Links</h4><div class="nla-table-wrap"><table class="nla-table"><thead><tr><th>URL</th><th>Clicks</th></tr></thead><tbody>' + linksHtml + '</tbody></table></div>' : ''}
+      </div>
+    `;
+  } catch (err) {
+    detail.innerHTML = '<button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button><div class="nla-error">' + escHtml(err.message) + '</div>';
+  }
+};
+
+window.backToAnalyticsList = function() {
+  hide($('analytics-detail'));
+  loadAnalytics();
+};
+
+// Import
+$('import-btn').addEventListener('click', async () => {
+  const json = $('import-json').value.trim();
+  const error = $('import-error');
+  const success = $('import-success');
+  const result = $('import-result');
+  const btn = $('import-btn');
+  hide(error); hide(success); hide(result);
+
+  if (!json) { error.textContent = 'Paste a JSON array of subscribers.'; show(error); return; }
+
+  let subscribers;
+  try {
+    subscribers = JSON.parse(json);
+    if (!Array.isArray(subscribers)) throw new Error('Must be an array');
+  } catch (err) {
+    error.textContent = 'Invalid JSON: ' + err.message;
+    show(error);
+    return;
+  }
+
+  if (!confirm('Import ' + subscribers.length + ' subscriber(s)?')) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Importing…';
+
+  try {
+    const data = await apiFetch(API.import, { method: 'POST', body: JSON.stringify({ subscribers }) });
+    $('import-imported').textContent = data.imported || 0;
+    $('import-skipped').textContent = data.skipped || 0;
+    $('import-rejected').textContent = data.rejected || 0;
+    success.textContent = 'Import complete.';
+    show(success); show(result);
+  } catch (err) {
+    error.textContent = err.message;
+    show(error);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Import Subscribers';
+  }
+});
+
+// Helpers
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '—';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  } catch (e) {
+    return dateStr;
+  }
+}
+</script>

@@ -6,5 +6,16 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
+
+    // Newsletter collections: server-only access via Admin SDK
+    match /subscribers/{doc} {
+      allow read, write: if false;
+    }
+    match /editions/{doc} {
+      allow read, write: if false;
+    }
+    match /events/{doc} {
+      allow read, write: if false;
+    }
   }
 }

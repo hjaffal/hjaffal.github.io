@@ -18,7 +18,14 @@
       <textarea id="contact-message" name="message" rows="6" required placeholder="What's on your mind?" class="contact-textarea"></textarea>
     </div>
 
-    <button type="submit" id="contact-submit-btn" class="contact-btn">
+    <div class="form-group contact-consent-group">
+      <label class="contact-consent-label">
+        <input type="checkbox" id="contact-consent" required>
+        <span>I agree to be contacted in the future and to receive occasional updates from Hasan Jaffal.</span>
+      </label>
+    </div>
+
+    <button type="submit" id="contact-submit-btn" class="contact-btn" disabled>
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       Send Message
     </button>
@@ -44,6 +51,11 @@
 </div>
 
 <script>
+// Enable/disable send button based on consent checkbox
+document.getElementById('contact-consent').addEventListener('change', function() {
+  document.getElementById('contact-submit-btn').disabled = !this.checked;
+});
+
 function submitContactForm(e) {
   e.preventDefault();
   var name = document.getElementById('contact-name').value.trim();
@@ -54,6 +66,7 @@ function submitContactForm(e) {
 
   if (!name || !email || !message) return;
   if (document.querySelector('[name="_gotcha"]').value) return;
+  if (!document.getElementById('contact-consent').checked) return;
 
   btn.disabled = true;
   btn.innerHTML = '<svg width="15" height="15" class="contact-spinner" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4m-3.93 7.07l-2.83-2.83M7.76 7.76L4.93 4.93"/></svg> Sending...';
@@ -67,6 +80,17 @@ function submitContactForm(e) {
     if (res.ok) {
       document.getElementById('contact-form-wrapper').style.display = 'none';
       document.getElementById('contact-success').style.display = 'block';
+
+      // Subscribe the user to the mailing list (main_website segment)
+      var fnUrl = document.querySelector('meta[name="fn-subscribe"]');
+      var subscribeUrl = fnUrl ? fnUrl.getAttribute('content') : '';
+      if (subscribeUrl) {
+        fetch(subscribeUrl, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email: email, name: name, utm_source: 'contact_form'})
+        }).catch(function(){});
+      }
     } else {
       errorEl.style.display = 'block';
       btn.disabled = false;
@@ -83,5 +107,6 @@ function resetContactForm() {
   document.getElementById('contact-form-wrapper').style.display = 'block';
   document.getElementById('contact-success').style.display = 'none';
   document.getElementById('contact-form').reset();
+  document.getElementById('contact-submit-btn').disabled = true;
 }
 </script>

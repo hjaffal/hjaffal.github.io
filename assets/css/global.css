@@ -1414,6 +1414,18 @@ select:focus {
   margin: 0 auto;
 }
 
+.gated-form .nl-subscribe-form {
+  flex-direction: column;
+}
+
+.gated-form .nl-subscribe-input {
+  min-width: 100%;
+}
+
+.gated-form .nl-subscribe-btn {
+  width: 100%;
+}
+
 .gated-unlock-btn {
   display: inline-flex;
   align-items: center;

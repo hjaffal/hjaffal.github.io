@@ -181,8 +181,15 @@
 .contact-msg-group { margin: 0 0 20px; }
 .contact-textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.88rem; background: var(--white); color: var(--dark); outline: none; resize: vertical; transition: border-color 0.2s; line-height: 1.6; }
 .contact-textarea:focus { border-color: var(--accent); }
-.contact-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: #0F172A; color: #fff; font-size: 0.82rem; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; transition: background 0.2s; }
-.contact-btn:hover { background: var(--accent); }
+.contact-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: #0F172A; color: #fff; font-size: 0.82rem; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; transition: background 0.2s, opacity 0.2s; }
+.contact-btn:hover:not(:disabled) { background: var(--accent); }
+.contact-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Consent checkbox */
+.contact-consent-group { margin-top: 4px; }
+.contact-consent-label { display: flex; align-items: flex-start; gap: 10px; font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; cursor: pointer; }
+.contact-consent-label input[type="checkbox"] { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; accent-color: var(--accent); cursor: pointer; }
+.contact-consent-label span { flex: 1; }
 
 /* Success state */
 .contact-success { display: none; text-align: center; padding: 48px 24px; }

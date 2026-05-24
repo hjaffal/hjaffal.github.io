@@ -60,9 +60,10 @@ chat_with_me_box: false
     <div class="sp-download-gate-icon">
       <i class="fas fa-envelope"></i>
     </div>
-    <h3>Enter your email to download</h3>
+    <h3>Enter your details to download</h3>
     <p>Get the file and receive Sproochentest updates, new topics, and practice materials.</p>
     <form id="sp-download-form" onsubmit="submitDownloadEmail(event)">
+      <input type="text" id="sp-download-name" placeholder="Your name" required>
       <input type="email" id="sp-download-email" placeholder="your@email.com" required>
       <button type="submit">
         <i class="fas fa-download"></i> Download
@@ -166,11 +167,12 @@ chat_with_me_box: false
 
 #sp-download-form {
   display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
 #sp-download-form input {
-  flex: 1;
+  width: 100%;
   padding: 10px 14px;
   border: 1px solid var(--slate-border);
   border-radius: 8px;
@@ -179,6 +181,7 @@ chat_with_me_box: false
   color: var(--dark);
   outline: none;
   transition: border-color 0.2s;
+  box-sizing: border-box;
 }
 #sp-download-form input:focus {
   border-color: #9333EA;
@@ -186,7 +189,8 @@ chat_with_me_box: false
 }
 
 #sp-download-form button {
-  padding: 10px 18px;
+  width: 100%;
+  padding: 12px 18px;
   background: #9333EA;
   color: #FFFFFF;
   border: none;
@@ -196,6 +200,7 @@ chat_with_me_box: false
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   transition: background 0.2s;
   white-space: nowrap;
@@ -234,6 +239,7 @@ function closeDownloadGate() {
 
 function submitDownloadEmail(e) {
   e.preventDefault();
+  var name = document.getElementById('sp-download-name').value;
   var email = document.getElementById('sp-download-email').value;
   if (!email) return;
 
@@ -245,7 +251,7 @@ function submitDownloadEmail(e) {
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({data: {email: email, utm_source: 'materials_download'}})
+    body: JSON.stringify({email: email, name: name, utm_source: 'materials_download'})
   }).catch(function(){});
 
   // Trigger download first, then close modal

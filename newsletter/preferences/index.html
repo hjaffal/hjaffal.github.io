@@ -1,0 +1,241 @@
+---
+layout: default
+title: Newsletter Preferences
+share-title: "Newsletter Preferences — Hasan Jaffal"
+share-description: "Manage your newsletter subscription preferences."
+chat_with_me_box: false
+show-avatar: false
+css:
+  - "/assets/css/newsletter-preferences.css"
+---
+
+<div class="nl-prefs">
+  <div class="nl-prefs-header">
+    <span class="field-label">NEWSLETTER PREFERENCES</span>
+    <h1 class="nl-prefs-title">Manage Your Subscriptions</h1>
+    <p class="nl-prefs-email" id="nl-prefs-email"></p>
+  </div>
+
+  <!-- Loading state -->
+  <div id="nl-prefs-loading" class="nl-prefs-loading">
+    <div class="nl-prefs-spinner" role="status" aria-label="Loading preferences"></div>
+    <p>Loading your preferences…</p>
+  </div>
+
+  <!-- Error state -->
+  <div id="nl-prefs-error" class="nl-prefs-error" style="display:none;" role="alert">
+    <div class="nl-prefs-error-icon">
+      <i class="fas fa-link-slash" aria-hidden="true"></i>
+    </div>
+    <h2>Invalid or Expired Link</h2>
+    <p>This unsubscribe link is no longer valid. You may have already unsubscribed, or the link has expired.</p>
+    <a href="/" class="nl-prefs-error-link">← Back to hasanjaffal.com</a>
+  </div>
+
+  <!-- Preferences form -->
+  <div id="nl-prefs-form" style="display:none;">
+    <form class="nl-prefs-form" aria-label="Newsletter preferences">
+      <div class="nl-prefs-form-header">
+        <h2>Your Newsletters</h2>
+        <p>Select which newsletters you'd like to receive.</p>
+      </div>
+
+      <div class="nl-prefs-name-group">
+        <label class="nl-prefs-name-label" for="nl-prefs-name">Your Name (optional)</label>
+        <input type="text" id="nl-prefs-name" class="nl-prefs-name-input" placeholder="Your name">
+      </div>
+
+      <div class="nl-prefs-segments">
+        <div class="nl-prefs-segment">
+          <div class="nl-prefs-toggle">
+            <input type="checkbox" id="segment-main" name="segments" value="main_website" class="nl-toggle-input" aria-describedby="desc-main">
+            <label for="segment-main" class="nl-toggle-track"><span class="nl-toggle-thumb"></span></label>
+          </div>
+          <div class="nl-prefs-segment-info">
+            <label for="segment-main">The Second Mind (AI, risk, operations)</label>
+            <p class="nl-prefs-segment-desc" id="desc-main">Field notes on how organizations detect risk, make decisions, and act under uncertainty.</p>
+          </div>
+        </div>
+
+        <div class="nl-prefs-segment">
+          <div class="nl-prefs-toggle">
+            <input type="checkbox" id="segment-sproochentest" name="segments" value="sproochentest_prep" class="nl-toggle-input" aria-describedby="desc-sproochentest">
+            <label for="segment-sproochentest" class="nl-toggle-track"><span class="nl-toggle-thumb"></span></label>
+          </div>
+          <div class="nl-prefs-segment-info">
+            <label for="segment-sproochentest">Sproochentest Prep</label>
+            <p class="nl-prefs-segment-desc" id="desc-sproochentest">Updates and materials for Luxembourgish language test preparation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nl-prefs-actions">
+        <button type="submit" class="nl-prefs-save-btn" id="nl-prefs-save">Save Preferences</button>
+        <button type="button" class="nl-prefs-unsubscribe-btn" id="nl-prefs-unsubscribe-all">Unsubscribe from All</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success: preferences updated -->
+  <div id="nl-prefs-success" class="nl-prefs-success" style="display:none;" role="status">
+    <div class="nl-prefs-success-icon">
+      <i class="fas fa-check" aria-hidden="true"></i>
+    </div>
+    <h2>Preferences Updated</h2>
+    <p>Your newsletter preferences have been saved.</p>
+    <a href="/" class="nl-prefs-success-link">← Back to hasanjaffal.com</a>
+  </div>
+
+  <!-- Success: fully unsubscribed -->
+  <div id="nl-prefs-unsubscribed" class="nl-prefs-success" style="display:none;" role="status">
+    <div class="nl-prefs-unsubscribed-icon">
+      <i class="fas fa-envelope-open" aria-hidden="true"></i>
+    </div>
+    <h2>You've Been Unsubscribed</h2>
+    <p>You won't receive any more newsletters from us. If you change your mind, you can always resubscribe from the site.</p>
+    <a href="/newsletter/" class="nl-prefs-success-link">← Resubscribe</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var API_URL = '{{ site.data.firebase.fn_newsletter_preferences }}';
+
+  var loadingEl = document.getElementById('nl-prefs-loading');
+  var errorEl = document.getElementById('nl-prefs-error');
+  var formEl = document.getElementById('nl-prefs-form');
+  var successEl = document.getElementById('nl-prefs-success');
+  var unsubscribedEl = document.getElementById('nl-prefs-unsubscribed');
+  var emailEl = document.getElementById('nl-prefs-email');
+  var saveBtn = document.getElementById('nl-prefs-save');
+  var unsubAllBtn = document.getElementById('nl-prefs-unsubscribe-all');
+
+  var segmentMain = document.getElementById('segment-main');
+  var segmentSproochentest = document.getElementById('segment-sproochentest');
+
+  function getToken() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('token');
+  }
+
+  function showView(view) {
+    loadingEl.style.display = 'none';
+    errorEl.style.display = 'none';
+    formEl.style.display = 'none';
+    successEl.style.display = 'none';
+    unsubscribedEl.style.display = 'none';
+
+    if (view === 'loading') loadingEl.style.display = '';
+    else if (view === 'error') errorEl.style.display = '';
+    else if (view === 'form') formEl.style.display = '';
+    else if (view === 'success') successEl.style.display = '';
+    else if (view === 'unsubscribed') unsubscribedEl.style.display = '';
+  }
+
+  function loadPreferences(token) {
+    showView('loading');
+
+    fetch(API_URL + '?token=' + encodeURIComponent(token), {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      if (res.status === 404) {
+        showView('error');
+        return null;
+      }
+      if (!res.ok) {
+        showView('error');
+        return null;
+      }
+      return res.json();
+    })
+    .then(function(data) {
+      if (!data) return;
+
+      emailEl.textContent = data.email || '';
+      document.getElementById('nl-prefs-name').value = data.name || '';
+
+      var segments = data.segments || [];
+      segmentMain.checked = segments.indexOf('main_website') !== -1;
+      segmentSproochentest.checked = segments.indexOf('sproochentest_prep') !== -1;
+
+      showView('form');
+    })
+    .catch(function() {
+      showView('error');
+    });
+  }
+
+  function savePreferences(token, segments) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        token: token,
+        segments: segments,
+        name: document.getElementById('nl-prefs-name').value.trim()
+      })
+    })
+    .then(function(res) {
+      if (res.status === 404) {
+        showView('error');
+        return null;
+      }
+      if (!res.ok) {
+        showView('error');
+        return null;
+      }
+      return res.json();
+    })
+    .then(function(data) {
+      if (!data) return;
+
+      if (data.status === 'unsubscribed' || segments.length === 0) {
+        showView('unsubscribed');
+      } else {
+        showView('success');
+      }
+    })
+    .catch(function() {
+      showView('error');
+    })
+    .finally(function() {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save Preferences';
+    });
+  }
+
+  // Init
+  var token = getToken();
+
+  if (!token) {
+    showView('error');
+    return;
+  }
+
+  loadPreferences(token);
+
+  // Form submit
+  formEl.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var segments = [];
+    if (segmentMain.checked) segments.push('main_website');
+    if (segmentSproochentest.checked) segments.push('sproochentest_prep');
+    savePreferences(token, segments);
+  });
+
+  // Unsubscribe all button
+  unsubAllBtn.addEventListener('click', function() {
+    segmentMain.checked = false;
+    segmentSproochentest.checked = false;
+    savePreferences(token, []);
+  });
+})();
+</script>

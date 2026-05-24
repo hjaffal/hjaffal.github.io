@@ -7,9 +7,27 @@ admin.initializeApp();
 const db = admin.firestore();
 
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
-const BEEHIIV_API_KEY = defineSecret("BEEHIIV_API_KEY");
-const BEEHIIV_PUBLICATION_ID = defineSecret("BEEHIIV_PUBLICATION_ID");
 const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
+
+// ===== NEWSLETTER MODULE EXPORTS =====
+const { subscribeNewsletter } = require("./newsletter/subscribe");
+const { newsletterPreferences } = require("./newsletter/preferences");
+const { sendNewsletter } = require("./newsletter/send");
+const { trackOpen, trackClick } = require("./newsletter/tracking");
+const { handleBounce } = require("./newsletter/bounce");
+const { getAnalytics } = require("./newsletter/analytics");
+const { manageSubscribers } = require("./newsletter/manage");
+const { importSubscribers } = require("./newsletter/import");
+
+exports.subscribeNewsletter = subscribeNewsletter;
+exports.newsletterPreferences = newsletterPreferences;
+exports.sendNewsletter = sendNewsletter;
+exports.trackOpen = trackOpen;
+exports.trackClick = trackClick;
+exports.handleBounce = handleBounce;
+exports.getAnalytics = getAnalytics;
+exports.manageSubscribers = manageSubscribers;
+exports.importSubscribers = importSubscribers;
 
 const VALID_BANDS = ["exposed", "adaptable", "harder_to_replace"];
 const VALID_FAMILIES = [
@@ -23,7 +41,7 @@ const VALID_CATEGORIES = [
 ];
 
 exports.sendFutureProofSkillsGuide = onRequest(
-  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY, BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID] },
+  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
   async (req, res) => {
     if (req.method !== "POST") {
       res.status(405).json({ error: "Method not allowed" });
@@ -107,28 +125,6 @@ exports.sendFutureProofSkillsGuide = onRequest(
     `;
 
     try {
-      // Subscribe to Beehiiv newsletter
-      const beehiivRes = await fetch(
-        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: email,
-            reactivate_existing: true,
-            send_welcome_email: true,
-            utm_source: "skills_assessment",
-            double_opt_override: "off"
-          })
-        }
-      );
-      if (!beehiivRes.ok) {
-        console.error("Beehiiv subscription error:", await beehiivRes.text());
-      }
-
       // Send guide email via Resend
       const resend = new Resend(RESEND_API_KEY.value());
       await resend.emails.send({
@@ -168,7 +164,7 @@ exports.sendFutureProofSkillsGuide = onRequest(
 
 
 exports.sendContactMessage = onRequest(
-  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY, BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID] },
+  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
   async (req, res) => {
     if (req.method !== "POST") {
       res.status(405).json({ error: "Method not allowed" });
@@ -204,28 +200,6 @@ exports.sendContactMessage = onRequest(
     `;
 
     try {
-      // Subscribe to Beehiiv newsletter
-      const beehiivRes = await fetch(
-        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: email,
-            reactivate_existing: true,
-            send_welcome_email: true,
-            utm_source: "contact_form",
-            double_opt_override: "off"
-          })
-        }
-      );
-      if (!beehiivRes.ok) {
-        console.error("Beehiiv subscription error:", await beehiivRes.text());
-      }
-
       // Send contact message via Resend
       const resend = new Resend(RESEND_API_KEY.value());
       await resend.emails.send({
@@ -253,63 +227,6 @@ exports.sendContactMessage = onRequest(
 );
 
 
-exports.subscribeNewsletter = onRequest(
-  { region: "europe-west1", cors: true, secrets: [BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID] },
-  async (req, res) => {
-    if (req.method !== "POST") {
-      res.status(405).json({ error: "Method not allowed" });
-      return;
-    }
-
-    const body = req.body.data || req.body;
-    const { email, utm_source } = body;
-
-    // Validate email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      res.status(400).json({ error: "Invalid email" });
-      return;
-    }
-
-    try {
-      const beehiivRes = await fetch(
-        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: email,
-            reactivate_existing: true,
-            send_welcome_email: true,
-            utm_source: utm_source || "website",
-            double_opt_override: "off"
-          })
-        }
-      );
-
-      if (!beehiivRes.ok) {
-        const errBody = await beehiivRes.text();
-        console.error("Beehiiv subscription error:", errBody);
-        res.status(500).json({ error: "Subscription failed" });
-        return;
-      }
-
-      // Store in Firestore
-      await db.collection("newsletter_subscriptions").add({
-        email: email,
-        utmSource: utm_source || "website",
-        subscribedAt: admin.firestore.FieldValue.serverTimestamp()
-      });
-
-      res.status(200).json({ result: "success" });
-    } catch (err) {
-      console.error("Subscribe error:", err);
-      res.status(500).json({ error: "Subscription failed" });
-    }
-  }
-);
 
 
 // ===== AI JOB RISK ANALYZER =====
@@ -334,7 +251,7 @@ exports.analyzeJobRisk = onRequest(
     cors: true,
     timeoutSeconds: 120,
     memory: "512MiB",
-    secrets: [RESEND_API_KEY, BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID, GEMINI_API_KEY]
+    secrets: [RESEND_API_KEY, GEMINI_API_KEY]
   },
   async (req, res) => {
     if (req.method !== "POST") {
@@ -405,33 +322,7 @@ exports.analyzeJobRisk = onRequest(
     const normalizedEmail = email.trim().toLowerCase();
     const firstName = name.trim().split(" ")[0];
 
-    // 1. Subscribe to Beehiiv
-    try {
-      const beehiivRes = await fetch(
-        `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID.value()}/subscriptions`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${BEEHIIV_API_KEY.value()}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: normalizedEmail,
-            reactivate_existing: true,
-            send_welcome_email: true,
-            utm_source: "job_risk_analyzer",
-            double_opt_override: "off"
-          })
-        }
-      );
-      if (!beehiivRes.ok) {
-        console.error("Beehiiv error:", await beehiivRes.text());
-      }
-    } catch (err) {
-      console.error("Beehiiv subscription failed:", err.message);
-    }
-
-    // 2. Generate Gemini analysis
+    // 1. Generate Gemini analysis
     let analysis;
     try {
       const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -532,7 +423,7 @@ Return this exact JSON structure:
       return;
     }
 
-    // 3. Generate secure report token and save to Firestore
+    // 2. Generate secure report token and save to Firestore
     const crypto = require("crypto");
     const reportToken = crypto.randomBytes(32).toString("hex");
     const tokenHash = crypto.createHash("sha256").update(reportToken).digest("hex");
@@ -558,7 +449,7 @@ Return this exact JSON structure:
         viewCount: 0
       });
 
-      // 4. Send short summary email with CTA
+      // 3. Send short summary email with CTA
       const resend = new Resend(RESEND_API_KEY.value());
       const riskColor = analysis.risk_level === "High" ? "#DC2626" :
                         analysis.risk_level === "Medium" ? "#D97706" : "#0D9488";

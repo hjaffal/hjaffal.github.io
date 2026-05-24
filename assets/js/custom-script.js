@@ -1,4 +1,4 @@
-// Global newsletter subscribe handler
+// Global newsletter subscribe handler — POSTs to self-hosted subscribeNewsletter Cloud Function
 function handleNewsletterSubscribe(e, form, source) {
   e.preventDefault();
   var email = form.querySelector('input[type="email"]').value;
@@ -16,7 +16,7 @@ function handleNewsletterSubscribe(e, form, source) {
   fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({data: {email: email, utm_source: source || 'website'}})
+    body: JSON.stringify({email: email, utm_source: source || 'website'})
   }).then(function(res) {
     if (res.ok) {
       msg.style.display = 'block';
