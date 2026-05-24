@@ -1,0 +1,41 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hasan Jaffal logo">
+  <defs>
+    <linearGradient id="purple" x1="12" y1="12" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#9333EA"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="#020617"/>
+
+  <!-- H mark -->
+  <path
+    d="M15 16H22V31H34V16H41V48H34V37H22V48H15V16Z"
+    fill="url(#purple)"
+  />
+
+  <!-- J mark -->
+  <path
+    d="M42 31H49V43C49 49.1 44.1 54 38 54H35C28.9 54 24 49.1 24 43V42H31V43C31 45.2 32.8 47 35 47H38C40.2 47 42 45.2 42 43V31Z"
+    fill="#F8FAFC"
+  />
+
+  <!-- Growth bars -->
+  <rect x="36" y="25" width="4" height="6" rx="1" fill="url(#purple)"/>
+  <rect x="42" y="21" width="4" height="10" rx="1" fill="url(#purple)"/>
+  <rect x="48" y="17" width="4" height="14" rx="1" fill="url(#purple)"/>
+
+  <!-- Growth arrow -->
+  <path
+    d="M35 21L43 13L48 18L55 11"
+    fill="none"
+    stroke="url(#purple)"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M55 11L54 19L47 12L55 11Z"
+    fill="url(#purple)"
+  />
+</svg>

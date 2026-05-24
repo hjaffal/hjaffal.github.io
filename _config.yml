@@ -9,7 +9,7 @@ navbar-links:
   About: "aboutme"
   Contact: "contact"
 
-avatar: "/assets/img/hasanjaffal.jpeg"
+avatar: "/assets/img/og-default.png"
 round-avatar: false
 
 social-network-links:

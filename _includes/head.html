@@ -178,6 +178,8 @@
   {% if favicon_exists == 1 %}
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
   {% endif %}
+  <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}" />
+  <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
 
   {% if page.head-extra %}
     {% for file in page.head-extra %}
