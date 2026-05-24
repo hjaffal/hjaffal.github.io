@@ -11,35 +11,62 @@ css:
   - "/assets/css/tool-landing.css"
 ---
 
+<style>
+.container-md,.container-lg{max-width:100% !important;padding:0 !important;}
+.page-main{padding:0 !important;}
+.page-with-sidebar{grid-template-columns:1fr !important;}
+.page-sidebar{display:none !important;}
+.intro-header{display:none !important;}
+.col-xl-8,.col-lg-10{max-width:100% !important;flex:0 0 100% !important;padding:0 !important;}
+.offset-xl-2,.offset-lg-1{margin-left:0 !important;}
+.row{margin:0 !important;}
+main.container-md{padding:0 !important;max-width:100% !important;}
+</style>
+
 <div class="tl-page">
 
   <!-- Hero -->
   <section class="tl-hero">
     <span class="tl-hero-label">FREE AI-POWERED TOOL</span>
     <h1 class="tl-hero-title">How Exposed Is Your Job to AI?</h1>
-    <p class="tl-hero-sub">Get a personalized risk analysis powered by AI. See your risk score, exposed tasks, skill gaps, and a 30-day action plan — delivered to your inbox.</p>
-    <a href="/tools/ai-job-risk-analyzer/" class="tl-hero-cta">Analyze My Role for Free →</a>
-    <p class="tl-hero-meta">3 minutes · AI-powered analysis · Full report by email</p>
+    <p class="tl-hero-sub">Get your own AI Job Risk Dashboard — a personalized interactive report with your risk score, charts, exposed tasks, skill gaps, and a role-specific 30-day action plan.</p>
+    <a href="/tools/ai-job-risk-analyzer/" class="tl-hero-cta">Get My Free AI Risk Dashboard →</a>
+    <p class="tl-hero-meta">3 minutes · AI-powered · Interactive dashboard + email summary</p>
   </section>
 
   <!-- What you get -->
   <section class="tl-section">
-    <h2 class="tl-section-title">What Your Report Includes</h2>
+    <h2 class="tl-section-title">What You Get</h2>
     <div class="tl-features">
       <div class="tl-feature">
         <div class="tl-feature-icon"><i class="fas fa-gauge-high"></i></div>
-        <h3>Risk Score (0–100)</h3>
-        <p>A clear number showing how exposed your specific role is to AI automation based on your actual tasks.</p>
+        <h3>Risk Score & Charts</h3>
+        <p>A personal dashboard with your risk score, capability radar, risk distribution chart, and detailed breakdown bars.</p>
       </div>
       <div class="tl-feature">
         <div class="tl-feature-icon"><i class="fas fa-list-check"></i></div>
         <h3>Exposed vs. Protected Tasks</h3>
-        <p>See exactly which of your daily tasks are most at risk and which ones still require human judgment.</p>
+        <p>See exactly which of your daily tasks are most at risk — with exposure percentages and reasons — and which ones still need human judgment.</p>
       </div>
       <div class="tl-feature">
         <div class="tl-feature-icon"><i class="fas fa-calendar-week"></i></div>
-        <h3>30-Day Action Plan</h3>
-        <p>A week-by-week plan with specific actions to reduce your exposure and build durable skills.</p>
+        <h3>Role-Specific 30-Day Plan</h3>
+        <p>Not generic advice. A week-by-week plan referencing your actual job title, tasks, and industry — with concrete outputs for each week.</p>
+      </div>
+      <div class="tl-feature">
+        <div class="tl-feature-icon"><i class="fas fa-rotate"></i></div>
+        <h3>Rerun Anytime</h3>
+        <p>Update your profile and rerun the analysis as your role evolves. Your dashboard stays saved and accessible.</p>
+      </div>
+      <div class="tl-feature">
+        <div class="tl-feature-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Skill Gap Analysis</h3>
+        <p>Specific skill gaps with priority levels and first actions — not vague recommendations like "learn AI."</p>
+      </div>
+      <div class="tl-feature">
+        <div class="tl-feature-icon"><i class="fas fa-share-nodes"></i></div>
+        <h3>Share & Export</h3>
+        <p>Share your dashboard link, invite teammates, or download your report as PDF.</p>
       </div>
     </div>
   </section>
@@ -73,26 +100,43 @@ css:
       <div class="tl-step">
         <span class="tl-step-num">1</span>
         <h3>Describe your role</h3>
-        <p>Job title, industry, seniority, and your main daily tasks.</p>
+        <p>Job title, industry, seniority, main tasks, and your AI concerns.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step-num">2</span>
-        <h3>AI analyzes your profile</h3>
-        <p>Our AI compares your tasks against current automation capabilities and trends.</p>
+        <h3>AI builds your dashboard</h3>
+        <p>Our AI analyzes your profile and generates a full interactive risk dashboard with charts and recommendations.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step-num">3</span>
-        <h3>Get your report by email</h3>
-        <p>Full risk score, exposed tasks, skill gaps, recommended skills, and a 30-day plan.</p>
+        <h3>Access your dashboard</h3>
+        <p>Get a private link to your personal AI Job Risk Dashboard. Rerun, share, or export anytime.</p>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="tl-cta-section">
-    <h2 class="tl-cta-title">Stop guessing. Get your risk score.</h2>
-    <p class="tl-cta-desc">3 minutes of your time. A full personalized report in your inbox. Free.</p>
-    <a href="/tools/ai-job-risk-analyzer/" class="tl-hero-cta">Get My Free AI Risk Report →</a>
+    <h2 class="tl-cta-title">Stop guessing. Get your personal AI risk dashboard.</h2>
+    <p class="tl-cta-desc">3 minutes. Interactive charts. Role-specific plan. Free.</p>
+    <a href="/tools/ai-job-risk-analyzer/" class="tl-hero-cta">Get My Free Dashboard →</a>
+  </section>
+
+  <!-- Share with a friend -->
+  <section class="tl-section tl-section-alt">
+    <div class="tl-share-card">
+      <div class="tl-share-icon"><i class="fas fa-user-plus"></i></div>
+      <h2 class="tl-share-title">Know someone who should try this?</h2>
+      <p class="tl-share-desc">Send this tool to a friend or teammate. We'll let them know you found it useful.</p>
+      <form class="tl-share-form" id="tl-share-form">
+        <div class="tl-share-row">
+          <input type="text" placeholder="Their name" required id="tl-share-name" class="tl-share-input">
+          <input type="email" placeholder="Their email" required id="tl-share-email" class="tl-share-input">
+          <button type="submit" class="tl-share-btn">Send Invite</button>
+        </div>
+        <p class="tl-share-msg" id="tl-share-msg" style="display:none;"></p>
+      </form>
+    </div>
   </section>
 
   <!-- FAQ -->
@@ -101,23 +145,27 @@ css:
     <div class="tl-faq">
       <div class="tl-faq-item">
         <h3>Is this tool really free?</h3>
-        <p>Yes. You get the full report by email at no cost. We ask for newsletter consent because we write weekly about AI, risk, and career strategy.</p>
+        <p>Yes. You get the full interactive dashboard at no cost. We ask for newsletter consent because we write weekly about AI, risk, and career strategy.</p>
+      </div>
+      <div class="tl-faq-item">
+        <h3>What is the AI Job Risk Dashboard?</h3>
+        <p>A personal interactive page with your risk score, charts, exposed tasks, skill gaps, recommended skills, and a 30-day action plan. You can rerun the analysis, share it, or download it as PDF.</p>
       </div>
       <div class="tl-faq-item">
         <h3>How is the risk score calculated?</h3>
         <p>AI analyzes your specific tasks, industry, and seniority against current automation capabilities. It distinguishes between task automation risk and full job replacement risk.</p>
       </div>
       <div class="tl-faq-item">
-        <h3>Is my data stored?</h3>
-        <p>No. Your form inputs are used to generate the report and are not stored afterward. Your email is added to the newsletter only if you consent.</p>
+        <h3>Can I update my profile and rerun?</h3>
+        <p>Yes. Your dashboard has a "Rerun" button. You can edit your job title, tasks, or any input and regenerate the analysis anytime.</p>
       </div>
       <div class="tl-faq-item">
-        <h3>How accurate is the analysis?</h3>
-        <p>The analysis is based on current AI trends and capabilities. It is an informed estimate, not a prediction. Use it as a starting point for planning.</p>
+        <h3>Is my data stored?</h3>
+        <p>Your inputs and results are stored securely so you can access your dashboard anytime. Only you (via your private link) can view your report.</p>
       </div>
       <div class="tl-faq-item">
         <h3>What makes this different from generic AI career advice?</h3>
-        <p>Generic advice says "learn AI." This tool analyzes your specific tasks and tells you exactly which ones are exposed, which skills to build, and gives you a week-by-week plan.</p>
+        <p>Generic advice says "learn AI." This tool analyzes your specific tasks and gives you exposure percentages, judgment area labels, priority-ranked skill gaps, and a week-by-week plan referencing your actual role.</p>
       </div>
     </div>
   </section>
@@ -140,12 +188,36 @@ css:
 
 </div>
 
+<script>
+(function(){
+  var form=document.getElementById('tl-share-form');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fname=document.getElementById('tl-share-name').value.trim();
+    var femail=document.getElementById('tl-share-email').value.trim();
+    var msg=document.getElementById('tl-share-msg');
+    if(!fname||!femail)return;
+    var btn=form.querySelector('button');
+    btn.disabled=true;btn.textContent='Sending...';
+    var fnUrl=document.querySelector('meta[name="fn-share-tool"]');
+    fetch(fnUrl?fnUrl.getAttribute('content'):'',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({data:{friendName:fname,friendEmail:femail,senderName:'A friend'}})
+    }).then(function(r){
+      if(r.ok){msg.style.display='block';msg.textContent='Invite sent!';msg.style.color='#0D9488';btn.textContent='Sent ✓';}
+      else{msg.style.display='block';msg.textContent='Could not send. Try again.';msg.style.color='#DC2626';btn.disabled=false;btn.textContent='Send Invite';}
+    }).catch(function(){msg.style.display='block';msg.textContent='Could not send. Try again.';msg.style.color='#DC2626';btn.disabled=false;btn.textContent='Send Invite';});
+  });
+})();
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "AI Job Risk Analyzer",
-  "description": "Free AI-powered tool that analyzes your job role and provides a personalized risk score, exposed tasks, skill gaps, and a 30-day action plan.",
+  "description": "Free AI-powered tool that gives you a personal interactive dashboard with your job risk score, capability radar, exposed tasks, skill gaps, and a role-specific 30-day action plan.",
   "url": "https://hasanjaffal.com/ai-job-risk-analyzer/",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
@@ -167,11 +239,11 @@ css:
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Is the AI Job Risk Analyzer free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You get the full report by email at no cost. We ask for newsletter consent because we write weekly about AI, risk, and career strategy."}},
+    {"@type": "Question", "name": "Is the AI Job Risk Analyzer free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You get the full interactive dashboard at no cost. We ask for newsletter consent because we write weekly about AI, risk, and career strategy."}},
+    {"@type": "Question", "name": "What is the AI Job Risk Dashboard?", "acceptedAnswer": {"@type": "Answer", "text": "A personal interactive page with your risk score, charts, exposed tasks, skill gaps, recommended skills, and a 30-day action plan. You can rerun the analysis, share it, or download it as PDF."}},
     {"@type": "Question", "name": "How is the AI job risk score calculated?", "acceptedAnswer": {"@type": "Answer", "text": "AI analyzes your specific tasks, industry, and seniority against current automation capabilities. It distinguishes between task automation risk and full job replacement risk."}},
-    {"@type": "Question", "name": "Is my data stored by the AI Job Risk Analyzer?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your form inputs are used to generate the report and are not stored afterward. Your email is added to the newsletter only if you consent."}},
-    {"@type": "Question", "name": "How accurate is the AI job risk analysis?", "acceptedAnswer": {"@type": "Answer", "text": "The analysis is based on current AI trends and capabilities. It is an informed estimate, not a prediction. Use it as a starting point for planning."}},
-    {"@type": "Question", "name": "What makes this different from generic AI career advice?", "acceptedAnswer": {"@type": "Answer", "text": "Generic advice says learn AI. This tool analyzes your specific tasks and tells you exactly which ones are exposed, which skills to build, and gives you a week-by-week plan."}}
+    {"@type": "Question", "name": "Can I update my profile and rerun the analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your dashboard has a Rerun button. You can edit your job title, tasks, or any input and regenerate the analysis anytime."}},
+    {"@type": "Question", "name": "What makes this different from generic AI career advice?", "acceptedAnswer": {"@type": "Answer", "text": "Generic advice says learn AI. This tool analyzes your specific tasks and gives you exposure percentages, judgment area labels, priority-ranked skill gaps, and a week-by-week plan referencing your actual role."}}
   ]
 }
 </script>

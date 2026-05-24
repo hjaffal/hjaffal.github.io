@@ -2,294 +2,365 @@
 layout: page
 title:
 subtitle:
-share-title: "AI Job Risk Report — Your Personalized Dashboard"
-share-description: "View your personalized AI Job Risk Report with interactive charts, skill gap analysis, and a 30-day action plan."
+share-title: "AI Job Risk Dashboard"
+share-description: "Your personalized AI Job Risk Dashboard with interactive charts, skill gap analysis, and a 30-day action plan."
 chat_with_me_box: false
 show-avatar: false
 permalink: /tools/ai-job-risk-report/
 css:
-  - "/assets/css/job-risk-report.css"
+  - "/assets/css/job-risk-dashboard.css"
 ---
 
+<meta name="robots" content="noindex, nofollow">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
-<div class="jrr-wrap" id="jrr-app">
-  <!-- Loading State -->
-  <div class="jrr-loading" id="jrr-loading">
-    <div class="jrr-loading-spinner"></div>
-    <p>Loading your report...</p>
+<style>
+.container-md,.container-lg{max-width:100%;padding:0;}
+.page-main{padding:0 32px 60px;}
+.page-with-sidebar{grid-template-columns:1fr;}
+.page-sidebar{display:none;}
+.intro-header{display:none !important;}
+@media(max-width:768px){.page-main{padding:0 16px 40px;}}
+</style>
+
+<!-- Loading -->
+<div class="dash-loading" id="dash-loading">
+  <div class="dash-loading-spinner"></div>
+  <p>Loading your dashboard...</p>
+</div>
+
+<!-- Error -->
+<div class="dash-error" id="dash-error" style="display:none;">
+  <i class="fas fa-exclamation-circle"></i>
+  <h2>Report Not Found</h2>
+  <p>This link may be invalid or expired.</p>
+  <a href="/tools/ai-job-risk-analyzer/" class="dash-btn-primary">Take a New Assessment →</a>
+</div>
+
+<!-- Dashboard -->
+<div class="dash" id="dash" style="display:none;">
+
+  <!-- Tool Name -->
+  <div class="dash-tool-header">
+    <div class="dash-tool-header-left">
+      <span class="dash-tool-icon"><i class="fas fa-robot"></i></span>
+      <span class="dash-tool-name">AI Job Risk Dashboard</span>
+    </div>
+    <a href="/ai-job-risk-analyzer/" target="_blank" rel="noopener" class="dash-tool-link">Learn about this tool <i class="fas fa-arrow-up-right-from-square"></i></a>
   </div>
 
-  <!-- Error State -->
-  <div class="jrr-error" id="jrr-error" style="display:none;">
-    <div class="jrr-error-icon"><i class="fas fa-exclamation-circle"></i></div>
-    <h2>Report Not Found</h2>
-    <p>This report link may be invalid or expired. Please check your email for the correct link.</p>
-    <a href="/tools/ai-job-risk-analyzer/" class="jrr-btn">Take a New Assessment →</a>
+  <!-- Profile Bar -->
+  <div class="dash-profile">
+    <div class="dash-profile-info">
+      <div class="dash-profile-avatar" id="d-avatar"></div>
+      <div>
+        <h1 class="dash-profile-name" id="d-name"></h1>
+        <p class="dash-profile-meta"><span id="d-jobtitle"></span> · <span id="d-industry"></span> · <span id="d-country"></span></p>
+      </div>
+    </div>
+    <div class="dash-profile-score">
+      <canvas id="d-gauge" width="80" height="80"></canvas>
+      <div class="dash-profile-score-text">
+        <span class="dash-profile-score-num" id="d-score"></span>
+        <span class="dash-profile-score-label" id="d-badge"></span>
+      </div>
+    </div>
   </div>
 
-  <!-- Report Content -->
-  <div class="jrr-report" id="jrr-report" style="display:none;">
-
-    <!-- Hero -->
-    <div class="jrr-hero">
-      <div class="jrr-hero-meta">
-        <span class="jrr-hero-label">AI JOB RISK REPORT</span>
-        <h1 class="jrr-hero-name" id="jrr-name"></h1>
-        <p class="jrr-hero-role"><span id="jrr-jobtitle"></span> · <span id="jrr-industry"></span></p>
-        <p class="jrr-hero-date">Generated <span id="jrr-date"></span></p>
-      </div>
-      <div class="jrr-hero-score">
-        <div class="jrr-score-canvas-wrap">
-          <canvas id="jrr-gauge" width="140" height="140"></canvas>
-          <div class="jrr-score-overlay">
-            <span class="jrr-score-value" id="jrr-score-value"></span>
-            <span class="jrr-score-max">/100</span>
-          </div>
-        </div>
-        <span class="jrr-score-badge" id="jrr-score-badge"></span>
-      </div>
-    </div>
-
-    <!-- Summary -->
-    <div class="jrr-section">
-      <p class="jrr-summary" id="jrr-summary"></p>
-    </div>
-
-    <!-- Charts Grid -->
-    <div class="jrr-section">
-      <h2 class="jrr-section-title">Risk Breakdown</h2>
-      <div class="jrr-chart-grid">
-        <div class="jrr-chart-card">
-          <p class="jrr-chart-label">Risk Distribution</p>
-          <canvas id="jrr-chart-doughnut" class="jrr-chart-canvas"></canvas>
-        </div>
-        <div class="jrr-chart-card">
-          <p class="jrr-chart-label">Capability Radar</p>
-          <canvas id="jrr-chart-radar" class="jrr-chart-canvas"></canvas>
-        </div>
-        <div class="jrr-chart-card jrr-chart-card-full">
-          <p class="jrr-chart-label">Detailed Breakdown</p>
-          <canvas id="jrr-chart-bars" class="jrr-chart-canvas" style="max-height:160px;"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- Exposed Tasks -->
-    <div class="jrr-section">
-      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-red">⚠</span> Tasks Most Exposed</h2>
-      <p class="jrr-section-desc">Tasks that are highly repetitive, rule-based, or data-driven</p>
-      <div class="jrr-cards" id="jrr-exposed"></div>
-    </div>
-
-    <!-- Protected Tasks -->
-    <div class="jrr-section">
-      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-green">✓</span> Tasks Still Protected</h2>
-      <p class="jrr-section-desc">Tasks requiring creativity, judgment, empathy, or complex decisions</p>
-      <div class="jrr-cards" id="jrr-protected"></div>
-    </div>
-
-    <!-- Skill Gaps -->
-    <div class="jrr-section">
-      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-amber">↑</span> Skill Gaps to Close</h2>
-      <div class="jrr-cards" id="jrr-gaps"></div>
-    </div>
-
-    <!-- Recommended Skills -->
-    <div class="jrr-section">
-      <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-blue">★</span> Skills to Build Next</h2>
-      <div class="jrr-skills-grid" id="jrr-skills"></div>
-    </div>
-
-    <!-- 30-Day Plan -->
-    <div class="jrr-section">
-      <h2 class="jrr-section-title">Your 30-Day Action Plan</h2>
-      <div class="jrr-timeline" id="jrr-timeline"></div>
-    </div>
-
-    <!-- Final Advice -->
-    <div class="jrr-advice" id="jrr-advice"></div>
-
-    <!-- CTA -->
-    <div class="jrr-cta">
-      <p class="jrr-cta-text">Want to keep improving? Subscribe for weekly insights on AI, risk, and career strategy.</p>
-      <form class="nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'job_risk_report')">
-        <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
-        <button type="submit" class="nl-subscribe-btn">Subscribe</button>
-        <p class="nl-subscribe-msg" style="display:none;"></p>
-      </form>
-      <a href="/tools/ai-job-risk-analyzer/" class="jrr-retake">← Retake Assessment</a>
-    </div>
-
-    <!-- Privacy -->
-    <div class="jrr-privacy">
-      <p>This report is private to the email address used for the assessment.</p>
+  <!-- Actions + Tabs -->
+  <div class="dash-toolbar">
+    <nav class="dash-tabs">
+      <button class="dash-tab active" data-tab="report"><i class="fas fa-chart-pie"></i> Report</button>
+      <button class="dash-tab" data-tab="plan"><i class="fas fa-calendar-check"></i> Action Plan</button>
+      <button class="dash-tab" data-tab="skills"><i class="fas fa-graduation-cap"></i> Skills</button>
+      <button class="dash-tab" data-tab="profile"><i class="fas fa-user"></i> My Profile</button>
+    </nav>
+    <div class="dash-actions">
+      <button class="dash-btn-ghost" id="btn-rerun"><i class="fas fa-rotate"></i> Rerun</button>
+      <button class="dash-btn-ghost" id="btn-share"><i class="fas fa-share-nodes"></i></button>
+      <button class="dash-btn-ghost" id="btn-pdf"><i class="fas fa-download"></i></button>
     </div>
   </div>
+
+  <!-- Tab: Report -->
+  <div class="dash-panel active" id="panel-report">
+    <p class="dash-summary" id="d-summary"></p>
+
+    <div class="dash-charts">
+      <div class="dash-chart-card">
+        <span class="dash-chart-label">Risk Distribution</span>
+        <canvas id="d-chart-doughnut"></canvas>
+      </div>
+      <div class="dash-chart-card">
+        <span class="dash-chart-label">Capability Radar</span>
+        <canvas id="d-chart-radar"></canvas>
+      </div>
+      <div class="dash-chart-card dash-chart-full">
+        <span class="dash-chart-label">Detailed Breakdown</span>
+        <canvas id="d-chart-bars" style="max-height:160px;"></canvas>
+      </div>
+    </div>
+
+    <div class="dash-section">
+      <h3 class="dash-section-title"><span class="dash-dot dash-dot-red"></span> Tasks Most Exposed</h3>
+      <div class="dash-cards" id="d-exposed"></div>
+    </div>
+
+    <div class="dash-section">
+      <h3 class="dash-section-title"><span class="dash-dot dash-dot-green"></span> Tasks Still Protected</h3>
+      <div class="dash-cards" id="d-protected"></div>
+    </div>
+
+    <div class="dash-advice" id="d-advice"></div>
+  </div>
+
+  <!-- Tab: My Profile -->
+  <div class="dash-panel" id="panel-profile">
+    <div class="dash-input-grid" id="d-inputs-view"></div>
+    <div class="dash-edit-form" id="d-edit-form" style="display:none;">
+      <div class="dash-input-grid">
+        <div class="dash-input-card"><label class="dash-input-label">Full Name</label><input type="text" id="edit-name" class="dash-edit-input"></div>
+        <div class="dash-input-card"><label class="dash-input-label">Job Title</label><input type="text" id="edit-jobtitle" class="dash-edit-input"></div>
+        <div class="dash-input-card"><label class="dash-input-label">Industry</label><input type="text" id="edit-industry" class="dash-edit-input"></div>
+        <div class="dash-input-card"><label class="dash-input-label">Seniority</label>
+          <select id="edit-seniority" class="dash-edit-input">
+            <option value="entry_level">Entry level</option><option value="specialist">Specialist</option><option value="manager">Manager</option><option value="senior_manager">Senior manager</option><option value="director">Director</option><option value="executive">Executive</option><option value="other">Other</option>
+          </select>
+        </div>
+        <div class="dash-input-card"><label class="dash-input-label">Country</label><input type="text" id="edit-country" class="dash-edit-input"></div>
+        <div class="dash-input-card"><label class="dash-input-label">AI Usage</label>
+          <select id="edit-usage" class="dash-edit-input">
+            <option value="no_ai">I do not use AI yet</option><option value="occasionally">Occasionally</option><option value="weekly">Weekly</option><option value="daily">Daily</option><option value="manage_ai">I manage AI work</option>
+          </select>
+        </div>
+        <div class="dash-input-card"><label class="dash-input-label">Biggest Concern</label>
+          <select id="edit-concern" class="dash-edit-input">
+            <option value="job_automated">Job may be automated</option><option value="skills_outdated">Skills may become outdated</option><option value="team_no_ai">Team doesn't use AI</option><option value="company_too_fast">Company moving too fast</option><option value="company_too_slow">Company moving too slow</option><option value="dont_know_where_to_start">Don't know where to start</option>
+          </select>
+        </div>
+        <div class="dash-input-card" style="grid-column:1/-1;"><label class="dash-input-label">Main Tasks</label><textarea id="edit-tasks" class="dash-edit-input" rows="3"></textarea></div>
+        <div class="dash-input-card" style="grid-column:1/-1;"><label class="dash-input-label">Skills to Build</label><input type="text" id="edit-skills" class="dash-edit-input"></div>
+      </div>
+      <div class="dash-edit-actions">
+        <button class="dash-btn-ghost" id="btn-cancel-edit">Cancel</button>
+        <button class="dash-btn-primary" id="btn-run-analysis"><i class="fas fa-play"></i> Run Analysis</button>
+      </div>
+    </div>
+    <button class="dash-btn-ghost" id="btn-edit-profile" style="margin-top:14px;"><i class="fas fa-pen"></i> Edit & Rerun</button>
+  </div>
+
+  <!-- Tab: Action Plan -->
+  <div class="dash-panel" id="panel-plan">
+    <div class="dash-timeline" id="d-timeline"></div>
+  </div>
+
+  <!-- Tab: Skills -->
+  <div class="dash-panel" id="panel-skills">
+    <h3 class="dash-section-title"><span class="dash-dot dash-dot-amber"></span> Skill Gaps</h3>
+    <div class="dash-cards" id="d-gaps"></div>
+    <h3 class="dash-section-title" style="margin-top:28px;"><span class="dash-dot dash-dot-blue"></span> Recommended Skills</h3>
+    <div class="dash-skills-grid" id="d-skills"></div>
+  </div>
+
+  <!-- Share Modal -->
+  <div class="dash-modal" id="dash-modal-share" style="display:none;">
+    <div class="dash-modal-box">
+      <h3>Share Report</h3>
+      <p class="dash-share-note">Only people with this link can view your report.</p>
+      <div class="dash-share-actions">
+        <button class="dash-btn-action" id="btn-copy-link"><i class="fas fa-link"></i> Copy Link</button>
+        <a class="dash-btn-action" id="btn-linkedin" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a class="dash-btn-action" id="btn-email-share"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+      <button class="dash-modal-close" id="modal-share-close">Close</button>
+    </div>
+  </div>
+
+  <!-- Rerun Modal -->
+  <div class="dash-modal" id="dash-modal-rerun" style="display:none;">
+    <div class="dash-modal-box">
+      <h3>Rerun Analysis?</h3>
+      <p>This will regenerate your report using your saved profile. The current result will be replaced.</p>
+      <div class="dash-modal-actions">
+        <button class="dash-btn-ghost" id="modal-cancel">Cancel</button>
+        <button class="dash-btn-primary" id="modal-confirm">Rerun</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="dash-toast" id="dash-toast" style="display:none;"></div>
 </div>
 
 <script>
 (function(){
-  var reportEl = document.getElementById('jrr-report');
-  var loadingEl = document.getElementById('jrr-loading');
-  var errorEl = document.getElementById('jrr-error');
+  var FN_GET='{{ site.data.firebase.fn_get_report }}';
+  var FN_RERUN='{{ site.data.firebase.fn_rerun_report }}';
+  var token=new URLSearchParams(window.location.search).get('token');
+  var dashEl=document.getElementById('dash');
+  var loadEl=document.getElementById('dash-loading');
+  var errEl=document.getElementById('dash-error');
 
-  var params = new URLSearchParams(window.location.search);
-  var token = params.get('token');
+  if(!token||token.length!==64){showError();return;}
+  fetch(FN_GET+'?token='+encodeURIComponent(token)+'&_='+Date.now())
+    .then(function(r){if(!r.ok)throw new Error();return r.json();})
+    .then(render).catch(showError);
 
-  if (!token || token.length !== 64) {
-    showError();
-    return;
-  }
+  function showError(){loadEl.style.display='none';errEl.style.display='flex';}
 
-  var fnUrl = '{{ site.data.firebase.fn_get_report }}';
-  fetch(fnUrl + '?token=' + encodeURIComponent(token))
-    .then(function(res) {
-      if (!res.ok) throw new Error('Not found');
-      return res.json();
-    })
-    .then(function(data) {
-      renderReport(data);
-    })
-    .catch(function() {
-      showError();
-    });
+  function render(data){
+    loadEl.style.display='none';dashEl.style.display='block';
+    var r=data.result,score=r.risk_score||0,level=r.risk_level||'Unknown';
+    var color=level==='High'?'#DC2626':level==='Medium'?'#D97706':'#0D9488';
 
-  function showError() {
-    loadingEl.style.display = 'none';
-    errorEl.style.display = 'block';
-  }
+    // Profile
+    document.getElementById('d-name').textContent=data.name;
+    document.getElementById('d-jobtitle').textContent=data.jobTitle;
+    document.getElementById('d-industry').textContent=data.industry;
+    document.getElementById('d-country').textContent=data.country;
+    document.getElementById('d-score').textContent=score+'/100';
+    var badge=document.getElementById('d-badge');
+    badge.textContent=level+' Risk';badge.style.color=color;
+    var avatar=document.getElementById('d-avatar');
+    avatar.textContent=(data.name||'U').charAt(0).toUpperCase();
+    avatar.style.background=color+'18';avatar.style.color=color;
 
-  function renderReport(data) {
-    loadingEl.style.display = 'none';
-    reportEl.style.display = 'block';
+    // Summary
+    document.getElementById('d-summary').textContent=r.summary||'';
 
-    var r = data.result;
-    var score = r.risk_score || 0;
-    var level = r.risk_level || 'Unknown';
-    var color = level === 'High' ? '#DC2626' : level === 'Medium' ? '#D97706' : '#0D9488';
+    // Gauge (small)
+    new Chart(document.getElementById('d-gauge'),{type:'doughnut',data:{datasets:[{data:[score,100-score],backgroundColor:[color,'#E2E8F0'],borderWidth:0}]},options:{cutout:'76%',rotation:-135,circumference:270,responsive:false,plugins:{legend:{display:false},tooltip:{enabled:false}}}});
 
-    // Hero
-    document.getElementById('jrr-name').textContent = data.name || 'Your Report';
-    document.getElementById('jrr-jobtitle').textContent = data.jobTitle || '';
-    document.getElementById('jrr-industry').textContent = data.industry || '';
-    document.getElementById('jrr-score-value').textContent = score;
-    var badge = document.getElementById('jrr-score-badge');
-    badge.textContent = level + ' Risk';
-    badge.style.color = color;
-    badge.style.background = level === 'High' ? '#FEF2F2' : level === 'Medium' ? '#FEF3C7' : '#F0FDF4';
-
-    if (data.submittedAt) {
-      var d = new Date(data.submittedAt);
-      document.getElementById('jrr-date').textContent = d.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
-    }
-
-    document.getElementById('jrr-summary').textContent = r.summary || '';
-
-    // Gauge chart
-    var gaugeCtx = document.getElementById('jrr-gauge').getContext('2d');
-    new Chart(gaugeCtx, {
-      type: 'doughnut',
-      data: { datasets: [{ data: [score, 100 - score], backgroundColor: [color, 'rgba(255,255,255,0.08)'], borderWidth: 0 }] },
-      options: { cutout: '75%', rotation: -135, circumference: 270, responsive: false, plugins: { legend: { display: false }, tooltip: { enabled: false } } }
-    });
-
-    // Doughnut — risk distribution
-    var dist = r.risk_distribution || { exposed_pct: 35, moderate_pct: 30, protected_pct: 35 };
-    var doughnutCtx = document.getElementById('jrr-chart-doughnut').getContext('2d');
-    new Chart(doughnutCtx, {
-      type: 'doughnut',
-      data: { labels: ['Exposed', 'Moderate', 'Protected'], datasets: [{ data: [dist.exposed_pct, dist.moderate_pct, dist.protected_pct], backgroundColor: ['#DC2626', '#D97706', '#0D9488'], borderWidth: 2, borderColor: '#FFFFFF' }] },
-      options: { cutout: '60%', responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11, weight: '600' } } } } }
-    });
+    // Doughnut
+    var dist=r.risk_distribution||{exposed_pct:33,moderate_pct:34,protected_pct:33};
+    new Chart(document.getElementById('d-chart-doughnut'),{type:'doughnut',data:{labels:['Exposed','Moderate','Protected'],datasets:[{data:[dist.exposed_pct,dist.moderate_pct,dist.protected_pct],backgroundColor:['#DC2626','#D97706','#0D9488'],borderWidth:2,borderColor:'#fff'}]},options:{cutout:'62%',responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:8,font:{size:11,weight:'500'}}}}}});
 
     // Radar
-    var radar = r.radar || { ai_literacy: 50, judgment: 70, communication: 70, strategy: 65, technical: 50, leadership: 60 };
-    var radarCtx = document.getElementById('jrr-chart-radar').getContext('2d');
-    new Chart(radarCtx, {
-      type: 'radar',
-      data: {
-        labels: ['AI Literacy', 'Judgment', 'Communication', 'Strategy', 'Technical', 'Leadership'],
-        datasets: [
-          { label: 'Your Level', data: [radar.ai_literacy, radar.judgment, radar.communication, radar.strategy, radar.technical, radar.leadership], backgroundColor: 'rgba(13,148,136,0.15)', borderColor: '#0D9488', borderWidth: 2, pointBackgroundColor: '#0D9488', pointRadius: 4 },
-          { label: 'AI Threat', data: [Math.min(radar.ai_literacy+30,100), Math.max(radar.judgment-50,10), Math.max(radar.communication-40,10), Math.max(radar.strategy-40,10), Math.min(radar.technical+20,90), Math.max(radar.leadership-55,5)], backgroundColor: 'rgba(220,38,38,0.08)', borderColor: '#DC2626', borderWidth: 2, pointBackgroundColor: '#DC2626', pointRadius: 3, borderDash: [4,4] }
-        ]
-      },
-      options: { responsive: true, maintainAspectRatio: true, scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#E2E8F0' }, pointLabels: { font: { size: 10, weight: '600' }, color: '#475569' } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10, weight: '600' } } } } }
-    });
+    var rd=r.radar||{ai_literacy:50,judgment:70,communication:70,strategy:65,technical:50,leadership:60};
+    new Chart(document.getElementById('d-chart-radar'),{type:'radar',data:{labels:['AI Literacy','Judgment','Communication','Strategy','Technical','Leadership'],datasets:[{label:'You',data:[rd.ai_literacy,rd.judgment,rd.communication,rd.strategy,rd.technical,rd.leadership],backgroundColor:'rgba(13,148,136,0.1)',borderColor:'#0D9488',borderWidth:2,pointBackgroundColor:'#0D9488',pointRadius:3},{label:'AI Threat',data:[Math.min(rd.ai_literacy+30,100),Math.max(rd.judgment-50,10),Math.max(rd.communication-40,10),Math.max(rd.strategy-40,10),Math.min(rd.technical+20,90),Math.max(rd.leadership-55,5)],backgroundColor:'rgba(220,38,38,0.05)',borderColor:'#DC2626',borderWidth:1.5,pointRadius:2,borderDash:[4,4]}]},options:{responsive:true,scales:{r:{beginAtZero:true,max:100,ticks:{display:false},grid:{color:'#F1F5F9'},pointLabels:{font:{size:10,weight:'500'},color:'#64748B'}}},plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:8,font:{size:10,weight:'500'}}}}}});
 
-    // Horizontal bars
-    var bd = r.breakdown || { automation_exposure: 60, human_judgment_strength: 70, skill_gap_urgency: 50, action_readiness: 40, ai_literacy: 45 };
-    var barCtx = document.getElementById('jrr-chart-bars').getContext('2d');
-    new Chart(barCtx, {
-      type: 'bar',
-      data: { labels: ['Automation Exposure', 'Human Judgment', 'Skill Gap Urgency', 'Action Readiness', 'AI Literacy'], datasets: [{ data: [bd.automation_exposure, bd.human_judgment_strength, bd.skill_gap_urgency, bd.action_readiness, bd.ai_literacy], backgroundColor: ['#DC2626', '#0D9488', '#D97706', '#2563EB', '#9333EA'], borderRadius: 4, barThickness: 18 }] },
-      options: { indexAxis: 'y', responsive: true, maintainAspectRatio: true, scales: { x: { beginAtZero: true, max: 100, grid: { color: '#F1F5F9' }, ticks: { font: { size: 10 }, callback: function(v){ return v+'%'; } } }, y: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' }, color: '#334155' } } }, plugins: { legend: { display: false } } }
-    });
+    // Bars
+    var bd=r.breakdown||{automation_exposure:60,human_judgment_strength:70,skill_gap_urgency:50,action_readiness:40,ai_literacy:45};
+    new Chart(document.getElementById('d-chart-bars'),{type:'bar',data:{labels:['Automation Exposure','Human Judgment','Skill Gap Urgency','Action Readiness','AI Literacy'],datasets:[{data:[bd.automation_exposure,bd.human_judgment_strength,bd.skill_gap_urgency,bd.action_readiness,bd.ai_literacy],backgroundColor:['#DC2626','#0D9488','#D97706','#2563EB','#9333EA'],borderRadius:3,barThickness:14}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:true,scales:{x:{beginAtZero:true,max:100,grid:{color:'#F8FAFC'},ticks:{font:{size:10},callback:function(v){return v+'%';}}},y:{grid:{display:false},ticks:{font:{size:11,weight:'500'},color:'#334155'}}},plugins:{legend:{display:false}}}});
 
-    // Exposed tasks
-    var exposedEl = document.getElementById('jrr-exposed');
-    var exposed = r.exposed_tasks || [];
-    exposedEl.innerHTML = exposed.map(function(t){
-      var task = typeof t === 'string' ? t : t.task;
-      var pct = typeof t === 'object' ? t.exposure_pct : 75;
-      var reason = typeof t === 'object' && t.reason ? '<p style="margin:6px 0 0;font-size:0.78rem;color:var(--text-muted);">'+esc(t.reason)+'</p>' : '';
-      return '<div class="jrr-card jrr-card-red"><div class="jrr-card-header"><span class="jrr-card-title">'+esc(task)+'</span><span class="jrr-card-badge jrr-badge-red">'+pct+'%</span></div><div class="jrr-bar-track"><div class="jrr-bar-fill" style="width:'+pct+'%;background:#DC2626;"></div></div>'+reason+'</div>';
+    // Exposed
+    document.getElementById('d-exposed').innerHTML=(r.exposed_tasks||[]).map(function(t){
+      var task=typeof t==='string'?t:t.task,pct=typeof t==='object'?t.exposure_pct:75,reason=typeof t==='object'&&t.reason?t.reason:'';
+      return '<div class="dash-card dash-card-red"><div class="dash-card-top"><span class="dash-card-title">'+esc(task)+'</span><span class="dash-pill dash-pill-red">'+pct+'%</span></div><div class="dash-bar"><div class="dash-bar-fill" style="width:'+pct+'%;background:#DC2626"></div></div>'+(reason?'<p class="dash-card-sub">'+esc(reason)+'</p>':'')+'</div>';
     }).join('');
 
-    // Protected tasks
-    var protectedEl = document.getElementById('jrr-protected');
-    var prot = r.protected_tasks || [];
-    protectedEl.innerHTML = prot.map(function(t){
-      var task = typeof t === 'string' ? t : t.task;
-      var pct = typeof t === 'object' ? t.protection_pct : 85;
-      var area = typeof t === 'object' && t.judgment_area ? '<span class="jrr-card-badge jrr-badge-green">'+esc(t.judgment_area)+'</span>' : '';
-      return '<div class="jrr-card jrr-card-green"><div class="jrr-card-header"><span class="jrr-card-title">'+esc(task)+'</span>'+area+'</div><div class="jrr-bar-track"><div class="jrr-bar-fill" style="width:'+pct+'%;background:#0D9488;"></div></div></div>';
+    // Protected
+    document.getElementById('d-protected').innerHTML=(r.protected_tasks||[]).map(function(t){
+      var task=typeof t==='string'?t:t.task,pct=typeof t==='object'?t.protection_pct:85,area=typeof t==='object'?t.judgment_area:'';
+      return '<div class="dash-card dash-card-green"><div class="dash-card-top"><span class="dash-card-title">'+esc(task)+'</span>'+(area?'<span class="dash-pill dash-pill-green">'+esc(area)+'</span>':'')+'</div><div class="dash-bar"><div class="dash-bar-fill" style="width:'+pct+'%;background:#0D9488"></div></div></div>';
     }).join('');
 
-    // Skill gaps
-    var gapsEl = document.getElementById('jrr-gaps');
-    var gaps = r.skill_gaps || [];
-    gapsEl.innerHTML = gaps.map(function(g){
-      var skill = typeof g === 'string' ? g : g.skill;
-      var priority = typeof g === 'object' ? g.priority : 'MEDIUM';
-      var action = typeof g === 'object' && g.action ? '<p style="margin:8px 0 0;font-size:0.78rem;color:#0D9488;font-weight:600;">→ '+esc(g.action)+'</p>' : '';
-      var cls = priority === 'HIGH' ? 'jrr-badge-red' : 'jrr-badge-amber';
-      return '<div class="jrr-card jrr-card-amber"><div class="jrr-card-header"><span class="jrr-card-title">'+esc(skill)+'</span><span class="jrr-card-badge '+cls+'">'+priority+'</span></div>'+action+'</div>';
+    // Advice
+    document.getElementById('d-advice').innerHTML='<p>'+esc(r.final_advice||'')+'</p>';
+
+    // Profile tab (view mode)
+    var inp=data.inputs||{};
+    var sl=function(s){return(s||'').replace(/_/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});};
+    document.getElementById('d-inputs-view').innerHTML=[
+      ic('Full Name',data.name),ic('Job Title',data.jobTitle),ic('Industry',data.industry),ic('Seniority',sl(data.seniority)),ic('Country',data.country),
+      ic('Main Tasks',inp.mainTasks),ic('AI Usage',sl(inp.aiUsage)),ic('Biggest Concern',sl(inp.aiConcern)),ic('Skills to Build',inp.skillsToLearn||'Not specified')
+    ].join('');
+    // Pre-fill edit form
+    document.getElementById('edit-name').value=data.name||'';
+    document.getElementById('edit-jobtitle').value=data.jobTitle||'';
+    document.getElementById('edit-industry').value=data.industry||'';
+    document.getElementById('edit-seniority').value=data.seniority||'';
+    document.getElementById('edit-country').value=data.country||'';
+    document.getElementById('edit-tasks').value=inp.mainTasks||'';
+    document.getElementById('edit-usage').value=inp.aiUsage||'';
+    document.getElementById('edit-concern').value=inp.aiConcern||'';
+    document.getElementById('edit-skills').value=inp.skillsToLearn||'';
+
+    // Plan
+    var plan=r.thirty_day_plan||[],wc=['#0D9488','#2563EB','#D97706','#9333EA'];
+    document.getElementById('d-timeline').innerHTML=plan.map(function(p,i){
+      if(typeof p==='string')return '<div class="dash-week" style="border-left-color:'+wc[i]+'"><span class="dash-week-num" style="background:'+wc[i]+'">'+( i+1)+'</span><p class="dash-week-text">'+esc(p)+'</p></div>';
+      return '<div class="dash-week" style="border-left-color:'+wc[i]+'"><span class="dash-week-num" style="background:'+wc[i]+'">'+p.week+'</span><h4>'+esc(p.title)+'</h4><p class="dash-week-text">'+esc(p.actions)+'</p>'+(p.output?'<p class="dash-week-output"><b>Output:</b> '+esc(p.output)+'</p>':'')+'</div>';
     }).join('');
 
-    // Recommended skills
-    var skillsEl = document.getElementById('jrr-skills');
-    var skills = r.recommended_skills || [];
-    skillsEl.innerHTML = skills.map(function(s){
-      return '<div class="jrr-skill-card"><span class="jrr-skill-name">'+esc(s)+'</span></div>';
+    // Skills
+    document.getElementById('d-gaps').innerHTML=(r.skill_gaps||[]).map(function(g){
+      var skill=typeof g==='string'?g:g.skill,pri=typeof g==='object'?g.priority:'MEDIUM',action=typeof g==='object'&&g.action?g.action:'';
+      return '<div class="dash-card dash-card-amber"><div class="dash-card-top"><span class="dash-card-title">'+esc(skill)+'</span><span class="dash-pill '+(pri==='HIGH'?'dash-pill-red':'dash-pill-amber')+'">'+pri+'</span></div>'+(action?'<p class="dash-card-sub">→ '+esc(action)+'</p>':'')+'</div>';
+    }).join('');
+    document.getElementById('d-skills').innerHTML=(r.recommended_skills||[]).map(function(s){
+      return '<div class="dash-skill-card">'+esc(s)+'</div>';
     }).join('');
 
-    // 30-day plan
-    var timelineEl = document.getElementById('jrr-timeline');
-    var plan = r.thirty_day_plan || [];
-    var weekColors = ['#0D9488','#2563EB','#D97706','#9333EA'];
-    timelineEl.innerHTML = plan.map(function(p, i){
-      if (typeof p === 'string') {
-        return '<div class="jrr-week-card" style="border-left-color:'+weekColors[i]+'"><span class="jrr-week-label" style="color:'+weekColors[i]+'">WEEK '+(i+1)+'</span><p class="jrr-week-text">'+esc(p)+'</p></div>';
-      }
-      var html = '<div class="jrr-week-card" style="border-left-color:'+weekColors[i]+'">';
-      html += '<span class="jrr-week-label" style="color:'+weekColors[i]+'">WEEK '+p.week+'</span>';
-      html += '<p style="margin:4px 0 6px;font-size:0.92rem;font-weight:700;color:var(--dark);">'+esc(p.title)+'</p>';
-      html += '<p class="jrr-week-text">'+esc(p.actions)+'</p>';
-      if (p.output) html += '<p style="margin:8px 0 0;font-size:0.78rem;color:var(--text-soft);"><strong style="color:var(--dark);">Output:</strong> '+esc(p.output)+'</p>';
-      html += '</div>';
-      return html;
-    }).join('');
-
-    // Final advice
-    document.getElementById('jrr-advice').innerHTML = '<p>'+esc(r.final_advice || '')+'</p>';
+    // Share
+    var url=window.location.href;
+    document.getElementById('btn-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
+    document.getElementById('btn-email-share').href='mailto:?subject=My AI Job Risk Report&body='+encodeURIComponent(url);
   }
 
-  function esc(str) {
-    var d = document.createElement('div');
-    d.textContent = str || '';
-    return d.innerHTML;
+  function ic(l,v){return '<div class="dash-input-card"><span class="dash-input-label">'+l+'</span><p class="dash-input-value">'+esc(v||'—')+'</p></div>';}
+  function esc(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
+
+  // Tabs
+  document.querySelectorAll('.dash-tab').forEach(function(t){t.addEventListener('click',function(){
+    document.querySelectorAll('.dash-tab').forEach(function(x){x.classList.remove('active');});
+    document.querySelectorAll('.dash-panel').forEach(function(x){x.classList.remove('active');});
+    t.classList.add('active');document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+  });});
+
+  // Rerun — switch to profile tab in edit mode
+  document.getElementById('btn-rerun').onclick=function(){switchToEdit();};
+  document.getElementById('btn-edit-profile').onclick=function(){switchToEdit();};
+  document.getElementById('btn-cancel-edit').onclick=function(){
+    document.getElementById('d-edit-form').style.display='none';
+    document.getElementById('d-inputs-view').style.display='';
+    document.getElementById('btn-edit-profile').style.display='';
+  };
+
+  function switchToEdit(){
+    // Switch to profile tab
+    document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.dash-panel').forEach(function(p){p.classList.remove('active');});
+    document.querySelector('[data-tab="profile"]').classList.add('active');
+    document.getElementById('panel-profile').classList.add('active');
+    // Show edit form, hide view
+    document.getElementById('d-inputs-view').style.display='none';
+    document.getElementById('btn-edit-profile').style.display='none';
+    document.getElementById('d-edit-form').style.display='block';
   }
+
+  document.getElementById('btn-run-analysis').onclick=function(){
+    var btn=document.getElementById('btn-run-analysis');
+    var cancelBtn=document.getElementById('btn-cancel-edit');
+    btn.disabled=true;btn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Analyzing...';
+    cancelBtn.disabled=true;cancelBtn.style.opacity='0.4';
+    var updatedInputs={
+      name:document.getElementById('edit-name').value,
+      jobTitle:document.getElementById('edit-jobtitle').value,
+      industry:document.getElementById('edit-industry').value,
+      seniority:document.getElementById('edit-seniority').value,
+      country:document.getElementById('edit-country').value,
+      mainTasks:document.getElementById('edit-tasks').value,
+      aiUsage:document.getElementById('edit-usage').value,
+      aiConcern:document.getElementById('edit-concern').value,
+      skillsToLearn:document.getElementById('edit-skills').value
+    };
+    fetch(FN_RERUN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:token,updatedInputs:updatedInputs})})
+      .then(function(r){if(!r.ok)throw new Error();return r.json();})
+      .then(function(){location.href=window.location.pathname+'?token='+token+'&t='+Date.now();})
+      .catch(function(){toast('Analysis failed. Try again.');btn.disabled=false;btn.innerHTML='<i class="fas fa-play"></i> Run Analysis';cancelBtn.disabled=false;cancelBtn.style.opacity='1';});
+  };
+
+  // Old rerun modal — remove
+  document.getElementById('modal-cancel').onclick=function(){document.getElementById('dash-modal-rerun').style.display='none';};
+  document.getElementById('modal-confirm').onclick=function(){document.getElementById('dash-modal-rerun').style.display='none';switchToEdit();};
+
+  // Share
+  document.getElementById('btn-share').onclick=function(){document.getElementById('dash-modal-share').style.display='flex';};
+  document.getElementById('modal-share-close').onclick=function(){document.getElementById('dash-modal-share').style.display='none';};
+  document.getElementById('btn-copy-link').onclick=function(){navigator.clipboard.writeText(window.location.href).then(function(){toast('Link copied!');});};
+  document.getElementById('btn-pdf').onclick=function(){window.print();};
+
+  function toast(m){var t=document.getElementById('dash-toast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none';},2500);}
 })();
 </script>

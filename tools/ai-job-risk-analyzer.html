@@ -130,6 +130,18 @@ css:
     <div class="jra-success-icon"><i class="fas fa-check-circle"></i></div>
     <h2 class="jra-success-title">Your report has been sent to your email.</h2>
     <p class="jra-success-desc">Check your inbox for your personalized AI Job Risk Report with your risk score, exposed tasks, skill gaps, and 30-day action plan.</p>
+
+    <div class="jra-share-box">
+      <h3 class="jra-share-title"><i class="fas fa-user-plus"></i> Know someone who should try this?</h3>
+      <p class="jra-share-desc">Send this tool to a friend or teammate.</p>
+      <form class="jra-share-form" id="jra-share-form">
+        <input type="text" placeholder="Their name" required id="jra-share-name">
+        <input type="email" placeholder="Their email" required id="jra-share-email">
+        <button type="submit">Send Invite</button>
+      </form>
+      <p class="jra-share-msg" id="jra-share-msg" style="display:none;"></p>
+    </div>
+
     <a href="/tools/" class="jra-success-link">← Back to Tools</a>
   </div>
 
@@ -252,6 +264,29 @@ css:
     submitBtn.disabled = false;
     submitBtn.querySelector('.jra-submit-text').style.display = 'inline';
     submitBtn.querySelector('.jra-submit-loading').style.display = 'none';
+  }
+
+  // Share with friend
+  var shareForm = document.getElementById('jra-share-form');
+  if (shareForm) {
+    shareForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var fname = document.getElementById('jra-share-name').value.trim();
+      var femail = document.getElementById('jra-share-email').value.trim();
+      var msg = document.getElementById('jra-share-msg');
+      var senderName = document.getElementById('jra-name').value.trim();
+      if (!fname || !femail) return;
+      var btn = shareForm.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Sending...';
+      var fnUrl = document.querySelector('meta[name="fn-share-tool"]');
+      fetch(fnUrl ? fnUrl.getAttribute('content') : '', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({data: {friendName: fname, friendEmail: femail, senderName: senderName}})
+      }).then(function(r) {
+        if (r.ok) { msg.style.display = 'block'; msg.textContent = 'Invite sent!'; msg.style.color = '#0D9488'; btn.textContent = 'Sent ✓'; }
+        else { msg.style.display = 'block'; msg.textContent = 'Could not send. Try again.'; msg.style.color = '#DC2626'; btn.disabled = false; btn.textContent = 'Send Invite'; }
+      }).catch(function() { msg.style.display = 'block'; msg.textContent = 'Could not send. Try again.'; msg.style.color = '#DC2626'; btn.disabled = false; btn.textContent = 'Send Invite'; });
+    });
   }
 })();
 </script>

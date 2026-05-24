@@ -654,6 +654,189 @@ Return this exact JSON structure:
 
 // v2 - added Firestore storage
 
+// ===== RERUN JOB RISK ANALYSIS =====
+
+exports.rerunJobRiskAnalysis = onRequest(
+  {
+    region: "europe-west1",
+    cors: true,
+    timeoutSeconds: 120,
+    memory: "512MiB",
+    secrets: [GEMINI_API_KEY]
+  },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const { token, updatedInputs } = req.body;
+    if (!token || typeof token !== "string" || token.length !== 64) {
+      res.status(400).json({ error: "Invalid token" });
+      return;
+    }
+
+    const crypto = require("crypto");
+    const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
+
+    try {
+      const snapshot = await db.collection("job_risk_submissions")
+        .where("tokenHash", "==", tokenHash)
+        .limit(1)
+        .get();
+
+      if (snapshot.empty) {
+        res.status(404).json({ error: "Report not found" });
+        return;
+      }
+
+      const doc = snapshot.docs[0];
+      const data = doc.data();
+
+      // Merge updated inputs if provided
+      const inputs = {
+        name: (updatedInputs && updatedInputs.name) || data.name,
+        jobTitle: (updatedInputs && updatedInputs.jobTitle) || data.jobTitle,
+        industry: (updatedInputs && updatedInputs.industry) || data.industry,
+        seniority: (updatedInputs && updatedInputs.seniority) || data.seniority,
+        country: (updatedInputs && updatedInputs.country) || data.country,
+        mainTasks: (updatedInputs && updatedInputs.mainTasks) || data.mainTasks,
+        aiConcern: (updatedInputs && updatedInputs.aiConcern) || data.aiConcern,
+        aiUsage: (updatedInputs && updatedInputs.aiUsage) || data.aiUsage,
+        skillsToLearn: (updatedInputs && updatedInputs.skillsToLearn) || data.skillsToLearn || ""
+      };
+
+      // Rerun Gemini with inputs
+      const { GoogleGenerativeAI } = require("@google/generative-ai");
+      const genAI = new GoogleGenerativeAI(GEMINI_API_KEY.value());
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+      const prompt = `You are an AI job risk analyst. Analyze the following professional profile and return a structured JSON assessment.
+
+IMPORTANT RULES:
+- Be practical and direct. Avoid hype and generic advice.
+- Distinguish between task automation risk and full job replacement risk.
+- Do not claim certainty. Use language like "likely," "may," "based on current trends."
+- Do not provide legal, medical, or financial advice.
+- Write in simple English.
+- Return ONLY valid JSON, no markdown, no code fences.
+- The 30-day plan MUST be specific to this person's actual role, industry, and tasks. Do NOT give generic advice like "learn AI" or "take a course." Reference their specific job title, tasks, and industry.
+- Each exposed/protected task must include an exposure_pct (0-100) showing how automatable or protected it is.
+- Skill gaps must include a priority level.
+
+PROFILE:
+- Name: ${inputs.name}
+- Job title: ${inputs.jobTitle}
+- Industry: ${inputs.industry}
+- Seniority: ${(inputs.seniority || "").replace(/_/g, " ")}
+- Country/Region: ${inputs.country}
+- Main tasks: ${inputs.mainTasks}
+- Biggest AI concern: ${(inputs.aiConcern || "").replace(/_/g, " ")}
+- Current AI usage: ${(inputs.aiUsage || "").replace(/_/g, " ")}
+- Skills they want to build: ${inputs.skillsToLearn || "Not specified"}
+
+Return this exact JSON structure:
+{
+  "risk_score": <number 0-100>,
+  "risk_level": "<Low|Medium|High>",
+  "summary": "<2-3 sentence plain-English summary of their specific situation>",
+  "breakdown": {
+    "automation_exposure": <number 0-100>,
+    "human_judgment_strength": <number 0-100>,
+    "skill_gap_urgency": <number 0-100>,
+    "action_readiness": <number 0-100>,
+    "ai_literacy": <number 0-100>
+  },
+  "radar": {
+    "ai_literacy": <number 0-100>,
+    "judgment": <number 0-100>,
+    "communication": <number 0-100>,
+    "strategy": <number 0-100>,
+    "technical": <number 0-100>,
+    "leadership": <number 0-100>
+  },
+  "risk_distribution": {
+    "exposed_pct": <number 0-100>,
+    "moderate_pct": <number 0-100>,
+    "protected_pct": <number 0-100>
+  },
+  "exposed_tasks": [
+    {"task": "<specific task from their description>", "exposure_pct": <number 50-100>, "reason": "<why this task is exposed>"},
+    {"task": "<task>", "exposure_pct": <number>, "reason": "<reason>"},
+    {"task": "<task>", "exposure_pct": <number>, "reason": "<reason>"}
+  ],
+  "protected_tasks": [
+    {"task": "<specific task>", "protection_pct": <number 60-100>, "judgment_area": "<Context|Accountability|Trade-offs|Ambiguity|Ethics|Stakeholders>"},
+    {"task": "<task>", "protection_pct": <number>, "judgment_area": "<area>"},
+    {"task": "<task>", "protection_pct": <number>, "judgment_area": "<area>"}
+  ],
+  "skill_gaps": [
+    {"skill": "<specific skill gap>", "priority": "<HIGH|MEDIUM>", "action": "<one concrete first step>"},
+    {"skill": "<skill>", "priority": "<priority>", "action": "<action>"},
+    {"skill": "<skill>", "priority": "<priority>", "action": "<action>"}
+  ],
+  "recommended_skills": ["<skill to build>", "<skill>", "<skill>", "<skill>"],
+  "thirty_day_plan": [
+    {"week": 1, "title": "<short goal title specific to their role>", "actions": "<2-3 sentences of specific actions referencing their actual tasks, tools, and industry>", "output": "<what they should produce by end of week>"},
+    {"week": 2, "title": "<title>", "actions": "<actions>", "output": "<output>"},
+    {"week": 3, "title": "<title>", "actions": "<actions>", "output": "<output>"},
+    {"week": 4, "title": "<title>", "actions": "<actions>", "output": "<output>"}
+  ],
+  "final_advice": "<2-3 sentences of direct, practical advice specific to their role and situation>"
+}`;
+
+      const result = await model.generateContent(prompt);
+      const responseText = result.response.text().trim();
+      let jsonStr = responseText;
+      if (jsonStr.startsWith("```")) {
+        jsonStr = jsonStr.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
+      }
+      const analysis = JSON.parse(jsonStr);
+
+      if (!analysis.risk_score || !analysis.risk_level || !analysis.summary) {
+        throw new Error("Incomplete Gemini response");
+      }
+
+      // Update Firestore with new result and inputs
+      await doc.ref.update({
+        name: inputs.name,
+        jobTitle: inputs.jobTitle,
+        industry: inputs.industry,
+        seniority: inputs.seniority,
+        country: inputs.country,
+        mainTasks: inputs.mainTasks,
+        aiConcern: inputs.aiConcern,
+        aiUsage: inputs.aiUsage,
+        skillsToLearn: inputs.skillsToLearn,
+        result: analysis,
+        lastRerunAt: admin.firestore.FieldValue.serverTimestamp(),
+        submittedAt: admin.firestore.FieldValue.serverTimestamp()
+      });
+
+      // Return updated report
+      res.status(200).json({
+        name: inputs.name,
+        jobTitle: inputs.jobTitle,
+        industry: inputs.industry,
+        seniority: inputs.seniority,
+        country: inputs.country,
+        result: analysis,
+        inputs: {
+          mainTasks: inputs.mainTasks,
+          aiConcern: inputs.aiConcern,
+          aiUsage: inputs.aiUsage,
+          skillsToLearn: inputs.skillsToLearn
+        },
+        submittedAt: new Date().toISOString(),
+        viewCount: data.viewCount || 0
+      });
+    } catch (err) {
+      console.error("Rerun error:", err.message);
+      res.status(500).json({ error: "Analysis could not be regenerated. Please try again." });
+    }
+  }
+);
+
 // ===== GET JOB RISK REPORT (token-based access) =====
 
 exports.getJobRiskReport = onRequest(
@@ -693,7 +876,7 @@ exports.getJobRiskReport = onRequest(
         viewCount: admin.firestore.FieldValue.increment(1)
       });
 
-      // Return report data (exclude sensitive fields)
+      // Return report data (exclude sensitive fields like tokenHash, email)
       res.status(200).json({
         name: data.name,
         jobTitle: data.jobTitle,
@@ -701,11 +884,99 @@ exports.getJobRiskReport = onRequest(
         seniority: data.seniority,
         country: data.country,
         result: data.result,
-        submittedAt: data.submittedAt ? data.submittedAt.toDate().toISOString() : null
+        inputs: {
+          mainTasks: data.mainTasks || "",
+          aiConcern: data.aiConcern || "",
+          aiUsage: data.aiUsage || "",
+          skillsToLearn: data.skillsToLearn || ""
+        },
+        submittedAt: data.submittedAt ? data.submittedAt.toDate().toISOString() : null,
+        lastViewedAt: data.lastViewedAt ? data.lastViewedAt.toDate().toISOString() : null,
+        viewCount: (data.viewCount || 0) + 1
       });
     } catch (err) {
       console.error("Get report error:", err.message);
       res.status(500).json({ error: "Could not load report" });
+    }
+  }
+);
+
+
+// ===== SHARE TOOL WITH FRIEND =====
+
+exports.shareToolWithFriend = onRequest(
+  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const body = req.body.data || req.body;
+    const { friendName, friendEmail, senderName } = body;
+
+    if (!friendName || typeof friendName !== "string" || friendName.trim().length < 2 || friendName.length > 200) {
+      res.status(400).json({ error: "Invalid name" });
+      return;
+    }
+    if (!friendEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(friendEmail)) {
+      res.status(400).json({ error: "Invalid email" });
+      return;
+    }
+
+    const firstName = friendName.trim().split(" ")[0];
+    const sender = senderName ? senderName.trim() : "Someone";
+
+    const htmlBody = `
+<div style="background:#F4F7FB;padding:0;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F4F7FB;">
+<tr><td align="center" style="padding:24px 16px;">
+<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;overflow:hidden;">
+
+<tr><td style="background:#0F172A;padding:24px 32px;border-bottom:3px solid #0D9488;">
+  <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#F8FAFC;">You've been invited to try something</p>
+  <p style="margin:0;font-size:12px;color:#94A3B8;">${sender} thinks you should check this out</p>
+</td></tr>
+
+<tr><td style="padding:32px;">
+  <p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.6;">Hi ${firstName},</p>
+  <p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.6;">${sender} used the <strong>AI Job Risk Analyzer</strong> and thought you'd find it useful too.</p>
+  <p style="margin:0 0 24px;font-size:14px;color:#334155;line-height:1.6;">It's a free tool that analyzes your job role and tells you which tasks are most exposed to AI automation, what skills to build, and gives you a personalized 30-day action plan.</p>
+  <a href="https://hasanjaffal.com/ai-job-risk-analyzer/" style="display:inline-block;padding:14px 28px;background:#0D9488;color:#ffffff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;">Try the AI Job Risk Analyzer →</a>
+  <p style="margin:20px 0 0;font-size:12px;color:#94A3B8;">Takes 3 minutes. Full report by email. Free.</p>
+</td></tr>
+
+<tr><td style="padding:20px 32px;border-top:1px solid #E2E8F0;text-align:center;">
+  <p style="margin:0;font-size:10px;color:#94A3B8;">Sent via hasanjaffal.com · You received this because ${sender} shared this tool with you.</p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</div>`;
+
+    try {
+      const resend = new Resend(RESEND_API_KEY.value());
+      await resend.emails.send({
+        from: "Hasan Jaffal <hasan@hasanjaffal.com>",
+        to: friendEmail.trim().toLowerCase(),
+        subject: `${sender} thinks you should try this AI tool`,
+        html: htmlBody
+      });
+
+      // Store referral
+      await db.collection("tool_referrals").add({
+        senderName: sender,
+        friendName: friendName.trim(),
+        friendEmail: friendEmail.trim().toLowerCase(),
+        tool: "ai_job_risk_analyzer",
+        sentAt: admin.firestore.FieldValue.serverTimestamp()
+      });
+
+      res.status(200).json({ result: "success" });
+    } catch (err) {
+      console.error("Share error:", err.message);
+      res.status(500).json({ error: "Could not send invite" });
     }
   }
 );

@@ -273,3 +273,21 @@
     padding: 24px 0 60px;
   }
 }
+
+
+/* Share box in success state */
+.jra-share-box { margin: 28px 0; padding: 24px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 12px; text-align: left; }
+.jra-share-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin: 0 0 6px; display: flex; align-items: center; gap: 8px; }
+.jra-share-title i { color: var(--accent); }
+.jra-share-desc { font-size: 0.82rem; color: var(--text-muted); margin: 0 0 14px; }
+.jra-share-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.jra-share-form input { flex: 1; min-width: 120px; padding: 10px 14px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.85rem; outline: none; }
+.jra-share-form input:focus { border-color: var(--accent); }
+.jra-share-form button { padding: 10px 18px; background: var(--dark); color: #fff; border: none; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.jra-share-form button:hover { background: var(--accent); }
+.jra-share-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.jra-share-msg { font-size: 0.78rem; font-weight: 600; margin-top: 10px; }
+
+@media (max-width: 480px) {
+  .jra-share-form { flex-direction: column; }
+}
