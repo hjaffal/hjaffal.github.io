@@ -1,6 +1,10 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const { Resend } = require("resend");
+const admin = require("firebase-admin");
+
+admin.initializeApp();
+const db = admin.firestore();
 
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 const BEEHIIV_API_KEY = defineSecret("BEEHIIV_API_KEY");
@@ -135,6 +139,25 @@ exports.sendFutureProofSkillsGuide = onRequest(
         html: htmlBody
       });
 
+      // Store submission in Firestore
+      await db.collection("skills_assessment_submissions").add({
+        name: name || "",
+        email: email,
+        jobTitle: jobTitle || "",
+        country: country || "",
+        score: scoreInt,
+        resultBand: resultBand,
+        jobFamily: jobFamily,
+        weakestCategory: weakestCategory,
+        strongestCategory: strongestCategory,
+        result: {
+          bandDisplay: bandDisplay,
+          weakDisplay: weakDisplay,
+          strongDisplay: strongDisplay
+        },
+        submittedAt: admin.firestore.FieldValue.serverTimestamp()
+      });
+
       res.status(200).json({ result: "success" });
     } catch (err) {
       console.error("Send error:", err);
@@ -213,6 +236,14 @@ exports.sendContactMessage = onRequest(
         html: htmlBody
       });
 
+      // Store in Firestore
+      await db.collection("contact_submissions").add({
+        name: name,
+        email: email,
+        message: message,
+        submittedAt: admin.firestore.FieldValue.serverTimestamp()
+      });
+
       res.status(200).json({ result: "success" });
     } catch (err) {
       console.error("Send error:", err);
@@ -264,6 +295,13 @@ exports.subscribeNewsletter = onRequest(
         res.status(500).json({ error: "Subscription failed" });
         return;
       }
+
+      // Store in Firestore
+      await db.collection("newsletter_subscriptions").add({
+        email: email,
+        utmSource: utm_source || "website",
+        subscribedAt: admin.firestore.FieldValue.serverTimestamp()
+      });
 
       res.status(200).json({ result: "success" });
     } catch (err) {
@@ -524,6 +562,32 @@ Return this exact JSON structure:
         html: htmlBody
       });
 
+      // Store submission in Firestore
+      await db.collection("job_risk_submissions").add({
+        name: name.trim(),
+        email: normalizedEmail,
+        jobTitle: jobTitle.trim(),
+        industry: industry.trim(),
+        seniority: seniority,
+        country: country.trim(),
+        mainTasks: mainTasks.trim(),
+        aiConcern: aiConcern,
+        aiUsage: aiUsage,
+        skillsToLearn: skillsToLearn || "",
+        result: {
+          riskScore: analysis.risk_score,
+          riskLevel: analysis.risk_level,
+          summary: analysis.summary,
+          exposedTasks: analysis.exposed_tasks || [],
+          protectedTasks: analysis.protected_tasks || [],
+          skillGaps: analysis.skill_gaps || [],
+          recommendedSkills: analysis.recommended_skills || [],
+          thirtyDayPlan: analysis.thirty_day_plan || [],
+          finalAdvice: analysis.final_advice || ""
+        },
+        submittedAt: admin.firestore.FieldValue.serverTimestamp()
+      });
+
       res.status(200).json({ result: "success" });
     } catch (err) {
       console.error("Email send error:", err.message);
@@ -531,3 +595,5 @@ Return this exact JSON structure:
     }
   }
 );
+
+// v2 - added Firestore storage
