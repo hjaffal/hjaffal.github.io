@@ -204,7 +204,9 @@ css:
   if(!token||token.length!==64){showError();return;}
   fetch(FN_GET+'?token='+encodeURIComponent(token)+'&_='+Date.now())
     .then(function(r){if(!r.ok)throw new Error();return r.json();})
-    .then(render).catch(showError);
+    .then(function(d){reportData=d;render(d);}).catch(showError);
+
+  var reportData=null;
 
   function showError(){loadEl.style.display='none';errEl.style.display='flex';}
 
@@ -359,7 +361,87 @@ css:
   document.getElementById('btn-share').onclick=function(){document.getElementById('dash-modal-share').style.display='flex';};
   document.getElementById('modal-share-close').onclick=function(){document.getElementById('dash-modal-share').style.display='none';};
   document.getElementById('btn-copy-link').onclick=function(){navigator.clipboard.writeText(window.location.href).then(function(){toast('Link copied!');});};
-  document.getElementById('btn-pdf').onclick=function(){window.print();};
+
+  // PDF download
+  document.getElementById('btn-pdf').onclick=function(){generatePDF();};
+  var printBtn=document.getElementById('btn-print');
+  if(printBtn) printBtn.onclick=function(){generatePDF();};
+
+  function generatePDF(){
+    var r=reportData.result;
+    var score=r.risk_score||0;
+    var level=r.risk_level||'Unknown';
+    var color=level==='High'?'#DC2626':level==='Medium'?'#D97706':'#0D9488';
+
+    var exposed=(r.exposed_tasks||[]).map(function(t){
+      var task=typeof t==='string'?t:t.task;
+      var pct=typeof t==='object'?t.exposure_pct:'';
+      var reason=typeof t==='object'&&t.reason?t.reason:'';
+      return '<tr><td style="padding:8px 0;border-bottom:1px solid #F1F5F9;"><strong style="font-size:11px;">'+esc(task)+'</strong>'+(pct?' <span style="color:'+color+';font-size:10px;font-weight:700;">'+pct+'%</span>':'')+(reason?'<br><span style="font-size:10px;color:#64748B;">'+esc(reason)+'</span>':'')+'</td></tr>';
+    }).join('');
+
+    var protected_=(r.protected_tasks||[]).map(function(t){
+      var task=typeof t==='string'?t:t.task;
+      var area=typeof t==='object'&&t.judgment_area?t.judgment_area:'';
+      return '<tr><td style="padding:8px 0;border-bottom:1px solid #F1F5F9;"><strong style="font-size:11px;">'+esc(task)+'</strong>'+(area?' <span style="font-size:10px;color:#0D9488;background:#F0FDF4;padding:1px 6px;border-radius:3px;">'+esc(area)+'</span>':'')+'</td></tr>';
+    }).join('');
+
+    var gaps=(r.skill_gaps||[]).map(function(g){
+      var skill=typeof g==='string'?g:g.skill;
+      var pri=typeof g==='object'?g.priority:'';
+      var action=typeof g==='object'&&g.action?g.action:'';
+      return '<tr><td style="padding:8px 0;border-bottom:1px solid #F1F5F9;"><strong style="font-size:11px;">'+esc(skill)+'</strong>'+(pri?' <span style="font-size:9px;font-weight:700;color:'+(pri==='HIGH'?'#DC2626':'#D97706')+';">['+pri+']</span>':'')+(action?'<br><span style="font-size:10px;color:#0D9488;">→ '+esc(action)+'</span>':'')+'</td></tr>';
+    }).join('');
+
+    var skills=(r.recommended_skills||[]).map(function(s){
+      return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:4px 10px;background:#EFF6FF;border-radius:4px;font-size:10px;font-weight:600;color:#1E40AF;">'+esc(s)+'</span>';
+    }).join('');
+
+    var wColors=['#0D9488','#2563EB','#D97706','#9333EA'];
+    var plan=(r.thirty_day_plan||[]).map(function(p,i){
+      if(typeof p==='string') return '<div style="padding:12px 16px;margin-bottom:8px;border-left:3px solid '+wColors[i]+';background:#F8FAFC;"><p style="margin:0;font-size:11px;color:#334155;">'+esc(p)+'</p></div>';
+      return '<div style="padding:12px 16px;margin-bottom:8px;border-left:3px solid '+wColors[i]+';background:#F8FAFC;"><p style="margin:0 0 2px;font-size:9px;font-weight:700;color:'+wColors[i]+';letter-spacing:0.1em;">WEEK '+p.week+'</p><p style="margin:0 0 3px;font-size:11px;font-weight:700;color:#0F172A;">'+esc(p.title)+'</p><p style="margin:0;font-size:10px;color:#475569;line-height:1.5;">'+esc(p.actions)+'</p>'+(p.output?'<p style="margin:4px 0 0;font-size:9px;color:#94A3B8;"><b>Output:</b> '+esc(p.output)+'</p>':'')+'</div>';
+    }).join('');
+
+    var doc='<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI Job Risk Report - '+esc(reportData.name)+'</title>';
+    doc+='<style>@page{margin:20mm 15mm;}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;color:#0F172A;font-size:11px;line-height:1.5;margin:0;padding:0;}h2{font-size:12px;font-weight:700;margin:20px 0 8px;padding-bottom:6px;border-bottom:1px solid #E2E8F0;}table{width:100%;border-collapse:collapse;}</style></head><body>';
+
+    doc+='<div style="background:#0F172A;padding:24px 28px;margin:-20mm -15mm 20px;padding-top:30mm;padding-left:15mm;padding-right:15mm;">';
+    doc+='<p style="margin:0 0 2px;font-size:9px;font-weight:700;letter-spacing:0.2em;color:#0D9488;">AI JOB RISK REPORT</p>';
+    doc+='<p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#F8FAFC;">'+esc(reportData.name)+'</p>';
+    doc+='<p style="margin:0;font-size:10px;color:#94A3B8;">'+esc(reportData.jobTitle)+' · '+esc(reportData.industry)+' · '+esc(reportData.country)+'</p></div>';
+
+    doc+='<table><tr><td style="width:70px;vertical-align:middle;"><div style="width:56px;height:56px;border-radius:50%;border:4px solid '+color+';text-align:center;line-height:48px;font-size:20px;font-weight:800;">'+score+'</div></td>';
+    doc+='<td style="vertical-align:middle;"><p style="margin:0 0 2px;font-size:13px;font-weight:700;color:'+color+';">'+level+' Risk</p><p style="margin:0;font-size:10px;color:#64748B;">Score '+score+'/100</p></td></tr></table>';
+
+    doc+='<p style="margin:16px 0;font-size:11px;color:#475569;line-height:1.7;padding:12px 16px;background:#F8FAFC;border-left:3px solid #0D9488;border-radius:4px;">'+esc(r.summary||'')+'</p>';
+
+    doc+='<h2 style="color:#DC2626;">Tasks Most Exposed</h2><table>'+exposed+'</table>';
+    doc+='<h2 style="color:#0D9488;">Tasks Still Protected</h2><table>'+protected_+'</table>';
+    doc+='<h2 style="color:#D97706;">Skill Gaps</h2><table>'+gaps+'</table>';
+    doc+='<h2 style="color:#2563EB;">Recommended Skills</h2><p>'+skills+'</p>';
+    doc+='<h2>30-Day Action Plan</h2>'+plan;
+
+    doc+='<div style="margin-top:20px;padding:16px;background:#0F172A;border-radius:6px;"><p style="margin:0 0 2px;font-size:9px;font-weight:700;color:#0D9488;letter-spacing:0.1em;">FINAL ADVICE</p><p style="margin:0;font-size:11px;color:#F8FAFC;line-height:1.6;">'+esc(r.final_advice||'')+'</p></div>';
+
+    doc+='<p style="margin-top:20px;font-size:9px;color:#94A3B8;text-align:center;">Generated by AI Job Risk Analyzer · hasanjaffal.com</p>';
+    doc+='</body></html>';
+
+    // Open in new window and trigger print
+    var blob=new Blob([doc],{type:'text/html'});
+    var url=URL.createObjectURL(blob);
+    var win=window.open(url,'_blank');
+    if(!win){
+      // Popup blocked — fallback to download
+      var a=document.createElement('a');
+      a.href=url;
+      a.download='AI-Job-Risk-Report-'+esc(reportData.name).replace(/[^a-zA-Z0-9]/g,'-')+'.html';
+      a.click();
+      toast('Report downloaded as HTML. Open it and use File → Print → Save as PDF.');
+      return;
+    }
+    win.onload=function(){setTimeout(function(){win.print();},300);};
+  }
 
   function toast(m){var t=document.getElementById('dash-toast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none';},2500);}
 })();
