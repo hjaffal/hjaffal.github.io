@@ -2,11 +2,10 @@
 layout: page
 title:
 subtitle:
-share-title: "AI Job Risk Report — Your Personalized Dashboard"
-share-description: "View your personalized AI Job Risk Report with interactive charts, skill gap analysis, and a 30-day action plan."
+share-title: "Report Preview"
 chat_with_me_box: false
 show-avatar: false
-permalink: /tools/ai-job-risk-report/
+permalink: /tools/report-preview/
 css:
   - "/assets/css/job-risk-report.css"
 ---
@@ -14,22 +13,7 @@ css:
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
 <div class="jrr-wrap" id="jrr-app">
-  <!-- Loading State -->
-  <div class="jrr-loading" id="jrr-loading">
-    <div class="jrr-loading-spinner"></div>
-    <p>Loading your report...</p>
-  </div>
-
-  <!-- Error State -->
-  <div class="jrr-error" id="jrr-error" style="display:none;">
-    <div class="jrr-error-icon"><i class="fas fa-exclamation-circle"></i></div>
-    <h2>Report Not Found</h2>
-    <p>This report link may be invalid or expired. Please check your email for the correct link.</p>
-    <a href="/tools/ai-job-risk-analyzer/" class="jrr-btn">Take a New Assessment →</a>
-  </div>
-
-  <!-- Report Content -->
-  <div class="jrr-report" id="jrr-report" style="display:none;">
+  <div class="jrr-report" id="jrr-report">
 
     <!-- Hero -->
     <div class="jrr-hero">
@@ -78,7 +62,7 @@ css:
     <!-- Exposed Tasks -->
     <div class="jrr-section">
       <h2 class="jrr-section-title"><span class="jrr-icon jrr-icon-red">⚠</span> Tasks Most Exposed</h2>
-      <p class="jrr-section-desc">Tasks that are highly repetitive, rule-based, or data-driven</p>
+      <p class="jrr-section-desc">Highly repetitive, rule-based, or data-driven tasks at risk of automation</p>
       <div class="jrr-cards" id="jrr-exposed"></div>
     </div>
 
@@ -121,7 +105,6 @@ css:
       <a href="/tools/ai-job-risk-analyzer/" class="jrr-retake">← Retake Assessment</a>
     </div>
 
-    <!-- Privacy -->
     <div class="jrr-privacy">
       <p>This report is private to the email address used for the assessment.</p>
     </div>
@@ -130,101 +113,196 @@ css:
 
 <script>
 (function(){
-  var reportEl = document.getElementById('jrr-report');
-  var loadingEl = document.getElementById('jrr-loading');
-  var errorEl = document.getElementById('jrr-error');
+  var data = {
+    name: "Hasan Jaffal",
+    jobTitle: "Data Analytics Manager",
+    industry: "Financial Services",
+    seniority: "senior_manager",
+    country: "Luxembourg",
+    submittedAt: "2026-05-24T10:30:00.000Z",
+    result: {
+      risk_score: 42,
+      risk_level: "Medium",
+      summary: "Your role combines strategic data leadership with operational reporting. The strategic and stakeholder-facing parts of your work are well-protected by human judgment. However, routine dashboard building, report compilation, and basic data analysis tasks are increasingly automatable by AI tools.",
+      breakdown: {
+        automation_exposure: 62,
+        human_judgment_strength: 82,
+        skill_gap_urgency: 52,
+        action_readiness: 39,
+        ai_literacy: 45
+      },
+      radar: {
+        ai_literacy: 45,
+        judgment: 82,
+        communication: 78,
+        strategy: 75,
+        technical: 55,
+        leadership: 80
+      },
+      risk_distribution: {
+        exposed_pct: 35,
+        moderate_pct: 30,
+        protected_pct: 35
+      },
+      exposed_tasks: [
+        {task: "Recurring report compilation and formatting", exposure_pct: 92, reason: "Highly templated, rule-based output that AI can generate from data sources directly."},
+        {task: "Basic data extraction and cleaning", exposure_pct: 82, reason: "Pattern-based transformation that modern AI tools handle with minimal oversight."},
+        {task: "Dashboard creation from standard templates", exposure_pct: 74, reason: "Standardized visualization that AI can auto-generate from defined metrics."},
+        {task: "KPI tracking and status updates", exposure_pct: 68, reason: "Repetitive monitoring that can be automated with threshold-based alerts."},
+        {task: "Ad-hoc data pulls for stakeholders", exposure_pct: 55, reason: "Simple queries that natural language interfaces can handle directly."}
+      ],
+      protected_tasks: [
+        {task: "Translating data insights into business decisions", protection_pct: 95, judgment_area: "Context"},
+        {task: "Stakeholder alignment and priority negotiation", protection_pct: 92, judgment_area: "Stakeholders"},
+        {task: "Designing measurement frameworks for ambiguous goals", protection_pct: 88, judgment_area: "Ambiguity"},
+        {task: "Team coaching and capability development", protection_pct: 85, judgment_area: "Leadership"},
+        {task: "Escalation judgment and risk interpretation", protection_pct: 80, judgment_area: "Accountability"}
+      ],
+      skill_gaps: [
+        {skill: "AI-assisted analytics workflow design", priority: "HIGH", action: "Map your top 5 recurring analyses and prototype one using an AI copilot this week."},
+        {skill: "Prompt engineering for financial data analysis", priority: "HIGH", action: "Write 10 prompts for your most common data questions and test them against real outputs."},
+        {skill: "Automation opportunity identification", priority: "MEDIUM", action: "Score your team's tasks on a 2x2 of frequency vs. judgment required."},
+        {skill: "AI output verification for financial reporting", priority: "MEDIUM", action: "Create a checklist for validating AI-generated insights before sharing with stakeholders."}
+      ],
+      recommended_skills: [
+        "AI strategy for analytics teams",
+        "Decision intelligence and framing",
+        "Stakeholder influence and executive communication",
+        "Systems thinking and process redesign"
+      ],
+      thirty_day_plan: [
+        {week: 1, title: "Audit Your BI Pipeline", actions: "Map every recurring report your team produces. For each, note: who consumes it, how often, and whether the logic is templated. Identify the 3 reports most likely to be auto-generated by AI. Try replacing one manual data pull with a ChatGPT or Copilot query.", output: "Annotated report inventory with automation potential scores"},
+        {week: 2, title: "Build Your AI Analytics Toolkit", actions: "Learn prompt engineering specifically for financial data queries. Build a prompt library for your top 5 recurring analyses (variance analysis, trend detection, anomaly flagging). Test each prompt against real data and document accuracy.", output: "Personal prompt library with 10+ tested prompts for your domain"},
+        {week: 3, title: "Deliver an AI-Enhanced Insight", actions: "Use AI to accelerate one analysis for leadership. Focus on the interpretation layer — what the numbers mean for the business, not just what they show. Present it with a clear recommendation and trade-off analysis.", output: "One AI-enhanced deliverable shared with senior stakeholders"},
+        {week: 4, title: "Design Your Team's AI Adoption Plan", actions: "Based on your audit, create a phased plan for your team. Identify which analyst tasks to augment first, what training is needed, and how to measure success. Set quarterly goals for AI-assisted output quality.", output: "Team AI adoption roadmap with measurable milestones for Q3"}
+      ],
+      final_advice: "Your value is not in pulling data — it is in knowing what the data means and what to do about it. Double down on decision quality, stakeholder influence, and team capability building. Let AI handle the extraction and formatting so you can focus on interpretation and action."
+    }
+  };
 
-  var params = new URLSearchParams(window.location.search);
-  var token = params.get('token');
-
-  if (!token || token.length !== 64) {
-    showError();
-    return;
-  }
-
-  var fnUrl = '{{ site.data.firebase.fn_get_report }}';
-  fetch(fnUrl + '?token=' + encodeURIComponent(token))
-    .then(function(res) {
-      if (!res.ok) throw new Error('Not found');
-      return res.json();
-    })
-    .then(function(data) {
-      renderReport(data);
-    })
-    .catch(function() {
-      showError();
-    });
-
-  function showError() {
-    loadingEl.style.display = 'none';
-    errorEl.style.display = 'block';
-  }
+  renderReport(data);
 
   function renderReport(data) {
-    loadingEl.style.display = 'none';
-    reportEl.style.display = 'block';
-
     var r = data.result;
-    var score = r.risk_score || 0;
-    var level = r.risk_level || 'Unknown';
+    var score = r.risk_score;
+    var level = r.risk_level;
     var color = level === 'High' ? '#DC2626' : level === 'Medium' ? '#D97706' : '#0D9488';
 
-    // Hero
-    document.getElementById('jrr-name').textContent = data.name || 'Your Report';
-    document.getElementById('jrr-jobtitle').textContent = data.jobTitle || '';
-    document.getElementById('jrr-industry').textContent = data.industry || '';
+    // Hero text
+    document.getElementById('jrr-name').textContent = data.name;
+    document.getElementById('jrr-jobtitle').textContent = data.jobTitle;
+    document.getElementById('jrr-industry').textContent = data.industry;
     document.getElementById('jrr-score-value').textContent = score;
     var badge = document.getElementById('jrr-score-badge');
     badge.textContent = level + ' Risk';
     badge.style.color = color;
     badge.style.background = level === 'High' ? '#FEF2F2' : level === 'Medium' ? '#FEF3C7' : '#F0FDF4';
+    var d = new Date(data.submittedAt);
+    document.getElementById('jrr-date').textContent = d.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
+    document.getElementById('jrr-summary').textContent = r.summary;
 
-    if (data.submittedAt) {
-      var d = new Date(data.submittedAt);
-      document.getElementById('jrr-date').textContent = d.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
-    }
-
-    document.getElementById('jrr-summary').textContent = r.summary || '';
-
-    // Gauge chart
+    // Gauge chart (doughnut as gauge)
     var gaugeCtx = document.getElementById('jrr-gauge').getContext('2d');
     new Chart(gaugeCtx, {
       type: 'doughnut',
-      data: { datasets: [{ data: [score, 100 - score], backgroundColor: [color, 'rgba(255,255,255,0.08)'], borderWidth: 0 }] },
-      options: { cutout: '75%', rotation: -135, circumference: 270, responsive: false, plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+      data: {
+        datasets: [{
+          data: [score, 100 - score],
+          backgroundColor: [color, 'rgba(255,255,255,0.08)'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '75%',
+        rotation: -135,
+        circumference: 270,
+        responsive: false,
+        plugins: { legend: { display: false }, tooltip: { enabled: false } }
+      }
     });
 
-    // Doughnut — risk distribution
+    // Doughnut chart — risk distribution
     var dist = r.risk_distribution || { exposed_pct: 35, moderate_pct: 30, protected_pct: 35 };
     var doughnutCtx = document.getElementById('jrr-chart-doughnut').getContext('2d');
     new Chart(doughnutCtx, {
       type: 'doughnut',
-      data: { labels: ['Exposed', 'Moderate', 'Protected'], datasets: [{ data: [dist.exposed_pct, dist.moderate_pct, dist.protected_pct], backgroundColor: ['#DC2626', '#D97706', '#0D9488'], borderWidth: 2, borderColor: '#FFFFFF' }] },
-      options: { cutout: '60%', responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11, weight: '600' } } } } }
+      data: {
+        labels: ['Exposed', 'Moderate', 'Protected'],
+        datasets: [{
+          data: [dist.exposed_pct, dist.moderate_pct, dist.protected_pct],
+          backgroundColor: ['#DC2626', '#D97706', '#0D9488'],
+          borderWidth: 2,
+          borderColor: '#FFFFFF'
+        }]
+      },
+      options: {
+        cutout: '60%',
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11, weight: '600' } } }
+        }
+      }
     });
 
-    // Radar
+    // Radar chart — capabilities
     var radar = r.radar || { ai_literacy: 50, judgment: 70, communication: 70, strategy: 65, technical: 50, leadership: 60 };
     var radarCtx = document.getElementById('jrr-chart-radar').getContext('2d');
     new Chart(radarCtx, {
       type: 'radar',
       data: {
         labels: ['AI Literacy', 'Judgment', 'Communication', 'Strategy', 'Technical', 'Leadership'],
-        datasets: [
-          { label: 'Your Level', data: [radar.ai_literacy, radar.judgment, radar.communication, radar.strategy, radar.technical, radar.leadership], backgroundColor: 'rgba(13,148,136,0.15)', borderColor: '#0D9488', borderWidth: 2, pointBackgroundColor: '#0D9488', pointRadius: 4 },
-          { label: 'AI Threat', data: [Math.min(radar.ai_literacy+30,100), Math.max(radar.judgment-50,10), Math.max(radar.communication-40,10), Math.max(radar.strategy-40,10), Math.min(radar.technical+20,90), Math.max(radar.leadership-55,5)], backgroundColor: 'rgba(220,38,38,0.08)', borderColor: '#DC2626', borderWidth: 2, pointBackgroundColor: '#DC2626', pointRadius: 3, borderDash: [4,4] }
-        ]
+        datasets: [{
+          label: 'Your Level',
+          data: [radar.ai_literacy, radar.judgment, radar.communication, radar.strategy, radar.technical, radar.leadership],
+          backgroundColor: 'rgba(13,148,136,0.15)',
+          borderColor: '#0D9488',
+          borderWidth: 2,
+          pointBackgroundColor: '#0D9488',
+          pointRadius: 4
+        }, {
+          label: 'AI Threat',
+          data: [Math.min(radar.ai_literacy+30,100), Math.max(radar.judgment-50,10), Math.max(radar.communication-40,10), Math.max(radar.strategy-40,10), Math.min(radar.technical+20,90), Math.max(radar.leadership-55,5)],
+          backgroundColor: 'rgba(220,38,38,0.08)',
+          borderColor: '#DC2626',
+          borderWidth: 2,
+          pointBackgroundColor: '#DC2626',
+          pointRadius: 3,
+          borderDash: [4, 4]
+        }]
       },
-      options: { responsive: true, maintainAspectRatio: true, scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#E2E8F0' }, pointLabels: { font: { size: 10, weight: '600' }, color: '#475569' } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10, weight: '600' } } } } }
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#E2E8F0' }, pointLabels: { font: { size: 10, weight: '600' }, color: '#475569' } } },
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10, weight: '600' } } } }
+      }
     });
 
-    // Horizontal bars
+    // Horizontal bar chart — detailed breakdown
     var bd = r.breakdown || { automation_exposure: 60, human_judgment_strength: 70, skill_gap_urgency: 50, action_readiness: 40, ai_literacy: 45 };
     var barCtx = document.getElementById('jrr-chart-bars').getContext('2d');
     new Chart(barCtx, {
       type: 'bar',
-      data: { labels: ['Automation Exposure', 'Human Judgment', 'Skill Gap Urgency', 'Action Readiness', 'AI Literacy'], datasets: [{ data: [bd.automation_exposure, bd.human_judgment_strength, bd.skill_gap_urgency, bd.action_readiness, bd.ai_literacy], backgroundColor: ['#DC2626', '#0D9488', '#D97706', '#2563EB', '#9333EA'], borderRadius: 4, barThickness: 18 }] },
-      options: { indexAxis: 'y', responsive: true, maintainAspectRatio: true, scales: { x: { beginAtZero: true, max: 100, grid: { color: '#F1F5F9' }, ticks: { font: { size: 10 }, callback: function(v){ return v+'%'; } } }, y: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' }, color: '#334155' } } }, plugins: { legend: { display: false } } }
+      data: {
+        labels: ['Automation Exposure', 'Human Judgment', 'Skill Gap Urgency', 'Action Readiness', 'AI Literacy'],
+        datasets: [{
+          data: [bd.automation_exposure, bd.human_judgment_strength, bd.skill_gap_urgency, bd.action_readiness, bd.ai_literacy],
+          backgroundColor: ['#DC2626', '#0D9488', '#D97706', '#2563EB', '#9333EA'],
+          borderRadius: 4,
+          barThickness: 18
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          x: { beginAtZero: true, max: 100, grid: { color: '#F1F5F9' }, ticks: { font: { size: 10 }, callback: function(v){ return v+'%'; } } },
+          y: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' }, color: '#334155' } }
+        },
+        plugins: { legend: { display: false } }
+      }
     });
 
     // Exposed tasks

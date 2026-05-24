@@ -447,6 +447,9 @@ IMPORTANT RULES:
 - Do not provide legal, medical, or financial advice.
 - Write in simple English.
 - Return ONLY valid JSON, no markdown, no code fences.
+- The 30-day plan MUST be specific to this person's actual role, industry, and tasks. Do NOT give generic advice like "learn AI" or "take a course." Reference their specific job title, tasks, and industry.
+- Each exposed/protected task must include an exposure_pct (0-100) showing how automatable or protected it is.
+- Skill gaps must include a priority level.
 
 PROFILE:
 - Name: ${name.trim()}
@@ -463,18 +466,50 @@ Return this exact JSON structure:
 {
   "risk_score": <number 0-100>,
   "risk_level": "<Low|Medium|High>",
-  "summary": "<2-3 sentence plain-English summary of their situation>",
-  "exposed_tasks": ["<task most exposed to AI>", "<task>", "<task>"],
-  "protected_tasks": ["<task where human judgment still matters>", "<task>", "<task>"],
-  "skill_gaps": ["<missing or weak skill>", "<skill>", "<skill>"],
+  "summary": "<2-3 sentence plain-English summary of their specific situation>",
+  "breakdown": {
+    "automation_exposure": <number 0-100>,
+    "human_judgment_strength": <number 0-100>,
+    "skill_gap_urgency": <number 0-100>,
+    "action_readiness": <number 0-100>,
+    "ai_literacy": <number 0-100>
+  },
+  "radar": {
+    "ai_literacy": <number 0-100>,
+    "judgment": <number 0-100>,
+    "communication": <number 0-100>,
+    "strategy": <number 0-100>,
+    "technical": <number 0-100>,
+    "leadership": <number 0-100>
+  },
+  "risk_distribution": {
+    "exposed_pct": <number 0-100>,
+    "moderate_pct": <number 0-100>,
+    "protected_pct": <number 0-100>
+  },
+  "exposed_tasks": [
+    {"task": "<specific task from their description>", "exposure_pct": <number 50-100>, "reason": "<why this task is exposed>"},
+    {"task": "<task>", "exposure_pct": <number>, "reason": "<reason>"},
+    {"task": "<task>", "exposure_pct": <number>, "reason": "<reason>"}
+  ],
+  "protected_tasks": [
+    {"task": "<specific task>", "protection_pct": <number 60-100>, "judgment_area": "<Context|Accountability|Trade-offs|Ambiguity|Ethics|Stakeholders>"},
+    {"task": "<task>", "protection_pct": <number>, "judgment_area": "<area>"},
+    {"task": "<task>", "protection_pct": <number>, "judgment_area": "<area>"}
+  ],
+  "skill_gaps": [
+    {"skill": "<specific skill gap>", "priority": "<HIGH|MEDIUM>", "action": "<one concrete first step>"},
+    {"skill": "<skill>", "priority": "<priority>", "action": "<action>"},
+    {"skill": "<skill>", "priority": "<priority>", "action": "<action>"}
+  ],
   "recommended_skills": ["<skill to build>", "<skill>", "<skill>", "<skill>"],
   "thirty_day_plan": [
-    "Week 1: <specific action>",
-    "Week 2: <specific action>",
-    "Week 3: <specific action>",
-    "Week 4: <specific action>"
+    {"week": 1, "title": "<short goal title specific to their role>", "actions": "<2-3 sentences of specific actions referencing their actual tasks, tools, and industry>", "output": "<what they should produce by end of week>"},
+    {"week": 2, "title": "<title>", "actions": "<actions>", "output": "<output>"},
+    {"week": 3, "title": "<title>", "actions": "<actions>", "output": "<output>"},
+    {"week": 4, "title": "<title>", "actions": "<actions>", "output": "<output>"}
   ],
-  "final_advice": "<1-2 sentences of direct, practical advice>"
+  "final_advice": "<2-3 sentences of direct, practical advice specific to their role and situation>"
 }`;
 
       const result = await model.generateContent(prompt);
@@ -517,17 +552,7 @@ Return this exact JSON structure:
         aiConcern: aiConcern,
         aiUsage: aiUsage,
         skillsToLearn: skillsToLearn || "",
-        result: {
-          riskScore: analysis.risk_score,
-          riskLevel: analysis.risk_level,
-          summary: analysis.summary,
-          exposedTasks: analysis.exposed_tasks || [],
-          protectedTasks: analysis.protected_tasks || [],
-          skillGaps: analysis.skill_gaps || [],
-          recommendedSkills: analysis.recommended_skills || [],
-          thirtyDayPlan: analysis.thirty_day_plan || [],
-          finalAdvice: analysis.final_advice || ""
-        },
+        result: analysis,
         reportEmailSentAt: admin.firestore.FieldValue.serverTimestamp(),
         submittedAt: admin.firestore.FieldValue.serverTimestamp(),
         viewCount: 0
@@ -543,9 +568,10 @@ Return this exact JSON structure:
       const topExposed = (analysis.exposed_tasks || []).slice(0, 3);
       const topSkills = (analysis.recommended_skills || []).slice(0, 3);
 
-      const exposedHtml = topExposed.map(t =>
-        `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">⚠ ${t}</td></tr>`
-      ).join("");
+      const exposedHtml = topExposed.map(t => {
+        const taskName = typeof t === 'string' ? t : t.task;
+        return `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">⚠ ${taskName}</td></tr>`;
+      }).join("");
 
       const skillsHtml = topSkills.map(s =>
         `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">→ ${s}</td></tr>`
