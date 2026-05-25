@@ -6,7 +6,6 @@ share-description: "Your cutting-edge AI model is useless if nobody owns its out
 tags:
   - ai-operations
 author: Hasan J.
-published: false
 ---
 
 I once sat in a weekly operational review where an anomaly detection system, freshly deployed and much lauded, flagged a suspicious transaction pattern. The model’s accuracy score was impeccable – 98%, according to the data science lead. Everyone nodded. Then a director asked, "So, what exactly happens next with this specific alert?" The room went quiet. The data scientist shrugged, "It triggers an alert in the system dashboard." The operations manager, who was just there to review last week’s metrics, looked at the head of risk. The head of risk looked at legal. Legal looked uncomfortable. The alert was real, critical, and nobody owned the next step.
