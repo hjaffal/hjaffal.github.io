@@ -2,6 +2,11 @@
 layout: null
 ---
 User-agent: *
-Allow: /
+Allow: /ai-job-risk-analyzer/
+Allow: /future-proof-skills-assessment/
+Disallow: /tools/ai-job-risk-analyzer
+Disallow: /tools/ai-job-risk-report/
+Disallow: /tools/future-proof-skills-assessment
+Disallow: /assets/pdf/
 
 Sitemap: {{ site.url }}/sitemap.xml
