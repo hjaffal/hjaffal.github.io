@@ -58,8 +58,11 @@ const manageDrafts = onRequest(
         case "checkDeployment":
           await handleCheckDeployment(req, res);
           break;
+        case "deletePublished":
+          await handleDeletePublished(req, res);
+          break;
         default:
-          res.status(400).json({ error: "Invalid action. Use: save, get, list, delete, publish, checkDeployment" });
+          res.status(400).json({ error: "Invalid action. Use: save, get, list, delete, publish, checkDeployment, deletePublished" });
       }
     } catch (err) {
       console.error("manageDrafts error:", err.message);
@@ -179,17 +182,106 @@ async function handleList(req, res) {
 }
 
 /**
- * Delete a draft.
+ * Delete a draft. If it has a githubPath (was published), also delete from GitHub.
  */
 async function handleDelete(req, res) {
   const id = req.query.id || req.body.id;
+  const deleteFromGithub = req.body.deleteFromGithub || false;
   if (!id) {
     res.status(400).json({ error: "id is required" });
     return;
   }
 
-  await db.collection(COLLECTION).doc(id).delete();
+  const docRef = db.collection(COLLECTION).doc(id);
+  const doc = await docRef.get();
+
+  if (doc.exists && deleteFromGithub) {
+    const data = doc.data();
+    if (data.githubPath) {
+      try {
+        const { Octokit } = require("@octokit/rest");
+        const octokit = new Octokit({ auth: GITHUB_PAT.value() });
+
+        // Get current file SHA
+        const { data: fileData } = await octokit.repos.getContent({
+          owner: REPO_OWNER,
+          repo: REPO_NAME,
+          path: data.githubPath,
+          ref: REPO_BRANCH
+        });
+
+        // Delete the file
+        await octokit.repos.deleteFile({
+          owner: REPO_OWNER,
+          repo: REPO_NAME,
+          path: data.githubPath,
+          message: `Delete post: ${data.title || data.githubPath}`,
+          sha: fileData.sha,
+          branch: REPO_BRANCH
+        });
+      } catch (err) {
+        // If file doesn't exist on GitHub, that's fine — continue with Firestore delete
+        if (err.status !== 404) {
+          console.error("GitHub delete error:", err.message);
+          res.status(500).json({ error: "Failed to delete from GitHub: " + err.message });
+          return;
+        }
+      }
+    }
+  }
+
+  // Delete from Firestore (if it exists there)
+  if (doc.exists) {
+    await docRef.delete();
+  }
+
   res.status(200).json({ result: "success" });
+}
+
+/**
+ * Delete a published post by its GitHub path (for posts not in Firestore).
+ */
+async function handleDeletePublished(req, res) {
+  const { githubPath, slug, date } = req.body;
+
+  if (!githubPath && !slug) {
+    res.status(400).json({ error: "githubPath or slug is required" });
+    return;
+  }
+
+  const filePath = githubPath || `_posts/${date}-${slug}.md`;
+
+  try {
+    const { Octokit } = require("@octokit/rest");
+    const octokit = new Octokit({ auth: GITHUB_PAT.value() });
+
+    // Get current file SHA
+    const { data: fileData } = await octokit.repos.getContent({
+      owner: REPO_OWNER,
+      repo: REPO_NAME,
+      path: filePath,
+      ref: REPO_BRANCH
+    });
+
+    // Delete the file
+    await octokit.repos.deleteFile({
+      owner: REPO_OWNER,
+      repo: REPO_NAME,
+      path: filePath,
+      message: `Delete post: ${filePath}`,
+      sha: fileData.sha,
+      branch: REPO_BRANCH
+    });
+
+    res.status(200).json({ result: "success", message: "Post deleted. Site will rebuild." });
+  } catch (err) {
+    if (err.status === 404) {
+      res.status(404).json({ error: "Post file not found on GitHub" });
+    } else {
+      console.error("Delete published error:", err.message);
+      res.status(500).json({ error: "Failed to delete: " + err.message });
+    }
+  }
 }
 
 /**

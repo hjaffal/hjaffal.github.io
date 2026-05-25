@@ -167,13 +167,14 @@ window.publishDraftById = async function(id) {
 };
 
 window.deleteDraftById = async function(id) {
-  if (!confirm('Delete this draft?')) return;
+  if (!confirm('Delete this draft? If published, it will also be removed from the live site.')) return;
   try {
     const API = getApiUrls();
     await apiFetch(API.manageDrafts + '?action=delete', {
       method: 'POST',
-      body: JSON.stringify({ id })
+      body: JSON.stringify({ id, deleteFromGithub: true })
     });
+    showNotification('Deleted. Site will rebuild if it was published.', 'success');
     loadDrafts();
   } catch (err) {
     showNotification('Delete failed: ' + err.message, 'error');
@@ -185,9 +186,30 @@ window.refreshDraftStatus = async function(id) {
     const API = getApiUrls();
     const result = await apiFetch(API.manageDrafts + '?action=checkDeployment&id=' + id);
     showNotification(result.message || 'Status: ' + result.status, 'success');
-    loadDrafts(); // Refresh the table
+    loadDrafts();
   } catch (err) {
     showNotification('Status check failed: ' + err.message, 'error');
+  }
+};
+
+window.deletePublishedPost = async function(url) {
+  if (!confirm('Delete this post from the live site? This cannot be undone.')) return;
+  const parts = url.replace(/^\/|\/$/g, '').match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
+  if (!parts) {
+    showNotification('Cannot determine post file path from URL.', 'error');
+    return;
+  }
+  const date = parts[1];
+  const slug = parts[2];
+  try {
+    const API = getApiUrls();
+    await apiFetch(API.manageDrafts + '?action=deletePublished', {
+      method: 'POST',
+      body: JSON.stringify({ slug, date, githubPath: '_posts/' + date + '-' + slug + '.md' })
+    });
+    showNotification('Post deleted. Site will rebuild in 1-2 minutes.', 'success');
+  } catch (err) {
+    showNotification('Delete failed: ' + err.message, 'error');
   }
 };
 
@@ -405,6 +427,7 @@ export function initPostsTable(posts) {
               '<button class="nla-btn-sm" onclick="editPost(\'' + safeTitle + '\')" aria-label="Edit ' + escHtml(title) + '">Edit</button>' +
               '<button class="nla-btn-sm" onclick="copyPostUrl(\'' + safeUrl + '\')" aria-label="Copy URL for ' + escHtml(title) + '" title="Copy URL">📋</button>' +
               '<button class="nla-btn-sm" onclick="showPostDetail(' + postIdx + ')" aria-label="Details for ' + escHtml(title) + '" title="Show details">▼</button>' +
+              '<button class="nla-btn-sm danger" onclick="deletePublishedPost(\'' + safeUrl + '\')" aria-label="Delete ' + escHtml(title) + '" title="Delete post">🗑</button>' +
             '</div>'
           );
         }
