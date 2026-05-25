@@ -28,6 +28,11 @@ url-pretty: "hasanjaffal.com"
 title-on-all-pages: true
 
 excerpt_length: 45
+
+# Include future-dated and unpublished posts in site.posts
+# (needed for admin panel; filtered out on public pages)
+future: true
+unpublished: true
 feed_show_excerpt: true
 feed_show_tags: false
 post_search: false
