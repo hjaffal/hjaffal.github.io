@@ -135,8 +135,18 @@ export async function viewEdition(id) {
  * Called from the overview/dashboard panel.
  * @param {string} id - Edition identifier
  */
-export function viewEditionFromOverview(id) {
-  switchPanel('analytics');
+export async function viewEditionFromOverview(id) {
+  // Show the analytics panel manually (avoid switchPanel which calls loadAnalytics and overwrites the detail view)
+  const navItems = document.querySelectorAll('.nla-nav-item');
+  const panels = document.querySelectorAll('.nla-panel');
+  navItems.forEach(n => n.classList.remove('active'));
+  panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+  const navBtn = document.querySelector('[data-panel="analytics"]');
+  if (navBtn) navBtn.classList.add('active');
+  const panel = $('panel-analytics');
+  if (panel) { panel.classList.add('active'); panel.hidden = false; }
+
+  // Show the specific edition detail directly
   viewEdition(id);
 }
 

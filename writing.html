@@ -77,13 +77,12 @@ css:
 
   <!-- All posts -->
   <section class="wr-articles">
-    {% assign published_posts = site.posts | where_exp: "post", "post.published != false and post.date <= site.time" %}
     <div class="wr-articles-header">
       <span class="wr-articles-label">ALL ARTICLES</span>
-      <span class="wr-articles-count">{{ published_posts.size }} posts</span>
+      <span class="wr-articles-count">{{ site.posts.size }} posts</span>
     </div>
     <div class="wr-articles-list">
-      {% for post in published_posts %}
+      {% for post in site.posts %}
       <a href="{{ post.url | relative_url }}" class="wr-article-row">
         <div class="wr-article-info">
           <span class="wr-article-title">{{ post.title }}</span>
