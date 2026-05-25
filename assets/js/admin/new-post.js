@@ -130,9 +130,19 @@ function initAIGenerateButton() {
       const generatePostUrl = getApiUrls().generatePost;
       if (!generatePostUrl) throw new Error('Generate post function URL not configured.');
 
+      // Collect existing post titles to avoid duplicates
+      let existingTitles = [];
+      try {
+        const scriptEl = document.getElementById('posts-data');
+        if (scriptEl && scriptEl.textContent.trim()) {
+          const posts = JSON.parse(scriptEl.textContent);
+          existingTitles = posts.map(function(p) { return p.title; }).filter(Boolean);
+        }
+      } catch (e) { /* ignore */ }
+
       const result = await apiFetch(generatePostUrl, {
         method: 'POST',
-        body: JSON.stringify({ positionTag: selectedPosition }),
+        body: JSON.stringify({ positionTag: selectedPosition, existingTitles: existingTitles }),
         signal: controller.signal
       });
 

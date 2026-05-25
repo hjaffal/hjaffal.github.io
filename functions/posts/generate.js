@@ -180,7 +180,7 @@ const generatePost = onRequest(
     }
 
     const body = req.body.data || req.body;
-    const { positionTag } = body;
+    const { positionTag, existingTitles } = body;
 
     // Validate positionTag
     if (!positionTag || !VALID_TAGS.includes(positionTag)) {
@@ -191,13 +191,32 @@ const generatePost = onRequest(
     // Look up position data
     const selectedPosition = POSITIONS.find((p) => p.tag === positionTag);
 
-    // Randomly select angle, form, tone
-    const selectedAngle = selectedPosition.angles[Math.floor(Math.random() * selectedPosition.angles.length)];
+    // Pick an angle that hasn't been covered yet (based on existing titles)
+    // Use fuzzy matching: if an existing title contains key words from an angle, skip it
+    let availableAngles = selectedPosition.angles.slice();
+    if (Array.isArray(existingTitles) && existingTitles.length > 0) {
+      const titlesLower = existingTitles.map(t => (t || '').toLowerCase());
+      availableAngles = selectedPosition.angles.filter(function(angle) {
+        // Extract key phrases from the angle (words > 4 chars)
+        const keywords = angle.toLowerCase().split(/\s+/).filter(w => w.length > 4);
+        // If 3+ keywords from this angle appear in any existing title, consider it used
+        return !titlesLower.some(function(title) {
+          const matches = keywords.filter(kw => title.includes(kw));
+          return matches.length >= 3;
+        });
+      });
+      // If all angles are used, reset to full list
+      if (availableAngles.length === 0) availableAngles = selectedPosition.angles.slice();
+    }
+
+    const selectedAngle = availableAngles[Math.floor(Math.random() * availableAngles.length)];
     const selectedForm = ARTICLE_FORMS[Math.floor(Math.random() * ARTICLE_FORMS.length)];
     const selectedTone = TONES[Math.floor(Math.random() * TONES.length)];
 
-    // Recent titles — Cloud Functions don't have filesystem access to _posts/
-    const recentTitlesText = "None";
+    // Build recent titles list from client-provided data
+    const recentTitlesText = (Array.isArray(existingTitles) && existingTitles.length > 0)
+      ? existingTitles.slice(0, 30).map(t => '- ' + t).join('\n')
+      : "None";
 
     // Build the prompt (identical structure to generate_post.py)
     const prompt = `
@@ -211,7 +230,7 @@ TONE: ${selectedTone}
 
 TAG (use exactly this): ${selectedPosition.tag}
 
-AVOID these recent titles — do NOT repeat similar ideas:
+EXISTING POSTS — do NOT repeat these topics, angles, or similar titles. Each new post MUST cover a genuinely different idea, argument, or scenario. If a topic has been covered, pick a completely different angle from the ANGLES list above:
 ${recentTitlesText}
 
 AUDIENCE:
