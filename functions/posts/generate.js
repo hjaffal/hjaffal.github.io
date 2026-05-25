@@ -218,7 +218,7 @@ const generatePost = onRequest(
       ? existingTitles.slice(0, 30).map(t => '- ' + t).join('\n')
       : "None";
 
-    // Build the prompt (identical structure to generate_post.py)
+    // Build the prompt
     const prompt = `
 Write one original blog post for Hasan Jaffal.
 
@@ -227,74 +227,68 @@ THESIS: ${selectedPosition.thesis}
 ANGLE: ${selectedAngle}
 FORM: ${selectedForm}
 TONE: ${selectedTone}
-
 TAG (use exactly this): ${selectedPosition.tag}
 
-EXISTING POSTS — do NOT repeat these topics, angles, or similar titles. Each new post MUST cover a genuinely different idea, argument, or scenario. If a topic has been covered, pick a completely different angle from the ANGLES list above:
+EXISTING POSTS — do NOT repeat these topics, angles, or similar titles. Each new post MUST cover a genuinely different idea, argument, or scenario:
 ${recentTitlesText}
 
 AUDIENCE:
-Leaders and professionals in AI, data, analytics, operations, risk, security, loss prevention, and decision-making.
+Leaders and professionals in AI, data, analytics, operations, risk, security, loss prevention, and decision-making. People who search for answers to real career and operational questions.
 
 VOICE AND IDENTITY:
-You are writing as Hasan Jaffal — a data and business intelligence leader who writes from real operational experience. Not a consultant. Not a thought leader performing insight. Someone who has sat in the meetings, built the dashboards, watched the decisions fail, and learned what actually works.
+You are writing as Hasan Jaffal — a data and business intelligence leader who writes from real operational experience. Not a consultant. Not a thought leader performing insight. Someone who has sat in the meetings, built the dashboards, watched the decisions fail, and learned what actually works. You write like you're answering a question from a sharp colleague over coffee — honest, practical, sometimes uncomfortable.
 
-CONTENT RULES:
-- The article must explore the ANGLE specifically. Do not write a generic piece about the position.
-- Include one concrete workplace moment — a meeting, a dashboard review, a failed escalation, a report nobody read. Make it feel lived, not invented.
-- Include one uncomfortable trade-off that the reader must face.
-- Show what stronger teams or operators do differently.
-- End with a practical takeaway and a natural call to action (not a slogan).
-- Do NOT repeat the same structure as previous posts.
+ARTICLE STRUCTURE:
+1. Start with a concrete reader question or workplace tension. Not a definition. Not "In today's world..." Frame it as something a real person would ask or feel.
+2. Give the short answer early — within the first 2-3 paragraphs. Don't make the reader wait.
+3. Explain why the common assumption is incomplete or misleading. Challenge what most people believe about this topic.
+4. Use a specific workplace example — a meeting that went wrong, a dashboard nobody acted on, a decision that was too slow, a team that got restructured. Make it feel lived.
+5. Include failure points or trade-offs. What breaks? What's the cost of getting this wrong? What do people lose by ignoring this?
+6. Show what stronger operators or teams do differently. Be specific about behaviors, not just principles.
+7. Provide a practical takeaway — something the reader can do this week.
+8. Include a natural CTA: "If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next." Place one CTA naturally in the middle and one at the end.
 
-ARTICLE FLOW:
-1. Open with a concrete workplace observation — something you noticed, something that went wrong, something that surprised you.
-2. Show why the common view is incomplete or wrong.
-3. Make the sharper argument — the thing most people avoid saying.
-4. Use one specific example from analytics, dashboards, AI, operations, risk, meetings, reports, decisions, or leadership.
-5. Explain the hidden failure point — the thing that breaks when nobody is watching.
-6. Show what stronger people or teams do differently.
-7. End with a practical takeaway and a natural CTA.
+HEADLINE RULES:
+- Phrase as a question or strong reader-centric statement.
+- Good: "Will AI Replace Data Analysts?" / "Why Reporting Does Not Make You a Decision Maker" / "What Tasks Are Most Exposed to AI Automation?"
+- Bad: "The Future of AI in Operations" / "Understanding AI Transformation" / "Navigating the AI Landscape"
+- The title should feel like something a real person would type into Google.
 
-WRITING STYLE — HASAN JAFFAL:
-- Direct, calm, and sharp. Never loud. Never performative.
-- Practical before philosophical. Show the work before the principle.
-- Uses tension between systems and people. Technology fails because of humans, not despite them.
-- Often challenges the common belief first, then builds the real argument.
-- Prefers "what actually happens at work" over theory.
-- Characteristic phrases (use sparingly and naturally, not in every post):
-  - "That is the weak point."
-  - "The title is not the risk. The task shape is."
-  - "Busy is not the same as protected."
-  - "The dashboard is not the decision."
-  - "AI does not remove the need for judgment. It exposes where judgment was missing."
-
-WRITING RULES:
-- 700 to 1000 words.
-- Paragraphs of 3-5 sentences mostly. Allow occasional shorter paragraphs (1-2 sentences) for emphasis, but do not overuse them.
-- Natural variation in sentence length. Mix short punches with longer explanatory sentences. Do not make every sentence the same length.
-- Avoid mechanical paragraph rhythm. Not every paragraph should be the same size or follow the same pattern.
+WRITING STYLE:
+- Direct, calm, practical, and sharp. Human-like, not AI-polished.
+- Write to bring feelings and attract the reader. Show doubt, tension, judgment. Not perfect structurally or grammatically — that's fine. Real writing has rhythm, not symmetry.
+- AT LEAST 1500 words. This is a real article, not a summary.
+- Paragraphs of 3-5 sentences mostly. Some can be 2. None should be single-line slogans repeated throughout.
+- DO NOT use one-line short statements as paragraph separators. If a short line exists, it must earn its weight.
+- Natural variation in sentence length. Mix short punches with longer explanatory sentences.
+- Avoid mechanical paragraph rhythm. Not every paragraph should be the same size.
 - Avoid repeated paragraph openings. Do not start consecutive paragraphs with the same word or structure.
-- Avoid list-heavy writing unless the idea genuinely requires a list.
+- Avoid list-heavy writing unless it genuinely improves clarity.
 - No hype. No corporate buzzwords. No invented statistics.
 - No labels like "Hook," "Insight," "Takeaway," or "Key Point."
 - No motivational language. No consultant-style filler.
-- No generic AI phrases like "in today's rapidly evolving landscape" or "it's important to note that."
-- Use plain language. Write like someone explaining something to a sharp colleague, not presenting to a board.
-- Include small moments of uncertainty, tension, or self-correction. Show the thinking process, not only the conclusion.
-- The title must clearly state the argument. Make it SEO-friendly and specific.
-  - Bad title: "The Future of AI in Operations"
-  - Good title: "Why AI Projects Fail When Nobody Owns the Escalation Path"
-- ALWAYS start the body with a concrete observation or moment that hooks the reader. Not a definition. Not a question. A scene, a tension, or a claim that makes them lean in.
+- No generic AI phrases: "in today's rapidly evolving landscape," "game changer," "leverage," "unlock," "revolutionize," "transform," "it's important to note that."
+- Use plain language. Write like someone explaining something to a sharp colleague.
+- Include small moments of uncertainty, tension, or self-correction. Show the thinking process.
+- Use examples from: operations, analytics, dashboards, AI deployments, decision-making, risk management, meetings, reports, team dynamics, job skills, career positioning.
 
-REVISION PASS (apply before returning):
-After drafting, revise once to:
-- Remove any generic phrases that could appear in any article.
-- Replace abstract statements with concrete examples.
-- Smooth paragraph flow — no two paragraphs should feel like they were written independently.
-- Reduce slogan-like one-line statements. If a short paragraph exists, it should earn its space.
-- Make sure the article reads like it was written by someone with 10+ years of operational experience, not by someone summarizing a topic.
-- Keep SEO terms natural, not forced.
+CHARACTERISTIC PHRASES (use 1-2 naturally, not forced):
+- "That is the weak point."
+- "The title is not the risk. The task shape is."
+- "Busy is not the same as protected."
+- "The dashboard is not the decision."
+- "AI does not remove the need for judgment. It exposes where judgment was missing."
+
+QUALITY CHECKS (apply before returning):
+- Does it answer a real question for the reader?
+- Does the article have at least one concrete workplace example?
+- Are paragraphs natural and varied in length?
+- Is the CTA useful and natural (not a banner)?
+- Is the position correctly assigned?
+- Is it at least 1500 words?
+- Does it feel like a human operator wrote it, not a content mill?
+- Are there moments of tension, doubt, or honest trade-offs?
+- Would you actually want to read this if you found it on Google?
 
 Return ONLY valid JSON:
 
@@ -315,12 +309,12 @@ CRITICAL JSON RULES:
 - The body field contains Markdown — escape all newlines and quotes properly.
 
 FIELD RULES:
-- "title": The post title. Clear, specific, SEO-friendly. Max 150 chars.
-- "subtitle": A one-line subtitle expanding on the title. Used as share description if share_description is empty.
-- "share_description": Social media / newsletter description. Max 160 chars. Punchy and curiosity-driven.
-- "meta_title": SEO meta title for the page. Max 70 chars. Can differ from title — optimized for search.
-- "excerpt": A 1-2 sentence teaser shown in post listings. Max 300 chars. Should make the reader want to click.
-- "body": The full post in Markdown. 700-1000 words. Must follow the writing style and article flow above.
+- "title": Question-led or reader-centric headline. SEO-friendly. Max 150 chars.
+- "subtitle": A one-line subtitle expanding on the title.
+- "share_description": Social media description. Max 160 chars. Curiosity-driven.
+- "meta_title": SEO meta title. Max 70 chars. Optimized for search.
+- "excerpt": 1-2 sentence teaser for post listings. Max 300 chars.
+- "body": The full post in Markdown. AT LEAST 1500 words. Must follow the structure and style above.
 `;
 
     try {
