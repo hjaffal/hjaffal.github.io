@@ -1,6 +1,6 @@
 # hasanjaffal.com
 
-Personal website and Sproochentest study guide built with Jekyll and hosted on GitHub Pages.
+Personal authority website for Hasan Jaffal — writing on AI, risk intelligence, operational decision-making, and future-proof skills. Built with Jekyll, Firebase Cloud Functions, and hosted on GitHub Pages.
 
 **Live:** [hasanjaffal.com](https://www.hasanjaffal.com)
 
@@ -9,20 +9,40 @@ Personal website and Sproochentest study guide built with Jekyll and hosted on G
 ## What this site contains
 
 ### Main website
-- **Homepage** — Split hero layout with book promotion, newsletter embed, and featured posts
-- **Writing** — Blog posts on risk, AI, fraud analytics, and operational decision-making
+- **Homepage** — Authority positioning with book promotion, newsletter embed, and featured posts
+- **Writing** — Blog posts organized by 4 canonical positions (AI Operations, Decision Authority, Risk Intelligence, AI and Work)
+- **Tools** — Interactive assessments (AI Job Risk Analyzer, Future-Proof Skills Assessment)
 - **Books** — Publication page for "The Second Mind"
+- **Newsletter** — The Second Mind newsletter with admin panel
+- **Templates** — SEO-focused downloadable resources
 - **About** — Professional background
-- **Contact** — Contact form (Formspree) with office hours booking
-- **Dark mode** — Toggle in the navbar, persisted via localStorage
+- **Contact** — Contact form with office hours booking
+
+### Position Pages (`/positions/`)
+Four canonical content pillars, each with a dedicated landing page:
+- **AI Operations** — AI exposes weak operations
+- **Decision Authority** — Signals need authority
+- **Risk Intelligence** — Reporting is not intelligence
+- **AI and Work** — AI is changing the skill floor
+
+### Tools (`/tools/`)
+- **AI Job Risk Analyzer** — Personalized AI risk assessment with Gemini-powered analysis, interactive dashboard, and 30-day action plan
+- **Future-Proof Skills Assessment** — 5-minute skills evaluation with personalized recommendations
+
+### Newsletter Admin (`/newsletter/admin/`)
+Full-featured admin panel for managing the newsletter:
+- **Dashboard** — Health metrics for newsletter and posts (subscribers, open/click rates, position breakdown, recent activity, editions analytics)
+- **Posts** — Grid.js table with search, position filtering, detail panel, edit, and create
+- **New Post** — Form with EasyMDE markdown editor, AI-powered post generation (Gemini), character counters, and position tagging
+- **Compose** — Newsletter composition with post selection, rich text intro, tool invitations, and multi-segment sending
+- **Subscribers** — Subscriber management with Grid.js table, add/edit/deactivate/delete, segment filtering, and CSV export
+- **Analytics** — Edition performance tracking with open/click rates and clicked links
+- **Import** — Bulk subscriber import from JSON
 
 ### Sproochentest Study Guide (`/sproochentest/`)
-A separate sub-site for Luxembourgish language test preparation:
-- **Speaking topics** — 15 A2 speaking topics with sample questions
-- **Image description** — Framework and phrases for describing pictures
-- **Listening practice** — 8 exercises with audio links, questions, interactive quiz, and transcripts
-- **Materials** — Coming soon (downloadable resources)
-- Own header, footer, sidebar navigation, and newsletter (Beehiiv)
+Sub-site for Luxembourgish language test preparation:
+- Speaking topics, image description framework, listening exercises with interactive quizzes
+- Own header, footer, sidebar navigation, and newsletter
 
 ---
 
@@ -30,68 +50,124 @@ A separate sub-site for Luxembourgish language test preparation:
 
 | Component | Tool |
 |-----------|------|
-| Static site generator | Jekyll 4.x |
-| Theme base | [Beautiful Jekyll](https://beautifuljekyll.com) by Dean Attali |
+| Static site generator | Jekyll |
+| Theme base | [Beautiful Jekyll](https://beautifuljekyll.com) |
 | Hosting | GitHub Pages |
-| Fonts | Inter, JetBrains Mono (Google Fonts) |
-| Icons | Font Awesome 6 |
-| Newsletter | Beehiiv embed |
-| Contact form | Formspree |
+| Backend | Firebase Cloud Functions (v2, Node.js 20) |
+| Database | Firestore |
+| AI | Google Gemini 2.5 Flash |
+| Email | Resend |
+| Auth | Firebase Authentication (Google sign-in) |
+| Source control | GitHub API (Octokit) for post CRUD |
+| Newsletter table/grid | Grid.js |
+| Markdown editor | EasyMDE |
+| Testing | Vitest + fast-check (property-based) |
+| Fonts | Inter, JetBrains Mono |
 | Analytics | Google Tag Manager |
-| CSS framework | Bootstrap 4 (navbar only) |
+| CSS | Custom CSS with variables (no frameworks) |
+
+---
+
+## Cloud Functions
+
+All functions deployed to `europe-west1`:
+
+| Function | Purpose |
+|----------|---------|
+| `createPost` | Creates a Jekyll post by committing to GitHub |
+| `updatePost` | Updates an existing post via GitHub API |
+| `getPost` | Fetches raw markdown content from GitHub |
+| `generatePost` | AI post generation using Gemini |
+| `sendNewsletter` | Sends newsletter editions via Resend |
+| `getAnalytics` | Newsletter analytics (overview, editions, edition detail) |
+| `manageSubscribers` | CRUD operations for subscribers |
+| `importSubscribers` | Bulk subscriber import |
+| `trackOpen` / `trackClick` | Email engagement tracking |
+| `handleBounce` | Bounce/complaint webhook handler |
+| `subscribeNewsletter` | Public subscription endpoint |
+| `newsletterPreferences` | Unsubscribe/preferences management |
+| `sendFutureProofSkillsGuide` | Skills assessment result email |
+| `analyzeJobRisk` | AI job risk analysis with Gemini |
+| `getJobRiskReport` | Retrieve stored risk report |
+| `sendContactMessage` | Contact form handler |
 
 ---
 
 ## Project structure
 
 ```
-├── _config.yml              # Site configuration
-├── _includes/               # Reusable components
-│   ├── newsletter.html      # Newsletter embed component
-│   ├── contact-form.html    # Contact form component
-│   ├── featured-publication.html
-│   ├── sidebar-recent.html
-│   ├── sproochentest-header.html
-│   ├── sproochentest-footer.html
-│   ├── sproochentest-sidebar.html
-│   ├── sidebar-image-description.html
-│   ├── sidebar-listening.html
-│   └── transcript-panel.html
-├── _layouts/                # Page layouts
-│   ├── base.html
-│   ├── page.html
-│   ├── post.html
-│   ├── sproochentest-topic.html
-│   ├── sproochentest-images.html
-│   ├── sproochentest-listening.html
-│   └── sproochentest-generic.html
-├── _posts/                  # Blog posts
+├── _config.yml                 # Jekyll configuration
+├── _data/
+│   ├── firebase.yml            # Cloud Function URLs + Firebase config
+│   └── positions.yml           # Position data for landing pages
+├── _includes/                  # Reusable components
+├── _layouts/                   # Page layouts (post, page, position, template, sproochentest)
+├── _posts/                     # Blog posts (markdown)
 ├── assets/
-│   ├── css/custom-styles.css   # All custom styling
-│   └── js/custom-script.js    # Dark mode, quiz, transcript panel
-├── sproochentest.html       # Sproochentest homepage
-├── sproochentest-materials/  # Sproochentest content
-│   ├── sample-topics/       # A2 speaking topic pages
-│   ├── sample-listening/    # Listening exercise pages
-│   ├── image-description.html
-│   ├── listening-practice.html
-│   └── materials.html
-├── index.html               # Main homepage
-├── writing.html             # Blog listing
-├── books.html               # Books page
-├── aboutme.html             # About page
-├── contact.html             # Contact page
-├── officehours.html         # Office hours (Google Calendar)
-└── robots.txt               # SEO
+│   ├── css/                    # Page-specific CSS (global.css + per-page files)
+│   ├── js/admin/               # Admin panel ES modules
+│   │   ├── main.js             # Entry point (auth, nav, utilities)
+│   │   ├── dashboard.js        # Dashboard metrics and activity feed
+│   │   ├── posts.js            # Posts table and filtering
+│   │   ├── new-post.js         # Post creation/editing + AI generation
+│   │   ├── compose.js          # Newsletter composition
+│   │   ├── subscribers.js      # Subscriber management
+│   │   ├── analytics.js        # Edition analytics
+│   │   └── import.js           # Bulk import
+│   ├── img/                    # Images
+│   └── pdf/                    # Downloadable resources
+├── functions/                  # Firebase Cloud Functions
+│   ├── index.js                # Function exports
+│   ├── newsletter/             # Newsletter module (send, track, manage, etc.)
+│   └── posts/                  # Posts module (create, update, get, generate)
+├── newsletter/admin/           # Admin panel HTML
+├── positions/                  # Position landing pages
+├── tools/                      # Interactive tool pages
+├── tests/pbt/                  # Property-based tests (Vitest + fast-check)
+├── sproochentest-materials/    # Luxembourgish study content
+├── robots.txt                  # SEO (blocks tool pages + PDFs from indexing)
+└── .github/workflows/          # CI/CD
 ```
+
+---
+
+## Admin panel architecture
+
+The admin panel uses native ES modules (no build tools, no bundlers):
+
+```
+index.html (bootstrap script)
+  └── main.js (Firebase auth, navigation, shared utilities)
+        ├── dashboard.js    (loaded on panel switch)
+        ├── posts.js        (loaded on panel switch)
+        ├── new-post.js     (loaded on panel switch)
+        ├── compose.js      (loaded on panel switch)
+        ├── subscribers.js  (loaded on panel switch)
+        ├── analytics.js    (loaded on panel switch)
+        └── import.js       (loaded on panel switch)
+```
+
+- Modules are dynamically imported when their panel is activated
+- No circular dependencies (panel modules import only from main.js)
+- Firebase config and API URLs injected via Jekyll Liquid at build time
+- Grid.js and EasyMDE loaded as UMD scripts (accessed as globals)
 
 ---
 
 ## Running locally
 
 ```bash
+# Install Ruby dependencies
 bundle install
+
+# Start Jekyll server
 bundle exec jekyll serve
+
+# Run frontend tests
+npm test
+
+# Deploy Cloud Functions
+cd functions && firebase deploy --only functions
 ```
 
 Site available at `http://localhost:4000`
@@ -100,15 +176,16 @@ Site available at `http://localhost:4000`
 
 ## Key design decisions
 
-- **Custom CSS only** — No Tailwind or additional frameworks. All styling in one `custom-styles.css` file using CSS variables.
-- **Component-based** — Reusable includes for newsletter, sidebar, forms, and publication cards.
-- **Two-column layout** — Writing, books, about, and post pages use a main + sidebar grid.
-- **Sproochentest as sub-site** — Own header/footer/navigation, separate from the main site identity.
-- **Interactive quiz** — Listening exercises have clickable answers with instant correction via vanilla JS.
-- **Dark mode** — CSS variables swap via `[data-theme="dark"]` attribute on `<html>`.
+- **No build tools for frontend** — Native ES modules, no webpack/vite/bundler. Keeps the Jekyll static site simple.
+- **Modular admin panel** — Hub-and-spoke architecture with lazy-loaded panel modules.
+- **GitHub as CMS** — Posts are created/edited by committing markdown files via the GitHub API. No database for content.
+- **Property-based testing** — Core logic (filtering, stats computation, CSV export, utilities) tested with fast-check.
+- **Split CSS** — `global.css` loaded everywhere + page-specific CSS via front matter. No monolithic stylesheet.
+- **SEO-first content** — 4 canonical positions, staggered post dates, internal linking strategy, tool landing pages optimized for search.
+- **Firebase for backend** — Cloud Functions handle email, AI generation, analytics, and subscriber management. No server to maintain.
 
 ---
 
 ## Credits
 
-Built on [Beautiful Jekyll](https://beautifuljekyll.com) by [Dean Attali](https://deanattali.com). If you use Beautiful Jekyll, consider [supporting the project](https://github.com/sponsors/daattali).
+Built on [Beautiful Jekyll](https://beautifuljekyll.com) by [Dean Attali](https://deanattali.com).
