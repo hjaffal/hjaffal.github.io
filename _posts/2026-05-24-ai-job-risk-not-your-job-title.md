@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "AI Job Risk Is Not About Your Job Title"
-subtitle: "AI job risk is not only about whether your job can be automated. It is about whether your skills depend on repeatable tasks or on judgment, context, and decision-making."
 share-title: "AI Job Risk Is Not About Your Job Title"
 share-description: "AI job risk is not only about whether your job can be automated. It is about whether your skills depend on repeatable tasks or on judgment, context, and decision-making."
-tags: [ai-and-work]
+tags:
+  - ai-and-work
+author: Hasan J.
 ---
 
-For a long time, experience gave people a strong sense of safety at work. If you knew the process, the tools, the reports, the hidden steps, and the people behind the system, you had value. You were the person others came to when something was unclear. You knew where the numbers came from, which report to trust, and which part of the process always needed manual fixing.
+For a long time, **experience gave people a strong sense of safety at work**. If you knew the process, the tools, the reports, the hidden steps, and the people behind the system, you had value. You were the person others came to when something was unclear. You knew where the numbers came from, which report to trust, and which part of the process always needed manual fixing.
 
 That kind of knowledge still matters. The mistake is assuming it protects people in the same way it used to. AI is changing the protection around work. It is not only making people faster. It is making some types of experience easier to copy, compress, or bypass.
 
