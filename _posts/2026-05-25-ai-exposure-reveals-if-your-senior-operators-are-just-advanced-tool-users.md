@@ -6,7 +6,6 @@ share-description: "AI systems expose who truly understands trade-offs, judgment
 tags:
   - ai-and-work
 author: Hasan J.
-published: false
 ---
 
 A functional AI system in operations or analytics isn't just an algorithm. It's a structured decision engine with clearly defined human interfaces. You build it with distinct layers: the AI performs the routine, high-volume tasks. Humans handle the exceptions, the edge cases, and the *consequences*.
