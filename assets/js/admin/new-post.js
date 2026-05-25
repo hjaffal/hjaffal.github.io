@@ -233,7 +233,6 @@ async function handlePostFormSubmit(e) {
   const slug = document.getElementById('post-slug').value.trim() || slugify(title);
   const author = document.getElementById('post-author').value.trim() || 'Hasan J.';
   const selectedPositions = Array.from(document.querySelectorAll('#post-position-group input:checked')).map(function(cb) { return cb.value; });
-  const status = document.getElementById('post-status').value;
   const date = document.getElementById('post-date').value;
   const excerpt = document.getElementById('post-excerpt').value.trim();
   const metaTitle = document.getElementById('post-meta-title').value.trim();
@@ -295,7 +294,7 @@ async function handlePostFormSubmit(e) {
         slug: slug,
         author: author,
         tags: selectedPositions,
-        status: status,
+        status: 'published',
         date: date,
         excerpt: excerpt,
         shareTitle: metaTitle,
@@ -340,7 +339,6 @@ async function handlePostUpdateSubmit(e) {
   const slug = document.getElementById('post-slug').value.trim() || slugify(title);
   const author = document.getElementById('post-author').value.trim() || 'Hasan J.';
   const selectedPositions = Array.from(document.querySelectorAll('#post-position-group input:checked')).map(function(cb) { return cb.value; });
-  const status = document.getElementById('post-status').value;
   const date = document.getElementById('post-date').value;
   const excerpt = document.getElementById('post-excerpt').value.trim();
   const metaTitle = document.getElementById('post-meta-title').value.trim();
@@ -384,7 +382,7 @@ async function handlePostUpdateSubmit(e) {
         slug: slug,
         author: author,
         tags: selectedPositions,
-        status: status,
+        status: 'published',
         date: date,
         excerpt: excerpt,
         shareTitle: metaTitle,
@@ -625,9 +623,6 @@ export async function editPost(title) {
 
     const dateInput = document.getElementById('post-date');
     if (dateInput && post.date !== '—') dateInput.value = post.date;
-
-    const statusSelect = document.getElementById('post-status');
-    if (statusSelect && post.status !== '—') statusSelect.value = post.status;
 
     const excerptInput = document.getElementById('post-excerpt');
     if (excerptInput) {

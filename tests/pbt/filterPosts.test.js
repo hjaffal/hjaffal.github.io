@@ -122,38 +122,4 @@ describe('filterPostsLogic Property Tests', () => {
       { numRuns: 200 }
     );
   });
-
-  /**
-   * Property 3: Status consistency
-   *
-   * When a status filter is applied (not "all"), every post in the
-   * filtered result has a `status` field equal to the filter value.
-   *
-   * **Validates: Requirements 3.3**
-   */
-  it('status filter produces only posts with matching status', () => {
-    fc.assert(
-      fc.property(
-        postsArbitrary,
-        searchTermArbitrary,
-        fc.oneof(
-          fc.constant('published'),
-          fc.constant('draft'),
-          fc.constant('archived'),
-          fc.string({ minLength: 1, maxLength: 15 })
-        ),
-        positionFilterArbitrary,
-        (posts, searchTerm, statusFilter, positionFilter) => {
-          // Only test with non-"all" status filters
-          const result = filterPostsLogic(posts, searchTerm, statusFilter, positionFilter);
-
-          // Every post in the result must have the matching status
-          for (const post of result) {
-            expect(post.status).toBe(statusFilter);
-          }
-        }
-      ),
-      { numRuns: 200 }
-    );
-  });
 });

@@ -147,7 +147,6 @@ export function initPostsTable(posts) {
   const tableData = sortedPosts.map(function(post, idx) {
     return [
       post.title,
-      post.status,
       post.date,
       post.tags,
       post.url,
@@ -174,17 +173,6 @@ export function initPostsTable(posts) {
             return gridjs.html('<span class="nla-truncate" title="' + escHtml(cell) + '">' + escHtml(cell.substring(0, 60)) + '…</span>');
           }
           return escHtml(cell);
-        }
-      },
-      {
-        id: 'status',
-        name: 'Status',
-        sort: true,
-        formatter: function(cell) {
-          if (!cell || cell === '—') return '—';
-          const badgeClass = 'nla-badge-' + cell;
-          const label = cell.charAt(0).toUpperCase() + cell.slice(1);
-          return gridjs.html('<span class="nla-badge ' + badgeClass + '">' + escHtml(label) + '</span>');
         }
       },
       {
@@ -230,9 +218,9 @@ export function initPostsTable(posts) {
         name: 'Actions',
         sort: false,
         formatter: function(_, row) {
-          const url = row.cells[4].data;
+          const url = row.cells[3].data;
           const title = row.cells[0].data || 'post';
-          const postIdx = row.cells[5].data;
+          const postIdx = row.cells[4].data;
           const safeTitle = escHtml(title).replace(/'/g, '&#39;');
           const safeUrl = escHtml(url).replace(/'/g, '&#39;');
           return gridjs.html(
@@ -286,11 +274,6 @@ export function filterPostsLogic(posts, searchTerm, statusFilter, positionFilter
       if (!titleMatch && !slugMatch && !tagsMatch) return false;
     }
 
-    // Status filter (AND logic)
-    if (statusFilter && statusFilter !== 'all') {
-      if (post.status !== statusFilter) return false;
-    }
-
     // Position filter (AND logic)
     if (positionFilter && positionFilter !== 'all') {
       if (!post.tags || !Array.isArray(post.tags) || post.tags.length === 0) return false;
@@ -312,12 +295,10 @@ export function filterPosts() {
 
   const searchTerm = ($('posts-search').value || '').toLowerCase().trim();
 
-  // Get active status filter value
-  const statusFilter = $('posts-filter-status') ? $('posts-filter-status').value : 'all';
   // Get active position filter value
   const positionFilter = $('posts-filter-position') ? $('posts-filter-position').value : 'all';
 
-  let filtered = filterPostsLogic(allPosts, searchTerm, statusFilter, positionFilter);
+  let filtered = filterPostsLogic(allPosts, searchTerm, 'all', positionFilter);
 
   // Update Grid.js table with filtered results
   if (filtered.length === 0) {
@@ -469,12 +450,6 @@ export function initPosts() {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(filterPosts, 300);
     });
-  }
-
-  // Status filter dropdown — filter immediately on change
-  const statusSelect = $('posts-filter-status');
-  if (statusSelect) {
-    statusSelect.addEventListener('change', filterPosts);
   }
 
   // Position filter dropdown — filter immediately on change
