@@ -167,6 +167,13 @@ css:
         <h1 class="nla-panel-title">All Posts</h1>
         <p class="nla-panel-desc">Manage your blog posts.</p>
       </div>
+
+      <!-- Drafts Section -->
+      <div id="drafts-section" class="nla-dash-section" hidden>
+        <h2 class="nla-dash-section-title">Drafts</h2>
+        <div id="drafts-list" class="nla-drafts-list"></div>
+      </div>
+
       <div class="nla-posts-toolbar" id="posts-toolbar" hidden>
         <input type="search" class="nla-input nla-posts-search" id="posts-search" placeholder="Search by title, slug, position…" aria-label="Search posts">
         <div class="nla-posts-filters">
@@ -279,7 +286,10 @@ css:
 
           <div class="nla-form-actions">
             <button type="button" class="nla-btn" id="post-cancel-btn">Cancel</button>
-            <button type="submit" class="nla-btn nla-btn-primary" id="post-save-btn">Save Post</button>
+            <button type="button" class="nla-btn" id="post-draft-btn">Save Draft</button>
+            <button type="button" class="nla-btn" id="post-preview-btn">Preview</button>
+            <button type="button" class="nla-btn nla-btn-primary" id="post-publish-btn">Publish</button>
+            <span class="nla-post-status-badge" id="post-status-badge" hidden></span>
           </div>
         </form>
       </div>
@@ -551,7 +561,8 @@ init({
     createPost: "{{ site.data.firebase.fn_create_post }}",
     generatePost: "{{ site.data.firebase.fn_generate_post }}",
     getPost: "{{ site.data.firebase.fn_get_post }}",
-    updatePost: "{{ site.data.firebase.fn_update_post }}"
+    updatePost: "{{ site.data.firebase.fn_update_post }}",
+    manageDrafts: "{{ site.data.firebase.fn_manage_drafts }}"
   }
 });
 </script>

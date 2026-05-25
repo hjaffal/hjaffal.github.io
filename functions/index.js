@@ -15,11 +15,13 @@ const { createPost } = require("./posts/create");
 const { generatePost } = require("./posts/generate");
 const { getPost } = require("./posts/get");
 const { updatePost } = require("./posts/update");
+const { manageDrafts } = require("./posts/drafts");
 
 exports.createPost = createPost;
 exports.generatePost = generatePost;
 exports.getPost = getPost;
 exports.updatePost = updatePost;
+exports.manageDrafts = manageDrafts;
 
 // ===== NEWSLETTER MODULE EXPORTS =====
 const { subscribeNewsletter } = require("./newsletter/subscribe");

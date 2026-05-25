@@ -1655,10 +1655,76 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-form-actions {
   display: flex;
   gap: 12px;
+  align-items: center;
   justify-content: flex-end;
   margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid var(--slate-border);
+}
+
+.nla-post-status-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nla-post-status-draft { background: #F1F5F9; color: #475569; }
+.nla-post-status-publishing { background: #FEF3C7; color: #92400E; }
+.nla-post-status-saved-to-github { background: #DBEAFE; color: #1E40AF; }
+.nla-post-status-build-queued { background: #FEF3C7; color: #92400E; }
+.nla-post-status-build-running { background: #FEF3C7; color: #92400E; }
+.nla-post-status-published { background: #DCFCE7; color: #166534; }
+.nla-post-status-publish-failed { background: #FEE2E2; color: #991B1B; }
+
+/* Drafts list */
+.nla-drafts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.nla-draft-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--slate-border);
+  gap: 16px;
+}
+
+.nla-draft-item:last-child { border-bottom: none; }
+
+.nla-draft-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.nla-draft-title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nla-draft-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--text-soft);
+}
+
+.nla-draft-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 /* ─── Mode Toggle ─── */

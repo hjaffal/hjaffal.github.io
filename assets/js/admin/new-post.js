@@ -26,6 +26,223 @@ let selectedPosition = null;
 /** State for the post currently being edited (filename, sha) */
 let editingPostState = null;
 
+/** Current draft ID (if editing a Firestore draft) */
+let currentDraftId = null;
+
+// --- Draft API Helpers ---
+
+/**
+ * Save the current form state as a draft to Firestore.
+ * @param {boolean} silent - If true, don't show notification
+ * @returns {Promise<string>} The draft ID
+ */
+async function saveDraft(silent) {
+  const title = document.getElementById('post-title').value.trim();
+  const slug = document.getElementById('post-slug').value.trim() || slugify(title);
+  const selectedPositions = Array.from(document.querySelectorAll('#post-position-group input:checked')).map(cb => cb.value);
+  const date = document.getElementById('post-date').value;
+  const excerpt = document.getElementById('post-excerpt').value.trim();
+  const metaTitle = document.getElementById('post-meta-title').value.trim();
+  const metaDesc = document.getElementById('post-meta-desc').value.trim();
+  const featuredImg = document.getElementById('post-featured-img').value.trim();
+  const bodyMarkdown = getEditorContent();
+
+  if (!title) {
+    if (!silent) showNotification('Title is required to save draft.', 'error');
+    return null;
+  }
+
+  const API = getApiUrls();
+  const payload = {
+    action: 'save',
+    title,
+    slug,
+    content: bodyMarkdown,
+    tags: selectedPositions,
+    position: selectedPositions[0] || '',
+    excerpt,
+    metaTitle,
+    metaDescription: metaDesc,
+    featuredImage: featuredImg,
+    publishDate: date,
+  };
+
+  if (currentDraftId) {
+    payload.id = currentDraftId;
+  }
+
+  const result = await apiFetch(API.manageDrafts + '?action=save', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+
+  currentDraftId = result.id;
+  if (!silent) showNotification('Draft saved.', 'success');
+  return result.id;
+}
+
+/**
+ * Publish the current draft (commit to GitHub).
+ */
+async function publishDraft() {
+  if (!currentDraftId) {
+    // Save first
+    const id = await saveDraft(true);
+    if (!id) return;
+  }
+
+  const API = getApiUrls();
+  const publishBtn = document.getElementById('post-publish-btn');
+  if (publishBtn) { publishBtn.disabled = true; publishBtn.textContent = 'Publishing…'; }
+
+  try {
+    const result = await apiFetch(API.manageDrafts + '?action=publish', {
+      method: 'POST',
+      body: JSON.stringify({ id: currentDraftId })
+    });
+
+    updateStatusBadge('saved_to_github');
+    showNotification(result.message || 'Saved to GitHub. Building…', 'success');
+
+    // Start polling for deployment status
+    pollDeploymentStatus(currentDraftId);
+
+  } catch (err) {
+    showNotification('Publish failed: ' + err.message, 'error');
+    updateStatusBadge('publish_failed');
+    if (publishBtn) { publishBtn.disabled = false; publishBtn.textContent = 'Publish'; }
+  }
+}
+
+/** Polling interval ID */
+let deployPollInterval = null;
+
+/**
+ * Poll deployment status every 10s for up to 3 minutes.
+ */
+function pollDeploymentStatus(draftId) {
+  if (deployPollInterval) clearInterval(deployPollInterval);
+
+  const maxPolls = 18;
+  let pollCount = 0;
+  const publishBtn = document.getElementById('post-publish-btn');
+
+  deployPollInterval = setInterval(async function() {
+    pollCount++;
+    if (pollCount > maxPolls) {
+      clearInterval(deployPollInterval);
+      deployPollInterval = null;
+      if (publishBtn) { publishBtn.disabled = false; publishBtn.textContent = 'Publish'; }
+      return;
+    }
+
+    try {
+      const API = getApiUrls();
+      const result = await apiFetch(API.manageDrafts + '?action=checkDeployment&id=' + draftId);
+      updateStatusBadge(result.status);
+
+      if (result.status === 'published') {
+        clearInterval(deployPollInterval);
+        deployPollInterval = null;
+        showNotification('Post is live!', 'success');
+        if (publishBtn) { publishBtn.textContent = '✓ Published'; }
+        setTimeout(function() {
+          if (publishBtn) { publishBtn.disabled = false; publishBtn.textContent = 'Publish'; }
+        }, 5000);
+      } else if (result.status === 'publish_failed') {
+        clearInterval(deployPollInterval);
+        deployPollInterval = null;
+        showNotification('Build failed.', 'error');
+        if (publishBtn) { publishBtn.disabled = false; publishBtn.textContent = 'Publish'; }
+      }
+    } catch (err) {
+      // Silently continue polling
+    }
+  }, 10000);
+}
+
+/**
+ * Open preview for the current draft.
+ */
+async function previewDraft() {
+  if (!currentDraftId) {
+    const id = await saveDraft(true);
+    if (!id) {
+      showNotification('Save the draft first (title required).', 'error');
+      return;
+    }
+  }
+  window.open('/newsletter/admin/preview/?id=' + currentDraftId, '_blank');
+}
+
+/**
+ * Load a draft into the form by ID.
+ */
+async function loadDraftIntoForm(draftId) {
+  const API = getApiUrls();
+  try {
+    const draft = await apiFetch(API.manageDrafts + '?action=get&id=' + draftId);
+    currentDraftId = draftId;
+
+    // Fill form fields
+    const titleInput = document.getElementById('post-title');
+    if (titleInput) titleInput.value = draft.title || '';
+    const slugInput = document.getElementById('post-slug');
+    if (slugInput) slugInput.value = draft.slug || '';
+    const dateInput = document.getElementById('post-date');
+    if (dateInput) dateInput.value = draft.publishDate || '';
+    const excerptInput = document.getElementById('post-excerpt');
+    if (excerptInput) excerptInput.value = draft.excerpt || '';
+    const metaTitleInput = document.getElementById('post-meta-title');
+    if (metaTitleInput) metaTitleInput.value = draft.metaTitle || '';
+    const metaDescInput = document.getElementById('post-meta-desc');
+    if (metaDescInput) metaDescInput.value = draft.metaDescription || '';
+    const featuredImgInput = document.getElementById('post-featured-img');
+    if (featuredImgInput) featuredImgInput.value = draft.featuredImage || '';
+
+    // Check position checkboxes
+    document.querySelectorAll('#post-position-group input[type="checkbox"]').forEach(cb => {
+      cb.checked = (draft.tags || []).includes(cb.value);
+    });
+
+    // Set editor content
+    if (draft.content) setEditorContent(draft.content);
+
+    // Update header
+    const panelTitle = document.querySelector('#panel-new-post .nla-panel-title');
+    if (panelTitle) panelTitle.textContent = draft.status === 'published' ? 'Edit Post' : 'Edit Draft';
+
+    // Show status badge
+    updateStatusBadge(draft.status);
+
+  } catch (err) {
+    showNotification('Failed to load draft: ' + err.message, 'error');
+  }
+}
+
+/**
+ * Update the status badge display.
+ */
+function updateStatusBadge(status) {
+  const badge = document.getElementById('post-status-badge');
+  if (!badge) return;
+  const labels = {
+    draft: '📝 Draft',
+    publishing: '⏳ Publishing…',
+    saved_to_github: '☁️ Saved to GitHub',
+    build_queued: '⏳ Build Queued',
+    build_running: '🔄 Building…',
+    published: '✓ Published',
+    publish_failed: '✗ Publish Failed'
+  };
+  badge.textContent = labels[status] || status;
+  badge.className = 'nla-post-status-badge nla-post-status-' + (status || 'draft').replace(/_/g, '-');
+  badge.hidden = false;
+}
+
+// Expose for use by posts module
+export { saveDraft, publishDraft, previewDraft, loadDraftIntoForm, currentDraftId };
+
 // --- Internal Helpers ---
 
 /**
@@ -532,6 +749,43 @@ export function initNewPostPanel() {
     });
   }
 
+  // Save Draft button
+  const draftBtn = document.getElementById('post-draft-btn');
+  if (draftBtn) {
+    draftBtn.addEventListener('click', async function() {
+      try {
+        draftBtn.disabled = true;
+        draftBtn.textContent = 'Saving…';
+        await saveDraft(false);
+      } catch (err) {
+        showNotification('Save failed: ' + err.message, 'error');
+      } finally {
+        draftBtn.disabled = false;
+        draftBtn.textContent = 'Save Draft';
+      }
+    });
+  }
+
+  // Preview button
+  const previewBtn = document.getElementById('post-preview-btn');
+  if (previewBtn) {
+    previewBtn.addEventListener('click', async function() {
+      try { await previewDraft(); } catch (err) {
+        showNotification('Preview failed: ' + err.message, 'error');
+      }
+    });
+  }
+
+  // Publish button
+  const publishBtn = document.getElementById('post-publish-btn');
+  if (publishBtn) {
+    publishBtn.addEventListener('click', async function() {
+      try { await publishDraft(); } catch (err) {
+        showNotification('Publish failed: ' + err.message, 'error');
+      }
+    });
+  }
+
   // Initialize the EasyMDE markdown editor
   initPostEditor();
 
@@ -541,10 +795,10 @@ export function initNewPostPanel() {
   // Wire up AI generate button click handler
   initAIGenerateButton();
 
-  // Wire up form submission handler
+  // Prevent form submission (we use button clicks instead)
   const form = document.getElementById('post-creation-form');
   if (form) {
-    form.addEventListener('submit', handlePostFormSubmit);
+    form.addEventListener('submit', function(e) { e.preventDefault(); });
   }
 
   // Mark as initialized
@@ -778,6 +1032,11 @@ export function resetToCreateMode() {
 
   // Clear editing state
   editingPostState = null;
+  currentDraftId = null;
+
+  // Hide status badge
+  const badge = document.getElementById('post-status-badge');
+  if (badge) badge.hidden = true;
 }
 
 /**

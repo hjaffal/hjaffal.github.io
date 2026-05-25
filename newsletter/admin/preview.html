@@ -1,0 +1,104 @@
+---
+layout: null
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Post Preview — Admin</title>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <style>
+    .preview-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: #9333EA; color: #fff; padding: 10px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.85rem; font-weight: 600;
+    }
+    .preview-bar a { color: #fff; text-decoration: underline; }
+    .preview-content { max-width: 720px; margin: 80px auto 60px; padding: 0 24px; }
+    .preview-title { font-size: 2rem; font-weight: 800; margin: 0 0 8px; color: #0F172A; }
+    .preview-meta { font-size: 0.85rem; color: #64748B; margin-bottom: 32px; }
+    .preview-body { font-size: 1rem; line-height: 1.75; color: #1E293B; }
+    .preview-body h2 { font-size: 1.4rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+    .preview-body h3 { font-size: 1.15rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .preview-body p { margin: 0 0 1.25rem; }
+    .preview-body strong { font-weight: 600; }
+    .preview-body a { color: #9333EA; }
+    .preview-loading { text-align: center; padding: 80px 0; color: #64748B; }
+    .preview-error { text-align: center; padding: 80px 0; color: #DC2626; }
+  </style>
+</head>
+<body>
+  <div class="preview-bar">
+    <span>📝 Draft Preview — Not Published</span>
+    <a href="/newsletter/admin/">← Back to Admin</a>
+  </div>
+  <div class="preview-content">
+    <div id="preview-loading" class="preview-loading">Loading preview…</div>
+    <div id="preview-error" class="preview-error" hidden></div>
+    <div id="preview-article" hidden>
+      <h1 class="preview-title" id="preview-title"></h1>
+      <div class="preview-meta" id="preview-meta"></div>
+      <div class="preview-body" id="preview-body"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+    const app = initializeApp({
+      apiKey: "{{ site.data.firebase.firebase_api_key }}",
+      authDomain: "{{ site.data.firebase.firebase_auth_domain }}",
+      projectId: "{{ site.data.firebase.firebase_project_id }}"
+    });
+    const auth = getAuth(app);
+
+    const params = new URLSearchParams(window.location.search);
+    const draftId = params.get('id');
+
+    if (!draftId) {
+      document.getElementById('preview-loading').hidden = true;
+      document.getElementById('preview-error').textContent = 'No draft ID provided.';
+      document.getElementById('preview-error').hidden = false;
+    } else {
+      onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+          document.getElementById('preview-loading').hidden = true;
+          document.getElementById('preview-error').textContent = 'Sign in required.';
+          document.getElementById('preview-error').hidden = false;
+          return;
+        }
+
+        try {
+          const token = await user.getIdToken();
+          const res = await fetch("{{ site.data.firebase.fn_manage_drafts }}?action=get&id=" + draftId, {
+            headers: { 'Authorization': 'Bearer ' + token }
+          });
+          if (!res.ok) throw new Error((await res.json()).error || 'Failed to load draft');
+          const draft = await res.json();
+
+          document.getElementById('preview-title').textContent = draft.title;
+          document.getElementById('preview-meta').textContent =
+            (draft.tags || []).join(', ') + ' · ' + (draft.publishDate || 'No date') +
+            ' · ' + (draft.status || 'draft');
+          document.getElementById('preview-body').innerHTML = marked.parse(draft.content || '');
+
+          document.getElementById('preview-loading').hidden = true;
+          document.getElementById('preview-article').hidden = false;
+        } catch (err) {
+          document.getElementById('preview-loading').hidden = true;
+          document.getElementById('preview-error').textContent = err.message;
+          document.getElementById('preview-error').hidden = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

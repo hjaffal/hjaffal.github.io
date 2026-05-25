@@ -7,7 +7,7 @@
  * and showing post detail panel.
  */
 
-import { show, hide, $, escHtml, formatDate, getApiUrls, showNotification } from './main.js';
+import { show, hide, $, escHtml, formatDate, getApiUrls, showNotification, apiFetch } from './main.js';
 
 // --- Module-level State ---
 
@@ -19,9 +19,185 @@ let searchTimeout = null;
 // --- Exported Functions (placeholders) ---
 
 /**
+ * Load drafts from Firestore and render them above the published posts.
+ */
+async function loadDrafts() {
+  const section = $('drafts-section');
+  const list = $('drafts-list');
+  if (!section || !list) return;
+
+  try {
+    const API = getApiUrls();
+    if (!API.manageDrafts) return;
+
+    const data = await apiFetch(API.manageDrafts + '?action=list');
+    const drafts = data.drafts || [];
+
+    if (drafts.length === 0) {
+      hide(section);
+      return;
+    }
+
+    // Destroy existing drafts grid
+    if (window.draftsGrid) { window.draftsGrid.destroy(); window.draftsGrid = null; }
+    list.innerHTML = '';
+
+    window.draftsGrid = new gridjs.Grid({
+      columns: [
+        {
+          id: 'title',
+          name: 'Title',
+          sort: true,
+          formatter: function(cell) {
+            if (!cell) return '—';
+            if (cell.length > 60) {
+              return gridjs.html('<span class="nla-truncate" title="' + escHtml(cell) + '">' + escHtml(cell.substring(0, 60)) + '…</span>');
+            }
+            return escHtml(cell);
+          }
+        },
+        {
+          id: 'status',
+          name: 'Status',
+          sort: true,
+          formatter: function(cell) {
+            const labels = { draft: '📝 Draft', publishing: '⏳ Publishing', saved_to_github: '☁️ Saved', build_queued: '⏳ Queued', build_running: '🔄 Building', published: '✓ Published', publish_failed: '✗ Failed' };
+            const label = labels[cell] || cell;
+            return gridjs.html('<span class="nla-post-status-badge nla-post-status-' + (cell || 'draft').replace(/_/g, '-') + '">' + label + '</span>');
+          }
+        },
+        {
+          id: 'position',
+          name: 'Position',
+          sort: true,
+          formatter: function(cell) {
+            if (!cell || !Array.isArray(cell) || cell.length === 0) return '—';
+            return gridjs.html(cell.map(function(t) {
+              return '<span class="nla-badge nla-badge-position">' + escHtml(t) + '</span>';
+            }).join(' '));
+          }
+        },
+        {
+          id: 'updated',
+          name: 'Updated',
+          sort: true,
+          formatter: function(cell) { return cell ? formatDate(cell) : '—'; }
+        },
+        {
+          id: 'actions',
+          name: 'Actions',
+          sort: false,
+          formatter: function(_, row) {
+            const id = row.cells[5].data;
+            const status = row.cells[1].data;
+            const publicUrl = row.cells[6].data;
+            let btns = '<div class="nla-table-actions">' +
+              '<button class="nla-btn-sm" onclick="editDraft(\'' + id + '\')">Edit</button>' +
+              '<button class="nla-btn-sm" onclick="previewDraftById(\'' + id + '\')">Preview</button>';
+            if (status !== 'published') {
+              btns += '<button class="nla-btn-sm" onclick="publishDraftById(\'' + id + '\')">Publish</button>';
+            }
+            if (status === 'saved_to_github' || status === 'build_queued' || status === 'build_running') {
+              btns += '<button class="nla-btn-sm" onclick="refreshDraftStatus(\'' + id + '\')">↻ Status</button>';
+            }
+            if (publicUrl) {
+              btns += '<a class="nla-btn-sm" href="' + escHtml(publicUrl) + '" target="_blank">View</a>';
+            }
+            btns += '<button class="nla-btn-sm danger" onclick="deleteDraftById(\'' + id + '\')">Delete</button>';
+            btns += '</div>';
+            return gridjs.html(btns);
+          }
+        },
+        { id: 'id', name: 'id', hidden: true },
+        { id: 'publicUrl', name: 'publicUrl', hidden: true }
+      ],
+      data: drafts.map(function(d) {
+        return [
+          d.title,
+          d.status,
+          d.tags,
+          d.updatedAt,
+          '',
+          d.id,
+          d.publicUrl || ''
+        ];
+      }),
+      sort: true,
+      pagination: { enabled: true, limit: 10 },
+      className: {
+        container: 'nla-gridjs',
+        table: 'nla-gridjs-table',
+        th: 'nla-gridjs-th',
+        td: 'nla-gridjs-td'
+      }
+    }).render(list);
+
+    show(section);
+
+  } catch (err) {
+    console.error('Failed to load drafts:', err.message);
+  }
+}
+
+// --- Draft action handlers (exposed on window for Grid.js onclick) ---
+
+window.editDraft = async function(id) {
+  const { loadDraftIntoForm } = await import('./new-post.js');
+  const { switchPanel: sp } = await import('./main.js');
+  sp('new-post');
+  setTimeout(function() { loadDraftIntoForm(id); }, 300);
+};
+
+window.previewDraftById = function(id) {
+  window.open('/newsletter/admin/preview/?id=' + id, '_blank');
+};
+
+window.publishDraftById = async function(id) {
+  try {
+    const API = getApiUrls();
+    await apiFetch(API.manageDrafts + '?action=publish', {
+      method: 'POST',
+      body: JSON.stringify({ id })
+    });
+    showNotification('Published! Site rebuilding.', 'success');
+    loadDrafts();
+  } catch (err) {
+    showNotification('Publish failed: ' + err.message, 'error');
+  }
+};
+
+window.deleteDraftById = async function(id) {
+  if (!confirm('Delete this draft?')) return;
+  try {
+    const API = getApiUrls();
+    await apiFetch(API.manageDrafts + '?action=delete', {
+      method: 'POST',
+      body: JSON.stringify({ id })
+    });
+    loadDrafts();
+  } catch (err) {
+    showNotification('Delete failed: ' + err.message, 'error');
+  }
+};
+
+window.refreshDraftStatus = async function(id) {
+  try {
+    const API = getApiUrls();
+    const result = await apiFetch(API.manageDrafts + '?action=checkDeployment&id=' + id);
+    showNotification(result.message || 'Status: ' + result.status, 'success');
+    loadDrafts(); // Refresh the table
+  } catch (err) {
+    showNotification('Status check failed: ' + err.message, 'error');
+  }
+};
+
+/**
  * Load the posts panel: parse posts-data JSON, normalize fields, and initialize the table.
  */
 export function loadPostsPanel() {
+  // Load drafts from Firestore (async, non-blocking)
+  loadDrafts();
+
   // Avoid re-parsing on every panel switch
   if (postsLoaded) return;
 
