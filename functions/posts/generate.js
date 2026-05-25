@@ -100,6 +100,55 @@ const TONES = [
 const VALID_TAGS = ["ai-operations", "decision-authority", "risk-intelligence", "ai-and-work"];
 
 /**
+ * Extract fields manually from malformed JSON using regex.
+ * Handles cases where the body field contains unescaped characters.
+ */
+function extractFieldsManually(text) {
+  function extractField(name) {
+    // Match "fieldName": "value" — handle multiline values by being greedy up to the next field or closing brace
+    const patterns = [
+      new RegExp('"' + name + '"\\s*:\\s*"([^"]*(?:\\\\.[^"]*)*)"', 's'),
+      new RegExp('"' + name + '"\\s*:\\s*"([\\s\\S]*?)(?:"\\s*[,}])', 's'),
+    ];
+    for (const pattern of patterns) {
+      const match = text.match(pattern);
+      if (match && match[1]) {
+        return match[1].replace(/\\n/g, '\n').replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+      }
+    }
+    return '';
+  }
+
+  // For body, use a special extraction since it's the longest field and likely the one breaking JSON
+  function extractBody() {
+    const bodyStart = text.indexOf('"body"');
+    if (bodyStart === -1) return '';
+    const colonPos = text.indexOf(':', bodyStart);
+    if (colonPos === -1) return '';
+    const quoteStart = text.indexOf('"', colonPos + 1);
+    if (quoteStart === -1) return '';
+
+    // Find the closing quote — it's the last " before the final } or before "tags"
+    // Walk backwards from the end
+    let end = text.lastIndexOf('}');
+    let quoteEnd = text.lastIndexOf('"', end);
+    if (quoteEnd <= quoteStart) quoteEnd = text.length - 2;
+
+    const raw = text.substring(quoteStart + 1, quoteEnd);
+    return raw.replace(/\\n/g, '\n').replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+  }
+
+  return {
+    title: extractField('title'),
+    subtitle: extractField('subtitle'),
+    share_description: extractField('share_description'),
+    meta_title: extractField('meta_title'),
+    excerpt: extractField('excerpt'),
+    body: extractBody(),
+  };
+}
+
+/**
  * generatePost Cloud Function
  * POST handler for AI post generation using Gemini.
  *
@@ -168,31 +217,65 @@ ${recentTitlesText}
 AUDIENCE:
 Leaders and professionals in AI, data, analytics, operations, risk, security, loss prevention, and decision-making.
 
+VOICE AND IDENTITY:
+You are writing as Hasan Jaffal — a data and business intelligence leader who writes from real operational experience. Not a consultant. Not a thought leader performing insight. Someone who has sat in the meetings, built the dashboards, watched the decisions fail, and learned what actually works.
+
 CONTENT RULES:
 - The article must explore the ANGLE specifically. Do not write a generic piece about the position.
-- Include one concrete workplace example or scenario (not hypothetical — make it feel real).
+- Include one concrete workplace moment — a meeting, a dashboard review, a failed escalation, a report nobody read. Make it feel lived, not invented.
 - Include one uncomfortable trade-off that the reader must face.
-- Explain what strong teams do differently from average teams.
-- End with one forced-position question that makes the reader choose a side.
-- Do NOT repeat the same structure as previous posts. Vary your opening, your examples, and your conclusions.
+- Show what stronger teams or operators do differently.
+- End with a practical takeaway and a natural call to action (not a slogan).
+- Do NOT repeat the same structure as previous posts.
+
+ARTICLE FLOW:
+1. Open with a concrete workplace observation — something you noticed, something that went wrong, something that surprised you.
+2. Show why the common view is incomplete or wrong.
+3. Make the sharper argument — the thing most people avoid saying.
+4. Use one specific example from analytics, dashboards, AI, operations, risk, meetings, reports, decisions, or leadership.
+5. Explain the hidden failure point — the thing that breaks when nobody is watching.
+6. Show what stronger people or teams do differently.
+7. End with a practical takeaway and a natural CTA.
+
+WRITING STYLE — HASAN JAFFAL:
+- Direct, calm, and sharp. Never loud. Never performative.
+- Practical before philosophical. Show the work before the principle.
+- Uses tension between systems and people. Technology fails because of humans, not despite them.
+- Often challenges the common belief first, then builds the real argument.
+- Prefers "what actually happens at work" over theory.
+- Characteristic phrases (use sparingly and naturally, not in every post):
+  - "That is the weak point."
+  - "The title is not the risk. The task shape is."
+  - "Busy is not the same as protected."
+  - "The dashboard is not the decision."
+  - "AI does not remove the need for judgment. It exposes where judgment was missing."
 
 WRITING RULES:
 - 700 to 1000 words.
-- Short paragraphs (2-4 sentences max).
+- Paragraphs of 3-5 sentences mostly. Allow occasional shorter paragraphs (1-2 sentences) for emphasis, but do not overuse them.
+- Natural variation in sentence length. Mix short punches with longer explanatory sentences. Do not make every sentence the same length.
+- Avoid mechanical paragraph rhythm. Not every paragraph should be the same size or follow the same pattern.
+- Avoid repeated paragraph openings. Do not start consecutive paragraphs with the same word or structure.
+- Avoid list-heavy writing unless the idea genuinely requires a list.
 - No hype. No corporate buzzwords. No invented statistics.
 - No labels like "Hook," "Insight," "Takeaway," or "Key Point."
-- Use simple English. Write like an operator, not a consultant.
+- No motivational language. No consultant-style filler.
+- No generic AI phrases like "in today's rapidly evolving landscape" or "it's important to note that."
+- Use plain language. Write like someone explaining something to a sharp colleague, not presenting to a board.
+- Include small moments of uncertainty, tension, or self-correction. Show the thinking process, not only the conclusion.
 - The title must clearly state the argument. Make it SEO-friendly and specific.
-- Bad title: "The Future of AI in Operations"
-- Good title: "Why AI Projects Fail When Nobody Owns the Escalation Path"
+  - Bad title: "The Future of AI in Operations"
+  - Good title: "Why AI Projects Fail When Nobody Owns the Escalation Path"
+- ALWAYS start the body with a concrete observation or moment that hooks the reader. Not a definition. Not a question. A scene, a tension, or a claim that makes them lean in.
 
-DIVERSITY INSTRUCTIONS:
-- If the tone is narrative, start with a scene or moment.
-- If the tone is analytical, start with a claim and immediately support it.
-- If the tone is contrarian, start by stating what most people believe, then disagree.
-- If the tone is practical, start with the action and explain why after.
-- Vary sentence length. Mix short punches with longer explanations.
-- Do NOT use the same opening pattern as previous posts.
+REVISION PASS (apply before returning):
+After drafting, revise once to:
+- Remove any generic phrases that could appear in any article.
+- Replace abstract statements with concrete examples.
+- Smooth paragraph flow — no two paragraphs should feel like they were written independently.
+- Reduce slogan-like one-line statements. If a short paragraph exists, it should earn its space.
+- Make sure the article reads like it was written by someone with 10+ years of operational experience, not by someone summarizing a topic.
+- Keep SEO terms natural, not forced.
 
 Return ONLY valid JSON:
 
@@ -200,9 +283,25 @@ Return ONLY valid JSON:
   "title": "",
   "subtitle": "",
   "share_description": "",
+  "meta_title": "",
+  "excerpt": "",
   "tags": ["${selectedPosition.tag}"],
   "body": ""
 }
+
+CRITICAL JSON RULES:
+- Return ONLY the JSON object. No text before or after.
+- All string values must have newlines escaped as \\n
+- All double quotes inside string values must be escaped as \\"
+- The body field contains Markdown — escape all newlines and quotes properly.
+
+FIELD RULES:
+- "title": The post title. Clear, specific, SEO-friendly. Max 150 chars.
+- "subtitle": A one-line subtitle expanding on the title. Used as share description if share_description is empty.
+- "share_description": Social media / newsletter description. Max 160 chars. Punchy and curiosity-driven.
+- "meta_title": SEO meta title for the page. Max 70 chars. Can differ from title — optimized for search.
+- "excerpt": A 1-2 sentence teaser shown in post listings. Max 300 chars. Should make the reader want to click.
+- "body": The full post in Markdown. 700-1000 words. Must follow the writing style and article flow above.
 `;
 
     try {
@@ -225,16 +324,28 @@ Return ONLY valid JSON:
       } catch (parseErr) {
         // Try to extract JSON from the response
         const match = jsonStr.match(/\{[\s\S]*\}/);
-        if (!match) {
-          throw new Error("Model did not return valid JSON");
+        if (match) {
+          try {
+            data = JSON.parse(match[0]);
+          } catch (e) {
+            // JSON is malformed (usually because body has unescaped chars)
+            // Extract fields manually using regex
+            data = extractFieldsManually(match[0] || jsonStr);
+          }
+        } else {
+          data = extractFieldsManually(jsonStr);
         }
-        data = JSON.parse(match[0]);
+        if (!data || (!data.title && !data.body)) {
+          throw new Error("Model did not return valid JSON: " + parseErr.message);
+        }
       }
 
       // Force tags to [positionTag] regardless of model output
       const title = (data.title || "").trim();
       const subtitle = (data.subtitle || "").trim();
       const shareDescription = (data.share_description || data.shareDescription || "").trim();
+      const metaTitle = (data.meta_title || data.metaTitle || "").trim();
+      const excerpt = (data.excerpt || "").trim();
       const body = (data.body || "").trim();
 
       if (!title || !body) {
@@ -245,6 +356,8 @@ Return ONLY valid JSON:
         title,
         subtitle,
         shareDescription,
+        metaTitle,
+        excerpt,
         tags: [positionTag],
         body,
       });

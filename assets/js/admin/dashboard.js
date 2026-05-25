@@ -226,9 +226,14 @@ function renderActivity(posts, editions) {
   items.slice(0, 8).forEach(function(item) {
     const icon = item.type === 'post' ? '📝' : '✉️';
     const label = item.type === 'post' ? 'Published' : 'Sent to ' + (item.recipients || '?') + ' subscribers';
-    const action = item.type === 'edition'
-      ? ' onclick="viewEditionFromOverview(\'' + item.id + '\')"'
-      : '';
+    const safeTitle = escHtml(item.title).replace(/'/g, '&#39;');
+
+    let action = '';
+    if (item.type === 'edition') {
+      action = ' onclick="viewEditionFromOverview(\'' + item.id + '\')"';
+    } else if (item.type === 'post') {
+      action = ' onclick="editPost(\'' + safeTitle + '\')"';
+    }
 
     html += '<div class="nla-dash-activity-item"' + action + '>' +
       '<span class="nla-dash-activity-icon">' + icon + '</span>' +
@@ -240,6 +245,45 @@ function renderActivity(posts, editions) {
   });
   html += '</div>';
 
+  container.innerHTML = html;
+}
+
+/**
+ * Render the editions analytics table.
+ */
+function renderEditions(editions) {
+  const container = $('dash-editions');
+  if (!container) return;
+
+  if (editions.length === 0) {
+    container.innerHTML = '<p class="nla-dash-empty">No editions sent yet.</p>';
+    return;
+  }
+
+  let html = '<div class="nla-dash-editions-table"><table class="nla-table">' +
+    '<thead><tr>' +
+      '<th>Subject</th>' +
+      '<th>Sent</th>' +
+      '<th>Recipients</th>' +
+      '<th>Open Rate</th>' +
+      '<th>Click Rate</th>' +
+      '<th></th>' +
+    '</tr></thead><tbody>';
+
+  editions.slice(0, 10).forEach(function(e) {
+    const openRate = e.openRate != null ? e.openRate.toFixed(1) + '%' : '—';
+    const clickRate = e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—';
+    html += '<tr>' +
+      '<td class="nla-dash-editions-subject">' + escHtml(e.subject) + '</td>' +
+      '<td>' + formatDate(e.sentAt) + '</td>' +
+      '<td>' + (e.recipientCount || '—') + '</td>' +
+      '<td>' + openRate + '</td>' +
+      '<td>' + clickRate + '</td>' +
+      '<td><button class="nla-btn-sm" onclick="viewEditionFromOverview(\'' + e.id + '\')" type="button">Details</button></td>' +
+    '</tr>';
+  });
+
+  html += '</tbody></table></div>';
   container.innerHTML = html;
 }
 
@@ -274,10 +318,19 @@ export async function loadOverview() {
 
   hide(loading); show(content);
 
+  // Ensure activity link handlers are available on window
+  if (!window.viewEditionFromOverview) {
+    import('./analytics.js').then(function(m) { window.viewEditionFromOverview = m.viewEditionFromOverview; });
+  }
+  if (!window.editPost) {
+    import('./new-post.js').then(function(m) { window.editPost = m.editPost; });
+  }
+
   renderNewsletterMetrics(newsletterData, editions);
   renderPostsMetrics(stats);
   renderPositions(stats);
   renderActivity(posts, editions);
+  renderEditions(editions);
 }
 
 /**

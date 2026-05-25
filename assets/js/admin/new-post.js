@@ -145,8 +145,17 @@ function initAIGenerateButton() {
       // Populate form fields with generated data
       if (result.title) document.getElementById('post-title').value = result.title;
       if (result.title) document.getElementById('post-slug').value = slugify(result.title);
-      if (result.subtitle) document.getElementById('post-meta-desc').value = result.subtitle;
-      if (result.shareDescription) document.getElementById('post-meta-desc').value = result.shareDescription;
+      if (result.metaTitle) {
+        document.getElementById('post-meta-title').value = result.metaTitle;
+      }
+      if (result.shareDescription) {
+        document.getElementById('post-meta-desc').value = result.shareDescription;
+      } else if (result.subtitle) {
+        document.getElementById('post-meta-desc').value = result.subtitle;
+      }
+      if (result.excerpt) {
+        document.getElementById('post-excerpt').value = result.excerpt;
+      }
       if (result.tags && result.tags.length > 0) {
         result.tags.forEach(function(tag) {
           var cb = document.querySelector('#post-position-group input[value="' + tag + '"]');
@@ -158,7 +167,9 @@ function initAIGenerateButton() {
       // Update char counts
       updateCharCount('post-title', 150);
       updateCharCount('post-slug', 80);
+      updateCharCount('post-meta-title', 70);
       updateCharCount('post-meta-desc', 160);
+      updateCharCount('post-excerpt', 300);
 
       showNotification('Post generated successfully! Review and edit before saving.', 'success');
 
@@ -705,9 +716,24 @@ export function resetToCreateMode() {
   if (panelTitle) panelTitle.textContent = 'New Post';
   if (panelDesc) panelDesc.textContent = 'Create a new blog post.';
 
-  // Show mode toggle
+  // Show mode toggle and switch to scratch mode
   const modeToggle = document.getElementById('post-mode-toggle');
   if (modeToggle) modeToggle.hidden = false;
+  const modeScratch = $('mode-scratch');
+  if (modeScratch) modeScratch.click();
+
+  // Reset AI generate state
+  const aiContainer = $('ai-generate-container');
+  if (aiContainer) aiContainer.hidden = true;
+  const aiStatus = document.getElementById('ai-generate-status');
+  if (aiStatus) aiStatus.innerHTML = '';
+  const genBtn = document.getElementById('ai-generate-btn');
+  if (genBtn) { genBtn.disabled = true; genBtn.textContent = 'Generate Post'; }
+  // Deselect all direction cards
+  document.querySelectorAll('.nla-ai-direction-card.selected').forEach(function(c) {
+    c.classList.remove('selected');
+  });
+  selectedPosition = null;
 
   // Reset save button
   const saveBtn = document.getElementById('post-save-btn');

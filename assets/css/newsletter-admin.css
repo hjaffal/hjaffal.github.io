@@ -631,6 +631,47 @@ body:has(.nla-layout:not([hidden])) footer {
   padding: 16px 0;
 }
 
+/* Editions table */
+.nla-dash-editions-table {
+  overflow-x: auto;
+}
+
+.nla-dash-editions-table .nla-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.nla-dash-editions-table .nla-table th {
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-soft);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--slate-border);
+}
+
+.nla-dash-editions-table .nla-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--slate-border);
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.nla-dash-editions-table .nla-table tr:hover td {
+  background: var(--slate-bg);
+}
+
+.nla-dash-editions-subject {
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
 /* ─── Section Titles ─── */
 .nla-section-title {
   font-size: 1rem;
@@ -1935,40 +1976,65 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-ai-directions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 14px;
   margin-bottom: 24px;
 }
 
 .nla-ai-direction-card {
-  padding: 20px;
-  border: 2px solid var(--border);
+  position: relative;
+  padding: 20px 20px 20px 48px;
+  border: 2px solid var(--slate-border);
   border-radius: 12px;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  background: var(--surface);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  background: var(--white);
+}
+
+.nla-ai-direction-card::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 22px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--slate-border);
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
 .nla-ai-direction-card:hover {
-  border-color: rgba(147, 51, 234, 0.3);
+  border-color: rgba(147, 51, 234, 0.4);
+  background: rgba(147, 51, 234, 0.02);
+}
+
+.nla-ai-direction-card:hover::before {
+  border-color: rgba(147, 51, 234, 0.4);
 }
 
 .nla-ai-direction-card.selected {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.12);
+  background: rgba(147, 51, 234, 0.04);
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+.nla-ai-direction-card.selected::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: inset 0 0 0 3px var(--white);
 }
 
 .nla-ai-direction-card h4 {
-  margin: 0 0 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text);
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--dark);
 }
 
 .nla-ai-direction-card p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-soft);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .nla-ai-generate-btn {
