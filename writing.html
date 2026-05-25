@@ -32,46 +32,20 @@ css:
   <!-- Position cards -->
   <section class="wr-positions">
     <div class="wr-positions-grid">
-      <a href="/positions/ai-operations/" class="wr-pos-card wr-pos-card-br wr-pos-card-bb">
-        <span class="wr-pos-num">01</span>
-        <span class="wr-pos-tag">ai-operations</span>
-        <h2 class="wr-pos-title">AI exposes weak operations</h2>
-        <p class="wr-pos-desc">AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale.</p>
+      {% for p in site.data.positions %}
+      <a href="{{ p.url }}" class="hp-position-card">
+        <div class="hp-position-header">
+          <span class="hp-position-num">{{ p.number }}</span>
+          <span class="hp-position-tag">{{ p.tag }}</span>
+        </div>
+        <h3 class="hp-position-title">{{ p.title }}</h3>
+        <p class="hp-position-desc">{{ p.thesis }}</p>
         <div class="wr-pos-footer">
-          <span class="wr-pos-cta">Read articles →</span>
-          <span class="wr-pos-count">{{ site.tags['ai-operations'].size }} posts</span>
+          <span class="hp-position-cta">{{ p.cta }} →</span>
+          <span class="wr-pos-count">{{ site.tags[p.tag].size }} posts</span>
         </div>
       </a>
-      <a href="/positions/decision-authority/" class="wr-pos-card wr-pos-card-bb">
-        <span class="wr-pos-num">02</span>
-        <span class="wr-pos-tag">decision-authority</span>
-        <h2 class="wr-pos-title">Signals need authority</h2>
-        <p class="wr-pos-desc">A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat.</p>
-        <div class="wr-pos-footer">
-          <span class="wr-pos-cta">Read articles →</span>
-          <span class="wr-pos-count">{{ site.tags['decision-authority'].size }} posts</span>
-        </div>
-      </a>
-      <a href="/positions/risk-intelligence/" class="wr-pos-card wr-pos-card-br">
-        <span class="wr-pos-num">03</span>
-        <span class="wr-pos-tag">risk-intelligence</span>
-        <h2 class="wr-pos-title">Reporting is not intelligence</h2>
-        <p class="wr-pos-desc">Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration.</p>
-        <div class="wr-pos-footer">
-          <span class="wr-pos-cta">Read articles →</span>
-          <span class="wr-pos-count">{{ site.tags['risk-intelligence'].size }} posts</span>
-        </div>
-      </a>
-      <a href="/positions/ai-and-work/" class="wr-pos-card">
-        <span class="wr-pos-num">04</span>
-        <span class="wr-pos-tag">ai-and-work</span>
-        <h2 class="wr-pos-title">AI is changing the skill floor</h2>
-        <p class="wr-pos-desc">AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate.</p>
-        <div class="wr-pos-footer">
-          <span class="wr-pos-cta">Read articles →</span>
-          <span class="wr-pos-count">{{ site.tags['ai-and-work'].size }} posts</span>
-        </div>
-      </a>
+      {% endfor %}
     </div>
   </section>
 
