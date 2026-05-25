@@ -93,8 +93,8 @@ const createPost = onRequest(
 
     // Generate slug from title if not provided
     const postSlug = slug || slugify(title);
-    if (postSlug.length > 80) {
-      res.status(400).json({ error: "Slug must be 80 characters or less" });
+    if (postSlug.length > 150) {
+      res.status(400).json({ error: "Slug must be 150 characters or less" });
       return;
     }
 

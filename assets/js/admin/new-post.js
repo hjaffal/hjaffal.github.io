@@ -266,8 +266,8 @@ async function handlePostFormSubmit(e) {
     hasErrors = true;
   }
 
-  if (slug.length > 80) {
-    showFieldError('post-slug-count', 'Slug must be 80 characters or less.');
+  if (slug.length > 150) {
+    showFieldError('post-slug-count', 'Slug must be 150 characters or less.');
     hasErrors = true;
   }
 
