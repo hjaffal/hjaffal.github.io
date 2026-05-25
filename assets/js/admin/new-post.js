@@ -272,8 +272,8 @@ async function handlePostFormSubmit(e) {
     hasErrors = true;
   }
 
-  if (metaDesc.length > 160) {
-    showFieldError('post-meta-desc-count', 'Meta description must be 160 characters or less.');
+  if (metaDesc.length > 300) {
+    showFieldError('post-meta-desc-count', 'Meta description must be 300 characters or less.');
     hasErrors = true;
   }
 

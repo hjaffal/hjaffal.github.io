@@ -307,12 +307,17 @@ FIELD RULES:
     try {
       const { GoogleGenerativeAI } = require("@google/generative-ai");
       const genAI = new GoogleGenerativeAI(GEMINI_API_KEY.value());
-      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+      const model = genAI.getGenerativeModel({
+        model: "gemini-2.5-flash",
+        generationConfig: {
+          responseMimeType: "application/json"
+        }
+      });
 
       const result = await model.generateContent(prompt);
       const raw = result.response.text().trim();
 
-      // Parse JSON response (handle potential markdown fences)
+      // Parse JSON response
       let jsonStr = raw;
       if (jsonStr.startsWith("```")) {
         jsonStr = jsonStr.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");

@@ -86,8 +86,8 @@ const createPost = onRequest(
       res.status(400).json({ error: "Meta title must be 70 characters or less" });
       return;
     }
-    if (shareDescription && shareDescription.length > 160) {
-      res.status(400).json({ error: "Meta description must be 160 characters or less" });
+    if (shareDescription && shareDescription.length > 300) {
+      res.status(400).json({ error: "Meta description must be 300 characters or less" });
       return;
     }
 
