@@ -1,0 +1,13 @@
+{
+  "name": "hjaffal-site-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "fast-check": "^3.22.0",
+    "vitest": "^3.2.1"
+  }
+}

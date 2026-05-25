@@ -18,5 +18,13 @@ fn_get_analytics: "https://getanalytics-vgheoh5xza-ew.a.run.app"
 fn_manage_subscribers: "https://managesubscribers-vgheoh5xza-ew.a.run.app"
 fn_import_subscribers: "https://importsubscribers-vgheoh5xza-ew.a.run.app"
 
+# Posts management
+fn_create_post: "https://createpost-vgheoh5xza-ew.a.run.app"
+fn_generate_post: "https://generatepost-vgheoh5xza-ew.a.run.app"
+fn_get_post: "https://getpost-vgheoh5xza-ew.a.run.app"
+fn_update_post: "https://updatepost-vgheoh5xza-ew.a.run.app"
+
 # Firebase web config (API key is safe to expose — restricted by domain)
 firebase_api_key: "AIzaSyAc7rsjmMeWjR5AzBEOWZfFzRjOQdNZtoQ"
+firebase_auth_domain: "hasanjaffal.firebaseapp.com"
+firebase_project_id: "hasanjaffal"

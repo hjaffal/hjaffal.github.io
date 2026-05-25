@@ -8,6 +8,18 @@ const db = admin.firestore();
 
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
+const GITHUB_PAT = defineSecret("GITHUB_PAT");
+
+// ===== POSTS MODULE EXPORTS =====
+const { createPost } = require("./posts/create");
+const { generatePost } = require("./posts/generate");
+const { getPost } = require("./posts/get");
+const { updatePost } = require("./posts/update");
+
+exports.createPost = createPost;
+exports.generatePost = generatePost;
+exports.getPost = getPost;
+exports.updatePost = updatePost;
 
 // ===== NEWSLETTER MODULE EXPORTS =====
 const { subscribeNewsletter } = require("./newsletter/subscribe");

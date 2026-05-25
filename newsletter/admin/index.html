@@ -10,6 +10,7 @@ head-extra:
   - noindex.html
 ext-css:
   - "https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+  - "https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css"
 css:
   - "/assets/css/newsletter-admin.css"
 ---
@@ -42,9 +43,20 @@ css:
       </div>
     </div>
     <nav class="nla-sidebar-nav">
-      <button class="nla-nav-item active" data-panel="overview" type="button">
-        <span class="nla-nav-icon">📊</span> Overview
+      <div class="nla-nav-section-label">Dashboard</div>
+      <button class="nla-nav-item active" data-panel="dashboard" type="button">
+        <span class="nla-nav-icon">📊</span> Dashboard
       </button>
+
+      <div class="nla-nav-section-label">Posts</div>
+      <button class="nla-nav-item" data-panel="posts" type="button">
+        <span class="nla-nav-icon">📝</span> All Posts
+      </button>
+      <button class="nla-nav-item" data-panel="new-post" type="button">
+        <span class="nla-nav-icon">✍️</span> New Post
+      </button>
+
+      <div class="nla-nav-section-label">Newsletter</div>
       <button class="nla-nav-item" data-panel="compose" type="button">
         <span class="nla-nav-icon">✉️</span> Compose
       </button>
@@ -77,11 +89,37 @@ css:
 
   <main class="nla-main">
 
-    <!-- Overview Panel -->
-    <div class="nla-panel active" id="panel-overview">
+    <!-- Embedded post data (generated at build time by Jekyll) -->
+    <script id="posts-data" type="application/json">
+    [
+      {% for post in site.posts %}
+      {
+        "title": {{ post.title | jsonify }},
+        "slug": {{ post.slug | jsonify }},
+        "url": {{ post.url | jsonify }},
+        "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
+        "lastUpdated": {{ post.last-updated | jsonify }},
+        "author": {{ post.author | default: "—" | jsonify }},
+        "tags": {{ post.tags | jsonify }},
+        "status": {% if post.archived %}"archived"{% elsif post.published == false or post.date > site.time %}"draft"{% else %}"published"{% endif %},
+        "shareTitle": {{ post.share-title | jsonify }},
+        "shareDescription": {{ post.share-description | jsonify }},
+        "canonicalUrl": {{ post.canonical-url | jsonify }},
+        "readingTime": {{ post.reading-time | jsonify }},
+        "thumbnailImg": {{ post.thumbnail-img | jsonify }},
+        "shareImg": {{ post.share-img | jsonify }},
+        "excerpt": {{ post.excerpt | strip_html | truncate: 200 | jsonify }},
+        "wordCount": {{ post.content | number_of_words }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+    </script>
+
+    <!-- Dashboard Panel -->
+    <div class="nla-panel active" id="panel-dashboard">
       <div class="nla-panel-header">
-        <h1 class="nla-panel-title">Overview</h1>
-        <p class="nla-panel-desc">Your newsletter at a glance.</p>
+        <h1 class="nla-panel-title">Dashboard</h1>
+        <p class="nla-panel-desc">Newsletter and content health at a glance.</p>
       </div>
       <div id="overview-loading" class="nla-loading">
         <div class="nla-spinner" role="status" aria-label="Loading overview"></div>
@@ -89,9 +127,194 @@ css:
       </div>
       <div id="overview-error" class="nla-error" hidden></div>
       <div id="overview-content" hidden>
-        <div class="nla-stats" id="overview-stats"></div>
-        <h3 class="nla-section-title">Recent Editions</h3>
-        <div id="overview-grid"></div>
+
+        <!-- Newsletter Section -->
+        <div class="nla-dash-section">
+          <h2 class="nla-dash-section-title">Newsletter</h2>
+          <div class="nla-dash-metrics" id="dash-newsletter-metrics"></div>
+        </div>
+
+        <!-- Posts Section -->
+        <div class="nla-dash-section">
+          <h2 class="nla-dash-section-title">Posts</h2>
+          <div class="nla-dash-metrics" id="dash-posts-metrics"></div>
+        </div>
+
+        <!-- Position Breakdown -->
+        <div class="nla-dash-section">
+          <h2 class="nla-dash-section-title">By Position</h2>
+          <div class="nla-dash-positions" id="dash-positions"></div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="nla-dash-section">
+          <h2 class="nla-dash-section-title">Recent Activity</h2>
+          <div class="nla-dash-activity" id="dash-activity"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Posts Panel -->
+    <div class="nla-panel" id="panel-posts" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">All Posts</h1>
+        <p class="nla-panel-desc">Manage your blog posts.</p>
+      </div>
+      <div class="nla-posts-toolbar" id="posts-toolbar" hidden>
+        <input type="search" class="nla-input nla-posts-search" id="posts-search" placeholder="Search by title, slug, position…" aria-label="Search posts">
+        <div class="nla-posts-filters">
+          <select class="nla-select" id="posts-filter-status" aria-label="Filter by status">
+            <option value="all">All Status</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+            <option value="archived">Archived</option>
+          </select>
+          <select class="nla-select" id="posts-filter-position" aria-label="Filter by position">
+            <option value="all">All Positions</option>
+            <option value="ai-operations">AI Operations</option>
+            <option value="decision-authority">Decision Authority</option>
+            <option value="risk-intelligence">Risk Intelligence</option>
+            <option value="ai-and-work">AI and Work</option>
+          </select>
+        </div>
+      </div>
+      <div id="posts-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading posts"></div>
+        <p>Loading posts…</p>
+      </div>
+      <div id="posts-error" class="nla-error" hidden></div>
+      <div id="posts-empty" class="nla-empty" hidden>
+        <span class="nla-empty-icon">📝</span>
+        <p>No posts have been created yet.</p>
+        <button class="nla-btn nla-btn-primary" onclick="switchPanel('new-post')">Create First Post</button>
+      </div>
+      <div id="posts-content" hidden></div>
+      <div id="post-detail-panel" class="nla-post-detail" hidden>
+        <button class="nla-btn-sm" id="close-detail-btn" type="button" aria-label="Close detail panel">✕ Close</button>
+        <div id="post-detail-content"></div>
+      </div>
+    </div>
+
+    <!-- New Post Panel -->
+    <div class="nla-panel" id="panel-new-post" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">New Post</h1>
+        <p class="nla-panel-desc">Create a new blog post.</p>
+      </div>
+
+      <!-- Mode Toggle -->
+      <div class="nla-mode-toggle" id="post-mode-toggle">
+        <button class="nla-mode-btn active" id="mode-scratch" type="button">Start from Scratch</button>
+        <button class="nla-mode-btn" id="mode-ai" type="button">Generate with AI</button>
+      </div>
+
+      <!-- Scratch Mode: Post Creation Form -->
+      <div id="post-form-container">
+        <form id="post-creation-form" class="nla-post-form" novalidate>
+          <div class="nla-post-form-grid">
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-title">Title <span class="nla-required">*</span></label>
+              <input type="text" class="nla-input" id="post-title" maxlength="150" required placeholder="Post title">
+              <span class="nla-char-count" id="post-title-count">0/150</span>
+              <span class="nla-field-error" id="post-title-error"></span>
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-slug">Slug</label>
+              <input type="text" class="nla-input" id="post-slug" maxlength="80" placeholder="auto-generated-from-title">
+              <span class="nla-char-count" id="post-slug-count">0/80</span>
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-author">Author</label>
+              <input type="text" class="nla-input" id="post-author" value="Hasan J.">
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label">Position</label>
+              <div class="nla-checkbox-group" id="post-position-group">
+                <label class="nla-checkbox-label"><input type="checkbox" value="ai-operations"> AI Operations</label>
+                <label class="nla-checkbox-label"><input type="checkbox" value="decision-authority"> Decision Authority</label>
+                <label class="nla-checkbox-label"><input type="checkbox" value="risk-intelligence"> Risk Intelligence</label>
+                <label class="nla-checkbox-label"><input type="checkbox" value="ai-and-work"> AI and Work</label>
+              </div>
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-status">Status</label>
+              <select class="nla-select" id="post-status">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-date">Published Date</label>
+              <input type="date" class="nla-input" id="post-date">
+            </div>
+
+            <div class="nla-form-group nla-form-full">
+              <label class="nla-label" for="post-excerpt">Excerpt</label>
+              <textarea class="nla-input" id="post-excerpt" maxlength="300" rows="2" placeholder="Brief description of the post"></textarea>
+              <span class="nla-char-count" id="post-excerpt-count">0/300</span>
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-meta-title">Meta Title</label>
+              <input type="text" class="nla-input" id="post-meta-title" maxlength="70" placeholder="SEO title">
+              <span class="nla-char-count" id="post-meta-title-count">0/70</span>
+            </div>
+
+            <div class="nla-form-group">
+              <label class="nla-label" for="post-meta-desc">Meta Description</label>
+              <input type="text" class="nla-input" id="post-meta-desc" maxlength="160" placeholder="SEO description">
+              <span class="nla-char-count" id="post-meta-desc-count">0/160</span>
+            </div>
+
+            <div class="nla-form-group nla-form-full">
+              <label class="nla-label" for="post-featured-img">Featured Image Path</label>
+              <input type="text" class="nla-input" id="post-featured-img" placeholder="/assets/img/posts/...">
+            </div>
+          </div>
+
+          <!-- Body editor (EasyMDE) -->
+          <div class="nla-form-group nla-form-full">
+            <label class="nla-label" for="post-body-textarea">Body <span class="nla-required">*</span></label>
+            <textarea id="post-body-textarea"></textarea>
+            <span class="nla-field-error" id="post-body-error"></span>
+          </div>
+
+          <div class="nla-form-actions">
+            <button type="button" class="nla-btn" id="post-cancel-btn">Cancel</button>
+            <button type="submit" class="nla-btn nla-btn-primary" id="post-save-btn">Save Post</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- AI Mode: Direction Selection -->
+      <div id="ai-generate-container" hidden>
+        <h3 class="nla-section-title">Select a content direction</h3>
+        <div class="nla-ai-directions" id="ai-directions">
+          <div class="nla-ai-direction-card" data-position="ai-operations">
+            <h4>AI Operations</h4>
+            <p>AI does not repair unclear ownership. It automates the confusion faster.</p>
+          </div>
+          <div class="nla-ai-direction-card" data-position="decision-authority">
+            <h4>Decision Authority</h4>
+            <p>A risk signal has no value if nobody can act on it before the damage is done.</p>
+          </div>
+          <div class="nla-ai-direction-card" data-position="risk-intelligence">
+            <h4>Risk Intelligence</h4>
+            <p>Reporting explains what happened. Intelligence tells you what to do next.</p>
+          </div>
+          <div class="nla-ai-direction-card" data-position="ai-and-work">
+            <h4>AI and Work</h4>
+            <p>AI exposes people who only operate tools but cannot think without them.</p>
+          </div>
+        </div>
+        <button class="nla-btn nla-btn-primary nla-ai-generate-btn" id="ai-generate-btn" disabled type="button">Generate Post</button>
+        <div id="ai-generate-status"></div>
       </div>
     </div>
 
@@ -318,700 +541,25 @@ css:
 </div><!-- end .nla-layout -->
 
 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
+
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getAuth, signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-
-const firebaseConfig = {
-  apiKey: "{{ site.data.firebase.firebase_api_key }}",
-  authDomain: "hasanjaffal.firebaseapp.com",
-  projectId: "hasanjaffal"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-const API = {
-  send: "{{ site.data.firebase.fn_send_newsletter }}",
-  analytics: "{{ site.data.firebase.fn_get_analytics }}",
-  subscribers: "{{ site.data.firebase.fn_manage_subscribers }}",
-  import: "{{ site.data.firebase.fn_import_subscribers }}"
-};
-
-let currentToken = null;
-
-// Utility
-async function getToken() {
-  const user = auth.currentUser;
-  if (!user) return null;
-  currentToken = await user.getIdToken();
-  return currentToken;
-}
-
-async function apiFetch(url, options = {}) {
-  const token = await getToken();
-  if (!token) throw new Error('Not authenticated');
-  const headers = { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', ...options.headers };
-  const res = await fetch(url, { ...options, headers });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || 'Request failed (' + res.status + ')');
-  }
-  return res.json();
-}
-
-function show(el) { el.hidden = false; }
-function hide(el) { el.hidden = true; }
-function $(id) { return document.getElementById(id); }
-
-// Auth
-const authEl = $('nla-auth');
-const dashEl = $('nla-dashboard');
-
-$('nla-google-signin').addEventListener('click', () => {
-  signInWithPopup(auth, provider).catch(err => {
-    console.error('Sign-in error:', err);
-  });
-});
-
-$('nla-signout').addEventListener('click', () => {
-  signOut(auth);
-});
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    hide(authEl);
-    show(dashEl);
-    $('nla-user-email').textContent = user.email;
-    loadOverview();
-  } else {
-    show(authEl);
-    hide(dashEl);
-    currentToken = null;
+import { init } from '/assets/js/admin/main.js';
+init({
+  firebaseConfig: {
+    apiKey: "{{ site.data.firebase.firebase_api_key }}",
+    authDomain: "{{ site.data.firebase.firebase_auth_domain }}",
+    projectId: "{{ site.data.firebase.firebase_project_id }}"
+  },
+  api: {
+    send: "{{ site.data.firebase.fn_send_newsletter }}",
+    analytics: "{{ site.data.firebase.fn_get_analytics }}",
+    subscribers: "{{ site.data.firebase.fn_manage_subscribers }}",
+    import: "{{ site.data.firebase.fn_import_subscribers }}",
+    createPost: "{{ site.data.firebase.fn_create_post }}",
+    generatePost: "{{ site.data.firebase.fn_generate_post }}",
+    getPost: "{{ site.data.firebase.fn_get_post }}",
+    updatePost: "{{ site.data.firebase.fn_update_post }}"
   }
 });
-
-// Sidebar navigation
-const navItems = document.querySelectorAll('.nla-nav-item');
-const panels = document.querySelectorAll('.nla-panel');
-
-navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    navItems.forEach(n => n.classList.remove('active'));
-    panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
-    item.classList.add('active');
-    const panelId = 'panel-' + item.dataset.panel;
-    const panel = $(panelId);
-    panel.classList.add('active');
-    panel.hidden = false;
-
-    const id = item.dataset.panel;
-    if (id === 'overview') loadOverview();
-    else if (id === 'compose') loadPosts();
-    else if (id === 'subscribers') loadSubscribers();
-    else if (id === 'analytics') loadAnalytics();
-
-    // Close mobile sidebar
-    $('nla-sidebar').classList.remove('open');
-    $('nla-sidebar-overlay').classList.remove('open');
-  });
-});
-
-// Mobile sidebar toggle
-$('nla-mobile-toggle').addEventListener('click', () => {
-  $('nla-sidebar').classList.toggle('open');
-  $('nla-sidebar-overlay').classList.toggle('open');
-});
-$('nla-sidebar-overlay').addEventListener('click', () => {
-  $('nla-sidebar').classList.remove('open');
-  $('nla-sidebar-overlay').classList.remove('open');
-});
-
-// Config submenu toggle
-$('config-toggle').addEventListener('click', () => {
-  const items = $('config-items');
-  const arrow = $('config-toggle').querySelector('.nla-submenu-arrow');
-  items.hidden = !items.hidden;
-  arrow.textContent = items.hidden ? '›' : '‹';
-});
-
-// Overview
-async function loadOverview() {
-  const loading = $('overview-loading');
-  const error = $('overview-error');
-  const content = $('overview-content');
-  show(loading); hide(error); hide(content);
-
-  try {
-    const data = await apiFetch(API.analytics + '?type=overview');
-    const statsHtml = `
-      <div class="nla-stat-card"><p class="nla-stat-label">Active</p><p class="nla-stat-value">${data.totalActive || 0}</p></div>
-      <div class="nla-stat-card"><p class="nla-stat-label">Unsubscribed</p><p class="nla-stat-value">${data.totalUnsubscribed || 0}</p></div>
-      <div class="nla-stat-card"><p class="nla-stat-label">Bounced</p><p class="nla-stat-value">${data.totalBounced || 0}</p></div>
-    `;
-    $('overview-stats').innerHTML = statsHtml;
-
-    const editions = await apiFetch(API.analytics + '?type=editions');
-    const recentEditions = (editions.editions || []).slice(0, 5);
-
-    // Destroy existing overview grid
-    if (window.overviewGrid) { window.overviewGrid.destroy(); window.overviewGrid = null; }
-
-    if (recentEditions.length === 0) {
-      $('overview-grid').innerHTML = '<div class="nla-empty">No editions yet.</div>';
-    } else {
-      window.overviewGrid = new gridjs.Grid({
-        columns: [
-          { name: 'Subject', sort: true },
-          { name: 'Sent', sort: true },
-          { name: 'Recipients', sort: true },
-          { name: 'Open Rate', sort: true },
-          { name: 'Click Rate', sort: true },
-          { name: '', sort: false, formatter: (_, row) => {
-            const id = row.cells[6].data;
-            return gridjs.html(`<button class="nla-btn-sm" onclick="viewEditionFromOverview('${id}')">Details</button>`);
-          }},
-          { name: 'id', hidden: true }
-        ],
-        data: recentEditions.map(e => [
-          e.subject,
-          formatDate(e.sentAt),
-          e.recipientCount,
-          e.openRate != null ? e.openRate.toFixed(1) + '%' : '—',
-          e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—',
-          '',
-          e.id
-        ]),
-        search: false,
-        sort: true,
-        pagination: false,
-        className: { container: 'nla-gridjs' }
-      }).render($('overview-grid'));
-    }
-
-    hide(loading); show(content);
-  } catch (err) {
-    hide(loading);
-    error.textContent = err.message;
-    show(error);
-  }
-}
-
-// Compose
-let postsData = [];
-
-async function loadPosts() {
-  const loading = $('compose-loading');
-  const error = $('compose-error');
-  const content = $('compose-content');
-  show(loading); hide(error); hide(content);
-
-  try {
-    const data = await apiFetch(API.send + '?action=listPosts');
-    postsData = data.posts || [];
-    const postsHtml = postsData.map((p, i) => `
-      <div class="nla-post-item">
-        <input type="checkbox" id="post-check-${i}" value="${i}" aria-label="Include ${escHtml(p.title)}">
-        <div class="nla-post-info">
-          <div class="nla-post-title">${escHtml(p.title)}</div>
-          <div class="nla-post-date">${p.date || ''}</div>
-        </div>
-        <div class="nla-post-featured">
-          <label class="nla-featured-radio">
-            <input type="radio" name="featured" value="${i}" aria-label="Feature ${escHtml(p.title)}">
-            Featured
-          </label>
-        </div>
-      </div>
-    `).join('');
-    $('compose-posts').innerHTML = postsHtml || '<p class="nla-empty">No posts available.</p>';
-    hide(loading); show(content);
-  } catch (err) {
-    hide(loading);
-    error.textContent = err.message;
-    show(error);
-  }
-}
-
-// Tool dropdown auto-fill
-$('tool-select').addEventListener('change', function() {
-  const opt = this.options[this.selectedIndex];
-  if (this.value) {
-    $('tool-name').value = opt.dataset.name || '';
-    $('tool-desc').value = opt.dataset.desc || '';
-    $('tool-url').value = opt.dataset.url || '';
-  } else {
-    $('tool-name').value = '';
-    $('tool-desc').value = '';
-    $('tool-url').value = '';
-  }
-});
-
-// Rich text editor toolbar
-document.querySelectorAll('.nla-editor-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const cmd = this.dataset.cmd;
-    if (cmd === 'createLink') {
-      const url = prompt('Enter URL:');
-      if (url) document.execCommand(cmd, false, url);
-    } else {
-      document.execCommand(cmd, false, null);
-    }
-    $('compose-intro').focus();
-  });
-});
-
-$('compose-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const sendErr = $('compose-send-error');
-  const sendOk = $('compose-send-success');
-  const btn = $('compose-send-btn');
-  hide(sendErr); hide(sendOk);
-
-  const subject = $('compose-subject').value.trim();
-  const introHtml = $('compose-intro').innerHTML.trim();
-  const introText = $('compose-intro').textContent.trim();
-  const segments = [];
-  if ($('seg-main').checked) segments.push('main_website');
-  if ($('seg-sproochentest').checked) segments.push('sproochentest_prep');
-  if ($('seg-testing').checked) segments.push('testing');
-  const checked = document.querySelectorAll('#compose-posts input[type="checkbox"]:checked');
-  const featuredRadio = document.querySelector('#compose-posts input[name="featured"]:checked');
-
-  if (!subject) { sendErr.textContent = 'Subject is required.'; show(sendErr); return; }
-  if (checked.length === 0 && !introText) { sendErr.textContent = 'Add intro text or select at least one post.'; show(sendErr); return; }
-  if (segments.length === 0) { sendErr.textContent = 'Select at least one segment.'; show(sendErr); return; }
-
-  const selectedPosts = Array.from(checked).map(cb => {
-    const p = postsData[parseInt(cb.value)];
-    return { title: p.title, excerpt: p.excerpt || '', url: p.url };
-  });
-  let featuredPost = null;
-  if (featuredRadio) {
-    const fp = postsData[parseInt(featuredRadio.value)];
-    featuredPost = { title: fp.title, excerpt: fp.excerpt || '', url: fp.url };
-  }
-
-  let toolInvitation = null;
-  const toolName = $('tool-name').value.trim();
-  const toolUrl = $('tool-url').value.trim();
-  if (toolName && toolUrl) {
-    toolInvitation = { name: toolName, description: $('tool-desc').value.trim(), url: toolUrl };
-  }
-
-  if (!confirm('Send newsletter to ' + segments.join(' + ') + ' with subject:\n\n' + subject + '\n\nProceed?')) return;
-
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  let totalRecipients = 0;
-  let editionIds = [];
-  try {
-    for (const segment of segments) {
-      const result = await apiFetch(API.send, {
-        method: 'POST',
-        body: JSON.stringify({ subject, introHtml: introText ? introHtml : null, posts: selectedPosts, featuredPost, toolInvitation, segment })
-      });
-      totalRecipients += (result.recipientCount || 0);
-      if (result.editionId) editionIds.push(result.editionId);
-    }
-    sendOk.textContent = 'Sent to ' + totalRecipients + ' recipients across ' + segments.length + ' segment(s).';
-    show(sendOk);
-  } catch (err) {
-    sendErr.textContent = err.message;
-    show(sendErr);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Send Newsletter';
-  }
-});
-
-// Subscribers
-let subscribersCache = [];
-
-async function loadSubscribers() {
-  const loading = $('sub-loading');
-  const content = $('sub-content');
-  const error = $('sub-error');
-  show(loading); hide(content); hide(error); hide($('sub-success')); hide($('sub-edit-form'));
-
-  try {
-    let url = API.subscribers + '?action=list';
-
-    const data = await apiFetch(url);
-    let subs = data.subscribers || [];
-
-    // Apply segment filter client-side
-    const segmentFilter = $('sub-filter-segment').value;
-    if (segmentFilter) {
-      subs = subs.filter(s => (s.segments || []).includes(segmentFilter));
-    }
-
-    subscribersCache = subs;
-    $('sub-total-count').textContent = '(' + subs.length + ')';
-
-    if (subs.length === 0) {
-      if (window.subGrid) { window.subGrid.destroy(); window.subGrid = null; }
-      $('sub-grid').innerHTML = '';
-      hide(loading); show(content); show($('sub-empty'));
-      return;
-    }
-    hide($('sub-empty'));
-
-    // Destroy existing Grid.js instance
-    if (window.subGrid) { window.subGrid.destroy(); window.subGrid = null; }
-
-    hide(loading); show(content);
-
-    // Initialize Grid.js
-    window.subGrid = new gridjs.Grid({
-      columns: [
-        { name: 'Email', sort: true },
-        { name: 'Name', sort: true },
-        { name: 'Status', sort: true, formatter: (cell) => gridjs.html(`<span class="nla-badge nla-badge-${cell}">${cell}</span>`) },
-        { name: 'Segments', sort: true },
-        { name: 'Subscribed', sort: true },
-        { name: 'Actions', sort: false, formatter: (_, row) => {
-          const id = row.cells[6].data;
-          const email = row.cells[0].data;
-          const status = row.cells[2].data;
-          return gridjs.html(`
-            <div class="nla-table-actions">
-              <button class="nla-btn-sm" data-action="edit" data-id="${id}">Edit</button>
-              ${status === 'active' ? `<button class="nla-btn-sm" data-action="deactivate" data-id="${id}">Deactivate</button>` : ''}
-              <button class="nla-btn-sm danger" data-action="delete" data-id="${id}" data-email="${email}">Delete</button>
-            </div>
-          `);
-        }},
-        { name: 'id', hidden: true }
-      ],
-      data: subs.map(s => [
-        s.email,
-        s.name || '',
-        s.status,
-        (s.segments || []).join(', '),
-        formatDate(s.subscribedAt),
-        '',
-        s.id
-      ]),
-      search: { enabled: true, placeholder: 'Search subscribers...' },
-      sort: true,
-      pagination: { enabled: true, limit: 25 },
-      className: {
-        container: 'nla-gridjs',
-        table: 'nla-gridjs-table',
-        th: 'nla-gridjs-th',
-        td: 'nla-gridjs-td',
-      }
-    }).render($('sub-grid'));
-  } catch (err) {
-    hide(loading);
-    error.textContent = err.message;
-    show(error);
-  }
-}
-
-// Segment filter
-$('sub-filter-segment').addEventListener('change', loadSubscribers);
-
-// Export CSV
-$('sub-export-btn').addEventListener('click', () => {
-  if (!subscribersCache.length) return;
-  const headers = ['email', 'name', 'status', 'segments', 'utmSource', 'subscribedAt'];
-  const csvRows = [headers.join(',')];
-  for (const s of subscribersCache) {
-    const row = [
-      '"' + (s.email || '').replace(/"/g, '""') + '"',
-      '"' + (s.name || '').replace(/"/g, '""') + '"',
-      s.status || '',
-      '"' + (s.segments || []).join('; ') + '"',
-      s.utmSource || '',
-      s.subscribedAt || ''
-    ];
-    csvRows.push(row.join(','));
-  }
-  const csv = csvRows.join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'subscribers_' + new Date().toISOString().slice(0, 10) + '.csv';
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-$('sub-add-btn').addEventListener('click', async () => {
-  const email = $('sub-add-email').value.trim();
-  const name = $('sub-add-name').value.trim();
-  const error = $('sub-error');
-  const success = $('sub-success');
-  hide(error); hide(success);
-  if (!email) { error.textContent = 'Enter an email address.'; show(error); return; }
-
-  try {
-    await apiFetch(API.subscribers + '?action=add', { method: 'POST', body: JSON.stringify({ action: 'add', email, name }) });
-    success.textContent = 'Subscriber added: ' + email;
-    show(success);
-    $('sub-add-email').value = '';
-    $('sub-add-name').value = '';
-    loadSubscribers();
-  } catch (err) {
-    error.textContent = err.message;
-    show(error);
-  }
-});
-
-// Event delegation for subscriber table actions
-document.addEventListener('click', async function(e) {
-  const btn = e.target.closest('[data-action]');
-  if (!btn) return;
-  const action = btn.dataset.action;
-  const id = btn.dataset.id;
-  if (!id) return;
-
-  if (action === 'edit') {
-    const sub = subscribersCache.find(s => s.id === id);
-    if (!sub) return;
-    $('edit-sub-id').value = id;
-    $('edit-email').value = sub.email;
-    $('edit-name').value = sub.name || '';
-    $('edit-status').value = sub.status;
-    $('edit-seg-main').checked = (sub.segments || []).includes('main_website');
-    $('edit-seg-sproochentest').checked = (sub.segments || []).includes('sproochentest_prep');
-    $('edit-seg-testing').checked = (sub.segments || []).includes('testing');
-    show($('sub-edit-form'));
-    $('sub-edit-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  } else if (action === 'deactivate') {
-    if (!confirm('Deactivate this subscriber?')) return;
-    try {
-      await apiFetch(API.subscribers + '?action=deactivate', { method: 'POST', body: JSON.stringify({ action: 'deactivate', id }) });
-      loadSubscribers();
-    } catch (err) {
-      $('sub-error').textContent = err.message;
-      show($('sub-error'));
-    }
-
-  } else if (action === 'delete') {
-    const email = btn.dataset.email || '';
-    if (!confirm('Permanently delete ' + email + '? This cannot be undone.')) return;
-    try {
-      await apiFetch(API.subscribers + '?action=delete', { method: 'POST', body: JSON.stringify({ action: 'delete', id }) });
-      loadSubscribers();
-    } catch (err) {
-      $('sub-error').textContent = err.message;
-      show($('sub-error'));
-    }
-  }
-});
-
-$('edit-cancel-btn').addEventListener('click', () => {
-  hide($('sub-edit-form'));
-});
-
-$('edit-save-btn').addEventListener('click', async () => {
-  const id = $('edit-sub-id').value;
-  const name = $('edit-name').value.trim();
-  const segments = [];
-  if ($('edit-seg-main').checked) segments.push('main_website');
-  if ($('edit-seg-sproochentest').checked) segments.push('sproochentest_prep');
-  if ($('edit-seg-testing').checked) segments.push('testing');
-
-  const error = $('sub-error');
-  const success = $('sub-success');
-  hide(error); hide(success);
-
-  try {
-    await apiFetch(API.subscribers + '?action=update', {
-      method: 'POST',
-      body: JSON.stringify({ action: 'update', id, name, segments })
-    });
-    success.textContent = 'Subscriber updated successfully.';
-    show(success);
-    hide($('sub-edit-form'));
-    loadSubscribers();
-  } catch (err) {
-    error.textContent = err.message;
-    show(error);
-  }
-});
-
-// Analytics
-async function loadAnalytics() {
-  const loading = $('analytics-loading');
-  const error = $('analytics-error');
-  const list = $('analytics-list');
-  const detail = $('analytics-detail');
-  show(loading); hide(error); hide(list); hide(detail);
-
-  try {
-    const data = await apiFetch(API.analytics + '?type=editions');
-    const editions = data.editions || [];
-
-    // Destroy existing Grid.js instance
-    if (window.analyticsGrid) {
-      window.analyticsGrid.destroy();
-      window.analyticsGrid = null;
-    }
-
-    hide(loading); show(list);
-
-    if (editions.length === 0) {
-      $('analytics-grid').innerHTML = '<div class="nla-empty">No editions yet.</div>';
-      return;
-    }
-
-    // Initialize Grid.js for analytics
-    window.analyticsGrid = new gridjs.Grid({
-      columns: [
-        { name: 'Subject', sort: true },
-        { name: 'Sent', sort: true },
-        { name: 'Recipients', sort: true },
-        { name: 'Open Rate', sort: true },
-        { name: 'Click Rate', sort: true },
-        { name: 'Actions', sort: false, formatter: (_, row) => {
-          const id = row.cells[6].data;
-          return gridjs.html(`<button class="nla-btn-sm" onclick="viewEdition('${id}')">Detail</button>`);
-        }},
-        { name: 'id', hidden: true }
-      ],
-      data: editions.map(e => [
-        e.subject,
-        formatDate(e.sentAt),
-        e.recipientCount,
-        e.openRate != null ? e.openRate.toFixed(1) + '%' : '—',
-        e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—',
-        '',
-        e.id
-      ]),
-      search: { enabled: true, placeholder: 'Search editions...' },
-      sort: true,
-      pagination: { enabled: true, limit: 15 },
-      className: {
-        container: 'nla-gridjs',
-        table: 'nla-gridjs-table',
-        th: 'nla-gridjs-th',
-        td: 'nla-gridjs-td',
-      }
-    }).render($('analytics-grid'));
-  } catch (err) {
-    hide(loading);
-    error.textContent = err.message;
-    show(error);
-  }
-}
-
-window.viewEditionFromOverview = function(id) {
-  // Switch to analytics panel
-  navItems.forEach(n => n.classList.remove('active'));
-  panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
-  document.querySelector('[data-panel="analytics"]').classList.add('active');
-  const panel = $('panel-analytics');
-  panel.classList.add('active');
-  panel.hidden = false;
-  // Show detail directly
-  hide($('analytics-loading'));
-  hide($('analytics-list'));
-  viewEdition(id);
-};
-
-window.viewEdition = async function(id) {
-  const list = $('analytics-list');
-  const detail = $('analytics-detail');
-  const error = $('analytics-error');
-  hide(list); hide(error);
-
-  detail.innerHTML = '<div class="nla-loading"><div class="nla-spinner"></div><p>Loading edition…</p></div>';
-  show(detail);
-
-  try {
-    const data = await apiFetch(API.analytics + '?type=edition&id=' + encodeURIComponent(id));
-    const linksHtml = (data.clickedLinks || []).map(l => `
-      <tr><td>${escHtml(l.url)}</td><td>${l.clicks}</td></tr>
-    `).join('');
-
-    detail.innerHTML = `
-      <button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button>
-      <div class="nla-edition-detail">
-        <h3 class="nla-edition-subject">${escHtml(data.subject)}</h3>
-        <p class="nla-edition-meta">Sent ${formatDate(data.sentAt)} · Segment: ${data.segment || '—'}</p>
-        <div class="nla-edition-stats">
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.totalRecipients || 0}</div><div class="nla-edition-stat-label">Recipients</div></div>
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.uniqueOpens || 0}</div><div class="nla-edition-stat-label">Opens</div></div>
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.openRate != null ? data.openRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Open Rate</div></div>
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.uniqueClicks || 0}</div><div class="nla-edition-stat-label">Clicks</div></div>
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.clickRate != null ? data.clickRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Click Rate</div></div>
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.failedSends || 0}</div><div class="nla-edition-stat-label">Failed</div></div>
-        </div>
-        ${linksHtml ? '<h4 class="nla-section-title">Clicked Links</h4><div class="nla-table-wrap"><table class="nla-table"><thead><tr><th>URL</th><th>Clicks</th></tr></thead><tbody>' + linksHtml + '</tbody></table></div>' : ''}
-      </div>
-    `;
-  } catch (err) {
-    detail.innerHTML = '<button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button><div class="nla-error">' + escHtml(err.message) + '</div>';
-  }
-};
-
-window.backToAnalyticsList = function() {
-  hide($('analytics-detail'));
-  loadAnalytics();
-};
-
-// Import
-$('import-btn').addEventListener('click', async () => {
-  const json = $('import-json').value.trim();
-  const error = $('import-error');
-  const success = $('import-success');
-  const result = $('import-result');
-  const btn = $('import-btn');
-  hide(error); hide(success); hide(result);
-
-  if (!json) { error.textContent = 'Paste a JSON array of subscribers.'; show(error); return; }
-
-  let subscribers;
-  try {
-    subscribers = JSON.parse(json);
-    if (!Array.isArray(subscribers)) throw new Error('Must be an array');
-  } catch (err) {
-    error.textContent = 'Invalid JSON: ' + err.message;
-    show(error);
-    return;
-  }
-
-  if (!confirm('Import ' + subscribers.length + ' subscriber(s)?')) return;
-
-  btn.disabled = true;
-  btn.textContent = 'Importing…';
-
-  try {
-    const data = await apiFetch(API.import, { method: 'POST', body: JSON.stringify({ subscribers }) });
-    $('import-imported').textContent = data.imported || 0;
-    $('import-skipped').textContent = data.skipped || 0;
-    $('import-rejected').textContent = data.rejected || 0;
-    success.textContent = 'Import complete.';
-    show(success); show(result);
-  } catch (err) {
-    error.textContent = err.message;
-    show(error);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Import Subscribers';
-  }
-});
-
-// Helpers
-function escHtml(str) {
-  if (!str) return '';
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function formatDate(dateStr) {
-  if (!dateStr) return '—';
-  try {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-  } catch (e) {
-    return dateStr;
-  }
-}
 </script>
