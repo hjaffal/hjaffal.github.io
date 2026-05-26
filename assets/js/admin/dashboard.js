@@ -580,12 +580,16 @@ export async function loadOverview() {
   }
 
   renderNewsletterMetrics(newsletterData, editions);
-  renderSubscriberChart(subscriberGrowth);
   renderPostsMetrics(stats);
-  renderPostsChartJS(posts, 90);
   renderPositions(stats);
   renderActivity(posts, editions);
-  initChartRangeButtons();
+
+  // Render charts after a frame to ensure containers are visible and sized
+  requestAnimationFrame(function() {
+    renderSubscriberChart(subscriberGrowth);
+    renderPostsChartJS(posts, 90);
+    initChartRangeButtons();
+  });
 }
 
 export function renderPostStats() { /* no-op */ }
