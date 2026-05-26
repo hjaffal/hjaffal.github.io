@@ -506,6 +506,12 @@ body:has(.nla-layout:not([hidden])) footer {
 /* Chart wrapper */
 .nla-dash-chart-wrap {
   position: relative;
+  height: 180px;
+}
+
+.nla-dash-chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* 3-column dashboard grid */

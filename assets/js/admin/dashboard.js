@@ -367,6 +367,7 @@ let allPostsData = null;
 function renderSubscriberChartJS(growthData, days) {
   const canvas = document.getElementById('dash-subscriber-canvas');
   if (!canvas || !growthData || !growthData.days) return;
+  if (typeof Chart === 'undefined') { console.warn('Chart.js not loaded'); return; }
 
   subscriberGrowthData = growthData;
 
@@ -439,6 +440,7 @@ function renderSubscriberChartJS(growthData, days) {
 function renderPostsChartJS(posts, days) {
   const canvas = document.getElementById('dash-posts-canvas');
   if (!canvas) return;
+  if (typeof Chart === 'undefined') { console.warn('Chart.js not loaded'); return; }
 
   allPostsData = posts;
 
