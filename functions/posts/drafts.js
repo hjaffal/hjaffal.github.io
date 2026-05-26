@@ -340,32 +340,58 @@ async function handlePublish(req, res) {
     const { Octokit } = require("@octokit/rest");
     const octokit = new Octokit({ auth: GITHUB_PAT.value() });
 
-    // Check if file already exists (for updates) — check both githubPath and the target filename
-    let existingSha = null;
-    const pathsToCheck = [draft.githubPath, filename].filter(Boolean);
-    for (const pathToCheck of pathsToCheck) {
-      if (existingSha) break;
+    // Check if the filename changed (date or slug changed)
+    const oldPath = draft.githubPath;
+    const pathChanged = oldPath && oldPath !== filename;
+
+    // If path changed, delete the old file first
+    if (pathChanged) {
       try {
-        const existing = await octokit.repos.getContent({
+        const oldFile = await octokit.repos.getContent({
           owner: REPO_OWNER,
           repo: REPO_NAME,
-          path: pathToCheck,
+          path: oldPath,
           ref: REPO_BRANCH
         });
-        existingSha = existing.data.sha;
-        console.log("Found existing file at:", pathToCheck, "SHA:", existingSha);
+        await octokit.repos.deleteFile({
+          owner: REPO_OWNER,
+          repo: REPO_NAME,
+          path: oldPath,
+          message: `Rename post: ${draft.title.trim()} (date change)`,
+          sha: oldFile.data.sha,
+          branch: REPO_BRANCH
+        });
+        console.log("Deleted old file:", oldPath);
       } catch (e) {
-        console.log("File not found at:", pathToCheck, "status:", e.status);
+        console.log("Old file not found for deletion:", oldPath, e.status);
       }
     }
 
-    console.log("Publishing to:", filename, "existingSha:", existingSha);
+    // Check if file exists at the target path
+    let existingSha = null;
+    if (!pathChanged) {
+      const pathsToCheck = [draft.githubPath, filename].filter(Boolean);
+      for (const pathToCheck of pathsToCheck) {
+        if (existingSha) break;
+        try {
+          const existing = await octokit.repos.getContent({
+            owner: REPO_OWNER,
+            repo: REPO_NAME,
+            path: pathToCheck,
+            ref: REPO_BRANCH
+          });
+          existingSha = existing.data.sha;
+        } catch (e) {
+          // Not found, continue
+        }
+      }
+    }
 
     const commitParams = {
       owner: REPO_OWNER,
       repo: REPO_NAME,
       path: filename,
-      message: existingSha ? `Update post: ${draft.title.trim()}` : `Add post: ${draft.title.trim()}`,
+      message: pathChanged ? `Rename and update post: ${draft.title.trim()}` : (existingSha ? `Update post: ${draft.title.trim()}` : `Add post: ${draft.title.trim()}`),
       content: Buffer.from(fileContent).toString("base64"),
       branch: REPO_BRANCH
     };
