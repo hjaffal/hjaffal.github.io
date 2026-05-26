@@ -37,6 +37,12 @@ css:
         </div>
       {% endif %}
 
+      {% if page.thumbnail-img %}
+      <div class="post-featured-image">
+        <img src="{{ page.thumbnail-img }}" alt="{{ page.title | xml_escape }}" loading="lazy">
+      </div>
+      {% endif %}
+
       <div class="blog-post">
         {{ content }}
       </div>

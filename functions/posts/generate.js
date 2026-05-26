@@ -77,24 +77,21 @@ const POSITIONS = [
 ];
 
 const ARTICLE_FORMS = [
-  "Tell a specific story from the field, then extract the principle",
-  "Challenge a popular belief with a concrete counter-example",
-  "Compare what average teams do vs what strong teams do — be specific",
-  "Describe a decision framework and show how to apply it under pressure",
-  "Explain the hidden cost of getting this wrong — use numbers or timelines",
-  "Write a practical playbook: 5-7 steps an operator can follow this week",
-  "Analyze a common failure pattern and explain the systemic root cause",
-  "Make a prediction about what will change in the next 12 months and why",
-  "Explain what leaders must stop doing immediately and what to do instead",
-  "Describe the minimum viable version of a system that actually works",
+  "Answer a specific reader question with one example",
+  "Challenge one weak assumption and explain the better view",
+  "Explain one workplace failure pattern and one fix",
+  "Compare the common mistake with the stronger behavior",
+  "Give one practical decision rule the reader can use this week",
+  "Explain one risk signal people usually miss",
+  "Write a short field note from an operator's perspective",
 ];
 
 const TONES = [
-  "Direct and blunt. No softening. Say the uncomfortable thing.",
-  "Analytical and precise. Use structure. Show the logic.",
-  "Narrative-driven. Start with a scene. Make the reader feel the pressure.",
-  "Practical and operator-focused. Every paragraph must be actionable.",
-  "Contrarian. Take the opposite position from conventional wisdom.",
+  "Direct and practical, but not heavy",
+  "Sharp but readable",
+  "Calm, useful, and concise",
+  "Operator-style field note",
+  "Question-led and human",
 ];
 
 const VALID_TAGS = ["ai-operations", "decision-authority", "risk-intelligence", "ai-and-work"];
@@ -220,7 +217,7 @@ const generatePost = onRequest(
 
     // Build the prompt
     const prompt = `
-Write one original blog post for Hasan Jaffal.
+Write one original short blog post for Hasan Jaffal.
 
 POSITION: ${selectedPosition.position}
 THESIS: ${selectedPosition.thesis}
@@ -229,66 +226,80 @@ FORM: ${selectedForm}
 TONE: ${selectedTone}
 TAG (use exactly this): ${selectedPosition.tag}
 
-EXISTING POSTS — do NOT repeat these topics, angles, or similar titles. Each new post MUST cover a genuinely different idea, argument, or scenario:
+EXISTING POSTS — do NOT repeat these topics or similar titles:
 ${recentTitlesText}
 
 AUDIENCE:
-Leaders and professionals in AI, data, analytics, operations, risk, security, loss prevention, and decision-making. People who search for answers to real career and operational questions.
+Leaders and professionals in AI, data, analytics, operations, risk, and decision-making.
 
-VOICE AND IDENTITY:
-You are writing as Hasan Jaffal — a data and business intelligence leader who writes from real operational experience. Not a consultant. Not a thought leader performing insight. Someone who has sat in the meetings, built the dashboards, watched the decisions fail, and learned what actually works. You write like you're answering a question from a sharp colleague over coffee — honest, practical, sometimes uncomfortable.
+VOICE:
+Hasan Jaffal — data and business intelligence leader writing from real operational experience. Not a consultant. Not performative. Someone who has been in the meetings, built the dashboards, and watched decisions fail.
+
+ARTICLE FORMAT PLANNING (do this internally before writing):
+Choose one format for this article:
+1. Question Answer — Start with a reader question, answer directly, explain nuance.
+2. Field Note — Start with a workplace observation, extract the lesson.
+3. Myth vs Reality — Challenge a common belief, show why it breaks, give the better view.
+4. Mistake and Fix — Explain one common mistake, why it happens, how to correct it.
+5. Decision Rule — Introduce one practical rule for facing this issue.
+6. Short Guide — Compact explanation with 3-4 useful points (not a listicle).
+7. Contrarian Take — Sharp position against a common assumption, defended with an example.
+
+Do not use the same format as recent posts if provided above.
 
 ARTICLE STRUCTURE:
-1. Start with a concrete reader question or workplace tension. Not a definition. Not "In today's world..." Frame it as something a real person would ask or feel.
-2. Give the short answer early — within the first 2-3 paragraphs. Don't make the reader wait.
-3. Explain why the common assumption is incomplete or misleading. Challenge what most people believe about this topic.
-4. Use a specific workplace example — a meeting that went wrong, a dashboard nobody acted on, a decision that was too slow, a team that got restructured. Make it feel lived.
-5. Include failure points or trade-offs. What breaks? What's the cost of getting this wrong? What do people lose by ignoring this?
-6. Show what stronger operators or teams do differently. Be specific about behaviors, not just principles.
-7. Provide a practical takeaway — something the reader can do this week.
-8. Include a natural CTA: "If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next." Place one CTA naturally in the middle and one at the end.
+1. Start the body with a **Key takeaways** paragraph (see rules below).
+2. Open with a real reader question or workplace tension.
+3. Give the short answer early.
+4. Explain the main idea with one concrete example.
+5. Show the common mistake.
+6. Explain what stronger operators or teams do differently.
+7. Give one practical action the reader can take this week.
+8. End with a short natural CTA.
 
-HEADLINE RULES:
-- Phrase as a question or strong reader-centric statement.
-- Good: "Will AI Replace Data Analysts?" / "Why Reporting Does Not Make You a Decision Maker" / "What Tasks Are Most Exposed to AI Automation?"
-- Bad: "The Future of AI in Operations" / "Understanding AI Transformation" / "Navigating the AI Landscape"
-- The title should feel like something a real person would type into Google.
+KEY TAKEAWAYS RULES:
+- The body MUST begin with: **Key takeaways:** followed by 2-3 concise sentences.
+- Summarize the article's main answer, why it matters, and what to do.
+- Under 90 words. No bullet points. Direct and useful.
 
 WRITING STYLE:
-- Direct, calm, practical, and sharp. Human-like, not AI-polished.
-- Write to bring feelings and attract the reader. Show doubt, tension, judgment. Not perfect structurally or grammatically — that's fine. Real writing has rhythm, not symmetry.
-- AT LEAST 1500 words. This is a real article, not a summary.
-- Paragraphs of 3-5 sentences mostly. Some can be 2. None should be single-line slogans repeated throughout.
-- DO NOT use one-line short statements as paragraph separators. If a short line exists, it must earn its weight.
-- Natural variation in sentence length. Mix short punches with longer explanatory sentences.
-- Avoid mechanical paragraph rhythm. Not every paragraph should be the same size.
-- Avoid repeated paragraph openings. Do not start consecutive paragraphs with the same word or structure.
-- Avoid list-heavy writing unless it genuinely improves clarity.
-- No hype. No corporate buzzwords. No invented statistics.
-- No labels like "Hook," "Insight," "Takeaway," or "Key Point."
-- No motivational language. No consultant-style filler.
-- No generic AI phrases: "in today's rapidly evolving landscape," "game changer," "leverage," "unlock," "revolutionize," "transform," "it's important to note that."
-- Use plain language. Write like someone explaining something to a sharp colleague.
-- Include small moments of uncertainty, tension, or self-correction. Show the thinking process.
-- Use examples from: operations, analytics, dashboards, AI deployments, decision-making, risk management, meetings, reports, team dynamics, job skills, career positioning.
+- 600-900 words. Absolute maximum 1,000 words. If over 1,000, rewrite shorter.
+- Shorter and lighter than a white paper. This is a sharp field note.
+- Less explaining. Less buildup. No long philosophical sections.
+- Paragraphs of 2-4 sentences mostly. No long blocks over 5 sentences.
+- Avoid repeated one-line paragraphs as a pattern.
+- Use practical examples but keep them brief.
+- Avoid repeating the same idea in different words.
+- Avoid long conclusions.
+- Plain language. Fast pace.
+- No hype. No corporate buzzwords. No motivational language.
+- No generic AI phrases.
+- No labels like "Hook," "Insight," "Takeaway."
+- Include small moments of judgment or tension.
+- Vary the article shape — do not follow the same visible structure every time.
+- Avoid repeated headings, intro patterns, CTA wording, or example types across articles.
 
-CHARACTERISTIC PHRASES (use 1-2 naturally, not forced):
-- "That is the weak point."
-- "The title is not the risk. The task shape is."
-- "Busy is not the same as protected."
-- "The dashboard is not the decision."
-- "AI does not remove the need for judgment. It exposes where judgment was missing."
+HEADLINE:
+- Phrase as a question or strong reader-centric statement.
+- Good: "Will AI Replace Data Analysts?" / "Why Reporting Does Not Make You a Decision Maker"
+- Bad: "The Future of AI in Operations" / "Understanding AI Transformation"
+
+CTA:
+- Use only ONE CTA, placed near the end.
+- If the topic is AI and Work or AI job risk, use: "If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/)."
+- Otherwise link to a related article or the newsletter.
+- Keep it natural, not a banner.
 
 QUALITY CHECKS (apply before returning):
-- Does it answer a real question for the reader?
-- Does the article have at least one concrete workplace example?
-- Are paragraphs natural and varied in length?
-- Is the CTA useful and natural (not a banner)?
-- Is the position correctly assigned?
-- Is it at least 1500 words?
-- Does it feel like a human operator wrote it, not a content mill?
-- Are there moments of tension, doubt, or honest trade-offs?
-- Would you actually want to read this if you found it on Google?
+- Is the article between 600 and 900 words?
+- Is it under 1,000 words?
+- Does the body start with **Key takeaways:**?
+- Does it answer a real question?
+- Is there one concrete example?
+- Is the argument clear without over-explaining?
+- Is the CTA natural and not repeated?
+- Is the correct position tag used?
+- Would someone finish this in 3-4 minutes?
 
 Return ONLY valid JSON:
 
@@ -310,11 +321,11 @@ CRITICAL JSON RULES:
 
 FIELD RULES:
 - "title": Question-led or reader-centric headline. SEO-friendly. Max 150 chars.
-- "subtitle": A one-line subtitle expanding on the title.
-- "share_description": Social media description. Max 160 chars. Curiosity-driven.
-- "meta_title": SEO meta title. Max 70 chars. Optimized for search.
-- "excerpt": 1-2 sentence teaser for post listings. Max 300 chars.
-- "body": The full post in Markdown. AT LEAST 1500 words. Must follow the structure and style above.
+- "subtitle": One-line subtitle expanding on the title.
+- "share_description": Social media description. Max 160 chars.
+- "meta_title": SEO meta title. Max 70 chars.
+- "excerpt": 1-2 sentence teaser. Max 300 chars.
+- "body": The full post in Markdown. 600-900 words, max 1,000. First paragraph must begin with "**Key takeaways:**"
 `;
 
     try {

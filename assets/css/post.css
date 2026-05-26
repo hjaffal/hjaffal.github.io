@@ -1,5 +1,19 @@
 /* ===== POST PAGE ===== */
 
+/* Featured image */
+.post-featured-image {
+  margin: 0 0 32px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.post-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
 /* Post share buttons */
 .post-share {
   margin-top: 48px;

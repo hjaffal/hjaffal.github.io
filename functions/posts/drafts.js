@@ -353,10 +353,13 @@ async function handlePublish(req, res) {
           ref: REPO_BRANCH
         });
         existingSha = existing.data.sha;
+        console.log("Found existing file at:", pathToCheck, "SHA:", existingSha);
       } catch (e) {
-        // File doesn't exist at this path, try next
+        console.log("File not found at:", pathToCheck, "status:", e.status);
       }
     }
+
+    console.log("Publishing to:", filename, "existingSha:", existingSha);
 
     const commitParams = {
       owner: REPO_OWNER,
@@ -401,7 +404,7 @@ async function handlePublish(req, res) {
     });
 
   } catch (err) {
-    console.error("Publish error:", err.message);
+    console.error("Publish error:", err.message, "status:", err.status, "response:", JSON.stringify(err.response?.data || {}));
     await docRef.update({ status: "publish_failed", deploymentStatus: "publish_failed" });
 
     if (err.status === 409) {
