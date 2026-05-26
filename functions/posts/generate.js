@@ -92,6 +92,7 @@ const TONES = [
   "Calm, useful, and concise",
   "Operator-style field note",
   "Question-led and human",
+  "Light but still authoritative",
 ];
 
 const VALID_TAGS = ["ai-operations", "decision-authority", "risk-intelligence", "ai-and-work"];
@@ -233,73 +234,90 @@ AUDIENCE:
 Leaders and professionals in AI, data, analytics, operations, risk, and decision-making.
 
 VOICE:
-Hasan Jaffal — data and business intelligence leader writing from real operational experience. Not a consultant. Not performative. Someone who has been in the meetings, built the dashboards, and watched decisions fail.
+Hasan Jaffal — data and business intelligence leader writing from real operational experience. Sharp, practical, direct. Not a consultant. Not performative.
 
-ARTICLE FORMAT PLANNING (do this internally before writing):
-Choose one format for this article:
-1. Question Answer — Start with a reader question, answer directly, explain nuance.
-2. Field Note — Start with a workplace observation, extract the lesson.
-3. Myth vs Reality — Challenge a common belief, show why it breaks, give the better view.
-4. Mistake and Fix — Explain one common mistake, why it happens, how to correct it.
-5. Decision Rule — Introduce one practical rule for facing this issue.
-6. Short Guide — Compact explanation with 3-4 useful points (not a listicle).
-7. Contrarian Take — Sharp position against a common assumption, defended with an example.
+INTERNAL PLANNING (choose before writing, do not include in output):
+- articleFormat: pick one from the formats below
+- readerQuestion: the real question this answers
+- mainTension: the uncomfortable truth
+- concreteExample: one specific workplace scene
+- practicalAction: one thing the reader can do this week
+- writingTechniques: pick 2-4 from the techniques list
+- CTA wording: vary from previous posts
 
-Do not use the same format as recent posts if provided above.
+ARTICLE FORMAT (pick one, do not use the same as recent posts):
+1. Question Answer — reader question, direct answer, then nuance
+2. Field Note — workplace observation, then the lesson
+3. Myth vs Reality — challenge a belief, show why it breaks, give the better view
+4. Mistake and Fix — one common mistake, why it happens, how to fix it
+5. Decision Rule — one practical rule for facing this issue
+6. Short Guide — compact explanation with 3-4 points (not a listicle)
+7. Contrarian Take — sharp position against a common assumption, defended with an example
+
+WRITING TECHNIQUES (use 2-4 per article, naturally):
+- Analogy: explain a complex idea through a familiar comparison
+- Contrast: show the weak way versus the stronger way side by side
+- Strong verbs: replace weak verbs (make, do, use, have) with precise action verbs
+- Imagery: add one concrete scene — a dashboard review, escalation meeting, risk review, status call
+- Repetition: repeat one key phrase only if it helps the point land
+- Clear writing: remove filler, cut abstract explanations, say it in fewer words
+- Sentence variation: mix short punches with medium explanatory sentences
+- Point of view: use "you" to bring the reader closer, or "I" for field notes
 
 ARTICLE STRUCTURE:
-1. Start the body with a **Key takeaways** paragraph (see rules below).
-2. Open with a real reader question or workplace tension.
-3. Give the short answer early.
-4. Explain the main idea with one concrete example.
-5. Show the common mistake.
-6. Explain what stronger operators or teams do differently.
-7. Give one practical action the reader can take this week.
-8. End with a short natural CTA.
+1. Start with **Key takeaways:** paragraph (see rules below)
+2. Open with a real reader question or workplace tension
+3. Give the short answer early
+4. Explain the main idea with one concrete example
+5. Show the common mistake
+6. Show what stronger operators do differently
+7. One practical action for this week
+8. Short natural CTA near the end
 
-KEY TAKEAWAYS RULES:
-- The body MUST begin with: **Key takeaways:** followed by 2-3 concise sentences.
-- Summarize the article's main answer, why it matters, and what to do.
-- Under 90 words. No bullet points. Direct and useful.
+KEY TAKEAWAYS:
+- Body MUST begin with: **Key takeaways:** followed by 2-3 sentences
+- Summarize: main answer, why it matters, what to do
+- Under 90 words. No bullets. Direct and useful.
 
-WRITING STYLE:
-- 600-900 words. Absolute maximum 1,000 words. If over 1,000, rewrite shorter.
-- Shorter and lighter than a white paper. This is a sharp field note.
+LENGTH:
+- Target: 600-900 words
+- Absolute max: 1,000 words
+- If over 1,000, rewrite shorter before returning
+
+STYLE:
+- Shorter and lighter than a white paper. Sharp field note.
 - Less explaining. Less buildup. No long philosophical sections.
-- Paragraphs of 2-4 sentences mostly. No long blocks over 5 sentences.
-- Avoid repeated one-line paragraphs as a pattern.
-- Use practical examples but keep them brief.
+- Paragraphs of 2-4 sentences. No blocks over 5 sentences.
+- No repeated one-line paragraph pattern.
+- Plain language. Fast pace.
+- No hype. No buzzwords. No motivational language. No generic AI phrases.
+- No labels like "Hook," "Insight," "Takeaway."
 - Avoid repeating the same idea in different words.
 - Avoid long conclusions.
-- Plain language. Fast pace.
-- No hype. No corporate buzzwords. No motivational language.
-- No generic AI phrases.
-- No labels like "Hook," "Insight," "Takeaway."
-- Include small moments of judgment or tension.
-- Vary the article shape — do not follow the same visible structure every time.
-- Avoid repeated headings, intro patterns, CTA wording, or example types across articles.
+- Do not feel like a rigid template. Vary shape across articles.
 
 HEADLINE:
-- Phrase as a question or strong reader-centric statement.
+- Question or strong reader-centric statement
 - Good: "Will AI Replace Data Analysts?" / "Why Reporting Does Not Make You a Decision Maker"
-- Bad: "The Future of AI in Operations" / "Understanding AI Transformation"
+- Bad: "The Future of AI" / "Understanding AI Transformation"
 
 CTA:
-- Use only ONE CTA, placed near the end.
-- If the topic is AI and Work or AI job risk, use: "If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/)."
-- Otherwise link to a related article or the newsletter.
-- Keep it natural, not a banner.
+- One CTA only, near the end
+- For AI and Work topics: "If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/)."
+- Otherwise link to a related article or newsletter
+- Keep it natural
 
-QUALITY CHECKS (apply before returning):
-- Is the article between 600 and 900 words?
-- Is it under 1,000 words?
-- Does the body start with **Key takeaways:**?
-- Does it answer a real question?
-- Is there one concrete example?
-- Is the argument clear without over-explaining?
-- Is the CTA natural and not repeated?
-- Is the correct position tag used?
-- Would someone finish this in 3-4 minutes?
+QUALITY CHECKS:
+- 600-900 words, under 1,000?
+- Starts with **Key takeaways:**?
+- Answers a real question?
+- One concrete workplace example?
+- Uses 2-4 writing techniques naturally?
+- Does not feel templated?
+- Does not repeat ideas?
+- CTA appears once, feels natural?
+- Correct position tag?
+- Readable in 3-4 minutes?
 
 Return ONLY valid JSON:
 
@@ -313,19 +331,18 @@ Return ONLY valid JSON:
   "body": ""
 }
 
-CRITICAL JSON RULES:
-- Return ONLY the JSON object. No text before or after.
-- All string values must have newlines escaped as \\n
-- All double quotes inside string values must be escaped as \\"
-- The body field contains Markdown — escape all newlines and quotes properly.
+JSON RULES:
+- Return ONLY the JSON object
+- Escape newlines as \\n and quotes as \\"
+- Body contains Markdown with proper escaping
 
 FIELD RULES:
-- "title": Question-led or reader-centric headline. SEO-friendly. Max 150 chars.
-- "subtitle": One-line subtitle expanding on the title.
-- "share_description": Social media description. Max 160 chars.
-- "meta_title": SEO meta title. Max 70 chars.
+- "title": Question-led or reader-centric. SEO-friendly. Max 150 chars.
+- "subtitle": One-line subtitle.
+- "share_description": Social description. Max 160 chars.
+- "meta_title": SEO title. Max 70 chars.
 - "excerpt": 1-2 sentence teaser. Max 300 chars.
-- "body": The full post in Markdown. 600-900 words, max 1,000. First paragraph must begin with "**Key takeaways:**"
+- "body": Markdown, 600-900 words, max 1,000. First paragraph: "**Key takeaways:**"
 `;
 
     try {
