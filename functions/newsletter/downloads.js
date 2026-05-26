@@ -49,6 +49,7 @@ const trackDownload = onRequest(
 
 /**
  * Record a download event (public, no auth required).
+ * Also auto-registers the file in downloadable_materials if not already there.
  */
 async function handleTrack(req, res) {
   const { email, file } = req.body;
@@ -58,12 +59,27 @@ async function handleTrack(req, res) {
     return;
   }
 
+  // Record the download event
   await db.collection(COLLECTION).add({
     email: email || "anonymous",
     file: file,
     fileName: file.split("/").pop(),
     downloadedAt: admin.firestore.FieldValue.serverTimestamp(),
   });
+
+  // Auto-register in downloadable_materials if not exists
+  const docId = file.replace(/[\/ ]/g, "_").replace(/^_/, "");
+  const matRef = db.collection("downloadable_materials").doc(docId);
+  const matDoc = await matRef.get();
+  if (!matDoc.exists) {
+    await matRef.set({
+      file: file,
+      fileName: file.split("/").pop(),
+      title: file.split("/").pop().replace(/\.pdf$/i, ""),
+      category: "other",
+      downloads: 0
+    });
+  }
 
   res.status(200).json({ result: "success" });
 }
