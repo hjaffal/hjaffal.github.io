@@ -28,21 +28,19 @@ css:
           <div class="sp-questions-list" id="sp-questions-list">
             {{ content }}
           </div>
+          <!-- Gate: shows after 5th question, overlays the rest -->
           <div class="sp-questions-gate" id="sp-questions-gate">
-            <div class="sp-gate-overlay"></div>
-            <div class="sp-gate-content">
-              <span class="sp-gate-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              </span>
-              <h3 class="sp-gate-title">View All Questions</h3>
-              <p class="sp-gate-desc">Enter your email to see the full list of practice questions for all topics.</p>
-              <div class="sp-gate-form">
-                <form class="sp-gate-inline-form" id="sp-gate-form">
-                  <input type="email" class="sp-gate-input" id="sp-gate-email" placeholder="Your email" required>
-                  <button type="submit" class="sp-gate-submit">Unlock All Questions</button>
-                </form>
+            <div class="sp-gate-card">
+              <div class="sp-gate-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               </div>
-              <p class="sp-gate-note">Already subscribed? <button class="sp-gate-unlock" id="sp-gate-unlock" type="button">Unlock questions</button></p>
+              <h3 class="sp-gate-card-title">View All Questions</h3>
+              <p class="sp-gate-card-desc">Enter your email to see the full list of practice questions for all topics.</p>
+              <form class="sp-gate-card-form" id="sp-gate-form">
+                <input type="email" id="sp-gate-email" placeholder="your@email.com" required>
+                <button type="submit">Unlock All Questions</button>
+              </form>
+              <p class="sp-gate-card-note">Already subscribed? <button type="button" id="sp-gate-unlock">Unlock questions</button></p>
             </div>
           </div>
         </div>
@@ -67,41 +65,32 @@ css:
     if (gate) gate.classList.add('hidden');
   }
 
-  // Check if already unlocked
   if (localStorage.getItem(STORAGE_KEY)) {
     if (gate) gate.classList.add('hidden');
     return;
   }
 
-  // Apply gated class to blur items after 5
   if (list) list.classList.add('gated');
 
-  // Unlock button (for returning subscribers)
   if (unlockBtn) {
     unlockBtn.addEventListener('click', unlock);
   }
 
-  // Form submission — subscribe via Firebase and unlock
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var email = document.getElementById('sp-gate-email').value.trim();
       if (!email) return;
 
-      var btn = form.querySelector('.sp-gate-submit');
+      var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = 'Subscribing…';
 
-      // Subscribe via the Firebase function
       fetch('{{ site.data.firebase.fn_subscribe }}', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, source: 'sproochentest_gate', segment: 'sproochentest_prep' })
-      }).then(function() {
-        unlock();
-      }).catch(function() {
-        unlock();
-      });
+      }).then(function() { unlock(); }).catch(function() { unlock(); });
     });
   }
 })();
