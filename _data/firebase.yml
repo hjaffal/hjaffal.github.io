@@ -24,6 +24,7 @@ fn_generate_post: "https://generatepost-vgheoh5xza-ew.a.run.app"
 fn_get_post: "https://getpost-vgheoh5xza-ew.a.run.app"
 fn_update_post: "https://updatepost-vgheoh5xza-ew.a.run.app"
 fn_manage_drafts: "https://managedrafts-vgheoh5xza-ew.a.run.app"
+fn_track_download: "https://trackdownload-vgheoh5xza-ew.a.run.app"
 
 # Firebase web config (API key is safe to expose — restricted by domain)
 firebase_api_key: "AIzaSyAc7rsjmMeWjR5AzBEOWZfFzRjOQdNZtoQ"

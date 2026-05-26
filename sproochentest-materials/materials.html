@@ -261,6 +261,15 @@ function submitDownloadEmail(e) {
 }
 
 function triggerDownload(file) {
+  // Track the download
+  var email = localStorage.getItem('sp_email') || 'anonymous';
+  fetch('{{ site.data.firebase.fn_track_download }}?action=track', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ email: email, file: file })
+  }).catch(function(){});
+
+  // Trigger the actual download
   var a = document.createElement('a');
   a.href = file;
   a.download = '';

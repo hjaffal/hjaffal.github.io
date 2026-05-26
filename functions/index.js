@@ -43,6 +43,9 @@ exports.getAnalytics = getAnalytics;
 exports.manageSubscribers = manageSubscribers;
 exports.importSubscribers = importSubscribers;
 
+const { trackDownload } = require("./newsletter/downloads");
+exports.trackDownload = trackDownload;
+
 const VALID_BANDS = ["exposed", "adaptable", "harder_to_replace"];
 const VALID_FAMILIES = [
   "data_analytics_bi", "operations_process_program", "manager_team_leader",

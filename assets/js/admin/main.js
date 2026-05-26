@@ -167,6 +167,9 @@ export async function switchPanel(panelName) {
   } else if (panelName === 'import') {
     const { initImport } = await import('./import.js');
     initImport();
+  } else if (panelName === 'downloads') {
+    const { loadDownloads } = await import('./downloads.js');
+    loadDownloads();
   }
 }
 

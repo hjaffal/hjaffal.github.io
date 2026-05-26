@@ -69,6 +69,9 @@ css:
       <button class="nla-nav-item" data-panel="import" type="button">
         <span class="nla-nav-icon">📥</span> Import
       </button>
+      <button class="nla-nav-item" data-panel="downloads" type="button">
+        <span class="nla-nav-icon">📊</span> Downloads
+      </button>
     </nav>
     <div class="nla-sidebar-links">
       <a href="/" class="nla-sidebar-link" target="_blank">🌐 Public Website</a>
@@ -572,6 +575,27 @@ css:
       <button class="nla-btn nla-btn-primary" type="button" id="import-btn">Import Subscribers</button>
     </div>
 
+    <!-- Downloads Panel -->
+    <div class="nla-panel" id="panel-downloads" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Downloads</h1>
+        <p class="nla-panel-desc">Track file downloads from the Sproochentest materials page.</p>
+      </div>
+      <div id="downloads-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading downloads"></div>
+        <p>Loading…</p>
+      </div>
+      <div id="downloads-error" class="nla-error" hidden></div>
+      <div id="downloads-content" hidden>
+        <div id="downloads-list"></div>
+        <div id="downloads-detail" hidden>
+          <button class="nla-btn-sm" id="downloads-back" type="button">← Back to list</button>
+          <h3 id="downloads-detail-title" style="margin:16px 0 12px;font-size:1rem;font-weight:700;"></h3>
+          <div id="downloads-detail-list"></div>
+        </div>
+      </div>
+    </div>
+
   </main>
 </div><!-- end .nla-layout -->
 
@@ -596,7 +620,8 @@ init({
     generatePost: "{{ site.data.firebase.fn_generate_post }}",
     getPost: "{{ site.data.firebase.fn_get_post }}",
     updatePost: "{{ site.data.firebase.fn_update_post }}",
-    manageDrafts: "{{ site.data.firebase.fn_manage_drafts }}"
+    manageDrafts: "{{ site.data.firebase.fn_manage_drafts }}",
+    trackDownload: "{{ site.data.firebase.fn_track_download }}"
   }
 });
 </script>
