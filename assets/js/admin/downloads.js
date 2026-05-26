@@ -27,14 +27,16 @@ export async function loadDownloads() {
       list.innerHTML = '<p class="nla-dash-empty">No downloads recorded yet.</p>';
     } else {
       let html = '<div class="nla-dash-editions-table"><table class="nla-table">' +
-        '<thead><tr><th>File</th><th>Downloads</th><th></th></tr></thead><tbody>';
+        '<thead><tr><th>Title</th><th>File</th><th>Category</th><th>Downloads</th><th></th></tr></thead><tbody>';
 
       files.forEach(function(f) {
         const encodedFile = btoa(unescape(encodeURIComponent(f.file)));
         html += '<tr>' +
-          '<td>' + escHtml(f.fileName) + '</td>' +
+          '<td><strong>' + escHtml(f.title || f.fileName) + '</strong></td>' +
+          '<td style="font-size:0.75rem;color:var(--text-soft)">' + escHtml(f.fileName) + '</td>' +
+          '<td><span class="nla-badge">' + escHtml(f.category || 'other') + '</span></td>' +
           '<td><strong>' + f.count + '</strong></td>' +
-          '<td><button class="nla-btn-sm" onclick="viewDownloadDetail(\'' + encodedFile + '\', \'' + escHtml(f.fileName).replace(/'/g, "\\'") + '\')">View</button></td>' +
+          '<td><button class="nla-btn-sm" onclick="viewDownloadDetail(\'' + encodedFile + '\', \'' + escHtml(f.title || f.fileName).replace(/'/g, "\\'") + '\')">View</button></td>' +
         '</tr>';
       });
 
@@ -48,6 +50,22 @@ export async function loadDownloads() {
     $('downloads-back').addEventListener('click', function() {
       hide(detail); show(list);
     });
+
+    // Seed button
+    var seedBtn = document.getElementById('seed-materials-btn');
+    if (seedBtn) {
+      seedBtn.addEventListener('click', async function() {
+        seedBtn.disabled = true;
+        seedBtn.textContent = 'Seeding…';
+        try {
+          await apiFetch(API.trackDownload + '?action=seed');
+          seedBtn.textContent = '✓ Seeded';
+          loadDownloads();
+        } catch (err) {
+          seedBtn.textContent = 'Failed';
+        }
+      });
+    }
 
   } catch (err) {
     hide(loading);

@@ -30,8 +30,11 @@ const trackDownload = onRequest(
       } else if (action === "detail") {
         await verifyAdminToken(req);
         await handleDetail(req, res);
+      } else if (action === "seed") {
+        await verifyAdminToken(req);
+        await handleSeed(req, res);
       } else {
-        res.status(400).json({ error: "Invalid action. Use: track, list, detail" });
+        res.status(400).json({ error: "Invalid action. Use: track, list, detail, seed" });
       }
     } catch (err) {
       if (err.statusCode === 401) {
@@ -67,18 +70,40 @@ async function handleTrack(req, res) {
 
 /**
  * List all files with download counts (admin only).
+ * Reads from downloadable_materials collection (seeded) and merges with actual download counts.
  */
 async function handleList(_req, res) {
-  const snapshot = await db.collection(COLLECTION).get();
-
+  // Get all registered materials
+  const materialsSnapshot = await db.collection("downloadable_materials").get();
   const fileCounts = {};
-  snapshot.docs.forEach(doc => {
+
+  materialsSnapshot.docs.forEach(doc => {
+    const data = doc.data();
+    fileCounts[data.file] = {
+      file: data.file,
+      fileName: data.fileName || data.file.split("/").pop(),
+      title: data.title || data.fileName,
+      category: data.category || "other",
+      count: 0
+    };
+  });
+
+  // Count actual downloads
+  const downloadsSnapshot = await db.collection(COLLECTION).get();
+  downloadsSnapshot.docs.forEach(doc => {
     const data = doc.data();
     const file = data.file || "unknown";
-    if (!fileCounts[file]) {
-      fileCounts[file] = { file, fileName: data.fileName || file.split("/").pop(), count: 0 };
+    if (fileCounts[file]) {
+      fileCounts[file].count++;
+    } else {
+      fileCounts[file] = {
+        file,
+        fileName: data.fileName || file.split("/").pop(),
+        title: data.fileName || file.split("/").pop(),
+        category: "other",
+        count: 1
+      };
     }
-    fileCounts[file].count++;
   });
 
   const files = Object.values(fileCounts).sort((a, b) => b.count - a.count);
@@ -114,3 +139,25 @@ async function handleDetail(req, res) {
 }
 
 module.exports = { trackDownload };
+
+/**
+ * Seed the downloadable_materials collection with all known files.
+ */
+async function handleSeed(_req, res) {
+  const materials = [
+    { file: "/assets/pdf/Sproochentest Adjective Guide.pdf", fileName: "Sproochentest Adjective Guide.pdf", title: "Adjective Declension Guide", category: "sproochentest", downloads: 0 },
+    { file: "/assets/pdf/Sproochentest Articles and Prepositions Guide.pdf", fileName: "Sproochentest Articles and Prepositions Guide.pdf", title: "Articles & Prepositions Guide", category: "sproochentest", downloads: 0 },
+    { file: "/assets/pdf/Sproochentest Picture Description Guide.pdf", fileName: "Sproochentest Picture Description Guide.pdf", title: "Picture Description Master Sheet", category: "sproochentest", downloads: 0 },
+    { file: "/assets/pdf/ai-dashboard-review-template.pdf", fileName: "ai-dashboard-review-template.pdf", title: "AI Dashboard Review Template", category: "templates", downloads: 0 },
+    { file: "/assets/pdf/ai-root-cause-analysis-template.pdf", fileName: "ai-root-cause-analysis-template.pdf", title: "AI Root Cause Analysis Template", category: "templates", downloads: 0 },
+    { file: "/assets/pdf/ai-weekly-business-review-template.pdf", fileName: "ai-weekly-business-review-template.pdf", title: "AI Weekly Business Review Template", category: "templates", downloads: 0 },
+    { file: "/assets/pdf/future-proof-skills-guide.pdf", fileName: "future-proof-skills-guide.pdf", title: "Future-Proof Skills Guide", category: "tools", downloads: 0 }
+  ];
+
+  for (const mat of materials) {
+    const docId = mat.file.replace(/[\/ ]/g, "_").replace(/^_/, "");
+    await db.collection("downloadable_materials").doc(docId).set(mat, { merge: true });
+  }
+
+  res.status(200).json({ result: "success", count: materials.length });
+}
