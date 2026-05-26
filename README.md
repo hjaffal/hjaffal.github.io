@@ -174,18 +174,23 @@ Site available at `http://localhost:4000`
 
 ---
 
+## Fork & Setup
+
+Want to use this as a starting point for your own site? See the full setup guide:
+
+**[→ SETUP.md](./SETUP.md)**
+
+Covers: forking, Firebase setup, secrets, configuration, deployment, and customization.
+
+---
+
 ## Key design decisions
 
 - **No build tools for frontend** — Native ES modules, no webpack/vite/bundler. Keeps the Jekyll static site simple.
 - **Modular admin panel** — Hub-and-spoke architecture with lazy-loaded panel modules.
 - **GitHub as CMS** — Posts are created/edited by committing markdown files via the GitHub API. No database for content.
+- **Hybrid draft workflow** — Firestore for instant draft editing and preview, GitHub for publishing.
 - **Property-based testing** — Core logic (filtering, stats computation, CSV export, utilities) tested with fast-check.
 - **Split CSS** — `global.css` loaded everywhere + page-specific CSS via front matter. No monolithic stylesheet.
 - **SEO-first content** — 4 canonical positions, staggered post dates, internal linking strategy, tool landing pages optimized for search.
 - **Firebase for backend** — Cloud Functions handle email, AI generation, analytics, and subscriber management. No server to maintain.
-
----
-
-## Credits
-
-Built on [Beautiful Jekyll](https://beautifuljekyll.com) by [Dean Attali](https://deanattali.com).
