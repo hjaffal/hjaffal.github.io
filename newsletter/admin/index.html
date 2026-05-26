@@ -128,34 +128,67 @@ css:
       <div id="overview-error" class="nla-error" hidden></div>
       <div id="overview-content" hidden>
 
-        <!-- Newsletter Section -->
-        <div class="nla-dash-section">
-          <h2 class="nla-dash-section-title">Newsletter</h2>
-          <div class="nla-dash-metrics" id="dash-newsletter-metrics"></div>
-        </div>
+        <div class="nla-dash-grid">
+          <!-- Left + Center columns -->
+          <div class="nla-dash-main">
 
-        <!-- Posts Section -->
-        <div class="nla-dash-section">
-          <h2 class="nla-dash-section-title">Posts</h2>
-          <div class="nla-dash-metrics" id="dash-posts-metrics"></div>
-        </div>
+            <!-- Newsletter Section -->
+            <div class="nla-dash-card">
+              <h2 class="nla-dash-card-title">Newsletter</h2>
+              <div class="nla-dash-metrics" id="dash-newsletter-metrics"></div>
+            </div>
 
-        <!-- Position Breakdown -->
-        <div class="nla-dash-section">
-          <h2 class="nla-dash-section-title">By Position</h2>
-          <div class="nla-dash-positions" id="dash-positions"></div>
-        </div>
+            <div class="nla-dash-card">
+              <div class="nla-dash-card-header">
+                <h3 class="nla-dash-card-subtitle">Subscriber Growth</h3>
+                <div class="nla-dash-range-btns" id="sub-chart-range">
+                  <button class="nla-dash-range-btn active" data-range="30">30d</button>
+                  <button class="nla-dash-range-btn" data-range="90">90d</button>
+                  <button class="nla-dash-range-btn" data-range="365">1y</button>
+                  <button class="nla-dash-range-btn" data-range="0">All</button>
+                </div>
+              </div>
+              <div class="nla-dash-chart-wrap">
+                <canvas id="dash-subscriber-canvas" height="180"></canvas>
+              </div>
+            </div>
 
-        <!-- Recent Activity -->
-        <div class="nla-dash-section">
-          <h2 class="nla-dash-section-title">Recent Activity</h2>
-          <div class="nla-dash-activity" id="dash-activity"></div>
-        </div>
+            <!-- Posts Section -->
+            <div class="nla-dash-card">
+              <h2 class="nla-dash-card-title">Posts</h2>
+              <div class="nla-dash-metrics" id="dash-posts-metrics"></div>
+            </div>
 
-        <!-- Editions Analytics -->
-        <div class="nla-dash-section">
-          <h2 class="nla-dash-section-title">Editions</h2>
-          <div id="dash-editions"></div>
+            <div class="nla-dash-card">
+              <div class="nla-dash-card-header">
+                <h3 class="nla-dash-card-subtitle">Publishing Frequency</h3>
+                <div class="nla-dash-range-btns" id="posts-chart-range">
+                  <button class="nla-dash-range-btn" data-range="30">30d</button>
+                  <button class="nla-dash-range-btn active" data-range="90">90d</button>
+                  <button class="nla-dash-range-btn" data-range="365">1y</button>
+                  <button class="nla-dash-range-btn" data-range="0">All</button>
+                </div>
+              </div>
+              <div class="nla-dash-chart-wrap">
+                <canvas id="dash-posts-canvas" height="180"></canvas>
+              </div>
+            </div>
+
+            <!-- Position Breakdown -->
+            <div class="nla-dash-card">
+              <h2 class="nla-dash-card-title">By Position</h2>
+              <div class="nla-dash-positions" id="dash-positions"></div>
+            </div>
+
+          </div>
+
+          <!-- Right column: Recent Activity -->
+          <div class="nla-dash-sidebar">
+            <div class="nla-dash-card nla-dash-card-sticky">
+              <h2 class="nla-dash-card-title">Recent Activity</h2>
+              <div class="nla-dash-activity" id="dash-activity"></div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -544,6 +577,7 @@ css:
 
 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
 <script type="module">
 import { init } from '/assets/js/admin/main.js';

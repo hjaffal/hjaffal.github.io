@@ -39,8 +39,10 @@ const getAnalytics = onRequest(
       await handleEditionDetail(req, res);
     } else if (type === "overview") {
       await handleOverview(req, res);
+    } else if (type === "subscriberGrowth") {
+      await handleSubscriberGrowth(req, res);
     } else {
-      res.status(400).json({ error: "Invalid type parameter. Use: editions, edition, or overview" });
+      res.status(400).json({ error: "Invalid type parameter. Use: editions, edition, overview, or subscriberGrowth" });
     }
   }
 );
@@ -264,6 +266,61 @@ async function handleOverview(_req, res) {
   } catch (err) {
     console.error("Error fetching subscriber overview:", err);
     res.status(500).json({ error: "Failed to fetch overview" });
+  }
+}
+
+/**
+ * Returns cumulative subscriber count per day for the last 30 days.
+ * Derives from subscribedAt field on each subscriber document.
+ */
+async function handleSubscriberGrowth(_req, res) {
+  const db = admin.firestore();
+
+  try {
+    const snapshot = await db.collection("subscribers").get();
+
+    // Build a map of subscription dates
+    const dailyCounts = {};
+    snapshot.docs.forEach((doc) => {
+      const data = doc.data();
+      if (data.subscribedAt) {
+        let dateStr;
+        if (data.subscribedAt.toDate) {
+          dateStr = data.subscribedAt.toDate().toISOString().split('T')[0];
+        } else if (typeof data.subscribedAt === 'string') {
+          dateStr = data.subscribedAt.split('T')[0];
+        }
+        if (dateStr) {
+          dailyCounts[dateStr] = (dailyCounts[dateStr] || 0) + 1;
+        }
+      }
+    });
+
+    // Build last 365 days with cumulative totals
+    const now = new Date();
+    const days = [];
+    let cumulative = 0;
+
+    // Count all subscribers before the 365-day window
+    const yearAgo = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000);
+    Object.keys(dailyCounts).sort().forEach(function(date) {
+      if (new Date(date) < yearAgo) {
+        cumulative += dailyCounts[date];
+      }
+    });
+
+    // Build the 365-day series
+    for (let i = 364; i >= 0; i--) {
+      const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+      const key = d.toISOString().split('T')[0];
+      cumulative += (dailyCounts[key] || 0);
+      days.push({ date: key, total: cumulative, new: dailyCounts[key] || 0 });
+    }
+
+    res.status(200).json({ days });
+  } catch (err) {
+    console.error("Error fetching subscriber growth:", err);
+    res.status(500).json({ error: "Failed to fetch subscriber growth" });
   }
 }
 

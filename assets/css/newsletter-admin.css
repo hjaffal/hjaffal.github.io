@@ -435,6 +435,148 @@ body:has(.nla-layout:not([hidden])) footer {
   margin-bottom: 32px;
 }
 
+/* Dashboard cards */
+.nla-dash-card {
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.nla-dash-card-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin: 0 0 16px;
+}
+
+.nla-dash-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.nla-dash-card-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0;
+}
+
+.nla-dash-card-sticky {
+  position: sticky;
+  top: 20px;
+}
+
+/* Date range buttons */
+.nla-dash-range-btns {
+  display: flex;
+  gap: 4px;
+  background: var(--slate-bg);
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.nla-dash-range-btn {
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.nla-dash-range-btn.active {
+  background: var(--white);
+  color: var(--dark);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.nla-dash-range-btn:hover:not(.active) {
+  color: var(--dark);
+}
+
+/* Chart wrapper */
+.nla-dash-chart-wrap {
+  position: relative;
+}
+
+/* 3-column dashboard grid */
+.nla-dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+.nla-dash-main {
+  min-width: 0;
+}
+
+.nla-dash-sidebar {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .nla-dash-grid {
+    grid-template-columns: 1fr;
+  }
+  .nla-dash-card-sticky {
+    position: static;
+  }
+}
+
+/* Line chart */
+.nla-dash-line-chart {
+  padding: 12px 0;
+}
+
+.nla-dash-line-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.nla-dash-line-chart-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nla-dash-line-chart-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.nla-dash-line-chart-value small {
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.nla-dash-line-svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+.nla-dash-line-chart-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
 .nla-dash-section-title {
   font-size: 0.8rem;
   font-weight: 700;
@@ -629,6 +771,44 @@ body:has(.nla-layout:not([hidden])) footer {
   font-size: 0.85rem;
   color: var(--text-soft);
   padding: 16px 0;
+}
+
+/* Posts per month chart - legacy (removed, using Chart.js now) */
+
+/* Last edition stats */
+.nla-dash-metric-group {
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+}
+
+.nla-dash-metric-group-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  margin: 0 0 10px;
+}
+
+.nla-dash-last-edition-title {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nla-dash-last-edition-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-soft);
 }
 
 /* Editions table */

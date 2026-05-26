@@ -2,8 +2,8 @@
  * Admin Panel — Dashboard Module
  *
  * Renders a health-check dashboard with:
- * - Newsletter metrics (active, unsubscribed, bounced, latest edition, avg rates)
- * - Posts metrics (published total, this week, this month, latest post)
+ * - Newsletter metrics (active, unsubscribed, bounced, avg rates, last edition stats)
+ * - Posts metrics (published total, this week, this month, latest post, posts-per-month chart)
  * - Position breakdown (per-position post count + latest post)
  * - Recent activity feed (latest posts + editions combined)
  */
@@ -73,7 +73,7 @@ function getPosts() {
 }
 
 /**
- * Render the newsletter metrics section.
+ * Render the newsletter metrics section with last edition stats.
  */
 function renderNewsletterMetrics(data, editions) {
   const container = $('dash-newsletter-metrics');
@@ -81,7 +81,7 @@ function renderNewsletterMetrics(data, editions) {
 
   const latestEdition = editions.length > 0 ? editions[0] : null;
 
-  // Compute average open/click rates from editions
+  // Compute average open/click rates
   const editionsWithRates = editions.filter(e => e.openRate != null);
   const avgOpen = editionsWithRates.length > 0
     ? (editionsWithRates.reduce((sum, e) => sum + e.openRate, 0) / editionsWithRates.length).toFixed(1)
@@ -91,7 +91,7 @@ function renderNewsletterMetrics(data, editions) {
     ? (editionsWithClicks.reduce((sum, e) => sum + e.clickRate, 0) / editionsWithClicks.length).toFixed(1)
     : '—';
 
-  container.innerHTML =
+  let html =
     '<div class="nla-dash-metric">' +
       '<span class="nla-dash-metric-value">' + (data.totalActive || 0) + '</span>' +
       '<span class="nla-dash-metric-label">Active subscribers</span>' +
@@ -111,15 +111,72 @@ function renderNewsletterMetrics(data, editions) {
     '<div class="nla-dash-metric">' +
       '<span class="nla-dash-metric-value">' + (avgClick !== '—' ? avgClick + '%' : '—') + '</span>' +
       '<span class="nla-dash-metric-label">Avg click rate</span>' +
-    '</div>' +
-    '<div class="nla-dash-metric nla-dash-metric-wide">' +
-      '<span class="nla-dash-metric-value nla-dash-metric-value-sm">' + (latestEdition ? escHtml(latestEdition.subject) : 'No editions yet') + '</span>' +
-      '<span class="nla-dash-metric-label">Latest edition' + (latestEdition ? ' · ' + formatDate(latestEdition.sentAt) : '') + '</span>' +
     '</div>';
+
+  // Last edition statistics
+  if (latestEdition) {
+    html += '<div class="nla-dash-metric-group nla-dash-metric-wide">' +
+      '<h4 class="nla-dash-metric-group-title">Last Edition</h4>' +
+      '<div class="nla-dash-metric-group-content">' +
+        '<span class="nla-dash-last-edition-title">' + escHtml(latestEdition.subject) + '</span>' +
+        '<div class="nla-dash-last-edition-stats">' +
+          '<span>' + (latestEdition.recipientCount || 0) + ' recipients</span>' +
+          '<span>' + (latestEdition.openRate != null ? latestEdition.openRate.toFixed(1) + '% opened' : '— opened') + '</span>' +
+          '<span>' + (latestEdition.clickRate != null ? latestEdition.clickRate.toFixed(1) + '% clicked' : '— clicked') + '</span>' +
+          '<span>' + formatDate(latestEdition.sentAt) + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  container.innerHTML = html;
 }
 
 /**
- * Render the posts metrics section.
+ * Compute cumulative post count over time (only on days with posts).
+ */
+function getPostsCumulative(posts, numDays) {
+  const now = new Date();
+  const postDates = {};
+
+  posts.forEach(function(p) {
+    if (p.date === '—') return;
+    var key = p.date.substring(0, 10);
+    postDates[key] = (postDates[key] || 0) + 1;
+  });
+
+  var allDates = Object.keys(postDates).sort();
+  if (allDates.length === 0) return [];
+
+  var startDate;
+  if (!numDays || numDays === 0) {
+    startDate = new Date(allDates[0]);
+  } else {
+    startDate = new Date(now.getTime() - numDays * 24 * 60 * 60 * 1000);
+  }
+
+  var cumulative = 0;
+  allDates.forEach(function(date) {
+    if (new Date(date) < startDate) cumulative += postDates[date];
+  });
+
+  var points = [];
+  allDates.forEach(function(date) {
+    if (new Date(date) < startDate) return;
+    if (new Date(date) > now) return;
+    cumulative += postDates[date];
+    var d = new Date(date);
+    points.push({
+      label: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      count: cumulative
+    });
+  });
+
+  return points;
+}
+
+/**
+ * Render the posts metrics section (without chart — chart is separate).
  */
 function renderPostsMetrics(stats) {
   const container = $('dash-posts-metrics');
@@ -196,10 +253,8 @@ function renderActivity(posts, editions) {
   const container = $('dash-activity');
   if (!container) return;
 
-  // Combine recent posts and editions into a single feed sorted by date
   const items = [];
 
-  // Add recent published posts (last 5)
   const recentPosts = posts
     .filter(p => p.status === 'published' && p.date !== '—')
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -209,12 +264,10 @@ function renderActivity(posts, editions) {
     items.push({ type: 'post', title: p.title, date: p.date, url: p.url });
   });
 
-  // Add recent editions (last 5)
   editions.slice(0, 5).forEach(function(e) {
     items.push({ type: 'edition', title: e.subject, date: e.sentAt, id: e.id, recipients: e.recipientCount });
   });
 
-  // Sort combined by date descending
   items.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   if (items.length === 0) {
@@ -249,46 +302,230 @@ function renderActivity(posts, editions) {
 }
 
 /**
- * Render the editions analytics table.
+ * Render a simple SVG line chart.
+ * @param {Array} data - Array of {label, value} objects
+ * @param {string} color - Line color
+ * @param {string} title - Chart title
+ * @returns {string} HTML string
  */
-function renderEditions(editions) {
-  const container = $('dash-editions');
-  if (!container) return;
+function renderLineChart(data, color, title) {
+  if (!data || data.length === 0) return '<p class="nla-dash-empty">No data available.</p>';
 
-  if (editions.length === 0) {
-    container.innerHTML = '<p class="nla-dash-empty">No editions sent yet.</p>';
+  const width = 100;
+  const height = 40;
+  const maxVal = Math.max(...data.map(d => d.value), 1);
+  const points = data.map(function(d, i) {
+    const x = (i / (data.length - 1)) * width;
+    const y = height - (d.value / maxVal) * (height - 4);
+    return x.toFixed(1) + ',' + y.toFixed(1);
+  }).join(' ');
+
+  const lastVal = data[data.length - 1].value;
+  const firstVal = data[0].value;
+  const change = lastVal - firstVal;
+  const changeStr = change >= 0 ? '+' + change : '' + change;
+
+  return '<div class="nla-dash-line-chart">' +
+    '<div class="nla-dash-line-chart-header">' +
+      '<span class="nla-dash-line-chart-title">' + title + '</span>' +
+      '<span class="nla-dash-line-chart-value">' + lastVal + ' <small style="color:' + (change >= 0 ? '#10B981' : '#EF4444') + '">' + changeStr + '</small></span>' +
+    '</div>' +
+    '<svg viewBox="0 0 ' + width + ' ' + height + '" preserveAspectRatio="none" class="nla-dash-line-svg">' +
+      '<polyline points="' + points + '" fill="none" stroke="' + color + '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<polyline points="0,' + height + ' ' + points + ' ' + width + ',' + height + '" fill="' + color + '" fill-opacity="0.08" stroke="none"/>' +
+    '</svg>' +
+    '<div class="nla-dash-line-chart-labels">' +
+      '<span>' + data[0].label + '</span>' +
+      '<span>' + data[data.length - 1].label + '</span>' +
+    '</div>' +
+  '</div>';
+}
+
+// --- Chart.js Interactive Charts ---
+
+let subscriberChart = null;
+let postsChart = null;
+let subscriberGrowthData = null;
+let allPostsData = null;
+
+/**
+ * Create or update the subscriber growth Chart.js line chart.
+ */
+function renderSubscriberChartJS(growthData, days) {
+  const canvas = document.getElementById('dash-subscriber-canvas');
+  if (!canvas || !growthData || !growthData.days) return;
+
+  subscriberGrowthData = growthData;
+
+  // Filter to requested range (0 = all)
+  const allDays = growthData.days;
+  const sliced = days === 0 ? allDays : allDays.slice(-days);
+
+  const labels = sliced.map(d => {
+    const date = new Date(d.date);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  });
+  const values = sliced.map(d => d.total);
+
+  if (subscriberChart) {
+    subscriberChart.data.labels = labels;
+    subscriberChart.data.datasets[0].data = values;
+    subscriberChart.update();
     return;
   }
 
-  let html = '<div class="nla-dash-editions-table"><table class="nla-table">' +
-    '<thead><tr>' +
-      '<th>Subject</th>' +
-      '<th>Sent</th>' +
-      '<th>Recipients</th>' +
-      '<th>Open Rate</th>' +
-      '<th>Click Rate</th>' +
-      '<th></th>' +
-    '</tr></thead><tbody>';
-
-  editions.slice(0, 10).forEach(function(e) {
-    const openRate = e.openRate != null ? e.openRate.toFixed(1) + '%' : '—';
-    const clickRate = e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—';
-    html += '<tr>' +
-      '<td class="nla-dash-editions-subject">' + escHtml(e.subject) + '</td>' +
-      '<td>' + formatDate(e.sentAt) + '</td>' +
-      '<td>' + (e.recipientCount || '—') + '</td>' +
-      '<td>' + openRate + '</td>' +
-      '<td>' + clickRate + '</td>' +
-      '<td><button class="nla-btn-sm" onclick="viewEditionFromOverview(\'' + e.id + '\')" type="button">Details</button></td>' +
-    '</tr>';
+  subscriberChart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Subscribers',
+        data: values,
+        borderColor: '#9333EA',
+        backgroundColor: 'rgba(147, 51, 234, 0.06)',
+        borderWidth: 2,
+        pointRadius: 2,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#9333EA',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0F172A',
+          titleFont: { size: 11 },
+          bodyFont: { size: 12, weight: '600' },
+          padding: 10,
+          cornerRadius: 6
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 10 }, maxTicksLimit: 8, color: '#94A3B8' }
+        },
+        y: {
+          grid: { color: 'rgba(148,163,184,0.1)' },
+          ticks: { font: { size: 10 }, color: '#94A3B8' },
+          beginAtZero: false
+        }
+      }
+    }
   });
-
-  html += '</tbody></table></div>';
-  container.innerHTML = html;
 }
 
 /**
- * Main dashboard loader. Fetches newsletter data and renders all sections.
+ * Create or update the cumulative posts Chart.js line chart.
+ */
+function renderPostsChartJS(posts, days) {
+  const canvas = document.getElementById('dash-posts-canvas');
+  if (!canvas) return;
+
+  allPostsData = posts;
+
+  const data = getPostsCumulative(posts, days);
+  const labels = data.map(d => d.label);
+  const values = data.map(d => d.count);
+
+  if (postsChart) {
+    postsChart.data.labels = labels;
+    postsChart.data.datasets[0].data = values;
+    postsChart.update();
+    return;
+  }
+
+  postsChart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Total Posts',
+        data: values,
+        borderColor: '#2563EB',
+        backgroundColor: 'rgba(37, 99, 235, 0.06)',
+        borderWidth: 2,
+        pointRadius: 2,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#2563EB',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0F172A',
+          titleFont: { size: 11 },
+          bodyFont: { size: 12, weight: '600' },
+          padding: 10,
+          cornerRadius: 6
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 10 }, maxTicksLimit: 8, color: '#94A3B8' }
+        },
+        y: {
+          grid: { color: 'rgba(148,163,184,0.1)' },
+          ticks: { font: { size: 10 }, color: '#94A3B8', stepSize: 1 },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+/**
+ * Wire up date range buttons for charts.
+ */
+function initChartRangeButtons() {
+  // Subscriber chart range
+  const subRange = document.getElementById('sub-chart-range');
+  if (subRange) {
+    subRange.addEventListener('click', function(e) {
+      const btn = e.target.closest('.nla-dash-range-btn');
+      if (!btn) return;
+      subRange.querySelectorAll('.nla-dash-range-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const days = parseInt(btn.dataset.range);
+      if (subscriberGrowthData) renderSubscriberChartJS(subscriberGrowthData, days);
+    });
+  }
+
+  // Posts chart range
+  const postsRange = document.getElementById('posts-chart-range');
+  if (postsRange) {
+    postsRange.addEventListener('click', function(e) {
+      const btn = e.target.closest('.nla-dash-range-btn');
+      if (!btn) return;
+      postsRange.querySelectorAll('.nla-dash-range-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const days = parseInt(btn.dataset.range);
+      if (allPostsData) renderPostsChartJS(allPostsData, days);
+    });
+  }
+}
+
+/**
+ * Render subscriber growth chart (called from loadOverview).
+ */
+function renderSubscriberChart(growthData) {
+  renderSubscriberChartJS(growthData, 30);
+}
+
+/**
+ * Main dashboard loader.
  */
 export async function loadOverview() {
   const API = getApiUrls();
@@ -302,23 +539,24 @@ export async function loadOverview() {
 
   let newsletterData = { totalActive: 0, totalUnsubscribed: 0, totalBounced: 0 };
   let editions = [];
+  let subscriberGrowth = null;
 
   try {
     newsletterData = await apiFetch(API.analytics + '?type=overview');
-  } catch (e) {
-    // Newsletter API might fail — continue with posts data
-  }
+  } catch (e) { /* continue */ }
 
   try {
     const editionsData = await apiFetch(API.analytics + '?type=editions');
     editions = editionsData.editions || [];
-  } catch (e) {
-    // Editions might fail — continue
-  }
+  } catch (e) { /* continue */ }
+
+  try {
+    subscriberGrowth = await apiFetch(API.analytics + '?type=subscriberGrowth');
+  } catch (e) { /* continue */ }
 
   hide(loading); show(content);
 
-  // Ensure activity link handlers are available on window
+  // Ensure activity link handlers are available
   if (!window.viewEditionFromOverview) {
     import('./analytics.js').then(function(m) { window.viewEditionFromOverview = m.viewEditionFromOverview; });
   }
@@ -327,22 +565,13 @@ export async function loadOverview() {
   }
 
   renderNewsletterMetrics(newsletterData, editions);
+  renderSubscriberChart(subscriberGrowth);
   renderPostsMetrics(stats);
+  renderPostsChartJS(posts, 90);
   renderPositions(stats);
   renderActivity(posts, editions);
-  renderEditions(editions);
+  initChartRangeButtons();
 }
 
-/**
- * Kept for backward compatibility with existing renderPostStats calls.
- */
-export function renderPostStats() {
-  // No-op — dashboard now renders inline
-}
-
-/**
- * Initialize dashboard event handlers.
- */
-export function initDashboard() {
-  // No additional handlers needed — interactions are inline
-}
+export function renderPostStats() { /* no-op */ }
+export function initDashboard() { /* no-op */ }
