@@ -55,9 +55,26 @@ css:
       <span class="wr-articles-label">ALL ARTICLES</span>
       <span class="wr-articles-count">{{ site.posts.size }} posts</span>
     </div>
-    <div class="wr-articles-list">
+    <div class="wr-filter-bar">
+      <button class="wr-filter-btn active" data-filter="all">All</button>
+      <button class="wr-filter-btn" data-filter="ai-operations">AI Operations</button>
+      <button class="wr-filter-btn" data-filter="decision-authority">Decision Authority</button>
+      <button class="wr-filter-btn" data-filter="risk-intelligence">Risk Intelligence</button>
+      <button class="wr-filter-btn" data-filter="ai-and-work">AI and Work</button>
+    </div>
+    <div class="wr-articles-list" id="wr-articles-list">
       {% for post in site.posts %}
-      <a href="{{ post.url | relative_url }}" class="wr-article-row">
+      <a href="{{ post.url | relative_url }}" class="wr-article-row" data-tags="{{ post.tags | join: ' ' }}">
+        {% if post.thumbnail-img %}
+        <div class="wr-article-thumb-wrap">
+          <img class="wr-article-thumb" src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.src='/assets/img/posts/default.webp';this.parentElement.classList.add('wr-article-thumb-fallback');this.insertAdjacentHTML('afterend','<span class=wr-article-thumb-title>{{ post.title | xml_escape | truncate: 40 }}</span>')">
+        </div>
+        {% else %}
+        <div class="wr-article-thumb-default">
+          <img src="/assets/img/posts/default.webp" alt="" loading="lazy">
+          <span class="wr-article-thumb-title">{{ post.title | truncate: 40 }}</span>
+        </div>
+        {% endif %}
         <div class="wr-article-info">
           <span class="wr-article-title">{{ post.title }}</span>
           <div class="wr-article-meta">
@@ -74,3 +91,24 @@ css:
   </section>
 
 </div>
+
+<script>
+(function() {
+  var btns = document.querySelectorAll('.wr-filter-btn');
+  var rows = document.querySelectorAll('.wr-article-row');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.dataset.filter;
+      rows.forEach(function(row) {
+        if (filter === 'all' || (row.dataset.tags && row.dataset.tags.indexOf(filter) !== -1)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>

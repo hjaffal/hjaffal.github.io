@@ -39,7 +39,12 @@ css:
 
       {% if page.thumbnail-img %}
       <div class="post-featured-image">
-        <img src="{{ page.thumbnail-img }}" alt="{{ page.title | xml_escape }}" loading="lazy">
+        <img src="{{ page.thumbnail-img }}" alt="{{ page.title | xml_escape }}" loading="lazy" onerror="this.parentElement.classList.add('post-featured-image-default');this.src='/assets/img/posts/default.webp';this.insertAdjacentHTML('afterend','<span class=post-featured-image-title>{{ page.title | xml_escape }}</span>')">
+      </div>
+      {% else %}
+      <div class="post-featured-image post-featured-image-default">
+        <img src="/assets/img/posts/default.webp" alt="{{ page.title | xml_escape }}" loading="lazy">
+        <span class="post-featured-image-title">{{ page.title }}</span>
       </div>
       {% endif %}
 

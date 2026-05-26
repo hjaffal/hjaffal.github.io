@@ -6,8 +6,6 @@ share-description: "Nothing is permanently safe from AI. The goal isn't AI-proof
 tags:
   - ai-and-work
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
 ---
 
 Every few weeks, someone publishes a list of "AI-proof skills" — creativity, empathy, critical thinking, leadership. The implication is that if you develop these skills, you're safe. You can stop worrying. The robots won't come for you. This is comforting, and it's wrong. Nothing is permanently AI-proof. The honest framing is different: some skills are harder to replace right now, and the goal is to stay on the harder-to-replace side of the line as that line moves.
