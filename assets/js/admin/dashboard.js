@@ -700,7 +700,7 @@ export async function loadOverview() {
   let downloadStats = null;
   try {
     downloadStats = await apiFetch(API.trackDownload + '?action=stats');
-  } catch (e) { /* continue */ }
+  } catch (e) { console.warn('Download stats fetch failed:', e.message); }
 
   renderNewsletterMetrics(newsletterData, editions);
   renderPostsMetrics(stats);
