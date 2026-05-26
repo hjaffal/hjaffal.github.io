@@ -340,19 +340,21 @@ async function handlePublish(req, res) {
     const { Octokit } = require("@octokit/rest");
     const octokit = new Octokit({ auth: GITHUB_PAT.value() });
 
-    // Check if file already exists (for updates)
+    // Check if file already exists (for updates) — check both githubPath and the target filename
     let existingSha = null;
-    if (draft.githubPath) {
+    const pathsToCheck = [draft.githubPath, filename].filter(Boolean);
+    for (const pathToCheck of pathsToCheck) {
+      if (existingSha) break;
       try {
         const existing = await octokit.repos.getContent({
           owner: REPO_OWNER,
           repo: REPO_NAME,
-          path: draft.githubPath,
+          path: pathToCheck,
           ref: REPO_BRANCH
         });
         existingSha = existing.data.sha;
       } catch (e) {
-        // File doesn't exist yet, that's fine
+        // File doesn't exist at this path, try next
       }
     }
 

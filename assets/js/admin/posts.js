@@ -419,15 +419,15 @@ export function initPostsTable(posts) {
           const url = row.cells[3].data;
           const title = row.cells[0].data || 'post';
           const postIdx = row.cells[4].data;
-          const safeTitle = escHtml(title).replace(/'/g, '&#39;');
-          const safeUrl = escHtml(url).replace(/'/g, '&#39;');
+          const encodedTitle = btoa(unescape(encodeURIComponent(title)));
+          const safeUrl = escHtml(url).replace(/'/g, "\\'");
           return gridjs.html(
             '<div class="nla-table-actions">' +
-              '<a class="nla-btn-sm" href="' + escHtml(url) + '" target="_blank" rel="noopener" aria-label="View ' + escHtml(title) + '">View</a>' +
-              '<button class="nla-btn-sm" onclick="editPost(\'' + safeTitle + '\')" aria-label="Edit ' + escHtml(title) + '">Edit</button>' +
-              '<button class="nla-btn-sm" onclick="copyPostUrl(\'' + safeUrl + '\')" aria-label="Copy URL for ' + escHtml(title) + '" title="Copy URL">📋</button>' +
-              '<button class="nla-btn-sm" onclick="showPostDetail(' + postIdx + ')" aria-label="Details for ' + escHtml(title) + '" title="Show details">▼</button>' +
-              '<button class="nla-btn-sm danger" onclick="deletePublishedPost(\'' + safeUrl + '\')" aria-label="Delete ' + escHtml(title) + '" title="Delete post">🗑</button>' +
+              '<a class="nla-btn-sm" href="' + escHtml(url) + '" target="_blank" rel="noopener" aria-label="View">View</a>' +
+              '<button class="nla-btn-sm" onclick="editPostEncoded(\'' + encodedTitle + '\')">Edit</button>' +
+              '<button class="nla-btn-sm" onclick="copyPostUrl(\'' + safeUrl + '\')" title="Copy URL">📋</button>' +
+              '<button class="nla-btn-sm" onclick="showPostDetail(' + postIdx + ')" title="Show details">▼</button>' +
+              '<button class="nla-btn-sm danger" onclick="deletePublishedPost(\'' + safeUrl + '\')" title="Delete post">🗑</button>' +
             '</div>'
           );
         }
@@ -682,4 +682,11 @@ if (typeof window !== 'undefined') {
       editPost(title);
     };
   }
+
+  // Base64-encoded version for onclick handlers (avoids quote escaping issues)
+  window.editPostEncoded = async function(encoded) {
+    const title = decodeURIComponent(escape(atob(encoded)));
+    const { editPost } = await import('./new-post.js');
+    editPost(title);
+  };
 }

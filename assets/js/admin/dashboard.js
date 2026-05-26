@@ -279,13 +279,13 @@ function renderActivity(posts, editions) {
   items.slice(0, 8).forEach(function(item) {
     const icon = item.type === 'post' ? '📝' : '✉️';
     const label = item.type === 'post' ? 'Published' : 'Sent to ' + (item.recipients || '?') + ' subscribers';
-    const safeTitle = escHtml(item.title).replace(/'/g, '&#39;');
+    const encodedTitle = btoa(unescape(encodeURIComponent(item.title)));
 
     let action = '';
     if (item.type === 'edition') {
-      action = ' onclick="viewEditionFromOverview(\'' + item.id + '\')"';
+      action = ' data-action="view-edition" data-id="' + item.id + '"';
     } else if (item.type === 'post') {
-      action = ' onclick="editPost(\'' + safeTitle + '\')"';
+      action = ' data-action="edit-post" data-title="' + encodedTitle + '"';
     }
 
     html += '<div class="nla-dash-activity-item"' + action + '>' +
@@ -299,6 +299,19 @@ function renderActivity(posts, editions) {
   html += '</div>';
 
   container.innerHTML = html;
+
+  // Event delegation for activity items
+  container.addEventListener('click', function(e) {
+    const item = e.target.closest('[data-action]');
+    if (!item) return;
+    const action = item.dataset.action;
+    if (action === 'view-edition' && window.viewEditionFromOverview) {
+      window.viewEditionFromOverview(item.dataset.id);
+    } else if (action === 'edit-post' && window.editPost) {
+      const title = decodeURIComponent(escape(atob(item.dataset.title)));
+      window.editPost(title);
+    }
+  });
 }
 
 /**
