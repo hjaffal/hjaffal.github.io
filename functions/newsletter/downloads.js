@@ -138,7 +138,6 @@ async function handleDetail(req, res) {
 
   const snapshot = await db.collection(COLLECTION)
     .where("file", "==", file)
-    .orderBy("downloadedAt", "desc")
     .limit(100)
     .get();
 
@@ -150,6 +149,9 @@ async function handleDetail(req, res) {
       downloadedAt: data.downloadedAt ? data.downloadedAt.toDate().toISOString() : null,
     });
   });
+
+  // Sort by date descending client-side
+  downloads.sort((a, b) => (b.downloadedAt || '').localeCompare(a.downloadedAt || ''));
 
   res.status(200).json({ file, downloads });
 }

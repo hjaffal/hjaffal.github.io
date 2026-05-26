@@ -86,6 +86,9 @@ css:
       btn.disabled = true;
       btn.textContent = 'Subscribing…';
 
+      // Store email for download tracking
+      localStorage.setItem('sp_email', email);
+
       fetch('{{ site.data.firebase.fn_subscribe }}', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

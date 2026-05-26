@@ -105,7 +105,7 @@ css:
 var TEMPLATE_FILE = '{{ page.template_pdf }}';
 
 function handleTemplateDownload() {
-  if (localStorage.getItem('tpl_subscribed')) { triggerFile(TEMPLATE_FILE); }
+  if (localStorage.getItem('sp_subscribed')) { triggerFile(TEMPLATE_FILE); }
   else { document.getElementById('template-download-gate').style.display = 'block'; document.getElementById('template-gate-email').focus(); }
 }
 function closeGate() { document.getElementById('template-download-gate').style.display = 'none'; }
@@ -114,8 +114,8 @@ function submitGateEmail(e) {
   var name = document.getElementById('template-gate-name').value;
   var email = document.getElementById('template-gate-email').value;
   if (!email) return;
-  localStorage.setItem('tpl_subscribed', '1');
-  localStorage.setItem('tpl_email', email);
+  localStorage.setItem('sp_subscribed', '1');
+  localStorage.setItem('sp_email', email);
   // Subscribe via API
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
@@ -124,7 +124,16 @@ function submitGateEmail(e) {
   }).catch(function(){});
   var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
 }
-function triggerFile(file) { var a=document.createElement('a'); a.href=file; a.download=''; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
+function triggerFile(file) {
+  // Track download
+  var email = localStorage.getItem('sp_email') || 'anonymous';
+  fetch('{{ site.data.firebase.fn_track_download }}?action=track', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ email: email, file: file })
+  }).catch(function(){});
+  var a=document.createElement('a'); a.href=file; a.download=''; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
 function copyPrompt() {
   var block = document.getElementById('ai-prompt-block');
   navigator.clipboard.writeText(block.innerText||block.textContent).then(function(){
