@@ -105,9 +105,7 @@ export async function viewEdition(id) {
 
   try {
     const data = await apiFetch(getApiUrls().analytics + '?type=edition&id=' + encodeURIComponent(id));
-    const linksHtml = (data.clickedLinks || []).map(l => `
-      <tr><td>${escHtml(l.url)}</td><td>${l.clicks}</td></tr>
-    `).join('');
+    const clickedLinks = data.clickedLinks || [];
 
     detail.innerHTML = `
       <button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button>
@@ -122,9 +120,30 @@ export async function viewEdition(id) {
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.clickRate != null ? data.clickRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Click Rate</div></div>
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.failedSends || 0}</div><div class="nla-edition-stat-label">Failed</div></div>
         </div>
-        ${linksHtml ? '<h4 class="nla-section-title">Clicked Links</h4><div class="nla-table-wrap"><table class="nla-table"><thead><tr><th>URL</th><th>Clicks</th></tr></thead><tbody>' + linksHtml + '</tbody></table></div>' : ''}
+        ${clickedLinks.length > 0 ? '<h4 class="nla-section-title">Clicked Links</h4><div id="edition-links-grid"></div>' : ''}
       </div>
     `;
+
+    // Render clicked links as Grid.js table
+    if (clickedLinks.length > 0) {
+      new gridjs.Grid({
+        columns: [
+          { name: 'URL', sort: true },
+          { name: 'Clicks', sort: true }
+        ],
+        data: clickedLinks.map(function(l) {
+          return [l.url, l.clicks];
+        }),
+        sort: true,
+        pagination: { enabled: true, limit: 20 },
+        className: {
+          container: 'nla-gridjs',
+          table: 'nla-gridjs-table',
+          th: 'nla-gridjs-th',
+          td: 'nla-gridjs-td'
+        }
+      }).render(document.getElementById('edition-links-grid'));
+    }
   } catch (err) {
     detail.innerHTML = '<button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button><div class="nla-error">' + escHtml(err.message) + '</div>';
   }

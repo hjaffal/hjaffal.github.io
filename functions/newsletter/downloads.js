@@ -33,8 +33,11 @@ const trackDownload = onRequest(
       } else if (action === "seed") {
         await verifyAdminToken(req);
         await handleSeed(req, res);
+      } else if (action === "stats") {
+        await verifyAdminToken(req);
+        await handleStats(req, res);
       } else {
-        res.status(400).json({ error: "Invalid action. Use: track, list, detail, seed" });
+        res.status(400).json({ error: "Invalid action. Use: track, list, detail, seed, stats" });
       }
     } catch (err) {
       if (err.statusCode === 401) {
@@ -154,6 +157,44 @@ async function handleDetail(req, res) {
   downloads.sort((a, b) => (b.downloadedAt || '').localeCompare(a.downloadedAt || ''));
 
   res.status(200).json({ file, downloads });
+}
+
+/**
+ * Return download stats: total, this month, this week, and daily breakdown.
+ */
+async function handleStats(_req, res) {
+  const snapshot = await db.collection(COLLECTION).get();
+
+  const now = new Date();
+  const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  let total = 0;
+  let thisMonth = 0;
+  let thisWeek = 0;
+  const dailyCounts = {};
+
+  snapshot.docs.forEach(doc => {
+    const data = doc.data();
+    total++;
+    if (data.downloadedAt) {
+      const date = data.downloadedAt.toDate();
+      const key = date.toISOString().split("T")[0];
+      dailyCounts[key] = (dailyCounts[key] || 0) + 1;
+      if (date >= monthStart) thisMonth++;
+      if (date >= weekAgo) thisWeek++;
+    }
+  });
+
+  // Build daily series (last 90 days)
+  const days = [];
+  for (let i = 89; i >= 0; i--) {
+    const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+    const key = d.toISOString().split("T")[0];
+    days.push({ date: key, count: dailyCounts[key] || 0 });
+  }
+
+  res.status(200).json({ total, thisMonth, thisWeek, days });
 }
 
 module.exports = { trackDownload };

@@ -442,6 +442,7 @@ body:has(.nla-layout:not([hidden])) footer {
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .nla-dash-card-title {
@@ -641,6 +642,36 @@ body:has(.nla-layout:not([hidden])) footer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 12px;
+}
+
+.nla-dash-positions-vertical {
+  grid-template-columns: 1fr;
+}
+
+.nla-dash-positions-vertical .nla-dash-position-card {
+  border: none;
+  background: none;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--slate-border);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.nla-dash-positions-vertical .nla-dash-position-card:last-child {
+  border-bottom: none;
+}
+
+.nla-dash-positions-vertical .nla-dash-position-card:hover {
+  border-color: var(--slate-border);
+}
+
+.nla-dash-positions-vertical .nla-dash-position-latest-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  max-width: 100%;
 }
 
 .nla-dash-position-card {

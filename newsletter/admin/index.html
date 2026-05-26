@@ -36,10 +36,9 @@ css:
       <div class="nla-sidebar-logo">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="32" height="32" rx="8" fill="#9333EA"/>
-          <path d="M7 11l9 6 9-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="7" y="9" width="18" height="14" rx="2" stroke="#fff" stroke-width="2"/>
+          <path d="M10 12h12M10 16h12M10 20h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        <span class="nla-sidebar-logo-text">Admin</span>
+        <span class="nla-sidebar-logo-text">Admin Panel</span>
       </div>
     </div>
     <nav class="nla-sidebar-nav">
@@ -66,10 +65,6 @@ css:
       <button class="nla-nav-item" data-panel="analytics" type="button">
         <span class="nla-nav-icon">📈</span> Analytics
       </button>
-      <button class="nla-nav-item" data-panel="import" type="button">
-        <span class="nla-nav-icon">📥</span> Import
-      </button>
-
       <div class="nla-nav-section-label">Downloads</div>
       <button class="nla-nav-item" data-panel="downloads" type="button">
         <span class="nla-nav-icon">📊</span> Analytics
@@ -179,19 +174,37 @@ css:
               </div>
             </div>
 
-            <!-- Position Breakdown -->
+            <!-- Downloads Section -->
             <div class="nla-dash-card">
-              <h2 class="nla-dash-card-title">By Position</h2>
-              <div class="nla-dash-positions" id="dash-positions"></div>
+              <h2 class="nla-dash-card-title">Downloads</h2>
+              <div class="nla-dash-metrics" id="dash-downloads-metrics"></div>
+            </div>
+
+            <div class="nla-dash-card">
+              <div class="nla-dash-card-header">
+                <h3 class="nla-dash-card-subtitle">Downloads per Day</h3>
+                <div class="nla-dash-range-btns" id="downloads-chart-range">
+                  <button class="nla-dash-range-btn active" data-range="30">30d</button>
+                  <button class="nla-dash-range-btn" data-range="90">90d</button>
+                  <button class="nla-dash-range-btn" data-range="0">All</button>
+                </div>
+              </div>
+              <div class="nla-dash-chart-wrap">
+                <canvas id="dash-downloads-canvas"></canvas>
+              </div>
             </div>
 
           </div>
 
-          <!-- Right column: Recent Activity -->
+          <!-- Right column: Recent Activity + Positions -->
           <div class="nla-dash-sidebar">
             <div class="nla-dash-card nla-dash-card-sticky">
               <h2 class="nla-dash-card-title">Recent Activity</h2>
               <div class="nla-dash-activity" id="dash-activity"></div>
+            </div>
+            <div class="nla-dash-card">
+              <h2 class="nla-dash-card-title">Posts per Position</h2>
+              <div class="nla-dash-positions nla-dash-positions-vertical" id="dash-positions"></div>
             </div>
           </div>
         </div>
@@ -539,42 +552,6 @@ css:
         <div id="analytics-grid"></div>
       </div>
       <div id="analytics-detail" hidden></div>
-    </div>
-
-    <!-- Import Panel -->
-    <div class="nla-panel" id="panel-import" hidden>
-      <div class="nla-panel-header">
-        <h1 class="nla-panel-title">Import Subscribers</h1>
-        <p class="nla-panel-desc">Bulk import subscribers from a JSON array.</p>
-      </div>
-      <div class="nla-card">
-        <div class="nla-card-header">JSON Data</div>
-        <div class="nla-form-group">
-          <label class="nla-label" for="import-json">Paste JSON Array</label>
-          <textarea class="nla-textarea" id="import-json" placeholder='[{"email":"user@example.com","status":"active","utm_source":"beehiiv","subscribedAt":"2024-01-15T10:00:00Z"}]'></textarea>
-          <p class="nla-import-help">Each object needs at minimum an <code>email</code> field. Optional: <code>status</code>, <code>utm_source</code>, <code>subscribedAt</code>.</p>
-        </div>
-      </div>
-      <div id="import-error" class="nla-error" hidden></div>
-      <div id="import-success" class="nla-success" hidden></div>
-
-      <div id="import-result" hidden>
-        <div class="nla-import-result">
-          <div class="nla-import-stat imported">
-            <div class="nla-import-stat-value" id="import-imported">0</div>
-            <div class="nla-import-stat-label">Imported</div>
-          </div>
-          <div class="nla-import-stat skipped">
-            <div class="nla-import-stat-value" id="import-skipped">0</div>
-            <div class="nla-import-stat-label">Skipped</div>
-          </div>
-          <div class="nla-import-stat rejected">
-            <div class="nla-import-stat-value" id="import-rejected">0</div>
-            <div class="nla-import-stat-label">Rejected</div>
-          </div>
-        </div>
-      </div>
-      <button class="nla-btn nla-btn-primary" type="button" id="import-btn">Import Subscribers</button>
     </div>
 
     <!-- Downloads Panel -->

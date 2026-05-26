@@ -530,6 +530,19 @@ function initChartRangeButtons() {
       if (allPostsData) renderPostsChartJS(allPostsData, days);
     });
   }
+
+  // Downloads chart range
+  const dlRange = document.getElementById('downloads-chart-range');
+  if (dlRange) {
+    dlRange.addEventListener('click', function(e) {
+      const btn = e.target.closest('.nla-dash-range-btn');
+      if (!btn) return;
+      dlRange.querySelectorAll('.nla-dash-range-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const days = parseInt(btn.dataset.range);
+      if (downloadsStatsData) renderDownloadsChartJS(downloadsStatsData, days);
+    });
+  }
 }
 
 /**
@@ -537,6 +550,110 @@ function initChartRangeButtons() {
  */
 function renderSubscriberChart(growthData) {
   renderSubscriberChartJS(growthData, 30);
+}
+
+// --- Downloads Section ---
+
+let downloadsChart = null;
+let downloadsStatsData = null;
+
+/**
+ * Render downloads metrics cards.
+ */
+function renderDownloadsMetrics(stats) {
+  const container = $('dash-downloads-metrics');
+  if (!container) return;
+
+  if (!stats) {
+    container.innerHTML = '<p class="nla-dash-empty">Download data not available.</p>';
+    return;
+  }
+
+  container.innerHTML =
+    '<div class="nla-dash-metric">' +
+      '<span class="nla-dash-metric-value">' + (stats.total || 0) + '</span>' +
+      '<span class="nla-dash-metric-label">All time</span>' +
+    '</div>' +
+    '<div class="nla-dash-metric">' +
+      '<span class="nla-dash-metric-value">' + (stats.thisMonth || 0) + '</span>' +
+      '<span class="nla-dash-metric-label">This month</span>' +
+    '</div>' +
+    '<div class="nla-dash-metric">' +
+      '<span class="nla-dash-metric-value">' + (stats.thisWeek || 0) + '</span>' +
+      '<span class="nla-dash-metric-label">This week</span>' +
+    '</div>';
+}
+
+/**
+ * Render downloads per day Chart.js line chart.
+ */
+function renderDownloadsChartJS(stats, days) {
+  const canvas = document.getElementById('dash-downloads-canvas');
+  if (!canvas || !stats || !stats.days) return;
+  if (typeof Chart === 'undefined') return;
+
+  downloadsStatsData = stats;
+
+  const allDays = stats.days;
+  const sliced = days === 0 ? allDays : allDays.slice(-days);
+
+  const labels = sliced.map(function(d) {
+    var date = new Date(d.date);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  });
+  const values = sliced.map(function(d) { return d.count; });
+
+  if (downloadsChart) {
+    downloadsChart.data.labels = labels;
+    downloadsChart.data.datasets[0].data = values;
+    downloadsChart.update();
+    return;
+  }
+
+  downloadsChart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Downloads',
+        data: values,
+        borderColor: '#0D9488',
+        backgroundColor: 'rgba(13, 148, 136, 0.06)',
+        borderWidth: 2,
+        pointRadius: 2,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#0D9488',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0F172A',
+          titleFont: { size: 11 },
+          bodyFont: { size: 12, weight: '600' },
+          padding: 10,
+          cornerRadius: 6
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 10 }, maxTicksLimit: 8, color: '#94A3B8' }
+        },
+        y: {
+          grid: { color: 'rgba(148,163,184,0.1)' },
+          ticks: { font: { size: 10 }, color: '#94A3B8', stepSize: 1 },
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
 /**
@@ -579,15 +696,23 @@ export async function loadOverview() {
     import('./new-post.js').then(function(m) { window.editPost = m.editPost; });
   }
 
+  // Fetch download stats
+  let downloadStats = null;
+  try {
+    downloadStats = await apiFetch(API.trackDownload + '?action=stats');
+  } catch (e) { /* continue */ }
+
   renderNewsletterMetrics(newsletterData, editions);
   renderPostsMetrics(stats);
   renderPositions(stats);
+  renderDownloadsMetrics(downloadStats);
   renderActivity(posts, editions);
 
   // Render charts after a frame to ensure containers are visible and sized
   requestAnimationFrame(function() {
     renderSubscriberChart(subscriberGrowth);
     renderPostsChartJS(posts, 90);
+    renderDownloadsChartJS(downloadStats, 30);
     initChartRangeButtons();
   });
 }
