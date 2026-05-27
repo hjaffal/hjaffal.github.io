@@ -46,6 +46,12 @@ exports.importSubscribers = importSubscribers;
 const { trackDownload } = require("./newsletter/downloads");
 exports.trackDownload = trackDownload;
 
+const { listAssessments } = require("./newsletter/assessments");
+exports.listAssessments = listAssessments;
+
+const { backfillTokens } = require("./newsletter/backfill-tokens");
+exports.backfillTokens = backfillTokens;
+
 const VALID_BANDS = ["exposed", "adaptable", "harder_to_replace"];
 const VALID_FAMILIES = [
   "data_analytics_bi", "operations_process_program", "manager_team_leader",
@@ -450,6 +456,7 @@ Return this exact JSON structure:
       // Store full report in Firestore
       await db.collection("job_risk_submissions").add({
         tokenHash: tokenHash,
+        reportToken: reportToken,
         name: name.trim(),
         email: normalizedEmail,
         jobTitle: jobTitle.trim(),
@@ -553,6 +560,44 @@ Return this exact JSON structure:
       });
 
       res.status(200).json({ result: "success", reportToken: reportToken });
+
+      // 4. Auto-subscribe to newsletter (main_website segment) — fire and forget
+      try {
+        const { generateUnsubscribeToken } = require("./newsletter/utils");
+        const subscribersRef = db.collection("subscribers");
+        const existingSnapshot = await subscribersRef
+          .where("email", "==", normalizedEmail)
+          .limit(1)
+          .get();
+
+        if (existingSnapshot.empty) {
+          // New subscriber
+          const { token: unsubToken, hash: unsubHash } = generateUnsubscribeToken();
+          await subscribersRef.add({
+            email: normalizedEmail,
+            name: name.trim(),
+            status: "active",
+            segments: ["main_website"],
+            utmSource: "ai_job_risk_assessment",
+            unsubscribeToken: unsubToken,
+            unsubscribeTokenHash: unsubHash,
+            subscribedAt: admin.firestore.FieldValue.serverTimestamp(),
+            reactivatedAt: null,
+            unsubscribedAt: null,
+            welcomeEmailFailed: false,
+            softBounceCount: 0,
+            softBounces: [],
+            bounceReason: null,
+            bouncedAt: null,
+            complainedAt: null,
+            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+          });
+        }
+        // If already exists, don't modify — they're already subscribed
+      } catch (subErr) {
+        console.error("Auto-subscribe error (non-blocking):", subErr.message);
+      }
     } catch (err) {
       console.error("Email send error:", err.message);
       res.status(500).json({ error: "Report could not be sent. Please try again." });

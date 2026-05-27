@@ -69,6 +69,11 @@ css:
       <button class="nla-nav-item" data-panel="downloads" type="button">
         <span class="nla-nav-icon">📊</span> Analytics
       </button>
+
+      <div class="nla-nav-section-label">Tools</div>
+      <button class="nla-nav-item" data-panel="assessments" type="button">
+        <span class="nla-nav-icon">🎯</span> Job Assessments
+      </button>
     </nav>
     <div class="nla-sidebar-links">
       <a href="/" class="nla-sidebar-link" target="_blank">🌐 Public Website</a>
@@ -575,6 +580,21 @@ css:
       </div>
     </div>
 
+    <!-- Assessments Panel -->
+    <div class="nla-panel" id="panel-assessments" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Job Risk Assessments</h1>
+        <p class="nla-panel-desc">All AI Job Risk Assessment submissions.</p>
+        <button class="nla-btn nla-btn-secondary" id="backfill-tokens-btn" type="button" style="margin-top:8px;">🔧 Backfill Report Tokens</button>
+      </div>
+      <div id="assessments-loading" class="nla-loading">
+        <div class="nla-spinner" role="status" aria-label="Loading assessments"></div>
+        <p>Loading…</p>
+      </div>
+      <div id="assessments-error" class="nla-error" hidden></div>
+      <div id="assessments-content" hidden></div>
+    </div>
+
   </main>
 </div><!-- end .nla-layout -->
 
@@ -600,7 +620,9 @@ init({
     getPost: "{{ site.data.firebase.fn_get_post }}",
     updatePost: "{{ site.data.firebase.fn_update_post }}",
     manageDrafts: "{{ site.data.firebase.fn_manage_drafts }}",
-    trackDownload: "{{ site.data.firebase.fn_track_download }}"
+    trackDownload: "{{ site.data.firebase.fn_track_download }}",
+    listAssessments: "{{ site.data.firebase.fn_list_assessments }}",
+    backfillTokens: "{{ site.data.firebase.fn_backfill_tokens }}"
   }
 });
 </script>

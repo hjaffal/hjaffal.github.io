@@ -128,6 +128,11 @@ const subscribeNewsletter = onRequest(
     const normalizedEmailAddr = normalizeEmail(email);
     const utmSource = utm_source || "website";
 
+    // Determine if this is a sproochentest-related subscription
+    const isSproochentest = utmSource === "sproochentest" ||
+      utmSource === "sproochentest_gate" ||
+      utmSource === "materials_download";
+
     const db = admin.firestore();
 
     try {
@@ -151,7 +156,7 @@ const subscribeNewsletter = onRequest(
         if (existingData.status === "unsubscribed") {
           // Reactivate: set status back to "active", generate new token, record reactivatedAt
           const { token: reactivationToken, hash: reactivationHash } = generateUnsubscribeToken();
-          const reactivationSegments = utmSource === "sproochentest"
+          const reactivationSegments = isSproochentest
             ? ["sproochentest_prep"]
             : ["main_website", "sproochentest_prep"];
           await existingDoc.ref.update({
@@ -164,7 +169,7 @@ const subscribeNewsletter = onRequest(
           });
 
           // Send welcome email on reactivation
-          await sendWelcomeEmail(normalizedEmailAddr, reactivationToken, RESEND_API_KEY.value(), existingDoc.ref, utmSource);
+          await sendWelcomeEmail(normalizedEmailAddr, reactivationToken, RESEND_API_KEY.value(), existingDoc.ref, isSproochentest ? "sproochentest" : utmSource);
 
           res.status(200).json({ result: "success" });
           return;
@@ -172,7 +177,7 @@ const subscribeNewsletter = onRequest(
 
         // For other statuses (bounced, complained), still reactivate
         const { token: reactivationToken2, hash: reactivationHash2 } = generateUnsubscribeToken();
-        const reactivationSegments2 = utmSource === "sproochentest"
+        const reactivationSegments2 = isSproochentest
           ? ["sproochentest_prep"]
           : ["main_website", "sproochentest_prep"];
         await existingDoc.ref.update({
@@ -185,7 +190,7 @@ const subscribeNewsletter = onRequest(
         });
 
         // Send welcome email on reactivation
-        await sendWelcomeEmail(normalizedEmailAddr, reactivationToken2, RESEND_API_KEY.value(), existingDoc.ref, utmSource);
+        await sendWelcomeEmail(normalizedEmailAddr, reactivationToken2, RESEND_API_KEY.value(), existingDoc.ref, isSproochentest ? "sproochentest" : utmSource);
 
         res.status(200).json({ result: "success" });
         return;
@@ -195,7 +200,7 @@ const subscribeNewsletter = onRequest(
       const { token, hash } = generateUnsubscribeToken();
 
       // Determine segments based on source
-      const segments = utmSource === "sproochentest"
+      const segments = isSproochentest
         ? ["sproochentest_prep"]
         : ["main_website", "sproochentest_prep"];
 
@@ -223,7 +228,7 @@ const subscribeNewsletter = onRequest(
       const newDocRef = await subscribersRef.add(subscriberData);
 
       // Send welcome email to new subscriber
-      await sendWelcomeEmail(normalizedEmailAddr, token, RESEND_API_KEY.value(), newDocRef, utmSource);
+      await sendWelcomeEmail(normalizedEmailAddr, token, RESEND_API_KEY.value(), newDocRef, isSproochentest ? "sproochentest" : utmSource);
 
       res.status(200).json({ result: "success" });
     } catch (err) {
