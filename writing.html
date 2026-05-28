@@ -50,10 +50,10 @@ css:
   </section>
 
   <!-- All posts -->
-  <section class="wr-articles">
+  <section class="wr-articles" id="wr-articles-section">
     <div class="wr-articles-header">
       <span class="wr-articles-label">ALL ARTICLES</span>
-      <span class="wr-articles-count">{{ site.posts.size }} posts</span>
+      <span class="wr-articles-count" id="wr-articles-count">{{ site.posts.size }} posts</span>
     </div>
     <div class="wr-filter-bar">
       <button class="wr-filter-btn active" data-filter="all">All</button>
@@ -61,53 +61,110 @@ css:
       <button class="wr-filter-btn" data-filter="risk-intelligence">Risk Intelligence</button>
       <button class="wr-filter-btn" data-filter="ai-job-risk">AI Job Risk</button>
     </div>
-    <div class="wr-articles-list" id="wr-articles-list">
+    <div class="wr-cards-grid" id="wr-articles-list">
       {% for post in site.posts %}
-      <a href="{{ post.url | relative_url }}" class="wr-article-row" data-tags="{{ post.tags | join: ' ' }}">
-        {% if post.thumbnail-img %}
-        <div class="wr-article-thumb-wrap">
-          <img class="wr-article-thumb" src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.src='/assets/img/posts/default.webp';this.parentElement.classList.add('wr-article-thumb-fallback');this.insertAdjacentHTML('afterend','<span class=wr-article-thumb-title>{{ post.title | xml_escape | truncate: 40 }}</span>')">
-        </div>
-        {% else %}
-        <div class="wr-article-thumb-default">
-          <img src="/assets/img/posts/default.webp" alt="" loading="lazy">
-          <span class="wr-article-thumb-title">{{ post.title | truncate: 40 }}</span>
-        </div>
-        {% endif %}
-        <div class="wr-article-info">
-          <span class="wr-article-title">{{ post.title }}</span>
-          <div class="wr-article-meta">
-            {% for tag in post.tags %}
-            <span class="wr-article-tag">{{ tag }}</span>
-            {% endfor %}
-            <span class="wr-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
+      <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}">
+        <div class="wr-card-img-wrap">
+          {% if post.thumbnail-img %}
+          <img class="wr-card-img" src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="wr-card-img-fallback" style="display:none;">
+            <span class="wr-card-img-title">{{ post.title | xml_escape | truncate: 60 }}</span>
           </div>
+          {% else %}
+          <div class="wr-card-img-fallback">
+            <span class="wr-card-img-title">{{ post.title | truncate: 60 }}</span>
+          </div>
+          {% endif %}
         </div>
-        <span class="wr-article-arrow">→</span>
+        <div class="wr-card-body">
+          <div class="wr-card-tags">
+            {% for tag in post.tags %}
+            <span class="wr-card-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          <h3 class="wr-card-title">{{ post.title }}</h3>
+          <p class="wr-card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+          <span class="wr-card-date">{{ post.date | date: "%b %d, %Y" }}</span>
+        </div>
       </a>
       {% endfor %}
     </div>
+    <div class="wr-pagination" id="wr-pagination"></div>
   </section>
 
 </div>
 
 <script>
 (function() {
-  var btns = document.querySelectorAll('.wr-filter-btn');
-  var rows = document.querySelectorAll('.wr-article-row');
-  btns.forEach(function(btn) {
+  var PAGE_SIZE = 9;
+  var currentPage = 1;
+  var currentFilter = 'all';
+  var allCards = Array.from(document.querySelectorAll('.wr-card'));
+  var pagination = document.getElementById('wr-pagination');
+  var countEl = document.getElementById('wr-articles-count');
+
+  function getFiltered() {
+    if (currentFilter === 'all') return allCards;
+    return allCards.filter(function(card) {
+      return card.dataset.tags && card.dataset.tags.indexOf(currentFilter) !== -1;
+    });
+  }
+
+  function render() {
+    var filtered = getFiltered();
+    var totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+
+    // Hide all, show current page
+    allCards.forEach(function(card) { card.style.display = 'none'; });
+    var start = (currentPage - 1) * PAGE_SIZE;
+    var end = start + PAGE_SIZE;
+    filtered.slice(start, end).forEach(function(card) { card.style.display = ''; });
+
+    // Update count
+    countEl.textContent = filtered.length + ' posts';
+
+    // Render pagination
+    if (totalPages <= 1) { pagination.innerHTML = ''; return; }
+    var html = '';
+    if (currentPage > 1) {
+      html += '<button class="wr-page-btn" data-page="' + (currentPage - 1) + '">← Prev</button>';
+    }
+    for (var i = 1; i <= totalPages; i++) {
+      if (i === currentPage) {
+        html += '<span class="wr-page-btn wr-page-active">' + i + '</span>';
+      } else if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+        html += '<button class="wr-page-btn" data-page="' + i + '">' + i + '</button>';
+      } else if (Math.abs(i - currentPage) === 3) {
+        html += '<span class="wr-page-dots">…</span>';
+      }
+    }
+    if (currentPage < totalPages) {
+      html += '<button class="wr-page-btn" data-page="' + (currentPage + 1) + '">Next →</button>';
+    }
+    pagination.innerHTML = html;
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.wr-filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      btns.forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.wr-filter-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      var filter = btn.dataset.filter;
-      rows.forEach(function(row) {
-        if (filter === 'all' || (row.dataset.tags && row.dataset.tags.indexOf(filter) !== -1)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
+      currentFilter = btn.dataset.filter;
+      currentPage = 1;
+      render();
     });
   });
+
+  // Pagination clicks
+  pagination.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-page]');
+    if (!btn) return;
+    currentPage = parseInt(btn.dataset.page);
+    render();
+    document.getElementById('wr-articles-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  render();
 })();
 </script>
