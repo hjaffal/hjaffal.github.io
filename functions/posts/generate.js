@@ -28,7 +28,6 @@ const POSITIONS = [
     position: "Signals need authority",
     thesis: "A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat.",
     angles: [
-      "A real incident where detection worked but decision authority failed",
       "How to pre-commit decision rights before the next crisis",
       "The anatomy of a slow decision: where organizations lose time under risk",
       "Why dashboards create the illusion of control without the reality of action",
@@ -50,7 +49,6 @@ const POSITIONS = [
       "Why most dashboards are museums: pretty, historical, and useless under pressure",
       "How to build a risk intelligence function from a reporting team",
       "The difference between a metric that informs and a metric that triggers",
-      "What loss prevention teams can teach data teams about actionable intelligence",
       "How to kill metrics that nobody acts on without losing organizational trust",
       "The intelligence loop: from signal to action to feedback in under 5 minutes",
       "Why your best analysts are wasted on reporting and how to fix it",
@@ -247,12 +245,10 @@ INTERNAL PLANNING (choose before writing, do not include in output):
 
 ARTICLE FORMAT (pick one, do not use the same as recent posts):
 1. Question Answer — reader question, direct answer, then nuance
-2. Field Note — workplace observation, then the lesson
-3. Myth vs Reality — challenge a belief, show why it breaks, give the better view
-4. Mistake and Fix — one common mistake, why it happens, how to fix it
-5. Decision Rule — one practical rule for facing this issue
-6. Short Guide — compact explanation with 3-4 points (not a listicle)
-7. Contrarian Take — sharp position against a common assumption, defended with an example
+2. Myth vs Reality — challenge a belief, show why it breaks, give the better view
+3. Mistake and Fix — one common mistake, why it happens, how to fix it
+4. Short Guide — compact explanation with 3-4 points (not a listicle)
+5. Contrarian Take — sharp position against a common assumption, defended with an example
 
 WRITING TECHNIQUES (use 2-4 per article, naturally):
 - Analogy: explain a complex idea through a familiar comparison
@@ -265,7 +261,7 @@ WRITING TECHNIQUES (use 2-4 per article, naturally):
 - Point of view: use "you" to bring the reader closer, or "I" for field notes
 
 ARTICLE STRUCTURE:
-1. Start with **Key takeaways:** paragraph (see rules below)
+1. Start with **Key takeaways:** in bulleted points (see rules below)
 2. Open with a real reader question or workplace tension
 3. Give the short answer early
 4. Explain the main idea with one concrete example
@@ -280,12 +276,11 @@ KEY TAKEAWAYS:
 - Under 90 words. No bullets. Direct and useful.
 
 LENGTH:
-- Target: 600-900 words
-- Absolute max: 1,000 words
-- If over 1,000, rewrite shorter before returning
+- Target: 500-600 words
+- Absolute max: 700 words
+- If over 700, rewrite shorter before returning
 
 STYLE:
-- Shorter and lighter than a white paper. Sharp field note.
 - Less explaining. Less buildup. No long philosophical sections.
 - Paragraphs of 2-4 sentences. No blocks over 5 sentences.
 - No repeated one-line paragraph pattern.
@@ -295,6 +290,7 @@ STYLE:
 - Avoid repeating the same idea in different words.
 - Avoid long conclusions.
 - Do not feel like a rigid template. Vary shape across articles.
+- Human like writing, not perfect robotic style
 
 HEADLINE:
 - Question or strong reader-centric statement
@@ -308,10 +304,9 @@ CTA:
 - Keep it natural
 
 QUALITY CHECKS:
-- 600-900 words, under 1,000?
+- 500-600 words, under 7000?
 - Starts with **Key takeaways:**?
 - Answers a real question?
-- One concrete workplace example?
 - Uses 2-4 writing techniques naturally?
 - Does not feel templated?
 - Does not repeat ideas?
