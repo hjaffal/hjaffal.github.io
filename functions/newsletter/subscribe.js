@@ -25,52 +25,9 @@ async function sendWelcomeEmail(email, rawToken, apiKey, subscriberRef, segment)
     ? "Welcome to Sproochentest Prep"
     : "Welcome to The Second Mind";
 
-  const heading = isSproochentest
-    ? "SPROOCHENTEST PREP"
-    : "THE SECOND MIND";
-
-  const byline = "by Hasan Jaffal";
-
-  const bodyContent = isSproochentest
-    ? `<p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">Welcome — you're in.</p>
-        <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">You'll receive updates, new topics, and practice materials to help you prepare for the <strong>Sproochentest</strong> — the Luxembourgish language test.</p>
-        <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">Expect new listening exercises, vocabulary lists, grammar tips, and exam strategies as I add them.</p>
-        <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#374151;">Vill Gléck!<br>Hasan</p>`
-    : `<p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">Welcome — you're in.</p>
-        <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">The Second Mind is where I share sharp, practical thinking on <strong>AI, risk, operations, and decision-making</strong> — the stuff that actually moves the needle when systems get complex.</p>
-        <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">Expect weekly writing. No filler, no fluff — just ideas you can use.</p>
-        <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#374151;">Talk soon,<br>Hasan</p>`;
-
-  const footerText = isSproochentest
-    ? "You're receiving this because you subscribed to Sproochentest Prep updates."
-    : "You're receiving this because you subscribed to The Second Mind.";
-
-  const htmlBody = `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background-color:#f9fafb;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:40px 20px;">
-    <tr>
-      <td style="background-color:#ffffff;border-radius:8px;padding:40px;">
-        <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#111827;">${heading}</h1>
-        <p style="margin:0 0 24px;font-size:14px;color:#6b7280;">${byline}</p>
-
-        ${bodyContent}
-
-        <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0;">
-
-        <p style="margin:0;font-size:12px;color:#9ca3af;text-align:center;">
-          ${footerText}<br>
-          <a href="${unsubscribeUrl}" style="color:#6b7280;text-decoration:underline;">Manage preferences or unsubscribe</a>
-        </p>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>`;
+  const htmlBody = isSproochentest
+    ? buildSproochentestWelcome(unsubscribeUrl)
+    : buildMainWebsiteWelcome(unsubscribeUrl);
 
   try {
     const resend = new Resend(apiKey);
@@ -94,6 +51,186 @@ async function sendWelcomeEmail(email, rawToken, apiKey, subscriberRef, segment)
       }
     }
   }
+}
+
+/**
+ * Build the welcome email for the main website (The Second Mind) segment.
+ */
+function buildMainWebsiteWelcome(unsubscribeUrl) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Welcome to The Second Mind</title></head>
+<body style="margin:0;padding:0;background:#F4F7FB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="background:#F4F7FB;padding:0;margin:0;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F4F7FB;">
+<tr><td align="center" style="padding:24px 16px;">
+<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,0.06);">
+
+<!-- Header -->
+<tr><td style="background:#0F172A;padding:28px 32px;border-bottom:3px solid #9333EA;">
+  <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#9333EA;">HASAN JAFFAL</p>
+  <p style="margin:0;font-size:22px;font-weight:800;color:#F8FAFC;letter-spacing:0.02em;">THE SECOND MIND</p>
+</td></tr>
+
+<!-- Welcome -->
+<tr><td style="padding:32px 32px 24px;">
+  <p style="margin:0 0 16px;font-size:18px;font-weight:700;color:#0F172A;">Welcome — you're in.</p>
+  <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.7;">I write about where AI, dashboards, data signals, and leadership fail in real operations. Sharp, practical, no filler. Expect writing every week.</p>
+</td></tr>
+
+<!-- Positions -->
+<tr><td style="padding:0 32px 24px;">
+  <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#64748B;">WHAT I WRITE ABOUT</p>
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">AI & Decision Operations</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">AI exposes weak operations and slow decisions. Signals need authority to become action.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">Risk Intelligence</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Reporting explains what happened. Intelligence changes what happens next.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">AI Job Risk</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">AI exposes people who only operate tools. The safer skillset is judgment.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</td></tr>
+
+<!-- Tool CTA -->
+<tr><td style="padding:0 32px 32px;">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#FAF5FF;border:2px solid #9333EA;border-radius:10px;">
+    <tr><td style="padding:24px 24px;">
+      <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9333EA;">FREE TOOL</p>
+      <p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#0F172A;">AI Job Risk Analyzer</p>
+      <p style="margin:0 0 16px;font-size:14px;color:#475569;line-height:1.6;">Get a personalized AI risk report for your role. See which tasks are exposed, identify skill gaps, and get a 30-day action plan.</p>
+      <a href="https://hasanjaffal.com/ai-job-risk-analyzer/" style="display:inline-block;padding:12px 24px;background:#9333EA;color:#ffffff;font-size:14px;font-weight:700;border-radius:6px;text-decoration:none;">Analyze my role →</a>
+    </td></tr>
+  </table>
+</td></tr>
+
+<!-- Start reading -->
+<tr><td style="padding:0 32px 32px;text-align:center;">
+  <a href="https://hasanjaffal.com/writing/" style="font-size:14px;font-weight:600;color:#9333EA;text-decoration:none;">Start reading →</a>
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="padding:28px 32px;border-top:1px solid #E2E8F0;text-align:center;background:#F8FAFC;">
+  <p style="margin:0 0 12px;font-size:12px;color:#64748B;line-height:1.6;">You subscribed to The Second Mind by Hasan Jaffal.</p>
+  <p style="margin:0 0 12px;font-size:12px;">
+    <a href="${unsubscribeUrl}" style="color:#9333EA;font-weight:600;text-decoration:none;">Unsubscribe</a>
+    <span style="color:#CBD5E1;margin:0 8px;">|</span>
+    <a href="${unsubscribeUrl}" style="color:#9333EA;font-weight:600;text-decoration:none;">Manage preferences</a>
+  </p>
+  <p style="margin:0;font-size:11px;color:#94A3B8;">Hasan Jaffal · hasanjaffal.com · Luxembourg</p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</div>
+</body>
+</html>`;
+}
+
+/**
+ * Build the welcome email for the Sproochentest Prep segment.
+ */
+function buildSproochentestWelcome(unsubscribeUrl) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Welcome to Sproochentest Prep</title></head>
+<body style="margin:0;padding:0;background:#F4F7FB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="background:#F4F7FB;padding:0;margin:0;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F4F7FB;">
+<tr><td align="center" style="padding:24px 16px;">
+<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,0.06);">
+
+<!-- Header -->
+<tr><td style="background:#0F172A;padding:28px 32px;border-bottom:3px solid #D97706;">
+  <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#D97706;">HASAN JAFFAL</p>
+  <p style="margin:0;font-size:22px;font-weight:800;color:#F8FAFC;letter-spacing:0.02em;">SPROOCHENTEST PREP</p>
+</td></tr>
+
+<!-- Welcome -->
+<tr><td style="padding:32px 32px 24px;">
+  <p style="margin:0 0 16px;font-size:18px;font-weight:700;color:#0F172A;">Wëllkomm — you're in!</p>
+  <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.7;">You'll receive updates, new topics, and practice materials to help you prepare for the Sproochentest — the Luxembourgish language and citizenship test.</p>
+</td></tr>
+
+<!-- What's on the site -->
+<tr><td style="padding:0 32px 24px;">
+  <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#64748B;">WHAT YOU'LL FIND ON THE SITE</p>
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">🗣️ Speaking Topics</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Practice questions organized by topic — family, work, hobbies, Luxembourg life, and more.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">🖼️ Image Description</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Framework and vocabulary for describing images — people, places, actions, and clothes.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">🎧 Listening Exercises</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Interactive quizzes with audio to train your ear for Luxembourgish comprehension.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;">
+        <tr><td style="padding:14px 18px;">
+          <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#0F172A;">📄 Downloadable Materials</p>
+          <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">PDF guides for adjectives, articles, prepositions, and picture descriptions.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</td></tr>
+
+<!-- CTA -->
+<tr><td style="padding:0 32px 32px;text-align:center;">
+  <a href="https://hasanjaffal.com/sproochentest/" style="display:inline-block;padding:14px 28px;background:#D97706;color:#ffffff;font-size:14px;font-weight:700;border-radius:6px;text-decoration:none;">Start practicing →</a>
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="padding:28px 32px;border-top:1px solid #E2E8F0;text-align:center;background:#F8FAFC;">
+  <p style="margin:0 0 12px;font-size:12px;color:#64748B;line-height:1.6;">You subscribed to Sproochentest Prep updates by Hasan Jaffal.</p>
+  <p style="margin:0 0 12px;font-size:12px;">
+    <a href="${unsubscribeUrl}" style="color:#D97706;font-weight:600;text-decoration:none;">Unsubscribe</a>
+    <span style="color:#CBD5E1;margin:0 8px;">|</span>
+    <a href="${unsubscribeUrl}" style="color:#D97706;font-weight:600;text-decoration:none;">Manage preferences</a>
+  </p>
+  <p style="margin:0;font-size:11px;color:#94A3B8;">Hasan Jaffal · hasanjaffal.com · Luxembourg</p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</div>
+</body>
+</html>`;
 }
 
 /**
