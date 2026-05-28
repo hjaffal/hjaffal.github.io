@@ -89,7 +89,9 @@ css:
       </a>
       {% endfor %}
     </div>
-    <div class="wr-pagination" id="wr-pagination"></div>
+    <div class="wr-load-more-wrap" id="wr-load-more-wrap">
+      <button class="wr-load-more-btn" id="wr-load-more">Load more articles</button>
+    </div>
   </section>
 
 </div>
@@ -97,10 +99,11 @@ css:
 <script>
 (function() {
   var PAGE_SIZE = 9;
-  var currentPage = 1;
+  var visibleCount = PAGE_SIZE;
   var currentFilter = 'all';
   var allCards = Array.from(document.querySelectorAll('.wr-card'));
-  var pagination = document.getElementById('wr-pagination');
+  var loadMoreWrap = document.getElementById('wr-load-more-wrap');
+  var loadMoreBtn = document.getElementById('wr-load-more');
   var countEl = document.getElementById('wr-articles-count');
 
   function getFiltered() {
@@ -112,37 +115,22 @@ css:
 
   function render() {
     var filtered = getFiltered();
-    var totalPages = Math.ceil(filtered.length / PAGE_SIZE);
-    if (currentPage > totalPages) currentPage = totalPages || 1;
 
-    // Hide all, show current page
+    // Hide all cards first
     allCards.forEach(function(card) { card.style.display = 'none'; });
-    var start = (currentPage - 1) * PAGE_SIZE;
-    var end = start + PAGE_SIZE;
-    filtered.slice(start, end).forEach(function(card) { card.style.display = ''; });
+
+    // Show up to visibleCount
+    filtered.slice(0, visibleCount).forEach(function(card) { card.style.display = ''; });
 
     // Update count
     countEl.textContent = filtered.length + ' posts';
 
-    // Render pagination
-    if (totalPages <= 1) { pagination.innerHTML = ''; return; }
-    var html = '';
-    if (currentPage > 1) {
-      html += '<button class="wr-page-btn" data-page="' + (currentPage - 1) + '">← Prev</button>';
+    // Show/hide Load More button
+    if (visibleCount >= filtered.length) {
+      loadMoreWrap.style.display = 'none';
+    } else {
+      loadMoreWrap.style.display = '';
     }
-    for (var i = 1; i <= totalPages; i++) {
-      if (i === currentPage) {
-        html += '<span class="wr-page-btn wr-page-active">' + i + '</span>';
-      } else if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
-        html += '<button class="wr-page-btn" data-page="' + i + '">' + i + '</button>';
-      } else if (Math.abs(i - currentPage) === 3) {
-        html += '<span class="wr-page-dots">…</span>';
-      }
-    }
-    if (currentPage < totalPages) {
-      html += '<button class="wr-page-btn" data-page="' + (currentPage + 1) + '">Next →</button>';
-    }
-    pagination.innerHTML = html;
   }
 
   // Filter buttons
@@ -151,18 +139,15 @@ css:
       document.querySelectorAll('.wr-filter-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
-      currentPage = 1;
+      visibleCount = PAGE_SIZE;
       render();
     });
   });
 
-  // Pagination clicks
-  pagination.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-page]');
-    if (!btn) return;
-    currentPage = parseInt(btn.dataset.page);
+  // Load More click
+  loadMoreBtn.addEventListener('click', function() {
+    visibleCount += PAGE_SIZE;
     render();
-    document.getElementById('wr-articles-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   render();
