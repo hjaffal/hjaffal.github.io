@@ -133,7 +133,7 @@ async function handleAdd(req, res) {
       email: normalizedEmailAddr,
       name: (name && typeof name === "string") ? name.trim() : "",
       status: "active",
-      segments: ["main_website", "sproochentest_prep"],
+      segments: ["main_website"],
       utmSource: "admin_added",
       unsubscribeToken: token,
       unsubscribeTokenHash: hash,

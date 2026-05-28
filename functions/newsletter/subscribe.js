@@ -295,7 +295,7 @@ const subscribeNewsletter = onRequest(
           const { token: reactivationToken, hash: reactivationHash } = generateUnsubscribeToken();
           const reactivationSegments = isSproochentest
             ? ["sproochentest_prep"]
-            : ["main_website", "sproochentest_prep"];
+            : ["main_website"];
           await existingDoc.ref.update({
             status: "active",
             segments: reactivationSegments,
@@ -316,7 +316,7 @@ const subscribeNewsletter = onRequest(
         const { token: reactivationToken2, hash: reactivationHash2 } = generateUnsubscribeToken();
         const reactivationSegments2 = isSproochentest
           ? ["sproochentest_prep"]
-          : ["main_website", "sproochentest_prep"];
+          : ["main_website"];
         await existingDoc.ref.update({
           status: "active",
           segments: reactivationSegments2,
@@ -339,7 +339,7 @@ const subscribeNewsletter = onRequest(
       // Determine segments based on source
       const segments = isSproochentest
         ? ["sproochentest_prep"]
-        : ["main_website", "sproochentest_prep"];
+        : ["main_website"];
 
       const subscriberData = {
         email: normalizedEmailAddr,
