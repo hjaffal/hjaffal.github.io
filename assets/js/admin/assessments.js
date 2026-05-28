@@ -5,7 +5,7 @@
  * Clicking a row opens the user's dashboard in a new tab.
  */
 
-import { show, hide, $, apiFetch, formatDate, escHtml, getApiUrls, showNotification } from './main.js';
+import { show, hide, $, apiFetch, formatDate, escHtml, getApiUrls } from './main.js';
 
 let assessmentsGrid = null;
 
@@ -84,37 +84,5 @@ export async function loadAssessments() {
     hide(loading);
     error.textContent = err.message;
     show(error);
-  }
-}
-
-/**
- * Backfill reportToken for existing documents.
- * One-time utility — can be removed after use.
- */
-export async function backfillTokens() {
-  const tokens = [
-    '04d529af9437d0d6ec3d1c255e615983cdb04dce4fac46c29a2cf1fc815ff626',
-    'f20ec5e3f926ed7f33b8e2beffbb8de8d7945469f78fe1baccf0904dcaa2e9cf',
-    '0696caf9906d45afc7a12339b025102d6e6b637dc11f6f0f86f33cb9f9d14320',
-    '369fa0552b88e37e91519d253c87e8a31de2a2d31d450f4ee6499c5b7f9c4bce',
-    '403737398617b8766eba63e9793accb174c6613ab7aaed3be6aa998329f34982',
-    '69460aafa15e56e8913005cb5d653f00ceab3aea9695c7b12153c0e09d64a5af'
-  ];
-
-  const API = getApiUrls();
-  const url = API.backfillTokens || 'https://europe-west1-hasanjaffal.cloudfunctions.net/backfillTokens';
-
-  try {
-    const result = await apiFetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ tokens })
-    });
-    console.log('Backfill result:', result);
-    showNotification('Backfill done: ' + result.summary.updated + ' updated, ' + result.summary.notFound + ' not found', 'success');
-    // Reload the assessments list
-    loadAssessments();
-  } catch (err) {
-    console.error('Backfill error:', err);
-    showNotification('Backfill failed: ' + err.message, 'error');
   }
 }

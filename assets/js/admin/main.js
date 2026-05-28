@@ -168,14 +168,8 @@ export async function switchPanel(panelName) {
     const { loadDownloads } = await import('./downloads.js');
     loadDownloads();
   } else if (panelName === 'assessments') {
-    const { loadAssessments, backfillTokens } = await import('./assessments.js');
+    const { loadAssessments } = await import('./assessments.js');
     loadAssessments();
-    // Wire backfill button (one-time utility)
-    const backfillBtn = document.getElementById('backfill-tokens-btn');
-    if (backfillBtn && !backfillBtn.dataset.wired) {
-      backfillBtn.dataset.wired = '1';
-      backfillBtn.addEventListener('click', backfillTokens);
-    }
   }
 }
 

@@ -23,13 +23,21 @@ css:
       <p class="hp-hero-desc">I write about where AI, dashboards, data signals, and leadership fail in real operations — especially under risk.</p>
       <p class="hp-hero-audience">For leaders, analysts, and operators who need decisions before problems become obvious.</p>
       <div class="hp-hero-ctas">
-        <a href="/writing" class="hp-hero-cta-primary">Read Field Intelligence</a>
-        <a href="/newsletter" class="hp-hero-cta-ghost">Subscribe to The Second Mind</a>
-        <a href="https://www.amazon.com/Second-Mind-Learning-Machines-Human/dp/B0G1JC3FYC" target="_blank" rel="noopener" class="hp-hero-cta-ghost">View the book</a>
+        <a href="/writing" class="hp-hero-cta-primary">Read My Articles</a>
+        <a href="/books" class="hp-hero-cta-ghost">View the Book</a>
       </div>
     </div>
 
-    {% include dark-card-bullets.html name="Hasan Jaffal" role="Data, AI & Risk Operations" avatar="/assets/img/hasanjaffal.jpeg" items="Data and business intelligence leader|Author of <em>The Second Mind</em>|Weekly writing on AI, risk, and operational decision-making" %}
+    <div class="hp-hero-subscribe-card">
+      <span class="hp-hero-subscribe-label">THE SECOND MIND</span>
+      <h3 class="hp-hero-subscribe-title">Weekly writing on AI, risk, and decisions.</h3>
+      <p class="hp-hero-subscribe-desc">How to use AI in operations and risk — and how AI is reshaping the skills that matter at work.</p>
+      <form class="hp-hero-subscribe-form nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'homepage')">
+        <input type="email" placeholder="your@email.com" required class="hp-hero-subscribe-input nl-subscribe-input">
+        <button type="submit" class="hp-hero-subscribe-btn nl-subscribe-btn">Subscribe</button>
+        <p class="nl-subscribe-msg" style="display:none;"></p>
+      </form>
+    </div>
   </div>
 </section>
 
