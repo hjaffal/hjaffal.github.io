@@ -4,6 +4,44 @@ inclusion: always
 
 # Project Steering — hasanjaffal.com
 
+## Project Management
+
+All changes are managed through GitHub Issues and the "hasanjaffal.com" GitHub Project (board #2, ID: PVT_kwHOAAQJBM4BZFeI).
+
+**Issue Templates:**
+- **Feature**: What / Why / Acceptance Criteria / Notes
+- **Bug**: What's broken / Steps to reproduce / Where / Browser-Device / Screenshots
+- **Content**: What / Position / SEO Target / Notes
+- **Sproochentest**: What / Section / Details
+
+**Lifecycle — every change MUST follow this:**
+1. **Create issue** using the appropriate template. Add label(s): `feature`, `bug`, `content`, `sproochentest`, `admin`, `seo`.
+2. **Add to project board**: `gh project item-add 2 --owner hjaffal --url <issue-url>`
+3. **When starting work**: Move issue to "In progress" on the board.
+4. **Implement the change**, referencing the issue in code comments if relevant.
+5. **Commit with issue reference**: Include `Closes #N` in the commit message.
+6. **Push to master**.
+7. **Move issue to "Done"** on the board (or let `Closes #N` auto-close it).
+8. **Update CHANGELOG.md** with the change description and commit hash.
+
+**Status field ID:** PVTSSF_lAHOAAQJBM4BZFeIzhUGq5I
+**Status options:**
+- Backlog: f75ad846
+- Ready: 61e4505c
+- In progress: 47fc9ee4
+- In review: df73e18b
+- Done: 98236657
+
+**Labels:** `feature`, `bug`, `content`, `sproochentest`, `admin`, `seo`
+
+**Commands:**
+- Create issue: `gh issue create --repo hjaffal/hjaffal.github.io --title "..." --body "..." --label "..."`
+- Add to project: `gh project item-add 2 --owner hjaffal --url <issue-url>`
+- Move to In progress: `gh project item-edit --project-id PVT_kwHOAAQJBM4BZFeI --id <item-id> --field-id PVTSSF_lAHOAAQJBM4BZFeIzhUGq5I --single-select-option-id 47fc9ee4`
+- Move to Done: `gh project item-edit --project-id PVT_kwHOAAQJBM4BZFeI --id <item-id> --field-id PVTSSF_lAHOAAQJBM4BZFeIzhUGq5I --single-select-option-id 98236657`
+- Close issue: `gh issue close N --repo hjaffal/hjaffal.github.io`
+- List project items: `gh project item-list 2 --owner hjaffal --format json`
+
 ## Overview
 
 This is Hasan Jaffal's personal authority website. The site positions Hasan around AI, risk intelligence, operational decision-making, dashboards, data signals, decision authority, future-proof skills, books, templates, and Luxembourgish learning resources.
@@ -32,6 +70,7 @@ This is Hasan Jaffal's personal authority website. The site positions Hasan arou
 ## Hard Constraints
 
 - Never change existing routes or URLs unless redirects are explicitly added.
+- Do NOT push to git automatically. User handles commits and pushes.
 - Existing indexed URLs must continue to work.
 - Do not remove SEO metadata.
 - Do not rename public assets without checking references.
