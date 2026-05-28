@@ -6,6 +6,9 @@ share-description: "AI systems expose who truly understands trade-offs, judgment
 tags:
   - ai-job-risk
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-05-25-ai-exposure-reveals-if-your-senior-operators-are-just-advanced-tool-users.webp
+share-img: /assets/img/posts/2026-05-25-ai-exposure-reveals-if-your-senior-operators-are-just-advanced-tool-users.webp
+
 ---
 
 A functional AI system in operations or analytics isn't just an algorithm. It's a structured decision engine with clearly defined human interfaces. You build it with distinct layers: the AI performs the routine, high-volume tasks. Humans handle the exceptions, the edge cases, and the *consequences*.
