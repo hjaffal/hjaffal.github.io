@@ -41,6 +41,7 @@ css:
   </div>
 </section>
 
+<!-- LATEST UPDATES -->
 <!-- POSITIONS -->
 <section class="hp-positions">
   {% include section-header.html label="CORE POSITIONS" title="What I" em="Believe In." %}
@@ -104,6 +105,37 @@ css:
       </div>
       <a href="https://www.amazon.com/Second-Mind-Learning-Machines-Human/dp/B0G1JC3FYC" target="_blank" rel="noopener" class="hp-dark-btn">View on Amazon →</a>
     </div>
+  </div>
+</section>
+
+<!-- LATEST UPDATES -->
+<section class="hp-latest">
+  {% include section-header.html label="LATEST UPDATES" title="Recent" em="Writing." %}
+  <div class="hp-latest-grid">
+    {% for post in site.posts limit:3 %}
+    <a href="{{ post.url | relative_url }}" class="hp-latest-card">
+      <div class="hp-latest-img-wrap">
+        {% if post.thumbnail-img %}
+        <img src="{{ post.thumbnail-img }}" alt="{{ post.title }}" class="hp-latest-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="hp-latest-img-fallback" style="display:none;">
+          <span class="hp-latest-img-title">{{ post.title | truncate: 50 }}</span>
+        </div>
+        {% else %}
+        <div class="hp-latest-img-fallback">
+          <span class="hp-latest-img-title">{{ post.title | truncate: 50 }}</span>
+        </div>
+        {% endif %}
+      </div>
+      <div class="hp-latest-content">
+        <span class="hp-latest-date">{{ post.date | date: "%d %b %Y" }}</span>
+        <h3 class="hp-latest-title">{{ post.title }}</h3>
+        <p class="hp-latest-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="hp-latest-more">
+    <a href="/writing/#wr-articles-list" class="hp-latest-more-btn">See all writing on AI, risk & operations →</a>
   </div>
 </section>
 

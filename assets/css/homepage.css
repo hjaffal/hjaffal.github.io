@@ -48,6 +48,23 @@
 .hp-hero-subscribe-note { font-size: 0.7rem; color: #64748B; }
 .hp-hero-subscribe-form .nl-subscribe-msg { width: 100%; font-size: 0.8rem; margin: 4px 0 0; }
 
+/* Latest Updates */
+.hp-latest { padding: 56px 48px; background: var(--white); margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+.hp-latest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.hp-latest-card { display: block; text-decoration: none; color: var(--dark); background: var(--white); border: 1px solid var(--slate-border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+.hp-latest-card:hover { border-color: var(--accent); color: var(--dark); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.hp-latest-img-wrap { width: 100%; height: 180px; overflow: hidden; background: #0F172A; }
+.hp-latest-img { width: 100%; height: 100%; object-fit: cover; }
+.hp-latest-img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 20px; background: linear-gradient(135deg, #0F172A, #1E293B); }
+.hp-latest-img-title { color: #F8FAFC; font-size: 0.9rem; font-weight: 600; text-align: center; line-height: 1.4; }
+.hp-latest-content { padding: 20px 24px; }
+.hp-latest-date { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.hp-latest-title { font-size: 1rem; font-weight: 700; margin: 8px 0; line-height: 1.3; color: var(--dark); }
+.hp-latest-excerpt { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+.hp-latest-more { text-align: center; margin-top: 32px; }
+.hp-latest-more-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--dark); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.hp-latest-more-btn:hover { border-color: var(--accent); background: var(--slate-bg); color: var(--dark); }
+
 /* Positions */
 .hp-positions { padding: 56px 48px; background: var(--white); margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .hp-positions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -102,6 +119,10 @@
     grid-template-columns: 1fr 1fr !important;
   }
 
+  .hp-latest-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
   .hp-tools-grid {
     grid-template-columns: 1fr 1fr !important;
   }
@@ -121,12 +142,17 @@
 @media screen and (max-width: 640px) {
   .hp-hero { padding: 48px 20px 40px !important; }
   .hp-positions { padding: 40px 20px !important; }
+  .hp-latest { padding: 40px 20px !important; }
   .hp-tools { padding: 40px 20px !important; }
   .hp-assessment { padding: 40px 20px !important; }
   .hp-book { padding: 40px 20px !important; }
   .hp-newsletter { padding: 40px 20px !important; }
 
   .hp-tools-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hp-latest-grid {
     grid-template-columns: 1fr !important;
   }
 }

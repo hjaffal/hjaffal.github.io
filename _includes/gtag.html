@@ -1,4 +1,5 @@
 {% if site.gtag %}
+{% unless page.exclude_analytics %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gtag }}"></script>
 <script>
@@ -7,4 +8,5 @@
   gtag('js', new Date());
   gtag('config', '{{ site.gtag }}');
 </script>
+{% endunless %}
 {% endif %}
