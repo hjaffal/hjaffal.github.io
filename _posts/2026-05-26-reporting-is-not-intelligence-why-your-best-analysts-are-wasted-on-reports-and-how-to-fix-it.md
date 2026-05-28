@@ -6,6 +6,9 @@ share-description: "If metrics don’t trigger action, they’re decoration. Sto
 tags:
   - risk-intelligence
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-05-26-reporting-is-not-intelligence-why-your-best-analysts-are-wasted-on-reports-and-how-to-fix-it.webp
+share-img: /assets/img/posts/2026-05-26-reporting-is-not-intelligence-why-your-best-analysts-are-wasted-on-reports-and-how-to-fix-it.webp
+
 ---
 
 7:42 a.m. Monday. Slack is lit. Chargebacks pop in LATAM, support tickets double, and the CFO wants a slide before the 9 a.m. standup. Mira, your sharpest analyst, stops her model work and starts slicing yesterday’s payments. By 8:35, she’s got three charts and a neat summary. You walk into the meeting with a tidy story of what happened. You walk out with no change to how the system works.

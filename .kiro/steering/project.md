@@ -19,9 +19,9 @@ All changes are managed through GitHub Issues and the "hasanjaffal.com" GitHub P
 2. **Add to project board**: `gh project item-add 2 --owner hjaffal --url <issue-url>`
 3. **When starting work**: Move issue to "In progress" on the board.
 4. **Implement the change**, referencing the issue in code comments if relevant.
-5. **Commit with issue reference**: Include `Closes #N` in the commit message.
+5. **Do NOT commit or push** — user handles all git operations unless explicitly asked.
 6. **Do NOT push to git** — user handles pushes.
-7. **Move issue to "Done"** and close it: `gh issue close N --repo hjaffal/hjaffal.github.io --reason completed`
+7. **When user confirms done**: Move issue to "Done" and close it: `gh issue close N --repo hjaffal/hjaffal.github.io --reason completed`
 8. **Update CHANGELOG.md** with the change description and commit hash.
 
 **CRITICAL: Never skip step 1. Every change — no matter how small — gets an issue created first.**
@@ -73,6 +73,7 @@ This is Hasan Jaffal's personal authority website. The site positions Hasan arou
 
 - Never change existing routes or URLs unless redirects are explicitly added.
 - Do NOT push to git automatically. User handles commits and pushes.
+- Do NOT commit to git automatically. User handles all git operations (add, commit, push) unless explicitly asked.
 - Existing indexed URLs must continue to work.
 - Do not remove SEO metadata.
 - Do not rename public assets without checking references.
