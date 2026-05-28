@@ -47,7 +47,7 @@ const postUrl = slug.map((s) => `https://hasanjaffal.com/${s}/`);
  * Generates post tags.
  */
 const postTags = fc.subarray(
-  ["ai-operations", "decision-authority", "risk-intelligence", "ai-and-work", "sproochentest", "future-proof-skills", "books"],
+  ["ai-decision-operations", "ai-decision-operations", "risk-intelligence", "ai-job-risk", "sproochentest", "future-proof-skills", "books"],
   { minLength: 0, maxLength: 3 }
 );
 

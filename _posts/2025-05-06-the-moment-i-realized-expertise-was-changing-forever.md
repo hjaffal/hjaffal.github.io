@@ -5,7 +5,7 @@ subtitle:
 share-description: "A reflection on how AI is transforming the role of the expert — from having answers to creating meaning."
 thumbnail-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png
 share-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png
-tags: [ai-and-work]
+tags: [ai-job-risk]
 author: Hasan J.
 ---
 

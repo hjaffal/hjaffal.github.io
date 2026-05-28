@@ -4,8 +4,8 @@ title: "Ship Decisions, Not Dashboards: A Playbook for Risk Teams"
 subtitle: "Your data is fine. Your decision loop isn’t."
 share-description: "Dashboards don’t make decisions. Under real risk, AI ops fail unless signals map to actions, owners, and clocks. Here’s how strong teams operate."
 tags:
-  - decision-authority
-  - ai-operations
+  - ai-decision-operations
+  - ai-decision-operations
 author: Hasan J.
 ---
 

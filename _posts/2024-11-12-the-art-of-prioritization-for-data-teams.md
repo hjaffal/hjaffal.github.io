@@ -6,7 +6,7 @@ share-description: "Learn why data teams must prioritize high-impact work over e
 cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/posts/2024-11-12-the-art-of-prioritization-for-data-teams-thumb.png
 share-img: /assets/img/path.jpg
-tags: [ai-operations]
+tags: [ai-decision-operations]
 author: Hasan J.
 ---
 

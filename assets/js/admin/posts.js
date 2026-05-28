@@ -323,10 +323,9 @@ export function initPostsTable(posts) {
   // Helper: format position tag for display
   function positionDisplayName(tag) {
     const names = {
-      'ai-operations': 'AI Operations',
-      'decision-authority': 'Decision Authority',
+      'ai-decision-operations': 'AI & Decision Operations',
       'risk-intelligence': 'Risk Intelligence',
-      'ai-and-work': 'AI and Work'
+      'ai-job-risk': 'AI Job Risk'
     };
     return names[tag] || tag;
   }

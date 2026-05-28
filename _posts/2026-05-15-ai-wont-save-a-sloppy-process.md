@@ -4,7 +4,7 @@ title: "AI Won't Save a Sloppy Process: Fix Your Workflow Before Deploying Model
 subtitle: "What project managers must change before models touch real work"
 share-description: "AI changes the job for project managers: success depends less on model brilliance and more on tight operating process. Here’s what to fix before and after you switch it on."
 tags:
-  - ai-operations
+  - ai-decision-operations
 author: Hasan J.
 ---
 

@@ -50,7 +50,7 @@
 
 /* Positions */
 .hp-positions { padding: 56px 48px; background: var(--white); margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
-.hp-positions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.hp-positions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .hp-position-card { display: block; text-decoration: none; color: var(--dark); background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 12px; padding: 32px 28px; transition: border-color 0.2s; }
 .hp-position-card:hover { border-color: var(--accent); color: var(--dark); }
 .hp-position-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }

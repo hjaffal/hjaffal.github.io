@@ -4,10 +4,10 @@ title: "AI-Proof Skills Are a Myth. Build Harder-to-Replace Skills Instead."
 share-title: "AI-Proof Skills Are a Myth. Build These Instead."
 share-description: "Nothing is permanently safe from AI. The goal isn't AI-proof — it's harder to replace right now. Focus on judgment, context, and accountability."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 Every few weeks, someone publishes a list of "AI-proof skills" — creativity, empathy, critical thinking, leadership. The implication is that if you develop these skills, you're safe. You can stop worrying. The robots won't come for you. This is comforting, and it's wrong. Nothing is permanently AI-proof. The honest framing is different: some skills are harder to replace right now, and the goal is to stay on the harder-to-replace side of the line as that line moves.

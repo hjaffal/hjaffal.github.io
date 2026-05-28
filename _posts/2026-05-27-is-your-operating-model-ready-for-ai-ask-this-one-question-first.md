@@ -4,7 +4,7 @@ title: "Is Your Operating Model Ready for AI? Ask This One Question First"
 share-title: "Operating Model Checklist for AI: Are You Ready?"
 share-description: "Deploying AI? Ensure your operating model is pre-wired for action. Learn the one decision rule that prevents AI from just exposing your operational weaknesses."
 tags:
-  - ai-operations
+  - ai-decision-operations
 author: Hasan J.
 ---
 

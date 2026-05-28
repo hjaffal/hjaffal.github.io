@@ -4,10 +4,10 @@ title: "What Skills Should I Learn Because of AI? Start With Judgment"
 share-title: "What Skills Should I Learn Because of AI? Start Here"
 share-description: "Not Python or prompt engineering. Learn to frame problems, own trade-offs, communicate under uncertainty, and spot when AI is wrong."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 Every time AI makes headlines, the same advice appears: learn Python, take a prompt engineering course, get certified in machine learning. This advice isn't wrong exactly, but it misses the point. The skills that protect you from AI displacement aren't technical skills that AI itself is rapidly acquiring. They're the human capacities that sit upstream of any tool — the ability to frame problems, own trade-offs, communicate decisions under uncertainty, and recognize when an AI output is confidently wrong.

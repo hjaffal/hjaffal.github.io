@@ -4,7 +4,7 @@ title: "AI Models Don't Repair Operations; They Expose Unclear Escalation Paths"
 share-title: "AI Exposes Unclear Escalation Paths in Operations"
 share-description: "Deploying AI can feel like progress. But if your team lacks clear escalation paths, AI won't fix it. It will amplify existing dysfunction and expose unaddressed operational gaps."
 tags:
-  - ai-operations
+  - ai-decision-operations
 author: Hasan J.
 ---
 

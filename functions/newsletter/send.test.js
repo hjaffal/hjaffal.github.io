@@ -44,7 +44,7 @@ const SAMPLE_RSS_FEED = `<?xml version="1.0" encoding="UTF-8"?>
       <link>https://hasanjaffal.com/2026-05-24-ai-job-risk/</link>
       <pubDate>Fri, 24 May 2026 00:00:00 +0000</pubDate>
       <description>Your job title does not determine your AI risk. Your tasks do.</description>
-      <category>ai-and-work</category>
+      <category>ai-job-risk</category>
       <category>risk-intelligence</category>
     </item>
     <item>
@@ -52,14 +52,14 @@ const SAMPLE_RSS_FEED = `<?xml version="1.0" encoding="UTF-8"?>
       <link>https://hasanjaffal.com/2026-05-20-dashboard-failures/</link>
       <pubDate>Tue, 20 May 2026 00:00:00 +0000</pubDate>
       <description>Most dashboards report what happened. Few help you decide what to do next.</description>
-      <category>decision-authority</category>
+      <category>ai-decision-operations</category>
     </item>
     <item>
       <title>Older Post About Operations</title>
       <link>https://hasanjaffal.com/2026-04-10-operations/</link>
       <pubDate>Thu, 10 Apr 2026 00:00:00 +0000</pubDate>
       <description>Operations need clarity, not more tools.</description>
-      <category>ai-operations</category>
+      <category>ai-decision-operations</category>
     </item>
   </channel>
 </rss>`;
@@ -73,7 +73,7 @@ const SAMPLE_ATOM_FEED = `<?xml version="1.0" encoding="UTF-8"?>
     <link href="https://hasanjaffal.com/atom-post/"/>
     <published>2026-06-01T10:00:00Z</published>
     <summary>This is an Atom feed post summary.</summary>
-    <category term="ai-and-work"/>
+    <category term="ai-job-risk"/>
   </entry>
 </feed>`;
 
@@ -165,7 +165,7 @@ describe("RSS Feed Parsing", () => {
       expect(posts[0].url).toBe("https://hasanjaffal.com/2026-05-24-ai-job-risk/");
       expect(posts[0].date).toBe("2026-05-24");
       expect(posts[0].excerpt).toBe("Your job title does not determine your AI risk. Your tasks do.");
-      expect(posts[0].tags).toEqual(["ai-and-work", "risk-intelligence"]);
+      expect(posts[0].tags).toEqual(["ai-job-risk", "risk-intelligence"]);
     });
 
     it("returns posts sorted by date descending", () => {
@@ -182,7 +182,7 @@ describe("RSS Feed Parsing", () => {
       expect(posts[0].url).toBe("https://hasanjaffal.com/atom-post/");
       expect(posts[0].date).toBe("2026-06-01");
       expect(posts[0].excerpt).toBe("This is an Atom feed post summary.");
-      expect(posts[0].tags).toEqual(["ai-and-work"]);
+      expect(posts[0].tags).toEqual(["ai-job-risk"]);
     });
 
     it("returns empty array for empty feed", () => {
@@ -216,13 +216,13 @@ describe("RSS Feed Parsing", () => {
 
   describe("extractCategories", () => {
     it("extracts RSS categories", () => {
-      const xml = "<category>ai-and-work</category><category>risk</category>";
-      expect(extractCategories(xml, false)).toEqual(["ai-and-work", "risk"]);
+      const xml = "<category>ai-job-risk</category><category>risk</category>";
+      expect(extractCategories(xml, false)).toEqual(["ai-job-risk", "risk"]);
     });
 
     it("extracts Atom categories from term attribute", () => {
-      const xml = `<category term="ai-and-work"/><category term="ops"/>`;
-      expect(extractCategories(xml, true)).toEqual(["ai-and-work", "ops"]);
+      const xml = `<category term="ai-job-risk"/><category term="ops"/>`;
+      expect(extractCategories(xml, true)).toEqual(["ai-job-risk", "ops"]);
     });
 
     it("returns empty array when no categories", () => {
@@ -231,8 +231,8 @@ describe("RSS Feed Parsing", () => {
     });
 
     it("handles CDATA in RSS categories", () => {
-      const xml = "<category><![CDATA[ai-and-work]]></category>";
-      expect(extractCategories(xml, false)).toEqual(["ai-and-work"]);
+      const xml = "<category><![CDATA[ai-job-risk]]></category>";
+      expect(extractCategories(xml, false)).toEqual(["ai-job-risk"]);
     });
   });
 

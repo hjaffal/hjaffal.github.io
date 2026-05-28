@@ -10,12 +10,12 @@ import glob
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-# The 4 canonical positions — each post must use exactly one
+# The 3 canonical positions — each post must use exactly one
 POSITIONS = [
     {
-        "tag": "ai-operations",
-        "position": "AI exposes weak operations",
-        "thesis": "AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale.",
+        "tag": "ai-decision-operations",
+        "position": "AI exposes weak operations and slow decisions",
+        "thesis": "AI does not repair unclear ownership or slow approval chains. It exposes them faster and at scale. Signals need authority — detection without decision power is expensive noise.",
         "angles": [
             "A specific failure where AI amplified a broken process instead of fixing it",
             "How to audit your operating model before deploying AI",
@@ -27,20 +27,11 @@ POSITIONS = [
             "Why the best AI teams spend 80% of their time on process, not models",
             "The hidden cost of deploying AI into unclear ownership structures",
             "How to design AI-assisted operations that degrade gracefully under pressure",
-        ]
-    },
-    {
-        "tag": "decision-authority",
-        "position": "Signals need authority",
-        "thesis": "A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat.",
-        "angles": [
-            "A real incident where detection worked but decision authority failed",
             "How to pre-commit decision rights before the next crisis",
             "The anatomy of a slow decision: where organizations lose time under risk",
             "Why dashboards create the illusion of control without the reality of action",
             "How to design a decision system that works at 2am with no manager online",
             "The cost of one extra approval step during a live fraud attack",
-            "What military decision-making teaches us about operational risk response",
             "How to measure decision latency and why it matters more than model accuracy",
             "The difference between a status update and a decision meeting",
             "Why the person who sees the signal should be the person who pulls the lever",
@@ -56,7 +47,6 @@ POSITIONS = [
             "Why most dashboards are museums: pretty, historical, and useless under pressure",
             "How to build a risk intelligence function from a reporting team",
             "The difference between a metric that informs and a metric that triggers",
-            "What loss prevention teams can teach data teams about actionable intelligence",
             "How to kill metrics that nobody acts on without losing organizational trust",
             "The intelligence loop: from signal to action to feedback in under 5 minutes",
             "Why your best analysts are wasted on reporting and how to fix it",
@@ -64,7 +54,7 @@ POSITIONS = [
         ]
     },
     {
-        "tag": "ai-and-work",
+        "tag": "ai-job-risk",
         "position": "AI is changing the skill floor",
         "thesis": "AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate.",
         "angles": [

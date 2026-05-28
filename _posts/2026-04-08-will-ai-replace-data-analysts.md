@@ -4,10 +4,10 @@ title: "Will AI Replace Data Analysts? Not If You Own the Decisions"
 share-title: "Will AI Replace Data Analysts? Not If You Own Decisions"
 share-description: "AI handles reporting, data pulls, and basic viz. Analysts who frame questions, interpret context, and own recommendations stay relevant."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 Most data analysts spend Monday morning the same way: pulling last week's numbers, formatting a report, and sending it to someone who glances at it during a meeting. That ritual is now something a language model can do in under a minute. The question isn't whether AI will touch your job. It already has. The question is which parts of your job you actually own.

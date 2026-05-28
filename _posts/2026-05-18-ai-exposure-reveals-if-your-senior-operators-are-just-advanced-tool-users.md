@@ -4,7 +4,7 @@ title: "AI Exposure Reveals If Your Senior Operators Are Just Advanced Tool User
 share-title: "AI systems expose who truly understands trade-offs"
 share-description: "AI systems expose who truly understands trade-offs, judgment, and escalation. Seniority now means owning decisions, not just operating tools."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
 ---
 

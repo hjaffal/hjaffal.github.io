@@ -4,7 +4,7 @@ title: "Why Your Risk Signals Need a Commander, Not Just a Dashboard"
 share-title: "OODA Loop: Risk Signals Need Decision Authority"
 share-description: "Learn how the military's OODA loop framework reveals critical gaps in your operational risk response, emphasizing why clear decision authority is paramount for effective action."
 tags:
-  - decision-authority
+  - ai-decision-operations
 author: Hasan J.
 ---
 

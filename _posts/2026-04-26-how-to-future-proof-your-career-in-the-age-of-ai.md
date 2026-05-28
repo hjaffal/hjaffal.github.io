@@ -4,10 +4,10 @@ title: "How to Future-Proof Your Career in the Age of AI"
 share-title: "How to Future-Proof Your Career in the Age of AI"
 share-description: "Future-proofing isn't about predicting tools. It's about positioning yourself around decisions, ownership, and outcomes rather than outputs."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 The phrase "future-proof your career" gets thrown around like there's a checklist you can complete and then stop worrying. Learn this tool. Get this certification. Add this keyword to your LinkedIn. But future-proofing isn't a one-time action. It's a positioning strategy — and most people are positioning themselves in exactly the wrong place.

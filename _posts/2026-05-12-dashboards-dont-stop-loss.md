@@ -5,7 +5,7 @@ subtitle: "Control does. Build for action, not for applause."
 share-description: "Dashboards don’t stop loss. Control does. Where AI ops fail on the floor—and how to design for action, latency, and authority."
 tags:
   - risk-intelligence
-  - decision-authority
+  - ai-decision-operations
 author: Hasan J.
 ---
 

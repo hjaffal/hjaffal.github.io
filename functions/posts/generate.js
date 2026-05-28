@@ -7,9 +7,9 @@ const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
 // The 4 canonical positions — each post must use exactly one
 const POSITIONS = [
   {
-    tag: "ai-operations",
-    position: "AI exposes weak operations",
-    thesis: "AI does not repair unclear ownership, slow escalation, or broken workflows. It exposes them faster and at scale.",
+    tag: "ai-decision-operations",
+    position: "AI exposes weak operations and slow decisions",
+    thesis: "AI does not repair unclear ownership or slow approval chains. It exposes them faster and at scale. Signals need authority — detection without decision power is expensive noise.",
     angles: [
       "A specific failure where AI amplified a broken process instead of fixing it",
       "How to audit your operating model before deploying AI",
@@ -21,19 +21,11 @@ const POSITIONS = [
       "Why the best AI teams spend 80% of their time on process, not models",
       "The hidden cost of deploying AI into unclear ownership structures",
       "How to design AI-assisted operations that degrade gracefully under pressure",
-    ],
-  },
-  {
-    tag: "decision-authority",
-    position: "Signals need authority",
-    thesis: "A risk signal has no value if nobody can act on it. The best model loses when approval chains move slower than the threat.",
-    angles: [
       "How to pre-commit decision rights before the next crisis",
       "The anatomy of a slow decision: where organizations lose time under risk",
       "Why dashboards create the illusion of control without the reality of action",
       "How to design a decision system that works at 2am with no manager online",
       "The cost of one extra approval step during a live fraud attack",
-      "What military decision-making teaches us about operational risk response",
       "How to measure decision latency and why it matters more than model accuracy",
       "The difference between a status update and a decision meeting",
       "Why the person who sees the signal should be the person who pulls the lever",
@@ -56,7 +48,7 @@ const POSITIONS = [
     ],
   },
   {
-    tag: "ai-and-work",
+    tag: "ai-job-risk",
     position: "AI is changing the skill floor",
     thesis: "AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate.",
     angles: [
@@ -93,7 +85,7 @@ const TONES = [
   "Light but still authoritative",
 ];
 
-const VALID_TAGS = ["ai-operations", "decision-authority", "risk-intelligence", "ai-and-work"];
+const VALID_TAGS = ["ai-decision-operations", "risk-intelligence", "ai-job-risk"];
 
 /**
  * Extract fields manually from malformed JSON using regex.
@@ -299,7 +291,7 @@ HEADLINE:
 
 CTA:
 - One CTA only, near the end
-- For AI and Work topics: "If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/)."
+- For AI Job Risk topics: "If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/)."
 - Otherwise link to a related article or newsletter
 - Keep it natural
 

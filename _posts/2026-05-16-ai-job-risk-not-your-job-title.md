@@ -4,7 +4,7 @@ title: "AI Job Risk Is Not About Your Job Title"
 share-title: "AI Job Risk Is Not About Your Job Title"
 share-description: "AI job risk is not only about whether your job can be automated. It is about whether your skills depend on repeatable tasks or on judgment, context, and decision-making."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
 ---
 

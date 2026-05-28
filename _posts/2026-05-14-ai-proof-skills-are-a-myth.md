@@ -4,7 +4,7 @@ title: "AI-Proof Skills Are a Myth. Build Harder-to-Replace Skills Instead."
 share-title: "AI-Proof Skills Are a Myth. Build These Instead."
 share-description: "Nothing is permanently safe from AI. The goal isn't AI-proof — it's harder to replace right now. Focus on judgment, context, and accountability."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
 ---
 

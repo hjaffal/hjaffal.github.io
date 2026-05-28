@@ -32,7 +32,7 @@ export function computePostStats(posts) {
     latestPost: null
   };
 
-  const positions = ['ai-operations', 'decision-authority', 'risk-intelligence', 'ai-and-work'];
+  const positions = ['ai-decision-operations', 'risk-intelligence', 'ai-job-risk'];
   positions.forEach(function(tag) {
     const positionPosts = published.filter(p => (p.tags || []).includes(tag));
     const sorted = positionPosts.filter(p => p.date !== '—').sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -209,17 +209,15 @@ function renderPositions(stats) {
   if (!container) return;
 
   const positionNames = {
-    'ai-operations': 'AI Operations',
-    'decision-authority': 'Decision Authority',
+    'ai-decision-operations': 'AI & Decision Operations',
     'risk-intelligence': 'Risk Intelligence',
-    'ai-and-work': 'AI and Work'
+    'ai-job-risk': 'AI Job Risk'
   };
 
   const positionColors = {
-    'ai-operations': '#9333EA',
-    'decision-authority': '#0D9488',
+    'ai-decision-operations': '#9333EA',
     'risk-intelligence': '#DC2626',
-    'ai-and-work': '#2563EB'
+    'ai-job-risk': '#2563EB'
   };
 
   let html = '';

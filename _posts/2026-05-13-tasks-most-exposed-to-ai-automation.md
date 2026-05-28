@@ -4,10 +4,10 @@ title: "Tasks Most Exposed to AI Automation: A Practical Breakdown"
 share-title: "Tasks Most Exposed to AI Automation: A Breakdown"
 share-description: "Data entry, report generation, scheduling, first-draft writing, and pattern matching are exposed. Here's why — and what's not."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 People talk about AI replacing jobs, but that framing is too blunt. AI doesn't replace jobs wholesale — it replaces tasks. A job is a bundle of tasks, and some of those tasks are far more exposed than others. The useful question isn't "will my job be automated?" It's "which of my tasks are exposed, and what percentage of my role do they represent?"

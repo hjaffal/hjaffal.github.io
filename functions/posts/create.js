@@ -4,7 +4,7 @@ const { verifyAdminToken } = require("../newsletter/auth");
 
 const GITHUB_PAT = defineSecret("GITHUB_PAT");
 
-const VALID_TAGS = ["ai-operations", "decision-authority", "risk-intelligence", "ai-and-work"];
+const VALID_TAGS = ["ai-decision-operations", "risk-intelligence", "ai-job-risk"];
 const REPO_OWNER = "hjaffal";
 const REPO_NAME = "hjaffal.github.io";
 const REPO_BRANCH = "master";

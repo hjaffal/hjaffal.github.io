@@ -37,10 +37,9 @@ const postStatus = fc.oneof(
 /** Generate a random tags array (mix of known position tags and random strings) */
 const postTags = fc.array(
   fc.oneof(
-    fc.constant('ai-operations'),
-    fc.constant('decision-authority'),
+    fc.constant('ai-decision-operations'),
     fc.constant('risk-intelligence'),
-    fc.constant('ai-and-work'),
+    fc.constant('ai-job-risk'),
     fc.string({ minLength: 1, maxLength: 15 })
   ),
   { minLength: 0, maxLength: 5 }
@@ -80,10 +79,9 @@ const statusFilterArbitrary = fc.oneof(
 /** Generate a position filter value (including "all" and valid position tags) */
 const positionFilterArbitrary = fc.oneof(
   fc.constant('all'),
-  fc.constant('ai-operations'),
-  fc.constant('decision-authority'),
+  fc.constant('ai-decision-operations'),
   fc.constant('risk-intelligence'),
-  fc.constant('ai-and-work'),
+  fc.constant('ai-job-risk'),
   fc.string({ minLength: 1, maxLength: 15 })
 );
 

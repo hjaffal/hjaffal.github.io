@@ -4,10 +4,10 @@ title: "AI Job Risk for Marketing Jobs: Which Roles Survive and Why"
 share-title: "AI Job Risk for Marketing Jobs: Which Roles Survive"
 share-description: "Content production and ad copy are exposed to AI. Brand strategy, audience intuition, and campaign judgment are harder to replace."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 Walk into any marketing department and you'll find two kinds of people. There are the ones who produce — writing blog posts, creating ad variations, pulling campaign reports, resizing assets. And there are the ones who decide — choosing which audience to target, determining what the brand should stand for, making the call on whether to kill a campaign that's underperforming. AI is coming for the first group fast. The second group has more time, but not infinite time.

@@ -130,10 +130,9 @@ assets/css/
 - Do not break sitemap or indexed pages.
 - Use descriptive internal link text.
 - Keep authority topic clusters clear:
-  - AI Operations
-  - Decision Authority
+  - AI and Decision Operations
   - Risk Intelligence
-  - AI and Work
+  - AI Job Risk
   - Future-Proof Skills
   - Templates
   - Books
@@ -141,7 +140,7 @@ assets/css/
 
 ### Canonical Tags
 
-The 4 canonical position tags are: `ai-operations`, `decision-authority`, `risk-intelligence`, `ai-and-work`.
+The 3 canonical position tags are: `ai-decision-operations`, `risk-intelligence`, `ai-job-risk`.
 
 ## Content Rules
 

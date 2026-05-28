@@ -4,10 +4,10 @@ title: "AI Job Risk for Project Managers: What Actually Gets Automated"
 share-title: "AI Job Risk for Project Managers: What Gets Automated"
 share-description: "Status updates, scheduling, and reporting are exposed to AI. Stakeholder negotiation, scope decisions, and escalation judgment are not."
 tags:
-  - ai-and-work
+  - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-and-work-og.png
-share-img: /assets/img/posts/ai-and-work-og.png
+thumbnail-img: /assets/img/posts/ai-job-risk-og.png
+share-img: /assets/img/posts/ai-job-risk-og.png
 ---
 
 Every project manager knows the feeling: you spend half your week chasing status updates, reformatting timelines, and writing summaries that nobody reads carefully. That half of your job is now automatable. The other half — the part where you negotiate scope with a difficult stakeholder, decide what to escalate, and make judgment calls about risk — is not. The problem is that many PMs have built their entire identity around the first half.

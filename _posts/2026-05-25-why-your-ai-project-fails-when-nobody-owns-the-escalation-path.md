@@ -4,7 +4,7 @@ title: "Why Your AI Project Fails When Nobody Owns the Escalation Path"
 share-title: "AI Project Failure: The Cost of Unclear Operational Ownership"
 share-description: "Your cutting-edge AI model is useless if nobody owns its output. Hasan Jaffal on why strong AI teams prioritize clear process over model complexity."
 tags:
-  - ai-operations
+  - ai-decision-operations
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-05-25-why-your-ai-project-fails-when-nobody-owns-the-escalation-path.webp
 share-img: /assets/img/posts/2026-05-25-why-your-ai-project-fails-when-nobody-owns-the-escalation-path.webp
