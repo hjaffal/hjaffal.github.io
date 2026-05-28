@@ -15,14 +15,16 @@ All changes are managed through GitHub Issues and the "hasanjaffal.com" GitHub P
 - **Sproochentest**: What / Section / Details
 
 **Lifecycle — every change MUST follow this:**
-1. **Create issue** using the appropriate template. Add label(s): `feature`, `bug`, `content`, `sproochentest`, `admin`, `seo`.
+1. **Create issue FIRST** using the appropriate template. Add label(s): `feature`, `bug`, `content`, `sproochentest`, `admin`, `seo`. Do this BEFORE writing any code.
 2. **Add to project board**: `gh project item-add 2 --owner hjaffal --url <issue-url>`
 3. **When starting work**: Move issue to "In progress" on the board.
 4. **Implement the change**, referencing the issue in code comments if relevant.
 5. **Commit with issue reference**: Include `Closes #N` in the commit message.
-6. **Push to master**.
-7. **Move issue to "Done"** on the board (or let `Closes #N` auto-close it).
+6. **Do NOT push to git** — user handles pushes.
+7. **Move issue to "Done"** and close it: `gh issue close N --repo hjaffal/hjaffal.github.io --reason completed`
 8. **Update CHANGELOG.md** with the change description and commit hash.
+
+**CRITICAL: Never skip step 1. Every change — no matter how small — gets an issue created first.**
 
 **Status field ID:** PVTSSF_lAHOAAQJBM4BZFeIzhUGq5I
 **Status options:**

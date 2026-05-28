@@ -168,7 +168,7 @@ const generatePost = onRequest(
     }
 
     const body = req.body.data || req.body;
-    const { positionTag, existingTitles } = body;
+    const { positionTag, existingTitles, angle: requestedAngle, articleForm: requestedForm, tone: requestedTone } = body;
 
     // Validate positionTag
     if (!positionTag || !VALID_TAGS.includes(positionTag)) {
@@ -197,9 +197,9 @@ const generatePost = onRequest(
       if (availableAngles.length === 0) availableAngles = selectedPosition.angles.slice();
     }
 
-    const selectedAngle = availableAngles[Math.floor(Math.random() * availableAngles.length)];
-    const selectedForm = ARTICLE_FORMS[Math.floor(Math.random() * ARTICLE_FORMS.length)];
-    const selectedTone = TONES[Math.floor(Math.random() * TONES.length)];
+    const selectedAngle = requestedAngle || availableAngles[Math.floor(Math.random() * availableAngles.length)];
+    const selectedForm = requestedForm || ARTICLE_FORMS[Math.floor(Math.random() * ARTICLE_FORMS.length)];
+    const selectedTone = requestedTone || TONES[Math.floor(Math.random() * TONES.length)];
 
     // Build recent titles list from client-provided data
     const recentTitlesText = (Array.isArray(existingTitles) && existingTitles.length > 0)

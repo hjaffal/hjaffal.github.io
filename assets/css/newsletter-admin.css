@@ -2353,3 +2353,30 @@ body:has(.nla-layout:not([hidden])) footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* AI Options (angle, format, tone dropdowns) */
+.nla-ai-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.nla-ai-options .nla-form-group {
+  margin-bottom: 0;
+}
+.nla-ai-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nla-ai-word-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+@media (max-width: 768px) {
+  .nla-ai-options {
+    grid-template-columns: 1fr;
+  }
+}

@@ -366,7 +366,45 @@ css:
             <p>AI exposes people who only operate tools but cannot think without them.</p>
           </div>
         </div>
-        <button class="nla-btn nla-btn-primary nla-ai-generate-btn" id="ai-generate-btn" disabled type="button">Generate Post</button>
+
+        <div class="nla-ai-options">
+          <div class="nla-form-group">
+            <label class="nla-label" for="ai-angle">Angle (optional)</label>
+            <select class="nla-select" id="ai-angle">
+              <option value="">Random</option>
+            </select>
+          </div>
+          <div class="nla-form-group">
+            <label class="nla-label" for="ai-format">Article Format</label>
+            <select class="nla-select" id="ai-format">
+              <option value="">Random</option>
+              <option value="Answer a specific reader question with one example">Question & Answer</option>
+              <option value="Challenge one weak assumption and explain the better view">Challenge Assumption</option>
+              <option value="Explain one workplace failure pattern and one fix">Failure Pattern & Fix</option>
+              <option value="Compare the common mistake with the stronger behavior">Mistake vs Stronger Behavior</option>
+              <option value="Give one practical decision rule the reader can use this week">Decision Rule</option>
+              <option value="Explain one risk signal people usually miss">Risk Signal</option>
+              <option value="Write a short field note from an operator's perspective">Field Note</option>
+            </select>
+          </div>
+          <div class="nla-form-group">
+            <label class="nla-label" for="ai-tone">Tone</label>
+            <select class="nla-select" id="ai-tone">
+              <option value="">Random</option>
+              <option value="Direct and practical, but not heavy">Direct & Practical</option>
+              <option value="Sharp but readable">Sharp & Readable</option>
+              <option value="Calm, useful, and concise">Calm & Concise</option>
+              <option value="Operator-style field note">Operator Field Note</option>
+              <option value="Question-led and human">Question-Led</option>
+              <option value="Light but still authoritative">Light & Authoritative</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="nla-ai-actions">
+          <button class="nla-btn nla-btn-primary nla-ai-generate-btn" id="ai-generate-btn" disabled type="button">Generate Post</button>
+          <span class="nla-ai-word-count" id="ai-word-count" hidden></span>
+        </div>
         <div id="ai-generate-status"></div>
       </div>
     </div>
