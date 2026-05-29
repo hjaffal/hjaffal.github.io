@@ -245,6 +245,59 @@ function renderPositions(stats) {
 }
 
 /**
+ * Render topic coverage section showing post count per Layer 2 topic.
+ */
+function renderTopicCoverage(posts) {
+  const container = $('dash-topic-coverage');
+  if (!container) return;
+
+  const TOPICS = {
+    'ai-decision-operations': [
+      'ai-theater', 'fake-ai-transformation', 'slow-decision-cultures', 'ai-accountability-vacuum',
+      'automation-failure-loops', 'human-bottleneck-myth', 'ai-governance-bureaucracy',
+      'meeting-driven-operations', 'escalation-collapse', 'operational-cowardice'
+    ],
+    'risk-intelligence': [
+      'dashboard-addiction', 'kpi-theater', 'reporting-bureaucracy', 'alert-spam',
+      'data-without-ownership', 'false-confidence-metrics', 'vanity-analytics',
+      'intelligence-vs-reporting', 'data-team-irrelevance', 'metric-manipulation'
+    ],
+    'ai-job-risk': [
+      'white-collar-automation', 'fake-ai-safety-advice', 'productivity-trap',
+      'middle-management-exposure', 'collapse-of-busy-work', 'prompt-engineer-hype',
+      'knowledge-worker-oversupply', 'credential-irrelevance', 'ai-career-delusion',
+      'death-of-information-work'
+    ]
+  };
+
+  const POSITION_NAMES = {
+    'ai-decision-operations': 'AI & Decision Ops',
+    'risk-intelligence': 'Risk Intelligence',
+    'ai-job-risk': 'AI Job Risk'
+  };
+
+  const published = posts.filter(p => p.status === 'published');
+  let html = '';
+  let totalCovered = 0;
+  let totalTopics = 0;
+
+  Object.keys(TOPICS).forEach(function(position) {
+    html += '<div class="nla-dash-topic-group"><span class="nla-dash-topic-group-title">' + POSITION_NAMES[position] + '</span>';
+    TOPICS[position].forEach(function(topicSlug) {
+      totalTopics++;
+      var count = published.filter(function(p) { return p.topic === topicSlug; }).length;
+      if (count > 0) totalCovered++;
+      var cls = count === 0 ? 'nla-dash-topic-item nla-dash-topic-empty' : 'nla-dash-topic-item';
+      var name = topicSlug.replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+      html += '<div class="' + cls + '"><span class="nla-dash-topic-name">' + name + '</span><span class="nla-dash-topic-count">' + count + '</span></div>';
+    });
+    html += '</div>';
+  });
+
+  container.innerHTML = '<div class="nla-dash-topic-summary">' + totalCovered + '/' + totalTopics + ' topics covered</div>' + html;
+}
+
+/**
  * Render the recent activity feed.
  */
 function renderActivity(posts, editions) {
@@ -703,6 +756,7 @@ export async function loadOverview() {
   renderNewsletterMetrics(newsletterData, editions);
   renderPostsMetrics(stats);
   renderPositions(stats);
+  renderTopicCoverage(posts);
   renderDownloadsMetrics(downloadStats);
   renderActivity(posts, editions);
 

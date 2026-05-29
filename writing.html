@@ -61,6 +61,9 @@ css:
       <button class="wr-filter-btn" data-filter="risk-intelligence">Risk Intelligence</button>
       <button class="wr-filter-btn" data-filter="ai-job-risk">AI Job Risk</button>
     </div>
+    <div class="wr-topic-filter-bar" id="wr-topic-filters" hidden>
+      <button class="wr-topic-btn active" data-topic="all">All Topics</button>
+    </div>
     <div class="wr-cards-grid" id="wr-articles-list">
       {% for post in site.posts %}
       <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}" data-topic="{{ post.topic }}">
@@ -101,31 +104,73 @@ css:
   var PAGE_SIZE = 9;
   var visibleCount = PAGE_SIZE;
   var currentFilter = 'all';
+  var currentTopic = 'all';
   var allCards = Array.from(document.querySelectorAll('.wr-card'));
   var loadMoreWrap = document.getElementById('wr-load-more-wrap');
   var loadMoreBtn = document.getElementById('wr-load-more');
   var countEl = document.getElementById('wr-articles-count');
+  var topicBar = document.getElementById('wr-topic-filters');
+
+  // Topics per position
+  var TOPICS = {
+    'ai-decision-operations': [
+      { slug: 'ai-theater', name: 'AI Theater' },
+      { slug: 'fake-ai-transformation', name: 'Fake AI Transformation' },
+      { slug: 'slow-decision-cultures', name: 'Slow Decision Cultures' },
+      { slug: 'ai-accountability-vacuum', name: 'AI Accountability Vacuum' },
+      { slug: 'automation-failure-loops', name: 'Automation Failure Loops' },
+      { slug: 'human-bottleneck-myth', name: 'Human Bottleneck Myth' },
+      { slug: 'ai-governance-bureaucracy', name: 'AI Governance Bureaucracy' },
+      { slug: 'meeting-driven-operations', name: 'Meeting-Driven Operations' },
+      { slug: 'escalation-collapse', name: 'Escalation Collapse' },
+      { slug: 'operational-cowardice', name: 'Operational Cowardice' },
+    ],
+    'risk-intelligence': [
+      { slug: 'dashboard-addiction', name: 'Dashboard Addiction' },
+      { slug: 'kpi-theater', name: 'KPI Theater' },
+      { slug: 'reporting-bureaucracy', name: 'Reporting Bureaucracy' },
+      { slug: 'alert-spam', name: 'Alert Spam' },
+      { slug: 'data-without-ownership', name: 'Data Without Ownership' },
+      { slug: 'false-confidence-metrics', name: 'False Confidence Metrics' },
+      { slug: 'vanity-analytics', name: 'Vanity Analytics' },
+      { slug: 'intelligence-vs-reporting', name: 'Intelligence vs Reporting' },
+      { slug: 'data-team-irrelevance', name: 'Data Team Irrelevance' },
+      { slug: 'metric-manipulation', name: 'Metric Manipulation' },
+    ],
+    'ai-job-risk': [
+      { slug: 'white-collar-automation', name: 'White-Collar Automation' },
+      { slug: 'fake-ai-safety-advice', name: 'Fake AI Safety Advice' },
+      { slug: 'productivity-trap', name: 'Productivity Trap' },
+      { slug: 'middle-management-exposure', name: 'Middle Management Exposure' },
+      { slug: 'collapse-of-busy-work', name: 'The Collapse of Busy Work' },
+      { slug: 'prompt-engineer-hype', name: 'Prompt Engineer Hype' },
+      { slug: 'knowledge-worker-oversupply', name: 'Knowledge Worker Oversupply' },
+      { slug: 'credential-irrelevance', name: 'Credential Irrelevance' },
+      { slug: 'ai-career-delusion', name: 'AI Career Delusion' },
+      { slug: 'death-of-information-work', name: 'The Death of Information Work' },
+    ]
+  };
 
   function getFiltered() {
-    if (currentFilter === 'all') return allCards;
-    return allCards.filter(function(card) {
-      return card.dataset.tags && card.dataset.tags.indexOf(currentFilter) !== -1;
-    });
+    var cards = allCards;
+    if (currentFilter !== 'all') {
+      cards = cards.filter(function(card) {
+        return card.dataset.tags && card.dataset.tags.indexOf(currentFilter) !== -1;
+      });
+    }
+    if (currentTopic !== 'all') {
+      cards = cards.filter(function(card) {
+        return card.dataset.topic === currentTopic;
+      });
+    }
+    return cards;
   }
 
   function render() {
     var filtered = getFiltered();
-
-    // Hide all cards first
     allCards.forEach(function(card) { card.style.display = 'none'; });
-
-    // Show up to visibleCount
     filtered.slice(0, visibleCount).forEach(function(card) { card.style.display = ''; });
-
-    // Update count
     countEl.textContent = filtered.length + ' posts';
-
-    // Show/hide Load More button
     if (visibleCount >= filtered.length) {
       loadMoreWrap.style.display = 'none';
     } else {
@@ -133,13 +178,42 @@ css:
     }
   }
 
-  // Filter buttons
+  function showTopicBar(position) {
+    var topics = TOPICS[position];
+    if (!topics) { topicBar.hidden = true; return; }
+    var html = '<button class="wr-topic-btn active" data-topic="all">All Topics</button>';
+    topics.forEach(function(t) {
+      html += '<button class="wr-topic-btn" data-topic="' + t.slug + '">' + t.name + '</button>';
+    });
+    topicBar.innerHTML = html;
+    topicBar.hidden = false;
+
+    // Wire topic button clicks
+    topicBar.querySelectorAll('.wr-topic-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        topicBar.querySelectorAll('.wr-topic-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentTopic = btn.dataset.topic;
+        visibleCount = PAGE_SIZE;
+        render();
+      });
+    });
+  }
+
+  // Position filter buttons
   document.querySelectorAll('.wr-filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.wr-filter-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
+      currentTopic = 'all';
       visibleCount = PAGE_SIZE;
+
+      if (currentFilter === 'all') {
+        topicBar.hidden = true;
+      } else {
+        showTopicBar(currentFilter);
+      }
       render();
     });
   });

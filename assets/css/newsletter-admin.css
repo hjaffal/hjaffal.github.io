@@ -686,6 +686,18 @@ body:has(.nla-layout:not([hidden])) footer {
   border-color: var(--accent);
 }
 
+/* Topic Coverage */
+.nla-dash-topic-coverage { font-size: 0.78rem; }
+.nla-dash-topic-summary { font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+.nla-dash-topic-group { margin-bottom: 12px; }
+.nla-dash-topic-group-title { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); display: block; margin-bottom: 6px; }
+.nla-dash-topic-item { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--slate-border); }
+.nla-dash-topic-item:last-child { border-bottom: none; }
+.nla-dash-topic-name { font-size: 0.72rem; color: var(--dark); }
+.nla-dash-topic-count { font-size: 0.68rem; font-weight: 600; color: var(--text-soft); min-width: 20px; text-align: right; }
+.nla-dash-topic-empty .nla-dash-topic-name { color: #DC2626; }
+.nla-dash-topic-empty .nla-dash-topic-count { color: #DC2626; }
+
 .nla-dash-position-header {
   display: flex;
   align-items: center;

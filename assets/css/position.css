@@ -20,6 +20,48 @@
   border-color: var(--accent) !important;
 }
 
+/* Topic clusters */
+.pos-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.pos-topic-card {
+  padding: 14px 16px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pos-topic-card.pos-topic-empty {
+  opacity: 0.5;
+  border-style: dashed;
+}
+.pos-topic-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+.pos-topic-count {
+  font-size: 0.68rem;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .pos-topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .pos-topics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media screen and (max-width: 600px) {

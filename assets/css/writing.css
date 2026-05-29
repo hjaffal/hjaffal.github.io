@@ -180,6 +180,34 @@
   color: #fff;
 }
 
+/* Topic sub-filter */
+.wr-topic-filter-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.wr-topic-btn {
+  padding: 5px 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid var(--slate-border);
+  border-radius: 16px;
+  background: var(--white);
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.wr-topic-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.wr-topic-btn.active {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+}
+
 /* Card grid */
 .wr-cards-grid {
   display: grid;
