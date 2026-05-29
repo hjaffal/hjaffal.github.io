@@ -2441,3 +2441,34 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-ai-ext-ref { margin-top: 12px; font-size: 0.78rem; color: var(--text-muted); }
 .nla-ai-ext-ref a { color: var(--accent); }
 .nla-ai-verify { color: #D97706; font-size: 0.7rem; font-weight: 600; }
+
+/* Publish validation warnings */
+.nla-publish-warnings {
+  padding: 14px 18px;
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.nla-publish-warnings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.nla-publish-warnings-header strong { font-size: 0.82rem; color: #92400E; }
+.nla-publish-warnings-header button { background: none; border: none; font-size: 1rem; cursor: pointer; color: #92400E; }
+.nla-publish-warnings ul { margin: 0; padding: 0 0 0 18px; }
+.nla-publish-warnings li { font-size: 0.75rem; color: #78350F; margin-bottom: 4px; }
+.nla-publish-warnings-note { font-size: 0.68rem; color: #92400E; margin: 8px 0 0; }
+
+/* Duplication warning */
+.nla-ai-dedup-warning {
+  padding: 10px 14px;
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: #92400E;
+  margin-bottom: 12px;
+}

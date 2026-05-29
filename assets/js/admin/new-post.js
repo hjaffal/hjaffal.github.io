@@ -82,9 +82,67 @@ async function saveDraft(silent) {
 }
 
 /**
+ * Validate post content before publish. Returns warnings (non-blocking).
+ */
+function validateBeforePublish() {
+  const body = getEditorContent();
+  if (!body) return [];
+
+  const warnings = [];
+
+  // Internal links check (markdown links to hasanjaffal.com or relative paths)
+  const internalLinks = (body.match(/\[.*?\]\(\/.*?\)/g) || []).length;
+  if (internalLinks < 2) warnings.push('Fewer than 2 internal links');
+
+  // External reference check (links to external URLs)
+  const extLinks = (body.match(/\[.*?\]\(https?:\/\/(?!hasanjaffal).*?\)/g) || []).length;
+  if (extLinks < 1) warnings.push('No external reference found');
+
+  // Forced-position question check
+  const questionMarks = (body.match(/\?/g) || []).length;
+  if (questionMarks < 1) warnings.push('No question mark found (forced-position question missing)');
+
+  // Comparison table check
+  const hasTable = body.includes('|') && (body.includes('---') || body.includes('| -'));
+  if (!hasTable) warnings.push('No comparison table or contrast block found');
+
+  return warnings;
+}
+
+/**
+ * Show validation warnings in a dismissible box.
+ * Returns true if user can proceed (always true — non-blocking).
+ */
+function showValidationWarnings(warnings) {
+  // Remove any existing warning box
+  const existing = document.getElementById('publish-warnings');
+  if (existing) existing.remove();
+
+  if (warnings.length === 0) return true;
+
+  const box = document.createElement('div');
+  box.id = 'publish-warnings';
+  box.className = 'nla-publish-warnings';
+  box.innerHTML = '<div class="nla-publish-warnings-header"><strong>⚠ Quality warnings</strong><button type="button" onclick="this.parentElement.parentElement.remove()">✕</button></div>' +
+    '<ul>' + warnings.map(function(w) { return '<li>' + w + '</li>'; }).join('') + '</ul>' +
+    '<p class="nla-publish-warnings-note">These are advisory only. You can still publish.</p>';
+
+  const form = document.getElementById('post-creation-form');
+  if (form) {
+    const actions = form.querySelector('.nla-form-actions');
+    if (actions) actions.insertAdjacentElement('beforebegin', box);
+  }
+  return true;
+}
+
+/**
  * Publish the current draft (commit to GitHub).
  */
 async function publishDraft() {
+  // Run soft validation
+  const warnings = validateBeforePublish();
+  showValidationWarnings(warnings);
+
   if (!currentDraftId) {
     // Save first
     const id = await saveDraft(true);
@@ -433,6 +491,15 @@ function initAIGenerateButton() {
       var selectedTechniques = [];
       var techCheckboxes = document.querySelectorAll('#ai-techniques-checkboxes input:checked');
       techCheckboxes.forEach(function(cb) { selectedTechniques.push(cb.value); });
+
+      // Duplication pre-check: warn if selected topic is already heavily covered
+      if (selectedTopic && existingTopics.length > 0) {
+        var topicCount = existingTopics.filter(function(t) { return t === selectedTopic; }).length;
+        if (topicCount >= 3 && statusEl) {
+          statusEl.innerHTML = '<div class="nla-ai-dedup-warning">⚠ Topic "' + selectedTopic.replace(/-/g, ' ') + '" already has ' + topicCount + ' posts. Consider a different topic for variety.</div>';
+          // Continue anyway — non-blocking
+        }
+      }
 
       const result = await apiFetch(generatePostUrl, {
         method: 'POST',
