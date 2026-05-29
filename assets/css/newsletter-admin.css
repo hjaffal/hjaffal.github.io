@@ -2423,3 +2423,6 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 .nla-ai-check-pass { color: #059669; }
 .nla-ai-check-fail { color: #DC2626; font-weight: 600; }
+.nla-ai-ext-ref { margin-top: 12px; font-size: 0.78rem; color: var(--text-muted); }
+.nla-ai-ext-ref a { color: var(--accent); }
+.nla-ai-verify { color: #D97706; font-size: 0.7rem; font-weight: 600; }

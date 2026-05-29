@@ -508,6 +508,15 @@ function initAIGenerateButton() {
           checklistHtml += '<li class="' + cls + '"><span>' + icon + '</span> ' + item.name + '</li>';
         });
         checklistHtml += '</ul></div>';
+
+        // Show external reference if returned
+        if (result.external_reference && result.external_reference.url) {
+          var ref = result.external_reference;
+          checklistHtml += '<div class="nla-ai-ext-ref"><strong>External reference:</strong> ';
+          checklistHtml += '<a href="' + ref.url + '" target="_blank" rel="noopener">' + (ref.title || ref.source || ref.url) + '</a>';
+          checklistHtml += ' <span class="nla-ai-verify">(verify link)</span></div>';
+        }
+
         statusEl.innerHTML = checklistHtml;
       }
 
