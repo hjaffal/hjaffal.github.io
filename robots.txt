@@ -1,6 +1,26 @@
 ---
 layout: null
 ---
+User-agent: GPTBot
+Allow: /
+Disallow: /newsletter/admin/
+Disallow: /assets/pdf/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /newsletter/admin/
+Disallow: /assets/pdf/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /newsletter/admin/
+Disallow: /assets/pdf/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /newsletter/admin/
+Disallow: /assets/pdf/
+
 User-agent: *
 Allow: /ai-job-risk-analyzer/
 Allow: /future-proof-skills-assessment/

@@ -8,7 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-05-28-if-ai-handles-execution-whats-left-for-my-career.webp
 share-img: /assets/img/posts/2026-05-28-if-ai-handles-execution-whats-left-for-my-career.webp
-
+topic: white-collar-automation
+archetype: framework
+keywords:
+  - "white collar automation"
+  - "AI job loss"
+  - "knowledge work automation"
 ---
 
 **Key takeaways:** As AI automates more execution tasks, your career shifts from merely operating tools to applying critical judgment. AI handles the 'how,' but it cannot define the 'why' or 'when.' Focus on developing skills in setting operational thresholds, owning trade-offs between competing outcomes, and knowing precisely when to override or escalate beyond the machine's output.

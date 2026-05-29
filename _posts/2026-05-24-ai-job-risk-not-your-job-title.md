@@ -8,6 +8,11 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-05-24-ai-job-risk-not-your-job-title.jpg
 share-img: /assets/img/posts/2026-05-24-ai-job-risk-not-your-job-title.jpg
+topic: fake-ai-safety-advice
+archetype: framework
+keywords:
+  - "AI proof career"
+  - "safe from AI"
 ---
 
 For a long time, **experience gave people a strong sense of safety at work**. If you knew the process, the tools, the reports, the hidden steps, and the people behind the system, you had value. You were the person others came to when something was unclear. You knew where the numbers came from, which report to trust, and which part of the process always needed manual fixing.

@@ -6,6 +6,12 @@ share-description: "AI changes the job for project managers: success depends les
 tags:
   - ai-decision-operations
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "decision bottleneck"
 ---
 
 Everyone worries that AI will take jobs. The uncomfortable truth for project managers is different: your job gets safer when you harden the operating process, and riskier when you ship a clever model into a weak workflow.

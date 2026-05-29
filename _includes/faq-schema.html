@@ -1,0 +1,18 @@
+{% assign question_words = "Will,Can,Should,Is,Are,Do,Does,How,Why,What,When,Where,Who" | split: "," %}
+{% assign first_word = page.title | split: " " | first | remove: '"' %}
+{% if question_words contains first_word %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": {{ page.title | jsonify }},
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": {{ page.share-description | default: page.excerpt | strip_html | truncate: 300 | jsonify }}
+    }
+  }]
+}
+</script>
+{% endif %}

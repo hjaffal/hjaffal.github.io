@@ -1,0 +1,152 @@
+ai-decision-operations:
+  - slug: ai-theater
+    name: "AI Theater"
+    keywords: ["AI transformation failure", "fake AI adoption", "AI theater", "AI washing"]
+    description: "Organizations that announce AI initiatives without operational change"
+
+  - slug: fake-ai-transformation
+    name: "Fake AI Transformation"
+    keywords: ["digital transformation failure", "AI hype cycle", "fake transformation"]
+    description: "The gap between AI press releases and actual operational improvement"
+
+  - slug: slow-decision-cultures
+    name: "Slow Decision Cultures"
+    keywords: ["slow decisions", "decision latency", "approval chains", "decision bottleneck"]
+    description: "Organizations where approval chains move slower than the threat"
+
+  - slug: ai-accountability-vacuum
+    name: "AI Accountability Vacuum"
+    keywords: ["AI accountability", "AI ownership gap", "who owns AI decisions"]
+    description: "Nobody owns the outcome when AI makes or informs a decision"
+
+  - slug: automation-failure-loops
+    name: "Automation Failure Loops"
+    keywords: ["automation failure", "AI amplifying problems", "broken automation"]
+    description: "AI automating broken processes faster instead of fixing them"
+
+  - slug: human-bottleneck-myth
+    name: "Human Bottleneck Myth"
+    keywords: ["human in the loop", "AI bottleneck", "human oversight failure"]
+    description: "The false belief that humans are always the bottleneck AI removes"
+
+  - slug: ai-governance-bureaucracy
+    name: "AI Governance Bureaucracy"
+    keywords: ["AI governance", "AI committee", "AI bureaucracy", "AI red tape"]
+    description: "Governance structures that slow AI deployment without reducing risk"
+
+  - slug: meeting-driven-operations
+    name: "Meeting-Driven Operations"
+    keywords: ["too many meetings", "meeting culture", "decision meetings", "status meetings"]
+    description: "Operations that require meetings to make decisions AI should trigger"
+
+  - slug: escalation-collapse
+    name: "Escalation Collapse"
+    keywords: ["escalation failure", "escalation path", "no escalation", "risk escalation"]
+    description: "When signals fire but nobody has authority or path to act"
+
+  - slug: operational-cowardice
+    name: "Operational Cowardice"
+    keywords: ["operational cowardice", "avoiding decisions", "decision avoidance"]
+    description: "Leaders who see the signal but choose not to act"
+
+risk-intelligence:
+  - slug: dashboard-addiction
+    name: "Dashboard Addiction"
+    keywords: ["dashboard problems", "too many dashboards", "dashboard overload", "dashboard fatigue"]
+    description: "Organizations that build dashboards instead of decision systems"
+
+  - slug: kpi-theater
+    name: "KPI Theater"
+    keywords: ["vanity metrics", "KPI problems", "useless KPIs", "KPI theater"]
+    description: "Metrics that look good in presentations but drive no action"
+
+  - slug: reporting-bureaucracy
+    name: "Reporting Bureaucracy"
+    keywords: ["reporting overhead", "too many reports", "report fatigue", "reporting waste"]
+    description: "Teams that spend more time reporting than acting on what they report"
+
+  - slug: alert-spam
+    name: "Alert Spam"
+    keywords: ["alert fatigue", "too many alerts", "alert noise", "false positives"]
+    description: "So many alerts that real signals get buried in noise"
+
+  - slug: data-without-ownership
+    name: "Data Without Ownership"
+    keywords: ["data ownership", "who owns the data", "data accountability"]
+    description: "Data that exists but nobody is accountable for acting on it"
+
+  - slug: false-confidence-metrics
+    name: "False Confidence Metrics"
+    keywords: ["misleading metrics", "false confidence", "metric manipulation"]
+    description: "Metrics that create the illusion of control without the reality"
+
+  - slug: vanity-analytics
+    name: "Vanity Analytics"
+    keywords: ["vanity analytics", "analytics that don't matter", "useless analytics"]
+    description: "Analytics work that impresses stakeholders but changes nothing"
+
+  - slug: intelligence-vs-reporting
+    name: "Intelligence vs Reporting"
+    keywords: ["reporting vs intelligence", "business intelligence", "actionable intelligence"]
+    description: "The fundamental difference between explaining the past and changing the future"
+
+  - slug: data-team-irrelevance
+    name: "Data Team Irrelevance"
+    keywords: ["data team value", "analytics team relevance", "data team ROI"]
+    description: "When data teams produce outputs nobody uses for decisions"
+
+  - slug: metric-manipulation
+    name: "Metric Manipulation"
+    keywords: ["gaming metrics", "metric manipulation", "Goodhart's law"]
+    description: "When people optimize the metric instead of the outcome it represents"
+
+ai-job-risk:
+  - slug: white-collar-automation
+    name: "White-Collar Automation"
+    keywords: ["AI replacing office jobs", "white collar automation", "AI job loss", "knowledge work automation"]
+    description: "How AI is automating knowledge work faster than expected"
+
+  - slug: fake-ai-safety-advice
+    name: "Fake AI Safety Advice"
+    keywords: ["AI career advice", "AI proof career", "safe from AI", "AI job safety myth"]
+    description: "Generic career advice that gives false comfort about AI exposure"
+
+  - slug: productivity-trap
+    name: "Productivity Trap"
+    keywords: ["productivity trap", "AI productivity", "doing more with AI", "AI efficiency trap"]
+    description: "Using AI to do more of the same work instead of moving to higher-value work"
+
+  - slug: middle-management-exposure
+    name: "Middle Management Exposure"
+    keywords: ["middle management AI", "AI replacing managers", "management automation"]
+    description: "Why middle management is more exposed to AI than most realize"
+
+  - slug: collapse-of-busy-work
+    name: "The Collapse of Busy Work"
+    keywords: ["busy work disappearing", "AI eliminating tasks", "routine work automation"]
+    description: "AI removing the tasks that filled most knowledge workers' days"
+
+  - slug: prompt-engineer-hype
+    name: "Prompt Engineer Hype"
+    keywords: ["prompt engineering", "prompt engineer career", "AI prompt jobs"]
+    description: "Why prompt engineering is not the career moat people think it is"
+
+  - slug: knowledge-worker-oversupply
+    name: "Knowledge Worker Oversupply"
+    keywords: ["too many analysts", "knowledge worker surplus", "AI reducing headcount"]
+    description: "AI reducing demand for roles that were already oversupplied"
+
+  - slug: credential-irrelevance
+    name: "Credential Irrelevance"
+    keywords: ["degrees losing value", "credentials vs skills", "AI making degrees irrelevant"]
+    description: "Credentials that used to guarantee employment losing their value"
+
+  - slug: ai-career-delusion
+    name: "AI Career Delusion"
+    keywords: ["AI career planning", "AI job future", "career delusion"]
+    description: "Professionals who believe their role is safe without evidence"
+
+  - slug: death-of-information-work
+    name: "The Death of Information Work"
+    keywords: ["information work dying", "AI replacing information workers", "data entry automation"]
+    description: "Roles built entirely around moving, formatting, and summarizing information"

@@ -6,6 +6,12 @@ share-description: "AI systems expose who truly understands trade-offs, judgment
 tags:
   - ai-job-risk
 author: Hasan J.
+topic: collapse-of-busy-work
+archetype: framework
+keywords:
+  - "busy work disappearing"
+  - "AI eliminating tasks"
+  - "routine work automation"
 ---
 
 A functional AI system in operations or analytics isn't just an algorithm. It's a structured decision engine with clearly defined human interfaces. You build it with distinct layers: the AI performs the routine, high-volume tasks. Humans handle the exceptions, the edge cases, and the *consequences*.

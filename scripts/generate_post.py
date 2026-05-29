@@ -199,6 +199,9 @@ def yaml_escape(value):
 
 tags_yaml = "\n".join([f"  - {tag}" for tag in tags])
 
+# Derive topic slug from the selected angle (simplified mapping)
+topic_slug = selected_angle.lower().replace(" ", "-").replace("'", "")[:30] if selected_angle else ""
+
 markdown = f"""---
 layout: post
 title: "{yaml_escape(title)}"
@@ -206,6 +209,8 @@ subtitle: "{yaml_escape(subtitle)}"
 share-description: "{yaml_escape(share_description)}"
 tags:
 {tags_yaml}
+topic: {selected_position["tag"].split("-")[0]}-topic
+archetype: {selected_form.split(" ")[0].lower() if selected_form else "contrarian"}
 author: Hasan J.
 ---
 

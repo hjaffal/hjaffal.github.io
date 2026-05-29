@@ -7,6 +7,12 @@ tags:
   - ai-decision-operations
   - ai-decision-operations
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "approval chains"
 ---
 
 Dashboards feel safe. They glow. They trend. They make us think we’re in control. But when risk hits, a dashboard is a mirror, not a brake.

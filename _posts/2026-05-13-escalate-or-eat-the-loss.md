@@ -6,6 +6,12 @@ share-description: "A blunt look at why predictive analytics and AI operations f
 tags:
   - ai-decision-operations
 author: Hasan J.
+topic: escalation-collapse
+archetype: framework
+keywords:
+  - "escalation failure"
+  - "escalation path"
+  - "no escalation"
 ---
 
 I’ve watched good teams build sharp risk signals and still get burned. Not because the models were bad. Because nobody owned the jump from "we see trouble" to "we pulled the brake." That gap — escalation discipline — is the hidden failure pattern that eats timelines, budgets, and trust.

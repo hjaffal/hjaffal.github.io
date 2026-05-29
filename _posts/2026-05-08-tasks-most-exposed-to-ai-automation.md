@@ -8,6 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
+topic: death-of-information-work
+archetype: framework
+keywords:
+  - "information work dying"
+  - "AI replacing information workers"
+  - "data entry automation"
 ---
 
 People talk about AI replacing jobs, but that framing is too blunt. AI doesn't replace jobs wholesale — it replaces tasks. A job is a bundle of tasks, and some of those tasks are far more exposed than others. The useful question isn't "will my job be automated?" It's "which of my tasks are exposed, and what percentage of my role do they represent?"

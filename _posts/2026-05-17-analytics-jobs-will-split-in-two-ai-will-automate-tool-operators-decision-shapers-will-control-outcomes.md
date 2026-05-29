@@ -6,6 +6,12 @@ share-description: "AI is cutting reporting roles. The remaining analytics jobs 
 tags:
   - ai-job-risk
 author: Hasan J.
+topic: productivity-trap
+archetype: framework
+keywords:
+  - "productivity trap"
+  - "AI productivity"
+  - "doing more with AI"
 ---
 
 AI has ended the comfortable middle in data analytics. The work is splitting in two: people who operate tools, and people who shape decisions. The first group is getting automated. The second group will stay small and powerful. If you think this is hype, you are the one at risk.

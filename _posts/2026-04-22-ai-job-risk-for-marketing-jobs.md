@@ -8,6 +8,11 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
+topic: white-collar-automation
+archetype: framework
+keywords:
+  - "white collar automation"
+  - "knowledge work automation"
 ---
 
 Walk into any marketing department and you'll find two kinds of people. There are the ones who produce — writing blog posts, creating ad variations, pulling campaign reports, resizing assets. And there are the ones who decide — choosing which audience to target, determining what the brand should stand for, making the call on whether to kill a campaign that's underperforming. AI is coming for the first group fast. The second group has more time, but not infinite time.

@@ -6,6 +6,12 @@ share-description: "Deploying AI can feel like progress. But if your team lacks 
 tags:
   - ai-decision-operations
 author: Hasan J.
+topic: escalation-collapse
+archetype: framework
+keywords:
+  - "escalation failure"
+  - "escalation path"
+  - "no escalation"
 ---
 
 A few months ago, a new fraud detection model went live, a flagship project leveraging deep learning to catch patterns human analysts consistently missed. The initial metrics were compelling: a significant uptick in flagged suspicious transactions, many of which turned out to be genuinely problematic. We had built something genuinely intelligent, a testament to cutting-edge data science. But within weeks, the glowing reports started to fray. The questions began trickling in, then flooding: "What do we do with *this* type of alert?" "Who needs to approve blocking a high-value account based on *this* score?" "The model’s threshold is new, does it override the old policy that requires two human reviews?" The model was working, producing clear, high-confidence signals. The operations team, however, was freezing, caught in a paralysis of process.

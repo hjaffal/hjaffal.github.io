@@ -8,6 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
+topic: fake-ai-safety-advice
+archetype: framework
+keywords:
+  - "AI career advice"
+  - "AI proof career"
+  - "safe from AI"
 ---
 
 Every project manager knows the feeling: you spend half your week chasing status updates, reformatting timelines, and writing summaries that nobody reads carefully. That half of your job is now automatable. The other half — the part where you negotiate scope with a difficult stakeholder, decide what to escalate, and make judgment calls about risk — is not. The problem is that many PMs have built their entire identity around the first half.

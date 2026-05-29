@@ -8,6 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
+topic: prompt-engineer-hype
+archetype: framework
+keywords:
+  - "prompt engineering"
+  - "prompt engineer career"
+  - "AI prompt jobs"
 ---
 
 Most data analysts spend Monday morning the same way: pulling last week's numbers, formatting a report, and sending it to someone who glances at it during a meeting. That ritual is now something a language model can do in under a minute. The question isn't whether AI will touch your job. It already has. The question is which parts of your job you actually own.

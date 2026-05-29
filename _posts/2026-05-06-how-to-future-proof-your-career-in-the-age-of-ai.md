@@ -8,6 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
+topic: fake-ai-safety-advice
+archetype: prediction
+keywords:
+  - "AI career advice"
+  - "AI proof career"
+  - "safe from AI"
 ---
 
 The phrase "future-proof your career" gets thrown around like there's a checklist you can complete and then stop worrying. Learn this tool. Get this certification. Add this keyword to your LinkedIn. But future-proofing isn't a one-time action. It's a positioning strategy — and most people are positioning themselves in exactly the wrong place.

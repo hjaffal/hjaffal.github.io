@@ -8,6 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-05-28-ai-exposes-weak-ops-and-slow-decisions-signals-without-authority-become-expensive-noise.webp
 share-img: /assets/img/posts/2026-05-28-ai-exposes-weak-ops-and-slow-decisions-signals-without-authority-become-expensive-noise.webp
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "approval chains"
 ---
 
 2:17 a.m., the payouts channel turned red.

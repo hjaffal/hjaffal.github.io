@@ -51,7 +51,7 @@ const createPost = onRequest(
       return;
     }
 
-    const { title, slug, author, tags, status, date, excerpt, shareTitle, shareDescription, featuredImage, body } = req.body;
+    const { title, slug, author, tags, status, date, excerpt, shareTitle, shareDescription, featuredImage, body, topic, archetype, keywords } = req.body;
 
     // Validate required fields
     if (!title || typeof title !== "string" || title.trim().length === 0) {
@@ -111,7 +111,10 @@ const createPost = onRequest(
       tags,
       author: author || "Hasan J.",
       featuredImage,
-      status
+      status,
+      topic,
+      archetype,
+      keywords
     });
 
     const fileContent = frontMatter + body.trim() + "\n";
@@ -162,7 +165,7 @@ function slugify(title) {
  * @param {object} params - Post metadata
  * @returns {string} Front matter block including opening/closing ---
  */
-function buildFrontMatter({ title, shareTitle, shareDescription, tags, author, featuredImage, status }) {
+function buildFrontMatter({ title, shareTitle, shareDescription, tags, author, featuredImage, status, topic, archetype, keywords }) {
   function yamlEscape(value) {
     if (!value) return "";
     return value.replace(/"/g, '\\"');
@@ -183,6 +186,21 @@ function buildFrontMatter({ title, shareTitle, shareDescription, tags, author, f
     fm += "tags:\n";
     for (const tag of tags) {
       fm += `  - ${tag}\n`;
+    }
+  }
+
+  if (topic) {
+    fm += `topic: ${topic}\n`;
+  }
+
+  if (archetype) {
+    fm += `archetype: ${archetype}\n`;
+  }
+
+  if (keywords && Array.isArray(keywords) && keywords.length > 0) {
+    fm += "keywords:\n";
+    for (const kw of keywords) {
+      fm += `  - "${yamlEscape(kw)}"\n`;
     }
   }
 

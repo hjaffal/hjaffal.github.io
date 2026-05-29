@@ -7,6 +7,11 @@ thumbnail-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-
 share-img: /assets/img/posts/2025-05-06-the-moment-i-realized-expertise-was-changing-forever.png
 tags: [ai-job-risk]
 author: Hasan J.
+topic: death-of-information-work
+archetype: framework
+keywords:
+  - "information work dying"
+  - "data entry automation"
 ---
 
 There is a moment in every career when something shifts quietly beneath your feet, and you realize the ground you have been standing on is no longer the same. For me, that moment happened in a room I had walked into with confidence many times before.

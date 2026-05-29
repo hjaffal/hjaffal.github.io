@@ -7,6 +7,12 @@ tags:
   - ai-job-risk
   - ai-decision-operations
 author: Hasan J.
+topic: white-collar-automation
+archetype: framework
+keywords:
+  - "white collar automation"
+  - "AI job loss"
+  - "knowledge work automation"
 ---
 
 AI will not politely wait for your next dashboard refresh. It will generate the chart, write the commentary, and schedule the email. If your job is to report, your job is going away.

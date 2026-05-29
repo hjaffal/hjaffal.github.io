@@ -7,6 +7,12 @@ tags:
   - ai-decision-operations
   - risk-intelligence
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "decision bottleneck"
 ---
 
 If you need a clean dashboard to feel safe, you are already late. Operational risk does not arrive in green tiles. It slips through gaps your data model ignores, your reporting trims, and your leadership rewards.

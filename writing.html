@@ -63,7 +63,7 @@ css:
     </div>
     <div class="wr-cards-grid" id="wr-articles-list">
       {% for post in site.posts %}
-      <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}">
+      <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}" data-topic="{{ post.topic }}">
         <div class="wr-card-img-wrap">
           {% if post.thumbnail-img %}
           <img class="wr-card-img" src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">

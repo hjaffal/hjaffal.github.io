@@ -6,6 +6,12 @@ share-description: "Dashboards don’t decide under pressure. Why AI, data analy
 tags:
   - ai-decision-operations
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "approval chains"
 ---
 
 Dashboards don’t decide. People under time pressure do. Most failures I audit are not about bad models or missing data. They are about slow decisions, unclear authority, and dashboards that show everything except what to do next.

@@ -7,6 +7,12 @@ tags:
   - risk-intelligence
   - ai-decision-operations
 author: Hasan J.
+topic: data-team-irrelevance
+archetype: framework
+keywords:
+  - "data team value"
+  - "analytics team relevance"
+  - "data team ROI"
 ---
 
 Leaders love dashboards. They glow in the boardroom. They summarize risk, show trends, and make us feel in control. But in real operations, under pressure, dashboards are quiet bystanders. They watch loss happen. They do not stop it.

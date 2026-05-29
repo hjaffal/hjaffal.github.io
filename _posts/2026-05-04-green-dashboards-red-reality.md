@@ -7,6 +7,12 @@ tags:
   - ai-decision-operations
   - risk-intelligence
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "decision bottleneck"
 ---
 
 Dashboards don’t run operations. People do. And when risk shows up, the screen often stays green while the cash walks out the door.

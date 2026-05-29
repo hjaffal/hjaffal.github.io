@@ -1,0 +1,26 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": "Hasan Jaffal",
+    "url": "https://hasanjaffal.com/aboutme/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hasan Jaffal",
+    "url": "https://hasanjaffal.com"
+  },
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  {% if page.last-updated %}"dateModified": "{{ page.last-updated }}",{% else %}"dateModified": "{{ page.date | date_to_xmlschema }}",{% endif %}
+  "description": {{ page.share-description | default: page.subtitle | default: page.excerpt | strip_html | truncate: 160 | jsonify }},
+  {% if page.thumbnail-img %}"image": "https://hasanjaffal.com{{ page.thumbnail-img }}",{% endif %}
+  {% if page.keywords %}"keywords": "{{ page.keywords | join: ', ' }}",{% endif %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hasanjaffal.com{{ page.url }}"
+  }
+}
+</script>

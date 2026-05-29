@@ -6,6 +6,12 @@ share-description: "Dashboards don’t stop fraud. Pre-wired controls and decisi
 tags:
   - risk-intelligence
 author: Hasan J.
+topic: alert-spam
+archetype: framework
+keywords:
+  - "alert fatigue"
+  - "too many alerts"
+  - "alert noise"
 ---
 
 If you need a dashboard to decide, you’re already late. In real operations, under risk, delay is loss. The quiet killer in data analytics is decision latency. We built fast visualizations and smart models, then left the controls out of reach.

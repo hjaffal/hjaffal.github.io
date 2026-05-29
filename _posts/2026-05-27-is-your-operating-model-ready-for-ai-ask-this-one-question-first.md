@@ -8,7 +8,12 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first.webp
 share-img: /assets/img/posts/2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first.webp
-
+topic: escalation-collapse
+archetype: framework
+keywords:
+  - "escalation failure"
+  - "escalation path"
+  - "no escalation"
 ---
 
 **Key takeaways:** AI doesn't automatically improve operations; it highlights existing weaknesses at speed. To extract real value, you must first pre-wire clear decision ownership and escalation paths. Your operating model needs to be proactive, not reactive, to the insights AI delivers.

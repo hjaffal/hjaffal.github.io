@@ -6,6 +6,12 @@ share-description: "Learn how the military's OODA loop framework reveals critica
 tags:
   - ai-decision-operations
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "approval chains"
 ---
 
 **Key takeaways:** A risk signal without immediate decision authority is just noise. Applying principles from military decision-making, like the OODA loop, reveals that speed and empowered action are critical. Teams must pre-define who decides and acts the moment a signal fires, rather than relying on slow approval chains.

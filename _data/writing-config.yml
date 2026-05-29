@@ -1,0 +1,181 @@
+# Writing Guide Configuration
+# Shared source of truth for post generation (Cloud Function + Python script + Admin UI)
+
+archetypes:
+  - id: contrarian
+    name: "Contrarian Opinion"
+    instruction: "Attack a common belief with a concrete counter-example. State what most people believe, then disagree with evidence."
+  - id: framework
+    name: "Framework / How-To"
+    instruction: "Provide operational guidance with actionable steps. Describe a decision framework and show how to apply it under pressure."
+  - id: breakdown
+    name: "Operational Breakdown"
+    instruction: "Analyze a real or fictional operational failure. Start with the scene, show what went wrong, extract the principle."
+  - id: prediction
+    name: "Prediction / Future Risk"
+    instruction: "Predict organizational or workforce shifts. Make a specific claim about what will change in the next 12 months and why."
+
+content_mix:
+  - id: confrontation
+    name: "High confrontation"
+    percentage: 20
+    instruction: "Aggressive, provocative, challenges the reader directly. Makes them uncomfortable."
+  - id: practical
+    name: "Practical insight"
+    percentage: 40
+    instruction: "Useful, actionable, operator-focused. Every paragraph must be actionable."
+  - id: predictive
+    name: "Predictive"
+    percentage: 20
+    instruction: "Forward-looking, trend-based, makes specific predictions about what changes next."
+  - id: humor
+    name: "Humor / light operational observations"
+    percentage: 20
+    instruction: "Light, observational, dry sarcasm about workplace absurdity. Still makes a point."
+
+signature_beliefs:
+  - "Visibility is not action."
+  - "AI exposes weak management."
+  - "Busy work is disappearing."
+  - "Dashboards delay accountability."
+  - "Reporting is not intelligence."
+  - "Automation scales weak processes."
+  - "AI increases signal speed faster than organizations can react."
+
+signature_metaphors:
+  - "radar systems"
+  - "pressure leaks"
+  - "digital battlefields"
+  - "mission control"
+  - "tripwires"
+  - "chain reactions"
+  - "fault lines"
+  - "black boxes"
+  - "traffic jams"
+  - "wildfire spread"
+
+forbidden_phrases:
+  - "leverage"
+  - "unlock"
+  - "digital transformation"
+  - "revolutionary"
+  - "synergize"
+  - "game changer"
+  - "AI-powered solution"
+
+writing_techniques:
+  - "Contrast — show the weak way versus the stronger way side by side"
+  - "Metaphors & Analogies — explain complex ideas through familiar comparisons"
+  - "Imagery — add one concrete scene (dashboard review, escalation meeting, risk review)"
+  - "Strong verbs — replace weak verbs (make, do, use, have) with precise action verbs"
+  - "Repetition — repeat one key phrase only if it helps the point land"
+  - "Foreshadowing — hint at what's coming to keep the reader moving forward"
+  - "Pattern interrupts — break expected rhythm with a short punch or unexpected turn"
+  - "Narrative hooks — open with a scene or moment that pulls the reader in"
+  - "Open loops — raise a question early, answer it later"
+  - "Tension escalation — build pressure through the article toward a climax"
+  - "Short punch sentences — one sentence. Full stop. Impact."
+  - "Counterintuitive claims — state something that sounds wrong but is defensible"
+  - "Story framing — wrap the insight inside a narrative structure"
+  - "Forced choice questions — ask a question that requires the reader to pick a side"
+
+newsletter_cta: "Weekly writing on AI, risk, and decisions. How to use AI in operations and risk — and how AI is reshaping the skills that matter at work."
+
+internal_link_targets:
+  tools:
+    - url: "/ai-job-risk-analyzer/"
+      name: "AI Job Risk Analyzer"
+      context: "For ai-job-risk posts — link when discussing job exposure or skill gaps"
+    - url: "/future-proof-skills-assessment/"
+      name: "Future-Proof Skills Assessment"
+      context: "For ai-job-risk posts — link when discussing future-proof skills"
+  positions:
+    - url: "/positions/ai-decision-operations/"
+      name: "AI & Decision Operations"
+      context: "Link from risk-intelligence or ai-job-risk posts when referencing operational AI"
+    - url: "/positions/risk-intelligence/"
+      name: "Risk Intelligence"
+      context: "Link from ai-decision-operations posts when referencing reporting vs intelligence"
+    - url: "/positions/ai-job-risk/"
+      name: "AI Job Risk"
+      context: "Link from ai-decision-operations posts when referencing workforce impact"
+  writing:
+    - url: "/writing/"
+      name: "All Writing"
+      context: "General CTA to browse more articles"
+
+brand_voice:
+  identity: "Strategist, operator, sharp observer"
+  tone: "Provocative, emotionally charged, conversational, direct, humorous at times, aggressive toward weak thinking"
+  allowed_criticism:
+    - "Consultants"
+    - "BI teams that only report"
+    - "Reporting bureaucracy"
+    - "AI theater"
+    - "Meeting culture"
+    - "Generic AI advice"
+
+conversational_rules:
+  - "Use contractions"
+  - "Use simple language"
+  - "Ask questions"
+  - "Use 'you' to address the reader"
+  - "Inject personality"
+  - "Use dry sarcasm and dark workplace humor"
+  - "Sound like an operator-strategist"
+  - "Avoid sounding academic"
+  - "Avoid sounding like polished corporate marketing"
+
+controlled_imperfection:
+  allowed:
+    - "Occasional repetition"
+    - "Abrupt paragraphs"
+    - "Incomplete transitions"
+    - "Blunt statements"
+    - "Asymmetry"
+    - "Slightly messy conversational flow"
+  forbidden:
+    - "Perfect rhythm everywhere"
+    - "Over-structured prose"
+    - "Excessive polish"
+    - "Sounding like a professional ghostwriter"
+    - "AI-generated smoothness"
+
+article_structure:
+  - "Hook — Opening that creates immediate tension or curiosity"
+  - "Key takeaway — The core answer/insight upfront (40-60 words, answer-first block)"
+  - "Tension — The uncomfortable truth or conflict"
+  - "Consequence — What happens if the reader ignores this"
+  - "Recommendation — What to do about it"
+  - "Forced-position question — A question that makes the reader choose a side"
+  - "CTA — Newsletter subscription call-to-action"
+
+editorial_checklist:
+  - "Fits one position"
+  - "Fits one topic"
+  - "Attacks a belief"
+  - "Creates tension"
+  - "Contains a memorable line"
+  - "Feels conversational"
+  - "Sounds human"
+  - "Avoids corporate tone"
+  - "Includes one operational example"
+  - "Includes one recommendation"
+  - "Includes one forced-position question"
+  - "Includes CTA"
+  - "Includes internal links (minimum 2)"
+  - "Includes one external reference"
+  - "Keyword naturally included"
+  - "Emotionally engaging"
+  - "Avoids duplication"
+
+seo_rules:
+  keywords_per_article: "1 primary + 2-3 secondary"
+  keyword_placement: "Title, introduction, and at least one subheading"
+  title_structure: "SEO + curiosity hybrid"
+  formatting: "Many subheadings, short paragraphs (2-4 sentences), frequent lists, scannable"
+
+article_length:
+  target_min: 500
+  target_max: 600
+  absolute_max: 700

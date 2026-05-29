@@ -7,6 +7,12 @@ tags:
   - ai-decision-operations
   - risk-intelligence
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "slow decisions"
+  - "decision latency"
+  - "approval chains"
 ---
 
 Your dashboard will not save you. Not tonight. Not when signals get noisy, the model drifts, and someone is actively testing your defenses. Dashboards show you the past. Operations is about what you do in the next five minutes.

@@ -8,6 +8,12 @@ thumbnail-img: /assets/img/posts/2024-11-16-lthe-data-metrics-every-security-and
 comments: true
 mathjax: true
 author: Hasan J.
+topic: data-team-irrelevance
+archetype: breakdown
+keywords:
+  - "data team value"
+  - "analytics team relevance"
+  - "data team ROI"
 ---
 If you’re working in Security and Loss Prevention (S&LP), you know data isn’t just “nice to have”—it’s essential. But with so much data available, how do you know what’s actually worth tracking? The right metrics can be the difference between just putting out fires and actually building a proactive, data-driven security strategy.
 

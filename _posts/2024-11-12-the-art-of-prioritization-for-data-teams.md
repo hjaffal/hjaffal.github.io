@@ -8,6 +8,11 @@ thumbnail-img: /assets/img/posts/2024-11-12-the-art-of-prioritization-for-data-t
 share-img: /assets/img/path.jpg
 tags: [ai-decision-operations]
 author: Hasan J.
+topic: slow-decision-cultures
+archetype: framework
+keywords:
+  - "decision latency"
+  - "decision bottleneck"
 ---
 
 In data teams, one of the biggest challenges is managing the endless flow of requests and demands. Often, we find ourselves saying "yes" to everything—addressing minor requests, building reports for every metric imaginable, or developing tools that are only marginally impactful. However, overloading the team with tasks that have low strategic value drains resources, reduces focus, and limits the team’s ability to deliver meaningful outcomes.
