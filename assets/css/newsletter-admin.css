@@ -2380,3 +2380,46 @@ body:has(.nla-layout:not([hidden])) footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Techniques checkboxes */
+.nla-ai-techniques {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.nla-ai-techniques .nla-check-label {
+  font-size: 0.75rem;
+}
+@media (max-width: 768px) {
+  .nla-ai-techniques {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Editorial checklist display */
+.nla-ai-checklist {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+}
+.nla-ai-checklist h4 {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.nla-ai-checklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.nla-ai-checklist li {
+  font-size: 0.75rem;
+  padding: 4px 0;
+}
+.nla-ai-check-pass { color: #059669; }
+.nla-ai-check-fail { color: #DC2626; font-weight: 600; }

@@ -294,50 +294,43 @@ function initAIDirections() {
 
   selectedPosition = null;
 
-  // Angles per position (mirrors functions/posts/generate.js)
-  const POSITION_ANGLES = {
+  // Topics per position (mirrors _data/topics.yml)
+  const POSITION_TOPICS = {
     'ai-decision-operations': [
-      "A specific failure where AI amplified a broken process instead of fixing it",
-      "How to audit your operating model before deploying AI",
-      "The difference between AI-ready and AI-dependent organizations",
-      "Why AI projects fail in operations: the process gap nobody talks about",
-      "What happens when you deploy a model into a team with no escalation path",
-      "The operating model checklist: what must be true before AI adds value",
-      "How strong teams use AI as a stress test for their workflows",
-      "Why the best AI teams spend 80% of their time on process, not models",
-      "The hidden cost of deploying AI into unclear ownership structures",
-      "How to design AI-assisted operations that degrade gracefully under pressure",
-      "How to pre-commit decision rights before the next crisis",
-      "The anatomy of a slow decision: where organizations lose time under risk",
-      "Why dashboards create the illusion of control without the reality of action",
-      "How to design a decision system that works at 2am with no manager online",
-      "The cost of one extra approval step during a live fraud attack",
-      "How to measure decision latency and why it matters more than model accuracy",
-      "The difference between a status update and a decision meeting",
-      "Why the person who sees the signal should be the person who pulls the lever",
+      { slug: 'ai-theater', name: 'AI Theater' },
+      { slug: 'fake-ai-transformation', name: 'Fake AI Transformation' },
+      { slug: 'slow-decision-cultures', name: 'Slow Decision Cultures' },
+      { slug: 'ai-accountability-vacuum', name: 'AI Accountability Vacuum' },
+      { slug: 'automation-failure-loops', name: 'Automation Failure Loops' },
+      { slug: 'human-bottleneck-myth', name: 'Human Bottleneck Myth' },
+      { slug: 'ai-governance-bureaucracy', name: 'AI Governance Bureaucracy' },
+      { slug: 'meeting-driven-operations', name: 'Meeting-Driven Operations' },
+      { slug: 'escalation-collapse', name: 'Escalation Collapse' },
+      { slug: 'operational-cowardice', name: 'Operational Cowardice' },
     ],
     'risk-intelligence': [
-      "How to convert a weekly report into an intelligence product",
-      "The 3 questions every metric must answer to qualify as intelligence",
-      "Why most dashboards are museums: pretty, historical, and useless under pressure",
-      "How to build a risk intelligence function from a reporting team",
-      "The difference between a metric that informs and a metric that triggers",
-      "How to kill metrics that nobody acts on without losing organizational trust",
-      "The intelligence loop: from signal to action to feedback in under 5 minutes",
-      "Why your best analysts are wasted on reporting and how to fix it",
-      "How to present risk intelligence to leaders who only understand dashboards",
+      { slug: 'dashboard-addiction', name: 'Dashboard Addiction' },
+      { slug: 'kpi-theater', name: 'KPI Theater' },
+      { slug: 'reporting-bureaucracy', name: 'Reporting Bureaucracy' },
+      { slug: 'alert-spam', name: 'Alert Spam' },
+      { slug: 'data-without-ownership', name: 'Data Without Ownership' },
+      { slug: 'false-confidence-metrics', name: 'False Confidence Metrics' },
+      { slug: 'vanity-analytics', name: 'Vanity Analytics' },
+      { slug: 'intelligence-vs-reporting', name: 'Intelligence vs Reporting' },
+      { slug: 'data-team-irrelevance', name: 'Data Team Irrelevance' },
+      { slug: 'metric-manipulation', name: 'Metric Manipulation' },
     ],
     'ai-job-risk': [
-      "The specific tasks AI is removing from analyst roles right now",
-      "What 'judgment work' actually looks like in practice — concrete examples",
-      "How to transition from tool operator to decision shaper in 6 months",
-      "Why the middle layer of knowledge work is the most exposed to AI",
-      "The new career moat: owning outcomes, not outputs",
-      "How AI changes what 'senior' means in analytics and operations",
-      "What hiring managers actually look for now that AI handles the basics",
-      "The uncomfortable conversation: which roles on your team are exposed",
-      "How to build a career around judgment when AI handles execution",
-      "Why the best operators will use AI as leverage, not as a replacement for thinking",
+      { slug: 'white-collar-automation', name: 'White-Collar Automation' },
+      { slug: 'fake-ai-safety-advice', name: 'Fake AI Safety Advice' },
+      { slug: 'productivity-trap', name: 'Productivity Trap' },
+      { slug: 'middle-management-exposure', name: 'Middle Management Exposure' },
+      { slug: 'collapse-of-busy-work', name: 'The Collapse of Busy Work' },
+      { slug: 'prompt-engineer-hype', name: 'Prompt Engineer Hype' },
+      { slug: 'knowledge-worker-oversupply', name: 'Knowledge Worker Oversupply' },
+      { slug: 'credential-irrelevance', name: 'Credential Irrelevance' },
+      { slug: 'ai-career-delusion', name: 'AI Career Delusion' },
+      { slug: 'death-of-information-work', name: 'The Death of Information Work' },
     ]
   };
 
@@ -358,17 +351,16 @@ function initAIDirections() {
     const genBtn = document.getElementById('ai-generate-btn');
     if (genBtn) genBtn.disabled = false;
 
-    // Populate angle dropdown
-    const angleSelect = document.getElementById('ai-angle');
-    if (angleSelect) {
-      angleSelect.innerHTML = '<option value="">Random</option>';
-      const angles = POSITION_ANGLES[selectedPosition] || [];
-      angles.forEach(function(angle) {
+    // Populate topic dropdown
+    const topicSelect = document.getElementById('ai-topic');
+    if (topicSelect) {
+      topicSelect.innerHTML = '<option value="">Random</option>';
+      const topics = POSITION_TOPICS[selectedPosition] || [];
+      topics.forEach(function(topic) {
         var opt = document.createElement('option');
-        opt.value = angle;
-        opt.textContent = angle.length > 60 ? angle.substring(0, 60) + '…' : angle;
-        opt.title = angle;
-        angleSelect.appendChild(opt);
+        opt.value = topic.slug;
+        opt.textContent = topic.name;
+        topicSelect.appendChild(opt);
       });
     }
   });
@@ -419,14 +411,41 @@ function initAIGenerateButton() {
         }
       } catch (e) { /* ignore */ }
 
+      // Collect existing topics and keywords for duplication prevention
+      let existingTopics = [];
+      let existingKeywords = [];
+      try {
+        const scriptEl = document.getElementById('posts-data');
+        if (scriptEl && scriptEl.textContent.trim()) {
+          const posts = JSON.parse(scriptEl.textContent);
+          existingTopics = posts.map(function(p) { return p.topic; }).filter(Boolean);
+          existingKeywords = posts.flatMap(function(p) { return p.keywords || []; }).filter(Boolean);
+        }
+      } catch (e) { /* ignore */ }
+
+      // Gather selected parameters
+      var selectedTopic = document.getElementById('ai-topic') ? document.getElementById('ai-topic').value : '';
+      var selectedArchetype = document.getElementById('ai-archetype') ? document.getElementById('ai-archetype').value : '';
+      var selectedContentMix = document.getElementById('ai-content-mix') ? document.getElementById('ai-content-mix').value : '';
+      var selectedTone = document.getElementById('ai-tone') ? document.getElementById('ai-tone').value : '';
+
+      // Gather selected techniques (checkboxes)
+      var selectedTechniques = [];
+      var techCheckboxes = document.querySelectorAll('#ai-techniques-checkboxes input:checked');
+      techCheckboxes.forEach(function(cb) { selectedTechniques.push(cb.value); });
+
       const result = await apiFetch(generatePostUrl, {
         method: 'POST',
         body: JSON.stringify({
           positionTag: selectedPosition,
           existingTitles: existingTitles,
-          angle: document.getElementById('ai-angle') ? document.getElementById('ai-angle').value : '',
-          articleForm: document.getElementById('ai-format') ? document.getElementById('ai-format').value : '',
-          tone: document.getElementById('ai-tone') ? document.getElementById('ai-tone').value : ''
+          existingTopics: existingTopics,
+          existingKeywords: existingKeywords,
+          topic: selectedTopic,
+          archetype: selectedArchetype,
+          contentMix: selectedContentMix,
+          techniques: selectedTechniques,
+          tone: selectedTone
         }),
         signal: controller.signal
       });
@@ -468,12 +487,28 @@ function initAIGenerateButton() {
 
       showNotification('Post generated successfully! Review and edit before saving.', 'success');
 
-      // Show word count
+      // Show word count and editorial checklist
       var wordCountEl = document.getElementById('ai-word-count');
-      if (wordCountEl && result.body) {
-        var words = result.body.trim().split(/\s+/).length;
+      if (wordCountEl) {
+        var words = result._meta ? result._meta.wordCount : (result.body ? result.body.trim().split(/\s+/).length : 0);
         wordCountEl.textContent = words + ' words';
+        if (result._meta && !result._meta.wordCountValid) {
+          wordCountEl.textContent += ' ⚠️';
+        }
         wordCountEl.hidden = false;
+      }
+
+      // Display editorial checklist if returned
+      if (result.editorial_checklist && statusEl) {
+        var checklist = result.editorial_checklist;
+        var checklistHtml = '<div class="nla-ai-checklist"><h4>Editorial Checklist — ' + (checklist.score || '') + '</h4><ul>';
+        (checklist.items || []).forEach(function(item) {
+          var icon = item.passed ? '✓' : '✗';
+          var cls = item.passed ? 'nla-ai-check-pass' : 'nla-ai-check-fail';
+          checklistHtml += '<li class="' + cls + '"><span>' + icon + '</span> ' + item.name + '</li>';
+        });
+        checklistHtml += '</ul></div>';
+        statusEl.innerHTML = checklistHtml;
       }
 
     } catch (err) {

@@ -372,35 +372,62 @@ css:
 
         <div class="nla-ai-options">
           <div class="nla-form-group">
-            <label class="nla-label" for="ai-angle">Angle (optional)</label>
-            <select class="nla-select" id="ai-angle">
+            <label class="nla-label" for="ai-topic">Topic</label>
+            <select class="nla-select" id="ai-topic">
               <option value="">Random</option>
             </select>
           </div>
           <div class="nla-form-group">
-            <label class="nla-label" for="ai-format">Article Format</label>
-            <select class="nla-select" id="ai-format">
+            <label class="nla-label" for="ai-archetype">Archetype</label>
+            <select class="nla-select" id="ai-archetype">
               <option value="">Random</option>
-              <option value="Answer a specific reader question with one example">Question & Answer</option>
-              <option value="Challenge one weak assumption and explain the better view">Challenge Assumption</option>
-              <option value="Explain one workplace failure pattern and one fix">Failure Pattern & Fix</option>
-              <option value="Compare the common mistake with the stronger behavior">Mistake vs Stronger Behavior</option>
-              <option value="Give one practical decision rule the reader can use this week">Decision Rule</option>
-              <option value="Explain one risk signal people usually miss">Risk Signal</option>
-              <option value="Write a short field note from an operator's perspective">Field Note</option>
+              <option value="contrarian">Contrarian Opinion</option>
+              <option value="framework">Framework / How-To</option>
+              <option value="breakdown">Operational Breakdown</option>
+              <option value="prediction">Prediction / Future Risk</option>
+            </select>
+          </div>
+          <div class="nla-form-group">
+            <label class="nla-label" for="ai-content-mix">Content Mix</label>
+            <select class="nla-select" id="ai-content-mix">
+              <option value="">Random</option>
+              <option value="confrontation">High confrontation</option>
+              <option value="practical">Practical insight</option>
+              <option value="predictive">Predictive</option>
+              <option value="humor">Humor / light</option>
             </select>
           </div>
           <div class="nla-form-group">
             <label class="nla-label" for="ai-tone">Tone</label>
             <select class="nla-select" id="ai-tone">
               <option value="">Random</option>
-              <option value="Direct and practical, but not heavy">Direct & Practical</option>
-              <option value="Sharp but readable">Sharp & Readable</option>
-              <option value="Calm, useful, and concise">Calm & Concise</option>
-              <option value="Operator-style field note">Operator Field Note</option>
-              <option value="Question-led and human">Question-Led</option>
-              <option value="Light but still authoritative">Light & Authoritative</option>
+              <option value="Direct and blunt. No softening.">Direct & Blunt</option>
+              <option value="Analytical and precise. Use structure.">Analytical & Precise</option>
+              <option value="Narrative-driven. Start with a scene.">Narrative-Driven</option>
+              <option value="Practical and operator-focused.">Operator-Focused</option>
+              <option value="Contrarian. Take the opposite position.">Contrarian</option>
+              <option value="Light but still authoritative.">Light & Authoritative</option>
             </select>
+          </div>
+        </div>
+
+        <div class="nla-form-group">
+          <label class="nla-label">Writing Techniques (select 2-4)</label>
+          <div class="nla-ai-techniques" id="ai-techniques-checkboxes">
+            <label class="nla-check-label"><input type="checkbox" value="Contrast"> Contrast</label>
+            <label class="nla-check-label"><input type="checkbox" value="Metaphors & Analogies"> Metaphors</label>
+            <label class="nla-check-label"><input type="checkbox" value="Imagery"> Imagery</label>
+            <label class="nla-check-label"><input type="checkbox" value="Strong verbs"> Strong verbs</label>
+            <label class="nla-check-label"><input type="checkbox" value="Repetition"> Repetition</label>
+            <label class="nla-check-label"><input type="checkbox" value="Pattern interrupts"> Pattern interrupts</label>
+            <label class="nla-check-label"><input type="checkbox" value="Narrative hooks"> Narrative hooks</label>
+            <label class="nla-check-label"><input type="checkbox" value="Open loops"> Open loops</label>
+            <label class="nla-check-label"><input type="checkbox" value="Tension escalation"> Tension escalation</label>
+            <label class="nla-check-label"><input type="checkbox" value="Short punch sentences"> Short punches</label>
+            <label class="nla-check-label"><input type="checkbox" value="Counterintuitive claims"> Counterintuitive</label>
+            <label class="nla-check-label"><input type="checkbox" value="Story framing"> Story framing</label>
+            <label class="nla-check-label"><input type="checkbox" value="Forced choice questions"> Forced choice</label>
+            <label class="nla-check-label"><input type="checkbox" value="Foreshadowing"> Foreshadowing</label>
           </div>
         </div>
 
