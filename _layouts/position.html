@@ -32,10 +32,10 @@ css:
         <div class="pos-topics-grid">
           {% for topic in site.data.topics[page.position_tag] %}
           {% assign topic_posts = site.posts | where: "topic", topic.slug %}
-          <div class="pos-topic-card{% if topic_posts.size == 0 %} pos-topic-empty{% endif %}">
+          <a href="/topics/{{ topic.slug }}/" class="pos-topic-card{% if topic_posts.size == 0 %} pos-topic-empty{% endif %}">
             <span class="pos-topic-name">{{ topic.name }}</span>
             <span class="pos-topic-count">{{ topic_posts.size }} post{% if topic_posts.size != 1 %}s{% endif %}</span>
-          </div>
+          </a>
           {% endfor %}
         </div>
         {% endif %}

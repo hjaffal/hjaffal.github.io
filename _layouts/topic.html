@@ -1,0 +1,70 @@
+---
+layout: base
+css:
+  - "/assets/css/post.css"
+  - "/assets/css/position.css"
+---
+
+{% include article-schema.html %}
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/positions/{{ page.position_tag }}/">{{ page.position_name }}</a></span>
+        <h1>{{ page.topic_name }}</h1>
+        <p class="post-heading-subtitle">{{ page.description }}</p>
+      </div>
+
+      {% if page.keywords %}
+      <div class="topic-keywords">
+        {% for kw in page.keywords %}
+        <span class="topic-keyword-tag">{{ kw }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="blog-post">
+        {{ content }}
+      </div>
+
+      <h2 class="topic-articles-heading">Articles on this topic</h2>
+
+      {% assign topic_posts = site.posts | where: "topic", page.topic_slug %}
+      {% if topic_posts.size > 0 %}
+      <div class="pos-articles-list">
+        {% for post in topic_posts %}
+        <a href="{{ post.url | relative_url }}" class="pos-article-row">
+          <div class="pos-article-info">
+            <span class="pos-article-title">{{ post.title }}</span>
+            <span class="pos-article-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
+          </div>
+          <div class="pos-article-meta">
+            <span class="pos-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
+            <span class="pos-article-arrow">→</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="topic-no-posts">No articles published on this topic yet. Check back soon.</p>
+      {% endif %}
+
+      {% include position-crosslinks.html active=page.position_tag %}
+
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-recent.html %}
+    </aside>
+  </div>
+</main>

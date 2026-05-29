@@ -282,7 +282,7 @@ function renderTopicCoverage(posts) {
   let totalTopics = 0;
 
   Object.keys(TOPICS).forEach(function(position) {
-    html += '<div class="nla-dash-topic-group"><span class="nla-dash-topic-group-title">' + POSITION_NAMES[position] + '</span>';
+    html += '<div class="nla-dash-topic-group"><span class="nla-dash-topic-group-title">' + POSITION_NAMES[position] + '</span><div class="nla-dash-topic-items">';
     TOPICS[position].forEach(function(topicSlug) {
       totalTopics++;
       var count = published.filter(function(p) { return p.topic === topicSlug; }).length;
@@ -291,7 +291,7 @@ function renderTopicCoverage(posts) {
       var name = topicSlug.replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
       html += '<div class="' + cls + '"><span class="nla-dash-topic-name">' + name + '</span><span class="nla-dash-topic-count">' + count + '</span></div>';
     });
-    html += '</div>';
+    html += '</div></div>';
   });
 
   container.innerHTML = '<div class="nla-dash-topic-summary">' + totalCovered + '/' + totalTopics + ' topics covered</div>' + html;
