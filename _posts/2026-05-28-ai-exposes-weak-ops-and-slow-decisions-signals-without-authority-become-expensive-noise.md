@@ -6,6 +6,8 @@ share-description: "AI multiplies your detection capacity. If approvals are slow
 tags:
   - ai-decision-operations
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-05-28-ai-exposes-weak-ops-and-slow-decisions-signals-without-authority-become-expensive-noise.webp
+share-img: /assets/img/posts/2026-05-28-ai-exposes-weak-ops-and-slow-decisions-signals-without-authority-become-expensive-noise.webp
 ---
 
 2:17 a.m., the payouts channel turned red.
