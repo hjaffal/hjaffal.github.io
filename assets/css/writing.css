@@ -300,6 +300,50 @@
   margin-top: 12px;
 }
 
+/* Reference Guides section */
+.wr-references {
+  padding: 0 48px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.wr-references-header {
+  margin-bottom: 14px;
+}
+.wr-references-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.wr-reference-card {
+  padding: 16px 18px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s;
+}
+.wr-reference-card:hover { border-color: var(--accent); }
+.wr-reference-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+.wr-reference-desc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+@media (max-width: 960px) {
+  .wr-references-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .wr-references { padding: 0 24px 24px; }
+  .wr-references-grid { grid-template-columns: 1fr; }
+}
+
 /* Load More */
 .wr-load-more-wrap {
   text-align: center;

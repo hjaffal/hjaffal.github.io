@@ -71,6 +71,18 @@ css:
         {% endfor %}
       </div>
 
+      {% if site.data.references[page.position_tag] %}
+      <h2 style="margin-top:40px;">Reference Guides</h2>
+      <div class="pos-references-grid">
+        {% for ref in site.data.references[page.position_tag] %}
+        <a href="{{ ref.url }}" class="pos-reference-card">
+          <span class="pos-reference-title">{{ ref.title }}</span>
+          <span class="pos-reference-desc">{{ ref.description }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
       {% include position-crosslinks.html active=page.position_tag %}
 
     </div>

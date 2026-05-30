@@ -1,0 +1,83 @@
+---
+layout: base
+css:
+  - "/assets/css/post.css"
+  - "/assets/css/position.css"
+  - "/assets/css/reference.css"
+---
+
+{% include article-schema.html %}
+
+<main class="post-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/positions/{{ page.position_tag }}/">{{ page.position_name }}</a> · REFERENCE</span>
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="post-heading-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Auto-generated Table of Contents -->
+      <nav class="ref-toc" id="ref-toc">
+        <span class="ref-toc-label">ON THIS PAGE</span>
+      </nav>
+
+      <div class="blog-post ref-content" id="ref-content">
+        {{ content }}
+      </div>
+
+      <!-- Related posts -->
+      {% assign related = site.posts | where: "topic", page.related_topic | limit: 5 %}
+      {% if related.size > 0 %}
+      <div class="ref-related">
+        <h2>Related Articles</h2>
+        <div class="ref-related-list">
+          {% for post in related limit:5 %}
+          <a href="{{ post.url | relative_url }}" class="ref-related-item">
+            <span class="ref-related-title">{{ post.title }}</span>
+            <span class="ref-related-date">{{ post.date | date: "%b %d, %Y" }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% include position-crosslinks.html active=page.position_tag %}
+
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-recent.html %}
+    </aside>
+  </div>
+</main>
+
+<script>
+// Auto-generate TOC from h2 headings
+(function() {
+  var content = document.getElementById('ref-content');
+  var toc = document.getElementById('ref-toc');
+  if (!content || !toc) return;
+  var headings = content.querySelectorAll('h2');
+  if (headings.length < 2) { toc.style.display = 'none'; return; }
+  var html = '<span class="ref-toc-label">ON THIS PAGE</span><ul>';
+  headings.forEach(function(h, i) {
+    var id = 'section-' + i;
+    h.id = id;
+    html += '<li><a href="#' + id + '">' + h.textContent + '</a></li>';
+  });
+  html += '</ul>';
+  toc.innerHTML = html;
+})();
+</script>

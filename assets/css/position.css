@@ -59,6 +59,38 @@
   white-space: nowrap;
 }
 
+/* Reference guides on position pages */
+.pos-references-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.pos-reference-card {
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: opacity 0.2s;
+}
+.pos-reference-card:hover { opacity: 0.85; }
+.pos-reference-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #F8FAFC;
+}
+.pos-reference-desc {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  line-height: 1.4;
+}
+@media (max-width: 600px) {
+  .pos-references-grid { grid-template-columns: 1fr; }
+}
+
 /* Topic page */
 .topic-keywords {
   display: flex;

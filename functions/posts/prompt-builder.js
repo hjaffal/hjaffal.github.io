@@ -41,6 +41,15 @@ const CONFIG = {
       { url: "/positions/risk-intelligence/", name: "Risk Intelligence" },
       { url: "/positions/ai-job-risk/", name: "AI Job Risk" },
     ],
+    references: [
+      { url: "/references/ai-job-risk-index/", name: "AI Job Risk Index", position: "ai-job-risk" },
+      { url: "/references/dashboard-failure-checklist/", name: "Dashboard Failure Checklist", position: "risk-intelligence" },
+      { url: "/references/reporting-vs-intelligence/", name: "Reporting vs Intelligence Framework", position: "risk-intelligence" },
+      { url: "/references/ai-operations-failure-patterns/", name: "AI Operations Failure Patterns", position: "ai-decision-operations" },
+      { url: "/references/decision-ownership-model/", name: "Decision Ownership Model", position: "ai-decision-operations" },
+      { url: "/references/operational-escalation-framework/", name: "Operational Escalation Framework", position: "ai-decision-operations" },
+      { url: "/references/ai-adoption-failure-checklist/", name: "AI Adoption Failure Checklist", position: "ai-decision-operations" },
+    ],
   },
 
   editorial_checklist: [
@@ -111,7 +120,8 @@ function buildPrompt(params) {
   // Pick internal links relevant to this position
   const otherPositions = CONFIG.internal_links.positions.filter(p => !p.url.includes(position.tag));
   const tools = CONFIG.internal_links.tools;
-  const availableLinks = [...otherPositions, ...tools].map(l => `[${l.name}](${l.url})`).join(", ");
+  const references = CONFIG.internal_links.references.filter(r => r.position === position.tag);
+  const availableLinks = [...otherPositions, ...tools, ...references].map(l => `[${l.name}](${l.url})`).join(", ");
 
   return `You are writing as Hasan Jaffal — a data and business intelligence leader who writes from real operational experience. You are a strategist, operator, and sharp observer.
 

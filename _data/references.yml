@@ -1,0 +1,26 @@
+ai-decision-operations:
+  - title: "AI Operations Failure Patterns"
+    url: "/references/ai-operations-failure-patterns/"
+    description: "The 8 recurring ways AI deployments fail in operations"
+  - title: "Decision Ownership Model"
+    url: "/references/decision-ownership-model/"
+    description: "A framework for assigning decision authority before signals arrive"
+  - title: "Operational Escalation Framework"
+    url: "/references/operational-escalation-framework/"
+    description: "How to design escalation paths that work under pressure"
+  - title: "AI Adoption Failure Checklist"
+    url: "/references/ai-adoption-failure-checklist/"
+    description: "10 signs your AI initiative will fail before it starts"
+
+risk-intelligence:
+  - title: "Dashboard Failure Checklist"
+    url: "/references/dashboard-failure-checklist/"
+    description: "How to identify dashboards that create visibility without action"
+  - title: "Reporting vs Intelligence Framework"
+    url: "/references/reporting-vs-intelligence/"
+    description: "The fundamental difference between explaining the past and changing the future"
+
+ai-job-risk:
+  - title: "AI Job Risk Index"
+    url: "/references/ai-job-risk-index/"
+    description: "Which roles are most exposed to AI automation — and which are protected"
