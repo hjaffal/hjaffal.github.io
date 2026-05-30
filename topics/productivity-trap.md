@@ -16,3 +16,10 @@ keywords:
   - "AI efficiency trap"
 ---
 
+## What is The Productivity Trap?
+
+The Productivity Trap is using AI to do more of the same low-value work faster — instead of using it as a signal to move toward higher-judgment, higher-value work.
+
+## Start Here
+
+AI makes you faster at your current tasks. That feels like progress. But if those tasks are the ones AI will fully automate next year, you're just accelerating toward your own irrelevance. The real opportunity isn't doing more — it's doing different. Moving from execution to judgment, from output to outcome.

@@ -58,6 +58,21 @@ css:
       <p class="topic-no-posts">No articles published on this topic yet. Check back soon.</p>
       {% endif %}
 
+      <!-- Topic CTA -->
+      {% if page.position_tag == "ai-job-risk" %}
+      <div class="topic-cta-card">
+        <h3>See where your role stands</h3>
+        <p>Get a personalized AI risk report for your specific job. See which tasks are exposed and get a 30-day action plan.</p>
+        <a href="/ai-job-risk-analyzer/" class="topic-cta-btn">Take the AI Job Risk Assessment →</a>
+      </div>
+      {% else %}
+      <div class="topic-cta-card">
+        <h3>Get weekly writing on this topic</h3>
+        <p>I write about AI, risk, and decisions every week. No filler, no fluff — just ideas you can use.</p>
+        <a href="/newsletter/" class="topic-cta-btn">Subscribe to The Second Mind →</a>
+      </div>
+      {% endif %}
+
       {% include position-crosslinks.html active=page.position_tag %}
 
     </div>

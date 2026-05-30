@@ -181,8 +181,15 @@ css:
   function showTopicBar(position) {
     var topics = TOPICS[position];
     if (!topics) { topicBar.hidden = true; return; }
+
+    // Only show topics that have at least one post
+    var topicsWithPosts = topics.filter(function(t) {
+      return allCards.some(function(card) { return card.dataset.topic === t.slug; });
+    });
+    if (topicsWithPosts.length === 0) { topicBar.hidden = true; return; }
+
     var html = '<button class="wr-topic-btn active" data-topic="all">All Topics</button>';
-    topics.forEach(function(t) {
+    topicsWithPosts.forEach(function(t) {
       html += '<button class="wr-topic-btn" data-topic="' + t.slug + '">' + t.name + '</button>';
     });
     topicBar.innerHTML = html;
