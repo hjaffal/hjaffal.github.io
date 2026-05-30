@@ -94,17 +94,17 @@ function renderNewsletter({ subject, introHtml, posts, featuredPost, toolInvitat
   </table>
 </td></tr>
 
-<!-- Post cards -->
-<tr><td style="padding:0 32px;">
-  <table cellpadding="0" cellspacing="0" border="0" width="100%">
-    ${postsHtml}
-  </table>
-</td></tr>
-
 <!-- Featured post -->
 <tr><td style="padding:0 32px;">
   <table cellpadding="0" cellspacing="0" border="0" width="100%">
     ${featuredHtml}
+  </table>
+</td></tr>
+
+<!-- Post cards -->
+<tr><td style="padding:0 32px;">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    ${postsHtml}
   </table>
 </td></tr>
 
