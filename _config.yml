@@ -19,9 +19,10 @@ social-network-links:
 rss-description: "Writing on data, AI, risk, fraud analytics, loss prevention, and operational decision-making."
 
 share-links-active:
-  twitter: false
+  twitter: true
   facebook: false
   linkedin: true
+  reddit: true
   vk: false
 
 url-pretty: "hasanjaffal.com"
