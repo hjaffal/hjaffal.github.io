@@ -44,7 +44,7 @@ The practical difference shows up in how you spend your time. The tool operator'
 
 I covered the specific skills that support this positioning in [What Skills Should I Learn Because of AI](/2026-04-29-what-skills-should-i-learn-because-of-ai/). The short version: problem framing, trade-off ownership, communication under uncertainty, and error detection. These are the muscles that make decision ownership possible.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## What this looks like across roles
 
@@ -70,4 +70,4 @@ Future-proofing isn't a certification or a tool. It's a deliberate shift in how 
 
 Start this week: identify one decision in your work that you currently defer to someone else. Take ownership of it. Frame the options, name the trade-offs, make a recommendation, and follow up on the outcome. Do that consistently, and you'll be positioned around the work that lasts.
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.

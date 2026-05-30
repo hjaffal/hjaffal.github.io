@@ -43,7 +43,7 @@ The uncomfortable truth is that many marketing teams are structured around execu
 
 I wrote about why the concept of "AI-proof skills" is misleading in [AI-Proof Skills Are a Myth](/2026-05-20-ai-proof-skills-are-a-myth/). The same logic applies here: no marketing skill is permanently safe. But some are much harder to replace right now, and that's what matters for the next five years.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## What people get wrong
 
@@ -65,4 +65,4 @@ If you're in marketing, audit your role honestly. What percentage of your week i
 
 The marketers who will thrive are the ones who treat AI as their production team and focus their own time on the judgment calls that determine whether the production matters. That means owning the "what" and "why" while letting AI handle the "how many" and "how fast."
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.

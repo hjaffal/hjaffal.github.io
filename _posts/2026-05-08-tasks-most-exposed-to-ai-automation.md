@@ -58,7 +58,7 @@ Understanding what's protected is just as important. Tasks that resist automatio
 
 **Relationship-dependent work.** Mentoring a junior employee. Building trust with a new client. Managing a team through a difficult transition. These tasks depend on human connection, emotional intelligence, and the kind of trust that's built over time through consistent behavior.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## How to use this framework
 
@@ -72,4 +72,4 @@ The goal isn't to panic. It's to deliberately shift your time toward the protect
 
 AI automation isn't a binary event — it's a gradient. Some of your tasks are highly exposed right now. Others are safe for years. The smart move is to know which is which and actively migrate your time and identity toward the protected work. Don't wait for your organization to restructure your role. Restructure it yourself, one decision at a time.
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.

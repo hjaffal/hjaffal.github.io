@@ -48,7 +48,7 @@ A third mistake: building skills in isolation from your actual work. You don't d
 
 I wrote about the specific positioning strategy that makes these skills valuable in [How to Future-Proof Your Career in the Age of AI](/2026-05-06-how-to-future-proof-your-career-in-the-age-of-ai/). The key insight: it's not about the skills in isolation. It's about positioning yourself around decisions and outcomes rather than outputs.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## The honest timeline
 
@@ -66,4 +66,4 @@ Stop looking for AI-proof skills. Start looking for harder-to-replace positionin
 
 The skills that are hardest to replace right now are judgment under ambiguity, contextual accountability, relationship-based influence, and novel problem-solving. Build them through practice, not courses. Own decisions. Bear consequences. Navigate complexity. That's the work that lasts — not forever, but long enough to matter.
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.

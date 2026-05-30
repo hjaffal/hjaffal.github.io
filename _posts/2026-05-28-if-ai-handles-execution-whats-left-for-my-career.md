@@ -32,4 +32,4 @@ Stronger operators don't just use AI; they define its boundaries. They own the o
 
 This week, identify one automated process in your domain. Pinpoint the last human decision point where someone could intervene, change a parameter, or override a recommendation. Ask yourself: who truly owns the risk if that decision, or lack thereof, goes wrong? That owner is exercising judgment, not just executing. Seek to be that owner, and build your career around that accountability.
 
-If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/).
+If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/).

@@ -48,7 +48,7 @@ They also build relationships that AI cannot replicate. They know which stakehol
 
 Strong analysts also invest in understanding the systems where decisions get executed — rules engines, workflow tools, product configurations, pricing logic. They don't just report on outcomes; they understand the levers that produce those outcomes. This makes them indispensable when something breaks or when a new initiative needs analytical support that goes beyond a chart.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## The skills that actually matter now
 
@@ -60,4 +60,4 @@ If you're a data analyst reading this, here's the honest assessment: the reporti
 
 Move toward the decisions. Frame questions. Name trade-offs. Own recommendations. Follow up on outcomes. That's the work AI can't do — not because it's technically impossible, but because nobody will let a model be accountable. That accountability is your moat.
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.

@@ -52,7 +52,7 @@ For error detection: develop the habit of stress-testing AI outputs. When a mode
 
 I wrote about why the idea of "AI-proof" skills is misleading in [AI-Proof Skills Are a Myth](/2026-05-20-ai-proof-skills-are-a-myth/). Nothing is permanently safe. But the skills above are harder to replace than any specific technical capability, and they compound over time rather than depreciating.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## What this looks like in practice
 
@@ -64,4 +64,4 @@ The same pattern applies across roles. A project manager who frames scope decisi
 
 Stop asking "what tool should I learn?" Start asking "what decisions can I own?" The tools will change. The models will improve. The interfaces will evolve. But the need for humans who can frame problems, own trade-offs, communicate under uncertainty, and catch errors in automated outputs — that need is growing, not shrinking. Build those muscles now, while the transition is still early enough to position yourself on the right side of it.
 
-If you want a structured way to evaluate your exposure and identify which judgment skills to prioritize, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and identify which judgment skills to prioritize, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.

@@ -40,7 +40,7 @@ Another mistake: thinking that adopting AI tools makes you safe. Using Copilot t
 
 I covered the specific characteristics that make tasks vulnerable to automation in [Tasks Most Exposed to AI Automation](/2026-05-13-tasks-most-exposed-to-ai-automation/). The pattern is clear: repetitive, rule-based, low-context work goes first. PMs should audit their week against that framework.
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
 
 ## What stronger PMs do differently
 
@@ -64,4 +64,4 @@ Audit your week. Count the hours you spend on work that a well-configured AI too
 
 The good news: the judgment work is more interesting, more impactful, and harder to commoditize. The bad news: it's also harder, less comfortable, and requires you to be wrong sometimes. That's the trade-off. Take it.
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/tools/ai-job-risk-assessment/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
