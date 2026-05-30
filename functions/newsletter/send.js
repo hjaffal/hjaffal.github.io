@@ -205,7 +205,7 @@ async function sendToSubscriber(resend, subscriber, editionId, subject, introHtm
     // Render the HTML email
     const html = renderNewsletter({
       subject,
-      introHtml: introHtml || null,
+      introHtml: rewriteLinksInHtml(introHtml, trackingToken),
       posts: rewrittenPosts,
       featuredPost: rewrittenFeaturedPost,
       toolInvitation: rewrittenToolInvitation,
@@ -243,6 +243,25 @@ async function sendToSubscriber(resend, subscriber, editionId, subject, introHtm
 function rewriteLink(url, trackingToken) {
   const encodedUrl = Buffer.from(url).toString("base64url");
   return `${CLICK_PROXY_BASE}?t=${trackingToken}&url=${encodedUrl}`;
+}
+
+/**
+ * Rewrites all <a href="..."> links in an HTML string through the click proxy.
+ * Skips unsubscribe/preferences links to keep them direct.
+ *
+ * @param {string} html - The HTML content with links
+ * @param {string} trackingToken - The tracking token for this subscriber-edition
+ * @returns {string} HTML with rewritten links
+ */
+function rewriteLinksInHtml(html, trackingToken) {
+  if (!html) return html;
+  return html.replace(/href="(https?:\/\/[^"]+)"/g, function(match, url) {
+    // Don't rewrite unsubscribe/preferences links
+    if (url.includes('/newsletter/preferences') || url.includes('unsubscribe')) {
+      return match;
+    }
+    return 'href="' + rewriteLink(url, trackingToken) + '"';
+  });
 }
 
 /**
