@@ -29,6 +29,11 @@ let editingPostState = null;
 /** Current draft ID (if editing a Firestore draft) */
 let currentDraftId = null;
 
+/** Generated metadata (topic, archetype, keywords) — set after AI generation */
+let generatedTopic = null;
+let generatedArchetype = null;
+let generatedKeywords = null;
+
 // --- Draft API Helpers ---
 
 /**
@@ -65,6 +70,9 @@ async function saveDraft(silent) {
     metaDescription: metaDesc,
     featuredImage: featuredImg,
     publishDate: date,
+    topic: generatedTopic || '',
+    archetype: generatedArchetype || '',
+    keywords: generatedKeywords || [],
   };
 
   if (currentDraftId) {
@@ -544,6 +552,11 @@ function initAIGenerateButton() {
         });
       }
       if (result.body) setEditorContent(result.body);
+
+      // Store generated metadata for publish
+      generatedTopic = result.topic || null;
+      generatedArchetype = result.archetype || null;
+      generatedKeywords = result.keywords || null;
 
       // Update char counts
       updateCharCount('post-title', 150);

@@ -77,7 +77,7 @@ const manageDrafts = onRequest(
 async function handleSave(req, res) {
   const data = req.body;
   const { id, title, slug, content, tags, excerpt, metaTitle, metaDescription,
-    featuredImage, publishDate, position } = data;
+    featuredImage, publishDate, position, topic, archetype, keywords } = data;
 
   if (!title || !title.trim()) {
     res.status(400).json({ error: "Title is required" });
@@ -98,6 +98,9 @@ async function handleSave(req, res) {
     metaDescription: metaDescription || "",
     featuredImage: featuredImage || "",
     publishDate: publishDate || new Date().toISOString().split("T")[0],
+    topic: topic || "",
+    archetype: archetype || "",
+    keywords: keywords || [],
     status: "draft",
     updatedAt: now,
   };
@@ -330,7 +333,10 @@ async function handlePublish(req, res) {
     tags: draft.tags || [],
     author: "Hasan J.",
     featuredImage: draft.featuredImage || "",
-    status: "published"
+    status: "published",
+    topic: draft.topic || "",
+    archetype: draft.archetype || "",
+    keywords: draft.keywords || []
   });
 
   const fileContent = frontMatter + draft.content.trim() + "\n";
