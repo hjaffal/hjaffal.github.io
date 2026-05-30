@@ -12,6 +12,11 @@
   opacity: 0.8;
 }
 
+/* Post pagination spacing */
+.pagination.blog-pager {
+  margin-top: 32px !important;
+}
+
 /* Featured image */
 .post-featured-image {
   position: relative;
