@@ -81,6 +81,7 @@ async function handleList(req, res) {
         status: data.status,
         segments: data.segments || [],
         utmSource: data.utmSource || "",
+        pageUrl: data.pageUrl || "",
         subscribedAt: data.subscribedAt ? data.subscribedAt.toDate().toISOString() : null,
       };
     });

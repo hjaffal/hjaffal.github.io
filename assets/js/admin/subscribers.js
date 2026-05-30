@@ -76,9 +76,14 @@ export async function loadSubscribers() {
         { name: 'Name', sort: true },
         { name: 'Status', sort: true, formatter: (cell) => window.gridjs.html('<span class="nla-badge nla-badge-' + cell + '">' + cell + '</span>') },
         { name: 'Segments', sort: true },
+        { name: 'Page', sort: true, formatter: (cell) => {
+          if (!cell) return '—';
+          var short = cell.length > 25 ? cell.substring(0, 25) + '…' : cell;
+          return window.gridjs.html('<span title="' + escHtml(cell) + '" style="font-size:0.7rem;color:var(--text-soft)">' + escHtml(short) + '</span>');
+        }},
         { name: 'Subscribed', sort: true },
         { name: 'Actions', sort: false, formatter: (_, row) => {
-          const id = row.cells[6].data;
+          const id = row.cells[7].data;
           const email = row.cells[0].data;
           const status = row.cells[2].data;
           const deactivateBtn = status === 'active'
@@ -99,6 +104,7 @@ export async function loadSubscribers() {
         s.name || '',
         s.status,
         (s.segments || []).join(', '),
+        s.pageUrl || '',
         formatDate(s.subscribedAt),
         '',
         s.id

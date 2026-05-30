@@ -254,7 +254,7 @@ const subscribeNewsletter = onRequest(
     }
 
     const body = req.body.data || req.body;
-    const { email, utm_source, name } = body;
+    const { email, utm_source, name, page_url } = body;
 
     // Validate email format
     if (!validateEmail(email)) {
@@ -347,6 +347,7 @@ const subscribeNewsletter = onRequest(
         status: "active",
         segments: segments,
         utmSource: utmSource,
+        pageUrl: page_url || "",
         unsubscribeToken: token,
         unsubscribeTokenHash: hash,
         subscribedAt: admin.firestore.FieldValue.serverTimestamp(),

@@ -120,7 +120,7 @@ function submitGateEmail(e) {
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, name: name, utm_source: 'template_download'})
+    body: JSON.stringify({email: email, name: name, utm_source: 'template_download', page_url: window.location.pathname})
   }).catch(function(){});
   var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
 }

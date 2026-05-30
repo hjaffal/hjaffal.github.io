@@ -92,7 +92,7 @@ css:
       fetch('{{ site.data.firebase.fn_subscribe }}', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, utm_source: 'sproochentest_gate' })
+        body: JSON.stringify({ email: email, utm_source: 'sproochentest_gate', page_url: window.location.pathname })
       }).then(function() { unlock(); }).catch(function() { unlock(); });
     });
   }

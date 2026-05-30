@@ -264,7 +264,7 @@ function submitDownloadEmail(e) {
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, name: name, utm_source: 'materials_download'})
+    body: JSON.stringify({email: email, name: name, utm_source: 'materials_download', page_url: window.location.pathname})
   }).catch(function(){});
 
   // Trigger download with email explicitly passed
