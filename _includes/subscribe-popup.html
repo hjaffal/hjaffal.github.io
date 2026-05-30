@@ -1,0 +1,185 @@
+<!-- Subscribe popup — shows after 3 page views for non-subscribers -->
+<div id="subscribe-popup" class="sub-popup" hidden>
+  <div class="sub-popup-overlay" onclick="closeSubscribePopup()"></div>
+  <div class="sub-popup-modal">
+    <button class="sub-popup-close" onclick="closeSubscribePopup()" aria-label="Close">&times;</button>
+    <span class="sub-popup-label">THE SECOND MIND</span>
+    <h3 class="sub-popup-title">You're clearly interested.</h3>
+    <p class="sub-popup-desc">Weekly writing on AI, risk, and decisions. How to use AI in operations and risk — and how AI is reshaping the skills that matter at work.</p>
+    <form class="sub-popup-form" id="subscribe-popup-form">
+      <input type="email" placeholder="your@email.com" required class="sub-popup-input" id="subscribe-popup-email">
+      <button type="submit" class="sub-popup-btn">Subscribe</button>
+    </form>
+    <p class="sub-popup-msg" id="subscribe-popup-msg" hidden></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Don't show on admin, tools, or sproochentest pages
+  var path = window.location.pathname;
+  if (path.indexOf('/newsletter/admin') !== -1 ||
+      path.indexOf('/tools/') !== -1 ||
+      path.indexOf('/sproochentest') !== -1) return;
+
+  // Don't show if already subscribed
+  if (localStorage.getItem('sp_subscribed')) return;
+
+  // Don't show if dismissed this session
+  if (sessionStorage.getItem('sub_popup_dismissed')) return;
+
+  // Track page views
+  var views = parseInt(sessionStorage.getItem('sub_popup_views') || '0') + 1;
+  sessionStorage.setItem('sub_popup_views', views);
+
+  // Show after 3 page views
+  if (views >= 3) {
+    setTimeout(function() {
+      var popup = document.getElementById('subscribe-popup');
+      if (popup) popup.hidden = false;
+    }, 1500);
+  }
+})();
+
+function closeSubscribePopup() {
+  var popup = document.getElementById('subscribe-popup');
+  if (popup) popup.hidden = true;
+  sessionStorage.setItem('sub_popup_dismissed', '1');
+}
+
+// Form submission
+(function() {
+  var form = document.getElementById('subscribe-popup-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('subscribe-popup-email').value.trim();
+    if (!email) return;
+
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+
+    var fnUrl = document.querySelector('meta[name="fn-subscribe"]');
+    var url = fnUrl ? fnUrl.getAttribute('content') : '';
+
+    fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: email, utm_source: 'popup'})
+    }).then(function(res) {
+      if (res.ok) {
+        localStorage.setItem('sp_subscribed', '1');
+        localStorage.setItem('sp_email', email);
+        var msg = document.getElementById('subscribe-popup-msg');
+        msg.textContent = 'You\'re in. Welcome.';
+        msg.hidden = false;
+        msg.style.color = '#9333EA';
+        form.style.display = 'none';
+        setTimeout(closeSubscribePopup, 2000);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+        var msg = document.getElementById('subscribe-popup-msg');
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.hidden = false;
+        msg.style.color = '#DC2626';
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+    });
+  });
+})();
+</script>
+
+<style>
+.sub-popup[hidden] { display: none; }
+.sub-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 9998;
+}
+.sub-popup-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 14px;
+  padding: 36px 32px;
+  max-width: 400px;
+  width: 90%;
+  z-index: 9999;
+  text-align: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+}
+.sub-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #94A3B8;
+  cursor: pointer;
+  line-height: 1;
+}
+.sub-popup-close:hover { color: #0F172A; }
+.sub-popup-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9333EA;
+  display: block;
+  margin-bottom: 10px;
+}
+.sub-popup-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 8px;
+}
+.sub-popup-desc {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+.sub-popup-form {
+  display: flex;
+  gap: 8px;
+}
+.sub-popup-input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  outline: none;
+}
+.sub-popup-input:focus { border-color: #9333EA; }
+.sub-popup-btn {
+  padding: 12px 20px;
+  background: #9333EA;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sub-popup-btn:hover { background: #7C22CE; }
+.sub-popup-msg {
+  font-size: 0.8rem;
+  margin: 12px 0 0;
+}
+@media (max-width: 480px) {
+  .sub-popup-form { flex-direction: column; }
+  .sub-popup-modal { padding: 28px 24px; }
+}
+</style>
