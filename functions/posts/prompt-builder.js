@@ -198,11 +198,21 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 - Title structure: SEO + curiosity hybrid (e.g., "AI Is Replacing Reporting Jobs Faster Than Most Analysts Expect")
 - Title must clearly state the argument. Max 150 chars.
 
-=== INTERNAL LINKS (minimum 2) ===
+=== INTERNAL LINKS (MANDATORY — minimum 2) ===
 
-Include at least 2 internal links as markdown links in the body:
-Available links: ${availableLinks}
-Choose the most relevant ones for this article's topic.
+You MUST include at least 2 internal markdown links in the body text. This is non-negotiable.
+Available links to use: ${availableLinks}
+
+Example of how to include them naturally in the body:
+"If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/)."
+"This connects to the broader pattern of [AI Operations Failure Patterns](/references/ai-operations-failure-patterns/)."
+
+=== CTA (MANDATORY — with link) ===
+
+The article MUST end with a newsletter CTA that includes a clickable markdown link.
+Use this exact format at the end of the article:
+
+"If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — ${CONFIG.newsletter_cta}"
 
 === EXTERNAL REFERENCE (required) ===
 
@@ -256,7 +266,10 @@ ${CONFIG.editorial_checklist.map((item, i) => (i + 1) + ". " + item).join("\n")}
 
 === OUTPUT FORMAT ===
 
-Return ONLY valid JSON with this exact structure:
+Return ONLY valid JSON with this exact structure.
+CRITICAL: The "body" field MUST contain at least 2 markdown links to internal pages (e.g. [text](/path/)).
+CRITICAL: The "body" field MUST end with a CTA that includes a markdown link to /newsletter/.
+CRITICAL: The "editorial_checklist" field MUST contain all 17 items with pass/fail evaluation.
 
 {
   "title": "SEO + curiosity hybrid title, max 150 chars",
@@ -268,13 +281,28 @@ Return ONLY valid JSON with this exact structure:
   "topic": "${topic ? topic.slug : ""}",
   "archetype": "${archetype ? archetype.split(' ')[0].toLowerCase() : ""}",
   "keywords": ["primary keyword", "secondary keyword 1", "secondary keyword 2"],
-  "body": "Full markdown article body with internal links, external reference, comparison block, subheadings",
-  "external_reference": {"title": "Source title", "url": "https://...", "source": "Organization name"},
+  "body": "Full markdown body. MUST include: 2+ internal [links](/path/), 1 external [reference](https://...), comparison block, subheadings, and end with CTA linking to [Subscribe to The Second Mind](/newsletter/)",
+  "external_reference": {"title": "Source title", "url": "https://real-url.com/path", "source": "Organization name"},
   "editorial_checklist": {
     "score": "X/17",
     "items": [
       {"name": "Fits one position", "passed": true},
-      {"name": "...", "passed": true}
+      {"name": "Fits one topic", "passed": true},
+      {"name": "Attacks a belief", "passed": true},
+      {"name": "Creates tension", "passed": true},
+      {"name": "Contains a memorable line", "passed": true},
+      {"name": "Feels conversational", "passed": true},
+      {"name": "Sounds human", "passed": true},
+      {"name": "Avoids corporate tone", "passed": true},
+      {"name": "Includes one operational example", "passed": true},
+      {"name": "Includes one recommendation", "passed": true},
+      {"name": "Includes one forced-position question", "passed": true},
+      {"name": "Includes CTA", "passed": true},
+      {"name": "Includes internal links (minimum 2)", "passed": true},
+      {"name": "Includes one external reference", "passed": true},
+      {"name": "Keyword naturally included", "passed": true},
+      {"name": "Emotionally engaging", "passed": true},
+      {"name": "Avoids duplication", "passed": true}
     ]
   }
 }
@@ -283,7 +311,8 @@ JSON RULES:
 - Return ONLY the JSON object, no markdown fences
 - Escape newlines as \\n and quotes as \\" in string values
 - Body contains Markdown with proper escaping
-- All 17 checklist items must be included in editorial_checklist.items`;
+- All 17 checklist items MUST be included in editorial_checklist.items
+- Body MUST contain markdown links (square brackets + parentheses format)`;
 }
 
 /**
