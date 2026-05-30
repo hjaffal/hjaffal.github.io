@@ -23,6 +23,9 @@ exports.getPost = getPost;
 exports.updatePost = updatePost;
 exports.manageDrafts = manageDrafts;
 
+const { generateLinkedInPosts } = require("./posts/linkedin");
+exports.generateLinkedInPosts = generateLinkedInPosts;
+
 // ===== NEWSLETTER MODULE EXPORTS =====
 const { subscribeNewsletter } = require("./newsletter/subscribe");
 const { newsletterPreferences } = require("./newsletter/preferences");

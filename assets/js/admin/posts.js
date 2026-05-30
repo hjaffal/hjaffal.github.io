@@ -424,6 +424,7 @@ export function initPostsTable(posts) {
             '<div class="nla-table-actions">' +
               '<a class="nla-btn-sm" href="' + escHtml(url) + '" target="_blank" rel="noopener" aria-label="View">View</a>' +
               '<button class="nla-btn-sm" onclick="editPostEncoded(\'' + encodedTitle + '\')">Edit</button>' +
+              '<button class="nla-btn-sm" onclick="openLinkedIn(' + postIdx + ')" title="LinkedIn posts">in</button>' +
               '<button class="nla-btn-sm" onclick="copyPostUrl(\'' + safeUrl + '\')" title="Copy URL">📋</button>' +
               '<button class="nla-btn-sm" onclick="showPostDetail(' + postIdx + ')" title="Show details">▼</button>' +
               '<button class="nla-btn-sm danger" onclick="deletePublishedPost(\'' + safeUrl + '\')" title="Delete post">🗑</button>' +
@@ -687,5 +688,19 @@ if (typeof window !== 'undefined') {
     const title = decodeURIComponent(escape(atob(encoded)));
     const { editPost } = await import('./new-post.js');
     editPost(title);
+  };
+
+  window.openLinkedIn = async function(postIdx) {
+    const posts = window.postsFiltered;
+    const post = posts[postIdx];
+    if (!post) return;
+    const { openLinkedInPanel } = await import('./linkedin.js');
+    openLinkedInPanel({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      tags: post.tags,
+      body: post.excerpt || ''
+    });
   };
 }

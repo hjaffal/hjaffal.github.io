@@ -663,6 +663,21 @@ css:
       <div id="assessments-content" hidden></div>
     </div>
 
+    <!-- LinkedIn Side Panel -->
+    <div id="linkedin-panel" class="nla-linkedin-panel" hidden>
+      <div class="nla-linkedin-header">
+        <button class="nla-linkedin-close" id="linkedin-close" type="button">✕</button>
+        <h2 class="nla-linkedin-title">LinkedIn Posts</h2>
+        <p class="nla-linkedin-subtitle" id="linkedin-article-title"></p>
+      </div>
+      <div class="nla-linkedin-actions">
+        <button class="nla-btn nla-btn-primary" id="linkedin-generate-btn" type="button">🤖 Generate with AI</button>
+        <span class="nla-linkedin-status" id="linkedin-status"></span>
+      </div>
+      <div class="nla-linkedin-posts" id="linkedin-posts-list"></div>
+    </div>
+    <div id="linkedin-overlay" class="nla-linkedin-overlay" hidden></div>
+
   </main>
 </div><!-- end .nla-layout -->
 
@@ -690,7 +705,8 @@ init({
     manageDrafts: "{{ site.data.firebase.fn_manage_drafts }}",
     trackDownload: "{{ site.data.firebase.fn_track_download }}",
     listAssessments: "{{ site.data.firebase.fn_list_assessments }}",
-    backfillTokens: "{{ site.data.firebase.fn_backfill_tokens }}"
+    backfillTokens: "{{ site.data.firebase.fn_backfill_tokens }}",
+    linkedinPosts: "{{ site.data.firebase.fn_linkedin_posts }}"
   }
 });
 </script>
