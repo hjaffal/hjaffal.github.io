@@ -43,17 +43,18 @@ export async function loadDownloads() {
           return gridjs.html('<span class="nla-badge">' + escHtml(cell) + '</span>');
         }},
         { name: 'Downloads', sort: true },
-        { name: 'Actions', sort: false, formatter: function(_, row) {
-          var file = row.cells[4].data;
-          var title = row.cells[0].data;
-          var encoded = btoa(unescape(encodeURIComponent(file)));
-          var safeTitle = escHtml(title).replace(/'/g, "\\'");
-          return gridjs.html('<button class="nla-btn-sm" onclick="viewDownloadDetail(\'' + encoded + '\',\'' + safeTitle + '\')">View Downloads</button>');
-        }},
-        { name: 'file', hidden: true }
+        { name: 'Actions', sort: false, formatter: function(cell) {
+          if (!cell) return '';
+          var parts = cell.split('|||');
+          var encoded = parts[0];
+          var safeTitle = parts[1] || '';
+          return gridjs.html('<button class="nla-btn-sm" onclick="viewDownloadDetail(\'' + encoded + '\',\'' + safeTitle.replace(/'/g, "\\'") + '\')">View Downloads</button>');
+        }}
       ],
       data: files.map(function(f) {
-        return [f.title || f.fileName, f.category || 'other', f.count, '', f.file];
+        var encoded = btoa(unescape(encodeURIComponent(f.file)));
+        var title = f.title || f.fileName;
+        return [title, f.category || 'other', f.count, encoded + '|||' + escHtml(title)];
       }),
       search: { enabled: true, placeholder: 'Search materials...' },
       sort: true,
@@ -81,6 +82,8 @@ export async function loadDownloads() {
 /**
  * View download detail for a specific file.
  */
+let detailGrid = null;
+
 window.viewDownloadDetail = async function(encodedFile, fileName) {
   var file = decodeURIComponent(escape(atob(encodedFile)));
   var list = $('downloads-list');
@@ -93,6 +96,9 @@ window.viewDownloadDetail = async function(encodedFile, fileName) {
   detailList.innerHTML = '<p>Loading…</p>';
   show(detail);
 
+  // Destroy previous detail grid
+  if (detailGrid) { detailGrid.destroy(); detailGrid = null; }
+
   try {
     var API = getApiUrls();
     var data = await apiFetch(API.trackDownload + '?action=detail&file=' + encodeURIComponent(file));
@@ -101,9 +107,8 @@ window.viewDownloadDetail = async function(encodedFile, fileName) {
     if (downloads.length === 0) {
       detailList.innerHTML = '<p class="nla-dash-empty">No downloads for this file yet.</p>';
     } else {
-      // Use Grid.js for detail too
       detailList.innerHTML = '';
-      new gridjs.Grid({
+      detailGrid = new gridjs.Grid({
         columns: [
           { name: 'Email', sort: true },
           { name: 'Downloaded', sort: true }

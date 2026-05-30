@@ -267,15 +267,15 @@ function submitDownloadEmail(e) {
     body: JSON.stringify({email: email, name: name, utm_source: 'materials_download'})
   }).catch(function(){});
 
-  // Trigger download first, then close modal
+  // Trigger download with email explicitly passed
   var fileToDownload = pendingDownloadFile;
   closeDownloadGate();
-  triggerDownload(fileToDownload);
+  triggerDownload(fileToDownload, email);
 }
 
-function triggerDownload(file) {
+function triggerDownload(file, emailOverride) {
   // Track the download
-  var email = localStorage.getItem('sp_email') || 'anonymous';
+  var email = emailOverride || localStorage.getItem('sp_email') || 'anonymous';
   fetch('{{ site.data.firebase.fn_track_download }}?action=track', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
