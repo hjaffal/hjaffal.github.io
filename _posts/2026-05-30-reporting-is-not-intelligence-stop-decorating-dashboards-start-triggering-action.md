@@ -5,6 +5,14 @@ share-title: "Reporting Is Not Intelligence: Actionable Metrics for AI Era"
 share-description: "Reporting shows what happened. Intelligence changes what happens next. If your metrics don't trigger action, they're decoration. Learn to build operational tripwires."
 tags:
   - risk-intelligence
+thumbnail-img: /assets/img/posts/2026-05-30-reporting-is-not-intelligence-stop-decorating-dashboards-start-triggering-action.webp
+share-img: /assets/img/posts/2026-05-30-reporting-is-not-intelligence-stop-decorating-dashboards-start-triggering-action.webp
+topic: intelligence-vs-reporting
+archetype: contrarian
+keywords:
+  - "reporting vs intelligence"
+  - "actionable intelligence"
+  - "dashboard failure"
 author: Hasan J.
 ---
 
@@ -47,4 +55,4 @@ So, are your metrics guiding active decisions, or are they just a detailed histo
 
 ---
 
-Weekly writing on AI, risk, and decisions. How to use AI in operations and risk — and how AI is reshaping the skills that matter at work.
+If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — weekly writing on AI, risk, and decisions.

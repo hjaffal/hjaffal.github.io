@@ -6,6 +6,8 @@ share-description: "Deploying AI can feel like progress. But if your team lacks 
 tags:
   - ai-decision-operations
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-05-25-ai-models-dont-repair-operations-they-expose-unclear-escalation-paths.webp
+share-img: /assets/img/posts/2026-05-25-ai-models-dont-repair-operations-they-expose-unclear-escalation-paths.webp
 topic: escalation-collapse
 archetype: framework
 keywords:

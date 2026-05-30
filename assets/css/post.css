@@ -1,5 +1,17 @@
 /* ===== POST PAGE ===== */
 
+/* Post body links — must be visually distinct */
+.blog-post a,
+.ref-content a {
+  color: var(--accent) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+.blog-post a:hover,
+.ref-content a:hover {
+  opacity: 0.8;
+}
+
 /* Featured image */
 .post-featured-image {
   position: relative;
