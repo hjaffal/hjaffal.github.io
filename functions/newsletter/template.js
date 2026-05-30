@@ -31,9 +31,15 @@ function renderNewsletter({ subject, introHtml, posts, featuredPost, toolInvitat
       </table>
     </td></tr>`).join("");
 
+  const featuredImageHtml = (featuredPost && featuredPost.image)
+    ? `<tr><td style="padding:0;">
+        <img src="https://hasanjaffal.com${escapeHtml(featuredPost.image)}" alt="" style="width:100%;height:auto;display:block;border-radius:10px 10px 0 0;" />
+      </td></tr>` : "";
+
   const featuredHtml = featuredPost ? `
     <tr><td style="padding:0 0 32px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#FAF5FF;border:2px solid #9333EA;border-radius:10px;overflow:hidden;">
+        ${featuredImageHtml}
         <tr><td style="padding:28px 28px 8px;">
           <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9333EA;">FEATURED</p>
           <p style="margin:0 0 12px;font-size:20px;font-weight:800;color:#0F172A;line-height:1.3;">${escapeHtml(featuredPost.title)}</p>

@@ -117,7 +117,7 @@ export async function handleComposeSubmit(e) {
   let featuredPost = null;
   if (featuredRadio) {
     const fp = postsData[parseInt(featuredRadio.value)];
-    featuredPost = { title: fp.title, excerpt: fp.excerpt || '', url: fp.url };
+    featuredPost = { title: fp.title, excerpt: fp.excerpt || '', url: fp.url, image: fp.thumbnailImg || '' };
   }
 
   let toolInvitation = null;
