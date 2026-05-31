@@ -1,15 +1,50 @@
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      <span>© {{ site.time | date: '%Y' }} {{ site.author }}</span>
-      <span class="footer-sep">·</span>
-      <span>Based in Luxembourg</span>
-      <span class="footer-sep">·</span>
-      <span>Strategy & Operations</span>
+  <div class="footer-mega">
+    <!-- Column 1: Brand -->
+    <div class="footer-col footer-brand">
+      <a href="/" class="footer-logo">{{ site.author }}</a>
+      <p class="footer-tagline">AI won't fix weak operations. It will expose them.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/jaffal" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
     </div>
-    <div class="footer-right">
-      <span class="footer-status-dot"></span>
-      <a href="https://www.linkedin.com/in/jaffal" target="_blank" rel="noopener">AVAILABLE FOR ADVISORY</a>
+
+    <!-- Column 2: Explore -->
+    <div class="footer-col">
+      <h4 class="footer-col-title">Explore</h4>
+      <ul class="footer-links">
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/lexicon/">Lexicon</a></li>
+        <li><a href="/books/">Books</a></li>
+        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/references/ai-operations-failure-patterns/">References</a></li>
+        <li><a href="/sproochentest-materials/">Materials</a></li>
+      </ul>
     </div>
+
+    <!-- Column 3: Positions -->
+    <div class="footer-col">
+      <h4 class="footer-col-title">Positions</h4>
+      <ul class="footer-links">
+        {% for position in site.data.positions %}
+        <li><a href="{{ position.url }}">{{ position.cta | remove: "Explore " }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Column 4: Connect -->
+    <div class="footer-col">
+      <h4 class="footer-col-title">Connect</h4>
+      <ul class="footer-links">
+        <li><a href="/newsletter/">Newsletter</a></li>
+        <li><a href="/aboutme/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/officehours">Book a Conversation</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {{ site.time | date: '%Y' }} {{ site.author }}</span>
   </div>
 </footer>
