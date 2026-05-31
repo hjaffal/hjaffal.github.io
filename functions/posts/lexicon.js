@@ -81,14 +81,14 @@ async function handleGet(req, res) {
 
 async function handleSave(req, res) {
   const data = req.body;
-  const { id, slug, name, pos, definition, category, explanation, example,
+  const { id, slug, name, pos, definition, topic, explanation, example,
     why_it_matters, teams_get_wrong, strong_teams, related_terms, keywords, status } = data;
 
   if (!name || !slug) { res.status(400).json({ error: "name and slug required" }); return; }
 
   const termData = {
     slug, name, pos: pos || "n.", definition: definition || "",
-    category: category || "ai-decision-operations",
+    topic: topic || "ai-decision-operations",
     explanation: explanation || "", example: example || "",
     why_it_matters: why_it_matters || "", teams_get_wrong: teams_get_wrong || "",
     strong_teams: strong_teams || "", related_terms: related_terms || [],
@@ -133,7 +133,7 @@ permalink: /lexicon/${slug}/
 term_name: "${(term.name || '').replace(/"/g, '\\"')}"
 pos: "${term.pos || 'n.'}"
 definition: "${(term.definition || '').replace(/"/g, '\\"')}"
-category: "${term.category || ''}"
+topic: "${term.topic || ''}"
 explanation: "${(term.explanation || '').replace(/"/g, '\\"')}"
 example: "${(term.example || '').replace(/"/g, '\\"')}"
 why_it_matters: "${(term.why_it_matters || '').replace(/"/g, '\\"')}"
@@ -223,7 +223,7 @@ Return ONLY valid JSON array:
     "name": "Term Name",
     "pos": "n.",
     "definition": "One sentence, max 160 chars",
-    "category": "ai-decision-operations",
+    "topic": "ai-decision-operations",
     "why_it_works": "Why this name is effective",
     "risk": "Risk of being unclear or too cute",
     "seo_angle": "What people would search for",
@@ -244,14 +244,14 @@ Return ONLY valid JSON array:
 }
 
 async function handleExpand(req, res) {
-  const { name, definition, category } = req.body;
+  const { name, definition, topic } = req.body;
   if (!name) { res.status(400).json({ error: "name required" }); return; }
 
   const prompt = `Expand this lexicon term into a full page for the AI Operations Lexicon by Hasan Jaffal.
 
 TERM: ${name}
 DEFINITION: ${definition || ""}
-CATEGORY: ${category || "ai-decision-operations"}
+TOPIC: ${topic || "ai-decision-operations"}
 
 Write a complete term page with these sections:
 1. explanation (2-3 sentences expanding the definition)
@@ -339,14 +339,14 @@ Return ONLY valid JSON array of strings: ["def 1", "def 2", "def 3"]`;
  * Generate SEO title and meta description for a term.
  */
 async function handleSEO(req, res) {
-  const { name, definition, category } = req.body;
+  const { name, definition, topic } = req.body;
   if (!name) { res.status(400).json({ error: "name required" }); return; }
 
   const prompt = `Generate SEO metadata for this AI Operations Lexicon term page.
 
 TERM: ${name}
 DEFINITION: ${definition || ""}
-CATEGORY: ${category || ""}
+TOPIC: ${topic || ""}
 
 Generate:
 1. SEO title (max 60 chars, include the term name)

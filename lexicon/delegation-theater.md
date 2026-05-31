@@ -7,7 +7,7 @@ permalink: /lexicon/delegation-theater/
 term_name: "Delegation Theater"
 pos: "n."
 definition: "Assigning ownership without granting the authority needed to act."
-category: "operational-cowardice"
+topic: "operational-cowardice"
 explanation: "A leader delegates a problem to a team. The team has responsibility but no budget, no authority to change processes, and no mandate to override other teams. They own the problem on paper. They cannot solve it in practice."
 example: "A VP assigns AI risk management to a junior analyst. The analyst has no budget, no authority over engineering, and no access to leadership. They produce reports. Nothing changes."
 why_it_matters: "Delegation theater creates the appearance of action while ensuring nothing actually changes. It protects leadership from accountability."

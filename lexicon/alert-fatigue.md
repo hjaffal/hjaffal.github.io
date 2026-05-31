@@ -7,7 +7,7 @@ permalink: /lexicon/alert-fatigue/
 term_name: "Alert Fatigue"
 pos: "n."
 definition: "When too many alerts train people to ignore all of them — including the real ones."
-category: "alert-spam"
+topic: "alert-spam"
 explanation: "Every false positive teaches the team that alerts do not matter. After enough false positives, the team stops responding. The real alert arrives and gets the same treatment: ignored."
 example: "A security team receives 400 alerts per day. They investigate 20. The breach comes through alert number 387 — marked low priority by a rule nobody has reviewed in two years."
 why_it_matters: "Alert fatigue is not a technology problem. It is a signal-to-noise problem that erodes human judgment over time."

@@ -7,7 +7,7 @@ permalink: /lexicon/output-identity/
 term_name: "Output Identity"
 pos: "n."
 definition: "When a professional's sense of value is tied to producing outputs that AI now produces faster."
-category: "collapse-of-busy-work"
+topic: "collapse-of-busy-work"
 explanation: "The person defines themselves by what they produce: reports, analyses, summaries, presentations. When AI produces the same outputs in seconds, the person faces an identity crisis — not just a job crisis."
 example: "A senior analyst takes pride in their weekly 30-page market report. AI generates a better version in 2 minutes. The analyst's identity — not just their task — is threatened."
 why_it_matters: "Output identity makes people resist AI adoption. They fight the tool that threatens their self-worth, even when it would make them more effective."

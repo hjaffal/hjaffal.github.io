@@ -7,7 +7,7 @@ permalink: /lexicon/intelligence-theater/
 term_name: "Intelligence Theater"
 pos: "n."
 definition: "Calling a report intelligence without connecting it to a decision or an owner."
-category: "intelligence-vs-reporting"
+topic: "intelligence-vs-reporting"
 explanation: "Teams rebrand their reporting function as intelligence without changing what they produce. The output still explains the past. Nobody acts on it differently."
 example: "A risk team renames their weekly report to Weekly Intelligence Brief. Same content. Same recipients. Same zero follow-up actions."
 why_it_matters: "Calling reporting intelligence sets false expectations. Leadership thinks they have actionable insight. They have a PDF."

@@ -26,19 +26,20 @@ css:
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hasanjaffal.com/"},
     {"@type": "ListItem", "position": 2, "name": "Lexicon", "item": "https://hasanjaffal.com/lexicon/"},
-    {"@type": "ListItem", "position": 3, "name": {{ page.term_name | jsonify }}, "item": "https://hasanjaffal.com{{ page.url }}"}
+    {"@type": "ListItem", "position": 3, "name": {{ page.topic | replace: '-', ' ' | capitalize | jsonify }}, "item": "https://hasanjaffal.com/lexicon/?topic={{ page.topic }}"},
+    {"@type": "ListItem", "position": 4, "name": {{ page.term_name | jsonify }}, "item": "https://hasanjaffal.com{{ page.url }}"}
   ]
 }
 </script>
 
 <main class="lex-term-page">
   <nav class="lex-breadcrumb">
-    <a href="/">Home</a> › <a href="/lexicon/">Lexicon</a> › <span>{{ page.term_name }}</span>
+    <a href="/">Home</a> › <a href="/lexicon/">Lexicon</a> › <a href="/lexicon/?topic={{ page.topic }}">{{ page.topic | replace: '-', ' ' | capitalize }}</a> › <span>{{ page.term_name }}</span>
   </nav>
 
   <article class="lex-term-article">
     <header class="lex-term-header">
-      <span class="lex-term-cat">{{ page.category | replace: '-', ' ' | upcase }}</span>
+      <span class="lex-term-cat">{{ page.topic | replace: '-', ' ' | upcase }}</span>
       <h1 class="lex-term-title">{{ page.term_name }}</h1>
       <p class="lex-term-pos-def"><strong>{{ page.term_name }}</strong> ({{ page.pos }}) {{ page.definition }}</p>
     </header>
@@ -75,7 +76,7 @@ css:
         {% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
         {% assign same_topic = "" %}
         {% for t in lex_pages %}
-          {% if t.category == page.category and t.url != page.url %}
+          {% if t.topic == page.topic and t.url != page.url %}
             {% assign same_topic = same_topic | append: t.url | append: "|||" | append: t.term_name | append: ":::" %}
           {% endif %}
         {% endfor %}
@@ -90,7 +91,7 @@ css:
     </section>
 
     <!-- Related Articles: from same topic -->
-    {% assign related_posts = site.posts | where: "topic", page.category | slice: 0, 4 %}
+    {% assign related_posts = site.posts | where: "topic", page.topic | slice: 0, 4 %}
     {% if related_posts.size > 0 %}
     <section class="lex-term-section">
       <h2>Related Articles</h2>

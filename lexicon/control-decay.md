@@ -7,7 +7,7 @@ permalink: /lexicon/control-decay/
 term_name: "Control Decay"
 pos: "n."
 definition: "The gradual weakening of risk controls as the organization grows and changes around them."
-category: "false-confidence-metrics"
+topic: "false-confidence-metrics"
 explanation: "Controls are designed for a specific context. The business grows. New products launch. New channels open. The controls stay the same. Gaps appear where new activity meets old rules."
 example: "A payment fraud control was designed for card-present transactions. The company launches an online channel. The control does not cover card-not-present. Online fraud grows unchecked for a year."
 why_it_matters: "Control decay is invisible until a loss event reveals the gap. By then, the gap has been exploitable for months or years."

@@ -7,7 +7,7 @@ permalink: /lexicon/decision-latency/
 term_name: "Decision Latency"
 pos: "n."
 definition: "The time between detecting a problem and having authority to act on it."
-category: "slow-decision-cultures"
+topic: "slow-decision-cultures"
 explanation: "AI detects in milliseconds. Humans approve in days. The gap between detection speed and decision speed is where losses accumulate."
 example: "An anomaly detection system flags suspicious activity at 2am. The on-call analyst sees it but cannot block the account without manager approval. The manager responds at 9am. Seven hours of exposure."
 why_it_matters: "Every minute of decision latency is a minute of uncontrolled risk. In fraud, that is money. In security, that is data."

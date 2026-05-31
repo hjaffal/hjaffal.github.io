@@ -7,7 +7,7 @@ permalink: /lexicon/tool-operator-trap/
 term_name: "Tool Operator Trap"
 pos: "n."
 definition: "Building a career around operating a tool that AI will soon operate better."
-category: "white-collar-automation"
+topic: "white-collar-automation"
 explanation: "The professional's value comes from knowing how to use a specific tool — not from the judgment that follows. When AI learns the tool, the operator has nothing left to offer."
 example: "An analyst builds their career around advanced Excel modeling. AI tools now generate the same models from a text prompt. The analyst's 10 years of Excel expertise becomes a commodity overnight."
 why_it_matters: "Tool operators are the most exposed category in the AI era. Their skills are precisely what AI replicates first."

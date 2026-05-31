@@ -7,7 +7,7 @@ permalink: /lexicon/escalation-debt/
 term_name: "Escalation Debt"
 pos: "n."
 definition: "The accumulated cost of signals that were detected but never acted on."
-category: "escalation-collapse"
+topic: "escalation-collapse"
 explanation: "Every time a risk signal fires and nobody escalates, the organization accumulates escalation debt. The debt compounds until a crisis forces payment."
 example: "A fraud team detects a pattern three weeks before it becomes a major loss event. The analyst flags it in a report. The report goes to a manager who will discuss it next week. The loss hits."
 why_it_matters: "Escalation debt is invisible until it is catastrophic. It is the gap between detection capability and decision authority."

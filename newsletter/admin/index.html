@@ -137,7 +137,7 @@ css:
         "name": {{ term.term_name | jsonify }},
         "pos": {{ term.pos | jsonify }},
         "definition": {{ term.definition | jsonify }},
-        "category": {{ term.category | jsonify }},
+        "topic": {{ term.topic | jsonify }},
         "explanation": {{ term.explanation | jsonify }},
         "example": {{ term.example | jsonify }},
         "why_it_matters": {{ term.why_it_matters | jsonify }},
@@ -769,7 +769,7 @@ css:
               </select>
             </div>
             <div class="nla-form-group"><label class="nla-label">Topic</label>
-              <select class="nla-select" id="lex-form-category">
+              <select class="nla-select" id="lex-form-topic">
                 <option value="slow-decision-cultures">Slow Decision Cultures</option>
                 <option value="escalation-collapse">Escalation Collapse</option>
                 <option value="ai-theater">AI Theater</option>

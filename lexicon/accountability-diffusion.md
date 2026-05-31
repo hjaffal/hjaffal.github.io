@@ -7,7 +7,7 @@ permalink: /lexicon/accountability-diffusion/
 term_name: "Accountability Diffusion"
 pos: "n."
 definition: "When everyone is responsible for a decision, nobody is accountable for the outcome."
-category: "operational-cowardice"
+topic: "operational-cowardice"
 explanation: "Shared ownership sounds collaborative. In practice, it means nobody owns the failure. When things go wrong, everyone points to the group decision. Nobody signed their name."
 example: "A cross-functional team decides to delay a security patch. The decision is made by committee. When the breach happens, nobody is accountable. The committee cannot be fired."
 why_it_matters: "Accountability diffusion removes consequences from bad decisions. Without consequences, decision quality degrades."

@@ -7,7 +7,7 @@ permalink: /lexicon/reporting-addiction/
 term_name: "Reporting Addiction"
 pos: "n."
 definition: "The organizational habit of producing more reports instead of making more decisions."
-category: "reporting-bureaucracy"
+topic: "reporting-bureaucracy"
 explanation: "When something goes wrong, the response is another report. When leadership wants visibility, the response is another dashboard. The organization becomes addicted to documenting problems instead of solving them."
 example: "After a major incident, the post-mortem recommends weekly reporting on the failure category. Six months later, the team produces the report religiously. The same failures continue."
 why_it_matters: "Reporting addiction delays action by creating the feeling that something is being done. Documentation is not intervention."

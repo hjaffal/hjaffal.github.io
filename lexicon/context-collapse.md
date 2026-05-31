@@ -7,7 +7,7 @@ permalink: /lexicon/context-collapse/
 term_name: "Context Collapse"
 pos: "n."
 definition: "When a metric loses its meaning because the context that made it useful has changed."
-category: "data-team-irrelevance"
+topic: "data-team-irrelevance"
 explanation: "A metric was defined in one context. The business changed. The metric stayed. Now it measures something that no longer matters — but nobody updated the definition or the threshold."
 example: "A call center tracks average handle time. The metric was set when calls were simple billing questions. Now calls involve complex technical troubleshooting. The old target punishes agents for doing their job well."
 why_it_matters: "Context collapse turns good metrics into harmful ones. Teams optimize for outdated targets and damage current operations."

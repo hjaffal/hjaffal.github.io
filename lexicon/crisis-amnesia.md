@@ -7,7 +7,7 @@ permalink: /lexicon/crisis-amnesia/
 term_name: "Crisis Amnesia"
 pos: "n."
 definition: "The organizational tendency to forget lessons from the last crisis within weeks of resolving it."
-category: "escalation-collapse"
+topic: "escalation-collapse"
 explanation: "During a crisis, everyone agrees things must change. Post-mortems are written. Action items are assigned. Within 6 weeks, urgency fades. The action items stall. The next crisis finds the same gaps."
 example: "After a major data breach, the company commits to weekly security reviews. By month three, the reviews are monthly. By month six, they are quarterly. By month nine, they are cancelled."
 why_it_matters: "Crisis amnesia means organizations pay for the same failure repeatedly. Each crisis feels new because the lessons from the last one were never institutionalized."

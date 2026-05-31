@@ -7,7 +7,7 @@ permalink: /lexicon/pattern-blindness/
 term_name: "Pattern Blindness"
 pos: "n."
 definition: "When familiarity with normal operations prevents teams from seeing abnormal patterns."
-category: "alert-spam"
+topic: "alert-spam"
 explanation: "Teams see the same data every day. Anomalies that would alarm a newcomer are invisible to veterans because they have normalized the abnormal over time."
 example: "A payments team processes 10000 transactions daily. A new fraud pattern emerges gradually — 50 extra transactions per day. Nobody notices because the daily volume looks normal. After 6 months, 9000 fraudulent transactions have passed."
 why_it_matters: "Pattern blindness is the enemy of detection. The longer you watch something, the less you see changes in it."

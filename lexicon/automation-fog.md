@@ -7,7 +7,7 @@ permalink: /lexicon/automation-fog/
 term_name: "Automation Fog"
 pos: "n."
 definition: "The loss of operational visibility when automated systems handle work nobody understands anymore."
-category: "automation-failure-loops"
+topic: "automation-failure-loops"
 explanation: "When processes are automated, the humans who understood them leave or forget. When automation breaks, nobody knows what it was doing, why, or how to fix it."
 example: "An insurance company automates claims routing. Two years later, the rules engine routes 15 percent of claims to a dead queue. Nobody notices because nobody monitors the logic."
 why_it_matters: "Automation fog turns small failures into invisible ones. By the time someone notices, the damage is systemic."

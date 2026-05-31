@@ -3,19 +3,9 @@
  * CRUD + AI generation for lexicon terms.
  */
 
-import { show, hide, $, apiFetch, formatDate, escHtml, getApiUrls, showNotification } from './main.js';
+import { show, hide, $, apiFetch, escHtml, getApiUrls, showNotification } from './main.js';
 
 let lexiconGrid = null;
-
-const CATEGORIES = [
-  { id: 'ai-decision-operations', name: 'AI Decision Operations' },
-  { id: 'risk-intelligence', name: 'Risk Intelligence' },
-  { id: 'ai-job-risk', name: 'AI Job Risk' },
-  { id: 'dashboard-failure', name: 'Dashboard Failure' },
-  { id: 'automation-failure', name: 'Automation Failure' },
-  { id: 'leadership-under-pressure', name: 'Leadership Under Pressure' },
-  { id: 'fraud-and-risk-signals', name: 'Fraud and Risk Signals' },
-];
 
 export async function loadLexicon() {
   const loading = $('lexicon-loading');
@@ -65,7 +55,7 @@ function renderTermsList(terms) {
         );
       }}
     ],
-    data: terms.map(t => [t.name, t.category || '—', t.slug]),
+    data: terms.map(t => [t.name, t.topic || '—', t.slug]),
     search: { enabled: true, placeholder: 'Search terms...' },
     sort: true,
     pagination: { enabled: true, limit: 20 },
@@ -113,7 +103,7 @@ function showTermForm(term) {
   $('lex-form-slug').value = term ? term.slug || '' : '';
   $('lex-form-pos').value = term ? term.pos || 'n.' : 'n.';
   $('lex-form-definition').value = term ? term.definition || '' : '';
-  $('lex-form-category').value = term ? term.category || 'slow-decision-cultures' : 'slow-decision-cultures';
+  $('lex-form-topic').value = term ? term.topic || 'slow-decision-cultures' : 'slow-decision-cultures';
   $('lex-form-explanation').value = term ? term.explanation || '' : '';
   $('lex-form-example').value = term ? term.example || '' : '';
   $('lex-form-why').value = term ? term.why_it_matters || '' : '';
@@ -137,7 +127,7 @@ window.saveTermForm = async function() {
     slug: $('lex-form-slug').value.trim() || $('lex-form-name').value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
     pos: $('lex-form-pos').value,
     definition: $('lex-form-definition').value.trim(),
-    category: $('lex-form-category').value,
+    topic: $('lex-form-topic').value || 'slow-decision-cultures',
     explanation: $('lex-form-explanation').value.trim(),
     example: $('lex-form-example').value.trim(),
     why_it_matters: $('lex-form-why').value.trim(),
@@ -227,8 +217,8 @@ window.generateTermIdeas = async function() {
       html += '<div class="nla-lex-idea">';
       html += '<strong>' + escHtml(idea.name) + '</strong> (' + escHtml(idea.pos) + ') ';
       html += '<span>' + escHtml(idea.definition) + '</span>';
-      html += '<div class="nla-lex-idea-meta">' + escHtml(idea.category) + ' · ' + escHtml(idea.seo_angle || '') + '</div>';
-      html += '<button class="nla-btn-sm" onclick="expandTermIdea(\'' + escHtml(idea.name).replace(/'/g, "\\'") + '\',\'' + escHtml(idea.definition).replace(/'/g, "\\'") + '\',\'' + escHtml(idea.category) + '\')">Use this →</button>';
+      html += '<div class="nla-lex-idea-meta">' + escHtml(idea.topic) + ' · ' + escHtml(idea.seo_angle || '') + '</div>';
+      html += '<button class="nla-btn-sm" onclick="expandTermIdea(\'' + escHtml(idea.name).replace(/'/g, "\\'") + '\',\'' + escHtml(idea.definition).replace(/'/g, "\\'") + '\',\'' + escHtml(idea.topic) + '\')">Use this →</button>';
       html += '</div>';
     });
     resultsEl.innerHTML = html;
@@ -237,7 +227,7 @@ window.generateTermIdeas = async function() {
   }
 };
 
-window.expandTermIdea = async function(name, definition, category) {
+window.expandTermIdea = async function(name, definition, topic) {
   const API = getApiUrls();
   const statusEl = $('lexicon-gen-status');
   statusEl.textContent = 'Expanding "' + name + '"…';
@@ -245,7 +235,7 @@ window.expandTermIdea = async function(name, definition, category) {
   try {
     const result = await apiFetch(API.manageLexicon + '?action=expand', {
       method: 'POST',
-      body: JSON.stringify({ name, definition, category })
+      body: JSON.stringify({ name, definition, topic })
     });
 
     const expanded = result.expanded;
@@ -255,7 +245,7 @@ window.expandTermIdea = async function(name, definition, category) {
       slug: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
       pos: 'n.',
       definition: definition,
-      category: category,
+      topic: topic,
       explanation: expanded.explanation || '',
       example: expanded.example || '',
       why_it_matters: expanded.why_it_matters || '',
@@ -263,7 +253,6 @@ window.expandTermIdea = async function(name, definition, category) {
       strong_teams: expanded.strong_teams || '',
       related_terms: expanded.related_terms || [],
       keywords: expanded.keywords || [],
-      status: 'draft'
     });
 
     statusEl.textContent = '✓ Expanded — review and save';
@@ -281,7 +270,7 @@ function getFormData() {
     definition: $('lex-form-definition').value.trim(),
     explanation: $('lex-form-explanation').value.trim(),
     example: $('lex-form-example').value.trim(),
-    category: $('lex-form-category').value,
+    topic: $('lex-form-topic').value || 'slow-decision-cultures',
   };
 }
 

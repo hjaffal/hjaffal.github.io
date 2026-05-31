@@ -7,7 +7,7 @@ permalink: /lexicon/governance-fog/
 term_name: "Governance Fog"
 pos: "n."
 definition: "When AI governance committees create the appearance of oversight without enabling action."
-category: "ai-governance-bureaucracy"
+topic: "ai-governance-bureaucracy"
 explanation: "Monthly committee meetings discuss AI risks. They request more analysis. Nothing gets deployed. Meanwhile, ungoverned AI usage spreads through shadow tools."
 example: "A bank forms an AI Ethics Board. It meets quarterly. It has no authority to approve or block deployments. Teams deploy anyway without telling the board."
 why_it_matters: "Governance fog gives leadership false comfort while real AI risk goes unmanaged."

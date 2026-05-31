@@ -7,7 +7,7 @@ permalink: /lexicon/busy-work-collapse/
 term_name: "Busy Work Collapse"
 pos: "n."
 definition: "When AI eliminates the routine tasks that filled 80 percent of a role, exposing that the remaining 20 percent was the only real value."
-category: "collapse-of-busy-work"
+topic: "collapse-of-busy-work"
 explanation: "Most knowledge workers spend the majority of their time on tasks AI can handle: formatting, summarizing, routing, scheduling. When that work disappears, what remains reveals the true value — or lack of it."
 example: "A project coordinator spends 80 percent of their time on status updates, meeting scheduling, and report formatting. AI handles all of it. The remaining 20 percent — stakeholder negotiation and risk judgment — is what the role was always supposed to be."
 why_it_matters: "Busy work collapse is not future. It is happening now. Professionals who cannot articulate their judgment value are already exposed."

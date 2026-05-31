@@ -7,7 +7,7 @@ permalink: /lexicon/vanity-signal/
 term_name: "Vanity Signal"
 pos: "n."
 definition: "A metric that makes the team look good without connecting to operational outcomes."
-category: "vanity-analytics"
+topic: "vanity-analytics"
 explanation: "Vanity signals are chosen because they trend upward, not because they matter. They survive because nobody asks what decision this metric drives."
 example: "A marketing team reports 200 percent increase in page views. Revenue is flat. The page views come from bot traffic and internal testing. Nobody checks."
 why_it_matters: "Vanity signals consume attention that should go to actionable intelligence. They create false confidence in leadership."

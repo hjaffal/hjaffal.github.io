@@ -7,7 +7,7 @@ permalink: /lexicon/ai-theater/
 term_name: "AI Theater"
 pos: "n."
 definition: "The organizational performance of adopting AI without changing operations."
-category: "ai-theater"
+topic: "ai-theater"
 explanation: "Companies announce AI initiatives, hire AI teams, and build demos — but never change how decisions are made, who owns escalation, or how signals reach action. The AI exists for optics, not outcomes."
 example: "A retail company deploys a fraud detection model. It fires alerts into a shared inbox. Nobody is assigned to act on them. The model works. The organization does not."
 why_it_matters: "AI Theater wastes budget, erodes trust in AI, and delays real operational improvement by creating the illusion that progress is happening."

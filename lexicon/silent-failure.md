@@ -7,7 +7,7 @@ permalink: /lexicon/silent-failure/
 term_name: "Silent Failure"
 pos: "n."
 definition: "When an automated system fails without generating any alert or visible error."
-category: "automation-failure-loops"
+topic: "automation-failure-loops"
 explanation: "The system does not crash. It does not throw an error. It simply stops doing what it should — or does it wrong — and nobody notices because no monitoring exists for that specific behavior."
 example: "An email automation stops sending renewal reminders due to a config change. No error. No alert. Renewals drop 30 percent over two months before anyone connects the dots."
 why_it_matters: "Silent failures are the most expensive kind. They compound daily without detection until the cumulative damage forces discovery."

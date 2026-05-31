@@ -35,9 +35,9 @@ css:
       <div class="lex-filters" id="lex-filters">
         <button class="lex-filter-btn active" data-cat="all">All</button>
         {% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
-        {% assign used_cats = lex_pages | map: "category" | uniq | sort %}
+        {% assign used_cats = lex_pages | map: "topic" | uniq | sort %}
         {% for cat_id in used_cats %}
-          {% assign cat_info = site.data.lexicon.categories | where: "id", cat_id | first %}
+          {% assign cat_info = site.data.lexicon.topics | where: "id", cat_id | first %}
           {% if cat_info %}
           <button class="lex-filter-btn" data-cat="{{ cat_id }}">{{ cat_info.name }}</button>
           {% else %}
@@ -50,13 +50,13 @@ css:
     <div class="lex-grid" id="lex-grid">
       {% assign lex_pages = site.pages | where: "layout", "lexicon-term" | sort: "term_name" %}
       {% for term in lex_pages %}
-      <a href="{{ term.url }}" class="lex-card" data-cat="{{ term.category }}" data-name="{{ term.term_name | downcase }}">
+      <a href="{{ term.url }}" class="lex-card" data-cat="{{ term.topic }}" data-name="{{ term.term_name | downcase }}">
         <div class="lex-card-header">
           <span class="lex-card-name">{{ term.term_name }}</span>
           <span class="lex-card-pos">{{ term.pos }}</span>
         </div>
         <p class="lex-card-def">{{ term.definition }}</p>
-        <span class="lex-card-cat">{{ term.category | replace: '-', ' ' | capitalize }}</span>
+        <span class="lex-card-cat">{{ term.topic | replace: '-', ' ' | capitalize }}</span>
       </a>
       {% endfor %}
     </div>
@@ -81,6 +81,16 @@ css:
   var autocomplete = document.getElementById('lex-autocomplete');
   var filterBtns = document.querySelectorAll('.lex-filter-btn');
   var currentCat = 'all';
+
+  // Check for ?topic= query param to pre-select filter
+  var urlParams = new URLSearchParams(window.location.search);
+  var topicParam = urlParams.get('topic');
+  if (topicParam) {
+    currentCat = topicParam;
+    filterBtns.forEach(function(b) {
+      b.classList.toggle('active', b.dataset.cat === topicParam);
+    });
+  }
 
   // Build term list for autocomplete
   var termList = [];
@@ -130,5 +140,8 @@ css:
       filter();
     });
   });
+
+  // Apply initial filter (handles ?topic= param)
+  if (currentCat !== 'all') filter();
 })();
 </script>

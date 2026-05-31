@@ -7,7 +7,7 @@ permalink: /lexicon/credential-erosion/
 term_name: "Credential Erosion"
 pos: "n."
 definition: "When qualifications that once guaranteed employment lose value because AI handles what they certified."
-category: "credential-irrelevance"
+topic: "credential-irrelevance"
 explanation: "Degrees and certifications were proxies for capability. AI makes the capability directly available without the credential. The proxy loses its value."
 example: "A data analytics certification guaranteed you could build dashboards and run queries. AI tools now do both from natural language. The certification still exists. The job it qualified you for does not."
 why_it_matters: "Credential erosion affects hiring, career planning, and education investment. People invest years in qualifications that depreciate faster than expected."

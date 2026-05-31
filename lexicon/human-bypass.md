@@ -7,7 +7,7 @@ permalink: /lexicon/human-bypass/
 term_name: "Human Bypass"
 pos: "n."
 definition: "When people create workarounds to avoid an automated system they do not trust."
-category: "automation-failure-loops"
+topic: "automation-failure-loops"
 explanation: "The automation exists. People do not use it. They email instead of using the ticket system. They call instead of using the chatbot. They export to Excel instead of using the dashboard."
 example: "A company deploys an AI-powered support chatbot. Agents tell customers to email directly because the chatbot gives wrong answers. The chatbot reports 95 percent resolution. Reality is 40 percent."
 why_it_matters: "Human bypass means the automation metrics are lying. The system reports success while humans do the actual work in shadow processes."

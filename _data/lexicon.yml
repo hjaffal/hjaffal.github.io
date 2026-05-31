@@ -1,7 +1,7 @@
-# AI Operations Lexicon — Categories (same as Layer 2 topics)
+# AI Operations Lexicon — Topics (same as Layer 2 topics)
 # Terms are managed in Firestore and published as individual .md files via the admin panel.
 
-categories:
+topics:
   - id: ai-theater
     name: "AI Theater"
   - id: fake-ai-transformation
