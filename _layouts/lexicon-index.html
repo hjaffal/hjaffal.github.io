@@ -61,6 +61,25 @@ css:
       {% endfor %}
     </div>
 
+    <!-- Related Articles by Topic -->
+    <section class="lex-related-section" id="lex-related-articles">
+      <h2 class="lex-related-heading">Related Articles</h2>
+      {% assign lex_topics = lex_pages | map: "topic" | uniq | sort %}
+      {% for topic_id in lex_topics %}
+        {% assign topic_posts = site.posts | where: "topic", topic_id %}
+        {% if topic_posts.size > 0 %}
+        <div class="lex-related-group" data-topic="{{ topic_id }}">
+          {% for post in topic_posts limit: 4 %}
+          <a href="{{ post.url | relative_url }}" class="lex-related-article">
+            <span class="lex-related-article-title">{{ post.title }}</span>
+            <span class="lex-related-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </section>
+
     <div class="lex-newsletter-banner">
       <div class="lex-newsletter-text">
         <strong>The Second Mind</strong> — Weekly writing on AI, risk, and decisions.
@@ -105,6 +124,19 @@ css:
       var matchSearch = !query || card.dataset.name.includes(query) || card.textContent.toLowerCase().includes(query);
       card.style.display = (matchCat && matchSearch) ? '' : 'none';
     });
+    filterRelatedArticles();
+  }
+
+  function filterRelatedArticles() {
+    var groups = document.querySelectorAll('.lex-related-group');
+    var section = document.getElementById('lex-related-articles');
+    var anyVisible = false;
+    groups.forEach(function(g) {
+      var show = currentCat === 'all' || g.dataset.topic === currentCat;
+      g.style.display = show ? '' : 'none';
+      if (show) anyVisible = true;
+    });
+    if (section) section.style.display = anyVisible ? '' : 'none';
   }
 
   // Autocomplete
@@ -143,5 +175,6 @@ css:
 
   // Apply initial filter (handles ?topic= param)
   if (currentCat !== 'all') filter();
+  filterRelatedArticles();
 })();
 </script>
