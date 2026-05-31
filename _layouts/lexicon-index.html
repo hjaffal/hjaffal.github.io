@@ -1,0 +1,134 @@
+---
+layout: base
+css:
+  - "/assets/css/lexicon.css"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "The AI Operations Lexicon",
+  "description": "Original terms for AI failure, dashboard failure, and decision failure in operations.",
+  "url": "https://hasanjaffal.com/lexicon/",
+  "creator": {
+    "@type": "Person",
+    "name": "Hasan Jaffal",
+    "url": "https://hasanjaffal.com/aboutme/"
+  }
+}
+</script>
+
+<main class="lex-page">
+  <section class="lex-hero">
+    <span class="field-label">THE AI OPERATIONS LEXICON</span>
+    <h1 class="lex-hero-title">New words for old failures<br>made faster by <em>AI.</em></h1>
+    <p class="lex-hero-desc">A sharp operating vocabulary for leaders who need better words for AI failure, dashboard failure, and decision failure.</p>
+    <div class="lex-hero-search-wrap">
+      <input type="search" class="lex-hero-search" id="lex-search" placeholder="Search terms…" aria-label="Search lexicon terms" autocomplete="off">
+      <div class="lex-autocomplete" id="lex-autocomplete" hidden></div>
+    </div>
+  </section>
+
+  <section class="lex-content">
+    <div class="lex-toolbar">
+      <div class="lex-filters" id="lex-filters">
+        <button class="lex-filter-btn active" data-cat="all">All</button>
+        {% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
+        {% assign used_cats = lex_pages | map: "category" | uniq | sort %}
+        {% for cat_id in used_cats %}
+          {% assign cat_info = site.data.lexicon.categories | where: "id", cat_id | first %}
+          {% if cat_info %}
+          <button class="lex-filter-btn" data-cat="{{ cat_id }}">{{ cat_info.name }}</button>
+          {% else %}
+          <button class="lex-filter-btn" data-cat="{{ cat_id }}">{{ cat_id | replace: '-', ' ' | capitalize }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="lex-grid" id="lex-grid">
+      {% assign lex_pages = site.pages | where: "layout", "lexicon-term" | sort: "term_name" %}
+      {% for term in lex_pages %}
+      <a href="{{ term.url }}" class="lex-card" data-cat="{{ term.category }}" data-name="{{ term.term_name | downcase }}">
+        <div class="lex-card-header">
+          <span class="lex-card-name">{{ term.term_name }}</span>
+          <span class="lex-card-pos">{{ term.pos }}</span>
+        </div>
+        <p class="lex-card-def">{{ term.definition }}</p>
+        <span class="lex-card-cat">{{ term.category | replace: '-', ' ' | capitalize }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="lex-newsletter-banner">
+      <div class="lex-newsletter-text">
+        <strong>The Second Mind</strong> — Weekly writing on AI, risk, and decisions.
+      </div>
+      <form class="lex-newsletter-form nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'lexicon')">
+        <input type="email" placeholder="your@email.com" required class="lex-newsletter-input nl-subscribe-input">
+        <button type="submit" class="lex-newsletter-btn nl-subscribe-btn">Subscribe</button>
+        <p class="nl-subscribe-msg" style="display:none;"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('.lex-card');
+  var search = document.getElementById('lex-search');
+  var autocomplete = document.getElementById('lex-autocomplete');
+  var filterBtns = document.querySelectorAll('.lex-filter-btn');
+  var currentCat = 'all';
+
+  // Build term list for autocomplete
+  var termList = [];
+  cards.forEach(function(card) {
+    termList.push({ name: card.dataset.name, el: card, url: card.getAttribute('href'), display: card.querySelector('.lex-card-name').textContent });
+  });
+
+  function filter() {
+    var query = search.value.toLowerCase();
+    cards.forEach(function(card) {
+      var matchCat = currentCat === 'all' || card.dataset.cat === currentCat;
+      var matchSearch = !query || card.dataset.name.includes(query) || card.textContent.toLowerCase().includes(query);
+      card.style.display = (matchCat && matchSearch) ? '' : 'none';
+    });
+  }
+
+  // Autocomplete
+  search.addEventListener('input', function() {
+    var query = search.value.toLowerCase();
+    filter();
+
+    if (query.length < 2) { autocomplete.hidden = true; return; }
+
+    var matches = termList.filter(function(t) { return t.name.includes(query); }).slice(0, 6);
+    if (matches.length === 0) { autocomplete.hidden = true; return; }
+
+    var html = matches.map(function(m) {
+      return '<a href="' + m.url + '" class="lex-ac-item">' + m.display + '</a>';
+    }).join('');
+    autocomplete.innerHTML = html;
+    autocomplete.hidden = false;
+  });
+
+  search.addEventListener('blur', function() {
+    setTimeout(function() { autocomplete.hidden = true; }, 200);
+  });
+
+  search.addEventListener('focus', function() {
+    if (search.value.length >= 2) search.dispatchEvent(new Event('input'));
+  });
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentCat = btn.dataset.cat;
+      filter();
+    });
+  });
+})();
+</script>

@@ -1,0 +1,64 @@
+# AI Operations Lexicon — Categories (same as Layer 2 topics)
+# Terms are managed in Firestore and published as individual .md files via the admin panel.
+
+categories:
+  - id: ai-theater
+    name: "AI Theater"
+  - id: fake-ai-transformation
+    name: "Fake AI Transformation"
+  - id: slow-decision-cultures
+    name: "Slow Decision Cultures"
+  - id: ai-accountability-vacuum
+    name: "AI Accountability Vacuum"
+  - id: automation-failure-loops
+    name: "Automation Failure Loops"
+  - id: human-bottleneck-myth
+    name: "Human Bottleneck Myth"
+  - id: ai-governance-bureaucracy
+    name: "AI Governance Bureaucracy"
+  - id: meeting-driven-operations
+    name: "Meeting-Driven Operations"
+  - id: escalation-collapse
+    name: "Escalation Collapse"
+  - id: operational-cowardice
+    name: "Operational Cowardice"
+  - id: dashboard-addiction
+    name: "Dashboard Addiction"
+  - id: kpi-theater
+    name: "KPI Theater"
+  - id: reporting-bureaucracy
+    name: "Reporting Bureaucracy"
+  - id: alert-spam
+    name: "Alert Spam"
+  - id: data-without-ownership
+    name: "Data Without Ownership"
+  - id: false-confidence-metrics
+    name: "False Confidence Metrics"
+  - id: vanity-analytics
+    name: "Vanity Analytics"
+  - id: intelligence-vs-reporting
+    name: "Intelligence vs Reporting"
+  - id: data-team-irrelevance
+    name: "Data Team Irrelevance"
+  - id: metric-manipulation
+    name: "Metric Manipulation"
+  - id: white-collar-automation
+    name: "White-Collar Automation"
+  - id: fake-ai-safety-advice
+    name: "Fake AI Safety Advice"
+  - id: productivity-trap
+    name: "Productivity Trap"
+  - id: middle-management-exposure
+    name: "Middle Management Exposure"
+  - id: collapse-of-busy-work
+    name: "The Collapse of Busy Work"
+  - id: prompt-engineer-hype
+    name: "Prompt Engineer Hype"
+  - id: knowledge-worker-oversupply
+    name: "Knowledge Worker Oversupply"
+  - id: credential-irrelevance
+    name: "Credential Irrelevance"
+  - id: ai-career-delusion
+    name: "AI Career Delusion"
+  - id: death-of-information-work
+    name: "The Death of Information Work"

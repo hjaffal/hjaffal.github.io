@@ -26,6 +26,9 @@ exports.manageDrafts = manageDrafts;
 const { generateLinkedInPosts } = require("./posts/linkedin");
 exports.generateLinkedInPosts = generateLinkedInPosts;
 
+const { manageLexicon } = require("./posts/lexicon");
+exports.manageLexicon = manageLexicon;
+
 // ===== NEWSLETTER MODULE EXPORTS =====
 const { subscribeNewsletter } = require("./newsletter/subscribe");
 const { newsletterPreferences } = require("./newsletter/preferences");

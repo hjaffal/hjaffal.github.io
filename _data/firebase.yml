@@ -27,6 +27,7 @@ fn_manage_drafts: "https://managedrafts-vgheoh5xza-ew.a.run.app"
 fn_track_download: "https://trackdownload-vgheoh5xza-ew.a.run.app"
 fn_list_assessments: "https://listassessments-vgheoh5xza-ew.a.run.app"
 fn_linkedin_posts: "https://europe-west1-hasanjaffal.cloudfunctions.net/generateLinkedInPosts"
+fn_manage_lexicon: "https://managelexicon-vgheoh5xza-ew.a.run.app"
 fn_backfill_tokens: "https://europe-west1-hasanjaffal.cloudfunctions.net/backfillTokens"
 
 # Firebase web config (API key is safe to expose — restricted by domain)

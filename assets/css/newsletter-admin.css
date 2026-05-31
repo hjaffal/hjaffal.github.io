@@ -2606,3 +2606,28 @@ body:has(.nla-layout:not([hidden])) footer {
   outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
+
+/* Lexicon Admin */
+.nla-lex-toolbar { display: flex; gap: 10px; margin-bottom: 20px; }
+.nla-lex-gen { padding: 16px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 8px; margin-bottom: 20px; }
+.nla-lex-gen .nla-form-group { margin-bottom: 10px; }
+.nla-lex-results { margin-top: 16px; }
+.nla-lex-idea { padding: 12px 14px; border: 1px solid var(--slate-border); border-radius: 6px; margin-bottom: 8px; background: var(--white); }
+.nla-lex-idea strong { font-size: 0.88rem; color: var(--dark); }
+.nla-lex-idea span { font-size: 0.8rem; color: var(--text-muted); }
+.nla-lex-idea-meta { font-size: 0.68rem; color: var(--text-soft); margin: 4px 0 8px; }
+.nla-badge-draft { background: #FEF3C7; color: #92400E; }
+.nla-badge-active { background: #D1FAE5; color: #065F46; }
+
+.nla-lex-ai-output {
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--dark);
+  line-height: 1.6;
+}
+.nla-lex-ai-output ul { margin: 8px 0; padding-left: 18px; }
+.nla-lex-ai-output li { margin-bottom: 6px; }

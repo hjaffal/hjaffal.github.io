@@ -1,0 +1,143 @@
+---
+layout: base
+css:
+  - "/assets/css/lexicon.css"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": {{ page.term_name | jsonify }},
+  "description": {{ page.definition | jsonify }},
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "The AI Operations Lexicon",
+    "url": "https://hasanjaffal.com/lexicon/"
+  },
+  "url": "https://hasanjaffal.com{{ page.url }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hasanjaffal.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Lexicon", "item": "https://hasanjaffal.com/lexicon/"},
+    {"@type": "ListItem", "position": 3, "name": {{ page.term_name | jsonify }}, "item": "https://hasanjaffal.com{{ page.url }}"}
+  ]
+}
+</script>
+
+<main class="lex-term-page">
+  <nav class="lex-breadcrumb">
+    <a href="/">Home</a> › <a href="/lexicon/">Lexicon</a> › <span>{{ page.term_name }}</span>
+  </nav>
+
+  <article class="lex-term-article">
+    <header class="lex-term-header">
+      <span class="lex-term-cat">{{ page.category | replace: '-', ' ' | upcase }}</span>
+      <h1 class="lex-term-title">{{ page.term_name }}</h1>
+      <p class="lex-term-pos-def"><strong>{{ page.term_name }}</strong> ({{ page.pos }}) {{ page.definition }}</p>
+    </header>
+
+    <section class="lex-term-section">
+      <h2>Explanation</h2>
+      <p>{{ page.explanation }}</p>
+    </section>
+
+    <section class="lex-term-section">
+      <h2>Operational Example</h2>
+      <p>{{ page.example }}</p>
+    </section>
+
+    <section class="lex-term-section">
+      <h2>Why It Matters</h2>
+      <p>{{ page.why_it_matters }}</p>
+    </section>
+
+    <section class="lex-term-section">
+      <h2>What Most Teams Get Wrong</h2>
+      <p>{{ page.teams_get_wrong }}</p>
+    </section>
+
+    <section class="lex-term-section">
+      <h2>What Strong Teams Do Differently</h2>
+      <p>{{ page.strong_teams }}</p>
+    </section>
+
+    <!-- Related Terms: random 3 from same topic -->
+    <section class="lex-term-section">
+      <h2>Related Terms</h2>
+      <div class="lex-related-terms">
+        {% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
+        {% assign same_topic = "" %}
+        {% for t in lex_pages %}
+          {% if t.category == page.category and t.url != page.url %}
+            {% assign same_topic = same_topic | append: t.url | append: "|||" | append: t.term_name | append: ":::" %}
+          {% endif %}
+        {% endfor %}
+        {% assign topic_items = same_topic | split: ":::" %}
+        {% for item in topic_items limit: 3 %}
+          {% if item != "" %}
+            {% assign parts = item | split: "|||" %}
+            <a href="{{ parts[0] }}" class="lex-related-chip">{{ parts[1] }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Related Articles: from same topic -->
+    {% assign related_posts = site.posts | where: "topic", page.category | slice: 0, 4 %}
+    {% if related_posts.size > 0 %}
+    <section class="lex-term-section">
+      <h2>Related Articles</h2>
+      <div class="lex-related-articles">
+        {% for post in related_posts %}
+        <a href="{{ post.url | relative_url }}" class="lex-related-article">
+          <span class="lex-related-article-title">{{ post.title }}</span>
+          <span class="lex-related-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <footer class="lex-term-footer">
+      <span class="lex-term-meta">By Hasan Jaffal</span>
+      <div class="lex-term-share">
+        <a href="https://twitter.com/intent/tweet?text={{ page.term_name | url_encode }}%3A%20{{ page.definition | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" title="Share on X"><i class="fab fa-x-twitter"></i></a>
+        {% capture li_text %}📖 {{ page.term_name }} ({{ page.pos }})
+
+{{ page.definition }}
+
+💡 {{ page.explanation }}
+
+⚠️ What teams get wrong:
+{{ page.teams_get_wrong }}
+
+✅ What strong teams do:
+{{ page.strong_teams }}
+
+🔗 Full definition: https://hasanjaffal.com{{ page.url }}
+
+#AIOperations #RiskIntelligence #OperationalExcellence #Leadership #AI{% endcapture %}
+        <a href="https://www.linkedin.com/feed/?shareActive=true&text={{ li_text | url_encode }}" target="_blank" rel="noopener" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </footer>
+
+    <!-- Newsletter Banner -->
+    <div class="lex-newsletter-banner">
+      <div class="lex-newsletter-text">
+        <strong>The Second Mind</strong> — Weekly writing on AI, risk, and decisions.
+      </div>
+      <form class="lex-newsletter-form nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'lexicon')">
+        <input type="email" placeholder="your@email.com" required class="lex-newsletter-input nl-subscribe-input">
+        <button type="submit" class="lex-newsletter-btn nl-subscribe-btn">Subscribe</button>
+        <p class="nl-subscribe-msg" style="display:none;"></p>
+      </form>
+    </div>
+  </article>
+</main>

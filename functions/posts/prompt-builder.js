@@ -50,6 +50,13 @@ const CONFIG = {
       { url: "/references/operational-escalation-framework/", name: "Operational Escalation Framework", position: "ai-decision-operations" },
       { url: "/references/ai-adoption-failure-checklist/", name: "AI Adoption Failure Checklist", position: "ai-decision-operations" },
     ],
+    lexicon: [
+      { url: "/lexicon/the-fluent-fallacy/", name: "The Fluent Fallacy", position: "ai-decision-operations" },
+      { url: "/lexicon/ai-theater/", name: "AI Theater", position: "ai-decision-operations" },
+      { url: "/lexicon/dashboard-sedation/", name: "Dashboard Sedation", position: "risk-intelligence" },
+      { url: "/lexicon/escalation-debt/", name: "Escalation Debt", position: "ai-decision-operations" },
+      { url: "/lexicon/automation-fog/", name: "Automation Fog", position: "automation-failure" },
+    ],
   },
 
   editorial_checklist: [
@@ -121,7 +128,8 @@ function buildPrompt(params) {
   const otherPositions = CONFIG.internal_links.positions.filter(p => !p.url.includes(position.tag));
   const tools = CONFIG.internal_links.tools;
   const references = CONFIG.internal_links.references.filter(r => r.position === position.tag);
-  const availableLinks = [...otherPositions, ...tools, ...references].map(l => `[${l.name}](${l.url})`).join(", ");
+  const lexicon = CONFIG.internal_links.lexicon || [];
+  const availableLinks = [...otherPositions, ...tools, ...references, ...lexicon].map(l => `[${l.name}](${l.url})`).join(", ");
 
   return `You are writing as Hasan Jaffal — a data and business intelligence leader who writes from real operational experience. You are a strategist, operator, and sharp observer.
 
@@ -203,7 +211,10 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 You MUST include at least 2 internal markdown links in the body text. This is non-negotiable.
 Available links to use: ${availableLinks}
 
-Example of how to include them naturally in the body:
+When mentioning concepts that match a lexicon term (AI Theater, Dashboard Sedation, Escalation Debt, The Fluent Fallacy, Automation Fog), link to the lexicon page. Example:
+"This is a classic case of [Dashboard Sedation](/lexicon/dashboard-sedation/) — the calming effect of green metrics while the operation fails."
+
+Other link examples:
 "If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/)."
 "This connects to the broader pattern of [AI Operations Failure Patterns](/references/ai-operations-failure-patterns/)."
 

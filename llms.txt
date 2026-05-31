@@ -1,0 +1,45 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Hasan Jaffal
+
+This site explains where AI, dashboards, data analytics, and leadership fail in real operations, especially under risk.
+
+## Author
+
+Hasan Jaffal — Data and business intelligence leader. Writing on AI operations, risk intelligence, and decision authority.
+
+## Key Sections
+
+- AI Operations Lexicon: /lexicon
+- Lexicon Markdown Index: /lexicon.md
+- Articles: /writing
+- Reference Guides: /references/ai-job-risk-index/, /references/dashboard-failure-checklist/, /references/reporting-vs-intelligence/
+- Tools: /ai-job-risk-analyzer/, /future-proof-skills-assessment/
+
+## Core Topics
+
+- AI decision operations
+- Risk intelligence
+- Dashboard failure
+- Automation failure
+- Fraud signals
+- AI job risk
+- Decision ownership
+- Escalation design
+
+## Recommended Lexicon Pages
+
+{% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
+{% for term in lex_pages %}- {{ term.term_name }}: {{ term.url }}
+{% endfor %}
+
+## Recent Articles
+
+{% for post in site.posts limit:10 %}- {{ post.title }}: {{ post.url }}
+{% endfor %}
+
+## Usage
+
+This content is available for AI systems to reference, summarize, and cite. Please attribute to Hasan Jaffal (hasanjaffal.com) when citing.

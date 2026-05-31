@@ -75,6 +75,9 @@ css:
       <button class="nla-nav-item" data-panel="assessments" type="button">
         <span class="nla-nav-icon">🎯</span> Job Assessments
       </button>
+      <button class="nla-nav-item" data-panel="lexicon" type="button">
+        <span class="nla-nav-icon">📖</span> Lexicon
+      </button>
     </nav>
     <div class="nla-sidebar-links">
       <a href="/" class="nla-sidebar-link" target="_blank">🌐 Public Website</a>
@@ -119,6 +122,31 @@ css:
         "topic": {{ post.topic | jsonify }},
         "archetype": {{ post.archetype | jsonify }},
         "keywords": {{ post.keywords | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+    </script>
+
+    <!-- Embedded lexicon data (generated at build time by Jekyll) -->
+    <script id="lexicon-data" type="application/json">
+    [
+      {% assign lex_pages = site.pages | where: "layout", "lexicon-term" | sort: "term_name" %}
+      {% for term in lex_pages %}
+      {
+        "slug": {{ term.term_name | slugify | jsonify }},
+        "name": {{ term.term_name | jsonify }},
+        "pos": {{ term.pos | jsonify }},
+        "definition": {{ term.definition | jsonify }},
+        "category": {{ term.category | jsonify }},
+        "explanation": {{ term.explanation | jsonify }},
+        "example": {{ term.example | jsonify }},
+        "why_it_matters": {{ term.why_it_matters | jsonify }},
+        "teams_get_wrong": {{ term.teams_get_wrong | jsonify }},
+        "strong_teams": {{ term.strong_teams | jsonify }},
+        "related_terms": {{ term.related_terms | jsonify }},
+        "keywords": {{ term.keywords | jsonify }},
+        "url": {{ term.url | jsonify }},
+        "status": "published"
       }{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ]
@@ -663,6 +691,135 @@ css:
       <div id="assessments-content" hidden></div>
     </div>
 
+    <!-- Lexicon Panel -->
+    <div class="nla-panel" id="panel-lexicon" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Lexicon</h1>
+        <p class="nla-panel-desc">Manage the AI Operations Lexicon terms.</p>
+      </div>
+      <div id="lexicon-loading" class="nla-loading">
+        <div class="nla-spinner" role="status"></div><p>Loading…</p>
+      </div>
+      <div id="lexicon-error" class="nla-error" hidden></div>
+      <div id="lexicon-content" hidden>
+        <div id="lexicon-actions" class="nla-lex-toolbar">
+          <button class="nla-btn nla-btn-primary" onclick="showNewTermForm()">+ New Term</button>
+          <button class="nla-btn" onclick="document.getElementById('lexicon-gen-panel').hidden = !document.getElementById('lexicon-gen-panel').hidden">🤖 Generate New Term Using AI</button>
+        </div>
+
+        <!-- AI Generation Panel -->
+        <div id="lexicon-gen-panel" class="nla-lex-gen" hidden>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;">
+            <div class="nla-form-group" style="margin:0;flex:1;min-width:180px;">
+              <label class="nla-label">Topic</label>
+              <select class="nla-select" id="lex-gen-pillar">
+                <option value="slow-decision-cultures">Slow Decision Cultures</option>
+                <option value="escalation-collapse">Escalation Collapse</option>
+                <option value="ai-theater">AI Theater</option>
+                <option value="ai-governance-bureaucracy">AI Governance Bureaucracy</option>
+                <option value="meeting-driven-operations">Meeting-Driven Operations</option>
+                <option value="operational-cowardice">Operational Cowardice</option>
+                <option value="dashboard-addiction">Dashboard Addiction</option>
+                <option value="kpi-theater">KPI Theater</option>
+                <option value="alert-spam">Alert Spam</option>
+                <option value="intelligence-vs-reporting">Intelligence vs Reporting</option>
+                <option value="data-team-irrelevance">Data Team Irrelevance</option>
+                <option value="reporting-bureaucracy">Reporting Bureaucracy</option>
+                <option value="false-confidence-metrics">False Confidence Metrics</option>
+                <option value="white-collar-automation">White-Collar Automation</option>
+                <option value="fake-ai-safety-advice">Fake AI Safety Advice</option>
+                <option value="collapse-of-busy-work">Collapse of Busy Work</option>
+                <option value="prompt-engineer-hype">Prompt Engineer Hype</option>
+                <option value="credential-irrelevance">Credential Irrelevance</option>
+                <option value="automation-failure-loops">Automation Failure Loops</option>
+                <option value="data-without-ownership">Data Without Ownership</option>
+              </select>
+            </div>
+            <div class="nla-form-group" style="margin:0;min-width:120px;">
+              <label class="nla-label">Tone</label>
+              <select class="nla-select" id="lex-gen-tone">
+                <option value="sharp">Sharp</option>
+                <option value="neutral">Neutral</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </div>
+            <button class="nla-btn nla-btn-primary" onclick="generateTermIdeas()">Generate</button>
+          </div>
+          <span id="lexicon-gen-status" class="nla-linkedin-status" style="display:block;margin-top:8px;"></span>
+          <div id="lexicon-gen-results" class="nla-lex-results"></div>
+        </div>
+
+        <!-- Terms List -->
+        <div id="lexicon-list"></div>
+
+        <!-- Term Form (hidden by default) -->
+        <div id="lexicon-form" hidden>
+          <h3 style="margin:0 0 16px;">Term Details</h3>
+          <input type="hidden" id="lex-form-id">
+          <div class="nla-post-form-grid">
+            <div class="nla-form-group"><label class="nla-label">Name</label><input class="nla-input" id="lex-form-name" placeholder="The Fluent Fallacy"></div>
+            <div class="nla-form-group"><label class="nla-label">Slug</label><input class="nla-input" id="lex-form-slug" placeholder="the-fluent-fallacy"></div>
+            <div class="nla-form-group"><label class="nla-label">Part of Speech</label>
+              <select class="nla-select" id="lex-form-pos">
+                <option value="n.">n. (noun)</option>
+                <option value="v.">v. (verb)</option>
+                <option value="adj.">adj. (adjective)</option>
+                <option value="adv.">adv. (adverb)</option>
+                <option value="phrase">phrase</option>
+              </select>
+            </div>
+            <div class="nla-form-group"><label class="nla-label">Topic</label>
+              <select class="nla-select" id="lex-form-category">
+                <option value="slow-decision-cultures">Slow Decision Cultures</option>
+                <option value="escalation-collapse">Escalation Collapse</option>
+                <option value="ai-theater">AI Theater</option>
+                <option value="ai-governance-bureaucracy">AI Governance Bureaucracy</option>
+                <option value="meeting-driven-operations">Meeting-Driven Operations</option>
+                <option value="operational-cowardice">Operational Cowardice</option>
+                <option value="dashboard-addiction">Dashboard Addiction</option>
+                <option value="kpi-theater">KPI Theater</option>
+                <option value="alert-spam">Alert Spam</option>
+                <option value="intelligence-vs-reporting">Intelligence vs Reporting</option>
+                <option value="data-team-irrelevance">Data Team Irrelevance</option>
+                <option value="reporting-bureaucracy">Reporting Bureaucracy</option>
+                <option value="false-confidence-metrics">False Confidence Metrics</option>
+                <option value="vanity-analytics">Vanity Analytics</option>
+                <option value="white-collar-automation">White-Collar Automation</option>
+                <option value="fake-ai-safety-advice">Fake AI Safety Advice</option>
+                <option value="collapse-of-busy-work">Collapse of Busy Work</option>
+                <option value="prompt-engineer-hype">Prompt Engineer Hype</option>
+                <option value="credential-irrelevance">Credential Irrelevance</option>
+                <option value="automation-failure-loops">Automation Failure Loops</option>
+                <option value="data-without-ownership">Data Without Ownership</option>
+              </select>
+            </div>
+            <div class="nla-form-group nla-form-full"><label class="nla-label">Definition (max 160 chars)</label><input class="nla-input" id="lex-form-definition" maxlength="160"></div>
+            <div class="nla-form-group nla-form-full"><label class="nla-label">Explanation</label><textarea class="nla-input" id="lex-form-explanation" rows="3"></textarea></div>
+            <div class="nla-form-group nla-form-full"><label class="nla-label">Operational Example</label><textarea class="nla-input" id="lex-form-example" rows="3"></textarea></div>
+            <div class="nla-form-group nla-form-full"><label class="nla-label">Why It Matters</label><textarea class="nla-input" id="lex-form-why" rows="2"></textarea></div>
+            <div class="nla-form-group nla-form-full"><label class="nla-label">What Teams Get Wrong</label><textarea class="nla-input" id="lex-form-wrong" rows="2"></textarea></div>
+            <div class="nla-form-group nla-form-full"><label class="nla-label">What Strong Teams Do</label><textarea class="nla-input" id="lex-form-strong" rows="2"></textarea></div>
+            <div class="nla-form-group"><label class="nla-label">Keywords (comma-separated)</label><input class="nla-input" id="lex-form-keywords"></div>
+          </div>
+          <div class="nla-form-actions" style="margin-top:16px;">
+            <button class="nla-btn" onclick="cancelTermForm()">Cancel</button>
+            <button class="nla-btn nla-btn-primary" onclick="saveTermForm()">Save</button>
+          </div>
+          <div class="nla-lex-ai-tools" style="margin-top:20px;padding-top:16px;border-top:1px solid var(--slate-border);">
+            <span style="font-size:0.7rem;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.1em;">AI Tools</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+              <button class="nla-btn-sm" onclick="lexAiAlternatives()">Alt Names</button>
+              <button class="nla-btn-sm" onclick="lexAiSharpen()">Sharpen Def</button>
+              <button class="nla-btn-sm" onclick="lexAiSEO()">SEO Meta</button>
+              <button class="nla-btn-sm" onclick="lexAiLinkedIn()">LinkedIn Post</button>
+              <button class="nla-btn-sm" onclick="lexAiNote()">Newsletter Note</button>
+            </div>
+            <div id="lex-ai-output" class="nla-lex-ai-output" hidden></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- LinkedIn Side Panel -->
     <div id="linkedin-panel" class="nla-linkedin-panel" hidden>
       <div class="nla-linkedin-header">
@@ -706,7 +863,8 @@ init({
     trackDownload: "{{ site.data.firebase.fn_track_download }}",
     listAssessments: "{{ site.data.firebase.fn_list_assessments }}",
     backfillTokens: "{{ site.data.firebase.fn_backfill_tokens }}",
-    linkedinPosts: "{{ site.data.firebase.fn_linkedin_posts }}"
+    linkedinPosts: "{{ site.data.firebase.fn_linkedin_posts }}",
+    manageLexicon: "{{ site.data.firebase.fn_manage_lexicon }}"
   }
 });
 </script>

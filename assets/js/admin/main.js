@@ -170,6 +170,9 @@ export async function switchPanel(panelName) {
   } else if (panelName === 'assessments') {
     const { loadAssessments } = await import('./assessments.js');
     loadAssessments();
+  } else if (panelName === 'lexicon') {
+    const { loadLexicon } = await import('./lexicon.js');
+    loadLexicon();
   }
 }
 
