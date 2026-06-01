@@ -1,0 +1,220 @@
+# Medien & Technologien — Sections 46 & 48
+
+- id: "medien_001"
+  lb: "Tëlee kucken"
+  en: "to watch television"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "medien_002"
+  lb: "déi sozial Medien"
+  en: "social media"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "medien_003"
+  lb: "inspiréierend"
+  en: "inspiring"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "medien_004"
+  lb: "Falschinformatiounen"
+  en: "fake news"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_005"
+  lb: "Podcaste lauschteren"
+  en: "to listen to podcasts"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "medien_006"
+  lb: "d'Wouerecht"
+  en: "truth"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_007"
+  lb: "um Internet"
+  en: "on the internet"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "medien_008"
+  lb: "den Tablet"
+  en: "tablet"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_009"
+  lb: "d'Medien"
+  en: "media"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_010"
+  lb: "programméieren"
+  en: "to program/code"
+  pos: "verb"
+  difficulty: 2
+
+- id: "medien_011"
+  lb: "d'Privatssphär"
+  en: "privacy"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_012"
+  lb: "d'Steiererklärung"
+  en: "tax declaration"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_013"
+  lb: "sech aloggen"
+  en: "to log in"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "medien_014"
+  lb: "d'Digitalisatioun"
+  en: "digitalisation"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_015"
+  lb: "eppes späicheren"
+  en: "to save/store"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "medien_016"
+  lb: "den Écran"
+  en: "screen"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_017"
+  lb: "den Handy"
+  en: "phone"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_018"
+  lb: "den Akku"
+  en: "phone battery"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_019"
+  lb: "den Abonnement"
+  en: "subscription"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_020"
+  lb: "d'Donéeën"
+  en: "data"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_021"
+  lb: "d'Zeitung"
+  en: "newspaper"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_022"
+  lb: "d'Zäitschrëft"
+  en: "magazine"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_023"
+  lb: "d'Noriichten"
+  en: "the news"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_024"
+  lb: "de Wecker"
+  en: "alarm clock"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_025"
+  lb: "d'Kopfhörer"
+  en: "headphones"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_026"
+  lb: "de Smartphone"
+  en: "smartphone"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_027"
+  lb: "d'Kamera"
+  en: "camera"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_028"
+  lb: "de Wifi"
+  en: "wifi"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "medien_029"
+  lb: "d'Software"
+  en: "software"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "medien_030"
+  lb: "klicken"
+  en: "to click"
+  pos: "verb"
+  difficulty: 2
+
+- id: "medien_031"
+  lb: "scrollen"
+  en: "to scroll"
+  pos: "verb"
+  difficulty: 2
+
+- id: "medien_032"
+  lb: "iwwerstimuléiert sinn"
+  en: "to be overstimulated"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "medien_033"
+  lb: "ze vill Zäit um Internet verbréngen"
+  en: "to spend too much time online"
+  pos: "verb-phrase"
+  difficulty: 2

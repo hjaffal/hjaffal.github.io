@@ -1,0 +1,168 @@
+# Summer & Wanter — Section 49
+
+- id: "summer_001"
+  lb: "den Himmel"
+  en: "sky"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "summer_002"
+  lb: "iwwerdriwwe waarm"
+  en: "exceedingly hot"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "summer_003"
+  lb: "d'Summervakanz"
+  en: "summer holidays"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "summer_004"
+  lb: "eppes an der frëscher Loft maachen"
+  en: "to do something in fresh air"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_005"
+  lb: "e Picknick maachen"
+  en: "to have a picnic"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_006"
+  lb: "an eng oppe Schwämm goen"
+  en: "to go to an outdoor pool"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_007"
+  lb: "d'Crëschtdeeg"
+  en: "Christmas holidays"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "summer_008"
+  lb: "Leit alueden"
+  en: "to invite people"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_009"
+  lb: "de Schnéi"
+  en: "snow"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "summer_010"
+  lb: "schweessen"
+  en: "to sweat"
+  pos: "verb"
+  difficulty: 2
+
+- id: "summer_011"
+  lb: "de Schal"
+  en: "scarf"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "summer_012"
+  lb: "de Feierdag"
+  en: "bank holiday"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "summer_013"
+  lb: "d'Freedefeier"
+  en: "fireworks"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "summer_014"
+  lb: "an d'Skivakanz goen"
+  en: "to go on ski holiday"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_015"
+  lb: "d'Daunejackett"
+  en: "down jacket"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "summer_016"
+  lb: "waarm Händschen"
+  en: "warm gloves"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "summer_017"
+  lb: "ski fueren"
+  en: "to ski"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_018"
+  lb: "snowboard fueren"
+  en: "to snowboard"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_019"
+  lb: "e Chalet lounen"
+  en: "to rent a chalet"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_020"
+  lb: "de Skilift"
+  en: "ski lift"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "summer_021"
+  lb: "de Glühwäin"
+  en: "warm wine"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "summer_022"
+  lb: "sech opwiermen"
+  en: "to warm up"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_023"
+  lb: "sech ofkillen"
+  en: "to cool down"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "summer_024"
+  lb: "d'Keelt"
+  en: "the cold"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "summer_025"
+  lb: "fréieren"
+  en: "to freeze"
+  pos: "verb"
+  difficulty: 2
+
+- id: "summer_026"
+  lb: "gefruer"
+  en: "frozen"
+  pos: "adjective"
+  difficulty: 2

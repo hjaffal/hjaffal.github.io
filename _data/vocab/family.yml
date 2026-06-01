@@ -1,0 +1,232 @@
+# Family & Relations — Sections 22 & 41
+
+- id: "family_001"
+  lb: "d'Famill"
+  en: "family"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_002"
+  lb: "d'Mamm"
+  en: "mother"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_003"
+  lb: "de Papp"
+  en: "father"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "family_004"
+  lb: "de Bopa"
+  en: "grandfather"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "family_005"
+  lb: "d'Boma"
+  en: "grandmother"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_006"
+  lb: "de Monni"
+  en: "uncle"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "family_007"
+  lb: "d'Tatta"
+  en: "aunt"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_008"
+  lb: "d'Schwëster"
+  en: "sister"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_009"
+  lb: "de Brudder"
+  en: "brother"
+  pos: "noun"
+  gender: "m"
+  plural: "Bridder"
+  difficulty: 2
+
+- id: "family_010"
+  lb: "d'Elteren"
+  en: "parents"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_011"
+  lb: "d'Kanner"
+  en: "children"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "family_012"
+  lb: "de Cousin"
+  en: "cousin (male)"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "family_013"
+  lb: "d'Cousine"
+  en: "cousin (female)"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_014"
+  lb: "de Mann"
+  en: "husband"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "family_015"
+  lb: "d'Fra"
+  en: "wife"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_016"
+  lb: "de Partner"
+  en: "partner"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "family_017"
+  lb: "sech bei engem mellen"
+  en: "to check in with someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_018"
+  lb: "an enger Bezéiung sinn"
+  en: "to be in a relationship"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_019"
+  lb: "bestuet sinn"
+  en: "to be married"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_020"
+  lb: "sech bestueden"
+  en: "to get married"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_021"
+  lb: "gescheet sinn"
+  en: "to be divorced"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_022"
+  lb: "sech scheede loossen"
+  en: "to get divorced"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_023"
+  lb: "ee besiche goen"
+  en: "to go visit someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_024"
+  lb: "sech mat Frënn treffen"
+  en: "to meet up with friends"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_025"
+  lb: "éierlech"
+  en: "honest"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "family_026"
+  lb: "d'Vertrauen"
+  en: "trust"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "family_027"
+  lb: "Geschwëster"
+  en: "siblings"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "family_028"
+  lb: "d'Eenzelkand"
+  en: "only child"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "family_029"
+  lb: "opwuessen"
+  en: "to grow up"
+  pos: "verb"
+  difficulty: 2
+
+- id: "family_030"
+  lb: "d'Kandheet"
+  en: "childhood"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "family_031"
+  lb: "vill gemeinsam hunn"
+  en: "to have a lot in common"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_032"
+  lb: "e gudden Drot zu engem hunn"
+  en: "to have a good connection with someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_033"
+  lb: "sech streiden"
+  en: "to argue"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_034"
+  lb: "ee kenneléieren"
+  en: "to get to know someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "family_035"
+  lb: "Kanner erzéien"
+  en: "to raise kids"
+  pos: "verb-phrase"
+  difficulty: 2

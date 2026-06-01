@@ -1,0 +1,224 @@
+# Transport — Section 23
+
+- id: "transport_001"
+  lb: "nohalteg"
+  en: "sustainable"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_002"
+  lb: "den elektrësche Vëlo"
+  en: "electric bicycle"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_003"
+  lb: "kréien"
+  en: "to get/receive"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_004"
+  lb: "ee féieren"
+  en: "to drive someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "transport_005"
+  lb: "den Zuch"
+  en: "train"
+  pos: "noun"
+  gender: "m"
+  plural: "Zich"
+  difficulty: 2
+
+- id: "transport_006"
+  lb: "d'Verspéidung"
+  en: "delay"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "transport_007"
+  lb: "eppes verpassen"
+  en: "to miss something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "transport_008"
+  lb: "ukommen"
+  en: "to arrive"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_009"
+  lb: "de Busarrêt"
+  en: "bus stop"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_010"
+  lb: "ze spéit kommen"
+  en: "to be late"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "transport_011"
+  lb: "fortgoen"
+  en: "to leave"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_012"
+  lb: "fortfueren"
+  en: "to depart"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_013"
+  lb: "gratis"
+  en: "free of charge"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_014"
+  lb: "komfortabel"
+  en: "comfortable"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_015"
+  lb: "pénktlech"
+  en: "punctual"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_016"
+  lb: "erausklammen"
+  en: "to get off"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_017"
+  lb: "eraklammen"
+  en: "to get on"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_018"
+  lb: "erwächen"
+  en: "to wake up"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_019"
+  lb: "opstoen"
+  en: "to get up"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_020"
+  lb: "bal"
+  en: "almost"
+  pos: "adverb"
+  difficulty: 2
+
+- id: "transport_021"
+  lb: "daueren"
+  en: "to last/take time"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_022"
+  lb: "den ëffentlechen Transport"
+  en: "public transport"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_023"
+  lb: "ëmklammen"
+  en: "to transfer"
+  pos: "verb"
+  difficulty: 2
+
+- id: "transport_024"
+  lb: "geféierlech"
+  en: "dangerous"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_025"
+  lb: "d'Autobunn"
+  en: "highway"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "transport_026"
+  lb: "virsiichteg"
+  en: "careful"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_027"
+  lb: "de Gleis"
+  en: "railway track"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_028"
+  lb: "de Bensin"
+  en: "gasoline"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_029"
+  lb: "séier"
+  en: "quick"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_030"
+  lb: "ze Fouss"
+  en: "by/on foot"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "transport_031"
+  lb: "de Funiculaire"
+  en: "cable car"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_032"
+  lb: "kamoud"
+  en: "convenient"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "transport_033"
+  lb: "d'Regierung"
+  en: "government"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "transport_034"
+  lb: "den Helm"
+  en: "helmet"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "transport_035"
+  lb: "de Tram"
+  en: "tram"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2

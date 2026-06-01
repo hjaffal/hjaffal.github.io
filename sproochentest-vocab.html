@@ -1,0 +1,313 @@
+---
+layout: sproochentest-vocab
+title: "Luxembourgish Vocabulary Practice — Sproochentest Prep"
+permalink: /sproochentest/vocab/
+share-title: "Luxembourgish Vocabulary Practice — Sproochentest Prep"
+share-description: "Interactive vocabulary trainer for the Luxembourgish Sproochentest. Spaced repetition, speed recall, and gamified daily practice."
+show-avatar: false
+chat_with_me_box: false
+---
+
+<div class="vocab-container">
+
+  <!-- Category Selector View -->
+  <div class="vocab-view vocab-view--categories" id="vocab-categories">
+    <div class="vocab-hero">
+      <span class="field-label">VOCABULARY ENGINE</span>
+      <h1 class="vocab-title">Lëtzebuergesch Vokabelen</h1>
+      <p class="vocab-subtitle">Interactive vocabulary trainer for the Luxembourgish Sproochentest.</p>
+      <div class="vocab-hero-stats">
+        <div class="vocab-hero-stat">
+          <span class="vocab-hero-stat-value">⚡ 1,108</span>
+          <span class="vocab-hero-stat-label">Words</span>
+        </div>
+        <div class="vocab-hero-stat">
+          <span class="vocab-hero-stat-value">📖 29</span>
+          <span class="vocab-hero-stat-label">Categories</span>
+        </div>
+        <div class="vocab-hero-stat">
+          <span class="vocab-hero-stat-value">🏔️ 4</span>
+          <span class="vocab-hero-stat-label">Tiers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-column layout: categories + sidebar -->
+    <div class="vocab-layout">
+      <div class="vocab-main">
+
+        <!-- User profile bar -->
+        <div class="vocab-user-bar" id="vocab-user-bar" style="display:none;">
+          <div class="vocab-user-info">
+            <div class="vocab-user-avatar" id="vocab-user-avatar">H</div>
+            <div class="vocab-user-details">
+              <span class="vocab-user-name" id="vocab-user-name">User</span>
+              <span class="vocab-user-level" id="vocab-user-level">0 XP</span>
+            </div>
+          </div>
+          <div class="vocab-user-stats">
+            <div class="vocab-stat">
+              <span class="vocab-stat-value" id="vocab-xp">0</span>
+              <span class="vocab-stat-label">XP</span>
+            </div>
+            <div class="vocab-stat">
+              <span class="vocab-stat-value" id="vocab-words-learned">0</span>
+              <span class="vocab-stat-label">Words</span>
+            </div>
+          </div>
+          <button class="vocab-logout-btn" id="vocab-logout-btn" aria-label="Sign out">Sign out</button>
+        </div>
+
+        <!-- Guest sign-in prompt -->
+        <div class="vocab-guest-bar" id="vocab-guest-bar">
+          <span class="vocab-guest-text">You're in guest mode. Progress is saved locally only.</span>
+          <button class="vocab-guest-signin" id="vocab-guest-signin">Sign in</button>
+        </div>
+
+        <!-- Tier 1: Foundations -->
+        <div class="vocab-tier" id="tier-1">
+          <h2 class="vocab-tier-title">Foundations</h2>
+          <p class="vocab-tier-desc">Core words, verbs, and phrases to get started.</p>
+          <div class="vocab-grid">
+            <button class="vocab-card" data-category="essential-words">
+              <span class="vocab-card-count">44 words</span>
+              <h3 class="vocab-card-title">Essential Words</h3>
+              <p class="vocab-card-desc">The most fundamental Luxembourgish words.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="essential-words"></div></div>
+            </button>
+            <button class="vocab-card" data-category="articles-pronouns">
+              <span class="vocab-card-count">53 words</span>
+              <h3 class="vocab-card-title">Articles & Pronouns</h3>
+              <p class="vocab-card-desc">Grammar building blocks for every sentence.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="articles-pronouns"></div></div>
+            </button>
+            <button class="vocab-card" data-category="starter-verbs">
+              <span class="vocab-card-count">32 words</span>
+              <h3 class="vocab-card-title">Core Verbs</h3>
+              <p class="vocab-card-desc">Essential actions + irregular verb conjugations.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="starter-verbs"></div></div>
+            </button>
+            <button class="vocab-card" data-category="introductions">
+              <span class="vocab-card-count">41 words</span>
+              <h3 class="vocab-card-title">Introduce Yourself</h3>
+              <p class="vocab-card-desc">Greetings, personal info, and polite phrases.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="introductions"></div></div>
+            </button>
+            <button class="vocab-card" data-category="numbers-dates">
+              <span class="vocab-card-count">77 words</span>
+              <h3 class="vocab-card-title">Numbers, Dates & Time</h3>
+              <p class="vocab-card-desc">Counting, months, days, and telling time.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="numbers-dates"></div></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tier 2: Exam Building Blocks -->
+        <div class="vocab-tier" id="tier-2">
+          <h2 class="vocab-tier-title">Exam Building Blocks</h2>
+          <p class="vocab-tier-desc">Fillers, connectors, question words, and descriptions.</p>
+          <div class="vocab-grid">
+            <button class="vocab-card" data-category="fillers-connectors">
+              <span class="vocab-card-count">44 words</span>
+              <h3 class="vocab-card-title">Fillers & Connectors</h3>
+              <p class="vocab-card-desc">Sentence launchers, fillers, and linking words.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="fillers-connectors"></div></div>
+            </button>
+            <button class="vocab-card" data-category="question-words">
+              <span class="vocab-card-count">13 words</span>
+              <h3 class="vocab-card-title">Question Words</h3>
+              <p class="vocab-card-desc">Who, what, where, when, why, how.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="question-words"></div></div>
+            </button>
+            <button class="vocab-card" data-category="locators">
+              <span class="vocab-card-count">14 words</span>
+              <h3 class="vocab-card-title">Locators</h3>
+              <p class="vocab-card-desc">Spatial words for image description.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="locators"></div></div>
+            </button>
+            <button class="vocab-card" data-category="describe-objects">
+              <span class="vocab-card-count">56 words</span>
+              <h3 class="vocab-card-title">Describing Objects</h3>
+              <p class="vocab-card-desc">Colors, shapes, sizes, and qualities.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="describe-objects"></div></div>
+            </button>
+            <button class="vocab-card" data-category="describe-people">
+              <span class="vocab-card-count">58 words</span>
+              <h3 class="vocab-card-title">Describing People</h3>
+              <p class="vocab-card-desc">Appearance, clothing, and emotions.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="describe-people"></div></div>
+            </button>
+            <button class="vocab-card" data-category="adjective-declension">
+              <span class="vocab-card-count">18 words</span>
+              <h3 class="vocab-card-title">Adjective Forms</h3>
+              <p class="vocab-card-desc">Declension patterns and irregular superlatives.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="adjective-declension"></div></div>
+            </button>
+            <button class="vocab-card" data-category="prepositions">
+              <span class="vocab-card-count">32 words</span>
+              <h3 class="vocab-card-title">Prepositions</h3>
+              <p class="vocab-card-desc">In, on, with, from — and their contractions.</p>
+              <div class="vocab-card-progress"><div class="vocab-card-bar" data-category="prepositions"></div></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tier 3: Thematic Modules -->
+        <div class="vocab-tier" id="tier-3">
+          <h2 class="vocab-tier-title">Thematic Modules</h2>
+          <p class="vocab-tier-desc">Exam speaking topics with full vocabulary sets.</p>
+          <div class="vocab-grid">
+            <button class="vocab-card" data-category="sport"><span class="vocab-card-count">48 words</span><h3 class="vocab-card-title">Sport</h3><p class="vocab-card-desc">Exercise, fitness, and team sports.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="sport"></div></div></button>
+            <button class="vocab-card" data-category="wunnen"><span class="vocab-card-count">38 words</span><h3 class="vocab-card-title">Wunnen</h3><p class="vocab-card-desc">Housing, rooms, and neighbourhood.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="wunnen"></div></div></button>
+            <button class="vocab-card" data-category="transport"><span class="vocab-card-count">35 words</span><h3 class="vocab-card-title">Transport</h3><p class="vocab-card-desc">Getting around, public transport, driving.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="transport"></div></div></button>
+            <button class="vocab-card" data-category="hobbyen"><span class="vocab-card-count">35 words</span><h3 class="vocab-card-title">Hobbyen</h3><p class="vocab-card-desc">Free time, activities, and interests.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="hobbyen"></div></div></button>
+            <button class="vocab-card" data-category="vakanz"><span class="vocab-card-count">42 words</span><h3 class="vocab-card-title">Vakanz</h3><p class="vocab-card-desc">Holidays, travel, and the beach.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="vakanz"></div></div></button>
+            <button class="vocab-card" data-category="gesondheet"><span class="vocab-card-count">35 words</span><h3 class="vocab-card-title">Gesond Liewen</h3><p class="vocab-card-desc">Health, food, and the market.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="gesondheet"></div></div></button>
+            <button class="vocab-card" data-category="medien-technologien"><span class="vocab-card-count">33 words</span><h3 class="vocab-card-title">Medien & Technologien</h3><p class="vocab-card-desc">Media, devices, and the internet.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="medien-technologien"></div></div></button>
+            <button class="vocab-card" data-category="sproochen"><span class="vocab-card-count">30 words</span><h3 class="vocab-card-title">Sproochen & Léieren</h3><p class="vocab-card-desc">Languages, learning, and education.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="sproochen"></div></div></button>
+            <button class="vocab-card" data-category="kaddoen"><span class="vocab-card-count">20 words</span><h3 class="vocab-card-title">Kaddoen</h3><p class="vocab-card-desc">Gifts, celebrations, and occasions.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="kaddoen"></div></div></button>
+            <button class="vocab-card" data-category="summer-wanter"><span class="vocab-card-count">26 words</span><h3 class="vocab-card-title">Summer & Wanter</h3><p class="vocab-card-desc">Seasons, weather, and winter sports.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="summer-wanter"></div></div></button>
+            <button class="vocab-card" data-category="aarbecht"><span class="vocab-card-count">33 words</span><h3 class="vocab-card-title">Meng Aarbecht</h3><p class="vocab-card-desc">Work, office, and career.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="aarbecht"></div></div></button>
+            <button class="vocab-card" data-category="stot-maachen"><span class="vocab-card-count">22 words</span><h3 class="vocab-card-title">De Stot Maachen</h3><p class="vocab-card-desc">Housework and cleaning.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="stot-maachen"></div></div></button>
+            <button class="vocab-card" data-category="family"><span class="vocab-card-count">35 words</span><h3 class="vocab-card-title">Family & Relations</h3><p class="vocab-card-desc">Family members, friends, and relationships.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="family"></div></div></button>
+          </div>
+        </div>
+
+        <!-- Tier 4: Advanced & Cultural -->
+        <div class="vocab-tier" id="tier-4">
+          <h2 class="vocab-tier-title">Advanced & Cultural</h2>
+          <p class="vocab-tier-desc">Frequent verbs, past tenses, and truly Luxembourgish idioms.</p>
+          <div class="vocab-grid">
+            <button class="vocab-card" data-category="frequent-verbs"><span class="vocab-card-count">85 words</span><h3 class="vocab-card-title">Frequent Verbs</h3><p class="vocab-card-desc">The most common Luxembourgish verbs.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="frequent-verbs"></div></div></button>
+            <button class="vocab-card" data-category="irregular-verbs"><span class="vocab-card-count">27 words</span><h3 class="vocab-card-title">Irregular Verbs</h3><p class="vocab-card-desc">3rd person irregular forms you must know.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="irregular-verbs"></div></div></button>
+            <button class="vocab-card" data-category="simple-past"><span class="vocab-card-count">32 words</span><h3 class="vocab-card-title">Past Tenses</h3><p class="vocab-card-desc">Simple past forms and past participles.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="simple-past"></div></div></button>
+            <button class="vocab-card" data-category="truly-luxembourgish"><span class="vocab-card-count">50 words</span><h3 class="vocab-card-title">Truly Luxembourgish</h3><p class="vocab-card-desc">Idioms, slang, and colloquial expressions.</p><div class="vocab-card-progress"><div class="vocab-card-bar" data-category="truly-luxembourgish"></div></div></button>
+          </div>
+        </div>
+
+      </div><!-- /.vocab-main -->
+
+      <!-- Sidebar -->
+      <aside class="vocab-sidebar">
+        <!-- Leaderboard -->
+        <div class="vocab-sidebar-card">
+          <h3 class="vocab-sidebar-title">🏆 Leaderboard</h3>
+          <div class="vocab-leaderboard" id="vocab-leaderboard">
+            <div class="vocab-leaderboard-loading">Loading...</div>
+          </div>
+        </div>
+
+        <!-- Your Progress -->
+        <div class="vocab-sidebar-card">
+          <h3 class="vocab-sidebar-title">📊 Your Progress</h3>
+          <div class="vocab-progress-overview" id="vocab-progress-overview">
+            <div class="vocab-progress-ring">
+              <svg viewBox="0 0 36 36" class="vocab-ring-svg">
+                <defs>
+                  <linearGradient id="vocab-ring-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#9333EA"/>
+                    <stop offset="100%" style="stop-color:#A855F7"/>
+                  </linearGradient>
+                </defs>
+                <path class="vocab-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                <path class="vocab-ring-fill" id="vocab-ring-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              </svg>
+              <span class="vocab-ring-text" id="vocab-ring-text">0%</span>
+            </div>
+            <div class="vocab-progress-details">
+              <span class="vocab-progress-detail"><strong id="vocab-total-words-seen">0</strong> / 1,108 words seen</span>
+              <span class="vocab-progress-detail"><strong id="vocab-total-xp-sidebar">0</strong> XP earned</span>
+              <span class="vocab-progress-rank" id="vocab-progress-rank"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Tips -->
+        <div class="vocab-sidebar-card">
+          <h3 class="vocab-sidebar-title">💡 Tips</h3>
+          <ul class="vocab-tips">
+            <li>Start with <strong>Learn</strong> mode to see words first</li>
+            <li>Switch to <strong>Practice</strong> to test recall</li>
+            <li>Wrong answers get re-queued for immediate review</li>
+            <li>Consistency beats long sessions — 5 min daily</li>
+          </ul>
+        </div>
+      </aside>
+    </div><!-- /.vocab-layout -->
+
+    <!-- SEO content -->
+    <div class="vocab-seo">
+      <h2>How it works</h2>
+      <p>This vocabulary engine uses spaced repetition to move words from passive recognition to active recall. Each word passes through learning layers: recognition (flashcards), then production (multiple choice testing).</p>
+      <h2>FAQ</h2>
+      <details><summary>Is this free?</summary><p>Tier 1 (Foundations) is free with a 10-word trial per category. Full access requires a free account.</p></details>
+      <details><summary>How many words are there?</summary><p>1,108 entries across 29 categories, organized from beginner foundations to advanced idioms.</p></details>
+      <details><summary>How long should I practice daily?</summary><p>One 20-card session takes 3–5 minutes. Daily consistency beats long sessions.</p></details>
+    </div>
+  </div>
+
+  <!-- Session View (hidden by default) -->
+  <div class="vocab-view vocab-view--session" id="vocab-session" style="display:none;">
+    <div class="vocab-session-header">
+      <button class="vocab-back-btn" id="vocab-back-btn" aria-label="Back to categories">← Back</button>
+      <div class="vocab-session-meta">
+        <span class="vocab-session-mode" id="vocab-session-mode">LEARN</span>
+        <span id="vocab-progress-text">0 / 20</span>
+      </div>
+      <div class="vocab-session-progress">
+        <div class="vocab-progress-bar"><div class="vocab-progress-fill" id="vocab-progress-fill"></div></div>
+      </div>
+      <div class="vocab-session-xp" id="vocab-session-xp">+0 XP</div>
+    </div>
+    <div class="vocab-card-area" id="vocab-card-area"></div>
+    <div class="vocab-feedback" id="vocab-feedback" style="display:none;"></div>
+  </div>
+
+  <!-- Mode Picker (hidden by default) -->
+  <div class="vocab-view vocab-view--mode" id="vocab-mode-picker" style="display:none;">
+    <button class="vocab-back-btn" id="vocab-mode-back-btn" aria-label="Back to categories">← Back</button>
+    <div class="vocab-mode-card">
+      <h2 class="vocab-mode-title" id="vocab-mode-title">Essential Words</h2>
+      <p class="vocab-mode-desc">Choose how you want to study this category.</p>
+      <div class="vocab-mode-options">
+        <button class="vocab-mode-btn" id="vocab-mode-learn">
+          <span class="vocab-mode-icon">💡</span>
+          <span class="vocab-mode-label">Learn</span>
+          <span class="vocab-mode-sublabel">Introduce new words with translations and examples.</span>
+        </button>
+        <button class="vocab-mode-btn" id="vocab-mode-practice">
+          <span class="vocab-mode-icon">🎯</span>
+          <span class="vocab-mode-label">Practice</span>
+          <span class="vocab-mode-sublabel">Strengthen weak words and clear your review queue.</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Complete View (hidden by default) -->
+  <div class="vocab-view vocab-view--complete" id="vocab-complete" style="display:none;">
+    <div class="vocab-complete-card">
+      <div class="vocab-complete-icon">✓</div>
+      <h2 class="vocab-complete-title">Session Complete</h2>
+      <div class="vocab-complete-stats">
+        <div class="vocab-complete-stat">
+          <span class="vocab-complete-value" id="complete-correct">0</span>
+          <span class="vocab-complete-label">Correct</span>
+        </div>
+        <div class="vocab-complete-stat">
+          <span class="vocab-complete-value" id="complete-total">0</span>
+          <span class="vocab-complete-label">Total</span>
+        </div>
+        <div class="vocab-complete-stat">
+          <span class="vocab-complete-value" id="complete-xp">0</span>
+          <span class="vocab-complete-label">XP Earned</span>
+        </div>
+      </div>
+      <div class="vocab-complete-actions">
+        <button class="vocab-btn vocab-btn--primary" id="vocab-continue-btn">Continue Learning</button>
+        <button class="vocab-btn vocab-btn--secondary" id="vocab-done-btn">Done for Today</button>
+      </div>
+    </div>
+  </div>
+
+</div>

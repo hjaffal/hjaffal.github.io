@@ -1,0 +1,376 @@
+# Describing People — Section 24
+
+- id: "people_001"
+  lb: "jonk"
+  en: "young"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_002"
+  lb: "al"
+  en: "old"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_003"
+  lb: "e Mann mëttleren Alters"
+  en: "a middle aged man"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "people_004"
+  lb: "en eeleren Här"
+  en: "an elderly man"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "people_005"
+  lb: "eng eeler Madamm"
+  en: "an elderly woman"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "people_006"
+  lb: "nierft him"
+  en: "next to him"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_007"
+  lb: "nierft hir"
+  en: "next to her"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_008"
+  lb: "d'Hoer"
+  en: "hair"
+  pos: "noun"
+  gender: "n"
+  note: "plural in Luxembourgish"
+  difficulty: 1
+
+- id: "people_009"
+  lb: "laang"
+  en: "long"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_010"
+  lb: "kuerz"
+  en: "short"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_011"
+  lb: "gekrauselt"
+  en: "curly"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_012"
+  lb: "gewellt"
+  en: "wavy"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_013"
+  lb: "gestylt Hoer"
+  en: "styled hair"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_014"
+  lb: "glat Hoer"
+  en: "straight hair"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_015"
+  lb: "unhunn"
+  en: "to wear"
+  pos: "verb"
+  difficulty: 1
+
+- id: "people_016"
+  lb: "undoen"
+  en: "to put on clothes"
+  pos: "verb"
+  difficulty: 1
+
+- id: "people_017"
+  lb: "d'Box"
+  en: "trousers"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_018"
+  lb: "den T-Shirt"
+  en: "t-shirt"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_019"
+  lb: "d'Jupe"
+  en: "skirt"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_020"
+  lb: "d'Strëmp"
+  en: "socks"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_021"
+  lb: "d'Schong"
+  en: "shoes"
+  pos: "noun"
+  gender: "f"
+  note: "plural"
+  difficulty: 1
+
+- id: "people_022"
+  lb: "d'Sneakers"
+  en: "sneakers"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_023"
+  lb: "d'Hiem"
+  en: "shirt"
+  pos: "noun"
+  gender: "n"
+  difficulty: 1
+
+- id: "people_024"
+  lb: "d'Blus"
+  en: "blouse"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_025"
+  lb: "hannert him"
+  en: "behind him"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_026"
+  lb: "hannert hir"
+  en: "behind her"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_027"
+  lb: "den Topp"
+  en: "top"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_028"
+  lb: "de Brëll"
+  en: "glasses"
+  pos: "noun"
+  gender: "m"
+  note: "singular in Luxembourgish"
+  difficulty: 1
+
+- id: "people_029"
+  lb: "d'Jeansbox"
+  en: "jeans"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_030"
+  lb: "de Schoulsak"
+  en: "backpack"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_031"
+  lb: "d'Posch"
+  en: "handbag"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_032"
+  lb: "d'Jackett"
+  en: "jacket"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_033"
+  lb: "d'Kuerzbox"
+  en: "shorts"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_034"
+  lb: "d'Hänn an den Täschen hunn"
+  en: "to have hands in pockets"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "people_035"
+  lb: "de Pullover"
+  en: "sweater"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_036"
+  lb: "zerknautert"
+  en: "wrinkled"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "people_037"
+  lb: "gesträift"
+  en: "with stripes"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_038"
+  lb: "getëppelt"
+  en: "dotted"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_039"
+  lb: "gemustert"
+  en: "with a pattern"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_040"
+  lb: "d'Kap"
+  en: "cap"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_041"
+  lb: "de Rank"
+  en: "ring"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_042"
+  lb: "den Ouerrank"
+  en: "earring"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_043"
+  lb: "d'Auer"
+  en: "watch"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_044"
+  lb: "d'Ketten"
+  en: "necklace"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "people_045"
+  lb: "de Baart"
+  en: "beard"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_046"
+  lb: "de Bracelet"
+  en: "bracelet"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "people_047"
+  lb: "muskuléis"
+  en: "muscular"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "people_048"
+  lb: "frou"
+  en: "happy/joyful"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_049"
+  lb: "gelooss"
+  en: "calm/relaxed"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "people_050"
+  lb: "lässeg"
+  en: "laid-back"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_051"
+  lb: "gefleegt"
+  en: "neat/well groomed"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "people_052"
+  lb: "geschminkt"
+  en: "with make-up on"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "people_053"
+  lb: "seriö"
+  en: "serious"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_054"
+  lb: "gesond"
+  en: "healthy"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_055"
+  lb: "gestresst"
+  en: "stressed"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_056"
+  lb: "rosen"
+  en: "angry/upset"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "people_057"
+  lb: "virun him"
+  en: "in front of him"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "people_058"
+  lb: "virun hir"
+  en: "in front of her"
+  pos: "phrase"
+  difficulty: 1

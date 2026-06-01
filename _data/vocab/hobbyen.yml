@@ -1,0 +1,221 @@
+# Hobbyen (Hobbies) — Section 27
+
+- id: "hobbyen_001"
+  lb: "d'Buch"
+  en: "book"
+  pos: "noun"
+  gender: "n"
+  plural: "Bicher"
+  difficulty: 2
+
+- id: "hobbyen_002"
+  lb: "sech engagéieren"
+  en: "to be active/involved"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_003"
+  lb: "trëppele goen"
+  en: "to go walking/hiking"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_004"
+  lb: "molen"
+  en: "to paint"
+  pos: "verb"
+  difficulty: 2
+
+- id: "hobbyen_005"
+  lb: "zeechnen"
+  en: "to draw"
+  pos: "verb"
+  difficulty: 2
+
+- id: "hobbyen_006"
+  lb: "mat engem Zäit verbréngen"
+  en: "to spend time with someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_007"
+  lb: "an de Restaurant goen"
+  en: "to go to the restaurant"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_008"
+  lb: "d'Fräizäit"
+  en: "free time/leisure"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "hobbyen_009"
+  lb: "d'Liblingsaktivitéit"
+  en: "favourite activity"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "hobbyen_010"
+  lb: "un eppes deelhuelen"
+  en: "to participate in something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_011"
+  lb: "virum Schlofe goen"
+  en: "before going to bed"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "hobbyen_012"
+  lb: "de Roman"
+  en: "novel"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "hobbyen_013"
+  lb: "de Genre"
+  en: "genre"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "hobbyen_014"
+  lb: "am Original liesen"
+  en: "to read in original language"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_015"
+  lb: "d'Noriichte liesen"
+  en: "to read the news"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_016"
+  lb: "den Akku"
+  en: "battery"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "hobbyen_017"
+  lb: "op d'mannst"
+  en: "at least"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "hobbyen_018"
+  lb: "dobausse grillen"
+  en: "to have a barbecue outside"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_019"
+  lb: "Filmer kucken"
+  en: "to watch movies"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_020"
+  lb: "an de Kino goen"
+  en: "to go to the cinema"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_021"
+  lb: "de Kapp fräi kréien"
+  en: "to get a clear head"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_022"
+  lb: "Héierbicher lauschteren"
+  en: "to listen to audiobooks"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_023"
+  lb: "Member sinn"
+  en: "to be a member"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_024"
+  lb: "bastelen"
+  en: "to do handicrafts"
+  pos: "verb"
+  difficulty: 2
+
+- id: "hobbyen_025"
+  lb: "Musek lauschteren"
+  en: "to listen to music"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_026"
+  lb: "baken"
+  en: "to bake"
+  pos: "verb"
+  difficulty: 2
+
+- id: "hobbyen_027"
+  lb: "d'Schwämm"
+  en: "swimming bath"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "hobbyen_028"
+  lb: "spannend"
+  en: "exciting/captivating"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "hobbyen_029"
+  lb: "d'Librairie"
+  en: "bookstore"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "hobbyen_030"
+  lb: "d'Bibliothéik"
+  en: "library"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "hobbyen_031"
+  lb: "ee stéieren"
+  en: "to disturb someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_032"
+  lb: "Gesellschaftsspiller spillen"
+  en: "to play board games"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_033"
+  lb: "Tëlee kucken"
+  en: "to watch TV"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_034"
+  lb: "klotere goen"
+  en: "to go climbing"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "hobbyen_035"
+  lb: "Loscht hunn"
+  en: "to feel like doing something"
+  pos: "verb-phrase"
+  difficulty: 2

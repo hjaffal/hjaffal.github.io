@@ -1,0 +1,227 @@
+# Gesond Liewen (Health & Market) — Sections 36 & 39
+
+- id: "gesond_001"
+  lb: "e gesonde Liewensstil hunn"
+  en: "to have a healthy lifestyle"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_002"
+  lb: "d'Séissegkeeten"
+  en: "sweets/candy"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_003"
+  lb: "fetteg"
+  en: "fatty"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "gesond_004"
+  lb: "eng Diät maachen"
+  en: "to be on a diet"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_005"
+  lb: "Uebst a Geméis iessen"
+  en: "to eat fruits and vegetables"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_006"
+  lb: "fëmmen"
+  en: "to smoke"
+  pos: "verb"
+  difficulty: 2
+
+- id: "gesond_007"
+  lb: "a Form bleiwen"
+  en: "to stay in shape"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_008"
+  lb: "ongesond"
+  en: "unhealthy"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "gesond_009"
+  lb: "iwwergewiichteg sinn"
+  en: "to be overweight"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_010"
+  lb: "d'Gedrénks"
+  en: "drinks"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "gesond_011"
+  lb: "liicht"
+  en: "light"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "gesond_012"
+  lb: "meditéieren"
+  en: "to meditate"
+  pos: "verb"
+  difficulty: 2
+
+- id: "gesond_013"
+  lb: "ofhuelen"
+  en: "to lose weight"
+  pos: "verb"
+  difficulty: 2
+
+- id: "gesond_014"
+  lb: "sech gesond ernären"
+  en: "to eat healthy"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_015"
+  lb: "Alkohol drénken"
+  en: "to drink alcohol"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_016"
+  lb: "ophalen eppes ze maachen"
+  en: "to stop doing something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_017"
+  lb: "kachen"
+  en: "to cook"
+  pos: "verb"
+  difficulty: 2
+
+- id: "gesond_018"
+  lb: "seng Kommissioune maachen"
+  en: "to go grocery shopping"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_019"
+  lb: "d'Moolzecht"
+  en: "meal"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_020"
+  lb: "d'Beweegung"
+  en: "movement/activity"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_021"
+  lb: "krank sinn"
+  en: "to be sick"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_022"
+  lb: "erkaalt sinn"
+  en: "to have a cold"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "gesond_023"
+  lb: "d'Apdikt"
+  en: "pharmacy"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_024"
+  lb: "d'Medikamenter"
+  en: "medicine"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "gesond_025"
+  lb: "d'Féiwer"
+  en: "fever"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "gesond_026"
+  lb: "d'Spidol"
+  en: "hospital"
+  pos: "noun"
+  gender: "n"
+  plural: "Spideeler"
+  difficulty: 2
+
+- id: "gesond_027"
+  lb: "d'Tomat"
+  en: "tomato"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_028"
+  lb: "d'Kornischong"
+  en: "cucumber"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_029"
+  lb: "d'Muert"
+  en: "carrot"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_030"
+  lb: "d'Orange"
+  en: "orange"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_031"
+  lb: "d'Zitroun"
+  en: "lemon"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_032"
+  lb: "d'Banann"
+  en: "banana"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "gesond_033"
+  lb: "de Marché"
+  en: "market"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "gesond_034"
+  lb: "weien"
+  en: "to weigh"
+  pos: "verb"
+  difficulty: 2
+
+- id: "gesond_035"
+  lb: "bezuelen"
+  en: "to pay"
+  pos: "verb"
+  difficulty: 2

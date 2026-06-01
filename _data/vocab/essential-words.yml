@@ -1,0 +1,301 @@
+# Essential Words — Section 1 of the Luxembourgish Vocabulary Master List
+# 44 foundational words every learner needs from day one
+
+- id: "essential_001"
+  lb: "ech"
+  en: "I"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "essential_002"
+  lb: "jo"
+  en: "yes"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_003"
+  lb: "nee"
+  en: "no"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_004"
+  lb: "an"
+  en: "and"
+  pos: "connector"
+  difficulty: 1
+
+- id: "essential_005"
+  lb: "d'Persoun"
+  en: "person"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "essential_006"
+  lb: "Leit"
+  en: "people"
+  pos: "noun"
+  difficulty: 1
+
+- id: "essential_007"
+  lb: "eng Grupp vu Leit"
+  en: "a group of people"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "essential_008"
+  lb: "d'Fra"
+  en: "woman"
+  pos: "noun"
+  gender: "f"
+  plural: "Fraen"
+  difficulty: 1
+
+- id: "essential_009"
+  lb: "de Mann"
+  en: "man"
+  pos: "noun"
+  gender: "m"
+  plural: "Männer"
+  difficulty: 1
+
+- id: "essential_010"
+  lb: "d'Kand"
+  en: "child"
+  pos: "noun"
+  gender: "n"
+  plural: "Kanner"
+  difficulty: 1
+
+- id: "essential_011"
+  lb: "d'Liewen"
+  en: "life"
+  pos: "noun"
+  gender: "n"
+  difficulty: 1
+
+- id: "essential_012"
+  lb: "den Dag"
+  en: "day"
+  pos: "noun"
+  gender: "m"
+  plural: "Deeg"
+  difficulty: 1
+
+- id: "essential_013"
+  lb: "de Wee"
+  en: "way"
+  pos: "noun"
+  gender: "m"
+  plural: "Weeër"
+  difficulty: 1
+
+- id: "essential_014"
+  lb: "d'Waasser"
+  en: "water"
+  pos: "noun"
+  gender: "n"
+  difficulty: 1
+
+- id: "essential_015"
+  lb: "de Buedem"
+  en: "floor/ground"
+  pos: "noun"
+  gender: "m"
+  plural: "Biedem"
+  difficulty: 1
+
+- id: "essential_016"
+  lb: "d'Saach"
+  en: "thing"
+  pos: "noun"
+  gender: "f"
+  plural: "Saachen"
+  difficulty: 1
+
+- id: "essential_017"
+  lb: "d'Welt"
+  en: "world"
+  pos: "noun"
+  gender: "f"
+  plural: "Welten"
+  difficulty: 1
+
+- id: "essential_018"
+  lb: "d'Schoul"
+  en: "school"
+  pos: "noun"
+  gender: "f"
+  plural: "Schoulen"
+  difficulty: 1
+
+- id: "essential_019"
+  lb: "d'Famill"
+  en: "family"
+  pos: "noun"
+  gender: "f"
+  plural: "Familljen"
+  difficulty: 1
+
+- id: "essential_020"
+  lb: "de Student"
+  en: "student"
+  pos: "noun"
+  gender: "m"
+  plural: "Studenten"
+  difficulty: 1
+
+- id: "essential_021"
+  lb: "d'Land"
+  en: "country"
+  pos: "noun"
+  gender: "n"
+  plural: "Länner"
+  difficulty: 1
+
+- id: "essential_022"
+  lb: "de Problem"
+  en: "problem"
+  pos: "noun"
+  gender: "m"
+  plural: "Problemer"
+  difficulty: 1
+
+- id: "essential_023"
+  lb: "d'Hand"
+  en: "hand"
+  pos: "noun"
+  gender: "f"
+  plural: "Hänn"
+  difficulty: 1
+
+- id: "essential_024"
+  lb: "d'Plaz"
+  en: "place"
+  pos: "noun"
+  gender: "f"
+  plural: "Plazen"
+  difficulty: 1
+
+- id: "essential_025"
+  lb: "d'Aarbecht"
+  en: "work"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "essential_026"
+  lb: "d'Firma"
+  en: "company"
+  pos: "noun"
+  gender: "f"
+  difficulty: 1
+
+- id: "essential_027"
+  lb: "vill"
+  en: "a lot/many"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_028"
+  lb: "wéineg"
+  en: "few/not many"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_029"
+  lb: "nëmmen"
+  en: "only"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_030"
+  lb: "ni"
+  en: "never"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_031"
+  lb: "ëmmer"
+  en: "always"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_032"
+  lb: "nach ëmmer"
+  en: "still"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_033"
+  lb: "elo"
+  en: "now"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_034"
+  lb: "eppes"
+  en: "something"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "essential_035"
+  lb: "vläicht"
+  en: "maybe"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "essential_036"
+  lb: "gutt"
+  en: "good"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_037"
+  lb: "schlecht"
+  en: "bad"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_038"
+  lb: "héich"
+  en: "high"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_039"
+  lb: "niddereg"
+  en: "low"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_040"
+  lb: "al"
+  en: "old"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_041"
+  lb: "grouss"
+  en: "big/large"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_042"
+  lb: "laang"
+  en: "long"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_043"
+  lb: "kuerz"
+  en: "short"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "essential_044"
+  lb: "schéin"
+  en: "beautiful/nice"
+  pos: "adjective"
+  difficulty: 1

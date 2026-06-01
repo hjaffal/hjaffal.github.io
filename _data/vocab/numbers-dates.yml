@@ -1,0 +1,509 @@
+# Numbers, Dates & Time — Sections 3, 8, 14 of the Luxembourgish Vocabulary Master List
+# Counting, dates, telling time, days of the week
+
+# Core numbers (Section 3)
+- id: "numbers_001"
+  lb: "null"
+  en: "0"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_002"
+  lb: "eent"
+  en: "1 (counting)"
+  pos: "number"
+  difficulty: 1
+  usage_note: "Used when counting numbers aloud."
+
+- id: "numbers_003"
+  lb: "zwee"
+  en: "2"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_004"
+  lb: "dräi"
+  en: "3"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_005"
+  lb: "véier"
+  en: "4"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_006"
+  lb: "fënnef"
+  en: "5"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_007"
+  lb: "sechs"
+  en: "6"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_008"
+  lb: "siwen"
+  en: "7"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_009"
+  lb: "aacht"
+  en: "8"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_010"
+  lb: "néng"
+  en: "9"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_011"
+  lb: "zéng"
+  en: "10"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_012"
+  lb: "eelef"
+  en: "11"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_013"
+  lb: "zwielef"
+  en: "12"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_014"
+  lb: "zwanzeg"
+  en: "20"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_015"
+  lb: "drësseg"
+  en: "30"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_016"
+  lb: "véierzeg"
+  en: "40"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_017"
+  lb: "fofzeg"
+  en: "50"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_018"
+  lb: "siechzeg"
+  en: "60"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_019"
+  lb: "siwwenzeg"
+  en: "70"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_020"
+  lb: "achtzeg"
+  en: "80"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_021"
+  lb: "nonzeg"
+  en: "90"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_022"
+  lb: "honnert"
+  en: "100"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_023"
+  lb: "dausend"
+  en: "1000"
+  pos: "number"
+  difficulty: 1
+
+# Ordinals
+- id: "numbers_024"
+  lb: "den éischten"
+  en: "the first"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_025"
+  lb: "den zweeten"
+  en: "the second"
+  pos: "number"
+  difficulty: 1
+
+- id: "numbers_026"
+  lb: "den drëtten"
+  en: "the third"
+  pos: "number"
+  difficulty: 1
+
+# Seasons (Section 3)
+- id: "numbers_027"
+  lb: "d'Fréijoer"
+  en: "spring"
+  pos: "noun"
+  gender: "n"
+  difficulty: 1
+
+- id: "numbers_028"
+  lb: "de Summer"
+  en: "summer"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_029"
+  lb: "den Hierscht"
+  en: "autumn"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_030"
+  lb: "de Wanter"
+  en: "winter"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+# Time units
+- id: "numbers_031"
+  lb: "d'Woch"
+  en: "week"
+  pos: "noun"
+  gender: "f"
+  plural: "Wochen"
+  difficulty: 1
+
+- id: "numbers_032"
+  lb: "de Mount"
+  en: "month"
+  pos: "noun"
+  gender: "m"
+  plural: "Méint"
+  difficulty: 1
+
+- id: "numbers_033"
+  lb: "d'Joer"
+  en: "year"
+  pos: "noun"
+  gender: "n"
+  plural: "Joer"
+  difficulty: 1
+
+# Months
+- id: "numbers_034"
+  lb: "de Januar"
+  en: "January"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_035"
+  lb: "de Februar"
+  en: "February"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_036"
+  lb: "de Mäerz"
+  en: "March"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_037"
+  lb: "den Abrëll"
+  en: "April"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_038"
+  lb: "de Mee"
+  en: "May"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_039"
+  lb: "de Juni"
+  en: "June"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_040"
+  lb: "de Juli"
+  en: "July"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_041"
+  lb: "den August"
+  en: "August"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_042"
+  lb: "de September"
+  en: "September"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_043"
+  lb: "den Oktober"
+  en: "October"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_044"
+  lb: "den November"
+  en: "November"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "numbers_045"
+  lb: "den Dezember"
+  en: "December"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+# Section 8: Telling Time
+- id: "numbers_046"
+  lb: "Wéi vill Auer ass et?"
+  en: "What time is it?"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_047"
+  lb: "moies"
+  en: "in the morning"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_048"
+  lb: "mëttes"
+  en: "around noon"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_049"
+  lb: "nomëttes"
+  en: "in the afternoon"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_050"
+  lb: "owes"
+  en: "in the evening"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_051"
+  lb: "nuets"
+  en: "in the night"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_052"
+  lb: "d'Minutt"
+  en: "minute"
+  pos: "noun"
+  gender: "f"
+  plural: "Minutten"
+  difficulty: 1
+
+- id: "numbers_053"
+  lb: "d'Stonn"
+  en: "hour"
+  pos: "noun"
+  gender: "f"
+  plural: "Stonnen"
+  difficulty: 1
+
+- id: "numbers_054"
+  lb: "Auer"
+  en: "o'clock"
+  pos: "noun"
+  difficulty: 1
+  usage_note: "Only used for full hours."
+
+- id: "numbers_055"
+  lb: "hallwer"
+  en: "half past"
+  pos: "adverb"
+  difficulty: 1
+  example_lb: "Et ass hallwer véier."
+  example_en: "It's half past three (3:30)."
+
+- id: "numbers_056"
+  lb: "Véierel op"
+  en: "quarter past"
+  pos: "phrase"
+  difficulty: 1
+  example_lb: "Et ass Véierel op véier."
+  example_en: "It's quarter past four (4:15)."
+
+- id: "numbers_057"
+  lb: "Véierel vir"
+  en: "quarter to"
+  pos: "phrase"
+  difficulty: 1
+  example_lb: "Et ass Véierel vir fënnef."
+  example_en: "It's quarter to five (4:45)."
+
+- id: "numbers_058"
+  lb: "wéini"
+  en: "when"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_059"
+  lb: "ëm"
+  en: "at (time)"
+  pos: "preposition"
+  difficulty: 1
+  example_lb: "Ech kommen ëm Véierel op eng."
+  example_en: "I'll come at 1:15."
+
+- id: "numbers_060"
+  lb: "géint"
+  en: "at around (time)"
+  pos: "preposition"
+  difficulty: 1
+  example_lb: "Ech komme géint hallwer zwou."
+  example_en: "I'll come at around 1:30."
+
+# Section 14: Days of the Week
+- id: "numbers_061"
+  lb: "e Méindeg"
+  en: "on Monday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_062"
+  lb: "en Dënschdeg"
+  en: "on Tuesday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_063"
+  lb: "e Mëttwoch"
+  en: "on Wednesday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_064"
+  lb: "en Donneschdeg"
+  en: "on Thursday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_065"
+  lb: "e Freideg"
+  en: "on Friday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_066"
+  lb: "e Samschdeg"
+  en: "on Saturday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_067"
+  lb: "e Sonndeg"
+  en: "on Sunday"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_068"
+  lb: "weekends"
+  en: "on weekends"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "numbers_069"
+  lb: "ënnert der Woch"
+  en: "during the week"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_070"
+  lb: "dës Woch"
+  en: "this week"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_071"
+  lb: "nächst Woch"
+  en: "next week"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_072"
+  lb: "lescht Woch"
+  en: "last week"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_073"
+  lb: "dëse Mount"
+  en: "this month"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_074"
+  lb: "nächste Mount"
+  en: "next month"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_075"
+  lb: "dëst Joer"
+  en: "this year"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_076"
+  lb: "nächst Joer"
+  en: "next year"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "numbers_077"
+  lb: "lescht Joer"
+  en: "last year"
+  pos: "phrase"
+  difficulty: 1

@@ -1,0 +1,278 @@
+# Vakanz (Holidays & Beach) — Sections 31 & 34
+
+- id: "vakanz_001"
+  lb: "d'Vakanz"
+  en: "vacation/holiday"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_002"
+  lb: "Vakanz maachen"
+  en: "to go on holiday"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_003"
+  lb: "den Hotel"
+  en: "hotel"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_004"
+  lb: "de Musée"
+  en: "museum"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_005"
+  lb: "de Bierg"
+  en: "mountain"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_006"
+  lb: "d'Mier"
+  en: "sea"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "vakanz_007"
+  lb: "den Tourist"
+  en: "tourist"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_008"
+  lb: "de Fluch"
+  en: "flight"
+  pos: "noun"
+  gender: "m"
+  plural: "Flich"
+  difficulty: 2
+
+- id: "vakanz_009"
+  lb: "d'Wieder"
+  en: "weather"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "vakanz_010"
+  lb: "buchen"
+  en: "to book"
+  pos: "verb"
+  difficulty: 2
+
+- id: "vakanz_011"
+  lb: "reenen"
+  en: "to rain"
+  pos: "verb"
+  difficulty: 2
+
+- id: "vakanz_012"
+  lb: "sech erhuelen"
+  en: "to recover"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_013"
+  lb: "schneien"
+  en: "to snow"
+  pos: "verb"
+  difficulty: 2
+
+- id: "vakanz_014"
+  lb: "reesen"
+  en: "to travel"
+  pos: "verb"
+  difficulty: 2
+
+- id: "vakanz_015"
+  lb: "den Uert"
+  en: "place"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_016"
+  lb: "an d'Natur goen"
+  en: "to go into nature"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_017"
+  lb: "op d'Plage goen"
+  en: "to go to the beach"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_018"
+  lb: "bei d'Mier fueren"
+  en: "to go to the ocean"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_019"
+  lb: "d'Lag"
+  en: "location"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_020"
+  lb: "zentral"
+  en: "central"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "vakanz_021"
+  lb: "propper"
+  en: "clean"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "vakanz_022"
+  lb: "fein"
+  en: "nice/polite"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "vakanz_023"
+  lb: "eenzegaarteg"
+  en: "unique"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "vakanz_024"
+  lb: "de Sonnenënnergang"
+  en: "sunset"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_025"
+  lb: "d'Rou genéissen"
+  en: "to enjoy the calm"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_026"
+  lb: "d'Bewäertungen"
+  en: "reviews"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_027"
+  lb: "d'Traditioun"
+  en: "tradition"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_028"
+  lb: "d'Hëtzt"
+  en: "the heat"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_029"
+  lb: "d'Keelt"
+  en: "the cold"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_030"
+  lb: "de Séi"
+  en: "lake"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_031"
+  lb: "spannend"
+  en: "exciting"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "vakanz_032"
+  lb: "wonnerschéin"
+  en: "wonderful"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "vakanz_033"
+  lb: "d'Schlass"
+  en: "castle"
+  pos: "noun"
+  gender: "n"
+  plural: "Schlässer"
+  difficulty: 2
+
+- id: "vakanz_034"
+  lb: "Wandere goen"
+  en: "to go hiking"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_035"
+  lb: "de Maillot"
+  en: "bathing suit"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "vakanz_036"
+  lb: "d'Schwammbox"
+  en: "swimming trunks"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_037"
+  lb: "d'Sonnecrème"
+  en: "sun screen"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_038"
+  lb: "d'Strandduch"
+  en: "beach towel"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "vakanz_039"
+  lb: "sech sonnen"
+  en: "to sunbathe"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_040"
+  lb: "tauche goen"
+  en: "to go diving"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "vakanz_041"
+  lb: "d'Wellen"
+  en: "waves"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "vakanz_042"
+  lb: "de Sonnebrand"
+  en: "sun burn"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2

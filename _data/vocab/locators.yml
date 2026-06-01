@@ -1,0 +1,85 @@
+# Locators & Spatial Words — Section 12
+
+- id: "locators_001"
+  lb: "uewen"
+  en: "on top"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_002"
+  lb: "ënnen"
+  en: "on the bottom"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_003"
+  lb: "vir"
+  en: "in the front"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_004"
+  lb: "hannen"
+  en: "in the back"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_005"
+  lb: "lénks"
+  en: "on the left"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_006"
+  lb: "riets"
+  en: "on the right"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_007"
+  lb: "Op der lénkser Säit"
+  en: "on the left side"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "locators_008"
+  lb: "Op der rietser Säit"
+  en: "on the right side"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "locators_009"
+  lb: "dobannen"
+  en: "on the inside"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_010"
+  lb: "dobaussen"
+  en: "on the outside"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "locators_011"
+  lb: "am Hannergrond"
+  en: "in the background"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "locators_012"
+  lb: "am Virdergrond"
+  en: "in the foreground"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "locators_013"
+  lb: "am Eck"
+  en: "in the corner"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "locators_014"
+  lb: "ganz lénks/riets"
+  en: "on the very left/right"
+  pos: "phrase"
+  difficulty: 1

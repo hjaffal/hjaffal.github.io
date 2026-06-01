@@ -1,0 +1,271 @@
+# Fillers, Connectors & Sentence Launchers — Sections 10, 11, 13
+
+# Section 10: Filler Words
+- id: "fillers_001"
+  lb: "Majo ..."
+  en: "Well, ..."
+  pos: "filler"
+  difficulty: 1
+  usage_note: "Most common filler to start a sentence."
+
+- id: "fillers_002"
+  lb: "Ma ..."
+  en: "Well, ..."
+  pos: "filler"
+  difficulty: 1
+
+- id: "fillers_003"
+  lb: "Bon ..."
+  en: "Well, ..."
+  pos: "filler"
+  difficulty: 1
+
+- id: "fillers_004"
+  lb: "Majo et ass esou, ..."
+  en: "Well, in fact ..."
+  pos: "filler"
+  difficulty: 1
+
+- id: "fillers_005"
+  lb: "Wat soll ech soen, ech ..."
+  en: "What can I say, I ..."
+  pos: "filler"
+  difficulty: 1
+
+- id: "fillers_006"
+  lb: "Kënnt Dir dat reformuléiere w.e.g?"
+  en: "Can you please rephrase that?"
+  pos: "phrase"
+  difficulty: 1
+  usage_note: "Useful in the Sproochentest if you don't understand a question."
+
+# Section 11: Connectors
+- id: "fillers_007"
+  lb: "Dowéinst"
+  en: "Because of this/therefore"
+  pos: "connector"
+  difficulty: 1
+  usage_note: "Used much more frequently in Luxembourgish than 'therefore' in English."
+
+- id: "fillers_008"
+  lb: "Dofir"
+  en: "Therefore/that's why"
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_009"
+  lb: "Allerdéngs ..."
+  en: "However ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_010"
+  lb: "Engersäits ..."
+  en: "On the one hand ..."
+  pos: "connector"
+  difficulty: 2
+
+- id: "fillers_011"
+  lb: "Anerersäits ..."
+  en: "On the other hand ..."
+  pos: "connector"
+  difficulty: 2
+
+- id: "fillers_012"
+  lb: "Virun allem ..."
+  en: "Above all/Notably ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_013"
+  lb: "Do dernieft ..."
+  en: "Besides this ..."
+  pos: "connector"
+  difficulty: 2
+
+- id: "fillers_014"
+  lb: "Zum Beispill ..."
+  en: "For example ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_015"
+  lb: "Gläichermoossen ..."
+  en: "Likewise ..."
+  pos: "connector"
+  difficulty: 2
+
+- id: "fillers_016"
+  lb: "Des Weideren ..."
+  en: "Moreover ..."
+  pos: "connector"
+  difficulty: 2
+
+- id: "fillers_017"
+  lb: "Leider ..."
+  en: "Unfortunately ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_018"
+  lb: "Zum Gléck ..."
+  en: "Fortunately ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_019"
+  lb: "Mee ..."
+  en: "But ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_020"
+  lb: "En plus ..."
+  en: "Additionally ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_021"
+  lb: "Trotzdem ..."
+  en: "Despite this ..."
+  pos: "connector"
+  difficulty: 1
+
+- id: "fillers_022"
+  lb: "Doriwwer eraus ..."
+  en: "Beyond this ..."
+  pos: "connector"
+  difficulty: 2
+
+# Section 13: Sentence Launchers
+- id: "fillers_023"
+  lb: "Ech muss soen, datt ..."
+  en: "I have to say that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_024"
+  lb: "Et ass esou, datt ..."
+  en: "The fact is that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_025"
+  lb: "Mir ass wichteg, datt ..."
+  en: "It is important to me that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_026"
+  lb: "Ech mengen, datt ..."
+  en: "I think that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_027"
+  lb: "Et ass schéin, datt ..."
+  en: "It is nice that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_028"
+  lb: "Ech hu gär, datt ..."
+  en: "I like that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_029"
+  lb: "Ech muss zouginn, datt ..."
+  en: "I have to admit that ..."
+  pos: "phrase"
+  difficulty: 2
+
+- id: "fillers_030"
+  lb: "Mir gefällt, datt ..."
+  en: "I like that ... (lit. me pleases that)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_031"
+  lb: "Et ass schued, datt ..."
+  en: "It's unfortunate that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_032"
+  lb: "Ech fannen, datt ..."
+  en: "I find that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_033"
+  lb: "Ech sinn der Meenung, datt ..."
+  en: "In my opinion ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_034"
+  lb: "Ech fannen et gutt, datt ..."
+  en: "I think it's good that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_035"
+  lb: "Ech géif soen, datt ..."
+  en: "I would say that ..."
+  pos: "phrase"
+  difficulty: 2
+
+- id: "fillers_036"
+  lb: "Wat ech wëll soen ass, datt ..."
+  en: "What I want to say is that ..."
+  pos: "phrase"
+  difficulty: 2
+
+- id: "fillers_037"
+  lb: "Ech weess, datt ..."
+  en: "I know that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_038"
+  lb: "Et ass kloer, datt ..."
+  en: "It's obvious that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_039"
+  lb: "Et kéint sinn, datt ..."
+  en: "It could be that ..."
+  pos: "phrase"
+  difficulty: 2
+
+- id: "fillers_040"
+  lb: "Ech ka mir virstellen, datt ..."
+  en: "I can imagine that ..."
+  pos: "phrase"
+  difficulty: 2
+
+- id: "fillers_041"
+  lb: "Et mécht Sënn, datt ..."
+  en: "It makes sense that ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_042"
+  lb: "Et mécht mir Spass, ..."
+  en: "I have fun ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "fillers_043"
+  lb: "Mir fällt op, datt ..."
+  en: "I notice that ..."
+  pos: "phrase"
+  difficulty: 2
+
+- id: "fillers_044"
+  lb: "Dat heescht, datt ..."
+  en: "This means that ..."
+  pos: "phrase"
+  difficulty: 1

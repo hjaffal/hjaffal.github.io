@@ -1,0 +1,337 @@
+# Describing Objects — Section 19
+
+- id: "objects_001"
+  lb: "schwaarz"
+  en: "black"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_002"
+  lb: "wäiß"
+  en: "white"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_003"
+  lb: "gro"
+  en: "grey"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_004"
+  lb: "beige"
+  en: "beige"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_005"
+  lb: "brong"
+  en: "brown"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_006"
+  lb: "rout"
+  en: "red"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_007"
+  lb: "orange"
+  en: "orange"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_008"
+  lb: "giel"
+  en: "yellow"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_009"
+  lb: "gréng"
+  en: "green"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_010"
+  lb: "blo"
+  en: "blue"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_011"
+  lb: "mof"
+  en: "violet"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_012"
+  lb: "ronn"
+  en: "round"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_013"
+  lb: "eckeg"
+  en: "angular"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_014"
+  lb: "oval"
+  en: "oval"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_015"
+  lb: "laang"
+  en: "long"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_016"
+  lb: "grouss"
+  en: "big/tall"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_017"
+  lb: "kleng"
+  en: "small/little"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_018"
+  lb: "deck"
+  en: "thick"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_019"
+  lb: "dënn"
+  en: "thin"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_020"
+  lb: "schmuel"
+  en: "narrow"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_021"
+  lb: "breet"
+  en: "wide"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_022"
+  lb: "héich"
+  en: "high"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_023"
+  lb: "niddereg"
+  en: "low"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_024"
+  lb: "schwéier"
+  en: "heavy/difficult"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_025"
+  lb: "liicht"
+  en: "light/easy"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_026"
+  lb: "faarweg"
+  en: "colorful"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_027"
+  lb: "vill"
+  en: "many/a lot of"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "objects_028"
+  lb: "wéineg"
+  en: "a few (not many)"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "objects_029"
+  lb: "e puer"
+  en: "a couple of"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "objects_030"
+  lb: "masseg"
+  en: "a big number of"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_031"
+  lb: "eng sëlleg"
+  en: "a multitude of"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "objects_032"
+  lb: "nei"
+  en: "new"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_033"
+  lb: "al"
+  en: "old"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_034"
+  lb: "modern"
+  en: "modern"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_035"
+  lb: "benotzt"
+  en: "used"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_036"
+  lb: "futti"
+  en: "broken"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_037"
+  lb: "hell"
+  en: "fair/bright/light"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_038"
+  lb: "donkel"
+  en: "dark"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_039"
+  lb: "liichtend"
+  en: "shining"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_040"
+  lb: "blénkeg"
+  en: "sparkling"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_041"
+  lb: "ellen"
+  en: "ugly"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_042"
+  lb: "eedel"
+  en: "precious"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_043"
+  lb: "héichwäerteg"
+  en: "of high quality"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_044"
+  lb: "bëlleg"
+  en: "cheap"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_045"
+  lb: "duerchsiichteg"
+  en: "transparent"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_046"
+  lb: "frësch"
+  en: "fresh"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_047"
+  lb: "riicht"
+  en: "straight"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_048"
+  lb: "kromm"
+  en: "crooked"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_049"
+  lb: "gebéit"
+  en: "bent/curved"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_050"
+  lb: "hart"
+  en: "hard/loud"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_051"
+  lb: "mëll"
+  en: "soft"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_052"
+  lb: "géi"
+  en: "steep"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_053"
+  lb: "schaarf"
+  en: "sharp/spicy"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_054"
+  lb: "stomp"
+  en: "dull"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "objects_055"
+  lb: "déif"
+  en: "deep"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "objects_056"
+  lb: "gemustert"
+  en: "patterned"
+  pos: "adjective"
+  difficulty: 2

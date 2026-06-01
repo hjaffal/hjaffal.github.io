@@ -1,0 +1,194 @@
+# Prepositions — Section 16
+
+- id: "prep_001"
+  lb: "an"
+  en: "in (movement sensitive)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_002"
+  lb: "op"
+  en: "on (on top of)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_003"
+  lb: "un"
+  en: "on (on the wall)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_004"
+  lb: "iwwert"
+  en: "above"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_005"
+  lb: "ënnert"
+  en: "under/below"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_006"
+  lb: "virun"
+  en: "in front of"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_007"
+  lb: "hannert"
+  en: "behind"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_008"
+  lb: "tëschent"
+  en: "between"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_009"
+  lb: "nieft"
+  en: "next to"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_010"
+  lb: "bei"
+  en: "at/with"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_011"
+  lb: "fir"
+  en: "for/in order to"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_012"
+  lb: "duerch"
+  en: "through"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_013"
+  lb: "ouni"
+  en: "without"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_014"
+  lb: "géint"
+  en: "against"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_015"
+  lb: "ëm"
+  en: "around"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_016"
+  lb: "bis"
+  en: "until"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_017"
+  lb: "aus"
+  en: "out of/from"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_018"
+  lb: "mat"
+  en: "with"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_019"
+  lb: "no"
+  en: "after"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_020"
+  lb: "zënter"
+  en: "since"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_021"
+  lb: "vun"
+  en: "from"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_022"
+  lb: "zu"
+  en: "to/at"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_023"
+  lb: "wéinst"
+  en: "because of"
+  pos: "preposition"
+  difficulty: 2
+
+- id: "prep_024"
+  lb: "trotz"
+  en: "despite"
+  pos: "preposition"
+  difficulty: 2
+
+- id: "prep_025"
+  lb: "mam"
+  en: "with the (mat + dem)"
+  pos: "preposition"
+  difficulty: 1
+  usage_note: "Contraction of mat + dem."
+
+- id: "prep_026"
+  lb: "am"
+  en: "in the (an + dem)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_027"
+  lb: "nom"
+  en: "after the (no + dem)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_028"
+  lb: "um"
+  en: "on the (op/un + dem)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_029"
+  lb: "vum"
+  en: "from the (vun + dem)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_030"
+  lb: "zum"
+  en: "to the (zu + dem)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_031"
+  lb: "beim"
+  en: "at the (bei + dem)"
+  pos: "preposition"
+  difficulty: 1
+
+- id: "prep_032"
+  lb: "virum"
+  en: "in front of the (virun + dem)"
+  pos: "preposition"
+  difficulty: 1

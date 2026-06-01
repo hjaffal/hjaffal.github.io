@@ -1,0 +1,342 @@
+# Articles & Pronouns — Sections 2, 4, 17, 18, 33, 35, 37, 38, 40, 47
+# Grammar building blocks: articles, personal pronouns, possessives, demonstratives
+
+# Section 2: Nominative/Accusative Articles
+- id: "articles_001"
+  lb: "en"
+  en: "a (masculine/neutral)"
+  pos: "article"
+  difficulty: 1
+  usage_note: "Indefinite article for masculine and neutral nouns."
+
+- id: "articles_002"
+  lb: "eng"
+  en: "a (feminine)"
+  pos: "article"
+  difficulty: 1
+  usage_note: "Indefinite article for feminine nouns."
+
+- id: "articles_003"
+  lb: "den"
+  en: "the (masculine)"
+  pos: "article"
+  difficulty: 1
+
+- id: "articles_004"
+  lb: "d'"
+  en: "the (feminine/neutral/plural)"
+  pos: "article"
+  difficulty: 1
+
+# Section 4: Personal Pronouns
+- id: "articles_005"
+  lb: "ech"
+  en: "I"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_006"
+  lb: "du"
+  en: "you (singular, casual)"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_007"
+  lb: "hien"
+  en: "he"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_008"
+  lb: "si"
+  en: "she (formal)"
+  pos: "pronoun"
+  difficulty: 1
+  usage_note: "Used for women of a generation above you."
+
+- id: "articles_009"
+  lb: "hatt"
+  en: "she (casual)"
+  pos: "pronoun"
+  difficulty: 1
+  usage_note: "Used for women your age and especially minors."
+
+- id: "articles_010"
+  lb: "et"
+  en: "it"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_011"
+  lb: "mir"
+  en: "we"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_012"
+  lb: "dir"
+  en: "you (plural/polite)"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_013"
+  lb: "si"
+  en: "they"
+  pos: "pronoun"
+  difficulty: 1
+
+# Section 17: Dative Articles
+- id: "articles_014"
+  lb: "engem"
+  en: "a (dative, masculine/neutral)"
+  pos: "article"
+  difficulty: 2
+  usage_note: "Dative form of 'en'."
+
+- id: "articles_015"
+  lb: "enger"
+  en: "a (dative, feminine)"
+  pos: "article"
+  difficulty: 2
+  usage_note: "Dative form of 'eng'."
+
+- id: "articles_016"
+  lb: "dem"
+  en: "the (dative, masculine/neutral)"
+  pos: "article"
+  difficulty: 2
+  usage_note: "Dative form of 'den/d'' for masculine and neutral nouns."
+
+- id: "articles_017"
+  lb: "der"
+  en: "the (dative, feminine)"
+  pos: "article"
+  difficulty: 2
+  usage_note: "Dative form of 'd'' for feminine nouns."
+
+- id: "articles_018"
+  lb: "den"
+  en: "the (dative, plural)"
+  pos: "article"
+  difficulty: 2
+  usage_note: "Dative form of 'd'' for plural nouns."
+
+# Section 18: Accusative & Dative Personal Pronouns
+- id: "articles_019"
+  lb: "mech"
+  en: "me (accusative)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_020"
+  lb: "dech"
+  en: "you (accusative, casual)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_021"
+  lb: "eis"
+  en: "us (accusative)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_022"
+  lb: "iech"
+  en: "you (accusative/dative, plural)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_023"
+  lb: "mir"
+  en: "me (dative)"
+  pos: "pronoun"
+  difficulty: 2
+  usage_note: "Dative form of 'ech'. E.g. Gëff mir dat."
+
+- id: "articles_024"
+  lb: "dir"
+  en: "you (dative, casual)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_025"
+  lb: "him"
+  en: "him (dative)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_026"
+  lb: "hir"
+  en: "her (dative)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_027"
+  lb: "hinnen"
+  en: "them (dative)"
+  pos: "pronoun"
+  difficulty: 2
+
+# Section 33: Relative Pronouns
+- id: "articles_028"
+  lb: "deen"
+  en: "that/who (masculine)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_029"
+  lb: "dat"
+  en: "that/who (neutral)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_030"
+  lb: "déi"
+  en: "that/who (feminine/plural)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_031"
+  lb: "deem"
+  en: "whom (dative, masculine/neutral)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_032"
+  lb: "där"
+  en: "whom (dative, feminine)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_033"
+  lb: "deenen"
+  en: "whom (dative, plural)"
+  pos: "pronoun"
+  difficulty: 2
+
+# Section 37: Indefinite Noun Negators
+- id: "articles_034"
+  lb: "keen"
+  en: "no (masculine/neutral)"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_035"
+  lb: "keng"
+  en: "no (feminine/plural)"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "articles_036"
+  lb: "kengem"
+  en: "no (dative, masculine/neutral)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_037"
+  lb: "kenger"
+  en: "no (dative, feminine)"
+  pos: "pronoun"
+  difficulty: 2
+
+# Section 40: Close Demonstrative Pronouns
+- id: "articles_038"
+  lb: "dësen"
+  en: "this (masculine)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_039"
+  lb: "dëst"
+  en: "this (neutral)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_040"
+  lb: "dës"
+  en: "this (feminine/plural)"
+  pos: "pronoun"
+  difficulty: 2
+
+# Section 35: Key Possessive Adjectives (most common forms)
+- id: "articles_041"
+  lb: "mäin"
+  en: "my (masculine/neutral)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_042"
+  lb: "meng"
+  en: "my (feminine/plural)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_043"
+  lb: "däin"
+  en: "your (casual, masculine/neutral)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_044"
+  lb: "deng"
+  en: "your (casual, feminine/plural)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_045"
+  lb: "säin"
+  en: "his/her (masculine/neutral)"
+  pos: "adjective"
+  difficulty: 1
+  usage_note: "Used with hien/hatt."
+
+- id: "articles_046"
+  lb: "seng"
+  en: "his/her (feminine/plural)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_047"
+  lb: "eisen"
+  en: "our (masculine)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_048"
+  lb: "eis"
+  en: "our (feminine/plural)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_049"
+  lb: "Ären"
+  en: "your (polite, masculine)"
+  pos: "adjective"
+  difficulty: 1
+
+- id: "articles_050"
+  lb: "Är"
+  en: "your (polite, feminine/plural)"
+  pos: "adjective"
+  difficulty: 1
+
+# Section 47: Reflexive Pronouns
+- id: "articles_051"
+  lb: "mech"
+  en: "myself (reflexive)"
+  pos: "pronoun"
+  difficulty: 2
+  usage_note: "Accusative reflexive for 'ech'."
+
+- id: "articles_052"
+  lb: "dech"
+  en: "yourself (reflexive, casual)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "articles_053"
+  lb: "sech"
+  en: "himself/herself/itself/themselves"
+  pos: "pronoun"
+  difficulty: 2
+  usage_note: "Universal reflexive for 3rd person (all genders, singular and plural)."

@@ -1,0 +1,79 @@
+# Question Words — Section 21
+
+- id: "questions_001"
+  lb: "Ween"
+  en: "Who"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "questions_002"
+  lb: "Wéi"
+  en: "How"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_003"
+  lb: "Wat"
+  en: "What"
+  pos: "pronoun"
+  difficulty: 1
+
+- id: "questions_004"
+  lb: "Wou"
+  en: "Where"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_005"
+  lb: "Wéini"
+  en: "When"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_006"
+  lb: "Firwat"
+  en: "Why"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_007"
+  lb: "Wouhinn"
+  en: "Where to"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_008"
+  lb: "Weem"
+  en: "Whom (dative)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "questions_009"
+  lb: "Weem säin"
+  en: "Whose (masculine)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "questions_010"
+  lb: "Wéi en"
+  en: "Which/What kind (masculine)"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "questions_011"
+  lb: "Wouhir"
+  en: "From where"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_012"
+  lb: "Wéi vill"
+  en: "How much/many"
+  pos: "adverb"
+  difficulty: 1
+
+- id: "questions_013"
+  lb: "Wéi al"
+  en: "How old"
+  pos: "phrase"
+  difficulty: 1

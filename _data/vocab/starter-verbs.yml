@@ -1,0 +1,232 @@
+# Starter Verbs — Sections 5 & 6 of the Luxembourgish Vocabulary Master List
+# Core verbs to get speaking immediately + essential irregular verb conjugations
+
+# Section 5: Regular starter verbs
+- id: "starter-verbs_001"
+  lb: "äntweren"
+  en: "to answer"
+  pos: "verb"
+  difficulty: 1
+  example_lb: "Ech äntweren op d'Fro."
+  example_en: "I answer the question."
+
+- id: "starter-verbs_002"
+  lb: "baken"
+  en: "to bake"
+  pos: "verb"
+  difficulty: 1
+  example_lb: "Ech baken e Kuch."
+  example_en: "I bake a cake."
+
+- id: "starter-verbs_003"
+  lb: "bezuelen"
+  en: "to pay"
+  pos: "verb"
+  difficulty: 1
+  example_lb: "Ech bezuelen d'Rechnung."
+  example_en: "I pay the bill."
+
+- id: "starter-verbs_004"
+  lb: "denken"
+  en: "to think"
+  pos: "verb"
+  difficulty: 1
+  example_lb: "Ech denken un dech."
+  example_en: "I think of you."
+
+- id: "starter-verbs_005"
+  lb: "danzen"
+  en: "to dance"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_006"
+  lb: "duschen"
+  en: "to shower"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_007"
+  lb: "fueren"
+  en: "to drive/ride"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  example_lb: "Ech fuere mam Bus."
+  example_en: "I take the bus."
+
+- id: "starter-verbs_008"
+  lb: "hoffen"
+  en: "to hope"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_009"
+  lb: "héieren"
+  en: "to hear"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_010"
+  lb: "lauschteren"
+  en: "to listen"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_011"
+  lb: "iessen"
+  en: "to eat"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  example_lb: "Ech iessen eng Zopp."
+  example_en: "I eat a soup."
+
+- id: "starter-verbs_012"
+  lb: "kachen"
+  en: "to cook"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_013"
+  lb: "huelen"
+  en: "to take"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+
+- id: "starter-verbs_014"
+  lb: "gesinn"
+  en: "to see"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+
+- id: "starter-verbs_015"
+  lb: "kucken"
+  en: "to watch/look"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_016"
+  lb: "kafen"
+  en: "to buy"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+
+- id: "starter-verbs_017"
+  lb: "liesen"
+  en: "to read"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_018"
+  lb: "lafen"
+  en: "to run"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+
+- id: "starter-verbs_019"
+  lb: "laachen"
+  en: "to laugh"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_020"
+  lb: "schaffen"
+  en: "to work"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_021"
+  lb: "schlofen"
+  en: "to sleep"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+
+- id: "starter-verbs_022"
+  lb: "schreiwen"
+  en: "to write"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_023"
+  lb: "soen"
+  en: "to say"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+
+- id: "starter-verbs_024"
+  lb: "wunnen"
+  en: "to live (reside)"
+  pos: "verb"
+  difficulty: 1
+
+- id: "starter-verbs_025"
+  lb: "wëssen"
+  en: "to know"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech weess, du weess, hien/si weess"
+
+- id: "starter-verbs_026"
+  lb: "wëllen"
+  en: "to want"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech wëll, du wëlls, hien/si wëll"
+
+# Section 6: Essential irregular verbs (hunn, sinn, goen, kommen, kënnen, maachen)
+- id: "starter-verbs_027"
+  lb: "hunn"
+  en: "to have"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech hunn, du hues, hien/si huet, mir hunn, dir hutt, si hunn"
+
+- id: "starter-verbs_028"
+  lb: "sinn"
+  en: "to be"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech sinn, du bass, hien/si ass, mir sinn, dir sidd, si sinn"
+
+- id: "starter-verbs_029"
+  lb: "goen"
+  en: "to go"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech ginn, du gees, hien/si geet, mir ginn, dir gitt, si ginn"
+
+- id: "starter-verbs_030"
+  lb: "kommen"
+  en: "to come"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech kommen, du kënns, hien/si kënnt, mir kommen, dir kommt, si kommen"
+
+- id: "starter-verbs_031"
+  lb: "kënnen"
+  en: "can/be able to"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech kann, du kanns, hien/si kann, mir kënnen, dir kënnt, si kënnen"
+
+- id: "starter-verbs_032"
+  lb: "maachen"
+  en: "to do/make"
+  pos: "verb"
+  difficulty: 1
+  irregular: true
+  conjugation: "Ech maachen, du méchs, hien/si mécht, mir maachen, dir maacht, si maachen"

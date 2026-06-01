@@ -1,0 +1,163 @@
+# Verbs with Irregularities — Section 25
+
+- id: "irreg_001"
+  lb: "bestit"
+  en: "marries (infinitive: bestueden)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_002"
+  lb: "brécht"
+  en: "breaks (infinitive: briechen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_003"
+  lb: "dréit"
+  en: "carries (infinitive: droen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_004"
+  lb: "fält"
+  en: "falls (infinitive: falen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_005"
+  lb: "fënnt"
+  en: "finds (infinitive: fannen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_006"
+  lb: "flitt"
+  en: "flies (infinitive: fléien)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_007"
+  lb: "fiert"
+  en: "drives (infinitive: fueren)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_008"
+  lb: "gesäit"
+  en: "sees (infinitive: gesinn)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_009"
+  lb: "gëtt"
+  en: "gives (infinitive: ginn)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_010"
+  lb: "geet"
+  en: "goes (infinitive: goen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_011"
+  lb: "hëlt"
+  en: "takes (infinitive: huelen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_012"
+  lb: "ësst"
+  en: "eats (infinitive: iessen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_013"
+  lb: "keeft"
+  en: "buys (infinitive: kafen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_014"
+  lb: "kënnt"
+  en: "comes (infinitive: kommen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_015"
+  lb: "kritt"
+  en: "gets (infinitive: kréien)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_016"
+  lb: "leeft"
+  en: "runs (infinitive: lafen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_017"
+  lb: "mécht"
+  en: "makes (infinitive: maachen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_018"
+  lb: "rifft"
+  en: "shouts (infinitive: ruffen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_019"
+  lb: "séngt"
+  en: "sings (infinitive: sangen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_020"
+  lb: "schléift"
+  en: "sleeps (infinitive: schlofen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_021"
+  lb: "seet"
+  en: "says (infinitive: soen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_022"
+  lb: "stierft"
+  en: "dies (infinitive: stierwen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_023"
+  lb: "steet"
+  en: "stands (infinitive: stoen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_024"
+  lb: "trëfft"
+  en: "meets (infinitive: treffen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_025"
+  lb: "vergësst"
+  en: "forgets (infinitive: vergiessen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_026"
+  lb: "weess"
+  en: "knows (infinitive: wëssen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "irreg_027"
+  lb: "wiisst"
+  en: "grows (infinitive: wuessen)"
+  pos: "verb"
+  difficulty: 3

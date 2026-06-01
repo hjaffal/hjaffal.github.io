@@ -1,0 +1,55 @@
+<div class="vocab-profile-overlay" id="vocab-profile-overlay">
+  <div class="vocab-profile-modal" role="dialog" aria-labelledby="vocab-profile-title" aria-modal="true">
+    <div class="vocab-profile-header">
+      <h2 class="vocab-profile-title" id="vocab-profile-title">Profile</h2>
+      <button class="vocab-profile-close" id="vocab-profile-close" aria-label="Close profile">&times;</button>
+    </div>
+
+    <div class="vocab-profile-avatar-section">
+      <div class="vocab-profile-avatar" id="vocab-profile-avatar">U</div>
+      <div class="vocab-profile-provider" id="vocab-profile-provider"></div>
+    </div>
+
+    <form class="vocab-profile-form" id="vocab-profile-form">
+      <label class="vocab-profile-label" for="vocab-profile-name">Name</label>
+      <input type="text" class="vocab-profile-input" id="vocab-profile-name" placeholder="Your name" required>
+
+      <label class="vocab-profile-label" for="vocab-profile-email">Email</label>
+      <input type="email" class="vocab-profile-input" id="vocab-profile-email" disabled>
+
+      <button type="submit" class="vocab-profile-save" id="vocab-profile-save">Save Changes</button>
+    </form>
+
+    <p class="vocab-profile-msg" id="vocab-profile-msg"></p>
+
+    <!-- Password change (only for email/password users) -->
+    <div class="vocab-profile-section" id="vocab-profile-password-section">
+      <h3 class="vocab-profile-section-title">Change Password</h3>
+      <form class="vocab-profile-form" id="vocab-profile-password-form">
+        <input type="password" class="vocab-profile-input" id="vocab-profile-current-pw" placeholder="Current password" required minlength="6">
+        <input type="password" class="vocab-profile-input" id="vocab-profile-new-pw" placeholder="New password (min 6 characters)" required minlength="6">
+        <button type="submit" class="vocab-profile-save vocab-profile-save--secondary">Update Password</button>
+      </form>
+      <p class="vocab-profile-msg" id="vocab-profile-pw-msg"></p>
+    </div>
+
+    <!-- Stats -->
+    <div class="vocab-profile-section">
+      <h3 class="vocab-profile-section-title">Progress</h3>
+      <div class="vocab-profile-stats">
+        <div class="vocab-profile-stat">
+          <span class="vocab-profile-stat-value" id="vocab-profile-xp">0</span>
+          <span class="vocab-profile-stat-label">Total XP</span>
+        </div>
+        <div class="vocab-profile-stat">
+          <span class="vocab-profile-stat-value" id="vocab-profile-words">0</span>
+          <span class="vocab-profile-stat-label">Words Seen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vocab-profile-footer">
+      <button class="vocab-profile-logout" id="vocab-profile-logout">Sign Out</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,511 @@
+# Frequent Verbs — Section 28
+
+- id: "freq_001"
+  lb: "änneren"
+  en: "to change"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_002"
+  lb: "äntweren"
+  en: "to answer"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_003"
+  lb: "baken"
+  en: "to bake"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_004"
+  lb: "bauen"
+  en: "to build"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_005"
+  lb: "bedeiten"
+  en: "to mean/signify"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_006"
+  lb: "begéinen"
+  en: "to encounter"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_007"
+  lb: "beschreiwen"
+  en: "to describe"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_008"
+  lb: "bestellen"
+  en: "to order"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_009"
+  lb: "bezuelen"
+  en: "to pay"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_010"
+  lb: "bréngen"
+  en: "to bring"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_011"
+  lb: "buchen"
+  en: "to book"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_012"
+  lb: "danzen"
+  en: "to dance"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_013"
+  lb: "daueren"
+  en: "to last/endure"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_014"
+  lb: "denken"
+  en: "to think"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_015"
+  lb: "drénken"
+  en: "to drink"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_016"
+  lb: "droen"
+  en: "to carry/wear"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_017"
+  lb: "duschen"
+  en: "to shower"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_018"
+  lb: "falen"
+  en: "to fall"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_019"
+  lb: "fannen"
+  en: "to find"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_020"
+  lb: "fillen"
+  en: "to feel"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_021"
+  lb: "fléien"
+  en: "to fly"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_022"
+  lb: "froen"
+  en: "to ask"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_023"
+  lb: "fueren"
+  en: "to drive"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_024"
+  lb: "gebrauchen"
+  en: "to use"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_025"
+  lb: "gesinn"
+  en: "to see"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_026"
+  lb: "gewannen"
+  en: "to win"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_027"
+  lb: "ginn"
+  en: "to give/become"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_028"
+  lb: "goen"
+  en: "to go"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_029"
+  lb: "halen"
+  en: "to keep/hold"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_030"
+  lb: "heeschen"
+  en: "to be called"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_031"
+  lb: "héieren"
+  en: "to hear"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_032"
+  lb: "hëllefen"
+  en: "to help"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_033"
+  lb: "hoffen"
+  en: "to hope"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_034"
+  lb: "huelen"
+  en: "to take"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_035"
+  lb: "iessen"
+  en: "to eat"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_036"
+  lb: "invitéieren"
+  en: "to invite"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_037"
+  lb: "kachen"
+  en: "to cook"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_038"
+  lb: "kafen"
+  en: "to buy"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_039"
+  lb: "kaschten"
+  en: "to cost"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_040"
+  lb: "kennen"
+  en: "to know someone"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_041"
+  lb: "kommen"
+  en: "to come"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_042"
+  lb: "kréien"
+  en: "to get/receive"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_043"
+  lb: "kucken"
+  en: "to watch"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_044"
+  lb: "laachen"
+  en: "to laugh"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_045"
+  lb: "lafen"
+  en: "to run"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_046"
+  lb: "lauschteren"
+  en: "to listen"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_047"
+  lb: "liesen"
+  en: "to read"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_048"
+  lb: "liewen"
+  en: "to live"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_049"
+  lb: "loossen"
+  en: "to let"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_050"
+  lb: "lounen"
+  en: "to rent"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_051"
+  lb: "maachen"
+  en: "to do/make"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_052"
+  lb: "mengen"
+  en: "to believe/think"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_053"
+  lb: "mussen"
+  en: "to have to"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_054"
+  lb: "plangen"
+  en: "to plan"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_055"
+  lb: "probéieren"
+  en: "to try"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_056"
+  lb: "reagéieren"
+  en: "to react"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_057"
+  lb: "reservéieren"
+  en: "to reserve"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_058"
+  lb: "ruffen"
+  en: "to call"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_059"
+  lb: "sangen"
+  en: "to sing"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_060"
+  lb: "schaffen"
+  en: "to work"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_061"
+  lb: "schécken"
+  en: "to send"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_062"
+  lb: "schlofen"
+  en: "to sleep"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_063"
+  lb: "schreiwen"
+  en: "to write"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_064"
+  lb: "schwammen"
+  en: "to swim"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_065"
+  lb: "schwätzen"
+  en: "to speak/talk"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_066"
+  lb: "sichen"
+  en: "to search"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_067"
+  lb: "soen"
+  en: "to say"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_068"
+  lb: "spillen"
+  en: "to play"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_069"
+  lb: "stierwen"
+  en: "to die"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_070"
+  lb: "treffen"
+  en: "to meet"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_071"
+  lb: "verbréngen"
+  en: "to spend time"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_072"
+  lb: "verdéngen"
+  en: "to earn"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_073"
+  lb: "vergiessen"
+  en: "to forget"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_074"
+  lb: "vergläichen"
+  en: "to compare"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_075"
+  lb: "verkafen"
+  en: "to sell"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_076"
+  lb: "verléieren"
+  en: "to lose"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_077"
+  lb: "verstoen"
+  en: "to understand"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_078"
+  lb: "waarden"
+  en: "to wait"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_079"
+  lb: "wäschen"
+  en: "to wash"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_080"
+  lb: "weisen"
+  en: "to show"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_081"
+  lb: "wëllen"
+  en: "to want"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_082"
+  lb: "wëssen"
+  en: "to know something"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_083"
+  lb: "wielen"
+  en: "to choose"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_084"
+  lb: "wunnen"
+  en: "to live (in a place)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "freq_085"
+  lb: "zielen"
+  en: "to count"
+  pos: "verb"
+  difficulty: 3

@@ -1,0 +1,317 @@
+# Truly Luxembourgish (Idioms & Slang) — Section 51
+
+- id: "lux_001"
+  lb: "nawell"
+  en: "really/truly"
+  pos: "adverb"
+  difficulty: 3
+  usage_note: "highlights expressiveness"
+
+- id: "lux_002"
+  lb: "eng am Kanelli hunn"
+  en: "to be drunk"
+  pos: "phrase"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_003"
+  lb: "de Bak halen"
+  en: "to shut up"
+  pos: "phrase"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_004"
+  lb: "fachen"
+  en: "to stink"
+  pos: "verb"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_005"
+  lb: "liddereg"
+  en: "lazy"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_006"
+  lb: "d'Gromper"
+  en: "potato"
+  pos: "noun"
+  difficulty: 3
+
+- id: "lux_007"
+  lb: "kamout"
+  en: "practical/convenient"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_008"
+  lb: "d'Gebees"
+  en: "jam"
+  pos: "noun"
+  difficulty: 3
+
+- id: "lux_009"
+  lb: "séier"
+  en: "quick"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_010"
+  lb: "Kaméidi"
+  en: "noise"
+  pos: "noun"
+  difficulty: 3
+
+- id: "lux_011"
+  lb: "hart"
+  en: "loud"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_012"
+  lb: "bitzen"
+  en: "to sew"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_013"
+  lb: "houffreg"
+  en: "proud"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_014"
+  lb: "à même sinn eppes ze maachen"
+  en: "to be capable of doing something"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_015"
+  lb: "den Dëlpes"
+  en: "idiot/fool"
+  pos: "noun"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_016"
+  lb: "herno"
+  en: "later"
+  pos: "adverb"
+  difficulty: 3
+
+- id: "lux_017"
+  lb: "kräischen"
+  en: "to cry"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_018"
+  lb: "eppes verstoppen"
+  en: "to hide something"
+  pos: "verb-phrase"
+  difficulty: 3
+
+- id: "lux_019"
+  lb: "schweessen"
+  en: "to sweat"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_020"
+  lb: "eppes gewuer ginn"
+  en: "to receive knowledge of"
+  pos: "verb-phrase"
+  difficulty: 3
+
+- id: "lux_021"
+  lb: "eens ginn"
+  en: "to manage/cope"
+  pos: "verb-phrase"
+  difficulty: 3
+  usage_note: "Ech gi mat där Situatioun net eens."
+
+- id: "lux_022"
+  lb: "kriddeleg"
+  en: "picky"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_023"
+  lb: "ee verbotzen"
+  en: "to tell someone off"
+  pos: "verb-phrase"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_024"
+  lb: "trëllen"
+  en: "to fall/tumble"
+  pos: "verb"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_025"
+  lb: "dätsch sinn"
+  en: "to be extremely tired"
+  pos: "phrase"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_026"
+  lb: "sech de Batti stellen"
+  en: "to play the fool"
+  pos: "phrase"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_027"
+  lb: "kribbelen"
+  en: "to itch"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_028"
+  lb: "wibbelen"
+  en: "to wiggle"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_029"
+  lb: "plätschnaass"
+  en: "soaking wet"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_030"
+  lb: "keen Heel aus eppes maachen"
+  en: "to not make a big deal"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_031"
+  lb: "an der Rei"
+  en: "alright"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_032"
+  lb: "eidel"
+  en: "empty"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_033"
+  lb: "de Krëppeng"
+  en: "stuff/belongings"
+  pos: "noun"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_034"
+  lb: "den Hënner"
+  en: "backside/bum"
+  pos: "noun"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_035"
+  lb: "bouffen"
+  en: "to eat"
+  pos: "verb"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_036"
+  lb: "sech queesch stellen"
+  en: "to act stubborn"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_037"
+  lb: "trenntelen"
+  en: "to take one's sweet time"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_038"
+  lb: "d'Krunnewaasser"
+  en: "tap water"
+  pos: "noun"
+  difficulty: 3
+
+- id: "lux_039"
+  lb: "krupseg"
+  en: "crispy"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_040"
+  lb: "de Kënnegen"
+  en: "familiar face"
+  pos: "noun"
+  difficulty: 3
+
+- id: "lux_041"
+  lb: "graddereg"
+  en: "rough surface"
+  pos: "adjective"
+  difficulty: 3
+
+- id: "lux_042"
+  lb: "renkelen"
+  en: "to steer"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_043"
+  lb: "de Latz hunn"
+  en: "to be bored/tired of"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_044"
+  lb: "d'Schank"
+  en: "bone"
+  pos: "noun"
+  difficulty: 3
+
+- id: "lux_045"
+  lb: "gierksen"
+  en: "to burp"
+  pos: "verb"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_046"
+  lb: "knadderen"
+  en: "to mumble/grumble"
+  pos: "verb"
+  difficulty: 3
+
+- id: "lux_047"
+  lb: "Daje!"
+  en: "Come on!"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_048"
+  lb: "sech futtéieren"
+  en: "to not lift a finger"
+  pos: "verb-phrase"
+  difficulty: 3
+  register: "colloquial"
+
+- id: "lux_049"
+  lb: "Vun der Long op d'Zong"
+  en: "straight from the heart"
+  pos: "phrase"
+  difficulty: 3
+
+- id: "lux_050"
+  lb: "gehierlos"
+  en: "terrible/extremely"
+  pos: "adverb"
+  difficulty: 3
+  register: "colloquial"

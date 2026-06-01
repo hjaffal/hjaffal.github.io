@@ -1,0 +1,131 @@
+# Adjective Declension — Sections 20 & 45
+
+# Section 20 - Adjective Declension Practice
+
+- id: "adj_001"
+  lb: "schéinen"
+  en: "beautiful (N/A masculine)"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Nominative/Accusative declension for masculine nouns."
+
+- id: "adj_002"
+  lb: "schéint"
+  en: "beautiful (N/A neutral)"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Nominative/Accusative declension for neutral nouns."
+
+- id: "adj_003"
+  lb: "schéin"
+  en: "beautiful (N/A feminine & plural)"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Nominative/Accusative declension for feminine and plural nouns."
+
+- id: "adj_004"
+  lb: "schéinen"
+  en: "beautiful (dative masculine/neutral/plural)"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Dative declension for masculine, neutral, and plural nouns."
+
+- id: "adj_005"
+  lb: "schéiner"
+  en: "beautiful (dative feminine)"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Dative declension for feminine nouns."
+
+# Section 45 - Irregular Superlative Forms
+
+- id: "adj_006"
+  lb: "am eelsten"
+  en: "oldest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'al'."
+
+- id: "adj_007"
+  lb: "am jéngsten"
+  en: "youngest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'jonk'."
+
+- id: "adj_008"
+  lb: "am gréissten"
+  en: "biggest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'grouss'."
+
+- id: "adj_009"
+  lb: "am héchsten"
+  en: "highest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'héich'."
+
+- id: "adj_010"
+  lb: "am äermsten"
+  en: "poorest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'aarm'."
+
+- id: "adj_011"
+  lb: "am häertsten"
+  en: "hardest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'haart'."
+
+- id: "adj_012"
+  lb: "am stäerksten"
+  en: "strongest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'staark'."
+
+- id: "adj_013"
+  lb: "am wäermsten"
+  en: "warmest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'waarm'."
+
+- id: "adj_014"
+  lb: "am schwächsten"
+  en: "weakest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'schwaach'."
+
+- id: "adj_015"
+  lb: "am kierzten"
+  en: "shortest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'kuerz'."
+
+- id: "adj_016"
+  lb: "am längsten"
+  en: "longest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'laang'."
+
+- id: "adj_017"
+  lb: "am schäerfsten"
+  en: "sharpest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'schaarf'."
+
+- id: "adj_018"
+  lb: "am schwäerzten"
+  en: "blackest"
+  pos: "adjective"
+  difficulty: 2
+  usage_note: "Superlative of 'schwaarz'."

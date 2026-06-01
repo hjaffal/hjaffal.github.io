@@ -1,0 +1,37 @@
+---
+layout: base
+css:
+  - "/assets/css/sproochentest.css"
+  - "/assets/css/vocab.css"
+---
+
+<style>.navbar { display: none !important; } footer.site-footer { display: none !important; }</style>
+
+{% include sproochentest-header.html %}
+
+<main class="vocab-app" id="vocab-app">
+  {{ content }}
+</main>
+
+{% include vocab-auth-modal.html %}
+{% include vocab-profile-modal.html %}
+{% include sproochentest-footer.html %}
+
+<!-- Firebase SDK (modular compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script>
+  firebase.initializeApp({
+    apiKey: "{{ site.data.firebase.firebase_api_key }}",
+    authDomain: "{{ site.data.firebase.firebase_auth_domain }}",
+    projectId: "{{ site.data.firebase.firebase_project_id }}"
+  });
+
+  window.VOCAB_DATA = {
+    {% for file in site.data.vocab %}
+    "{{ file[0] }}": {{ file[1] | jsonify }},
+    {% endfor %}
+  };
+</script>
+<script src="/assets/js/vocab-engine.js"></script>

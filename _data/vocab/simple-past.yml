@@ -1,0 +1,193 @@
+# Past Tenses — Sections 32 & 52
+
+- id: "past_001"
+  lb: "blouf"
+  en: "past of: bleiwen (to stay)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_002"
+  lb: "bruecht"
+  en: "past of: bréngen (to bring)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_003"
+  lb: "gouf"
+  en: "past of: ginn (to give)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_004"
+  lb: "goung"
+  en: "past of: goen (to go)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_005"
+  lb: "hat"
+  en: "past of: hunn (to have)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_006"
+  lb: "konnt"
+  en: "past of: kënnen (to be able to)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_007"
+  lb: "koum"
+  en: "past of: kommen (to come)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_008"
+  lb: "krut"
+  en: "past of: kréien (to get)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_009"
+  lb: "musst"
+  en: "past of: mussen (to have to)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_010"
+  lb: "war"
+  en: "past of: sinn (to be)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_011"
+  lb: "sot"
+  en: "past of: soen (to say)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_012"
+  lb: "sollt"
+  en: "past of: sollen (should)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_013"
+  lb: "stoung"
+  en: "past of: stoen (to stand)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_014"
+  lb: "wollt"
+  en: "past of: wëllen (to want)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_015"
+  lb: "wosst"
+  en: "past of: wëssen (to know)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_016"
+  lb: "Ech si gefall."
+  en: "I fell. (falen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_017"
+  lb: "Ech hu fonnt."
+  en: "I found. (fannen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_018"
+  lb: "Ech si geflunn."
+  en: "I flew. (fléien)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_019"
+  lb: "Ech si gefuer."
+  en: "I drove. (fueren)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_020"
+  lb: "Ech hu gesinn."
+  en: "I saw. (gesinn)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_021"
+  lb: "Ech si gaang."
+  en: "I went. (goen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_022"
+  lb: "Ech hu geholl."
+  en: "I took. (huelen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_023"
+  lb: "Ech hu giess."
+  en: "I ate. (iessen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_024"
+  lb: "Ech hu kaf."
+  en: "I bought. (kafen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_025"
+  lb: "Ech si komm."
+  en: "I came. (kommen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_026"
+  lb: "Ech hu kritt."
+  en: "I got. (kréien)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_027"
+  lb: "Ech si gelaf."
+  en: "I ran. (lafen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_028"
+  lb: "Ech hu gemaach."
+  en: "I did/made. (maachen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_029"
+  lb: "Ech hu geschlof."
+  en: "I slept. (schlofen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_030"
+  lb: "Ech hu geschriwwen."
+  en: "I wrote. (schreiwen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_031"
+  lb: "Ech hu vergiess."
+  en: "I forgot. (vergiessen)"
+  pos: "verb"
+  difficulty: 3
+
+- id: "past_032"
+  lb: "Ech sinn opgestan."
+  en: "I got up. (opstoen)"
+  pos: "verb"
+  difficulty: 3

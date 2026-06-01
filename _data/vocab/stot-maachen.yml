@@ -1,0 +1,136 @@
+# De Stot Maachen (Housework) — Section 29
+
+- id: "stot_001"
+  lb: "stëbsen"
+  en: "to dust"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_002"
+  lb: "d'Kleeder wäschen"
+  en: "to wash clothes"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_003"
+  lb: "botzen"
+  en: "to clean"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_004"
+  lb: "spullen"
+  en: "to wash dishes"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_005"
+  lb: "d'Spullmaschinn araumen"
+  en: "to load the dishwasher"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_006"
+  lb: "d'Spullmaschinn ausraumen"
+  en: "to unload the dishwasher"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_007"
+  lb: "kachen"
+  en: "to cook"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_008"
+  lb: "ofdréschnen"
+  en: "to dry the dishes"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_009"
+  lb: "de Buedem naass opbotzen"
+  en: "to mop the floor"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_010"
+  lb: "staubsaugen"
+  en: "to vacuum"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_011"
+  lb: "strecken"
+  en: "to iron"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_012"
+  lb: "d'Bett maachen"
+  en: "to make the bed"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_013"
+  lb: "d'Bett frësch opzéien"
+  en: "to change the bedding"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_014"
+  lb: "opraumen"
+  en: "to tidy up"
+  pos: "verb"
+  difficulty: 2
+
+- id: "stot_015"
+  lb: "d'Poubelle rausbréngen"
+  en: "to take out the trash"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_016"
+  lb: "de Buedem kieren"
+  en: "to sweep the floor"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_017"
+  lb: "d'Planzen netzen"
+  en: "to water the plants"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_018"
+  lb: "alles op seng Plaz raumen"
+  en: "to put everything in its place"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "stot_019"
+  lb: "de Lavabo"
+  en: "sink"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "stot_020"
+  lb: "d'Buedbidden"
+  en: "bath tub"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "stot_021"
+  lb: "d'Botzfra"
+  en: "cleaning lady"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "stot_022"
+  lb: "propper"
+  en: "clean"
+  pos: "adjective"
+  difficulty: 2

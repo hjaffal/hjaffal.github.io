@@ -1,0 +1,188 @@
+# Sproochen & Léieren — Sections 42 & 44
+
+- id: "sproochen_001"
+  lb: "d'Mammesprooch"
+  en: "mother tongue/native language"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sproochen_002"
+  lb: "einfach"
+  en: "easy"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sproochen_003"
+  lb: "schwéier"
+  en: "difficult"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sproochen_004"
+  lb: "sech integréieren"
+  en: "to integrate oneself"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_005"
+  lb: "Efforte maachen"
+  en: "to make efforts"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_006"
+  lb: "eng Sprooch erléieren"
+  en: "to acquire a language"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_007"
+  lb: "e Sproochecours"
+  en: "language class"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sproochen_008"
+  lb: "fléissend"
+  en: "fluently"
+  pos: "adverb"
+  difficulty: 2
+
+- id: "sproochen_009"
+  lb: "komplizéiert"
+  en: "complicated"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sproochen_010"
+  lb: "ufänken"
+  en: "to start"
+  pos: "verb"
+  difficulty: 2
+
+- id: "sproochen_011"
+  lb: "d'Wuert"
+  en: "word"
+  pos: "noun"
+  gender: "n"
+  plural: "Wierder"
+  difficulty: 2
+
+- id: "sproochen_012"
+  lb: "schwätzen"
+  en: "to speak"
+  pos: "verb"
+  difficulty: 2
+
+- id: "sproochen_013"
+  lb: "verstoen"
+  en: "to understand"
+  pos: "verb"
+  difficulty: 2
+
+- id: "sproochen_014"
+  lb: "sech eppes verhalen"
+  en: "to remember something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_015"
+  lb: "Vokabele widderhuelen"
+  en: "to revise vocabulary"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_016"
+  lb: "eppes vergiessen"
+  en: "to forget something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_017"
+  lb: "nëtzlech"
+  en: "useful"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sproochen_018"
+  lb: "verwiesselen"
+  en: "to confuse/mix up"
+  pos: "verb"
+  difficulty: 2
+
+- id: "sproochen_019"
+  lb: "engem schwéier falen"
+  en: "to have a hard time"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_020"
+  lb: "sech trauen eppes ze maachen"
+  en: "to have courage to do something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_021"
+  lb: "Ënnertitel"
+  en: "subtitles"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sproochen_022"
+  lb: "eppes auswenneg léieren"
+  en: "to learn by heart"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_023"
+  lb: "op der Uni sinn"
+  en: "to be at university"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_024"
+  lb: "d'Gruppenaarbecht"
+  en: "group assignment"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sproochen_025"
+  lb: "zesumme léieren"
+  en: "to study together"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_026"
+  lb: "eppes virbereeden"
+  en: "to prepare something"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_027"
+  lb: "eng Presentatioun halen"
+  en: "to give a presentation"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_028"
+  lb: "d'Léierbuch"
+  en: "textbook"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "sproochen_029"
+  lb: "eppes markéieren"
+  en: "to highlight"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sproochen_030"
+  lb: "eppes ofginn"
+  en: "to hand in"
+  pos: "verb-phrase"
+  difficulty: 2

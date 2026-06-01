@@ -1,0 +1,217 @@
+# Meng Aarbecht (Work) — Section 50
+
+- id: "aarbecht_001"
+  lb: "d'Firma"
+  en: "company"
+  pos: "noun"
+  gender: "f"
+  plural: "Firmen"
+  difficulty: 2
+
+- id: "aarbecht_002"
+  lb: "de Sëtz"
+  en: "seat of a company"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_003"
+  lb: "d'Tâche"
+  en: "task"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "aarbecht_004"
+  lb: "d'Réunioun"
+  en: "meeting"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "aarbecht_005"
+  lb: "den Entretien"
+  en: "job interview"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_006"
+  lb: "de Chef"
+  en: "boss"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_007"
+  lb: "d'Mataarbechter"
+  en: "co-workers"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_008"
+  lb: "eng gutt Ambiance um Büro hunn"
+  en: "to have good atmosphere at office"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_009"
+  lb: "ofwiesslungsräich"
+  en: "diverse/varied"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "aarbecht_010"
+  lb: "den Aarbechtswee"
+  en: "commute"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_011"
+  lb: "den Teletravail"
+  en: "telework"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_012"
+  lb: "de Rendez-vous"
+  en: "appointment"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_013"
+  lb: "de Client"
+  en: "client"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_014"
+  lb: "de Posten"
+  en: "position"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_015"
+  lb: "d'Liewensqualitéit"
+  en: "quality of living"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "aarbecht_016"
+  lb: "schaffen als"
+  en: "to work as"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_017"
+  lb: "am Krankeschäi sinn"
+  en: "to be on sick leave"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_018"
+  lb: "sech Congé huelen"
+  en: "to take leave"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_019"
+  lb: "sech krank mellen"
+  en: "to call in sick"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_020"
+  lb: "d'Mëttespaus"
+  en: "lunch break"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "aarbecht_021"
+  lb: "vill ze schaffen hunn"
+  en: "to have a lot of work"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_022"
+  lb: "kënnegen"
+  en: "to quit a job"
+  pos: "verb"
+  difficulty: 2
+
+- id: "aarbecht_023"
+  lb: "schaffe fir/bei"
+  en: "to work for/at"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_024"
+  lb: "opgereegt sinn"
+  en: "to be nervous"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_025"
+  lb: "sech gestresst fillen"
+  en: "to feel stressed"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_026"
+  lb: "e Stage maachen"
+  en: "to do an internship"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_027"
+  lb: "vun doheem aus schaffen"
+  en: "to work from home"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_028"
+  lb: "flexibel Aarbechtszäiten hunn"
+  en: "to have flexible work hours"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "aarbecht_029"
+  lb: "de Beruffswonsch"
+  en: "career aspiration"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_030"
+  lb: "ustrengend"
+  en: "exhausting"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "aarbecht_031"
+  lb: "de Projet"
+  en: "project"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_032"
+  lb: "de Büro"
+  en: "office"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "aarbecht_033"
+  lb: "responsabel fir eppes sinn"
+  en: "to be responsible for something"
+  pos: "verb-phrase"
+  difficulty: 2

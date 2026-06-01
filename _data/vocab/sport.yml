@@ -1,0 +1,331 @@
+# Sport — Section 9
+
+- id: "sport_001"
+  lb: "Sport maachen"
+  en: "to exercise"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Ech maache gär Sport."
+  example_en: "I like to exercise."
+
+- id: "sport_002"
+  lb: "pro Woch"
+  en: "per week"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "sport_003"
+  lb: "an de Fitness goen"
+  en: "to go to the gym"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Ech ginn dräi mol pro Woch an de Fitness."
+  example_en: "I go to the gym three times per week."
+
+- id: "sport_004"
+  lb: "Gewiichter"
+  en: "weights"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "sport_005"
+  lb: "an der Lescht"
+  en: "lately"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "sport_006"
+  lb: "d'Sportart"
+  en: "kind of sport"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_007"
+  lb: "d'Ekippesportart"
+  en: "team sport"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_008"
+  lb: "d'Eenzelsportart"
+  en: "individual sport"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_009"
+  lb: "lafe goen"
+  en: "to go running"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_010"
+  lb: "eng sëlleg"
+  en: "many/countless"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "sport_011"
+  lb: "Vëlo fueren"
+  en: "to bike"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Am Summer fueren ech vill Vëlo."
+  example_en: "In summer I bike a lot."
+
+- id: "sport_012"
+  lb: "trainéieren"
+  en: "to train"
+  pos: "verb"
+  difficulty: 2
+  example_lb: "Ech trainéieren zwee mol pro Woch."
+  example_en: "I train twice per week."
+
+- id: "sport_013"
+  lb: "sportlech"
+  en: "sporty"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sport_014"
+  lb: "sportlech Aktivitéiten"
+  en: "physical activities"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "sport_015"
+  lb: "sech vill beweegen"
+  en: "to be active"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Ech probéiere mech vill ze beweegen."
+  example_en: "I try to be active."
+
+- id: "sport_016"
+  lb: "de Geescht"
+  en: "the mind"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_017"
+  lb: "mental fit bleiwen"
+  en: "to stay mentally fit"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_018"
+  lb: "sech gutt fillen"
+  en: "to feel well"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Nom Sport fillen ech mech ëmmer gutt."
+  example_en: "After sport I always feel well."
+
+- id: "sport_019"
+  lb: "sech schlecht fillen"
+  en: "to feel unwell"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_020"
+  lb: "engem gutt doen"
+  en: "to be good for someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_021"
+  lb: "Stress lass ginn"
+  en: "to get rid of stress"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_022"
+  lb: "entspaant sinn"
+  en: "to be relaxed"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Nom Sport sinn ech ëmmer entspaant."
+  example_en: "After sport I am always relaxed."
+
+- id: "sport_023"
+  lb: "d'Form"
+  en: "shape"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_024"
+  lb: "d'Leggingsbox"
+  en: "leggings"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_025"
+  lb: "d'Kuerzbox"
+  en: "shorts"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_026"
+  lb: "de Sports-BH"
+  en: "sports bra"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_027"
+  lb: "labber"
+  en: "loose fit"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sport_028"
+  lb: "talentéiert sinn"
+  en: "to be talented"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_029"
+  lb: "flott"
+  en: "fun"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "sport_030"
+  lb: "spillen"
+  en: "to play"
+  pos: "verb"
+  difficulty: 2
+  example_lb: "Ech spille gär Badminton."
+  example_en: "I like to play Badminton."
+
+- id: "sport_031"
+  lb: "gewannen"
+  en: "to win"
+  pos: "verb"
+  difficulty: 2
+  example_lb: "Ech gewanne gär."
+  example_en: "I like to win."
+
+- id: "sport_032"
+  lb: "verléieren"
+  en: "to lose"
+  pos: "verb"
+  difficulty: 2
+  example_lb: "Ech verléieren net gär."
+  example_en: "I don't like to lose."
+
+- id: "sport_033"
+  lb: "den Niveau"
+  en: "level"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_034"
+  lb: "sech verletzen"
+  en: "to get injured"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_035"
+  lb: "de Profisportler"
+  en: "pro athlete"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_036"
+  lb: "fir eng Ekipp halen"
+  en: "to support a team"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "sport_037"
+  lb: "d'Tribün"
+  en: "the stand/spectators"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_038"
+  lb: "de Spectateur"
+  en: "spectator"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_039"
+  lb: "de Veräin"
+  en: "club"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_040"
+  lb: "d'Hal"
+  en: "gym for team sports"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_041"
+  lb: "den Terrain"
+  en: "playing field"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_042"
+  lb: "d'Ekipp"
+  en: "team"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_043"
+  lb: "de Fitnesstrainer"
+  en: "fitness coach"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_044"
+  lb: "jiddereen"
+  en: "everyone"
+  pos: "pronoun"
+  difficulty: 2
+
+- id: "sport_045"
+  lb: "d'Liichtathletik"
+  en: "track and field"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "sport_046"
+  lb: "de Rekord"
+  en: "record"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "sport_047"
+  lb: "de Match"
+  en: "the game/match"
+  pos: "noun"
+  gender: "m"
+  plural: "Matcher"
+  difficulty: 2
+
+- id: "sport_048"
+  lb: "kierperlech Ustrengung"
+  en: "physical exertion"
+  pos: "phrase"
+  difficulty: 2

@@ -1,0 +1,269 @@
+# Wunnen (Housing) — Section 15
+
+- id: "wunnen_001"
+  lb: "d'Appartement"
+  en: "flat/apartment"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "wunnen_002"
+  lb: "d'Haus"
+  en: "house"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "wunnen_003"
+  lb: "an engem Haus wunnen"
+  en: "to live in a house"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Mir wunnen an engem Haus zu ..."
+  example_en: "We live in a house in ..."
+
+- id: "wunnen_004"
+  lb: "abordabel"
+  en: "affordable"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "wunnen_005"
+  lb: "d'WG"
+  en: "shared house"
+  pos: "noun"
+  difficulty: 2
+  example_lb: "Ech wunnen an enger WG."
+  example_en: "I live in a shared house."
+
+- id: "wunnen_006"
+  lb: "lounen"
+  en: "to rent"
+  pos: "verb"
+  difficulty: 2
+  example_lb: "Ech lounen en Appartement zu Stroossen."
+  example_en: "I rent a flat in Stroossen."
+
+- id: "wunnen_007"
+  lb: "d'Duerf"
+  en: "village"
+  pos: "noun"
+  gender: "n"
+  plural: "Dierfer"
+  difficulty: 2
+
+- id: "wunnen_008"
+  lb: "no bei"
+  en: "close to"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "wunnen_009"
+  lb: "d'Résidence"
+  en: "apartment building"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_010"
+  lb: "d'Géigend"
+  en: "neighbourhood/area"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_011"
+  lb: "roueg"
+  en: "quiet"
+  pos: "adjective"
+  difficulty: 2
+  example_lb: "Eis Géigend ass roueg."
+  example_en: "Our neighbourhood is quiet."
+
+- id: "wunnen_012"
+  lb: "sécher"
+  en: "safe"
+  pos: "adjective"
+  difficulty: 2
+
+- id: "wunnen_013"
+  lb: "den Traffik"
+  en: "traffic"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "wunnen_014"
+  lb: "Kaméidi"
+  en: "noise"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_015"
+  lb: "den Iwwerfall"
+  en: "robbery"
+  pos: "noun"
+  gender: "m"
+  plural: "Iwwerfäll"
+  difficulty: 2
+
+- id: "wunnen_016"
+  lb: "den Abroch"
+  en: "break-in"
+  pos: "noun"
+  gender: "m"
+  plural: "Abrech"
+  difficulty: 2
+
+- id: "wunnen_017"
+  lb: "nobäi"
+  en: "nearby"
+  pos: "adverb"
+  difficulty: 2
+
+- id: "wunnen_018"
+  lb: "den Noper"
+  en: "neighbour"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "wunnen_019"
+  lb: "d'Garage"
+  en: "garage"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_020"
+  lb: "d'Parkplaz"
+  en: "parking space"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_021"
+  lb: "de Gaart"
+  en: "garden"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "wunnen_022"
+  lb: "d'Gebai"
+  en: "building"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "wunnen_023"
+  lb: "de Stack"
+  en: "floor/storey"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "wunnen_024"
+  lb: "Quadratmeter"
+  en: "square meters"
+  pos: "noun"
+  gender: "m"
+  difficulty: 2
+
+- id: "wunnen_025"
+  lb: "hell"
+  en: "bright"
+  pos: "adjective"
+  difficulty: 2
+  example_lb: "Meng Wunneng ass hell."
+  example_en: "My apartment is bright."
+
+- id: "wunnen_026"
+  lb: "d'Zëmmer"
+  en: "room"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "wunnen_027"
+  lb: "d'Schlofzëmmer"
+  en: "bedroom"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "wunnen_028"
+  lb: "d'Stuff"
+  en: "living room"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_029"
+  lb: "d'Kichen"
+  en: "kitchen"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "wunnen_030"
+  lb: "d'Buedzëmmer"
+  en: "bathroom"
+  pos: "noun"
+  gender: "n"
+  difficulty: 2
+
+- id: "wunnen_031"
+  lb: "botzen"
+  en: "to clean"
+  pos: "verb"
+  difficulty: 2
+
+- id: "wunnen_032"
+  lb: "opgeraumt halen"
+  en: "to keep tidy"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "wunnen_033"
+  lb: "de Buedem staubsaugen"
+  en: "to vacuum the floor"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "wunnen_034"
+  lb: "stëbsen"
+  en: "to dust"
+  pos: "verb"
+  difficulty: 2
+
+- id: "wunnen_035"
+  lb: "d'Miwwelen"
+  en: "furniture"
+  pos: "noun"
+  gender: "f"
+  plural: "Miwwelen"
+  difficulty: 2
+
+- id: "wunnen_036"
+  lb: "plënneren"
+  en: "to move"
+  pos: "verb"
+  difficulty: 2
+  example_lb: "Ech sinn 2017 op Lëtzebuerg geplënnert."
+  example_en: "I moved to Luxembourg in 2017."
+
+- id: "wunnen_037"
+  lb: "doheem bleiwen"
+  en: "to stay at home"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "wunnen_038"
+  lb: "heem kommen"
+  en: "to come home"
+  pos: "verb-phrase"
+  difficulty: 2
+  example_lb: "Owes kommen ech gär heem."
+  example_en: "In the evening I like to come home."

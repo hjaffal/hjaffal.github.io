@@ -1,0 +1,126 @@
+# Kaddoen (Gifts) — Section 30
+
+- id: "kaddoen_001"
+  lb: "de Kaddo"
+  en: "gift"
+  pos: "noun"
+  gender: "m"
+  plural: "Kaddoen"
+  difficulty: 2
+
+- id: "kaddoen_002"
+  lb: "d'Geschenk"
+  en: "present"
+  pos: "noun"
+  gender: "n"
+  plural: "Geschenker"
+  difficulty: 2
+
+- id: "kaddoen_003"
+  lb: "schenken"
+  en: "to gift"
+  pos: "verb"
+  difficulty: 2
+
+- id: "kaddoen_004"
+  lb: "gutt iwwerluecht"
+  en: "well thought of"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_005"
+  lb: "een iwwerraschen"
+  en: "to surprise someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "kaddoen_006"
+  lb: "d'Feier"
+  en: "celebration"
+  pos: "noun"
+  gender: "f"
+  difficulty: 2
+
+- id: "kaddoen_007"
+  lb: "feieren"
+  en: "to celebrate"
+  pos: "verb"
+  difficulty: 2
+
+- id: "kaddoen_008"
+  lb: "verpaken"
+  en: "to wrap"
+  pos: "verb"
+  difficulty: 2
+
+- id: "kaddoen_009"
+  lb: "auspaken"
+  en: "to unwrap"
+  pos: "verb"
+  difficulty: 2
+
+- id: "kaddoen_010"
+  lb: "e Kaddo eraussichen"
+  en: "to select a gift"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "kaddoen_011"
+  lb: "spenden"
+  en: "to donate"
+  pos: "verb"
+  difficulty: 2
+
+- id: "kaddoen_012"
+  lb: "personaliséieren"
+  en: "to personalize"
+  pos: "verb"
+  difficulty: 2
+
+- id: "kaddoen_013"
+  lb: "engem eng léif Kaart schreiwen"
+  en: "to write a nice card to someone"
+  pos: "verb-phrase"
+  difficulty: 2
+
+- id: "kaddoen_014"
+  lb: "fir de Gebuertsdag"
+  en: "for birthday"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_015"
+  lb: "fir den Anniversär"
+  en: "for anniversary"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_016"
+  lb: "fir d'Hochzäit"
+  en: "for the wedding"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_017"
+  lb: "fir Krëschtdag"
+  en: "for Christmas"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_018"
+  lb: "fir Mammendag"
+  en: "for Mother's Day"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_019"
+  lb: "fir Pappendag"
+  en: "for Father's Day"
+  pos: "phrase"
+  difficulty: 2
+
+- id: "kaddoen_020"
+  lb: "fir Ouschteren"
+  en: "for Easter"
+  pos: "phrase"
+  difficulty: 2

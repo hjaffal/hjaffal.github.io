@@ -1,13 +1,13 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // No client-side access — only Cloud Functions (admin SDK) can read/write
-    // Reports are accessed via secure token validated server-side
-    match /{document=**} {
-      allow read, write: if false;
+    // Vocab progress: anyone can read (for leaderboard), only own doc writable by authenticated user
+    match /vocab_progress/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
     }
 
-    // Newsletter collections: server-only access via Admin SDK
+    // No client-side access for everything else — only Cloud Functions (admin SDK)
     match /subscribers/{doc} {
       allow read, write: if false;
     }
@@ -15,6 +15,11 @@ service cloud.firestore {
       allow read, write: if false;
     }
     match /events/{doc} {
+      allow read, write: if false;
+    }
+
+    // Default deny for any other collection
+    match /{document=**} {
       allow read, write: if false;
     }
   }

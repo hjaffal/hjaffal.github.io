@@ -1,0 +1,261 @@
+# Introductions — Section 7 of the Luxembourgish Vocabulary Master List
+# Everything you need to introduce yourself in the Sproochentest
+
+- id: "intro_001"
+  lb: "Moien"
+  en: "Hello"
+  pos: "phrase"
+  difficulty: 1
+  usage_note: "Universal greeting, used any time of day."
+
+- id: "intro_002"
+  lb: "Gudde Moien"
+  en: "Good morning"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_003"
+  lb: "Gudde Mëtteg"
+  en: "Good afternoon"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_004"
+  lb: "Gudden Owend"
+  en: "Good evening"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_005"
+  lb: "Wéi geet et dir?"
+  en: "How are you? (casual)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_006"
+  lb: "Wéi geet et Iech?"
+  en: "How are you? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_007"
+  lb: "Mir geet et gutt, an dir?"
+  en: "I'm doing fine, and you? (casual)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_008"
+  lb: "Merci, gutt!"
+  en: "Thanks, fine!"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_009"
+  lb: "Wéi ass Ären Numm?"
+  en: "What's your name? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_010"
+  lb: "Mäin Numm ass ..."
+  en: "My name is ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_011"
+  lb: "Ech heeschen ..."
+  en: "My name is ... (lit. I'm called)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_012"
+  lb: "Wéi al sidd Dir?"
+  en: "How old are you? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_013"
+  lb: "Ech hunn ... Joer."
+  en: "I'm ... years old."
+  pos: "phrase"
+  difficulty: 1
+  example_lb: "Ech hu 35 Joer."
+  example_en: "I'm 35."
+
+- id: "intro_014"
+  lb: "Vu wou kommt Dir?"
+  en: "Where do you come from? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_015"
+  lb: "Ech kommen aus ..."
+  en: "I come from ..."
+  pos: "phrase"
+  difficulty: 1
+  example_lb: "Ech kommen aus Amerika."
+  example_en: "I come from America."
+
+- id: "intro_016"
+  lb: "Vu wou genee?"
+  en: "From where exactly?"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_017"
+  lb: "Ech komme vun ..."
+  en: "I come from ... (city/town)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_018"
+  lb: "Wat schafft Dir?"
+  en: "What do you work? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_019"
+  lb: "Ech sinn ... bei ..."
+  en: "I am a ... at ..."
+  pos: "phrase"
+  difficulty: 1
+  example_lb: "Ech si Manager bei American Capital."
+  example_en: "I am a manager at American Capital."
+
+- id: "intro_020"
+  lb: "Zënter wéini lieft Dir zu Lëtzebuerg?"
+  en: "Since when have you been living in Luxembourg?"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_021"
+  lb: "Ech liewen zu Lëtzebuerg zënter ..."
+  en: "I've been living in Luxembourg since ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_022"
+  lb: "Wou wunnt Dir?"
+  en: "Where do you live? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_023"
+  lb: "Ech wunnen zu ..."
+  en: "I live in ..."
+  pos: "phrase"
+  difficulty: 1
+  example_lb: "Ech wunnen zu Déifferdeng."
+  example_en: "I live in Differdange."
+
+- id: "intro_024"
+  lb: "Wéini sidd Dir gebuer?"
+  en: "When were you born? (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_025"
+  lb: "Ech sinn ... gebuer."
+  en: "I was born on ..."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_026"
+  lb: "Ech si bestuet."
+  en: "I'm married."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_027"
+  lb: "Ech si net bestuet."
+  en: "I'm not married."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_028"
+  lb: "Ech hu keng Kanner."
+  en: "I don't have kids."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_029"
+  lb: "Ech hunn zwee Kanner."
+  en: "I have two kids."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_030"
+  lb: "de Jong"
+  en: "son/boy"
+  pos: "noun"
+  gender: "m"
+  difficulty: 1
+
+- id: "intro_031"
+  lb: "d'Meedchen"
+  en: "daughter/girl"
+  pos: "noun"
+  gender: "n"
+  difficulty: 1
+
+- id: "intro_032"
+  lb: "Schéin Iech kennenzeléieren."
+  en: "Nice to meet you. (polite)"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_033"
+  lb: "Merci fir d'Gespréich."
+  en: "Thanks for the talk."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_034"
+  lb: "Nach e schéinen Dag."
+  en: "Have a nice day."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_035"
+  lb: "Merci gläichfalls!"
+  en: "Thanks and the same to you!"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_036"
+  lb: "Äddi."
+  en: "Bye."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_037"
+  lb: "Bis eng aner Kéier."
+  en: "See you/Until another time."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_038"
+  lb: "Bis demnächst."
+  en: "See you soon."
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_039"
+  lb: "pardon"
+  en: "sorry"
+  pos: "phrase"
+  difficulty: 1
+
+- id: "intro_040"
+  lb: "Entschëllegt"
+  en: "Sorry/Excuse me"
+  pos: "phrase"
+  difficulty: 1
+  usage_note: "Used when approaching someone or getting their attention."
+
+- id: "intro_041"
+  lb: "wannechgelift"
+  en: "please/here you go"
+  pos: "phrase"
+  difficulty: 1
+  usage_note: "Used when asking for something or handing something over."
