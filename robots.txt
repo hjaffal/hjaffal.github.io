@@ -28,6 +28,8 @@ Disallow: /tools/ai-job-risk-analyzer
 Disallow: /tools/ai-job-risk-report/
 Disallow: /tools/future-proof-skills-assessment
 Disallow: /newsletter/admin/
+Disallow: /newsletter/preferences/
+Disallow: /page*/
 Disallow: /assets/pdf/
 
 Sitemap: {{ site.url }}/sitemap.xml

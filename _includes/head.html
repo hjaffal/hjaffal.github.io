@@ -48,6 +48,10 @@
   {% endif %}
 
   <meta name="description" content="{{ description }}">
+
+  {% if paginator and paginator.page > 1 %}
+  <meta name="robots" content="noindex, follow">
+  {% endif %}
   <meta name="fn-subscribe" content="{{ site.data.firebase.fn_subscribe }}">
   <meta name="fn-job-risk" content="{{ site.data.firebase.fn_job_risk }}">
   <meta name="fn-share-tool" content="{{ site.data.firebase.fn_share_tool }}">

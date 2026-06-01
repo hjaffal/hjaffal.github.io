@@ -18,6 +18,10 @@ share-img: /assets/img/posts/2026-05-30-reporting-is-not-intelligence-stop-decor
 
 Another Tuesday. Another dashboard review. Your team just presented 20 slides of 'what happened.' Pretty charts, green numbers, maybe a red outlier. So what?
 
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:24px 0;border-radius:8px;">
+  <iframe src="https://www.youtube.com/embed/6-oHjzx7cng" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:8px;" allowfullscreen loading="lazy" title="Reporting Is Not Intelligence"></iframe>
+</div>
+
 ## Reporting Is Not Intelligence
 
 Reporting delivers descriptive summaries: what sales were, how many tickets closed. Intelligence applies predictive foresight and prescriptive action to that data. It uses insights to trigger a specific change in operations *before* a loss becomes systemic, turning metrics into immediate operational commands.
