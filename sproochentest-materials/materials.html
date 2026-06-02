@@ -78,6 +78,7 @@ chat_with_me_box: false
     <form id="sp-download-form" onsubmit="submitDownloadEmail(event)">
       <input type="text" id="sp-download-name" placeholder="Your name" required>
       <input type="email" id="sp-download-email" placeholder="your@email.com" required>
+      <input type="text" name="website_url" id="sp-download-honeypot" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit">
         <i class="fas fa-download"></i> Download
       </button>
@@ -254,17 +255,19 @@ function submitDownloadEmail(e) {
   e.preventDefault();
   var name = document.getElementById('sp-download-name').value;
   var email = document.getElementById('sp-download-email').value;
+  var honeypot = document.getElementById('sp-download-honeypot');
+  var honeypotValue = honeypot ? honeypot.value : '';
   if (!email) return;
 
   // Store subscription state
   localStorage.setItem('sp_subscribed', '1');
   localStorage.setItem('sp_email', email);
 
-  // Subscribe via API
+  // Subscribe via API (with honeypot)
   fetch('{{ site.data.firebase.fn_subscribe }}', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, name: name, utm_source: 'materials_download', page_url: window.location.pathname})
+    body: JSON.stringify({email: email, name: name, utm_source: 'materials_download', page_url: window.location.pathname, website_url: honeypotValue})
   }).catch(function(){});
 
   // Trigger download with email explicitly passed

@@ -38,6 +38,7 @@ css:
               <p class="sp-gate-card-desc">Enter your email to see the full list of practice questions for all topics.</p>
               <form class="sp-gate-card-form" id="sp-gate-form">
                 <input type="email" id="sp-gate-email" placeholder="your@email.com" required>
+                <input type="text" name="website_url" id="sp-gate-honeypot" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <button type="submit">Unlock All Questions</button>
               </form>
               <p class="sp-gate-card-note">Already subscribed? <button type="button" id="sp-gate-unlock">Unlock questions</button></p>
@@ -92,7 +93,7 @@ css:
       fetch('{{ site.data.firebase.fn_subscribe }}', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, utm_source: 'sproochentest_gate', page_url: window.location.pathname })
+        body: JSON.stringify({ email: email, utm_source: 'sproochentest_gate', page_url: window.location.pathname, website_url: (document.getElementById('sp-gate-honeypot') || {}).value || '' })
       }).then(function() { unlock(); }).catch(function() { unlock(); });
     });
   }
