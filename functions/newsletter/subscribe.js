@@ -2,7 +2,7 @@ const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 const { Resend } = require("resend");
-const { validateEmail, normalizeEmail, generateUnsubscribeToken } = require("./utils");
+const { validateEmail, normalizeEmail, generateUnsubscribeToken, detectBot } = require("./utils");
 
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 
@@ -255,6 +255,14 @@ const subscribeNewsletter = onRequest(
 
     const body = req.body.data || req.body;
     const { email, utm_source, name, page_url } = body;
+
+    // Bot prevention: honeypot + role-based prefix check
+    const botCheck = detectBot(body);
+    if (botCheck.isBot) {
+      // Return fake success to not tip off the bot
+      res.status(200).json({ result: "success" });
+      return;
+    }
 
     // Validate email format
     if (!validateEmail(email)) {

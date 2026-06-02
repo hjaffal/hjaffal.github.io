@@ -43,10 +43,65 @@ function validateEmail(email) {
 
 /**
  * Normalizes an email address: lowercase + trim.
+ * For Gmail/Googlemail: strips dots and +aliases from the local part
+ * to prevent dot-trick and plus-alias abuse.
  */
 function normalizeEmail(email) {
   if (!email || typeof email !== "string") return "";
-  return email.trim().toLowerCase();
+  let normalized = email.trim().toLowerCase();
+
+  const [local, domain] = normalized.split("@");
+  if (!local || !domain) return normalized;
+
+  // Gmail normalization: strip dots and +aliases
+  if (domain === "gmail.com" || domain === "googlemail.com") {
+    let cleanLocal = local.split("+")[0]; // Remove +alias
+    cleanLocal = cleanLocal.replace(/\./g, ""); // Remove dots
+    return `${cleanLocal}@gmail.com`; // Always normalize to gmail.com
+  }
+
+  return normalized;
+}
+
+/**
+ * Conservative list of role-based email prefixes commonly abused by bots.
+ * Keep this small to avoid false positives on real work emails.
+ */
+const BLOCKED_PREFIXES = [
+  "enquiry@",
+  "customercare@",
+  "loyaltysupport@",
+  "support@",
+  "info@",
+  "noreply@",
+  "no-reply@",
+  "mailer-daemon@",
+  "postmaster@",
+];
+
+/**
+ * Checks if a subscription request looks like a bot.
+ * Returns { isBot: true, reason: string } if blocked, or { isBot: false } if clean.
+ *
+ * Checks:
+ * 1. Honeypot field (website_url) — if populated, it's a bot
+ * 2. Role-based email prefix filter
+ */
+function detectBot(body) {
+  // 1. Honeypot: if the hidden field has a value, it's a bot
+  if (body.website_url && body.website_url.trim().length > 0) {
+    return { isBot: true, reason: "honeypot" };
+  }
+
+  // 2. Role-based prefix filter
+  const email = (body.email || "").trim().toLowerCase();
+  for (const prefix of BLOCKED_PREFIXES) {
+    if (email.startsWith(prefix)) {
+      return { isBot: true, reason: "role_prefix" };
+    }
+  }
+
+  return { isBot: false };
 }
 
 /**
@@ -68,4 +123,5 @@ module.exports = {
   validateEmail,
   normalizeEmail,
   maskEmail,
+  detectBot,
 };

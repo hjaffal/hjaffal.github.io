@@ -13,10 +13,14 @@ function handleNewsletterSubscribe(e, form, source) {
   var fnUrl = document.querySelector('meta[name="fn-subscribe"]');
   var url = fnUrl ? fnUrl.getAttribute('content') : '';
 
+  // Include honeypot field value (should be empty for real users)
+  var honeypot = form.querySelector('input[name="website_url"]');
+  var honeypotValue = honeypot ? honeypot.value : '';
+
   fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, utm_source: source || 'website', page_url: window.location.pathname})
+    body: JSON.stringify({email: email, utm_source: source || 'website', page_url: window.location.pathname, website_url: honeypotValue})
   }).then(function(res) {
     if (res.ok) {
       msg.style.display = 'block';
