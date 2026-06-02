@@ -46,9 +46,13 @@ export async function loadSubscribers() {
 
     // Apply segment filter client-side
     const segmentFilter = $('sub-filter-segment').value;
+    const statusFilter = $('sub-filter-status') ? $('sub-filter-status').value : '';
     let filtered = subs;
     if (segmentFilter) {
-      filtered = subs.filter(s => (s.segments || []).includes(segmentFilter));
+      filtered = filtered.filter(s => (s.segments || []).includes(segmentFilter));
+    }
+    if (statusFilter) {
+      filtered = filtered.filter(s => s.status === statusFilter);
     }
 
     $('sub-total-count').textContent = '(' + filtered.length + ')';
@@ -324,11 +328,15 @@ export function generateCSV(subscribers) {
 export function handleExportCSV() {
   if (!allSubscribers.length) return;
 
-  // Apply segment filter to match what the user sees
+  // Apply segment and status filters to match what the user sees
   const segmentFilter = $('sub-filter-segment') ? $('sub-filter-segment').value : '';
+  const statusFilter = $('sub-filter-status') ? $('sub-filter-status').value : '';
   let subscribers = allSubscribers;
   if (segmentFilter) {
-    subscribers = allSubscribers.filter(s => (s.segments || []).includes(segmentFilter));
+    subscribers = subscribers.filter(s => (s.segments || []).includes(segmentFilter));
+  }
+  if (statusFilter) {
+    subscribers = subscribers.filter(s => s.status === statusFilter);
   }
 
   if (!subscribers.length) return;
@@ -378,6 +386,12 @@ export function initSubscribers() {
   const segmentFilter = $('sub-filter-segment');
   if (segmentFilter) {
     segmentFilter.addEventListener('change', () => loadSubscribers());
+  }
+
+  // Status filter — reload subscribers when filter changes
+  const statusFilter = $('sub-filter-status');
+  if (statusFilter) {
+    statusFilter.addEventListener('change', () => loadSubscribers());
   }
 
   // Export CSV button
