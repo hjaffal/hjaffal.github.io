@@ -11,6 +11,8 @@ keywords:
   - "misleading metrics"
   - "false confidence"
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-02-false-confidence-metrics-are-a-digital-opiate-for-operations.webp
+share-img: /assets/img/posts/2026-06-02-false-confidence-metrics-are-a-digital-opiate-for-operations.webp
 ---
 
 Your dashboard glows green. Everything looks fine. Your boss, and their boss, sees the same green. Problem solved, right? Maybe not. That calm, reassuring hue might just be the digital equivalent of an opiate, numbing you to the real pressure leaks bubbling under the surface.
