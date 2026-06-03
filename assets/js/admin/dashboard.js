@@ -81,14 +81,18 @@ function renderNewsletterMetrics(data, editions) {
 
   const latestEdition = editions.length > 0 ? editions[0] : null;
 
-  // Compute average open/click rates
-  const editionsWithRates = editions.filter(e => e.openRate != null);
+  // Compute average open/click/ctor rates (exclude testing segment)
+  const editionsWithRates = editions.filter(e => e.openRate != null && e.segment !== 'testing');
   const avgOpen = editionsWithRates.length > 0
     ? (editionsWithRates.reduce((sum, e) => sum + e.openRate, 0) / editionsWithRates.length).toFixed(1)
     : '—';
-  const editionsWithClicks = editions.filter(e => e.clickRate != null);
+  const editionsWithClicks = editions.filter(e => e.clickRate != null && e.segment !== 'testing');
   const avgClick = editionsWithClicks.length > 0
     ? (editionsWithClicks.reduce((sum, e) => sum + e.clickRate, 0) / editionsWithClicks.length).toFixed(1)
+    : '—';
+  const editionsWithCtor = editions.filter(e => e.ctor != null && e.segment !== 'testing');
+  const avgCtor = editionsWithCtor.length > 0
+    ? (editionsWithCtor.reduce((sum, e) => sum + e.ctor, 0) / editionsWithCtor.length).toFixed(1)
     : '—';
 
   let html =
@@ -110,7 +114,11 @@ function renderNewsletterMetrics(data, editions) {
     '</div>' +
     '<div class="nla-dash-metric">' +
       '<span class="nla-dash-metric-value">' + (avgClick !== '—' ? avgClick + '%' : '—') + '</span>' +
-      '<span class="nla-dash-metric-label">Avg click rate</span>' +
+      '<span class="nla-dash-metric-label">Avg CTR</span>' +
+    '</div>' +
+    '<div class="nla-dash-metric">' +
+      '<span class="nla-dash-metric-value">' + (avgCtor !== '—' ? avgCtor + '%' : '—') + '</span>' +
+      '<span class="nla-dash-metric-label">Avg CTOR</span>' +
     '</div>';
 
   // Last edition statistics

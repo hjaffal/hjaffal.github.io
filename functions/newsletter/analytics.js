@@ -93,11 +93,18 @@ async function handleEditionsList(_req, res) {
       const uniqueClicks = uniqueClickSubscribers.size;
 
       // Calculate rates
+      // Open Rate = uniqueOpens / recipients
+      // CTR (Click-Through Rate) = uniqueClicks / recipients
+      // CTOR (Click-to-Open Rate) = uniqueClicks / uniqueOpens
       let openRate = null;
       let clickRate = null;
+      let ctor = null;
       if (recipientCount > 0) {
         openRate = (uniqueOpens / recipientCount) * 100;
         clickRate = (uniqueClicks / recipientCount) * 100;
+      }
+      if (uniqueOpens > 0) {
+        ctor = (uniqueClicks / uniqueOpens) * 100;
       }
 
       editions.push({
@@ -109,6 +116,7 @@ async function handleEditionsList(_req, res) {
         uniqueClicks,
         openRate,
         clickRate,
+        ctor,
         sentAt: data.sentAt ? data.sentAt.toDate().toISOString() : null,
       });
     }
@@ -248,6 +256,7 @@ async function handleEditionDetail(req, res) {
       uniqueClicks,
       openRate,
       clickRate,
+      ctor: uniqueOpens > 0 ? (uniqueClicks / uniqueOpens) * 100 : null,
       clickedLinks,
       opensWithEmail,
       clicksWithEmail,

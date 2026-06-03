@@ -56,9 +56,10 @@ export async function loadAnalytics() {
         { name: 'Sent', sort: true },
         { name: 'Recipients', sort: true },
         { name: 'Open Rate', sort: true },
-        { name: 'Click Rate', sort: true },
+        { name: 'CTR', sort: true },
+        { name: 'CTOR', sort: true },
         { name: 'Actions', sort: false, formatter: (_, row) => {
-          const id = row.cells[6].data;
+          const id = row.cells[7].data;
           return gridjs.html(`<button class="nla-btn-sm" onclick="viewEdition('${id}')">Detail</button>`);
         }},
         { name: 'id', hidden: true }
@@ -69,6 +70,7 @@ export async function loadAnalytics() {
         e.recipientCount,
         e.openRate != null ? e.openRate.toFixed(1) + '%' : '—',
         e.clickRate != null ? e.clickRate.toFixed(1) + '%' : '—',
+        e.ctor != null ? e.ctor.toFixed(1) + '%' : '—',
         '',
         e.id
       ]),
@@ -117,7 +119,8 @@ export async function viewEdition(id) {
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.uniqueOpens || 0}</div><div class="nla-edition-stat-label">Opens</div></div>
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.openRate != null ? data.openRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Open Rate</div></div>
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.uniqueClicks || 0}</div><div class="nla-edition-stat-label">Clicks</div></div>
-          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.clickRate != null ? data.clickRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">Click Rate</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.clickRate != null ? data.clickRate.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">CTR</div></div>
+          <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.ctor != null ? data.ctor.toFixed(1) + '%' : '—'}</div><div class="nla-edition-stat-label">CTOR</div></div>
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.failedSends || 0}</div><div class="nla-edition-stat-label">Failed</div></div>
         </div>
         ${clickedLinks.length > 0 ? '<h4 class="nla-section-title">Clicked Links</h4><div id="edition-links-grid"></div>' : ''}
