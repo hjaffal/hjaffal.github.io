@@ -86,6 +86,7 @@ const BLOCKED_PREFIXES = [
  * Checks:
  * 1. Honeypot field (website_url) — if populated, it's a bot
  * 2. Role-based email prefix filter
+ * 3. Excessive dots in Gmail local part (dot-trick abuse)
  */
 function detectBot(body) {
   // 1. Honeypot: if the hidden field has a value, it's a bot
@@ -98,6 +99,15 @@ function detectBot(body) {
   for (const prefix of BLOCKED_PREFIXES) {
     if (email.startsWith(prefix)) {
       return { isBot: true, reason: "role_prefix" };
+    }
+  }
+
+  // 3. Excessive dots in Gmail (dot-trick abuse indicator)
+  const [local, domain] = email.split("@");
+  if (local && (domain === "gmail.com" || domain === "googlemail.com")) {
+    const dotCount = (local.match(/\./g) || []).length;
+    if (dotCount >= 4) {
+      return { isBot: true, reason: "gmail_dot_abuse" };
     }
   }
 

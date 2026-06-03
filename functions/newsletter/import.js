@@ -109,7 +109,7 @@ const importSubscribers = onRequest(
       toImport.push({
         email: normalizedEmailAddr,
         status: record.status || "active",
-        segments: ["main_website", "sproochentest_prep"],
+        segments: ["main_website"],
         utmSource: "beehiiv",
         unsubscribeToken: token,
         unsubscribeTokenHash: hash,
