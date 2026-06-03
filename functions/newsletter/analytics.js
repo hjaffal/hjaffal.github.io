@@ -189,6 +189,52 @@ async function handleEditionDetail(req, res) {
       .map(([url, clicks]) => ({ url, clicks }))
       .sort((a, b) => b.clicks - a.clicks);
 
+    // Build per-subscriber open list (who opened and when)
+    const opensList = opensSnapshot.docs.map(doc => {
+      const d = doc.data();
+      return {
+        subscriberId: d.subscriberId,
+        timestamp: d.timestamp ? d.timestamp.toDate().toISOString() : null,
+      };
+    });
+
+    // Build per-subscriber click list (who clicked what and when)
+    const clicksList = clicksSnapshot.docs.map(doc => {
+      const d = doc.data();
+      return {
+        subscriberId: d.subscriberId,
+        url: d.url || "",
+        timestamp: d.timestamp ? d.timestamp.toDate().toISOString() : null,
+      };
+    });
+
+    // Resolve subscriber emails for opens and clicks
+    const allSubIds = new Set([
+      ...opensList.map(o => o.subscriberId),
+      ...clicksList.map(c => c.subscriberId),
+    ]);
+    const subEmailMap = {};
+    if (allSubIds.size > 0) {
+      const subIds = Array.from(allSubIds).slice(0, 100); // limit to 100
+      const subDocs = await Promise.all(
+        subIds.map(id => db.collection("subscribers").doc(id).get())
+      );
+      subDocs.forEach(doc => {
+        if (doc.exists) subEmailMap[doc.id] = doc.data().email || doc.id;
+      });
+    }
+
+    const opensWithEmail = opensList.map(o => ({
+      email: subEmailMap[o.subscriberId] || o.subscriberId,
+      timestamp: o.timestamp,
+    }));
+
+    const clicksWithEmail = clicksList.map(c => ({
+      email: subEmailMap[c.subscriberId] || c.subscriberId,
+      url: c.url,
+      timestamp: c.timestamp,
+    }));
+
     res.status(200).json({
       editionId,
       subject: data.subject || "",
@@ -203,6 +249,8 @@ async function handleEditionDetail(req, res) {
       openRate,
       clickRate,
       clickedLinks,
+      opensWithEmail,
+      clicksWithEmail,
       failedSends: data.failedSends || 0,
     });
   } catch (err) {

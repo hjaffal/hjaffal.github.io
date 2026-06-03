@@ -14,6 +14,18 @@ let allSubscribers = [];
 let subscribersGrid = null;
 let subscribersInitialized = false;
 
+/**
+ * Calculate engagement score (0-5) from opens and clicks.
+ * Clicks weighted 2x higher than opens.
+ * Score = min(5, floor((opens * 1 + clicks * 2) / 3))
+ * 0 = no engagement, 5 = highly engaged
+ */
+function calcEngagement(opens, clicks) {
+  if (!opens && !clicks) return 0;
+  const raw = (opens * 1 + clicks * 2) / 3;
+  return Math.min(5, Math.max(1, Math.ceil(raw)));
+}
+
 // --- Public Functions ---
 
 /**
@@ -80,14 +92,17 @@ export async function loadSubscribers() {
         { name: 'Name', sort: true },
         { name: 'Status', sort: true, formatter: (cell) => window.gridjs.html('<span class="nla-badge nla-badge-' + cell + '">' + cell + '</span>') },
         { name: 'Segments', sort: true },
-        { name: 'Page', sort: true, formatter: (cell) => {
-          if (!cell) return '—';
-          var short = cell.length > 25 ? cell.substring(0, 25) + '…' : cell;
-          return window.gridjs.html('<span title="' + escHtml(cell) + '" style="font-size:0.7rem;color:var(--text-soft)">' + escHtml(short) + '</span>');
+        { name: 'Opens', sort: true, formatter: (cell) => window.gridjs.html('<span style="font-weight:600;color:' + (cell > 0 ? '#10B981' : '#94A3B8') + '">' + cell + '</span>') },
+        { name: 'Clicks', sort: true, formatter: (cell) => window.gridjs.html('<span style="font-weight:600;color:' + (cell > 0 ? '#9333EA' : '#94A3B8') + '">' + cell + '</span>') },
+        { name: 'Engagement', sort: true, formatter: (cell) => {
+          const colors = ['#94A3B8', '#EF4444', '#F59E0B', '#F59E0B', '#10B981', '#10B981', '#9333EA'];
+          const labels = ['None', '⚡1', '⚡2', '⚡3', '⚡4', '⚡5'];
+          const c = Math.min(Math.max(cell, 0), 5);
+          return window.gridjs.html('<span style="font-weight:700;color:' + colors[c] + '">' + labels[c] + '</span>');
         }},
         { name: 'Subscribed', sort: true },
         { name: 'Actions', sort: false, formatter: (_, row) => {
-          const id = row.cells[7].data;
+          const id = row.cells[9].data;
           const email = row.cells[0].data;
           const status = row.cells[2].data;
           const deactivateBtn = status === 'active'
@@ -108,7 +123,9 @@ export async function loadSubscribers() {
         s.name || '',
         s.status,
         (s.segments || []).join(', '),
-        s.pageUrl || '',
+        s.openCount || 0,
+        s.clickCount || 0,
+        calcEngagement(s.openCount || 0, s.clickCount || 0),
         formatDate(s.subscribedAt),
         '',
         s.id

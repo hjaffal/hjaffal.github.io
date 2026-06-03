@@ -53,6 +53,20 @@ const trackOpen = onRequest(
         },
         { merge: true }
       );
+
+      // Update subscriber's lastOpenedAt for engagement tracking
+      const subscriberSnapshot = await db.collection("subscribers")
+        .where(admin.firestore.FieldPath.documentId(), "==", subscriberId)
+        .limit(1)
+        .get();
+
+      if (!subscriberSnapshot.empty) {
+        await subscriberSnapshot.docs[0].ref.update({
+          lastOpenedAt: admin.firestore.FieldValue.serverTimestamp(),
+          lastOpenedEdition: editionId,
+          openCount: admin.firestore.FieldValue.increment(1),
+        });
+      }
     } catch (err) {
       // Log error but still return the PNG
       console.error("Failed to record open event:", err);
@@ -112,6 +126,21 @@ const trackClick = onRequest(
         url: destinationUrl,
         timestamp: admin.firestore.FieldValue.serverTimestamp(),
       });
+
+      // Update subscriber's engagement timestamp
+      const subscriberSnapshot = await db.collection("subscribers")
+        .where(admin.firestore.FieldPath.documentId(), "==", subscriberId)
+        .limit(1)
+        .get();
+
+      if (!subscriberSnapshot.empty) {
+        await subscriberSnapshot.docs[0].ref.update({
+          lastClickedAt: admin.firestore.FieldValue.serverTimestamp(),
+          lastOpenedAt: admin.firestore.FieldValue.serverTimestamp(),
+          lastOpenedEdition: editionId,
+          clickCount: admin.firestore.FieldValue.increment(1),
+        });
+      }
     } catch (err) {
       // Log error but still redirect
       console.error("Failed to record click event:", err);

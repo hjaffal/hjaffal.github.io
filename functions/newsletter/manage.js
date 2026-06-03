@@ -46,6 +46,8 @@ const manageSubscribers = onRequest(
       await handleDelete(req, res);
     } else if (req.method === "POST" && action === "update") {
       await handleUpdate(req, res);
+    } else if (req.method === "POST" && action === "backfillEngagement") {
+      await handleBackfillEngagement(req, res);
     } else {
       res.status(400).json({ error: "Invalid action or method" });
     }
@@ -83,6 +85,10 @@ async function handleList(req, res) {
         utmSource: data.utmSource || "",
         pageUrl: data.pageUrl || "",
         subscribedAt: data.subscribedAt ? data.subscribedAt.toDate().toISOString() : null,
+        lastOpenedAt: data.lastOpenedAt ? data.lastOpenedAt.toDate().toISOString() : null,
+        lastClickedAt: data.lastClickedAt ? data.lastClickedAt.toDate().toISOString() : null,
+        openCount: data.openCount || 0,
+        clickCount: data.clickCount || 0,
       };
     });
 
@@ -280,6 +286,61 @@ async function handleUpdate(req, res) {
   } catch (err) {
     console.error("Error updating subscriber:", err);
     res.status(500).json({ error: "Failed to update subscriber" });
+  }
+}
+
+/**
+ * Backfill openCount, clickCount, lastOpenedAt, lastClickedAt from events collection.
+ * One-time admin action to populate engagement data from historical events.
+ */
+async function handleBackfillEngagement(_req, res) {
+  const db = admin.firestore();
+
+  try {
+    // Fetch all events
+    const eventsSnapshot = await db.collection("events").get();
+
+    // Aggregate per subscriber
+    const stats = {};
+    eventsSnapshot.docs.forEach(doc => {
+      const data = doc.data();
+      const subId = data.subscriberId;
+      if (!subId) return;
+
+      if (!stats[subId]) stats[subId] = { opens: 0, clicks: 0, lastOpen: null, lastClick: null };
+
+      if (data.type === "open") {
+        stats[subId].opens++;
+        const ts = data.timestamp ? data.timestamp.toDate() : null;
+        if (ts && (!stats[subId].lastOpen || ts > stats[subId].lastOpen)) stats[subId].lastOpen = ts;
+      } else if (data.type === "click") {
+        stats[subId].clicks++;
+        const ts = data.timestamp ? data.timestamp.toDate() : null;
+        if (ts && (!stats[subId].lastClick || ts > stats[subId].lastClick)) stats[subId].lastClick = ts;
+      }
+    });
+
+    // Update each subscriber
+    let updated = 0;
+    let notFound = 0;
+
+    for (const [subId, s] of Object.entries(stats)) {
+      const docRef = db.collection("subscribers").doc(subId);
+      const doc = await docRef.get();
+      if (!doc.exists) { notFound++; continue; }
+
+      const updateData = { openCount: s.opens, clickCount: s.clicks };
+      if (s.lastOpen) updateData.lastOpenedAt = admin.firestore.Timestamp.fromDate(s.lastOpen);
+      if (s.lastClick) updateData.lastClickedAt = admin.firestore.Timestamp.fromDate(s.lastClick);
+
+      await docRef.update(updateData);
+      updated++;
+    }
+
+    res.status(200).json({ result: "success", updated, notFound, totalEvents: eventsSnapshot.size });
+  } catch (err) {
+    console.error("Backfill engagement error:", err);
+    res.status(500).json({ error: "Failed to backfill: " + err.message });
   }
 }
 

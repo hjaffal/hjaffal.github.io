@@ -121,6 +121,8 @@ export async function viewEdition(id) {
           <div class="nla-edition-stat"><div class="nla-edition-stat-value">${data.failedSends || 0}</div><div class="nla-edition-stat-label">Failed</div></div>
         </div>
         ${clickedLinks.length > 0 ? '<h4 class="nla-section-title">Clicked Links</h4><div id="edition-links-grid"></div>' : ''}
+        ${(data.opensWithEmail || []).length > 0 ? '<h4 class="nla-section-title">Who Opened</h4><div id="edition-opens-grid"></div>' : ''}
+        ${(data.clicksWithEmail || []).length > 0 ? '<h4 class="nla-section-title">Who Clicked</h4><div id="edition-clicks-grid"></div>' : ''}
       </div>
     `;
 
@@ -143,6 +145,53 @@ export async function viewEdition(id) {
           td: 'nla-gridjs-td'
         }
       }).render(document.getElementById('edition-links-grid'));
+    }
+
+    // Render who opened grid
+    if ((data.opensWithEmail || []).length > 0) {
+      new gridjs.Grid({
+        columns: [
+          { name: 'Email', sort: true },
+          { name: 'Opened At', sort: true }
+        ],
+        data: data.opensWithEmail.map(function(o) {
+          return [o.email, formatDate(o.timestamp)];
+        }),
+        sort: true,
+        pagination: { enabled: true, limit: 20 },
+        className: {
+          container: 'nla-gridjs',
+          table: 'nla-gridjs-table',
+          th: 'nla-gridjs-th',
+          td: 'nla-gridjs-td'
+        }
+      }).render(document.getElementById('edition-opens-grid'));
+    }
+
+    // Render who clicked grid
+    if ((data.clicksWithEmail || []).length > 0) {
+      new gridjs.Grid({
+        columns: [
+          { name: 'Email', sort: true },
+          { name: 'Link', sort: true, formatter: (cell) => {
+            if (!cell) return '—';
+            const short = cell.length > 50 ? cell.substring(0, 50) + '…' : cell;
+            return gridjs.html('<span title="' + escHtml(cell) + '" style="font-size:0.75rem;">' + escHtml(short) + '</span>');
+          }},
+          { name: 'Clicked At', sort: true }
+        ],
+        data: data.clicksWithEmail.map(function(c) {
+          return [c.email, c.url, formatDate(c.timestamp)];
+        }),
+        sort: true,
+        pagination: { enabled: true, limit: 20 },
+        className: {
+          container: 'nla-gridjs',
+          table: 'nla-gridjs-table',
+          th: 'nla-gridjs-th',
+          td: 'nla-gridjs-td'
+        }
+      }).render(document.getElementById('edition-clicks-grid'));
     }
   } catch (err) {
     detail.innerHTML = '<button class="nla-back-btn" onclick="backToAnalyticsList()" type="button">← Back to list</button><div class="nla-error">' + escHtml(err.message) + '</div>';
