@@ -20,7 +20,32 @@ function renderNewsletter({ subject, introHtml, posts, featuredPost, toolInvitat
       <div style="font-size:15px;color:#334155;line-height:1.7;">${introHtml}</div>
     </td></tr>` : "";
 
-  const postsHtml = (posts || []).map(post => `
+  // Single post layout: big image + excerpt + CTA button
+  const isSinglePost = (posts || []).length === 1 && !featuredPost;
+  let postsHtml = "";
+
+  if (isSinglePost) {
+    const post = posts[0];
+    const postImage = post.image
+      ? `<tr><td style="padding:0;">
+          <a href="${escapeHtml(post.url)}"><img src="https://hasanjaffal.com${escapeHtml(post.image)}" alt="" style="width:100%;height:auto;display:block;border-radius:10px 10px 0 0;" /></a>
+        </td></tr>` : "";
+
+    postsHtml = `
+    <tr><td style="padding:0 0 24px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;overflow:hidden;">
+        ${postImage}
+        <tr><td style="padding:28px 28px 12px;">
+          <p style="margin:0 0 12px;font-size:20px;font-weight:800;color:#0F172A;line-height:1.3;">${escapeHtml(post.title)}</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#475569;line-height:1.7;">${escapeHtml(post.excerpt)}</p>
+        </td></tr>
+        <tr><td style="padding:0 28px 28px;">
+          <a href="${escapeHtml(post.url)}" style="display:inline-block;padding:14px 32px;background:#9333EA;color:#ffffff;font-size:14px;font-weight:700;border-radius:6px;text-decoration:none;">Read the full article →</a>
+        </td></tr>
+      </table>
+    </td></tr>`;
+  } else {
+    postsHtml = (posts || []).map(post => `
     <tr><td style="padding:0 0 16px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:8px;overflow:hidden;">
         <tr><td style="padding:20px 24px;">
@@ -30,6 +55,7 @@ function renderNewsletter({ subject, introHtml, posts, featuredPost, toolInvitat
         </td></tr>
       </table>
     </td></tr>`).join("");
+  }
 
   const featuredImageHtml = (featuredPost && featuredPost.image)
     ? `<tr><td style="padding:0;">

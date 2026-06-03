@@ -111,7 +111,7 @@ export async function handleComposeSubmit(e) {
   // --- Build payload ---
   const selectedPosts = Array.from(checked).map(cb => {
     const p = postsData[parseInt(cb.value)];
-    return { title: p.title, excerpt: p.excerpt || '', url: p.url };
+    return { title: p.title, excerpt: p.excerpt || '', url: p.url, image: p.thumbnailImg || '' };
   });
 
   let featuredPost = null;

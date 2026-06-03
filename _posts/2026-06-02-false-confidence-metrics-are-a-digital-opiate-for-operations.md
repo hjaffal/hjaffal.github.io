@@ -27,9 +27,9 @@ This isn't just a BI problem; it's an operational failure. [Reporting is not int
 
 The danger of misleading metrics is subtle. It's not a glaring red warning that screams "Act now!" Instead, it's the absence of a warning, the comforting hum of "normal" that prevents any escalation. Think of it like a radar system showing clear skies when a silent, fast-moving threat is already in your airspace. You're lulled into complacency, burning critical time until the threat is unavoidable.
 
-I’ve seen this countless times in operations: BI teams publish impressive dashboards showing 'customer satisfaction' at 92%, yet churn is quietly escalating in a specific segment. Why? The 'satisfaction' metric only captured survey responses, not actual customer behavior or the intense competitive pressure in that niche. It created a collective sense of **Dashboard Sedation** across the leadership team.
+I’ve seen this countless times in operations: BI teams publish impressive dashboards showing 'customer satisfaction' at 92%, yet churn is quietly escalating in a specific segment. Why? The 'satisfaction' metric only captured survey responses, not actual customer behavior or the intense competitive pressure in that niche. It created a collective sense of [Dashboard Sedation](/lexicon/dashboard-sedation/) across the leadership team.
 
-If you ignore these subtle signals, you won't just miss a trend; you'll face concrete, operational consequences. Decisions slow down. Losses mount. Your organization develops an **Escalation Debt** because no one is empowered to act on the 'fine' metrics that actually indicate trouble. Eventually, a crisis hits, and everyone asks why the dashboards didn't show it. The truth? They did, but nobody knew what to *do* with the information.
+If you ignore these subtle signals, you won't just miss a trend; you'll face concrete, operational consequences. Decisions slow down. Losses mount. Your organization develops an [Escalation Debt](/lexicon/escalation-debt/) because no one is empowered to act on the 'fine' metrics that actually indicate trouble. Eventually, a crisis hits, and everyone asks why the dashboards didn't show it. The truth? They did, but nobody knew what to *do* with the information.
 
 ### From Decoration to Decision Tripwires
 

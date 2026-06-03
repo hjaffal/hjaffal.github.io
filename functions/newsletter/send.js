@@ -428,7 +428,17 @@ function parseItem(itemXml, isAtom) {
   // Extract tags/categories
   const tags = extractCategories(itemXml, isAtom);
 
-  return { title, date, excerpt, url, tags };
+  // Derive thumbnail image from URL slug
+  // Posts use pattern: /assets/img/posts/{slug}.webp
+  let thumbnailImg = "";
+  if (url) {
+    const slug = url.replace(/^https?:\/\/[^/]+\//, "").replace(/\/$/, "");
+    if (slug) {
+      thumbnailImg = `/assets/img/posts/${slug}.webp`;
+    }
+  }
+
+  return { title, date, excerpt, url, tags, thumbnailImg };
 }
 
 /**
