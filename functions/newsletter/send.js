@@ -226,6 +226,14 @@ async function sendToSubscriber(resend, subscriber, editionId, subject, introHtm
       },
     });
 
+    // Increment editions received counter on subscriber
+    try {
+      const db = admin.firestore();
+      await db.collection("subscribers").doc(subscriber.id).update({
+        editionsReceived: admin.firestore.FieldValue.increment(1),
+      });
+    } catch (e) { /* non-critical */ }
+
     return true;
   } catch (err) {
     console.error(`Failed to send to ${subscriber.email}:`, err.message || err);

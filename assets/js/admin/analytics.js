@@ -214,6 +214,11 @@ export async function viewEditionFromOverview(id) {
   const panel = $('panel-analytics');
   if (panel) { panel.classList.add('active'); panel.hidden = false; }
 
+  // Hide loading and list, show detail directly
+  hide($('analytics-loading'));
+  hide($('analytics-list'));
+  show($('analytics-detail'));
+
   // Show the specific edition detail directly
   viewEdition(id);
 }

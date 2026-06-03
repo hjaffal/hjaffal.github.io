@@ -15,15 +15,27 @@ let subscribersGrid = null;
 let subscribersInitialized = false;
 
 /**
- * Calculate engagement score (0-5) from opens and clicks.
+ * Calculate engagement score (0-5) normalized by editions received.
  * Clicks weighted 2x higher than opens.
- * Score = min(5, floor((opens * 1 + clicks * 2) / 3))
- * 0 = no engagement, 5 = highly engaged
+ * Score = open rate + click rate (weighted), mapped to 0-5.
+ *
+ * Example:
+ * - 1 edition, 1 open, 1 click → (1/1)*1 + (1/1)*2 = 3 → score 5
+ * - 10 editions, 3 opens, 1 click → (3/10)*1 + (1/10)*2 = 0.5 → score 2
+ * - 10 editions, 8 opens, 5 clicks → (8/10)*1 + (5/10)*2 = 1.8 → score 5
  */
-function calcEngagement(opens, clicks) {
+function calcEngagement(opens, clicks, editionsReceived) {
   if (!opens && !clicks) return 0;
-  const raw = (opens * 1 + clicks * 2) / 3;
-  return Math.min(5, Math.max(1, Math.ceil(raw)));
+  const editions = Math.max(editionsReceived || 1, 1);
+  const openRate = opens / editions;     // 0 to 1+
+  const clickRate = clicks / editions;   // 0 to 1+
+  const raw = (openRate * 1 + clickRate * 2); // 0 to 3 (max: all opened + all clicked)
+  // Map: 0→0, 0.3→1, 0.6→2, 1.0→3, 1.5→4, 2.0+→5
+  if (raw >= 1.5) return 5;
+  if (raw >= 1.0) return 4;
+  if (raw >= 0.6) return 3;
+  if (raw >= 0.3) return 2;
+  return 1;
 }
 
 // --- Public Functions ---
@@ -125,7 +137,7 @@ export async function loadSubscribers() {
         (s.segments || []).join(', '),
         s.openCount || 0,
         s.clickCount || 0,
-        calcEngagement(s.openCount || 0, s.clickCount || 0),
+        calcEngagement(s.openCount || 0, s.clickCount || 0, s.editionsReceived || 0),
         formatDate(s.subscribedAt),
         '',
         s.id

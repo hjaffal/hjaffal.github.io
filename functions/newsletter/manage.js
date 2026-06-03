@@ -89,6 +89,7 @@ async function handleList(req, res) {
         lastClickedAt: data.lastClickedAt ? data.lastClickedAt.toDate().toISOString() : null,
         openCount: data.openCount || 0,
         clickCount: data.clickCount || 0,
+        editionsReceived: data.editionsReceived || 0,
       };
     });
 
@@ -307,18 +308,24 @@ async function handleBackfillEngagement(_req, res) {
       const subId = data.subscriberId;
       if (!subId) return;
 
-      if (!stats[subId]) stats[subId] = { opens: 0, clicks: 0, lastOpen: null, lastClick: null };
+      if (!stats[subId]) stats[subId] = { opens: 0, clicks: 0, lastOpen: null, lastClick: null, editions: new Set() };
 
       if (data.type === "open") {
         stats[subId].opens++;
+        if (data.editionId) stats[subId].editions.add(data.editionId);
         const ts = data.timestamp ? data.timestamp.toDate() : null;
         if (ts && (!stats[subId].lastOpen || ts > stats[subId].lastOpen)) stats[subId].lastOpen = ts;
       } else if (data.type === "click") {
         stats[subId].clicks++;
+        if (data.editionId) stats[subId].editions.add(data.editionId);
         const ts = data.timestamp ? data.timestamp.toDate() : null;
         if (ts && (!stats[subId].lastClick || ts > stats[subId].lastClick)) stats[subId].lastClick = ts;
       }
     });
+
+    // Also count total editions sent to estimate editionsReceived
+    const editionsSnapshot = await db.collection("editions").get();
+    const totalEditions = editionsSnapshot.size;
 
     // Update each subscriber
     let updated = 0;
@@ -329,7 +336,11 @@ async function handleBackfillEngagement(_req, res) {
       const doc = await docRef.get();
       if (!doc.exists) { notFound++; continue; }
 
-      const updateData = { openCount: s.opens, clickCount: s.clicks };
+      const updateData = {
+        openCount: s.opens,
+        clickCount: s.clicks,
+        editionsReceived: Math.max(s.editions.size, totalEditions),
+      };
       if (s.lastOpen) updateData.lastOpenedAt = admin.firestore.Timestamp.fromDate(s.lastOpen);
       if (s.lastClick) updateData.lastClickedAt = admin.firestore.Timestamp.fromDate(s.lastClick);
 
@@ -337,7 +348,17 @@ async function handleBackfillEngagement(_req, res) {
       updated++;
     }
 
-    res.status(200).json({ result: "success", updated, notFound, totalEvents: eventsSnapshot.size });
+    // For subscribers with no events, set editionsReceived based on total editions sent
+    const allSubsSnapshot = await db.collection("subscribers").get();
+    let noEventUpdated = 0;
+    for (const doc of allSubsSnapshot.docs) {
+      if (!stats[doc.id]) {
+        await doc.ref.update({ openCount: 0, clickCount: 0, editionsReceived: totalEditions });
+        noEventUpdated++;
+      }
+    }
+
+    res.status(200).json({ result: "success", updated, noEventUpdated, notFound, totalEvents: eventsSnapshot.size, totalEditions });
   } catch (err) {
     console.error("Backfill engagement error:", err);
     res.status(500).json({ error: "Failed to backfill: " + err.message });

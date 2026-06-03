@@ -115,7 +115,7 @@ function renderNewsletterMetrics(data, editions) {
 
   // Last edition statistics
   if (latestEdition) {
-    html += '<div class="nla-dash-metric-group nla-dash-metric-wide">' +
+    html += '<div class="nla-dash-metric-group nla-dash-metric-wide nla-dash-clickable" data-action="view-edition" data-id="' + latestEdition.id + '" style="cursor:pointer;" title="Click to view edition analytics">' +
       '<h4 class="nla-dash-metric-group-title">Last Edition</h4>' +
       '<div class="nla-dash-metric-group-content">' +
         '<span class="nla-dash-last-edition-title">' + escHtml(latestEdition.subject) + '</span>' +
@@ -130,6 +130,14 @@ function renderNewsletterMetrics(data, editions) {
   }
 
   container.innerHTML = html;
+
+  // Click handler for last edition
+  container.addEventListener('click', function(e) {
+    const el = e.target.closest('[data-action="view-edition"]');
+    if (el && el.dataset.id && window.viewEditionFromOverview) {
+      window.viewEditionFromOverview(el.dataset.id);
+    }
+  });
 }
 
 /**
@@ -363,6 +371,61 @@ function renderActivity(posts, editions) {
       window.editPost(title);
     }
   });
+}
+
+/**
+ * Render subscriber activity feed (recent subscribes/unsubscribes).
+ */
+async function renderSubscriberActivity() {
+  const container = $('dash-subscriber-activity');
+  if (!container) return;
+
+  try {
+    const data = await apiFetch(getApiUrls().subscribers + '?action=list');
+    const subs = data.subscribers || [];
+
+    // Build a timeline of subscribe/unsubscribe events
+    const events = [];
+    subs.forEach(s => {
+      if (s.subscribedAt) {
+        events.push({ email: s.email, type: 'subscribed', date: s.subscribedAt });
+      }
+      if (s.status === 'unsubscribed' && s.lastOpenedAt) {
+        // Use lastOpenedAt as approximate unsubscribe time (not ideal but available)
+      }
+    });
+
+    // Also check for unsubscribed users — they have status but no unsubscribedAt in the API
+    // For now, show most recent subscriptions sorted by date
+    const sorted = subs
+      .filter(s => s.subscribedAt)
+      .sort((a, b) => new Date(b.subscribedAt) - new Date(a.subscribedAt))
+      .slice(0, 15);
+
+    if (sorted.length === 0) {
+      container.innerHTML = '<p class="nla-dash-empty">No subscriber activity yet.</p>';
+      return;
+    }
+
+    let html = '<div class="nla-dash-activity-list">';
+    sorted.forEach(s => {
+      const isActive = s.status === 'active';
+      const icon = isActive ? '🟢' : '🔴';
+      const label = isActive ? 'Subscribed' : 'Unsubscribed';
+      const emailShort = s.email.length > 24 ? s.email.substring(0, 22) + '…' : s.email;
+      html += '<div class="nla-dash-activity-item">' +
+        '<span class="nla-dash-activity-icon">' + icon + '</span>' +
+        '<div class="nla-dash-activity-content">' +
+          '<span class="nla-dash-activity-title">' + escHtml(emailShort) + '</span>' +
+          '<span class="nla-dash-activity-meta">' + label + ' · ' + formatDate(s.subscribedAt) + '</span>' +
+        '</div>' +
+      '</div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  } catch (e) {
+    container.innerHTML = '<p class="nla-dash-empty">Failed to load.</p>';
+  }
 }
 
 /**
@@ -759,6 +822,7 @@ export async function loadOverview() {
   renderTopicCoverage(posts);
   renderDownloadsMetrics(downloadStats);
   renderActivity(posts, editions);
+  renderSubscriberActivity();
 
   // Render charts after a frame to ensure containers are visible and sized
   requestAnimationFrame(function() {
