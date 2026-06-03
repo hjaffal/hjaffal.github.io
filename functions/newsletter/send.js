@@ -189,6 +189,7 @@ async function sendToSubscriber(resend, subscriber, editionId, subject, introHtm
     // Rewrite all post links through click proxy
     const rewrittenPosts = (posts || []).map((post) => ({
       ...post,
+      originalUrl: post.url,
       url: rewriteLink(post.url, trackingToken),
     }));
 
@@ -539,15 +540,15 @@ function stripHtml(html) {
 }
 
 /**
- * Truncates excerpt to a reasonable length (200 chars).
+ * Truncates excerpt to a reasonable length (500 chars for richer email previews).
  *
  * @param {string} text - The text to truncate
  * @returns {string} Truncated text
  */
 function truncateExcerpt(text) {
   const plain = stripHtml(text);
-  if (plain.length <= 200) return plain;
-  return plain.substring(0, 197) + "...";
+  if (plain.length <= 500) return plain;
+  return plain.substring(0, 497) + "...";
 }
 
 /**

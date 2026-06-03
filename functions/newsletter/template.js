@@ -26,9 +26,17 @@ function renderNewsletter({ subject, introHtml, posts, featuredPost, toolInvitat
 
   if (isSinglePost) {
     const post = posts[0];
-    const postImage = post.image
+    // Derive image from URL if not provided
+    let imageUrl = post.image || '';
+    if (!imageUrl && (post.originalUrl || post.url)) {
+      const rawUrl = post.originalUrl || post.url;
+      const cleanUrl = rawUrl.includes('?') ? rawUrl.split('?')[0] : rawUrl;
+      const slug = cleanUrl.replace(/^https?:\/\/[^/]+\//, '').replace(/\/$/, '');
+      if (slug && !slug.includes('trackclick')) imageUrl = '/assets/img/posts/' + slug + '.webp';
+    }
+    const postImage = imageUrl
       ? `<tr><td style="padding:0;">
-          <a href="${escapeHtml(post.url)}"><img src="https://hasanjaffal.com${escapeHtml(post.image)}" alt="" style="width:100%;height:auto;display:block;border-radius:10px 10px 0 0;" /></a>
+          <a href="${escapeHtml(post.url)}"><img src="https://hasanjaffal.com${escapeHtml(imageUrl)}" alt="" style="width:100%;height:auto;display:block;border-radius:10px 10px 0 0;" /></a>
         </td></tr>` : "";
 
     postsHtml = `
