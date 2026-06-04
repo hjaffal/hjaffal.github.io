@@ -112,9 +112,14 @@ export async function loadSubscribers() {
           const c = Math.min(Math.max(cell, 0), 5);
           return window.gridjs.html('<span style="font-weight:700;color:' + colors[c] + '">' + labels[c] + '</span>');
         }},
+        { name: 'Source Page', sort: true, formatter: (cell) => {
+          if (!cell) return '—';
+          const short = cell.length > 25 ? cell.substring(0, 23) + '…' : cell;
+          return window.gridjs.html('<span title="' + escHtml(cell) + '" style="font-size:0.7rem;color:var(--text-soft)">' + escHtml(short) + '</span>');
+        }},
         { name: 'Subscribed', sort: true },
         { name: 'Actions', sort: false, formatter: (_, row) => {
-          const id = row.cells[9].data;
+          const id = row.cells[10].data;
           const email = row.cells[0].data;
           const status = row.cells[2].data;
           const deactivateBtn = status === 'active'
@@ -138,6 +143,7 @@ export async function loadSubscribers() {
         s.openCount || 0,
         s.clickCount || 0,
         calcEngagement(s.openCount || 0, s.clickCount || 0, s.editionsReceived || 0),
+        s.pageUrl || '',
         formatDate(s.subscribedAt),
         '',
         s.id

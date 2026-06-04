@@ -122,14 +122,7 @@
   }
 
   function subscribeToNewsletter(email, name) {
-    var fnUrl = document.querySelector('meta[name="fn-subscribe"]');
-    var url = fnUrl ? fnUrl.getAttribute('content') : '';
-    if (!url) return;
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, name: name, utm_source: 'sproochentest', page_url: '/sproochentest/vocab/' })
-    }).catch(function() { /* silent */ });
+    HJ.subscribe({ email: email, name: name, source: 'sproochentest' });
   }
 
   // ===== USER UI =====

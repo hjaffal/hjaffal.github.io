@@ -567,40 +567,45 @@ Return this exact JSON structure:
 
       res.status(200).json({ result: "success", reportToken: reportToken });
 
-      // 4. Auto-subscribe to newsletter (main_website segment) — fire and forget
+      // 4. Auto-subscribe to newsletter (main_website segment) — uses shared utilities
       try {
-        const { generateUnsubscribeToken } = require("./newsletter/utils");
-        const subscribersRef = db.collection("subscribers");
-        const existingSnapshot = await subscribersRef
-          .where("email", "==", normalizedEmail)
-          .limit(1)
-          .get();
+        const { generateUnsubscribeToken, normalizeEmail: normEmail, detectBot } = require("./newsletter/utils");
 
-        if (existingSnapshot.empty) {
-          // New subscriber
-          const { token: unsubToken, hash: unsubHash } = generateUnsubscribeToken();
-          await subscribersRef.add({
-            email: normalizedEmail,
-            name: name.trim(),
-            status: "active",
-            segments: ["main_website"],
-            utmSource: "ai_job_risk_assessment",
-            unsubscribeToken: unsubToken,
-            unsubscribeTokenHash: unsubHash,
-            subscribedAt: admin.firestore.FieldValue.serverTimestamp(),
-            reactivatedAt: null,
-            unsubscribedAt: null,
-            welcomeEmailFailed: false,
-            softBounceCount: 0,
-            softBounces: [],
-            bounceReason: null,
-            bouncedAt: null,
-            complainedAt: null,
-            createdAt: admin.firestore.FieldValue.serverTimestamp(),
-            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-          });
+        // Bot check on the email
+        const botCheck = detectBot({ email: normalizedEmail });
+        if (!botCheck.isBot) {
+          const cleanEmail = normEmail(normalizedEmail);
+          const subscribersRef = db.collection("subscribers");
+          const existingSnapshot = await subscribersRef
+            .where("email", "==", cleanEmail)
+            .limit(1)
+            .get();
+
+          if (existingSnapshot.empty) {
+            const { token: unsubToken, hash: unsubHash } = generateUnsubscribeToken();
+            await subscribersRef.add({
+              email: cleanEmail,
+              name: name.trim(),
+              status: "active",
+              segments: ["main_website"],
+              utmSource: "ai_job_risk_assessment",
+              unsubscribeToken: unsubToken,
+              unsubscribeTokenHash: unsubHash,
+              subscribedAt: admin.firestore.FieldValue.serverTimestamp(),
+              reactivatedAt: null,
+              unsubscribedAt: null,
+              welcomeEmailFailed: false,
+              softBounceCount: 0,
+              softBounces: [],
+              bounceReason: null,
+              bouncedAt: null,
+              complainedAt: null,
+              createdAt: admin.firestore.FieldValue.serverTimestamp(),
+              updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+            });
+          }
         }
-        // If already exists, don't modify — they're already subscribed
+        // If already exists or is bot, don't modify
       } catch (subErr) {
         console.error("Auto-subscribe error (non-blocking):", subErr.message);
       }

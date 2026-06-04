@@ -114,14 +114,7 @@ function submitGateEmail(e) {
   var name = document.getElementById('template-gate-name').value;
   var email = document.getElementById('template-gate-email').value;
   if (!email) return;
-  localStorage.setItem('sp_subscribed', '1');
-  localStorage.setItem('sp_email', email);
-  // Subscribe via API
-  fetch('{{ site.data.firebase.fn_subscribe }}', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, name: name, utm_source: 'template_download', page_url: window.location.pathname})
-  }).catch(function(){});
+  HJ.subscribe({ email: email, name: name, source: 'template_download' });
   var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
 }
 function triggerFile(file) {

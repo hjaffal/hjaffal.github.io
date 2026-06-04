@@ -55,6 +55,7 @@ site-css:
   - "/assets/css/global.css"
 
 site-js:
+  - "/assets/js/subscribe.js"
   - "/assets/js/custom-script.js"
 
 gtag: "G-WT6WZ9E4SH"

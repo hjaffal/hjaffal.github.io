@@ -263,12 +263,13 @@ function submitDownloadEmail(e) {
   localStorage.setItem('sp_subscribed', '1');
   localStorage.setItem('sp_email', email);
 
-  // Subscribe via API (with honeypot)
-  fetch('{{ site.data.firebase.fn_subscribe }}', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, name: name, utm_source: 'materials_download', page_url: window.location.pathname, website_url: honeypotValue})
-  }).catch(function(){});
+  // Subscribe via centralized module
+  HJ.subscribe({
+    email: email,
+    name: name,
+    source: 'materials_download',
+    honeypot: honeypotValue
+  });
 
   // Trigger download with email explicitly passed
   var fileToDownload = pendingDownloadFile;

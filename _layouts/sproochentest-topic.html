@@ -90,11 +90,13 @@ css:
       // Store email for download tracking
       localStorage.setItem('sp_email', email);
 
-      fetch('{{ site.data.firebase.fn_subscribe }}', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, utm_source: 'sproochentest_gate', page_url: window.location.pathname, website_url: (document.getElementById('sp-gate-honeypot') || {}).value || '' })
-      }).then(function() { unlock(); }).catch(function() { unlock(); });
+      HJ.subscribe({
+        email: email,
+        source: 'sproochentest_gate',
+        honeypot: (document.getElementById('sp-gate-honeypot') || {}).value || '',
+        onSuccess: function() { unlock(); },
+        onError: function() { unlock(); }
+      });
     });
   }
 })();

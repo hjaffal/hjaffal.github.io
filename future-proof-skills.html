@@ -50,6 +50,7 @@ permalink: /future-proof-skills/
           <form class="nl-subscribe-form" onsubmit="return handleGatedSubscribe(event, this)">
             <input type="text" placeholder="Your name" required class="nl-subscribe-input">
             <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
+            <input type="text" name="website_url" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="nl-subscribe-btn">Subscribe & Read</button>
             <p class="nl-subscribe-msg" style="display:none;"></p>
           </form>
@@ -121,6 +122,7 @@ permalink: /future-proof-skills/
         <div class="gated-form">
           <form class="nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'future_proof_skills')">
             <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
+            <input type="text" name="website_url" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="nl-subscribe-btn">Subscribe</button>
             <p class="nl-subscribe-msg" style="display:none;"></p>
           </form>
@@ -169,30 +171,23 @@ function handleGatedSubscribe(e, form) {
   btn.disabled = true;
   btn.textContent = 'Subscribing...';
 
-  fetch('{{ site.data.firebase.fn_subscribe }}', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, name: name, utm_source: 'gated_content'})
-  }).then(function(res) {
-    if (res.ok) {
+  HJ.subscribe({
+    email: email,
+    name: name,
+    source: 'gated_content',
+    honeypot: HJ.getHoneypot(form),
+    onSuccess: function() {
       localStorage.setItem('gated_unlocked', 'true');
-      localStorage.setItem('tpl_subscribed', '1');
-      localStorage.setItem('tpl_email', email);
       document.getElementById('gated-full').style.display = 'block';
       document.getElementById('gated-cta').style.display = 'none';
-    } else {
+    },
+    onError: function() {
       msg.style.display = 'block';
       msg.textContent = 'Something went wrong. Try again.';
       msg.style.color = '#DC2626';
       btn.disabled = false;
       btn.textContent = 'Subscribe & Read';
     }
-  }).catch(function() {
-    msg.style.display = 'block';
-    msg.textContent = 'Something went wrong. Try again.';
-    msg.style.color = '#DC2626';
-    btn.disabled = false;
-    btn.textContent = 'Subscribe & Read';
   });
 
   return false;

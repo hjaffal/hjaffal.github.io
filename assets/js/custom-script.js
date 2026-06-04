@@ -1,4 +1,4 @@
-// Global newsletter subscribe handler — POSTs to self-hosted subscribeNewsletter Cloud Function
+// Global newsletter subscribe handler — uses centralized HJ.subscribe module
 function handleNewsletterSubscribe(e, form, source) {
   e.preventDefault();
   var email = form.querySelector('input[type="email"]').value;
@@ -10,39 +10,24 @@ function handleNewsletterSubscribe(e, form, source) {
   btn.textContent = 'Subscribing...';
   msg.style.display = 'none';
 
-  var fnUrl = document.querySelector('meta[name="fn-subscribe"]');
-  var url = fnUrl ? fnUrl.getAttribute('content') : '';
-
-  // Include honeypot field value (should be empty for real users)
-  var honeypot = form.querySelector('input[name="website_url"]');
-  var honeypotValue = honeypot ? honeypot.value : '';
-
-  fetch(url, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: email, utm_source: source || 'website', page_url: window.location.pathname, website_url: honeypotValue})
-  }).then(function(res) {
-    if (res.ok) {
+  HJ.subscribe({
+    email: email,
+    source: source || 'website',
+    honeypot: HJ.getHoneypot(form),
+    onSuccess: function() {
       msg.style.display = 'block';
       msg.textContent = 'You are subscribed.';
       msg.style.color = 'var(--accent, #9333EA)';
       btn.textContent = 'Subscribed';
-      localStorage.setItem('tpl_subscribed', '1');
-      localStorage.setItem('tpl_email', email);
       form.querySelector('input[type="email"]').disabled = true;
-    } else {
+    },
+    onError: function() {
       msg.style.display = 'block';
       msg.textContent = 'Something went wrong. Try again.';
       msg.style.color = '#DC2626';
       btn.disabled = false;
       btn.textContent = 'Subscribe';
     }
-  }).catch(function() {
-    msg.style.display = 'block';
-    msg.textContent = 'Something went wrong. Try again.';
-    msg.style.color = '#DC2626';
-    btn.disabled = false;
-    btn.textContent = 'Subscribe';
   });
 
   return false;

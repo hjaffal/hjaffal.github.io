@@ -86,44 +86,7 @@ async function handleTrack(req, res) {
   }
 
   // Ensure user is subscribed to sproochentest_prep segment
-  if (email && email !== "anonymous") {
-    try {
-      const normalizedEmail = email.trim().toLowerCase();
-      const existingDocs = await db.collection("subscribers")
-        .where("email", "==", normalizedEmail)
-        .limit(1)
-        .get();
-
-      if (existingDocs.empty) {
-        // Not subscribed at all — create subscriber with sproochentest_prep segment
-        const { generateUnsubscribeToken } = require("./utils");
-        const { token, hash } = generateUnsubscribeToken();
-        await db.collection("subscribers").add({
-          email: normalizedEmail,
-          name: (name && typeof name === "string") ? name.trim() : "",
-          status: "active",
-          segments: ["sproochentest_prep"],
-          utmSource: "materials_download",
-          pageUrl: "/sproochentest-materials/",
-          subscribedAt: admin.firestore.FieldValue.serverTimestamp(),
-          unsubscribeToken: token,
-          unsubscribeTokenHash: hash,
-        });
-      } else {
-        // Already exists — ensure sproochentest_prep segment is present
-        const doc = existingDocs.docs[0];
-        const data = doc.data();
-        if (data.status === "active" && data.segments && !data.segments.includes("sproochentest_prep")) {
-          await doc.ref.update({
-            segments: admin.firestore.FieldValue.arrayUnion("sproochentest_prep"),
-          });
-        }
-      }
-    } catch (subErr) {
-      // Don't fail the download tracking if subscription fails
-      console.error("Auto-subscribe on download failed:", subErr.message);
-    }
-  }
+  // (handled by frontend HJ.subscribe call before download)
 
   res.status(200).json({ result: "success" });
 }
