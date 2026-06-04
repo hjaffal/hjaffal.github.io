@@ -7,11 +7,11 @@
 .pos-nav-link:hover { border-color: var(--accent); color: var(--dark); }
 
 /* Position crosslinks */
-.pos-crosslinks { padding: 24px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 10px; }
+.pos-crosslinks { margin-top: 24px; padding: 24px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 10px; }
 .pos-crosslinks-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin: 0 0 14px; }
 .pos-crosslinks-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.pos-crosslinks-card { padding: 14px; background: var(--white); border: 1px solid var(--slate-border); border-radius: 8px; text-decoration: none; }
-.pos-crosslinks-card:hover { border-color: var(--accent); }
+.pos-crosslinks-card { padding: 14px; background: var(--white); border: 1px solid var(--slate-border); border-radius: 8px; text-decoration: none !important; color: var(--dark) !important; }
+.pos-crosslinks-card:hover { border-color: var(--accent); text-decoration: none !important; }
 .pos-crosslinks-num { font-size: 0.68rem; color: var(--text-soft); display: block; margin-bottom: 4px; }
 .pos-crosslinks-name { font-size: 0.82rem; font-weight: 600; color: var(--dark); }
 
@@ -36,13 +36,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  text-decoration: none;
-  color: var(--dark);
+  text-decoration: none !important;
+  color: var(--dark) !important;
   transition: border-color 0.2s;
 }
 .pos-topic-card:hover {
   border-color: var(--accent);
-  color: var(--dark);
+  color: var(--dark) !important;
+  text-decoration: none !important;
 }
 .pos-topic-card.pos-topic-empty {
   opacity: 0.5;
@@ -70,13 +71,14 @@
   padding: 16px 18px;
   background: linear-gradient(135deg, #0F172A, #1E293B);
   border-radius: 8px;
-  text-decoration: none;
+  text-decoration: none !important;
+  color: inherit !important;
   display: flex;
   flex-direction: column;
   gap: 6px;
   transition: opacity 0.2s;
 }
-.pos-reference-card:hover { opacity: 0.85; }
+.pos-reference-card:hover { opacity: 0.85; text-decoration: none !important; }
 .pos-reference-title {
   font-size: 0.82rem;
   font-weight: 600;

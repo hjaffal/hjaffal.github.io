@@ -18,6 +18,7 @@ css:
       </div>
 
       <div class="post-heading">
+        {% include post-breadcrumb.html %}
         {% if page.tags.size > 0 %}
         <span class="post-heading-tags">
           {% for tag in page.tags %}<a href="/positions/{{- tag -}}/">{{ tag | upcase }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}

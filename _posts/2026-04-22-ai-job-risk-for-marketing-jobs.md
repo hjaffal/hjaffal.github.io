@@ -6,10 +6,10 @@ share-description: "Content production and ad copy are exposed to AI. Brand stra
 tags:
   - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/ai-job-risk-og.png
-share-img: /assets/img/posts/ai-job-risk-og.png
-topic: white-collar-automation
+topic: death-of-information-work
 archetype: framework
+thumbnail-img: /assets/img/posts/2026-04-22-ai-job-risk-for-marketing-jobs.webp
+share-img: /assets/img/posts/2026-04-22-ai-job-risk-for-marketing-jobs.webp
 keywords:
   - "white collar automation"
   - "knowledge work automation"

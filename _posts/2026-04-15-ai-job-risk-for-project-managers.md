@@ -8,7 +8,7 @@ tags:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
-topic: fake-ai-safety-advice
+topic: death-of-information-work
 archetype: framework
 keywords:
   - "AI career advice"

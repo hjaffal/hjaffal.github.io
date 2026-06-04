@@ -1,0 +1,32 @@
+{% if page.tags.size > 0 %}
+{% assign position_tag = page.tags[0] %}
+{% assign position = nil %}
+{% for pos in site.data.positions %}
+  {% if pos.tag == position_tag %}
+    {% assign position = pos %}
+  {% endif %}
+{% endfor %}
+
+{% assign topic_name = nil %}
+{% if page.topic and site.data.topics[position_tag] %}
+  {% for t in site.data.topics[position_tag] %}
+    {% if t.slug == page.topic %}
+      {% assign topic_name = t.name %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<nav class="post-breadcrumb" aria-label="Breadcrumb">
+  <a href="/writing/">Writing</a>
+  <span class="post-breadcrumb-sep">›</span>
+  {% if position %}
+  <a href="/positions/{{ position_tag }}/">{{ position.title | truncate: 40 }}</a>
+  <span class="post-breadcrumb-sep">›</span>
+  {% endif %}
+  {% if topic_name %}
+  <a href="/topics/{{ page.topic }}/">{{ topic_name }}</a>
+  <span class="post-breadcrumb-sep">›</span>
+  {% endif %}
+  <span class="post-breadcrumb-current">{{ page.title | truncate: 50 }}</span>
+</nav>
+{% endif %}
