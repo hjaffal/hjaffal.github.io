@@ -102,10 +102,6 @@ css:
     <div class="dash-actions">
       <button class="dash-btn-ghost" id="btn-rerun"><i class="fas fa-rotate"></i> Rerun</button>
       <a class="dash-btn-linkedin" id="btn-linkedin-direct" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> Share on LinkedIn</a>
-      <div class="dash-share-preview" id="dash-share-preview" style="display:none;">
-        <img id="dash-share-img" alt="Your share card preview" class="dash-share-img">
-        <p class="dash-share-preview-note">This is how your card will appear when shared</p>
-      </div>
       <button class="dash-btn-ghost" id="btn-share"><i class="fas fa-share-nodes"></i></button>
       <button class="dash-btn-ghost" id="btn-pdf"><i class="fas fa-download"></i></button>
     </div>
@@ -327,14 +323,13 @@ css:
     var sharePageUrl='https://sharereportpage-vgheoh5xza-ew.a.run.app?token='+token;
     var shareCardUrl='https://generatesharecard-vgheoh5xza-ew.a.run.app?token='+token;
     document.getElementById('btn-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharePageUrl);
-    document.getElementById('btn-linkedin-direct').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharePageUrl);
     document.getElementById('btn-email-share').href='mailto:?subject=My AI Job Risk Report&body='+encodeURIComponent(window.location.href);
-    // Show share card preview
-    var previewEl=document.getElementById('dash-share-preview');
-    var previewImg=document.getElementById('dash-share-img');
-    previewImg.src=shareCardUrl;
-    previewImg.onload=function(){previewEl.style.display='block';};
-    previewImg.onerror=function(){previewEl.style.display='none';};
+
+    // LinkedIn direct button — show preview then share
+    document.getElementById('btn-linkedin-direct').addEventListener('click', function(e){
+      e.preventDefault();
+      showSharePreview(shareCardUrl, sharePageUrl);
+    });
   }
 
   function ic(l,v){return '<div class="dash-input-card"><span class="dash-input-label">'+l+'</span><p class="dash-input-value">'+esc(v||'—')+'</p></div>';}
@@ -617,5 +612,20 @@ css:
   }
 
   function toast(m){var t=document.getElementById('dash-toast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none';},2500);}
+
+  function showSharePreview(imgUrl, shareUrl){
+    // Create overlay
+    var overlay=document.createElement('div');
+    overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;';
+    overlay.innerHTML='<p style="color:#A1A1AA;font-size:13px;margin:0 0 16px;font-weight:500;">Preview of your LinkedIn share card</p>'
+      +'<img src="'+imgUrl+'" style="max-width:600px;width:100%;border-radius:8px;border:1px solid #333;" alt="Share card">'
+      +'<div style="margin-top:20px;display:flex;gap:12px;">'
+      +'<a href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(shareUrl)+'" target="_blank" rel="noopener" style="padding:12px 28px;background:#0A66C2;color:#fff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;"><i class="fab fa-linkedin"></i> Post to LinkedIn</a>'
+      +'<button style="padding:12px 20px;background:transparent;border:1px solid #555;color:#A1A1AA;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;" id="dash-preview-close">Close</button>'
+      +'</div>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('#dash-preview-close').addEventListener('click',function(){overlay.remove();});
+    overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.remove();});
+  }
 })();
 </script>

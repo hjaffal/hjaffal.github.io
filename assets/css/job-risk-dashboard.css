@@ -47,9 +47,6 @@
 .dash-btn-ghost:disabled{opacity:.4;cursor:not-allowed;}
 .dash-btn-linkedin{padding:7px 14px;background:#0A66C2;color:#fff;border:none;border-radius:6px;font-size:.75rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:background .15s;}
 .dash-btn-linkedin:hover{background:#004182;color:#fff;}
-.dash-share-preview{margin-top:12px;padding:12px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;}
-.dash-share-img{width:100%;border-radius:6px;display:block;}
-.dash-share-preview-note{font-size:.7rem;color:#94A3B8;margin:8px 0 0;text-align:center;}
 .dash-btn-primary{padding:9px 18px;background:#0D9488;color:#fff;border:none;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;}
 .dash-btn-primary:hover{background:#0B7C72;}
 
