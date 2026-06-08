@@ -105,8 +105,8 @@
       updateCategoryCards();
       // Then sync from Firestore (source of truth)
       loadProgressFromFirestore();
-      // Always update displayName in Firestore on sign-in
-      saveProgressToFirestore();
+      // Only update displayName in Firestore on sign-in (do NOT overwrite progress)
+      updateDisplayNameInFirestore();
       // Subscribe to newsletter on first sign-in
       if (!localStorage.getItem('sp_vocab_subscribed_' + firebaseUser.uid)) {
         subscribeToNewsletter(firebaseUser.email, state.user.name);
@@ -438,16 +438,30 @@
     docRef.get().then(function(doc) {
       if (doc.exists) {
         var firestoreData = doc.data();
-        if (firestoreData.words && Object.keys(firestoreData.words).length > 0) {
-          state.progress = firestoreData;
-          saveProgressToCache();
-          updateUserUI();
-          updateCategoryCards();
+        // Always prefer Firestore data if it has more XP or more words than local cache
+        var firestoreXp = (firestoreData.stats && firestoreData.stats.totalXp) || 0;
+        var localXp = (state.progress.stats && state.progress.stats.totalXp) || 0;
+        var firestoreWords = firestoreData.words ? Object.keys(firestoreData.words).length : 0;
+        var localWords = Object.keys(state.progress.words).length;
+
+        if (firestoreXp >= localXp || firestoreWords > localWords) {
+          // Firestore is ahead or equal — use it
+          state.progress = {
+            words: firestoreData.words || {},
+            stats: firestoreData.stats || { totalXp: 0 }
+          };
         } else {
+          // Local cache is ahead — push to Firestore
           saveProgressToFirestore();
         }
+        saveProgressToCache();
+        updateUserUI();
+        updateCategoryCards();
       } else {
-        saveProgressToFirestore();
+        // No Firestore doc yet — only save if local has actual progress
+        if (Object.keys(state.progress.words).length > 0 || (state.progress.stats.totalXp || 0) > 0) {
+          saveProgressToFirestore();
+        }
       }
     }).catch(function(err) {
       console.warn('Firestore read failed, using cache:', err.message);
@@ -465,6 +479,17 @@
     };
     docRef.set(payload, { merge: true }).catch(function(err) {
       console.warn('Firestore write failed:', err.message);
+    });
+  }
+
+  function updateDisplayNameInFirestore() {
+    if (!state.user) return;
+    var docRef = db.collection('vocab_progress').doc(state.user.uid);
+    docRef.set({
+      displayName: state.user.name || 'Learner',
+      lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true }).catch(function(err) {
+      console.warn('DisplayName update failed:', err.message);
     });
   }
 
