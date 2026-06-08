@@ -577,6 +577,21 @@ Return this exact JSON structure:
 
       res.status(200).json({ result: "success", reportToken: reportToken });
 
+      // 4a. Generate and upload share card image (non-blocking)
+      try {
+        const { generateAndUploadCard } = require("./share-card");
+        const reportDataForCard = { jobTitle: jobTitle.trim(), result: analysis };
+        const shareCardUrl = await generateAndUploadCard(reportDataForCard, reportToken);
+        // Update Firestore doc with the card URL
+        const reportSnapshot = await db.collection("job_risk_submissions")
+          .where("reportToken", "==", reportToken).limit(1).get();
+        if (!reportSnapshot.empty) {
+          await reportSnapshot.docs[0].ref.update({ shareCardUrl: shareCardUrl });
+        }
+      } catch (cardErr) {
+        console.error("Share card generation error (non-blocking):", cardErr.message);
+      }
+
       // 4. Auto-subscribe to newsletter (main_website segment) — uses shared utilities
       try {
         const { generateUnsubscribeToken, normalizeEmail: normEmail, detectBot } = require("./newsletter/utils");

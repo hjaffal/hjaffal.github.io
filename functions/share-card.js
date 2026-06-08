@@ -23,6 +23,99 @@ try {
 
 const db = admin.firestore();
 
+/**
+ * Generate card PNG buffer from report data.
+ * Returns a Buffer of the PNG image.
+ */
+async function renderCardImage(reportData) {
+  const result = reportData.result || {};
+  const jobTitle = reportData.jobTitle || "Professional";
+  const score = result.risk_score || 50;
+  const riskLevel = result.risk_level || "Medium";
+
+  let prognosis = "Core Task Attrition";
+  if (score >= 75) prognosis = "Full Asset Substitution";
+  else if (score >= 60) prognosis = "Core Task Attrition";
+  else if (score >= 40) prognosis = "Structural Reclassification";
+  else prognosis = "Peripheral Automation";
+
+  let threatLevel = "MODERATE";
+  if (score >= 70) threatLevel = "CRITICAL";
+  else if (score >= 55) threatLevel = "HIGH";
+  else if (score >= 40) threatLevel = "MODERATE";
+  else threatLevel = "LOW";
+
+  const protectedTasks = result.protected_tasks || [];
+  let primaryMoat = "Strategic judgment and stakeholder accountability";
+  if (protectedTasks.length > 0) {
+    const first = protectedTasks[0];
+    primaryMoat = typeof first === "string" ? first : first.task || primaryMoat;
+  }
+
+  const accentColor = score >= 70 ? "#DC2626" : score >= 40 ? "#F59E0B" : "#E2E8F0";
+  const accentGlow = score >= 70 ? "rgba(220,38,38,0.25)" : score >= 40 ? "rgba(245,158,11,0.2)" : "rgba(226,232,240,0.15)";
+  const hookText = `WILL AI REPLACE A ${jobTitle.toUpperCase()} BY 2028?`;
+
+  const cardMarkup = {
+    type: "div",
+    props: {
+      style: { width: "1200px", height: "630px", display: "flex", flexDirection: "column", background: "#09090B", fontFamily: "Inter", padding: "0", position: "relative", overflow: "hidden" },
+      children: [
+        { type: "div", props: { style: { padding: "36px 60px 24px", display: "flex", flexDirection: "column", alignItems: "flex-start" }, children: [{ type: "div", props: { style: { fontSize: "28px", fontWeight: "800", color: "#FAFAFA", letterSpacing: "-0.02em", lineHeight: "1.2" }, children: hookText.length > 55 ? hookText.slice(0, 55) + "?" : hookText } }] } },
+        { type: "div", props: { style: { flex: "1", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 60px" }, children: [
+          { type: "div", props: { style: { fontSize: "120px", fontWeight: "800", color: accentColor, letterSpacing: "-0.05em", lineHeight: "1", textShadow: `0 0 60px ${accentGlow}` }, children: score + "%" } },
+          { type: "div", props: { style: { fontSize: "18px", fontWeight: "700", color: "#A1A1AA", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "8px" }, children: "AI AUTOMATION EXPOSURE" } },
+          { type: "div", props: { style: { marginTop: "16px", padding: "6px 20px", background: `${accentColor}18`, border: `1px solid ${accentColor}50`, borderRadius: "4px", fontSize: "12px", fontWeight: "700", color: accentColor, letterSpacing: "0.12em" }, children: `THREAT LEVEL: ${threatLevel}` } }
+        ] } },
+        { type: "div", props: { style: { padding: "20px 60px 24px", borderTop: "1px solid #27272A", display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
+          { type: "div", props: { style: { display: "flex", flexDirection: "column", gap: "2px" }, children: [
+            { type: "div", props: { style: { fontSize: "9px", fontWeight: "700", letterSpacing: "0.18em", color: "#52525B", textTransform: "uppercase" }, children: "2028 STRUCTURAL PROGNOSIS" } },
+            { type: "div", props: { style: { fontSize: "15px", fontWeight: "700", color: "#FAFAFA" }, children: prognosis } }
+          ] } },
+          { type: "div", props: { style: { display: "flex", flexDirection: "column", gap: "2px", alignItems: "flex-end", maxWidth: "400px" }, children: [
+            { type: "div", props: { style: { fontSize: "9px", fontWeight: "700", letterSpacing: "0.18em", color: "#52525B", textTransform: "uppercase" }, children: "THE HUMAN SURVIVAL MOAT" } },
+            { type: "div", props: { style: { fontSize: "13px", fontWeight: "400", color: "#A1A1AA", textAlign: "right" }, children: primaryMoat.length > 60 ? primaryMoat.slice(0, 60) + "..." : primaryMoat } }
+          ] } }
+        ] } },
+        { type: "div", props: { style: { padding: "14px 60px", background: "#18181B", display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
+          { type: "div", props: { style: { fontSize: "12px", fontWeight: "700", color: "#71717A" }, children: "Audit your exact role at hasanjaffal.com" } },
+          { type: "div", props: { style: { fontSize: "11px", fontWeight: "600", color: "#52525B" }, children: "The Second Mind" } }
+        ] } }
+      ]
+    }
+  };
+
+  if (!fontBold || !fontRegular) throw new Error("Font files not found");
+  const fonts = [
+    { name: "Inter", data: fontRegular, weight: 400, style: "normal" },
+    { name: "Inter", data: fontBold, weight: 700, style: "normal" },
+    { name: "Inter", data: fontBold, weight: 800, style: "normal" },
+  ];
+
+  const svg = await satori(cardMarkup, { width: 1200, height: 630, fonts });
+  const resvg = new Resvg(svg, { fitTo: { mode: "width", value: 1200 } });
+  return resvg.render().asPng();
+}
+
+/**
+ * Generate card and upload to Firebase Storage.
+ * Returns the public URL.
+ */
+async function generateAndUploadCard(reportData, reportToken) {
+  const pngBuffer = await renderCardImage(reportData);
+  const bucket = admin.storage().bucket();
+  const filePath = `share-cards/${reportToken}.png`;
+  const file = bucket.file(filePath);
+  await file.save(pngBuffer, {
+    metadata: { contentType: "image/png", cacheControl: "public, max-age=604800" }
+  });
+  await file.makePublic();
+  return `https://storage.googleapis.com/${bucket.name}/${filePath}`;
+}
+
+// Export for use in analyzeJobRisk
+exports.generateAndUploadCard = generateAndUploadCard;
+
 exports.generateShareCard = onRequest(
   {
     region: "europe-west1",
@@ -55,315 +148,15 @@ exports.generateShareCard = onRequest(
       }
 
       const data = snapshot.docs[0].data();
-      const result = data.result || {};
 
-      const jobTitle = data.jobTitle || "Professional";
-      const score = result.risk_score || 50;
-      const riskLevel = result.risk_level || "Medium";
-
-      // Determine prognosis (disruption class)
-      let prognosis = "Core Task Attrition";
-      if (score >= 75) prognosis = "Full Asset Substitution";
-      else if (score >= 60) prognosis = "Core Task Attrition";
-      else if (score >= 40) prognosis = "Structural Reclassification";
-      else prognosis = "Peripheral Automation";
-
-      // Determine threat level label
-      let threatLevel = "MODERATE";
-      if (score >= 70) threatLevel = "CRITICAL";
-      else if (score >= 55) threatLevel = "HIGH";
-      else if (score >= 40) threatLevel = "MODERATE";
-      else threatLevel = "LOW";
-
-      // Determine primary moat (survival skill)
-      const protectedTasks = result.protected_tasks || [];
-      let primaryMoat = "Strategic judgment and stakeholder accountability";
-      if (protectedTasks.length > 0) {
-        const first = protectedTasks[0];
-        primaryMoat = typeof first === "string" ? first : first.task || primaryMoat;
+      // Check if pre-generated image exists in Storage
+      if (data.shareCardUrl) {
+        res.redirect(301, data.shareCardUrl);
+        return;
       }
 
-      // Colors: red for high, amber for medium, icy white for low
-      const accentColor = score >= 70 ? "#DC2626" : score >= 40 ? "#F59E0B" : "#E2E8F0";
-      const accentGlow = score >= 70 ? "rgba(220,38,38,0.25)" : score >= 40 ? "rgba(245,158,11,0.2)" : "rgba(226,232,240,0.15)";
-
-      // Hook headline
-      const hookText = `WILL AI REPLACE A ${jobTitle.toUpperCase()} BY 2028?`;
-
-      // Build the card — vertical stacked layout, 1200x630
-      const cardMarkup = {
-        type: "div",
-        props: {
-          style: {
-            width: "1200px",
-            height: "630px",
-            display: "flex",
-            flexDirection: "column",
-            background: "#09090B",
-            fontFamily: "Inter",
-            padding: "0",
-            position: "relative",
-            overflow: "hidden",
-          },
-          children: [
-            // === TOP 20%: THE HOOK ===
-            {
-              type: "div",
-              props: {
-                style: {
-                  padding: "36px 60px 24px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                },
-                children: [
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        fontSize: "28px",
-                        fontWeight: "800",
-                        color: "#FAFAFA",
-                        letterSpacing: "-0.02em",
-                        lineHeight: "1.2",
-                      },
-                      children: hookText.length > 55 ? hookText.slice(0, 55) + "?" : hookText,
-                    },
-                  },
-                ],
-              },
-            },
-            // === MIDDLE 40%: THE NUMBER ===
-            {
-              type: "div",
-              props: {
-                style: {
-                  flex: "1",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "0 60px",
-                },
-                children: [
-                  // Massive percentage
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        fontSize: "120px",
-                        fontWeight: "800",
-                        color: accentColor,
-                        letterSpacing: "-0.05em",
-                        lineHeight: "1",
-                        textShadow: `0 0 60px ${accentGlow}`,
-                      },
-                      children: score + "%",
-                    },
-                  },
-                  // Label
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        fontSize: "18px",
-                        fontWeight: "700",
-                        color: "#A1A1AA",
-                        letterSpacing: "0.15em",
-                        textTransform: "uppercase",
-                        marginTop: "8px",
-                      },
-                      children: "AI AUTOMATION EXPOSURE",
-                    },
-                  },
-                  // Threat level tag
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        marginTop: "16px",
-                        padding: "6px 20px",
-                        background: `${accentColor}18`,
-                        border: `1px solid ${accentColor}50`,
-                        borderRadius: "4px",
-                        fontSize: "12px",
-                        fontWeight: "700",
-                        color: accentColor,
-                        letterSpacing: "0.12em",
-                      },
-                      children: `THREAT LEVEL: ${threatLevel}`,
-                    },
-                  },
-                ],
-              },
-            },
-            // === BOTTOM 30%: SURVIVAL MOAT ===
-            {
-              type: "div",
-              props: {
-                style: {
-                  padding: "20px 60px 24px",
-                  borderTop: "1px solid #27272A",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "6px",
-                },
-                children: [
-                  // Prognosis
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      },
-                      children: [
-                        {
-                          type: "div",
-                          props: {
-                            style: {
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: "2px",
-                            },
-                            children: [
-                              {
-                                type: "div",
-                                props: {
-                                  style: {
-                                    fontSize: "9px",
-                                    fontWeight: "700",
-                                    letterSpacing: "0.18em",
-                                    color: "#52525B",
-                                    textTransform: "uppercase",
-                                  },
-                                  children: "2028 STRUCTURAL PROGNOSIS",
-                                },
-                              },
-                              {
-                                type: "div",
-                                props: {
-                                  style: {
-                                    fontSize: "15px",
-                                    fontWeight: "700",
-                                    color: "#FAFAFA",
-                                  },
-                                  children: prognosis,
-                                },
-                              },
-                            ],
-                          },
-                        },
-                        {
-                          type: "div",
-                          props: {
-                            style: {
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: "2px",
-                              alignItems: "flex-end",
-                              maxWidth: "400px",
-                            },
-                            children: [
-                              {
-                                type: "div",
-                                props: {
-                                  style: {
-                                    fontSize: "9px",
-                                    fontWeight: "700",
-                                    letterSpacing: "0.18em",
-                                    color: "#52525B",
-                                    textTransform: "uppercase",
-                                  },
-                                  children: "THE HUMAN SURVIVAL MOAT",
-                                },
-                              },
-                              {
-                                type: "div",
-                                props: {
-                                  style: {
-                                    fontSize: "13px",
-                                    fontWeight: "400",
-                                    color: "#A1A1AA",
-                                    textAlign: "right",
-                                  },
-                                  children: primaryMoat.length > 60 ? primaryMoat.slice(0, 60) + "..." : primaryMoat,
-                                },
-                              },
-                            ],
-                          },
-                        },
-                      ],
-                    },
-                  },
-                ],
-              },
-            },
-            // === BOTTOM 10%: WATERMARK CTA ===
-            {
-              type: "div",
-              props: {
-                style: {
-                  padding: "14px 60px",
-                  background: "#18181B",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                },
-                children: [
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        fontSize: "12px",
-                        fontWeight: "700",
-                        color: "#71717A",
-                      },
-                      children: "Audit your exact role at hasanjaffal.com",
-                    },
-                  },
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        fontSize: "11px",
-                        fontWeight: "600",
-                        color: "#52525B",
-                      },
-                      children: "The Second Mind",
-                    },
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      };
-
-      // Load fonts
-      if (!fontBold || !fontRegular) {
-        throw new Error("Font files not found");
-      }
-      const fonts = [
-        { name: "Inter", data: fontRegular, weight: 400, style: "normal" },
-        { name: "Inter", data: fontBold, weight: 700, style: "normal" },
-        { name: "Inter", data: fontBold, weight: 800, style: "normal" },
-      ];
-
-      // Render SVG with Satori
-      const svg = await satori(cardMarkup, {
-        width: 1200,
-        height: 630,
-        fonts: fonts,
-      });
-
-      // Convert SVG to PNG
-      const resvg = new Resvg(svg, {
-        fitTo: { mode: "width", value: 1200 },
-      });
-      const pngData = resvg.render();
-      const pngBuffer = pngData.asPng();
+      // Generate on the fly as fallback
+      const pngBuffer = await renderCardImage(data);
 
       // Return PNG with caching
       res.set("Content-Type", "image/png");
@@ -421,7 +214,7 @@ exports.shareReportPage = onRequest(
       const riskLevel = result.risk_level || "Medium";
 
       const reportUrl = `https://hasanjaffal.com/tools/ai-job-risk-report/?token=${token}`;
-      const imageUrl = `https://generatesharecard-vgheoh5xza-ew.a.run.app?token=${token}`;
+      const imageUrl = data.shareCardUrl || `https://generatesharecard-vgheoh5xza-ew.a.run.app?token=${token}`;
       const title = `${name}'s AI Job Risk Score: ${score}/100 — ${riskLevel} Risk`;
       const description = `${resilience}% Human Resilience. ${name} (${jobTitle}) ran the 24-Month Forensic AI Risk Audit. Check your own role's exposure.`;
 
