@@ -201,7 +201,7 @@ exports.sendContactMessage = onRequest(
     }
 
     const body = req.body.data || req.body;
-    const { name, email, message } = body;
+    const { name, email, message, subject } = body;
 
     // Validate
     if (!name || typeof name !== "string" || name.length > 200) {
@@ -223,6 +223,7 @@ exports.sendContactMessage = onRequest(
         <table style="font-size:14px;color:#334155;border-collapse:collapse;width:100%;">
           <tr><td style="padding:8px 0;font-weight:600;width:80px;vertical-align:top;">From:</td><td style="padding:8px 0;">${name}</td></tr>
           <tr><td style="padding:8px 0;font-weight:600;vertical-align:top;">Email:</td><td style="padding:8px 0;"><a href="mailto:${email}">${email}</a></td></tr>
+          ${subject ? `<tr><td style="padding:8px 0;font-weight:600;vertical-align:top;">Subject:</td><td style="padding:8px 0;">${subject}</td></tr>` : ''}
           <tr><td style="padding:8px 0;font-weight:600;vertical-align:top;">Message:</td><td style="padding:8px 0;white-space:pre-wrap;">${message}</td></tr>
         </table>
       </div>
@@ -235,7 +236,7 @@ exports.sendContactMessage = onRequest(
         from: "Website Contact <hasan@hasanjaffal.com>",
         to: "jaftalks@gmail.com",
         reply_to: email,
-        subject: `Contact: ${name}`,
+        subject: `Contact${subject ? ': ' + subject : ''} — ${name}`,
         html: htmlBody
       });
 
@@ -243,6 +244,7 @@ exports.sendContactMessage = onRequest(
       await db.collection("contact_submissions").add({
         name: name,
         email: email,
+        subject: subject || '',
         message: message,
         submittedAt: admin.firestore.FieldValue.serverTimestamp()
       });
