@@ -45,8 +45,6 @@
 .dash-btn-ghost{padding:7px 12px;background:none;border:1px solid #E2E8F0;border-radius:6px;font-size:.75rem;font-weight:600;color:#64748B;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .15s;}
 .dash-btn-ghost:hover{border-color:#0D9488;color:#0D9488;}
 .dash-btn-ghost:disabled{opacity:.4;cursor:not-allowed;}
-.dash-btn-linkedin{padding:7px 14px;background:#0A66C2;color:#fff;border:none;border-radius:6px;font-size:.75rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:background .15s;}
-.dash-btn-linkedin:hover{background:#004182;color:#fff;}
 .dash-btn-primary{padding:9px 18px;background:#0D9488;color:#fff;border:none;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;}
 .dash-btn-primary:hover{background:#0B7C72;}
 

@@ -258,9 +258,6 @@ css:
           </div>
         </div>
 
-        <button class="wiz-share-btn" id="wiz-share-btn">
-          <i class="fab fa-linkedin"></i> Share Results to LinkedIn
-        </button>
       </div>
     </div>
 
@@ -576,15 +573,6 @@ css:
 
     var topMoat = checkedTasks.length > 0 ? checkedTasks[checkedTasks.length - 1] : 'Strategic judgment';
     document.getElementById('wiz-card-moat').textContent = data.primaryMoat || topMoat;
-
-    // Share button
-    document.getElementById('wiz-share-btn').addEventListener('click', function() {
-      var shareUrl = data.reportToken
-        ? 'https://sharereportpage-vgheoh5xza-ew.a.run.app?token=' + data.reportToken
-        : 'https://hasanjaffal.com/ai-job-risk-analyzer/';
-      var url = encodeURIComponent(shareUrl);
-      window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'width=600,height=500');
-    });
   }
 
   function escH(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
