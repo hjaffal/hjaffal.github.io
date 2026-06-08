@@ -41,8 +41,10 @@ const getAnalytics = onRequest(
       await handleOverview(req, res);
     } else if (type === "subscriberGrowth") {
       await handleSubscriberGrowth(req, res);
+    } else if (type === "vocabAnalytics") {
+      await handleVocabAnalytics(req, res);
     } else {
-      res.status(400).json({ error: "Invalid type parameter. Use: editions, edition, overview, or subscriberGrowth" });
+      res.status(400).json({ error: "Invalid type parameter. Use: editions, edition, overview, subscriberGrowth, or vocabAnalytics" });
     }
   }
 );
@@ -378,6 +380,55 @@ async function handleSubscriberGrowth(_req, res) {
   } catch (err) {
     console.error("Error fetching subscriber growth:", err);
     res.status(500).json({ error: "Failed to fetch subscriber growth" });
+  }
+}
+
+/**
+ * Returns vocab engine analytics from the vocab_progress collection.
+ * Shows all registered learners with their XP, words learned, and last activity.
+ */
+async function handleVocabAnalytics(_req, res) {
+  const db = admin.firestore();
+
+  try {
+    const snapshot = await db.collection("vocab_progress").get();
+
+    const learners = [];
+    let totalXp = 0;
+    let totalWords = 0;
+
+    snapshot.docs.forEach(doc => {
+      const data = doc.data();
+      const xp = (data.stats && data.stats.totalXp) || 0;
+      const words = data.words ? Object.keys(data.words).length : 0;
+      const name = data.displayName || "Anonymous";
+      const lastUpdated = data.lastUpdated ? data.lastUpdated.toDate().toISOString() : null;
+
+      totalXp += xp;
+      totalWords += words;
+
+      learners.push({
+        uid: doc.id,
+        name: name,
+        xp: xp,
+        wordsLearned: words,
+        lastUpdated: lastUpdated,
+      });
+    });
+
+    // Sort by XP descending
+    learners.sort((a, b) => b.xp - a.xp);
+
+    res.status(200).json({
+      totalLearners: learners.length,
+      totalXp: totalXp,
+      totalWordsLearned: totalWords,
+      avgXpPerLearner: learners.length > 0 ? Math.round(totalXp / learners.length) : 0,
+      learners: learners,
+    });
+  } catch (err) {
+    console.error("Error fetching vocab analytics:", err);
+    res.status(500).json({ error: "Failed to fetch vocab analytics" });
   }
 }
 
