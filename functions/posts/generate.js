@@ -64,7 +64,7 @@ const VALID_TAGS = ["ai-decision-operations", "risk-intelligence", "ai-job-risk"
 
 const ARCHETYPES = [
   { id: "contrarian", instruction: "Attack a common belief with a concrete counter-example. State what most people believe, then disagree with evidence." },
-  { id: "framework", instruction: "Provide operational guidance with actionable steps. Describe a decision framework and show how to apply it under pressure." },
+  { id: "framework", instruction: "Create a named, original framework (give it a memorable name like 'The 4-Lever System' or 'The Threshold Control Model'). Structure it as a precise decision tool — NOT general guidelines. MUST include: (1) A clear, branded name for the framework. (2) A markdown table showing inputs, conditions, or decision criteria with specific values/thresholds. (3) Numbered steps with exact actions (not vague advice). (4) At least one 'if X then Y' decision rule. (5) A concrete before/after contrast showing weak approach vs. this framework applied. The reader should be able to print this and use it in their next meeting." },
   { id: "breakdown", instruction: "Analyze a real or fictional operational failure. Start with the scene, show what went wrong, extract the principle." },
   { id: "prediction", instruction: "Predict organizational or workforce shifts. Make a specific claim about what will change in the next 12 months and why." },
 ];

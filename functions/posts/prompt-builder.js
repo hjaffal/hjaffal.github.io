@@ -198,6 +198,7 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 - Use bullet lists where they add clarity
 - Include at least ONE comparison table or contrast block (e.g., "Weak teams do X. Strong teams do Y.")
 - No dense text blocks. Highly scannable.
+- For FRAMEWORK archetype: The table is the centerpiece. Give the framework a memorable name in a ## heading. The table must have specific columns (e.g., Signal | Threshold | Action | Rollback). Number every step. Include at least one "if/then" decision rule.
 
 === SEO REQUIREMENTS ===
 
