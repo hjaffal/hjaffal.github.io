@@ -14,10 +14,9 @@ const { join } = require("path");
 // Load font (Inter Bold + Regular bundled with the function)
 let fontBold, fontRegular;
 try {
-  fontBold = readFileSync(join(__dirname, "fonts", "Inter-Bold.woff2"));
-  fontRegular = readFileSync(join(__dirname, "fonts", "Inter-Regular.woff2"));
+  fontBold = readFileSync(join(__dirname, "fonts", "Inter-Bold.ttf"));
+  fontRegular = readFileSync(join(__dirname, "fonts", "Inter-Regular.ttf"));
 } catch (e) {
-  // Fonts will be loaded at runtime if not bundled
   fontBold = null;
   fontRegular = null;
 }
@@ -357,25 +356,15 @@ exports.generateShareCard = onRequest(
         },
       };
 
-      // Load fonts if not pre-loaded
-      let fonts;
-      if (fontBold && fontRegular) {
-        fonts = [
-          { name: "Inter", data: fontRegular, weight: 400, style: "normal" },
-          { name: "Inter", data: fontBold, weight: 700, style: "normal" },
-          { name: "Inter", data: fontBold, weight: 800, style: "normal" },
-        ];
-      } else {
-        // Fallback: fetch from Google Fonts CDN
-        const fetch = (await import("node-fetch")).default;
-        const fontUrl = "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2";
-        const fontData = await fetch(fontUrl).then((r) => r.arrayBuffer());
-        fonts = [
-          { name: "Inter", data: fontData, weight: 400, style: "normal" },
-          { name: "Inter", data: fontData, weight: 700, style: "normal" },
-          { name: "Inter", data: fontData, weight: 800, style: "normal" },
-        ];
+      // Load fonts
+      if (!fontBold || !fontRegular) {
+        throw new Error("Font files not found");
       }
+      const fonts = [
+        { name: "Inter", data: fontRegular, weight: 400, style: "normal" },
+        { name: "Inter", data: fontBold, weight: 700, style: "normal" },
+        { name: "Inter", data: fontBold, weight: 800, style: "normal" },
+      ];
 
       // Render SVG with Satori
       const svg = await satori(cardMarkup, {
