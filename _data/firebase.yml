@@ -7,7 +7,7 @@ fn_get_report: "https://getjobriskreport-vgheoh5xza-ew.a.run.app"
 fn_rerun_report: "https://rerunjobriskanalysis-vgheoh5xza-ew.a.run.app"
 fn_share_tool: "https://sharetoolwithfriend-vgheoh5xza-ew.a.run.app"
 fn_gen_tasks: "https://generateroletasks-vgheoh5xza-ew.a.run.app"
-fn_share_card: "https://generatesharecard-vgheoh5xza-ew.a.run.app"
+fn_share_card: "https://europe-west1-hasanjaffal.cloudfunctions.net/generateShareCard"
 
 # Newsletter management
 fn_newsletter_preferences: "https://newsletterpreferences-vgheoh5xza-ew.a.run.app"

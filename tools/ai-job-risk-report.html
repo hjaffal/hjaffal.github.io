@@ -319,7 +319,7 @@ css:
     }).join('');
 
     // Share
-    var sharePageUrl='https://sharereportpage-vgheoh5xza-ew.a.run.app?token='+token;
+    var sharePageUrl='https://europe-west1-hasanjaffal.cloudfunctions.net/shareReportPage?token='+token;
     document.getElementById('btn-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharePageUrl);
     document.getElementById('btn-email-share').href='mailto:?subject=My AI Job Risk Report&body='+encodeURIComponent(window.location.href);
   }
