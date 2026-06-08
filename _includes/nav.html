@@ -14,12 +14,22 @@
     <ul class="navbar-nav ml-auto">
       {%- for link in site.navbar-links -%}
         {%- if link[1].first %}
+          {% assign parent_url = "" %}
+          {% for childlink in link[1] %}
+            {% for linkparts in childlink %}
+              {% if linkparts[0] == "_url" %}
+                {% assign parent_url = linkparts[1] %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ link[0] }}</a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="nav-link dropdown-toggle" href="{{ parent_url | relative_url }}" role="button" aria-haspopup="true" aria-expanded="false">{{ link[0] }}</a>
+            <div class="dropdown-menu" aria-label="{{ link[0] }} submenu">
               {%- for childlink in link[1] -%}
                 {%- for linkparts in childlink %}
+                  {% unless linkparts[0] == "_url" %}
                   <a class="dropdown-item" href="{{ linkparts[1] | relative_url }}">{{ linkparts[0] }}</a>
+                  {% endunless %}
                 {%- endfor -%}
               {%- endfor %}
             </div>
@@ -75,3 +85,20 @@
 </nav>
 
 {% include search.html %}
+
+<script>
+// Mobile dropdown toggle — on mobile tap toggles dropdown, on desktop link navigates
+document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(function(toggle){
+  toggle.addEventListener('click', function(e){
+    if(window.innerWidth < 1200){
+      e.preventDefault();
+      var parent = this.parentElement;
+      // Close other open dropdowns
+      document.querySelectorAll('.nav-item.dropdown.show').forEach(function(el){
+        if(el !== parent) el.classList.remove('show');
+      });
+      parent.classList.toggle('show');
+    }
+  });
+});
+</script>

@@ -3,13 +3,22 @@ url: "https://hasanjaffal.com"
 author: Hasan Jaffal
 
 navbar-links:
-  Writing: "writing"
-  Tools: "tools"
-  Newsletter: "newsletter"
+  Writing:
+    - _url: "writing"
+    - AI & Decision Operations: "positions/ai-decision-operations"
+    - Risk Intelligence: "positions/risk-intelligence"
+    - AI Job Risk: "positions/ai-job-risk"
+  Tools:
+    - _url: "tools"
+    - AI Job Risk Analyzer: "ai-job-risk-analyzer"
+    - Future-Proof Skills Assessment: "future-proof-skills-assessment"
   AI Job Risk: "ai-job-risk-directory"
+  Newsletter: "newsletter"
   Lexicon: "lexicon"
-  About: "aboutme"
-  Contact: "contact"
+  About:
+    - _url: "aboutme"
+    - About Hasan: "aboutme"
+    - Contact: "contact"
 
 avatar: "/assets/img/og-default.png"
 round-avatar: false

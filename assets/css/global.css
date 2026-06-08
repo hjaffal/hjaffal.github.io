@@ -293,6 +293,175 @@ em {
   align-items: center !important;
 }
 
+/* ===== MEGA MENU DROPDOWNS ===== */
+
+.nav-item.dropdown {
+  position: relative !important;
+}
+
+.nav-item.dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: none;
+}
+
+.nav-item.dropdown:hover::after {
+  display: block;
+}
+
+.nav-item.dropdown .dropdown-toggle::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--text-soft);
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+
+.nav-item.dropdown:hover .dropdown-toggle::after,
+.nav-item.dropdown .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu,
+.navbar-custom .nav-item.dropdown .dropdown-menu {
+  display: none;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+  transform: none !important;
+  width: auto !important;
+  min-width: 240px !important;
+  white-space: nowrap !important;
+  background: var(--white) !important;
+  border: 1px solid var(--slate-border) !important;
+  border-radius: 10px !important;
+  padding: 10px 0 !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04) !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s;
+  z-index: 1000 !important;
+  text-align: left !important;
+  margin: 0 !important;
+  margin-top: 8px !important;
+  word-break: normal !important;
+  font-size: 0.88rem !important;
+}
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
+  padding: 10px 22px;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: var(--text-main) !important;
+  background: transparent;
+  border: none !important;
+  border-width: 0 !important;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
+  border-top: none !important;
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:last-child {
+  border-bottom: none !important;
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+  background: var(--slate-bg);
+  color: var(--accent) !important;
+}
+
+.nav-item.dropdown:hover > .dropdown-menu,
+.nav-item.dropdown:focus-within > .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu .dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: var(--text-main) !important;
+  text-decoration: none;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: var(--slate-bg);
+  color: var(--accent) !important;
+}
+
+/* Dark mode dropdown */
+[data-theme="dark"] .dropdown-menu {
+  background: #1E293B;
+  border-color: #334155;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-item {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-item:hover {
+  background: #334155;
+  color: var(--accent) !important;
+}
+
+/* Mobile dropdown */
+@media (max-width: 1199px) {
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 0 8px 16px;
+    background: transparent;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-item.dropdown:hover > .dropdown-menu,
+  .nav-item.dropdown.show > .dropdown-menu {
+    display: block;
+    transform: none;
+  }
+
+  .dropdown-menu .dropdown-item {
+    padding: 8px 0;
+    font-size: 0.8rem;
+    color: var(--text-soft) !important;
+  }
+
+  .dropdown-menu .dropdown-item:hover {
+    background: transparent;
+    color: var(--accent) !important;
+  }
+
+  .nav-item.dropdown .dropdown-toggle {
+    cursor: pointer;
+  }
+}
+
 
 /* ===== FIELD LABEL (shared utility) ===== */
 
