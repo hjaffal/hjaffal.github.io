@@ -390,6 +390,26 @@ css:
     function chk(n){if(y+n>pH-20){pdf.addPage();y=16;}}
     function secH(t,c){chk(14);pdf.setDrawColor(c[0],c[1],c[2]);pdf.setLineWidth(0.7);pdf.line(m,y,m+cW,y);y+=5;pdf.setFont('helvetica','bold');pdf.setFontSize(8);pdf.setTextColor(c[0],c[1],c[2]);pdf.text(t,m,y);y+=7;return y;}
 
+    // Reliable text wrap: splits by word and measures with getTextWidth
+    function wrapText(text,maxW){
+      if(!text)return[''];
+      var words=text.split(' ');
+      var lines=[];
+      var line='';
+      for(var i=0;i<words.length;i++){
+        var test=line?(line+' '+words[i]):words[i];
+        var w=pdf.getTextWidth(test);
+        if(w>maxW&&line){
+          lines.push(line);
+          line=words[i];
+        }else{
+          line=test;
+        }
+      }
+      if(line)lines.push(line);
+      return lines.length?lines:[''];
+    }
+
     // HEADER
     pdf.setFillColor(dk[0],dk[1],dk[2]);pdf.rect(0,0,pW,42,'F');
     pdf.setFont('helvetica','bold');pdf.setFontSize(7);pdf.setTextColor(pur[0],pur[1],pur[2]);
@@ -411,14 +431,14 @@ css:
     pdf.setFontSize(12);pdf.text(level+' Risk',m+28,y+11);
     pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(gr[0],gr[1],gr[2]);
     var metaText='Score '+score+'/100  \u00B7  '+jt+'  \u00B7  '+ind+'  \u00B7  '+cty;
-    var metaLines=pdf.splitTextToSize(metaText,cW-30);
+    var metaLines=wrapText(metaText,cW-30);
     pdf.text(metaLines,m+28,y+18);
     y+=32;
 
     // SUMMARY
     pdf.setDrawColor(13,148,136);pdf.setLineWidth(0.6);pdf.line(m,y,m,y+16);
     pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);pdf.setTextColor(51,65,85);
-    var sLines=pdf.splitTextToSize(r.summary||'No summary available.',cW-6);
+    var sLines=wrapText(r.summary||'No summary available.',cW-6);
     for(var si=0;si<sLines.length;si++){pdf.text(sLines[si],m+4,y+4+si*4);}
     y+=Math.max(sLines.length*4+6,18);
 
@@ -427,9 +447,9 @@ css:
     (r.exposed_tasks||[]).forEach(function(t,i){
       var task=typeof t==='string'?t:t.task,pct=typeof t==='object'?t.exposure_pct:'—',reason=typeof t==='object'&&t.reason?t.reason:'';
       pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
-      var taskLines=pdf.splitTextToSize((i+1)+'. '+task,cW-22);
+      var taskLines=wrapText((i+1)+'. '+task,cW-22);
       var reasonLines=[];
-      if(reason){pdf.setFont('helvetica','normal');pdf.setFontSize(7);reasonLines=pdf.splitTextToSize(reason,cW-6);}
+      if(reason){pdf.setFont('helvetica','normal');pdf.setFontSize(7);reasonLines=wrapText(reason,cW-6);}
       chk(taskLines.length*4+reasonLines.length*3.2+8);
       pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);pdf.setTextColor(dk[0],dk[1],dk[2]);
       for(var ti=0;ti<taskLines.length;ti++){pdf.text(taskLines[ti],m,y+4+ti*4);}
@@ -448,7 +468,7 @@ css:
     (r.protected_tasks||[]).forEach(function(t,i){
       var task=typeof t==='string'?t:t.task,area=typeof t==='object'&&t.judgment_area?t.judgment_area:'';
       pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
-      var taskLines=pdf.splitTextToSize((i+1)+'. '+task,cW-30);
+      var taskLines=wrapText((i+1)+'. '+task,cW-30);
       chk(taskLines.length*4+6);
       pdf.setTextColor(dk[0],dk[1],dk[2]);
       for(var ti=0;ti<taskLines.length;ti++){pdf.text(taskLines[ti],m,y+4+ti*4);}
@@ -463,9 +483,9 @@ css:
       var skill=typeof g==='string'?g:g.skill,pri=typeof g==='object'?g.priority:'MEDIUM',action=typeof g==='object'&&g.action?g.action:'';
       var pc=pri==='HIGH'?[220,38,38]:[217,119,6];
       pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
-      var skillLines=pdf.splitTextToSize((i+1)+'. '+skill,cW-22);
+      var skillLines=wrapText((i+1)+'. '+skill,cW-22);
       var actionLines=[];
-      if(action){pdf.setFont('helvetica','normal');pdf.setFontSize(7);actionLines=pdf.splitTextToSize('\u2192 '+action,cW-6);}
+      if(action){pdf.setFont('helvetica','normal');pdf.setFontSize(7);actionLines=wrapText('-> '+action,cW-6);}
       chk(skillLines.length*4+actionLines.length*3.2+10);
       // Render skill title line by line
       pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);pdf.setTextColor(dk[0],dk[1],dk[2]);
@@ -508,11 +528,11 @@ css:
       var tx=m+12;var avail=cW-16;
       // Pre-calculate lines
       pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
-      var ttLines=tt?pdf.splitTextToSize(tt,avail):[];
+      var ttLines=tt?wrapText(tt,avail):[];
       pdf.setFont('helvetica','normal');pdf.setFontSize(8);
-      var acLines=pdf.splitTextToSize(ac,avail);
+      var acLines=wrapText(ac,avail);
       pdf.setFont('helvetica','italic');pdf.setFontSize(7);
-      var opLines=op?pdf.splitTextToSize('Deliverable: '+op,avail):[];
+      var opLines=op?wrapText('Deliverable: '+op,avail):[];
       chk(ttLines.length*4+acLines.length*3.8+opLines.length*3.2+14);
       // Week badge
       pdf.setFillColor(wc[0],wc[1],wc[2]);pdf.circle(m+4,y+4,3.5,'F');
@@ -541,7 +561,7 @@ css:
     pdf.setFont('helvetica','normal');pdf.setFontSize(8);
     var adv=r.final_advice||'';
     var advMaxW=cW-18;
-    var aL=pdf.splitTextToSize(adv,advMaxW);
+    var aL=wrapText(adv,advMaxW);
     var aH=aL.length*4+20;
     chk(aH+6);
     pdf.setFillColor(dk[0],dk[1],dk[2]);
