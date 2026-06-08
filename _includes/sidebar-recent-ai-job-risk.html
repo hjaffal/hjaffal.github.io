@@ -1,0 +1,32 @@
+{% comment %}
+  Sidebar: Latest articles from the ai-job-risk position (Position #03).
+{% endcomment %}
+<div class="sidebar-recent">
+  <span class="card-label">LATEST ON AI JOB RISK</span>
+  <ul class="sidebar-recent-list">
+    {% assign count = 0 %}
+    {% for post in site.posts %}
+      {% if post.tags contains "ai-job-risk" or post.position_tag == "ai-job-risk" or post.topic == "white-collar-automation" or post.topic == "ai-career-delusion" or post.topic == "death-of-information-work" or post.topic == "middle-management-exposure" or post.topic == "collapse-of-busy-work" %}
+        {% if count < 5 %}
+        <li>
+          <a href="{{ post.url | relative_url }}" class="sidebar-recent-item">
+            <span class="sidebar-recent-title">{{ post.title }}</span>
+            <span class="sidebar-recent-date">{{ post.date | date: "%b %d, %Y" }}</span>
+          </a>
+        </li>
+        {% assign count = count | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if count == 0 %}
+      {% for post in site.posts limit:5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}" class="sidebar-recent-item">
+          <span class="sidebar-recent-title">{{ post.title }}</span>
+          <span class="sidebar-recent-date">{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</div>

@@ -1,0 +1,339 @@
+---
+layout: page
+title:
+subtitle:
+share-title: "AI Job Risk Directory — 100+ Roles Audited for Automation Exposure by 2028"
+share-description: "Audit your career risk against the agentic AI shift. Search the comprehensive master list of 100+ job roles, task automation indexes, and structural vulnerability scores looking out to 2028."
+share-img: /assets/img/hasanjaffal.jpeg
+permalink: /ai-job-risk-directory/
+show-avatar: false
+css:
+  - "/assets/css/ai-job-risk-directory.css"
+---
+
+<section class="dir-hero">
+  <div class="dir-hero-orb-1"></div>
+  <div class="dir-hero-orb-2"></div>
+  <div class="dir-hero-content">
+    <span class="dir-hero-label">AI JOB RISK DIRECTORY</span>
+    <h1 class="dir-hero-title">The 24-Month Forensic<br><span>AI Risk Directory</span></h1>
+    <p class="dir-hero-desc">By 2028, enterprise architecture will migrate completely past simple "copilot" assistants toward autonomous multi-agent networks that execute, self-correct, and optimize workflows natively. The historical barrier between thinking and executing has dissolved.</p>
+    <p class="dir-hero-subdesc">This directory serves as the definitive index for modern job vulnerability. Browse the audited roles below to view their raw <strong>24-Month Automation Index</strong> — the percentage of traditional day-to-day task loads facing complete machine execution.</p>
+
+    <form class="dir-search-form" role="search" aria-label="Filter the AI Job Risk Directory">
+      <div class="dir-search-wrap">
+        <i class="fas fa-search dir-search-icon"></i>
+        <input type="text" id="dir-search-input" class="dir-search-input" placeholder="Search {{ site.data.ai_job_risk_directory | size }} positions..." autocomplete="off" aria-label="Filter positions by job title">
+        <div class="dir-autocomplete" id="dir-autocomplete" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+    </form>
+
+    <div class="dir-stats-row">
+      <div class="dir-stat-card">
+        <span class="dir-stat-num">{{ site.data.ai_job_risk_directory | size }}</span>
+        <span class="dir-stat-text">Roles Audited</span>
+      </div>
+      <div class="dir-stat-card">
+        <span class="dir-stat-num">24mo</span>
+        <span class="dir-stat-text">Forecast Window</span>
+      </div>
+      <div class="dir-stat-card">
+        <span class="dir-stat-num">4</span>
+        <span class="dir-stat-text">Disruption Classes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dir-directory">
+  <div class="dir-directory-header">
+    <h2 class="dir-directory-title">Audit Directory</h2>
+    <div class="dir-filter-pills" role="group" aria-label="Filter by disruption class">
+      <button class="dir-pill dir-pill-active" data-filter="all">All Roles</button>
+      <button class="dir-pill" data-filter="Full Asset Substitution">Full Asset Substitution</button>
+      <button class="dir-pill" data-filter="Core Task Attrition">Core Task Attrition</button>
+      <button class="dir-pill" data-filter="Structural Reclassification">Structural Reclassification</button>
+      <button class="dir-pill" data-filter="Peripheral Automation">Peripheral Automation</button>
+    </div>
+  </div>
+
+  <div class="dir-table-wrap">
+    <table class="dir-table" aria-label="AI Job Risk Directory — role automation indexes">
+      <thead>
+        <tr>
+          <th scope="col">Job Title</th>
+          <th scope="col" class="dir-th-center">24-Month Automation Index</th>
+          <th scope="col">Disruption Class</th>
+          <th scope="col" class="dir-th-right">Forensic Audit</th>
+        </tr>
+      </thead>
+      <tbody id="dir-table-body">
+        {% assign sorted_roles = site.data.ai_job_risk_directory | sort: "automation_index" | reverse %}
+        {% for role in sorted_roles %}
+        <tr class="dir-row" data-title="{{ role.title | downcase }}" data-class="{{ role.disruption_class }}">
+          <td class="dir-cell-title">
+            <a href="/ai-job-risk/{{ role.slug }}/">{{ role.title }}</a>
+          </td>
+          <td class="dir-cell-index">
+            {% if role.automation_index >= 75 %}
+            <span class="dir-badge dir-badge-critical">{{ role.automation_index }}%</span>
+            {% elsif role.automation_index >= 60 %}
+            <span class="dir-badge dir-badge-high">{{ role.automation_index }}%</span>
+            {% elsif role.automation_index >= 40 %}
+            <span class="dir-badge dir-badge-medium">{{ role.automation_index }}%</span>
+            {% else %}
+            <span class="dir-badge dir-badge-low">{{ role.automation_index }}%</span>
+            {% endif %}
+          </td>
+          <td class="dir-cell-class">
+            <span class="dir-class-tag">{{ role.disruption_class }}</span>
+          </td>
+          <td class="dir-cell-link">
+            <a href="/ai-job-risk/{{ role.slug }}/" class="dir-audit-link">View Audit →</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="dir-no-results" id="dir-no-results" style="display:none;">No roles match your search. Try a different job title.</p>
+
+  <div class="dir-pagination" id="dir-pagination"></div>
+</section>
+
+<section class="dir-related">
+  <div class="dir-related-inner">
+    <div class="dir-related-col">
+      <span class="dir-related-label">REFERENCE GUIDES</span>
+      <a href="/references/ai-job-risk-index/" class="dir-related-card">
+        <span class="dir-related-title">AI Job Risk Index</span>
+        <span class="dir-related-desc">Which roles are most exposed to AI automation — and which are protected</span>
+      </a>
+      <a href="/references/reporting-vs-intelligence/" class="dir-related-card">
+        <span class="dir-related-title">Reporting vs Intelligence Framework</span>
+        <span class="dir-related-desc">The fundamental difference between explaining the past and changing the future</span>
+      </a>
+    </div>
+    <div class="dir-related-col">
+      <span class="dir-related-label">FROM THE LEXICON</span>
+      <a href="/lexicon/busy-work-collapse/" class="dir-related-card">
+        <span class="dir-related-title">Busy-Work Collapse</span>
+        <span class="dir-related-desc">When AI eliminates the task layer that justified headcount</span>
+      </a>
+      <a href="/lexicon/output-identity/" class="dir-related-card">
+        <span class="dir-related-title">Output Identity</span>
+        <span class="dir-related-desc">When a person's value is defined by volume of output, not quality of judgment</span>
+      </a>
+      <a href="/lexicon/credential-erosion/" class="dir-related-card">
+        <span class="dir-related-title">Credential Erosion</span>
+        <span class="dir-related-desc">When formal qualifications lose their protective value against automation</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="dir-cta">
+  <div class="dir-cta-inner">
+    <div class="dir-cta-icon"><i class="fas fa-crosshairs"></i></div>
+    <h2 class="dir-cta-title">Macro Benchmarks Won't Save You</h2>
+    <p class="dir-cta-desc">A macro index provides a statistical baseline for a job title, but it does not account for the unique operational complexity of your specific company, your custom task mix, or your political capital with stakeholders.</p>
+    <p class="dir-cta-subdesc">If your daily routine differs from the standard benchmark, your true risk score does too. Move from static research to a tailored defense strategy.</p>
+    <a href="/ai-job-risk-analyzer/" class="dir-cta-btn"><i class="fas fa-bolt"></i> Launch the AI Job Risk Analyzer Engine</a>
+    <p class="dir-cta-note">3-minute assessment · Personalized risk report · 30-day resilience protocol</p>
+  </div>
+</section>
+
+<script>
+(function() {
+  var searchInput = document.getElementById('dir-search-input');
+  var autocomplete = document.getElementById('dir-autocomplete');
+  var tableBody = document.getElementById('dir-table-body');
+  var noResults = document.getElementById('dir-no-results');
+  var pagination = document.getElementById('dir-pagination');
+  var pills = document.querySelectorAll('.dir-pill');
+  var allRows = Array.from(tableBody.querySelectorAll('.dir-row'));
+  var activeFilter = 'all';
+  var currentPage = 1;
+  var perPage = 20;
+  var acIndex = -1;
+
+  // Build roles data for autocomplete
+  var roles = allRows.map(function(row) {
+    return {
+      title: row.querySelector('.dir-cell-title a').textContent.trim(),
+      slug: row.querySelector('.dir-cell-title a').getAttribute('href'),
+      index: row.querySelector('.dir-badge').textContent.trim(),
+      badgeClass: row.querySelector('.dir-badge').className,
+      el: row
+    };
+  });
+
+  // Pre-fill from URL param
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('q')) {
+    searchInput.value = params.get('q');
+  }
+
+  function getFilteredRows() {
+    var query = searchInput.value.toLowerCase().trim();
+    return allRows.filter(function(row) {
+      var title = row.getAttribute('data-title');
+      var dClass = row.getAttribute('data-class');
+      var matchesSearch = !query || title.indexOf(query) !== -1;
+      var matchesFilter = activeFilter === 'all' || dClass === activeFilter;
+      return matchesSearch && matchesFilter;
+    });
+  }
+
+  function renderPage() {
+    var filtered = getFilteredRows();
+    var totalPages = Math.ceil(filtered.length / perPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+
+    var start = (currentPage - 1) * perPage;
+    var end = start + perPage;
+
+    // Hide all rows first
+    allRows.forEach(function(row) { row.style.display = 'none'; });
+
+    // Show only current page rows
+    filtered.forEach(function(row, i) {
+      row.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    noResults.style.display = filtered.length === 0 ? 'block' : 'none';
+    renderPagination(filtered.length, totalPages);
+  }
+
+  function renderPagination(total, totalPages) {
+    if (totalPages <= 1) {
+      pagination.innerHTML = '';
+      return;
+    }
+
+    var html = '<div class="dir-pag-info">Showing ' + ((currentPage - 1) * perPage + 1) + '–' + Math.min(currentPage * perPage, total) + ' of ' + total + ' roles</div>';
+    html += '<div class="dir-pag-btns">';
+
+    // Prev
+    if (currentPage > 1) {
+      html += '<button class="dir-pag-btn" data-page="' + (currentPage - 1) + '">← Prev</button>';
+    }
+
+    // Page numbers
+    var startPage = Math.max(1, currentPage - 2);
+    var endPage = Math.min(totalPages, currentPage + 2);
+
+    if (startPage > 1) {
+      html += '<button class="dir-pag-btn" data-page="1">1</button>';
+      if (startPage > 2) html += '<span class="dir-pag-dots">…</span>';
+    }
+
+    for (var i = startPage; i <= endPage; i++) {
+      html += '<button class="dir-pag-btn' + (i === currentPage ? ' dir-pag-active' : '') + '" data-page="' + i + '">' + i + '</button>';
+    }
+
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) html += '<span class="dir-pag-dots">…</span>';
+      html += '<button class="dir-pag-btn" data-page="' + totalPages + '">' + totalPages + '</button>';
+    }
+
+    // Next
+    if (currentPage < totalPages) {
+      html += '<button class="dir-pag-btn" data-page="' + (currentPage + 1) + '">Next →</button>';
+    }
+
+    html += '</div>';
+    pagination.innerHTML = html;
+
+    // Bind page clicks
+    pagination.querySelectorAll('.dir-pag-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentPage = parseInt(this.getAttribute('data-page'));
+        renderPage();
+        document.querySelector('.dir-directory-header').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
+  // Autocomplete
+  function showAutocomplete() {
+    var query = searchInput.value.toLowerCase().trim();
+    acIndex = -1;
+
+    if (query.length < 2) {
+      autocomplete.style.display = 'none';
+      return;
+    }
+
+    var matches = roles.filter(function(r) {
+      return r.title.toLowerCase().indexOf(query) !== -1;
+    }).slice(0, 7);
+
+    if (matches.length === 0) {
+      autocomplete.style.display = 'none';
+      return;
+    }
+
+    var html = '';
+    matches.forEach(function(m, i) {
+      var highlighted = m.title.replace(new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<strong>$1</strong>');
+      html += '<a href="' + m.slug + '" class="dir-ac-item" role="option" data-index="' + i + '">';
+      html += '<span class="dir-ac-title">' + highlighted + '</span>';
+      html += '<span class="' + m.badgeClass + ' dir-ac-badge">' + m.index + '</span>';
+      html += '</a>';
+    });
+
+    autocomplete.innerHTML = html;
+    autocomplete.style.display = 'block';
+  }
+
+  function hideAutocomplete() {
+    setTimeout(function() { autocomplete.style.display = 'none'; }, 200);
+  }
+
+  searchInput.addEventListener('input', function() {
+    currentPage = 1;
+    showAutocomplete();
+    renderPage();
+  });
+
+  searchInput.addEventListener('focus', function() {
+    if (searchInput.value.length >= 2) showAutocomplete();
+  });
+
+  searchInput.addEventListener('blur', hideAutocomplete);
+
+  searchInput.addEventListener('keydown', function(e) {
+    var items = autocomplete.querySelectorAll('.dir-ac-item');
+    if (!items.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      acIndex = Math.min(acIndex + 1, items.length - 1);
+      items.forEach(function(it, i) { it.classList.toggle('dir-ac-active', i === acIndex); });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      acIndex = Math.max(acIndex - 1, 0);
+      items.forEach(function(it, i) { it.classList.toggle('dir-ac-active', i === acIndex); });
+    } else if (e.key === 'Enter' && acIndex >= 0) {
+      e.preventDefault();
+      window.location.href = items[acIndex].getAttribute('href');
+    }
+  });
+
+  // Pills
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) { p.classList.remove('dir-pill-active'); });
+      pill.classList.add('dir-pill-active');
+      activeFilter = pill.getAttribute('data-filter');
+      currentPage = 1;
+      renderPage();
+    });
+  });
+
+  // Initial render
+  renderPage();
+})();
+</script>

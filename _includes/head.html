@@ -65,6 +65,10 @@
   <meta name="keywords" content="{{ site.keywords }}">
   {% endif %}
 
+  {% if page.keywords %}
+  <meta name="keywords" content="{{ page.keywords | join: ', ' }}">
+  {% endif %}
+
   {% if site.rss-description %}
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
   {% endif %}

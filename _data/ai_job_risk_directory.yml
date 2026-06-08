@@ -1,0 +1,773 @@
+# AI Job Risk Directory — Role data for the master directory page
+# Each entry: title, slug, automation_index (%), disruption_class
+
+- title: "Data Analyst"
+  slug: "data-analyst"
+  automation_index: 85
+  disruption_class: "Full Asset Substitution"
+
+- title: "Software Engineer (L1-L3)"
+  slug: "software-engineer"
+  automation_index: 90
+  disruption_class: "Full Asset Substitution"
+
+- title: "Financial Analyst"
+  slug: "financial-analyst"
+  automation_index: 80
+  disruption_class: "Full Asset Substitution"
+
+- title: "Project Manager"
+  slug: "project-manager"
+  automation_index: 65
+  disruption_class: "Core Task Attrition"
+
+- title: "Loss Prevention Specialist"
+  slug: "loss-prevention-specialist"
+  automation_index: 45
+  disruption_class: "Structural Reclassification"
+
+- title: "Marketing Coordinator"
+  slug: "marketing-coordinator"
+  automation_index: 78
+  disruption_class: "Full Asset Substitution"
+
+- title: "Content Writer"
+  slug: "content-writer"
+  automation_index: 82
+  disruption_class: "Full Asset Substitution"
+
+- title: "Copywriter"
+  slug: "copywriter"
+  automation_index: 79
+  disruption_class: "Full Asset Substitution"
+
+- title: "Business Analyst"
+  slug: "business-analyst"
+  automation_index: 72
+  disruption_class: "Core Task Attrition"
+
+- title: "Accountant"
+  slug: "accountant"
+  automation_index: 76
+  disruption_class: "Full Asset Substitution"
+
+- title: "Bookkeeper"
+  slug: "bookkeeper"
+  automation_index: 92
+  disruption_class: "Full Asset Substitution"
+
+- title: "Paralegal"
+  slug: "paralegal"
+  automation_index: 74
+  disruption_class: "Core Task Attrition"
+
+- title: "Legal Assistant"
+  slug: "legal-assistant"
+  automation_index: 80
+  disruption_class: "Full Asset Substitution"
+
+- title: "HR Coordinator"
+  slug: "hr-coordinator"
+  automation_index: 68
+  disruption_class: "Core Task Attrition"
+
+- title: "Recruiter"
+  slug: "recruiter"
+  automation_index: 62
+  disruption_class: "Core Task Attrition"
+
+- title: "Customer Service Representative"
+  slug: "customer-service-representative"
+  automation_index: 88
+  disruption_class: "Full Asset Substitution"
+
+- title: "Technical Support Analyst"
+  slug: "technical-support-analyst"
+  automation_index: 75
+  disruption_class: "Core Task Attrition"
+
+- title: "Sales Development Representative"
+  slug: "sales-development-representative"
+  automation_index: 71
+  disruption_class: "Core Task Attrition"
+
+- title: "Account Executive"
+  slug: "account-executive"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Insurance Underwriter"
+  slug: "insurance-underwriter"
+  automation_index: 73
+  disruption_class: "Core Task Attrition"
+
+- title: "Claims Adjuster"
+  slug: "claims-adjuster"
+  automation_index: 70
+  disruption_class: "Core Task Attrition"
+
+- title: "Compliance Analyst"
+  slug: "compliance-analyst"
+  automation_index: 66
+  disruption_class: "Core Task Attrition"
+
+- title: "Audit Associate"
+  slug: "audit-associate"
+  automation_index: 77
+  disruption_class: "Full Asset Substitution"
+
+- title: "Tax Preparer"
+  slug: "tax-preparer"
+  automation_index: 88
+  disruption_class: "Full Asset Substitution"
+
+- title: "Payroll Specialist"
+  slug: "payroll-specialist"
+  automation_index: 91
+  disruption_class: "Full Asset Substitution"
+
+- title: "Data Entry Specialist"
+  slug: "data-entry-specialist"
+  automation_index: 96
+  disruption_class: "Full Asset Substitution"
+
+- title: "Administrative Assistant"
+  slug: "administrative-assistant"
+  automation_index: 84
+  disruption_class: "Full Asset Substitution"
+
+- title: "Executive Assistant"
+  slug: "executive-assistant"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Office Manager"
+  slug: "office-manager"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Supply Chain Analyst"
+  slug: "supply-chain-analyst"
+  automation_index: 69
+  disruption_class: "Core Task Attrition"
+
+- title: "Procurement Specialist"
+  slug: "procurement-specialist"
+  automation_index: 64
+  disruption_class: "Core Task Attrition"
+
+- title: "Logistics Coordinator"
+  slug: "logistics-coordinator"
+  automation_index: 72
+  disruption_class: "Core Task Attrition"
+
+- title: "Quality Assurance Analyst"
+  slug: "quality-assurance-analyst"
+  automation_index: 78
+  disruption_class: "Full Asset Substitution"
+
+- title: "QA Engineer"
+  slug: "qa-engineer"
+  automation_index: 82
+  disruption_class: "Full Asset Substitution"
+
+- title: "DevOps Engineer"
+  slug: "devops-engineer"
+  automation_index: 60
+  disruption_class: "Core Task Attrition"
+
+- title: "Cloud Engineer"
+  slug: "cloud-engineer"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Network Administrator"
+  slug: "network-administrator"
+  automation_index: 63
+  disruption_class: "Core Task Attrition"
+
+- title: "Database Administrator"
+  slug: "database-administrator"
+  automation_index: 71
+  disruption_class: "Core Task Attrition"
+
+- title: "Systems Administrator"
+  slug: "systems-administrator"
+  automation_index: 67
+  disruption_class: "Core Task Attrition"
+
+- title: "IT Help Desk Technician"
+  slug: "it-help-desk-technician"
+  automation_index: 83
+  disruption_class: "Full Asset Substitution"
+
+- title: "UX Designer"
+  slug: "ux-designer"
+  automation_index: 48
+  disruption_class: "Structural Reclassification"
+
+- title: "UI Designer"
+  slug: "ui-designer"
+  automation_index: 62
+  disruption_class: "Core Task Attrition"
+
+- title: "Graphic Designer"
+  slug: "graphic-designer"
+  automation_index: 72
+  disruption_class: "Core Task Attrition"
+
+- title: "Video Editor"
+  slug: "video-editor"
+  automation_index: 58
+  disruption_class: "Structural Reclassification"
+
+- title: "Social Media Manager"
+  slug: "social-media-manager"
+  automation_index: 74
+  disruption_class: "Core Task Attrition"
+
+- title: "SEO Specialist"
+  slug: "seo-specialist"
+  automation_index: 76
+  disruption_class: "Full Asset Substitution"
+
+- title: "PPC Specialist"
+  slug: "ppc-specialist"
+  automation_index: 80
+  disruption_class: "Full Asset Substitution"
+
+- title: "Email Marketing Manager"
+  slug: "email-marketing-manager"
+  automation_index: 73
+  disruption_class: "Core Task Attrition"
+
+- title: "Product Manager"
+  slug: "product-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Program Manager"
+  slug: "program-manager"
+  automation_index: 44
+  disruption_class: "Structural Reclassification"
+
+- title: "Scrum Master"
+  slug: "scrum-master"
+  automation_index: 70
+  disruption_class: "Core Task Attrition"
+
+- title: "Business Intelligence Analyst"
+  slug: "business-intelligence-analyst"
+  automation_index: 81
+  disruption_class: "Full Asset Substitution"
+
+- title: "Data Scientist"
+  slug: "data-scientist"
+  automation_index: 58
+  disruption_class: "Structural Reclassification"
+
+- title: "Machine Learning Engineer"
+  slug: "machine-learning-engineer"
+  automation_index: 40
+  disruption_class: "Peripheral Automation"
+
+- title: "AI Research Scientist"
+  slug: "ai-research-scientist"
+  automation_index: 25
+  disruption_class: "Peripheral Automation"
+
+- title: "Cybersecurity Analyst"
+  slug: "cybersecurity-analyst"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Penetration Tester"
+  slug: "penetration-tester"
+  automation_index: 45
+  disruption_class: "Structural Reclassification"
+
+- title: "Security Engineer"
+  slug: "security-engineer"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Technical Writer"
+  slug: "technical-writer"
+  automation_index: 79
+  disruption_class: "Full Asset Substitution"
+
+- title: "Journalist"
+  slug: "journalist"
+  automation_index: 60
+  disruption_class: "Core Task Attrition"
+
+- title: "Translator"
+  slug: "translator"
+  automation_index: 87
+  disruption_class: "Full Asset Substitution"
+
+- title: "Medical Coder"
+  slug: "medical-coder"
+  automation_index: 85
+  disruption_class: "Full Asset Substitution"
+
+- title: "Medical Transcriptionist"
+  slug: "medical-transcriptionist"
+  automation_index: 94
+  disruption_class: "Full Asset Substitution"
+
+- title: "Radiologist"
+  slug: "radiologist"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Pharmacist"
+  slug: "pharmacist"
+  automation_index: 48
+  disruption_class: "Structural Reclassification"
+
+- title: "Lab Technician"
+  slug: "lab-technician"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Bank Teller"
+  slug: "bank-teller"
+  automation_index: 91
+  disruption_class: "Full Asset Substitution"
+
+- title: "Loan Officer"
+  slug: "loan-officer"
+  automation_index: 74
+  disruption_class: "Core Task Attrition"
+
+- title: "Financial Advisor"
+  slug: "financial-advisor"
+  automation_index: 46
+  disruption_class: "Structural Reclassification"
+
+- title: "Investment Analyst"
+  slug: "investment-analyst"
+  automation_index: 68
+  disruption_class: "Core Task Attrition"
+
+- title: "Real Estate Agent"
+  slug: "real-estate-agent"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Travel Agent"
+  slug: "travel-agent"
+  automation_index: 86
+  disruption_class: "Full Asset Substitution"
+
+- title: "Event Planner"
+  slug: "event-planner"
+  automation_index: 50
+  disruption_class: "Structural Reclassification"
+
+- title: "Operations Analyst"
+  slug: "operations-analyst"
+  automation_index: 72
+  disruption_class: "Core Task Attrition"
+
+- title: "Operations Manager"
+  slug: "operations-manager"
+  automation_index: 30
+  disruption_class: "Peripheral Automation"
+
+- title: "Risk Analyst"
+  slug: "risk-analyst"
+  automation_index: 62
+  disruption_class: "Core Task Attrition"
+
+- title: "Fraud Analyst"
+  slug: "fraud-analyst"
+  automation_index: 66
+  disruption_class: "Core Task Attrition"
+
+- title: "Credit Analyst"
+  slug: "credit-analyst"
+  automation_index: 75
+  disruption_class: "Core Task Attrition"
+
+- title: "Actuary"
+  slug: "actuary"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Economist"
+  slug: "economist"
+  automation_index: 44
+  disruption_class: "Structural Reclassification"
+
+- title: "Market Research Analyst"
+  slug: "market-research-analyst"
+  automation_index: 78
+  disruption_class: "Full Asset Substitution"
+
+- title: "Survey Researcher"
+  slug: "survey-researcher"
+  automation_index: 80
+  disruption_class: "Full Asset Substitution"
+
+- title: "Librarian"
+  slug: "librarian"
+  automation_index: 62
+  disruption_class: "Core Task Attrition"
+
+- title: "Archivist"
+  slug: "archivist"
+  automation_index: 58
+  disruption_class: "Structural Reclassification"
+
+- title: "Research Assistant"
+  slug: "research-assistant"
+  automation_index: 79
+  disruption_class: "Full Asset Substitution"
+
+- title: "Lab Manager"
+  slug: "lab-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Clinical Trial Coordinator"
+  slug: "clinical-trial-coordinator"
+  automation_index: 56
+  disruption_class: "Structural Reclassification"
+
+- title: "Regulatory Affairs Specialist"
+  slug: "regulatory-affairs-specialist"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Patent Examiner"
+  slug: "patent-examiner"
+  automation_index: 68
+  disruption_class: "Core Task Attrition"
+
+- title: "Contract Administrator"
+  slug: "contract-administrator"
+  automation_index: 72
+  disruption_class: "Core Task Attrition"
+
+- title: "Purchasing Agent"
+  slug: "purchasing-agent"
+  automation_index: 77
+  disruption_class: "Full Asset Substitution"
+
+- title: "Inventory Analyst"
+  slug: "inventory-analyst"
+  automation_index: 80
+  disruption_class: "Full Asset Substitution"
+
+- title: "Demand Planner"
+  slug: "demand-planner"
+  automation_index: 70
+  disruption_class: "Core Task Attrition"
+
+- title: "Pricing Analyst"
+  slug: "pricing-analyst"
+  automation_index: 76
+  disruption_class: "Full Asset Substitution"
+
+- title: "Revenue Analyst"
+  slug: "revenue-analyst"
+  automation_index: 74
+  disruption_class: "Core Task Attrition"
+
+- title: "FP&A Analyst"
+  slug: "fpa-analyst"
+  automation_index: 72
+  disruption_class: "Core Task Attrition"
+
+- title: "Controller"
+  slug: "controller"
+  automation_index: 40
+  disruption_class: "Peripheral Automation"
+
+- title: "Chief of Staff"
+  slug: "chief-of-staff"
+  automation_index: 28
+  disruption_class: "Peripheral Automation"
+
+- title: "Management Consultant"
+  slug: "management-consultant"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Strategy Analyst"
+  slug: "strategy-analyst"
+  automation_index: 58
+  disruption_class: "Structural Reclassification"
+
+- title: "Solutions Architect"
+  slug: "solutions-architect"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Enterprise Architect"
+  slug: "enterprise-architect"
+  automation_index: 32
+  disruption_class: "Peripheral Automation"
+
+- title: "VP of Engineering"
+  slug: "vp-of-engineering"
+  automation_index: 22
+  disruption_class: "Peripheral Automation"
+
+- title: "CTO"
+  slug: "cto"
+  automation_index: 18
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Software Engineer"
+  slug: "senior-software-engineer"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Engineering Manager"
+  slug: "engineering-manager"
+  automation_index: 32
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Business Analyst"
+  slug: "senior-business-analyst"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Senior Data Analyst"
+  slug: "senior-data-analyst"
+  automation_index: 58
+  disruption_class: "Structural Reclassification"
+
+- title: "Senior Financial Analyst"
+  slug: "senior-financial-analyst"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Senior Product Manager"
+  slug: "senior-product-manager"
+  automation_index: 28
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Project Manager"
+  slug: "senior-project-manager"
+  automation_index: 45
+  disruption_class: "Structural Reclassification"
+
+- title: "Senior UX Designer"
+  slug: "senior-ux-designer"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Marketing Manager"
+  slug: "senior-marketing-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Accountant"
+  slug: "senior-accountant"
+  automation_index: 52
+  disruption_class: "Structural Reclassification"
+
+- title: "Finance Manager"
+  slug: "finance-manager"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Data Engineering Manager"
+  slug: "data-engineering-manager"
+  automation_index: 30
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Data Scientist"
+  slug: "senior-data-scientist"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Technical Lead"
+  slug: "technical-lead"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Staff Engineer"
+  slug: "staff-engineer"
+  automation_index: 28
+  disruption_class: "Peripheral Automation"
+
+- title: "Principal Engineer"
+  slug: "principal-engineer"
+  automation_index: 20
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior DevOps Engineer"
+  slug: "senior-devops-engineer"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Platform Engineering Lead"
+  slug: "platform-engineering-lead"
+  automation_index: 30
+  disruption_class: "Peripheral Automation"
+
+- title: "IT Manager"
+  slug: "it-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Cybersecurity Analyst"
+  slug: "senior-cybersecurity-analyst"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Security Architect"
+  slug: "security-architect"
+  automation_index: 28
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Recruiter"
+  slug: "senior-recruiter"
+  automation_index: 48
+  disruption_class: "Structural Reclassification"
+
+- title: "HR Business Partner"
+  slug: "hr-business-partner"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Talent Acquisition Manager"
+  slug: "talent-acquisition-manager"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Senior Operations Manager"
+  slug: "senior-operations-manager"
+  automation_index: 25
+  disruption_class: "Peripheral Automation"
+
+- title: "Director of Operations"
+  slug: "director-of-operations"
+  automation_index: 20
+  disruption_class: "Peripheral Automation"
+
+- title: "Supply Chain Manager"
+  slug: "supply-chain-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Compliance Officer"
+  slug: "senior-compliance-officer"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Risk Manager"
+  slug: "risk-manager"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Fraud Analyst"
+  slug: "senior-fraud-analyst"
+  automation_index: 48
+  disruption_class: "Structural Reclassification"
+
+- title: "Clinical Research Manager"
+  slug: "clinical-research-manager"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Regulatory Affairs Manager"
+  slug: "regulatory-affairs-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Content Strategist"
+  slug: "senior-content-strategist"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Creative Director"
+  slug: "creative-director"
+  automation_index: 28
+  disruption_class: "Peripheral Automation"
+
+- title: "Brand Manager"
+  slug: "brand-manager"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior Sales Manager"
+  slug: "senior-sales-manager"
+  automation_index: 30
+  disruption_class: "Peripheral Automation"
+
+- title: "Customer Success Manager"
+  slug: "customer-success-manager"
+  automation_index: 45
+  disruption_class: "Structural Reclassification"
+
+- title: "Solutions Engineer"
+  slug: "solutions-engineer"
+  automation_index: 40
+  disruption_class: "Structural Reclassification"
+
+- title: "Technical Account Manager"
+  slug: "technical-account-manager"
+  automation_index: 38
+  disruption_class: "Peripheral Automation"
+
+- title: "Senior QA Lead"
+  slug: "senior-qa-lead"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Release Manager"
+  slug: "release-manager"
+  automation_index: 62
+  disruption_class: "Core Task Attrition"
+
+- title: "Scrum Master (Senior)"
+  slug: "senior-scrum-master"
+  automation_index: 55
+  disruption_class: "Structural Reclassification"
+
+- title: "Delivery Manager"
+  slug: "delivery-manager"
+  automation_index: 42
+  disruption_class: "Structural Reclassification"
+
+- title: "Senior Investment Analyst"
+  slug: "senior-investment-analyst"
+  automation_index: 48
+  disruption_class: "Structural Reclassification"
+
+- title: "Portfolio Manager"
+  slug: "portfolio-manager"
+  automation_index: 35
+  disruption_class: "Peripheral Automation"
+
+- title: "Head of Analytics"
+  slug: "head-of-analytics"
+  automation_index: 30
+  disruption_class: "Peripheral Automation"
+
+- title: "Director of Engineering"
+  slug: "director-of-engineering"
+  automation_index: 22
+  disruption_class: "Peripheral Automation"
+
+- title: "VP of Product"
+  slug: "vp-of-product"
+  automation_index: 18
+  disruption_class: "Peripheral Automation"
+
+- title: "VP of Marketing"
+  slug: "vp-of-marketing"
+  automation_index: 20
+  disruption_class: "Peripheral Automation"
+
+- title: "VP of Sales"
+  slug: "vp-of-sales"
+  automation_index: 15
+  disruption_class: "Peripheral Automation"
+

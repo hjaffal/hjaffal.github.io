@@ -9,6 +9,7 @@ chat_with_me_box: false
 show-avatar: false
 css:
   - "/assets/css/homepage.css"
+  - "/assets/css/ai-job-risk-directory.css"
 ---
 
 <!-- HERO -->
@@ -58,6 +59,30 @@ css:
       <span class="hp-position-cta">{{ p.cta }} →</span>
     </a>
     {% endfor %}
+  </div>
+</section>
+
+<!-- AI JOB RISK DIRECTORY WIDGET -->
+<section class="hp-directory-widget">
+  <div class="hp-dw-inner">
+    <div class="hp-dw-orb-1"></div>
+    <div class="hp-dw-orb-2"></div>
+    <div class="hp-dw-content">
+      <span class="hp-dw-label">AI JOB RISK DIRECTORY</span>
+      <h2 class="hp-dw-title">Is your role safe from the 2028 agentic shift?</h2>
+      <p class="hp-dw-desc">Search 100+ audited roles. See your raw 24-month automation index before the market prices it in.</p>
+      <form class="hp-dw-search-form" action="/ai-job-risk-directory/" method="get" role="search" aria-label="Search the AI Job Risk Directory">
+        <input type="text" name="q" class="hp-dw-search-input" placeholder="Enter your job title (e.g., Data Analyst, Project Manager)..." autocomplete="off" aria-label="Job title search">
+        <button type="submit" class="hp-dw-search-btn"><i class="fas fa-arrow-right"></i></button>
+      </form>
+      <div class="hp-dw-stats">
+        <span class="hp-dw-stat"><strong>100+</strong> roles audited</span>
+        <span class="hp-dw-stat-sep">·</span>
+        <span class="hp-dw-stat"><strong>24-month</strong> outlook</span>
+        <span class="hp-dw-stat-sep">·</span>
+        <span class="hp-dw-stat"><strong>Task-level</strong> granularity</span>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -1,0 +1,369 @@
+/* ===== AI JOB RISK AUDIT PAGE ===== */
+
+.audit-layout-wrapper {
+  max-width: 100%;
+  padding: 0;
+  padding-top: 80px;
+}
+
+.audit-layout-wrapper .page-with-sidebar {
+  min-height: auto;
+}
+
+/* Meta bar */
+.audit-meta-bar {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 20px 24px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+
+.audit-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.audit-meta-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.audit-meta-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* Larger badge for meta bar */
+.audit-badge-lg {
+  font-size: 0.88rem;
+  padding: 5px 14px;
+}
+
+/* Badge styles (duplicated from directory for standalone loading) */
+.dir-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.dir-badge-critical {
+  background: rgba(239, 68, 68, 0.12);
+  color: #DC2626;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.dir-badge-high {
+  background: rgba(249, 115, 22, 0.12);
+  color: #EA580C;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+.dir-badge-medium {
+  background: rgba(234, 179, 8, 0.12);
+  color: #B45309;
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+
+.dir-badge-low {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16A34A;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+/* Content styling */
+.audit-content h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin: 36px 0 14px;
+  padding-top: 8px;
+  border-top: 1px solid var(--slate-border);
+}
+
+.audit-content h2:first-child {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+
+.audit-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 24px 0 10px;
+}
+
+.audit-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 0.88rem;
+}
+
+.audit-content thead {
+  border-bottom: 2px solid var(--slate-border);
+}
+
+.audit-content th {
+  padding: 10px 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-align: left;
+}
+
+.audit-content td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--slate-border);
+  color: var(--text-muted);
+  vertical-align: top;
+}
+
+.audit-content tbody tr:hover {
+  background: var(--slate-bg);
+}
+
+.audit-content blockquote {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent);
+  background: var(--slate-bg);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.audit-content blockquote p {
+  margin: 0;
+}
+
+.audit-content ul, .audit-content ol {
+  padding-left: 20px;
+  margin: 12px 0 20px;
+}
+
+.audit-content li {
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.audit-content strong {
+  color: var(--dark);
+}
+
+/* Sidebar latest roles */
+.sidebar-latest-roles {
+  margin-top: 36px;
+}
+
+.sidebar-section-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 8px 0 14px;
+}
+
+.sidebar-roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-role-card {
+  display: block;
+  padding: 12px 14px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.sidebar-role-card:hover {
+  border-color: var(--accent);
+}
+
+.sidebar-role-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.sidebar-role-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+.sidebar-role-card .dir-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  min-width: 36px;
+  flex-shrink: 0;
+}
+
+.sidebar-role-class {
+  font-size: 0.68rem;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.sidebar-roles-viewall {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.sidebar-roles-viewall:hover {
+  opacity: 0.7;
+}
+
+/* Risk indicator inline */
+.risk-critical { color: #DC2626; font-weight: 700; }
+.risk-high { color: #EA580C; font-weight: 700; }
+.risk-medium { color: #B45309; font-weight: 700; }
+.risk-low { color: #16A34A; font-weight: 700; }
+
+/* CTA block */
+.audit-cta-block {
+  margin: 40px 0 32px;
+  padding: 24px 28px;
+  background: var(--slate-bg);
+  border: 1px solid var(--slate-border);
+  border-radius: 12px;
+}
+
+.audit-cta-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.audit-cta-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.audit-cta-inner > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.audit-cta-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 4px;
+}
+
+.audit-cta-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.audit-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.audit-cta-btn:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+/* Navigation */
+.audit-nav {
+  padding: 20px 0;
+  border-top: 1px solid var(--slate-border);
+}
+
+.audit-nav-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.audit-nav-link:hover {
+  color: var(--accent-hover);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media screen and (max-width: 960px) {
+  .audit-layout-wrapper {
+    padding-top: 48px;
+  }
+
+  .audit-meta-bar {
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .audit-meta-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .audit-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .audit-cta-icon {
+    display: none;
+  }
+
+  .audit-content table {
+    font-size: 0.82rem;
+  }
+
+  .audit-content th,
+  .audit-content td {
+    padding: 8px 10px;
+  }
+}

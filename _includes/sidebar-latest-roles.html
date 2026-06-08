@@ -1,0 +1,29 @@
+{% comment %}
+  Sidebar: Latest 5 roles added to the AI Job Risk Directory.
+  Shows role cards with automation index badges.
+{% endcomment %}
+<div class="sidebar-latest-roles">
+  <span class="field-label">AI JOB RISK DIRECTORY</span>
+  <h4 class="sidebar-section-title">Recently Added Roles</h4>
+  <div class="sidebar-roles-list">
+    {% assign last_five = site.data.ai_job_risk_directory | reverse | slice: 0, 5 %}
+    {% for role in last_five %}
+    <a href="/ai-job-risk/{{ role.slug }}/" class="sidebar-role-card">
+      <div class="sidebar-role-header">
+        <span class="sidebar-role-title">{{ role.title }}</span>
+        {% if role.automation_index >= 75 %}
+        <span class="dir-badge dir-badge-critical">{{ role.automation_index }}% at risk</span>
+        {% elsif role.automation_index >= 60 %}
+        <span class="dir-badge dir-badge-high">{{ role.automation_index }}% at risk</span>
+        {% elsif role.automation_index >= 40 %}
+        <span class="dir-badge dir-badge-medium">{{ role.automation_index }}% at risk</span>
+        {% else %}
+        <span class="dir-badge dir-badge-low">{{ role.automation_index }}% at risk</span>
+        {% endif %}
+      </div>
+      <span class="sidebar-role-class">{{ role.disruption_class }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <a href="/ai-job-risk-directory/" class="sidebar-roles-viewall">Browse all {{ site.data.ai_job_risk_directory | size }} roles →</a>
+</div>

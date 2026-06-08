@@ -1,0 +1,107 @@
+---
+layout: base
+css:
+  - "/assets/css/ai-job-risk-audit.css"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ page.title | xml_escape }}",
+  "description": "{{ page.share-description | default: page.subtitle | xml_escape }}",
+  "author": {
+    "@type": "Person",
+    "name": "Hasan Jaffal",
+    "url": "https://hasanjaffal.com/aboutme/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Hasan Jaffal",
+    "url": "https://hasanjaffal.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "url": "{{ page.url | absolute_url }}",
+  "keywords": "{{ page.keywords | join: ', ' }}",
+  "about": {
+    "@type": "Thing",
+    "name": "AI Automation Risk Assessment"
+  },
+  "isPartOf": {
+    "@type": "WebPage",
+    "@id": "https://hasanjaffal.com/ai-job-risk-directory/"
+  }
+}
+</script>
+
+<main class="audit-layout-wrapper">
+  <div class="page-with-sidebar">
+    <div class="page-main post-main">
+
+      <div class="post-hero-accent">
+        <div class="post-hero-accent-inner">
+          <div class="post-hero-accent-shape"></div>
+          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
+        </div>
+      </div>
+
+      <div class="post-heading">
+        <span class="post-heading-tags"><a href="/ai-job-risk-directory/">AI JOB RISK DIRECTORY</a></span>
+        <h1>{{ page.title }}</h1>
+        <p class="post-heading-subtitle">{{ page.subtitle }}</p>
+      </div>
+
+      <div class="audit-meta-bar">
+        <div class="audit-meta-item">
+          <span class="audit-meta-label">Automation Index</span>
+          {% if page.automation_index >= 75 %}
+          <span class="dir-badge dir-badge-critical audit-badge-lg">{{ page.automation_index }}%</span>
+          {% elsif page.automation_index >= 60 %}
+          <span class="dir-badge dir-badge-high audit-badge-lg">{{ page.automation_index }}%</span>
+          {% elsif page.automation_index >= 40 %}
+          <span class="dir-badge dir-badge-medium audit-badge-lg">{{ page.automation_index }}%</span>
+          {% else %}
+          <span class="dir-badge dir-badge-low audit-badge-lg">{{ page.automation_index }}%</span>
+          {% endif %}
+        </div>
+        <div class="audit-meta-item">
+          <span class="audit-meta-label">Disruption Class</span>
+          <span class="audit-meta-value">{{ page.disruption_class }}</span>
+        </div>
+        <div class="audit-meta-item">
+          <span class="audit-meta-label">Forecast Window</span>
+          <span class="audit-meta-value">24 Months</span>
+        </div>
+      </div>
+
+      <article class="blog-post audit-content">
+        {{ content }}
+      </article>
+
+      <div class="audit-cta-block">
+        <div class="audit-cta-inner">
+          <i class="fas fa-crosshairs audit-cta-icon"></i>
+          <div>
+            <h3 class="audit-cta-title">This is a generalized benchmark</h3>
+            <p class="audit-cta-desc">Your actual risk depends on your specific tasks, company context, and political capital. Get a personalized assessment.</p>
+          </div>
+          <a href="/ai-job-risk-analyzer/" class="audit-cta-btn">Analyze My Exact Role →</a>
+        </div>
+      </div>
+
+      <nav class="audit-nav" aria-label="Directory navigation">
+        <a href="/ai-job-risk-directory/" class="audit-nav-link">← Back to Full Directory</a>
+      </nav>
+
+    </div>
+
+    <aside class="page-sidebar">
+      {% include newsletter.html %}
+      {% include sidebar-latest-roles.html %}
+      {% include sidebar-recent-ai-job-risk.html %}
+    </aside>
+  </div>
+</main>
