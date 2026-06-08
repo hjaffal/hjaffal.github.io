@@ -57,30 +57,40 @@ exports.generateShareCard = onRequest(
       const data = snapshot.docs[0].data();
       const result = data.result || {};
 
-      const name = data.name || "Anonymous";
       const jobTitle = data.jobTitle || "Professional";
       const score = result.risk_score || 50;
       const riskLevel = result.risk_level || "Medium";
-      const resilience = 100 - score;
 
-      // Determine archetype
-      let archetype = "Adaptive Professional";
-      if (resilience >= 60) archetype = "Strategic Operator";
-      else if (resilience < 40) archetype = "Execution Specialist";
+      // Determine prognosis (disruption class)
+      let prognosis = "Core Task Attrition";
+      if (score >= 75) prognosis = "Full Asset Substitution";
+      else if (score >= 60) prognosis = "Core Task Attrition";
+      else if (score >= 40) prognosis = "Structural Reclassification";
+      else prognosis = "Peripheral Automation";
 
-      // Determine primary moat
+      // Determine threat level label
+      let threatLevel = "MODERATE";
+      if (score >= 70) threatLevel = "CRITICAL";
+      else if (score >= 55) threatLevel = "HIGH";
+      else if (score >= 40) threatLevel = "MODERATE";
+      else threatLevel = "LOW";
+
+      // Determine primary moat (survival skill)
       const protectedTasks = result.protected_tasks || [];
-      let primaryMoat = "Strategic judgment";
+      let primaryMoat = "Strategic judgment and stakeholder accountability";
       if (protectedTasks.length > 0) {
         const first = protectedTasks[0];
-        primaryMoat = typeof first === "string" ? first : first.task || "Strategic judgment";
+        primaryMoat = typeof first === "string" ? first : first.task || primaryMoat;
       }
 
-      // Colors based on risk
-      const ringColor = score >= 70 ? "#EF4444" : score >= 45 ? "#F59E0B" : "#10B981";
-      const glowColor = score >= 70 ? "rgba(239,68,68,0.3)" : score >= 45 ? "rgba(245,158,11,0.2)" : "rgba(16,185,129,0.25)";
+      // Colors: red for high, amber for medium, icy white for low
+      const accentColor = score >= 70 ? "#DC2626" : score >= 40 ? "#F59E0B" : "#E2E8F0";
+      const accentGlow = score >= 70 ? "rgba(220,38,38,0.25)" : score >= 40 ? "rgba(245,158,11,0.2)" : "rgba(226,232,240,0.15)";
 
-      // Build the card as Satori JSX-like object (using React-like structure)
+      // Hook headline
+      const hookText = `WILL AI REPLACE A ${jobTitle.toUpperCase()} BY 2028?`;
+
+      // Build the card — vertical stacked layout, 1200x630
       const cardMarkup = {
         type: "div",
         props: {
@@ -88,221 +98,200 @@ exports.generateShareCard = onRequest(
             width: "1200px",
             height: "630px",
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%)",
+            flexDirection: "column",
+            background: "#09090B",
             fontFamily: "Inter",
-            padding: "48px 60px",
+            padding: "0",
             position: "relative",
+            overflow: "hidden",
           },
           children: [
-            // Decorative orb top-right
+            // === TOP 20%: THE HOOK ===
             {
               type: "div",
               props: {
                 style: {
-                  position: "absolute",
-                  top: "-60px",
-                  right: "-40px",
-                  width: "300px",
-                  height: "300px",
-                  borderRadius: "50%",
-                  background: "radial-gradient(circle, rgba(147,51,234,0.12) 0%, transparent 70%)",
-                },
-              },
-            },
-            // Left side: Score
-            {
-              type: "div",
-              props: {
-                style: {
+                  padding: "36px 60px 24px",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "380px",
-                  flexShrink: "0",
+                  alignItems: "flex-start",
                 },
                 children: [
-                  // Score circle
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        width: "180px",
-                        height: "180px",
-                        borderRadius: "50%",
-                        border: `8px solid ${ringColor}`,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        boxShadow: `0 0 40px ${glowColor}`,
-                        marginBottom: "20px",
-                      },
-                      children: [
-                        {
-                          type: "div",
-                          props: {
-                            style: {
-                              fontSize: "64px",
-                              fontWeight: "800",
-                              color: "#F8FAFC",
-                              letterSpacing: "-0.03em",
-                            },
-                            children: String(score),
-                          },
-                        },
-                      ],
-                    },
-                  },
-                  // Risk level badge
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        padding: "6px 18px",
-                        background: `${ringColor}20`,
-                        border: `1px solid ${ringColor}40`,
-                        borderRadius: "20px",
-                        fontSize: "14px",
-                        fontWeight: "700",
-                        color: ringColor,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                      },
-                      children: `${riskLevel} RISK`,
-                    },
-                  },
-                ],
-              },
-            },
-            // Right side: Details
-            {
-              type: "div",
-              props: {
-                style: {
-                  display: "flex",
-                  flexDirection: "column",
-                  flex: "1",
-                  paddingLeft: "48px",
-                  borderLeft: "1px solid rgba(255,255,255,0.1)",
-                },
-                children: [
-                  // Resilience headline
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        fontSize: "36px",
-                        fontWeight: "800",
-                        color: ringColor,
-                        letterSpacing: "-0.02em",
-                        marginBottom: "16px",
-                      },
-                      children: `${resilience}% HUMAN RESILIENCE`,
-                    },
-                  },
-                  // Name
                   {
                     type: "div",
                     props: {
                       style: {
                         fontSize: "28px",
-                        fontWeight: "700",
-                        color: "#F8FAFC",
-                        marginBottom: "4px",
+                        fontWeight: "800",
+                        color: "#FAFAFA",
+                        letterSpacing: "-0.02em",
+                        lineHeight: "1.2",
                       },
-                      children: name.length > 25 ? name.slice(0, 25) + "..." : name,
+                      children: hookText.length > 55 ? hookText.slice(0, 55) + "?" : hookText,
                     },
                   },
-                  // Job title
+                ],
+              },
+            },
+            // === MIDDLE 40%: THE NUMBER ===
+            {
+              type: "div",
+              props: {
+                style: {
+                  flex: "1",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "0 60px",
+                },
+                children: [
+                  // Massive percentage
+                  {
+                    type: "div",
+                    props: {
+                      style: {
+                        fontSize: "120px",
+                        fontWeight: "800",
+                        color: accentColor,
+                        letterSpacing: "-0.05em",
+                        lineHeight: "1",
+                        textShadow: `0 0 60px ${accentGlow}`,
+                      },
+                      children: score + "%",
+                    },
+                  },
+                  // Label
                   {
                     type: "div",
                     props: {
                       style: {
                         fontSize: "18px",
-                        fontWeight: "400",
-                        color: "#94A3B8",
-                        marginBottom: "28px",
+                        fontWeight: "700",
+                        color: "#A1A1AA",
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        marginTop: "8px",
                       },
-                      children: jobTitle.length > 40 ? jobTitle.slice(0, 40) + "..." : jobTitle,
+                      children: "AI AUTOMATION EXPOSURE",
                     },
                   },
-                  // Archetype
+                  // Threat level tag
+                  {
+                    type: "div",
+                    props: {
+                      style: {
+                        marginTop: "16px",
+                        padding: "6px 20px",
+                        background: `${accentColor}18`,
+                        border: `1px solid ${accentColor}50`,
+                        borderRadius: "4px",
+                        fontSize: "12px",
+                        fontWeight: "700",
+                        color: accentColor,
+                        letterSpacing: "0.12em",
+                      },
+                      children: `THREAT LEVEL: ${threatLevel}`,
+                    },
+                  },
+                ],
+              },
+            },
+            // === BOTTOM 30%: SURVIVAL MOAT ===
+            {
+              type: "div",
+              props: {
+                style: {
+                  padding: "20px 60px 24px",
+                  borderTop: "1px solid #27272A",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                },
+                children: [
+                  // Prognosis
                   {
                     type: "div",
                     props: {
                       style: {
                         display: "flex",
-                        flexDirection: "column",
-                        gap: "4px",
-                        marginBottom: "20px",
-                        padding: "14px 18px",
-                        background: "rgba(255,255,255,0.04)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        borderRadius: "10px",
+                        justifyContent: "space-between",
+                        alignItems: "center",
                       },
                       children: [
                         {
                           type: "div",
                           props: {
                             style: {
-                              fontSize: "10px",
-                              fontWeight: "700",
-                              letterSpacing: "0.15em",
-                              color: "#64748B",
-                              textTransform: "uppercase",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "2px",
                             },
-                            children: "AI-ASSIGNED ARCHETYPE",
+                            children: [
+                              {
+                                type: "div",
+                                props: {
+                                  style: {
+                                    fontSize: "9px",
+                                    fontWeight: "700",
+                                    letterSpacing: "0.18em",
+                                    color: "#52525B",
+                                    textTransform: "uppercase",
+                                  },
+                                  children: "2028 STRUCTURAL PROGNOSIS",
+                                },
+                              },
+                              {
+                                type: "div",
+                                props: {
+                                  style: {
+                                    fontSize: "15px",
+                                    fontWeight: "700",
+                                    color: "#FAFAFA",
+                                  },
+                                  children: prognosis,
+                                },
+                              },
+                            ],
                           },
                         },
                         {
                           type: "div",
                           props: {
                             style: {
-                              fontSize: "20px",
-                              fontWeight: "800",
-                              color: "#F8FAFC",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "2px",
+                              alignItems: "flex-end",
+                              maxWidth: "400px",
                             },
-                            children: archetype,
-                          },
-                        },
-                      ],
-                    },
-                  },
-                  // Primary moat
-                  {
-                    type: "div",
-                    props: {
-                      style: {
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "4px",
-                      },
-                      children: [
-                        {
-                          type: "div",
-                          props: {
-                            style: {
-                              fontSize: "10px",
-                              fontWeight: "700",
-                              letterSpacing: "0.15em",
-                              color: "#64748B",
-                              textTransform: "uppercase",
-                            },
-                            children: "PRIMARY MOAT",
-                          },
-                        },
-                        {
-                          type: "div",
-                          props: {
-                            style: {
-                              fontSize: "16px",
-                              fontWeight: "600",
-                              color: "#CBD5E1",
-                            },
-                            children: primaryMoat.length > 50 ? primaryMoat.slice(0, 50) + "..." : primaryMoat,
+                            children: [
+                              {
+                                type: "div",
+                                props: {
+                                  style: {
+                                    fontSize: "9px",
+                                    fontWeight: "700",
+                                    letterSpacing: "0.18em",
+                                    color: "#52525B",
+                                    textTransform: "uppercase",
+                                  },
+                                  children: "THE HUMAN SURVIVAL MOAT",
+                                },
+                              },
+                              {
+                                type: "div",
+                                props: {
+                                  style: {
+                                    fontSize: "13px",
+                                    fontWeight: "400",
+                                    color: "#A1A1AA",
+                                    textAlign: "right",
+                                  },
+                                  children: primaryMoat.length > 60 ? primaryMoat.slice(0, 60) + "..." : primaryMoat,
+                                },
+                              },
+                            ],
                           },
                         },
                       ],
@@ -311,40 +300,36 @@ exports.generateShareCard = onRequest(
                 ],
               },
             },
-            // Bottom watermark
+            // === BOTTOM 10%: WATERMARK CTA ===
             {
               type: "div",
               props: {
                 style: {
-                  position: "absolute",
-                  bottom: "24px",
-                  left: "60px",
-                  right: "60px",
+                  padding: "14px 60px",
+                  background: "#18181B",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  borderTop: "1px solid rgba(255,255,255,0.08)",
-                  paddingTop: "16px",
                 },
                 children: [
                   {
                     type: "div",
                     props: {
                       style: {
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#64748B",
+                        fontSize: "12px",
+                        fontWeight: "700",
+                        color: "#71717A",
                       },
-                      children: "hasanjaffal.com/ai-job-risk-analyzer",
+                      children: "Audit your exact role at hasanjaffal.com",
                     },
                   },
                   {
                     type: "div",
                     props: {
                       style: {
-                        fontSize: "13px",
+                        fontSize: "11px",
                         fontWeight: "600",
-                        color: "#9333EA",
+                        color: "#52525B",
                       },
                       children: "The Second Mind",
                     },
