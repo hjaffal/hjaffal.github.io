@@ -3,7 +3,7 @@ layout: page
 title:
 subtitle:
 share-title: "Contact — Hasan Jaffal"
-share-description: "Get in touch with Hasan Jaffal. Send a message or book a conversation about data, risk, and analytics."
+share-description: "Get in touch with Hasan Jaffal. Send a message about AI, risk intelligence, operational decision-making, or collaboration."
 chat_with_me_box: false
 show-avatar: false
 permalink: /contact/
@@ -11,49 +11,54 @@ css:
   - "/assets/css/contact.css"
 ---
 
-<section class="writing-page">
-  <div class="page-with-sidebar">
-    <div class="page-main">
-      <div class="contact-section">
-        <div class="books-header">
-          <span class="field-label">GET IN TOUCH</span>
-          <h2 class="field-title">Contact <em>Me.</em></h2>
-        </div>
+<div class="ct-page">
 
-        <div id="contact-success-banner" class="contact-banner" style="display:none;">
-          <i class="fas fa-check-circle"></i>
-          <span>Thank you for your message! I'll get in touch soon.</span>
-        </div>
+  <!-- Hero -->
+  <section class="ct-hero">
+    <div class="ct-hero-orb-1"></div>
+    <div class="ct-hero-orb-2"></div>
+    <div class="ct-hero-content">
+      <span class="ct-hero-label">GET IN TOUCH</span>
+      <h1 class="ct-hero-title">Let's <span>Connect.</span></h1>
+      <p class="ct-hero-desc">Have a question, want to collaborate, or need to report something? Choose how you'd like to reach me.</p>
+    </div>
+  </section>
 
-        <p class="contact-intro">Choose how you'd like to connect.</p>
-
-        <div class="contact-options">
-          <div class="contact-option contact-option-active" id="opt-message">
-            <i class="fas fa-envelope"></i>
-            <div class="contact-option-text">
-              <strong>Send a message</strong>
-              <span>I'll respond within a few days</span>
-            </div>
-          </div>
-          <a href="/officehours" class="contact-option">
-            <i class="fas fa-calendar-check"></i>
-            <div class="contact-option-text">
-              <strong>Book an appointment</strong>
-              <span>Schedule a conversation directly</span>
-            </div>
-            <i class="fas fa-arrow-right contact-option-arrow"></i>
-          </a>
-        </div>
-
-        <div id="contact-form-area">
-          {% include contact-form.html %}
-        </div>
+  <!-- Channels -->
+  <section class="ct-channels">
+    <a href="https://www.linkedin.com/in/jaffal" target="_blank" rel="noopener" class="ct-channel-card">
+      <div class="ct-channel-icon ct-channel-linkedin"><i class="fab fa-linkedin-in"></i></div>
+      <div class="ct-channel-info">
+        <strong>Connect on LinkedIn</strong>
+        <span>Best for professional networking</span>
       </div>
+      <i class="fas fa-arrow-right ct-channel-arrow"></i>
+    </a>
+    <a href="/newsletter/" class="ct-channel-card">
+      <div class="ct-channel-icon ct-channel-newsletter"><i class="fas fa-envelope-open-text"></i></div>
+      <div class="ct-channel-info">
+        <strong>Subscribe to the Newsletter</strong>
+        <span>Weekly writing on AI, risk & decisions</span>
+      </div>
+      <i class="fas fa-arrow-right ct-channel-arrow"></i>
+    </a>
+  </section>
+
+  <!-- Form Section -->
+  <section class="ct-form-section">
+    <div class="ct-form-header">
+      <h2 class="ct-form-title">Send a Message</h2>
+      <p class="ct-form-desc">I'll get back to you within a few days.</p>
     </div>
 
-    <aside class="page-sidebar">
-      {% include newsletter.html %}
-      {% include sidebar-recent.html %}
-    </aside>
-  </div>
-</section>
+    <div id="contact-success-banner" class="contact-banner" style="display:none;">
+      <i class="fas fa-check-circle"></i>
+      <span>Thank you for your message! I'll get in touch soon.</span>
+    </div>
+
+    <div id="contact-form-area">
+      {% include contact-form.html %}
+    </div>
+  </section>
+
+</div>

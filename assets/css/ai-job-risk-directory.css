@@ -428,6 +428,10 @@
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
+.dir-autocomplete:empty {
+  display: none !important;
+}
+
 .dir-ac-item {
   display: flex;
   align-items: center;
