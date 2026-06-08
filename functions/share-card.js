@@ -6,7 +6,7 @@
 
 const { onRequest } = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
-const satori = require("satori");
+const satori = require("satori").default || require("satori");
 const { Resvg } = require("@resvg/resvg-js");
 const { readFileSync } = require("fs");
 const { join } = require("path");
