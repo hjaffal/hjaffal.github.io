@@ -425,7 +425,14 @@ exports.shareReportPage = onRequest(
       const title = `${name}'s AI Job Risk Score: ${score}/100 — ${riskLevel} Risk`;
       const description = `${resilience}% Human Resilience. ${name} (${jobTitle}) ran the 24-Month Forensic AI Risk Audit. Check your own role's exposure.`;
 
+      // Detect crawlers/bots — serve OG page without redirect
+      const ua = (req.headers['user-agent'] || '').toLowerCase();
+      const isBot = ua.includes('linkedinbot') || ua.includes('facebookexternalhit') || ua.includes('twitterbot') || ua.includes('slackbot') || ua.includes('whatsapp') || ua.includes('telegrambot') || ua.includes('googlebot') || ua.includes('bingbot');
+
       // Serve HTML with OG tags
+      const redirectMeta = isBot ? '' : `<meta http-equiv="refresh" content="0;url=${reportUrl}">`;
+      const redirectScript = isBot ? '' : `<script>window.location.href="${reportUrl}";</script>`;
+
       const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -443,11 +450,11 @@ exports.shareReportPage = onRequest(
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${imageUrl}">
-<meta http-equiv="refresh" content="0;url=${reportUrl}">
+${redirectMeta}
 </head>
 <body>
 <p>Redirecting to your report...</p>
-<script>window.location.href="${reportUrl}";</script>
+${redirectScript}
 </body>
 </html>`;
 
