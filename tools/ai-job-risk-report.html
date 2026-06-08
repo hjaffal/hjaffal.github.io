@@ -101,6 +101,7 @@ css:
     </nav>
     <div class="dash-actions">
       <button class="dash-btn-ghost" id="btn-rerun"><i class="fas fa-rotate"></i> Rerun</button>
+      <a class="dash-btn-linkedin" id="btn-linkedin-direct" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> Share on LinkedIn</a>
       <button class="dash-btn-ghost" id="btn-share"><i class="fas fa-share-nodes"></i></button>
       <button class="dash-btn-ghost" id="btn-pdf"><i class="fas fa-download"></i></button>
     </div>
@@ -321,6 +322,7 @@ css:
     // Share
     var sharePageUrl='https://sharereportpage-vgheoh5xza-ew.a.run.app?token='+token;
     document.getElementById('btn-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharePageUrl);
+    document.getElementById('btn-linkedin-direct').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharePageUrl);
     document.getElementById('btn-email-share').href='mailto:?subject=My AI Job Risk Report&body='+encodeURIComponent(window.location.href);
   }
 
