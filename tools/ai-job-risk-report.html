@@ -15,6 +15,26 @@ css:
 ---
 
 <meta name="robots" content="noindex, nofollow">
+<script>
+// Dynamically inject OG image meta for social sharing
+(function(){
+  var token = new URLSearchParams(window.location.search).get('token');
+  if (token && token.length === 64) {
+    var ogImg = document.createElement('meta');
+    ogImg.setAttribute('property', 'og:image');
+    ogImg.setAttribute('content', '{{ site.data.firebase.fn_share_card }}?token=' + token);
+    document.head.appendChild(ogImg);
+    var twImg = document.createElement('meta');
+    twImg.setAttribute('name', 'twitter:image');
+    twImg.setAttribute('content', '{{ site.data.firebase.fn_share_card }}?token=' + token);
+    document.head.appendChild(twImg);
+    var twCard = document.createElement('meta');
+    twCard.setAttribute('name', 'twitter:card');
+    twCard.setAttribute('content', 'summary_large_image');
+    document.head.appendChild(twCard);
+  }
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 
@@ -299,9 +319,9 @@ css:
     }).join('');
 
     // Share
-    var url=window.location.href;
-    document.getElementById('btn-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
-    document.getElementById('btn-email-share').href='mailto:?subject=My AI Job Risk Report&body='+encodeURIComponent(url);
+    var sharePageUrl='https://sharereportpage-vgheoh5xza-ew.a.run.app?token='+token;
+    document.getElementById('btn-linkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharePageUrl);
+    document.getElementById('btn-email-share').href='mailto:?subject=My AI Job Risk Report&body='+encodeURIComponent(window.location.href);
   }
 
   function ic(l,v){return '<div class="dash-input-card"><span class="dash-input-label">'+l+'</span><p class="dash-input-value">'+esc(v||'—')+'</p></div>';}

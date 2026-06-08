@@ -276,6 +276,14 @@ const VALID_AI_USAGE = [
   "no_ai", "occasionally", "weekly", "daily", "manage_ai"
 ];
 
+// ===== SHARE CARD IMAGE GENERATION =====
+const { generateShareCard } = require("./share-card");
+exports.generateShareCard = generateShareCard;
+
+// Share page: serves HTML with OG tags for LinkedIn to scrape, then redirects
+const { shareReportPage } = require("./share-card");
+exports.shareReportPage = shareReportPage;
+
 exports.analyzeJobRisk = onRequest(
   {
     region: "europe-west1",
