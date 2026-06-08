@@ -12,6 +12,8 @@ keywords:
   - "gaming metrics"
   - "Goodhart's law"
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-08-your-metrics-are-being-gamed-most-bi-teams-and-analysts-operate-under-a-delusion.webp
+share-img: /assets/img/posts/2026-06-08-your-metrics-are-being-gamed-most-bi-teams-and-analysts-operate-under-a-delusion.webp
 ---
 
 # Your Metrics Are Being Gamed: Why Most Reporting Is Not Intelligence
@@ -28,7 +30,7 @@ I see companies spend millions on fancy dashboards, only to have their operation
 
 ### When Green Means Go to Hell
 
-What happens when you ignore `metric manipulation`? You get a system that incentivizes bad behavior. Think about the Wells Fargo scandal. Employees, pressured to meet aggressive sales targets, created millions of fake customer accounts. The metric was hit, the dashboard glowed green, but the bank was committing fraud on an industrial scale. ([Source: The New York Times on Wells Fargo Scandal](https://www.nytimes.com/2016/09/09/business/dealbook/wells-fargo-scandal-phony-accounts.html))
+What happens when you ignore `metric manipulation`? You get a system that incentivizes bad behavior. Think about the Wells Fargo scandal. Employees, pressured to meet aggressive sales targets, created millions of fake customer accounts. The metric was hit, the dashboard glowed green, but the bank was committing fraud on an industrial scale. 
 
 You get operations that optimize for the chart, not the customer.
 
