@@ -447,7 +447,7 @@ exports.shareReportPage = onRequest(
       const riskLevel = result.risk_level || "Medium";
 
       const reportUrl = `https://hasanjaffal.com/tools/ai-job-risk-report/?token=${token}`;
-      const imageUrl = `https://europe-west1-hasanjaffal.cloudfunctions.net/generateShareCard?token=${token}`;
+      const imageUrl = `https://generatesharecard-vgheoh5xza-ew.a.run.app?token=${token}`;
       const title = `${name}'s AI Job Risk Score: ${score}/100 — ${riskLevel} Risk`;
       const description = `${resilience}% Human Resilience. ${name} (${jobTitle}) ran the 24-Month Forensic AI Risk Audit. Check your own role's exposure.`;
 

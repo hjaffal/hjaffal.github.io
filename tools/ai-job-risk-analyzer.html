@@ -580,7 +580,7 @@ css:
     // Share button
     document.getElementById('wiz-share-btn').addEventListener('click', function() {
       var shareUrl = data.reportToken
-        ? 'https://europe-west1-hasanjaffal.cloudfunctions.net/shareReportPage?token=' + data.reportToken
+        ? 'https://sharereportpage-vgheoh5xza-ew.a.run.app?token=' + data.reportToken
         : 'https://hasanjaffal.com/ai-job-risk-analyzer/';
       var url = encodeURIComponent(shareUrl);
       window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'width=600,height=500');
