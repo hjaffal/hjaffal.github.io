@@ -16,6 +16,7 @@ css:
 
 <meta name="robots" content="noindex, nofollow">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 
 <style>
 .container-md,.container-lg{max-width:100%;padding:0;}
@@ -371,79 +372,195 @@ css:
   if(printBtn) printBtn.onclick=function(){generatePDF();};
 
   function generatePDF(){
+    var jsPDF=window.jspdf.jsPDF;
+    var pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
     var r=reportData.result;
     var score=r.risk_score||0;
     var level=r.risk_level||'Unknown';
-    var color=level==='High'?'#DC2626':level==='Medium'?'#D97706':'#0D9488';
+    var nm=reportData.name||'';
+    var jt=reportData.jobTitle||'';
+    var ind=reportData.industry||'';
+    var cty=reportData.country||'';
+    var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    var pW=210,pH=297,m=16,cW=pW-m*2;
+    var y=0;
+    var cHex=level==='High'?[220,38,38]:level==='Medium'?[217,119,6]:[13,148,136];
+    var pur=[147,51,234],dk=[15,23,42],gr=[100,116,139],lg=[148,163,184];
 
-    var exposed=(r.exposed_tasks||[]).map(function(t){
-      var task=typeof t==='string'?t:t.task;
-      var pct=typeof t==='object'?t.exposure_pct:'';
-      var reason=typeof t==='object'&&t.reason?t.reason:'';
-      return '<tr><td style="padding:8px 0;border-bottom:1px solid #F1F5F9;"><strong style="font-size:11px;">'+esc(task)+'</strong>'+(pct?' <span style="color:'+color+';font-size:10px;font-weight:700;">'+pct+'%</span>':'')+(reason?'<br><span style="font-size:10px;color:#64748B;">'+esc(reason)+'</span>':'')+'</td></tr>';
-    }).join('');
+    function chk(n){if(y+n>pH-20){pdf.addPage();y=16;}}
+    function secH(t,c){chk(14);pdf.setDrawColor(c[0],c[1],c[2]);pdf.setLineWidth(0.7);pdf.line(m,y,m+cW,y);y+=5;pdf.setFont('helvetica','bold');pdf.setFontSize(8);pdf.setTextColor(c[0],c[1],c[2]);pdf.text(t,m,y);y+=7;return y;}
 
-    var protected_=(r.protected_tasks||[]).map(function(t){
-      var task=typeof t==='string'?t:t.task;
-      var area=typeof t==='object'&&t.judgment_area?t.judgment_area:'';
-      return '<tr><td style="padding:8px 0;border-bottom:1px solid #F1F5F9;"><strong style="font-size:11px;">'+esc(task)+'</strong>'+(area?' <span style="font-size:10px;color:#0D9488;background:#F0FDF4;padding:1px 6px;border-radius:3px;">'+esc(area)+'</span>':'')+'</td></tr>';
-    }).join('');
+    // HEADER
+    pdf.setFillColor(dk[0],dk[1],dk[2]);pdf.rect(0,0,pW,42,'F');
+    pdf.setFont('helvetica','bold');pdf.setFontSize(7);pdf.setTextColor(pur[0],pur[1],pur[2]);
+    pdf.text('CONFIDENTIAL REPORT',m,14);
+    pdf.setFontSize(16);pdf.setTextColor(248,250,252);pdf.text('AI Job Risk Assessment',m,23);
+    pdf.setFontSize(9);pdf.setTextColor(lg[0],lg[1],lg[2]);
+    pdf.text('Prepared for '+nm+'  \u00B7  '+today,m,30);
+    pdf.setFontSize(7);pdf.setTextColor(gr[0],gr[1],gr[2]);
+    pdf.text('hasanjaffal.com  \u00B7  The Second Mind',pW-m,30,{align:'right'});
+    y=50;
 
-    var gaps=(r.skill_gaps||[]).map(function(g){
-      var skill=typeof g==='string'?g:g.skill;
-      var pri=typeof g==='object'?g.priority:'';
-      var action=typeof g==='object'&&g.action?g.action:'';
-      return '<tr><td style="padding:8px 0;border-bottom:1px solid #F1F5F9;"><strong style="font-size:11px;">'+esc(skill)+'</strong>'+(pri?' <span style="font-size:9px;font-weight:700;color:'+(pri==='HIGH'?'#DC2626':'#D97706')+';">['+pri+']</span>':'')+(action?'<br><span style="font-size:10px;color:#0D9488;">→ '+esc(action)+'</span>':'')+'</td></tr>';
-    }).join('');
+    // SCORE BOX
+    pdf.setFillColor(248,250,252);pdf.setDrawColor(226,232,240);
+    pdf.roundedRect(m,y,cW,26,3,3,'FD');
+    pdf.setDrawColor(cHex[0],cHex[1],cHex[2]);pdf.setLineWidth(1.2);
+    pdf.circle(m+13,y+13,9,'S');
+    pdf.setFont('helvetica','bold');pdf.setFontSize(14);pdf.setTextColor(cHex[0],cHex[1],cHex[2]);
+    pdf.text(String(score),m+13,y+15,{align:'center'});
+    pdf.setFontSize(12);pdf.text(level+' Risk',m+28,y+11);
+    pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(gr[0],gr[1],gr[2]);
+    var metaText='Score '+score+'/100  \u00B7  '+jt+'  \u00B7  '+ind+'  \u00B7  '+cty;
+    var metaLines=pdf.splitTextToSize(metaText,cW-30);
+    pdf.text(metaLines,m+28,y+18);
+    y+=32;
 
-    var skills=(r.recommended_skills||[]).map(function(s){
-      return '<span style="display:inline-block;margin:2px 4px 2px 0;padding:4px 10px;background:#EFF6FF;border-radius:4px;font-size:10px;font-weight:600;color:#1E40AF;">'+esc(s)+'</span>';
-    }).join('');
+    // SUMMARY
+    pdf.setDrawColor(13,148,136);pdf.setLineWidth(0.6);pdf.line(m,y,m,y+16);
+    pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);pdf.setTextColor(51,65,85);
+    var sLines=pdf.splitTextToSize(r.summary||'No summary available.',cW-6);
+    for(var si=0;si<sLines.length;si++){pdf.text(sLines[si],m+4,y+4+si*4);}
+    y+=Math.max(sLines.length*4+6,18);
 
-    var wColors=['#0D9488','#2563EB','#D97706','#9333EA'];
-    var plan=(r.thirty_day_plan||[]).map(function(p,i){
-      if(typeof p==='string') return '<div style="padding:12px 16px;margin-bottom:8px;border-left:3px solid '+wColors[i]+';background:#F8FAFC;"><p style="margin:0;font-size:11px;color:#334155;">'+esc(p)+'</p></div>';
-      return '<div style="padding:12px 16px;margin-bottom:8px;border-left:3px solid '+wColors[i]+';background:#F8FAFC;"><p style="margin:0 0 2px;font-size:9px;font-weight:700;color:'+wColors[i]+';letter-spacing:0.1em;">WEEK '+p.week+'</p><p style="margin:0 0 3px;font-size:11px;font-weight:700;color:#0F172A;">'+esc(p.title)+'</p><p style="margin:0;font-size:10px;color:#475569;line-height:1.5;">'+esc(p.actions)+'</p>'+(p.output?'<p style="margin:4px 0 0;font-size:9px;color:#94A3B8;"><b>Output:</b> '+esc(p.output)+'</p>':'')+'</div>';
-    }).join('');
+    // EXPOSED TASKS
+    y=secH('TASKS MOST EXPOSED TO AI AUTOMATION',[220,38,38]);
+    (r.exposed_tasks||[]).forEach(function(t,i){
+      var task=typeof t==='string'?t:t.task,pct=typeof t==='object'?t.exposure_pct:'—',reason=typeof t==='object'&&t.reason?t.reason:'';
+      pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
+      var taskLines=pdf.splitTextToSize((i+1)+'. '+task,cW-22);
+      var reasonLines=[];
+      if(reason){pdf.setFont('helvetica','normal');pdf.setFontSize(7);reasonLines=pdf.splitTextToSize(reason,cW-6);}
+      chk(taskLines.length*4+reasonLines.length*3.2+8);
+      pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);pdf.setTextColor(dk[0],dk[1],dk[2]);
+      for(var ti=0;ti<taskLines.length;ti++){pdf.text(taskLines[ti],m,y+4+ti*4);}
+      pdf.setFontSize(8);pdf.setTextColor(220,38,38);pdf.text(pct+'%',m+cW,y+4,{align:'right'});
+      y+=taskLines.length*4+1;
+      if(reasonLines.length){
+        pdf.setFont('helvetica','normal');pdf.setFontSize(7);pdf.setTextColor(gr[0],gr[1],gr[2]);
+        for(var ri=0;ri<reasonLines.length;ri++){pdf.text(reasonLines[ri],m+3,y+2+ri*3.2);}
+        y+=reasonLines.length*3.2+2;
+      }
+      pdf.setDrawColor(241,245,249);pdf.setLineWidth(0.2);pdf.line(m,y+1,m+cW,y+1);y+=4;
+    });
 
-    var doc='<!DOCTYPE html><html><head><meta charset="utf-8"><title>AI Job Risk Report - '+esc(reportData.name)+'</title>';
-    doc+='<style>@page{margin:20mm 15mm;}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;color:#0F172A;font-size:11px;line-height:1.5;margin:0;padding:0;}h2{font-size:12px;font-weight:700;margin:20px 0 8px;padding-bottom:6px;border-bottom:1px solid #E2E8F0;}table{width:100%;border-collapse:collapse;}</style></head><body>';
+    // PROTECTED TASKS
+    y+=6;y=secH('TASKS STILL PROTECTED (HUMAN MOAT)',[13,148,136]);
+    (r.protected_tasks||[]).forEach(function(t,i){
+      var task=typeof t==='string'?t:t.task,area=typeof t==='object'&&t.judgment_area?t.judgment_area:'';
+      pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
+      var taskLines=pdf.splitTextToSize((i+1)+'. '+task,cW-30);
+      chk(taskLines.length*4+6);
+      pdf.setTextColor(dk[0],dk[1],dk[2]);
+      for(var ti=0;ti<taskLines.length;ti++){pdf.text(taskLines[ti],m,y+4+ti*4);}
+      if(area){pdf.setFont('helvetica','normal');pdf.setFontSize(7);pdf.setTextColor(13,148,136);pdf.text(area,m+cW,y+4,{align:'right'});}
+      y+=taskLines.length*4+2;
+      pdf.setDrawColor(241,245,249);pdf.setLineWidth(0.2);pdf.line(m,y,m+cW,y);y+=3;
+    });
 
-    doc+='<div style="background:#0F172A;padding:24px 28px;margin:-20mm -15mm 20px;padding-top:30mm;padding-left:15mm;padding-right:15mm;">';
-    doc+='<p style="margin:0 0 2px;font-size:9px;font-weight:700;letter-spacing:0.2em;color:#0D9488;">AI JOB RISK REPORT</p>';
-    doc+='<p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#F8FAFC;">'+esc(reportData.name)+'</p>';
-    doc+='<p style="margin:0;font-size:10px;color:#94A3B8;">'+esc(reportData.jobTitle)+' · '+esc(reportData.industry)+' · '+esc(reportData.country)+'</p></div>';
+    // SKILL GAPS
+    y+=6;y=secH('IDENTIFIED SKILL GAPS',[217,119,6]);
+    (r.skill_gaps||[]).forEach(function(g,i){
+      var skill=typeof g==='string'?g:g.skill,pri=typeof g==='object'?g.priority:'MEDIUM',action=typeof g==='object'&&g.action?g.action:'';
+      var pc=pri==='HIGH'?[220,38,38]:[217,119,6];
+      pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
+      var skillLines=pdf.splitTextToSize((i+1)+'. '+skill,cW-22);
+      var actionLines=[];
+      if(action){pdf.setFont('helvetica','normal');pdf.setFontSize(7);actionLines=pdf.splitTextToSize('\u2192 '+action,cW-6);}
+      chk(skillLines.length*4+actionLines.length*3.2+10);
+      // Render skill title line by line
+      pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);pdf.setTextColor(dk[0],dk[1],dk[2]);
+      for(var si=0;si<skillLines.length;si++){pdf.text(skillLines[si],m,y+4+si*4);}
+      pdf.setFontSize(6.5);pdf.setTextColor(pc[0],pc[1],pc[2]);pdf.text('['+pri+']',m+cW,y+4,{align:'right'});
+      y+=skillLines.length*4+1;
+      // Render action line by line
+      if(actionLines.length){
+        pdf.setFont('helvetica','normal');pdf.setFontSize(7);pdf.setTextColor(gr[0],gr[1],gr[2]);
+        for(var ai=0;ai<actionLines.length;ai++){pdf.text(actionLines[ai],m+3,y+2+ai*3.2);}
+        y+=actionLines.length*3.2+3;
+      }
+      pdf.setDrawColor(241,245,249);pdf.setLineWidth(0.2);pdf.line(m,y+1,m+cW,y+1);y+=4;
+    });
 
-    doc+='<table><tr><td style="width:70px;vertical-align:middle;"><div style="width:56px;height:56px;border-radius:50%;border:4px solid '+color+';text-align:center;line-height:48px;font-size:20px;font-weight:800;">'+score+'</div></td>';
-    doc+='<td style="vertical-align:middle;"><p style="margin:0 0 2px;font-size:13px;font-weight:700;color:'+color+';">'+level+' Risk</p><p style="margin:0;font-size:10px;color:#64748B;">Score '+score+'/100</p></td></tr></table>';
-
-    doc+='<p style="margin:16px 0;font-size:11px;color:#475569;line-height:1.7;padding:12px 16px;background:#F8FAFC;border-left:3px solid #0D9488;border-radius:4px;">'+esc(r.summary||'')+'</p>';
-
-    doc+='<h2 style="color:#DC2626;">Tasks Most Exposed</h2><table>'+exposed+'</table>';
-    doc+='<h2 style="color:#0D9488;">Tasks Still Protected</h2><table>'+protected_+'</table>';
-    doc+='<h2 style="color:#D97706;">Skill Gaps</h2><table>'+gaps+'</table>';
-    doc+='<h2 style="color:#2563EB;">Recommended Skills</h2><p>'+skills+'</p>';
-    doc+='<h2>30-Day Action Plan</h2>'+plan;
-
-    doc+='<div style="margin-top:20px;padding:16px;background:#0F172A;border-radius:6px;"><p style="margin:0 0 2px;font-size:9px;font-weight:700;color:#0D9488;letter-spacing:0.1em;">FINAL ADVICE</p><p style="margin:0;font-size:11px;color:#F8FAFC;line-height:1.6;">'+esc(r.final_advice||'')+'</p></div>';
-
-    doc+='<p style="margin-top:20px;font-size:9px;color:#94A3B8;text-align:center;">Generated by AI Job Risk Analyzer · hasanjaffal.com</p>';
-    doc+='</body></html>';
-
-    // Open in new window and trigger print
-    var blob=new Blob([doc],{type:'text/html'});
-    var url=URL.createObjectURL(blob);
-    var win=window.open(url,'_blank');
-    if(!win){
-      // Popup blocked — fallback to download
-      var a=document.createElement('a');
-      a.href=url;
-      a.download='AI-Job-Risk-Report-'+esc(reportData.name).replace(/[^a-zA-Z0-9]/g,'-')+'.html';
-      a.click();
-      toast('Report downloaded as HTML. Open it and use File → Print → Save as PDF.');
-      return;
+    // RECOMMENDED SKILLS
+    var rSkills=r.recommended_skills||[];
+    if(rSkills.length){
+      y+=6;y=secH('RECOMMENDED SKILLS TO DEVELOP',[37,99,235]);
+      var skillX=m;
+      rSkills.forEach(function(s){
+        chk(8);
+        pdf.setFont('helvetica','normal');pdf.setFontSize(7.5);pdf.setTextColor(3,105,161);
+        var tw=pdf.getTextWidth(s)+8;
+        if(skillX+tw>m+cW){skillX=m;y+=7;}
+        pdf.setFillColor(240,249,255);pdf.setDrawColor(186,230,253);
+        pdf.roundedRect(skillX,y,tw,6,1.5,1.5,'FD');
+        pdf.text(s,skillX+4,y+4.2);
+        skillX+=tw+3;
+      });
+      y+=12;
     }
-    win.onload=function(){setTimeout(function(){win.print();},300);};
+
+    // 30-DAY PLAN
+    y+=6;y=secH('30-DAY ACTION PLAN',dk);
+    var wC=[[13,148,136],[37,99,235],[217,119,6],[147,51,234]];
+    (r.thirty_day_plan||[]).forEach(function(p,i){
+      var wn=typeof p==='object'?p.week:(i+1),tt=typeof p==='object'?p.title:'',ac=typeof p==='string'?p:(p.actions||''),op=typeof p==='object'&&p.output?p.output:'';
+      var wc=wC[i]||wC[0];
+      var tx=m+12;var avail=cW-16;
+      // Pre-calculate lines
+      pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);
+      var ttLines=tt?pdf.splitTextToSize(tt,avail):[];
+      pdf.setFont('helvetica','normal');pdf.setFontSize(8);
+      var acLines=pdf.splitTextToSize(ac,avail);
+      pdf.setFont('helvetica','italic');pdf.setFontSize(7);
+      var opLines=op?pdf.splitTextToSize('Deliverable: '+op,avail):[];
+      chk(ttLines.length*4+acLines.length*3.8+opLines.length*3.2+14);
+      // Week badge
+      pdf.setFillColor(wc[0],wc[1],wc[2]);pdf.circle(m+4,y+4,3.5,'F');
+      pdf.setFont('helvetica','bold');pdf.setFontSize(7);pdf.setTextColor(255,255,255);pdf.text(String(wn),m+4,y+5.5,{align:'center'});
+      // Title
+      if(ttLines.length){
+        pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);pdf.setTextColor(dk[0],dk[1],dk[2]);
+        for(var tli=0;tli<ttLines.length;tli++){pdf.text(ttLines[tli],tx,y+4+tli*4);}
+        y+=ttLines.length*4+1;
+      }
+      // Actions
+      pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(71,85,105);
+      for(var ali=0;ali<acLines.length;ali++){pdf.text(acLines[ali],tx,y+4+ali*3.8);}
+      y+=acLines.length*3.8+3;
+      // Output
+      if(opLines.length){
+        pdf.setFont('helvetica','italic');pdf.setFontSize(7);pdf.setTextColor(lg[0],lg[1],lg[2]);
+        for(var oli=0;oli<opLines.length;oli++){pdf.text(opLines[oli],tx,y+2+oli*3.2);}
+        y+=opLines.length*3.2+2;
+      }
+      y+=5;
+    });
+
+    // FINAL ADVICE
+    chk(24);y+=4;
+    pdf.setFont('helvetica','normal');pdf.setFontSize(8);
+    var adv=r.final_advice||'';
+    var advMaxW=cW-18;
+    var aL=pdf.splitTextToSize(adv,advMaxW);
+    var aH=aL.length*4+20;
+    chk(aH+6);
+    pdf.setFillColor(dk[0],dk[1],dk[2]);
+    pdf.roundedRect(m,y,cW,aH,2,2,'F');
+    pdf.setFont('helvetica','bold');pdf.setFontSize(6.5);pdf.setTextColor(pur[0],pur[1],pur[2]);
+    pdf.text('STRATEGIC RECOMMENDATION',m+8,y+8);
+    pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(248,250,252);
+    for(var li=0;li<aL.length;li++){pdf.text(aL[li],m+8,y+15+li*4);}
+    y+=aH+8;
+
+    // FOOTER
+    chk(12);pdf.setDrawColor(226,232,240);pdf.setLineWidth(0.3);pdf.line(m,y,m+cW,y);y+=4;
+    pdf.setFont('helvetica','normal');pdf.setFontSize(7);pdf.setTextColor(lg[0],lg[1],lg[2]);
+    pdf.text('Confidential \u2014 Prepared for '+nm+'  \u00B7  '+today,m,y+3);
+    pdf.text('hasanjaffal.com  \u00B7  AI Job Risk Analyzer',m+cW,y+3,{align:'right'});
+
+    // SAVE
+    pdf.save('AI-Job-Risk-Report-'+nm.replace(/[^a-zA-Z0-9]/g,'-')+'.pdf');
+    toast('PDF downloaded successfully.');
   }
 
   function toast(m){var t=document.getElementById('dash-toast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none';},2500);}

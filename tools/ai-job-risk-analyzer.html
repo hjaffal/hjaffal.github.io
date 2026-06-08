@@ -7,392 +7,604 @@ share-description: "Get a personalized AI risk analysis for your job. Understand
 chat_with_me_box: false
 show-avatar: false
 permalink: /tools/ai-job-risk-analyzer/
-head-extra:
-  - noindex.html
-sitemap: false
 css:
   - "/assets/css/job-risk-analyzer.css"
 ---
 
-<div class="jra-wrap">
-  <div class="jra-header">
-    <span class="jra-label">AI-POWERED ANALYSIS</span>
-    <h1 class="jra-title">AI Job Risk Analyzer</h1>
-    <p class="jra-sub">Find out how exposed your role is to AI automation. Get a personalized report with your risk score, exposed tasks, skill gaps, and a 30-day action plan — sent directly to your email.</p>
+<div class="wiz-container">
+  <!-- Progress Bar -->
+  <div class="wiz-progress">
+    <div class="wiz-progress-bar" id="wiz-progress-bar"></div>
   </div>
 
-  <form id="jra-form" class="jra-form" novalidate>
-    <!-- Honeypot - hidden via multiple methods to prevent autofill -->
-    <div style="display:none !important;visibility:hidden;height:0;width:0;overflow:hidden;" aria-hidden="true">
-      <input type="text" name="fax_number" id="jra-honeypot" tabindex="-1" autocomplete="off" value="">
-    </div>
-
-    <div class="jra-section">
-      <h2 class="jra-section-title">About You</h2>
-
-      <div class="jra-field">
-        <label for="jra-name">Full name <span class="jra-req">*</span></label>
-        <input type="text" id="jra-name" required maxlength="200" placeholder="Your full name">
-      </div>
-
-      <div class="jra-field">
-        <label for="jra-email">Email <span class="jra-req">*</span></label>
-        <input type="email" id="jra-email" required placeholder="your@email.com">
-      </div>
-
-      <div class="jra-row">
-        <div class="jra-field">
-          <label for="jra-job-title">Job title <span class="jra-req">*</span></label>
-          <input type="text" id="jra-job-title" required maxlength="200" placeholder="e.g. Data Analyst">
-        </div>
-        <div class="jra-field">
-          <label for="jra-industry">Industry <span class="jra-req">*</span></label>
-          <input type="text" id="jra-industry" required maxlength="200" placeholder="e.g. Financial Services">
-        </div>
-      </div>
-
-      <div class="jra-row">
-        <div class="jra-field">
-          <label for="jra-seniority">Seniority level <span class="jra-req">*</span></label>
-          <select id="jra-seniority" required>
-            <option value="">Select...</option>
-            <option value="entry_level">Entry level</option>
-            <option value="specialist">Specialist</option>
-            <option value="manager">Manager</option>
-            <option value="senior_manager">Senior manager</option>
-            <option value="director">Director</option>
-            <option value="executive">Executive</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="jra-field">
-          <label for="jra-country">Country or region <span class="jra-req">*</span></label>
-          <input type="text" id="jra-country" required maxlength="100" placeholder="e.g. Luxembourg">
-        </div>
-      </div>
-    </div>
-
-    <div class="jra-section">
-      <h2 class="jra-section-title">Your Work & AI</h2>
-
-      <div class="jra-field">
-        <label for="jra-tasks">What are your main daily tasks? <span class="jra-req">*</span></label>
-        <div class="jra-tasks-generate">
-          <button type="button" class="jra-gen-btn" id="jra-gen-tasks" disabled><i class="fas fa-wand-magic-sparkles"></i> Generate typical tasks for my role</button>
-        </div>
-        <div class="jra-tasks-checklist" id="jra-tasks-checklist" style="display:none;"></div>
-        <textarea id="jra-tasks" required minlength="10" maxlength="2000" rows="4" placeholder="Describe what you do day-to-day. The more specific, the better the analysis."></textarea>
-        <p class="jra-tasks-hint" id="jra-tasks-hint" style="display:none;font-size:0.75rem;color:var(--text-soft);margin-top:6px;">Uncheck tasks that don't apply. Add your own specific tasks in the text box above.</p>
-      </div>
-
-      <div class="jra-row">
-        <div class="jra-field">
-          <label for="jra-concern">Biggest AI concern <span class="jra-req">*</span></label>
-          <select id="jra-concern" required>
-            <option value="">Select...</option>
-            <option value="job_automated">My job may be automated</option>
-            <option value="skills_outdated">My skills may become outdated</option>
-            <option value="team_no_ai">My team does not know how to use AI</option>
-            <option value="company_too_fast">My company is moving too fast with AI</option>
-            <option value="company_too_slow">My company is moving too slowly with AI</option>
-            <option value="dont_know_where_to_start">I do not know where to start</option>
-          </select>
-        </div>
-        <div class="jra-field">
-          <label for="jra-usage">Current AI usage <span class="jra-req">*</span></label>
-          <select id="jra-usage" required>
-            <option value="">Select...</option>
-            <option value="no_ai">I do not use AI yet</option>
-            <option value="occasionally">I use AI occasionally</option>
-            <option value="weekly">I use AI weekly</option>
-            <option value="daily">I use AI daily</option>
-            <option value="manage_ai">I manage AI-related work</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="jra-field">
-        <label for="jra-skills">Skills you want to build <span class="jra-opt">(optional)</span></label>
-        <textarea id="jra-skills" maxlength="1000" rows="2" placeholder="e.g. prompt engineering, data storytelling, AI strategy"></textarea>
-      </div>
-    </div>
-
-    <div class="jra-section">
-      <div class="jra-consent">
-        <label class="jra-checkbox-label">
-          <input type="checkbox" id="jra-consent" required>
-          <span>I agree to receive the newsletter and my personalized AI report by email. <span class="jra-req">*</span></span>
-        </label>
-      </div>
-
-      <button type="submit" class="jra-submit" id="jra-submit" disabled>
-        <span class="jra-submit-text">Analyze My Role</span>
-        <span class="jra-submit-loading" style="display:none;">
-          <i class="fas fa-circle-notch fa-spin"></i> Generating report...
-        </span>
-      </button>
-
-      <p class="jra-error" id="jra-error" style="display:none;"></p>
-    </div>
-  </form>
-
-  <div class="jra-success" id="jra-success" style="display:none;">
-    <div class="jra-success-icon"><i class="fas fa-check-circle"></i></div>
-    <h2 class="jra-success-title">Your report has been sent to your email.</h2>
-    <p class="jra-success-desc">Check your inbox for a summary. Your full interactive dashboard is ready now.</p>
-    <a href="#" class="jra-success-dashboard" id="jra-dashboard-link"><i class="fas fa-chart-pie"></i> Open My Dashboard →</a>
-
-    <div class="jra-share-box">
-      <h3 class="jra-share-title"><i class="fas fa-user-plus"></i> Know someone who should try this?</h3>
-      <p class="jra-share-desc">Send this tool to a friend or teammate.</p>
-      <form class="jra-share-form" id="jra-share-form">
-        <input type="text" placeholder="Their name" required id="jra-share-name">
-        <input type="email" placeholder="Their email" required id="jra-share-email">
-        <button type="submit">Send Invite</button>
-      </form>
-      <p class="jra-share-msg" id="jra-share-msg" style="display:none;"></p>
-    </div>
-
-    <a href="/tools/" class="jra-success-link">← Back to Tools</a>
+  <!-- Step Indicators -->
+  <div class="wiz-steps-nav">
+    <div class="wiz-step-dot wiz-step-active" data-step="1"><span>1</span></div>
+    <div class="wiz-step-line"></div>
+    <div class="wiz-step-dot" data-step="2"><span>2</span></div>
+    <div class="wiz-step-line"></div>
+    <div class="wiz-step-dot" data-step="3"><span>3</span></div>
+    <div class="wiz-step-line"></div>
+    <div class="wiz-step-dot" data-step="4"><span>4</span></div>
   </div>
 
-  <!-- FAQ -->
-  <div class="jra-faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="jra-faq-item">
-      <h3>How does this work?</h3>
-      <p>You fill in details about your role and tasks. Our AI analyzes your profile against current automation trends and sends you a personalized report by email.</p>
+  <!-- Honeypot -->
+  <div style="display:none !important;visibility:hidden;height:0;width:0;overflow:hidden;" aria-hidden="true">
+    <input type="text" name="fax_number" id="wiz-honeypot" tabindex="-1" autocomplete="off" value="">
+  </div>
+
+  <!-- STEP 1: Professional Identity -->
+  <div class="wiz-step wiz-step-visible" id="wiz-step-1">
+    <div class="wiz-step-header">
+      <span class="wiz-step-label">STEP 1 OF 4</span>
+      <h2 class="wiz-step-title">Professional Identity</h2>
+      <p class="wiz-step-desc">Tell us about your role. We'll use this to generate a task baseline specific to your position.</p>
     </div>
-    <div class="jra-faq-item">
-      <h3>Is my data stored?</h3>
-      <p>Your form inputs are sent to generate the report and are not stored after the email is sent. Your email is added to the newsletter if you consent.</p>
+
+    <div class="wiz-field">
+      <label for="wiz-job-title">Job Title <span class="wiz-req">*</span></label>
+      <input type="text" id="wiz-job-title" required maxlength="200" placeholder="e.g. Data Analyst, Project Manager" autofocus>
     </div>
-    <div class="jra-faq-item">
-      <h3>How accurate is the risk score?</h3>
-      <p>The score is an estimate based on current AI capabilities and trends. It is not a prediction. Use it as a starting point for planning, not as a certainty.</p>
+
+    <div class="wiz-row">
+      <div class="wiz-field">
+        <label for="wiz-industry">Industry <span class="wiz-req">*</span></label>
+        <input type="text" id="wiz-industry" required maxlength="200" placeholder="e.g. Financial Services">
+      </div>
+      <div class="wiz-field">
+        <label for="wiz-country">Country or Region <span class="wiz-req">*</span></label>
+        <input type="text" id="wiz-country" required maxlength="100" placeholder="e.g. Luxembourg">
+      </div>
     </div>
-    <div class="jra-faq-item">
-      <h3>How long does it take?</h3>
-      <p>The form takes about 3 minutes. Your report arrives by email within 1–2 minutes after submission.</p>
+
+    <div class="wiz-field">
+      <label for="wiz-seniority">Seniority Level <span class="wiz-req">*</span></label>
+      <select id="wiz-seniority" required>
+        <option value="">Select level...</option>
+        <option value="entry_level">Entry level</option>
+        <option value="specialist">Specialist</option>
+        <option value="manager">Manager</option>
+        <option value="senior_manager">Senior manager</option>
+        <option value="director">Director</option>
+        <option value="executive">Executive</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <button type="button" class="wiz-btn-next" id="wiz-next-1">Next →</button>
+    <p class="wiz-error" id="wiz-error-1" style="display:none;"></p>
+  </div>
+
+  <!-- STEP 2: Operational Reality -->
+  <div class="wiz-step" id="wiz-step-2">
+    <div class="wiz-step-header">
+      <span class="wiz-step-label">STEP 2 OF 4</span>
+      <h2 class="wiz-step-title">Operational Reality</h2>
+      <p class="wiz-step-desc">Review your daily task baseline. Uncheck tasks that don't apply. Add any we missed.</p>
+    </div>
+
+    <!-- Skeleton loader -->
+    <div class="wiz-skeleton" id="wiz-skeleton">
+      <div class="wiz-skeleton-label">Generating baseline tasks for <strong id="wiz-skeleton-role">your role</strong>...</div>
+      <div class="wiz-skeleton-lines">
+        <div class="wiz-skeleton-line"></div>
+        <div class="wiz-skeleton-line"></div>
+        <div class="wiz-skeleton-line"></div>
+        <div class="wiz-skeleton-line"></div>
+        <div class="wiz-skeleton-line"></div>
+      </div>
+    </div>
+
+    <!-- Task list (shown after API returns) -->
+    <div class="wiz-tasks" id="wiz-tasks" style="display:none;">
+      <div class="wiz-tasks-list" id="wiz-tasks-list"></div>
+      <div class="wiz-tasks-add">
+        <input type="text" id="wiz-tasks-custom" placeholder="+ Add a custom task..." maxlength="200">
+      </div>
+    </div>
+
+    <div class="wiz-nav-row">
+      <button type="button" class="wiz-btn-back" id="wiz-back-2">← Back</button>
+      <button type="button" class="wiz-btn-next" id="wiz-next-2" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: AI Mindset -->
+  <div class="wiz-step" id="wiz-step-3">
+    <div class="wiz-step-header">
+      <span class="wiz-step-label">STEP 3 OF 4</span>
+      <h2 class="wiz-step-title">The AI Mindset</h2>
+      <p class="wiz-step-desc">Help us understand your relationship with AI — this calibrates your resilience score.</p>
+    </div>
+
+    <div class="wiz-field">
+      <label for="wiz-usage">Current AI Usage <span class="wiz-req">*</span></label>
+      <select id="wiz-usage" required>
+        <option value="">Select...</option>
+        <option value="no_ai">I do not use AI yet</option>
+        <option value="occasionally">I use AI occasionally</option>
+        <option value="weekly">I use AI weekly</option>
+        <option value="daily">I use AI daily</option>
+        <option value="manage_ai">I manage AI-related work</option>
+      </select>
+    </div>
+
+    <div class="wiz-field">
+      <label for="wiz-concern">Biggest AI Concern <span class="wiz-req">*</span></label>
+      <select id="wiz-concern" required>
+        <option value="">Select...</option>
+        <option value="job_automated">My job may be automated</option>
+        <option value="skills_outdated">My skills may become outdated</option>
+        <option value="team_no_ai">My team does not know how to use AI</option>
+        <option value="company_too_fast">My company is moving too fast with AI</option>
+        <option value="company_too_slow">My company is moving too slowly with AI</option>
+        <option value="dont_know_where_to_start">I do not know where to start</option>
+      </select>
+    </div>
+
+    <div class="wiz-field">
+      <label for="wiz-skills">Skills You Want to Build <span class="wiz-opt">(optional)</span></label>
+      <input type="text" id="wiz-skills" maxlength="500" placeholder="e.g. prompt engineering, data storytelling, AI strategy">
+    </div>
+
+    <div class="wiz-nav-row">
+      <button type="button" class="wiz-btn-back" id="wiz-back-3">← Back</button>
+      <button type="button" class="wiz-btn-next wiz-btn-accent" id="wiz-next-3">Run Forensic Audit →</button>
+    </div>
+    <p class="wiz-error" id="wiz-error-3" style="display:none;"></p>
+  </div>
+
+  <!-- LOADING STATE -->
+  <div class="wiz-step" id="wiz-loading">
+    <div class="wiz-loader">
+      <div class="wiz-loader-ring"></div>
+      <p class="wiz-loader-text" id="wiz-loader-text">Mapping agentic capabilities...</p>
+    </div>
+  </div>
+
+  <!-- STEP 4: Tollgate -->
+  <div class="wiz-step" id="wiz-step-4">
+    <div class="wiz-step-header">
+      <span class="wiz-step-label">YOUR AUDIT IS READY</span>
+      <h2 class="wiz-step-title">Your 24-Month Forensic Audit is Ready.</h2>
+      <p class="wiz-step-desc">Where should we send your resilience score and 30-day action plan?</p>
+    </div>
+
+    <div class="wiz-field">
+      <label for="wiz-name">Full Name <span class="wiz-req">*</span></label>
+      <input type="text" id="wiz-name" required maxlength="200" placeholder="Your full name">
+    </div>
+
+    <div class="wiz-field">
+      <label for="wiz-email">Email <span class="wiz-req">*</span></label>
+      <input type="email" id="wiz-email" required placeholder="your@email.com">
+    </div>
+
+    <div class="wiz-consent">
+      <label class="wiz-checkbox-label">
+        <input type="checkbox" id="wiz-consent" required>
+        <span>I agree to receive the newsletter and my personalized AI report by email. <span class="wiz-req">*</span></span>
+      </label>
+    </div>
+
+    <button type="button" class="wiz-btn-next wiz-btn-reveal" id="wiz-submit">
+      <span class="wiz-submit-text">Reveal My Score →</span>
+      <span class="wiz-submit-loading" style="display:none;"><i class="fas fa-circle-notch fa-spin"></i> Generating...</span>
+    </button>
+    <p class="wiz-error" id="wiz-error-4" style="display:none;"></p>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="wiz-step" id="wiz-results">
+    <div class="wiz-dashboard-link" id="wiz-dashboard-link" style="display:none;">
+      <a href="#" id="wiz-dashboard-href" class="wiz-dashboard-btn">
+        <i class="fas fa-chart-pie"></i> Open My Full Dashboard
+      </a>
+    </div>
+
+    <div class="wiz-results-grid">
+      <!-- Left: Narrative -->
+      <div class="wiz-results-narrative">
+        <div class="wiz-score-hero">
+          <div class="wiz-score-ring" id="wiz-score-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="wiz-score-bg" cx="60" cy="60" r="54"/>
+              <circle class="wiz-score-fill" id="wiz-score-fill" cx="60" cy="60" r="54"/>
+            </svg>
+            <div class="wiz-score-value" id="wiz-score-value">—</div>
+          </div>
+          <div class="wiz-score-meta">
+            <span class="wiz-score-label">Your Job Risk Score</span>
+            <span class="wiz-score-band" id="wiz-score-band"></span>
+          </div>
+        </div>
+
+        <div class="wiz-narrative" id="wiz-narrative">
+          <div class="wiz-narrative-section">
+            <h3><i class="fas fa-exclamation-triangle"></i> Exposure Points</h3>
+            <p id="wiz-narrative-exposure"></p>
+          </div>
+          <div class="wiz-narrative-section">
+            <h3><i class="fas fa-shield-alt"></i> Your Human Moat</h3>
+            <p id="wiz-narrative-moat"></p>
+          </div>
+          <div class="wiz-narrative-section">
+            <h3><i class="fas fa-road"></i> 30-Day Pivot</h3>
+            <p id="wiz-narrative-pivot"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Social Card -->
+      <div class="wiz-results-card-wrap">
+        <div class="wiz-social-card" id="wiz-social-card">
+          <div class="wiz-card-header">
+            <span class="wiz-card-badge" id="wiz-card-badge">—% HUMAN RESILIENCE</span>
+          </div>
+          <div class="wiz-card-body">
+            <span class="wiz-card-name" id="wiz-card-name"></span>
+            <span class="wiz-card-role" id="wiz-card-role"></span>
+            <div class="wiz-card-archetype">
+              <span class="wiz-card-arch-label">AI-ASSIGNED ARCHETYPE</span>
+              <span class="wiz-card-arch-value" id="wiz-card-archetype"></span>
+            </div>
+          </div>
+          <div class="wiz-card-footer">
+            <div class="wiz-card-moat">
+              <span class="wiz-card-moat-label">PRIMARY MOAT</span>
+              <span class="wiz-card-moat-value" id="wiz-card-moat"></span>
+            </div>
+            <div class="wiz-card-watermark">hasanjaffal.com · The Second Mind</div>
+          </div>
+        </div>
+
+        <button class="wiz-share-btn" id="wiz-share-btn">
+          <i class="fab fa-linkedin"></i> Share Results to LinkedIn
+        </button>
+      </div>
+    </div>
+
+    <div class="wiz-results-footer">
+      <a href="/ai-job-risk-directory/" class="wiz-results-link">← Browse the full AI Job Risk Directory</a>
     </div>
   </div>
 </div>
 
 <script>
 (function() {
-  var form = document.getElementById('jra-form');
-  var submitBtn = document.getElementById('jra-submit');
-  var errorEl = document.getElementById('jra-error');
-  var successEl = document.getElementById('jra-success');
-  var fnUrl = document.querySelector('meta[name="fn-job-risk"]');
-  var url = fnUrl ? fnUrl.getAttribute('content') : '';
+  // State
+  var state = { step: 1, tasks: [], customTasks: [], tasksFetched: false };
+  var steps = [1,2,3,'loading',4,'results'];
+  var progressMap = {1: 25, 2: 50, 3: 75, 4: 90};
 
-  // Enable/disable generate tasks button based on required fields
-  var genBtn = document.getElementById('jra-gen-tasks');
-  var fieldsForGen = ['jra-job-title','jra-industry','jra-seniority','jra-country'];
-  fieldsForGen.forEach(function(id){
-    var el = document.getElementById(id);
-    el.addEventListener('input', checkGenBtn);
-    el.addEventListener('change', checkGenBtn);
-  });
-  function checkGenBtn(){
-    var filled = fieldsForGen.every(function(id){return document.getElementById(id).value.trim().length > 0;});
-    genBtn.disabled = !filled;
+  // DOM refs
+  var progressBar = document.getElementById('wiz-progress-bar');
+  var dots = document.querySelectorAll('.wiz-step-dot');
+
+  // Transition helpers
+  function showStep(id) {
+    document.querySelectorAll('.wiz-step').forEach(function(el) {
+      el.classList.remove('wiz-step-visible');
+    });
+    var target = document.getElementById('wiz-step-' + id) || document.getElementById('wiz-' + id);
+    if (target) {
+      setTimeout(function() { target.classList.add('wiz-step-visible'); }, 20);
+    }
+    // Update progress bar
+    var pct = progressMap[id] || (id === 'loading' ? 85 : id === 'results' ? 100 : 0);
+    progressBar.style.width = pct + '%';
+    // Update dots
+    var stepNum = typeof id === 'number' ? id : (id === 'loading' ? 4 : id === 'results' ? 4 : 1);
+    dots.forEach(function(dot) {
+      var ds = parseInt(dot.getAttribute('data-step'));
+      dot.classList.toggle('wiz-step-active', ds <= stepNum);
+      dot.classList.toggle('wiz-step-done', ds < stepNum);
+    });
   }
 
-  // Generate tasks via Gemini
-  genBtn.addEventListener('click', function(){
-    genBtn.disabled = true;
-    genBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Generating...';
-    var jobTitle = document.getElementById('jra-job-title').value.trim();
-    var industry = document.getElementById('jra-industry').value.trim();
-    var seniority = document.getElementById('jra-seniority').value;
-    var country = document.getElementById('jra-country').value.trim();
+  function showError(stepId, msg) {
+    var el = document.getElementById('wiz-error-' + stepId);
+    if (el) { el.textContent = msg; el.style.display = 'block'; }
+  }
+  function clearError(stepId) {
+    var el = document.getElementById('wiz-error-' + stepId);
+    if (el) el.style.display = 'none';
+  }
+  function shakeField(input) {
+    input.classList.add('wiz-shake');
+    input.style.borderColor = '#DC2626';
+    setTimeout(function() { input.classList.remove('wiz-shake'); input.style.borderColor = ''; }, 600);
+  }
+
+  // STEP 1: Next
+  document.getElementById('wiz-next-1').addEventListener('click', function() {
+    clearError(1);
+    var fields = ['wiz-job-title','wiz-industry','wiz-country','wiz-seniority'];
+    var valid = true;
+    fields.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el.value.trim()) { shakeField(el); valid = false; }
+    });
+    if (!valid) { showError(1, 'Please fill in all required fields.'); return; }
+
+    state.step = 2;
+    showStep(2);
+
+    // Show skeleton and fetch tasks
+    document.getElementById('wiz-skeleton').style.display = 'block';
+    document.getElementById('wiz-tasks').style.display = 'none';
+    document.getElementById('wiz-skeleton-role').textContent = document.getElementById('wiz-job-title').value.trim();
+    document.getElementById('wiz-next-2').disabled = true;
 
     var fnUrl = document.querySelector('meta[name="fn-gen-tasks"]');
     fetch(fnUrl ? fnUrl.getAttribute('content') : '', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({data: {jobTitle: jobTitle, industry: industry, seniority: seniority, country: country}})
-    }).then(function(r){
-      if(!r.ok) throw new Error();
-      return r.json();
-    }).then(function(data){
-      var tasks = data.tasks || [];
-      var checklist = document.getElementById('jra-tasks-checklist');
-      checklist.innerHTML = tasks.map(function(t, i){
-        return '<label class="jra-check-item"><input type="checkbox" checked data-task="'+i+'" class="jra-task-check"><span>'+escH(t)+'</span></label>';
-      }).join('');
-      checklist.style.display = 'block';
-      document.getElementById('jra-tasks-hint').style.display = 'block';
-      updateTasksTextarea();
-
-      // Listen for checkbox changes
-      checklist.querySelectorAll('input').forEach(function(cb){
-        cb.addEventListener('change', updateTasksTextarea);
-      });
-
-      genBtn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Regenerate tasks';
-      genBtn.disabled = false;
-    }).catch(function(){
-      genBtn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Generate typical tasks for my role';
-      genBtn.disabled = false;
-      alert('Could not generate tasks. Please try again or type them manually.');
+      body: JSON.stringify({data: {
+        jobTitle: document.getElementById('wiz-job-title').value.trim(),
+        industry: document.getElementById('wiz-industry').value.trim(),
+        seniority: document.getElementById('wiz-seniority').value,
+        country: document.getElementById('wiz-country').value.trim()
+      }})
+    }).then(function(r) { return r.json(); })
+    .then(function(data) {
+      state.tasks = (data.tasks || []).map(function(t) { return { text: t, checked: true }; });
+      state.tasksFetched = true;
+      renderTasks();
+    }).catch(function() {
+      // Fallback: let user type manually
+      state.tasks = [];
+      state.tasksFetched = true;
+      renderTasks();
     });
   });
 
-  function updateTasksTextarea(){
-    var checked = [];
-    document.querySelectorAll('.jra-task-check:checked').forEach(function(cb){
-      checked.push(cb.parentElement.querySelector('span').textContent);
+  function renderTasks() {
+    document.getElementById('wiz-skeleton').style.display = 'none';
+    document.getElementById('wiz-tasks').style.display = 'block';
+    document.getElementById('wiz-next-2').disabled = false;
+    var list = document.getElementById('wiz-tasks-list');
+    var allTasks = state.tasks.concat(state.customTasks);
+
+    if (allTasks.length === 0) {
+      list.innerHTML = '<p class="wiz-tasks-empty">No tasks could be generated. Add your tasks manually below.</p>';
+      return;
+    }
+
+    list.innerHTML = allTasks.map(function(t, i) {
+      var cls = t.checked ? 'wiz-task-item' : 'wiz-task-item wiz-task-unchecked';
+      return '<label class="' + cls + '"><input type="checkbox" ' + (t.checked ? 'checked' : '') + ' data-idx="' + i + '"><span>' + escH(t.text) + '</span></label>';
+    }).join('');
+
+    list.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var idx = parseInt(this.getAttribute('data-idx'));
+        var all = state.tasks.concat(state.customTasks);
+        if (idx < state.tasks.length) {
+          state.tasks[idx].checked = this.checked;
+        } else {
+          state.customTasks[idx - state.tasks.length].checked = this.checked;
+        }
+        this.parentElement.classList.toggle('wiz-task-unchecked', !this.checked);
+      });
     });
-    var textarea = document.getElementById('jra-tasks');
-    var manual = textarea.getAttribute('data-manual') || '';
-    textarea.value = checked.join(', ') + (manual ? ', ' + manual : '');
   }
 
-  // Track manual additions
-  document.getElementById('jra-tasks').addEventListener('input', function(){
-    var checklist = document.getElementById('jra-tasks-checklist');
-    if(checklist.style.display === 'none') return;
-    // Don't override if checklist is active — user can add at the end
+  // Custom task add
+  document.getElementById('wiz-tasks-custom').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      var val = this.value.trim();
+      if (val) {
+        state.customTasks.push({ text: val, checked: true });
+        this.value = '';
+        renderTasks();
+      }
+    }
   });
 
-  function escH(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-
-  // Enable/disable button based on consent
-  var consentCheckbox = document.getElementById('jra-consent');
-  consentCheckbox.addEventListener('change', function() {
-    submitBtn.disabled = !consentCheckbox.checked;
+  // STEP 2: Nav
+  document.getElementById('wiz-back-2').addEventListener('click', function() { state.step = 1; showStep(1); });
+  document.getElementById('wiz-next-2').addEventListener('click', function() {
+    var checked = state.tasks.concat(state.customTasks).filter(function(t) { return t.checked; });
+    if (checked.length === 0) {
+      showError(2, 'Please select at least one task or add your own.');
+      return;
+    }
+    state.step = 3;
+    showStep(3);
   });
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    errorEl.style.display = 'none';
+  // STEP 3: Nav
+  document.getElementById('wiz-back-3').addEventListener('click', function() { state.step = 2; showStep(2); });
+  document.getElementById('wiz-next-3').addEventListener('click', function() {
+    clearError(3);
+    var usage = document.getElementById('wiz-usage').value;
+    var concern = document.getElementById('wiz-concern').value;
+    if (!usage) { shakeField(document.getElementById('wiz-usage')); }
+    if (!concern) { shakeField(document.getElementById('wiz-concern')); }
+    if (!usage || !concern) { showError(3, 'Please fill in all required fields.'); return; }
 
-    // Validate
-    var name = document.getElementById('jra-name').value.trim();
-    var email = document.getElementById('jra-email').value.trim();
-    var jobTitle = document.getElementById('jra-job-title').value.trim();
-    var industry = document.getElementById('jra-industry').value.trim();
-    var seniority = document.getElementById('jra-seniority').value;
-    var country = document.getElementById('jra-country').value.trim();
-    var mainTasks = document.getElementById('jra-tasks').value.trim();
-    var aiConcern = document.getElementById('jra-concern').value;
-    var aiUsage = document.getElementById('jra-usage').value;
-    var skillsToLearn = document.getElementById('jra-skills').value.trim();
-    var consent = document.getElementById('jra-consent').checked;
-    var honeypot = document.getElementById('jra-honeypot').value;
-    // Reset honeypot if browser autofilled it (Samsung/Android issue)
-    if (honeypot && document.getElementById('jra-honeypot').offsetParent === null) {
-      honeypot = '';
-    }
+    // Trigger loading state
+    showStep('loading');
+    runLoadingSequence();
+  });
 
-    if (!name || !email || !jobTitle || !industry || !seniority || !country || !mainTasks || !aiConcern || !aiUsage) {
-      showError('Please fill in all required fields.');
-      return;
-    }
-    if (mainTasks.length < 10) {
-      showError('Please describe your main tasks in more detail (at least 10 characters).');
-      return;
-    }
-    if (!consent) {
-      showError('Please agree to receive the newsletter and your report by email.');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showError('Please enter a valid email address.');
-      return;
-    }
+  function runLoadingSequence() {
+    var texts = ['Mapping agentic capabilities...', 'Evaluating execution leverage...', 'Scoring task vulnerability...', 'Finalizing resilience profile...'];
+    var textEl = document.getElementById('wiz-loader-text');
+    var i = 0;
+    textEl.textContent = texts[0];
+    var interval = setInterval(function() {
+      i++;
+      if (i >= texts.length) {
+        clearInterval(interval);
+        setTimeout(function() { showStep(4); }, 600);
+        return;
+      }
+      textEl.textContent = texts[i];
+    }, 900);
+  }
 
-    // Disable and show loading
-    submitBtn.disabled = true;
-    submitBtn.querySelector('.jra-submit-text').style.display = 'none';
-    submitBtn.querySelector('.jra-submit-loading').style.display = 'inline';
+  // STEP 4: Submit
+  document.getElementById('wiz-submit').addEventListener('click', function() {
+    clearError(4);
+    var name = document.getElementById('wiz-name').value.trim();
+    var email = document.getElementById('wiz-email').value.trim();
+    var consent = document.getElementById('wiz-consent').checked;
 
-    fetch(url, {
+    if (!name) { shakeField(document.getElementById('wiz-name')); }
+    if (!email) { shakeField(document.getElementById('wiz-email')); }
+    if (!name || !email) { showError(4, 'Please fill in all required fields.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError(4, 'Please enter a valid email.'); return; }
+    if (!consent) { showError(4, 'Please agree to receive your report.'); return; }
+
+    var btn = document.getElementById('wiz-submit');
+    btn.disabled = true;
+    btn.querySelector('.wiz-submit-text').style.display = 'none';
+    btn.querySelector('.wiz-submit-loading').style.display = 'inline';
+
+    var checkedTasks = state.tasks.concat(state.customTasks).filter(function(t) { return t.checked; }).map(function(t) { return t.text; });
+
+    var payload = {
+      name: name,
+      email: email,
+      jobTitle: document.getElementById('wiz-job-title').value.trim(),
+      industry: document.getElementById('wiz-industry').value.trim(),
+      seniority: document.getElementById('wiz-seniority').value,
+      country: document.getElementById('wiz-country').value.trim(),
+      mainTasks: checkedTasks.join(', '),
+      aiConcern: document.getElementById('wiz-concern').value,
+      aiUsage: document.getElementById('wiz-usage').value,
+      skillsToLearn: document.getElementById('wiz-skills').value.trim(),
+      consent: consent,
+      honeypot: document.getElementById('wiz-honeypot').value
+    };
+
+    var fnUrl = document.querySelector('meta[name="fn-job-risk"]');
+    fetch(fnUrl ? fnUrl.getAttribute('content') : '', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({data: {
-        name: name,
-        email: email,
-        jobTitle: jobTitle,
-        industry: industry,
-        seniority: seniority,
-        country: country,
-        mainTasks: mainTasks,
-        aiConcern: aiConcern,
-        aiUsage: aiUsage,
-        skillsToLearn: skillsToLearn,
-        consent: consent,
-        honeypot: honeypot
-      }})
-    }).then(function(res) {
-      if (res.ok) {
-        return res.json().then(function(data) {
-          form.style.display = 'none';
-          successEl.style.display = 'block';
-          if (data.reportToken) {
-            document.getElementById('jra-dashboard-link').href = '/tools/ai-job-risk-report/?token=' + data.reportToken;
-          }
-        });
-      } else {
-        return res.json().then(function(data) {
-          showError(data.error || 'Something went wrong. Please try again.');
-          resetBtn();
-        });
-      }
+      body: JSON.stringify({data: payload})
+    }).then(function(r) { return r.json(); })
+    .then(function(data) {
+      renderResults(data, payload, checkedTasks);
+      showStep('results');
     }).catch(function() {
-      showError('Could not connect. Please check your internet and try again.');
-      resetBtn();
+      // Fallback: show results with computed score
+      var fallback = computeLocalScore(payload, checkedTasks);
+      renderResults(fallback, payload, checkedTasks);
+      showStep('results');
     });
   });
 
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.style.display = 'block';
+  function computeLocalScore(payload, tasks) {
+    var base = 60;
+    if (payload.aiUsage === 'daily' || payload.aiUsage === 'manage_ai') base -= 15;
+    else if (payload.aiUsage === 'weekly') base -= 8;
+    else if (payload.aiUsage === 'no_ai') base += 10;
+
+    if (payload.seniority === 'executive' || payload.seniority === 'director') base -= 12;
+    else if (payload.seniority === 'entry_level') base += 10;
+
+    base = Math.max(15, Math.min(95, base + Math.floor(Math.random() * 10) - 5));
+    var resilience = 100 - base;
+
+    return {
+      score: base,
+      resilience: resilience,
+      archetype: resilience >= 60 ? 'Strategic Operator' : resilience >= 40 ? 'Adaptive Professional' : 'Execution Specialist',
+      band: resilience >= 60 ? 'Low Risk' : resilience >= 40 ? 'Moderate Risk' : 'High Risk',
+      exposure: 'Your task profile shows significant overlap with current AI agent capabilities, particularly in routine execution and reporting tasks.',
+      moat: 'Your strongest defense lies in stakeholder judgment, contextual decision-making, and cross-functional coordination.',
+      pivot: 'Focus the next 30 days on reducing time spent on automatable execution and increasing time in strategic, judgment-based activities.'
+    };
   }
 
-  function resetBtn() {
-    submitBtn.disabled = false;
-    submitBtn.querySelector('.jra-submit-text').style.display = 'inline';
-    submitBtn.querySelector('.jra-submit-loading').style.display = 'none';
-  }
+  function renderResults(data, payload, checkedTasks) {
+    // Dashboard link
+    if (data.reportToken) {
+      var dashLink = document.getElementById('wiz-dashboard-link');
+      var dashHref = document.getElementById('wiz-dashboard-href');
+      dashHref.href = '/tools/ai-job-risk-report/?token=' + data.reportToken;
+      dashLink.style.display = 'block';
+    }
 
-  // Share with friend
-  var shareForm = document.getElementById('jra-share-form');
-  if (shareForm) {
-    shareForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var fname = document.getElementById('jra-share-name').value.trim();
-      var femail = document.getElementById('jra-share-email').value.trim();
-      var msg = document.getElementById('jra-share-msg');
-      var senderName = document.getElementById('jra-name').value.trim();
-      if (!fname || !femail) return;
-      var btn = shareForm.querySelector('button');
-      btn.disabled = true; btn.textContent = 'Sending...';
-      var fnUrl = document.querySelector('meta[name="fn-share-tool"]');
-      fetch(fnUrl ? fnUrl.getAttribute('content') : '', {
-        method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({data: {friendName: fname, friendEmail: femail, senderName: senderName}})
-      }).then(function(r) {
-        if (r.ok) { msg.style.display = 'block'; msg.textContent = 'Invite sent!'; msg.style.color = '#0D9488'; btn.textContent = 'Sent ✓'; }
-        else { msg.style.display = 'block'; msg.textContent = 'Could not send. Try again.'; msg.style.color = '#DC2626'; btn.disabled = false; btn.textContent = 'Send Invite'; }
-      }).catch(function() { msg.style.display = 'block'; msg.textContent = 'Could not send. Try again.'; msg.style.color = '#DC2626'; btn.disabled = false; btn.textContent = 'Send Invite'; });
+    var score = data.score || data.resilience || 50;
+    var resilience = data.resilience || (100 - score);
+    if (data.score && !data.resilience) resilience = 100 - data.score;
+    if (data.resilience && !data.score) score = 100 - data.resilience;
+    var riskScore = typeof data.score !== 'undefined' ? data.score : (100 - resilience);
+
+    // Score ring animation
+    var fill = document.getElementById('wiz-score-fill');
+    var circumference = 2 * Math.PI * 54;
+    fill.style.strokeDasharray = circumference;
+    fill.style.strokeDashoffset = circumference;
+    setTimeout(function() {
+      fill.style.strokeDashoffset = circumference - (circumference * riskScore / 100);
+    }, 100);
+    document.getElementById('wiz-score-value').textContent = riskScore + '%';
+
+    // Color the ring based on risk
+    if (riskScore >= 70) {
+      fill.style.stroke = '#DC2626';
+      document.getElementById('wiz-social-card').classList.add('wiz-card-high');
+    } else if (riskScore >= 45) {
+      fill.style.stroke = '#F59E0B';
+      document.getElementById('wiz-social-card').classList.add('wiz-card-mid');
+    } else {
+      fill.style.stroke = '#10B981';
+      document.getElementById('wiz-social-card').classList.add('wiz-card-low');
+    }
+
+    // Band
+    var band = data.band || (riskScore >= 70 ? 'High Exposure' : riskScore >= 45 ? 'Moderate Exposure' : 'Low Exposure');
+    document.getElementById('wiz-score-band').textContent = band;
+
+    // Narrative
+    document.getElementById('wiz-narrative-exposure').textContent = data.exposure || 'Several of your daily tasks overlap with capabilities already deployed in agentic AI systems. These include routine data processing, reporting, and operational coordination.';
+    document.getElementById('wiz-narrative-moat').textContent = data.moat || 'Your strongest human moat lies in strategic judgment, stakeholder relationships, and contextual decision-making that requires institutional knowledge.';
+    document.getElementById('wiz-narrative-pivot').textContent = data.pivot || 'Over the next 30 days, shift 20% of your time from automatable execution toward judgment-based activities: setting thresholds, owning trade-offs, and building decision authority.';
+
+    // Social card
+    var resilienceScore = 100 - riskScore;
+    document.getElementById('wiz-card-badge').textContent = resilienceScore + '% HUMAN RESILIENCE';
+    document.getElementById('wiz-card-name').textContent = payload.name;
+    document.getElementById('wiz-card-role').textContent = payload.jobTitle;
+    document.getElementById('wiz-card-archetype').textContent = data.archetype || (resilienceScore >= 60 ? 'Strategic Operator' : resilienceScore >= 40 ? 'Adaptive Professional' : 'Execution Specialist');
+
+    var topMoat = checkedTasks.length > 0 ? checkedTasks[checkedTasks.length - 1] : 'Strategic judgment';
+    document.getElementById('wiz-card-moat').textContent = data.primaryMoat || topMoat;
+
+    // Share button
+    document.getElementById('wiz-share-btn').addEventListener('click', function() {
+      var url = encodeURIComponent('https://hasanjaffal.com/ai-job-risk-analyzer/');
+      var text = encodeURIComponent('My day-to-day workflow is ' + resilienceScore + '% AI-Resilient according to the 24-Month Forensic Audit. Check your own role\'s exposure at hasanjaffal.com/ai-job-risk-analyzer');
+      window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'width=600,height=500');
     });
   }
+
+  function escH(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  // Initialize
+  showStep(1);
 })();
 </script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type": "Question", "name": "How does the AI Job Risk Analyzer work?", "acceptedAnswer": {"@type": "Answer", "text": "You fill in details about your role and tasks. Our AI analyzes your profile against current automation trends and sends you a personalized report by email."}},
-    {"@type": "Question", "name": "Is my data stored?", "acceptedAnswer": {"@type": "Answer", "text": "Your form inputs are sent to generate the report and are not stored after the email is sent. Your email is added to the newsletter if you consent."}},
-    {"@type": "Question", "name": "How accurate is the AI job risk score?", "acceptedAnswer": {"@type": "Answer", "text": "The score is an estimate based on current AI capabilities and trends. It is not a prediction. Use it as a starting point for planning, not as a certainty."}},
-    {"@type": "Question", "name": "How long does the AI Job Risk Analyzer take?", "acceptedAnswer": {"@type": "Answer", "text": "The form takes about 3 minutes. Your report arrives by email within 1-2 minutes after submission."}}
-  ]
+  "@type": "WebApplication",
+  "name": "AI Job Risk Analyzer",
+  "description": "Get a personalized AI risk analysis for your job. Understand which tasks are exposed, which skills to build, and get a 30-day action plan.",
+  "url": "https://hasanjaffal.com/ai-job-risk-analyzer/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "author": {
+    "@type": "Person",
+    "name": "Hasan Jaffal",
+    "url": "https://hasanjaffal.com"
+  }
 }
 </script>
