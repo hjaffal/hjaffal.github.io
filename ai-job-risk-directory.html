@@ -14,32 +14,43 @@ css:
 <section class="dir-hero">
   <div class="dir-hero-orb-1"></div>
   <div class="dir-hero-orb-2"></div>
-  <div class="dir-hero-content">
-    <span class="dir-hero-label">AI JOB RISK DIRECTORY</span>
-    <h1 class="dir-hero-title">The 24-Month Forensic<br><span>AI Risk Directory</span></h1>
-    <p class="dir-hero-desc">By 2028, enterprise architecture will migrate completely past simple "copilot" assistants toward autonomous multi-agent networks that execute, self-correct, and optimize workflows natively. The historical barrier between thinking and executing has dissolved.</p>
-    <p class="dir-hero-subdesc">This directory serves as the definitive index for modern job vulnerability. Browse the audited roles below to view their raw <strong>24-Month Automation Index</strong> — the percentage of traditional day-to-day task loads facing complete machine execution.</p>
+  <div class="dir-hero-grid">
+    <div class="dir-hero-left">
+      <span class="dir-hero-label">AI JOB RISK DIRECTORY</span>
+      <h1 class="dir-hero-title">The 24-Month Forensic<br><span>AI Risk Directory</span></h1>
+      <p class="dir-hero-desc">By 2028, enterprise architecture will migrate completely past simple "copilot" assistants toward autonomous multi-agent networks that execute, self-correct, and optimize workflows natively. The historical barrier between thinking and executing has dissolved.</p>
+      <p class="dir-hero-subdesc">This directory serves as the definitive index for modern job vulnerability. Browse the audited roles below to view their raw <strong>24-Month Automation Index</strong> — the percentage of traditional day-to-day task loads facing complete machine execution.</p>
 
-    <form class="dir-search-form" role="search" aria-label="Filter the AI Job Risk Directory">
-      <div class="dir-search-wrap">
-        <i class="fas fa-search dir-search-icon"></i>
-        <input type="text" id="dir-search-input" class="dir-search-input" placeholder="Search {{ site.data.ai_job_risk_directory | size }} positions..." autocomplete="off" aria-label="Filter positions by job title">
-        <div class="dir-autocomplete" id="dir-autocomplete" role="listbox" aria-label="Search suggestions" style="display:none;"></div>
-      </div>
-    </form>
+      <form class="dir-search-form" role="search" aria-label="Filter the AI Job Risk Directory">
+        <div class="dir-search-wrap">
+          <i class="fas fa-search dir-search-icon"></i>
+          <input type="text" id="dir-search-input" class="dir-search-input" placeholder="Search {{ site.data.ai_job_risk_directory | size }} positions..." autocomplete="off" aria-label="Filter positions by job title">
+          <div class="dir-autocomplete" id="dir-autocomplete" role="listbox" aria-label="Search suggestions" style="display:none;"></div>
+        </div>
+      </form>
 
-    <div class="dir-stats-row">
-      <div class="dir-stat-card">
-        <span class="dir-stat-num">{{ site.data.ai_job_risk_directory | size }}</span>
-        <span class="dir-stat-text">Roles Audited</span>
+      <div class="dir-stats-row">
+        <div class="dir-stat-card">
+          <span class="dir-stat-num">{{ site.data.ai_job_risk_directory | size }}</span>
+          <span class="dir-stat-text">Roles Audited</span>
+        </div>
+        <div class="dir-stat-card">
+          <span class="dir-stat-num">24mo</span>
+          <span class="dir-stat-text">Forecast Window</span>
+        </div>
+        <div class="dir-stat-card">
+          <span class="dir-stat-num">4</span>
+          <span class="dir-stat-text">Disruption Classes</span>
+        </div>
       </div>
-      <div class="dir-stat-card">
-        <span class="dir-stat-num">24mo</span>
-        <span class="dir-stat-text">Forecast Window</span>
-      </div>
-      <div class="dir-stat-card">
-        <span class="dir-stat-num">4</span>
-        <span class="dir-stat-text">Disruption Classes</span>
+    </div>
+
+    <div class="dir-hero-right">
+      <div class="dir-hero-report-card">
+        <span class="dir-hero-report-label">FREE RESEARCH REPORT</span>
+        <h3 class="dir-hero-report-title">AI Workforce Disruption Research Report</h3>
+        <p class="dir-hero-report-desc">The full forensic audit — all 154 roles, charts, methodology, and 30-day action plan in one downloadable PDF.</p>
+        <a href="/report/2028-ai-workforce-disruption/#download" class="dir-hero-report-btn"><i class="fas fa-download"></i> Download Free</a>
       </div>
     </div>
   </div>
@@ -130,17 +141,6 @@ css:
         <span class="dir-related-desc">When formal qualifications lose their protective value against automation</span>
       </a>
     </div>
-  </div>
-</section>
-
-<section class="dir-report-banner">
-  <div class="dir-report-banner-inner">
-    <div class="dir-report-banner-icon"><i class="fas fa-file-pdf"></i></div>
-    <div class="dir-report-banner-text">
-      <strong>Want the full analysis?</strong>
-      <span>Download the 182-page 2028 AI Workforce Disruption Report — all 154 roles, charts, methodology, and 30-day action plan.</span>
-    </div>
-    <a href="/report/2028-ai-workforce-disruption/#download" class="dir-report-banner-btn">Download Free →</a>
   </div>
 </section>
 
