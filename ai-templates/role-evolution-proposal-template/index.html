@@ -1,0 +1,86 @@
+---
+layout: template
+title: "Role Evolution Proposal"
+share-title: "Role Evolution Proposal Template — AI Job Risk Self-Audit"
+share-description: "Present your repositioning to management in a structured, one-page format. Current state, proposed state, expected outcomes, and 90-day timeline."
+permalink: /ai-templates/role-evolution-proposal-template/
+template_title: "The One-Page Role Evolution Proposal"
+template_description: "Present your repositioning to management in a structured, actionable one-page format. Includes current state analysis, proposed state, execution plan, and expected outcomes with a 90-day timeline."
+template_category: "Career & AI Risk"
+template_audience: "All professionals, Managers"
+template_format: "PDF · 1 page"
+template_updated: "June 2026"
+template_pdf: "/report/templates/role-evolution-proposal.pdf"
+template_cta_text: "Download the one-page proposal template ready to fill in and present to your manager."
+whats_inside:
+  - Current State Section (EJR + top execution tasks)
+  - Proposed State Section (target EJR + automation plan)
+  - Expected Outcomes (measurable improvements)
+  - 90-Day Implementation Timeline
+who_for:
+  - Any professional preparing for a role evolution conversation
+  - Managers proposing team restructuring
+  - HR partners facilitating development conversations
+  - Anyone completing the 30-Day Protocol
+when_to_use:
+  - After completing all 4 weeks of the Protocol
+  - Before annual performance reviews
+  - When proposing a role change or promotion
+  - During organizational restructuring
+mistakes:
+  - Using it before completing the 4-week audit (no data = no credibility)
+  - Framing it as "I'm worried about AI" instead of "I can deliver more value"
+  - Being vague about what you'll automate or delegate
+  - Not including measurable expected outcomes
+  - Proposing changes you can't implement within 90 days
+tips:
+  - Complete all 4 weeks of the Protocol first — the data is your evidence
+  - Frame everything positively — you're offering MORE value, not defending your job
+  - Be specific about tools/methods for automation
+  - Include one decision you will personally OWN that doesn't exist today
+  - Practice the conversation before the meeting
+prompt: |
+  Help me draft a one-page Role Evolution Proposal for my manager.
+
+  My role: [JOB TITLE]
+  Department: [DEPARTMENT]
+
+  Current State:
+  - My EJR: [X]% execution / [X]% judgment
+  - Top 3 execution tasks consuming my time:
+    1. [TASK]
+    2. [TASK]
+    3. [TASK]
+  - My top moats: [LIST FROM WEEK 2]
+
+  Proposed State:
+  - Target EJR: [X]% execution / [X]% judgment
+  - Tasks to automate: [FROM WEEK 3]
+  - Tasks to delegate: [FROM WEEK 3]
+  - Judgment activities to expand: [FROM WEEK 3]
+
+  Create a structured one-page proposal with:
+  1. Current State (brief, data-backed)
+  2. Proposed State (clear, specific)
+  3. Expected Outcomes (measurable)
+  4. 90-Day Timeline (weekly milestones)
+
+  Tone: professional, confident, forward-looking. Not defensive.
+  Frame: "I can deliver significantly more strategic value by..."
+---
+
+<div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+  {% include template-whats-inside.html items=page.whats_inside %}
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
+
+  <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;background:var(--slate-bg);">
+    <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">How to Frame the Conversation</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 10px;"><strong style="color:#DC2626;">Don't say:</strong> "I'm worried AI will replace me."</p>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 10px;"><strong style="color:#10B981;">Do say:</strong> "I've been auditing where my time creates the most value, and I've found I can deliver significantly higher strategic output by automating my routine work. Here's my proposal."</p>
+  </div>
+
+  {% include template-prompt.html prompt=page.prompt %}
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
+
+</div>

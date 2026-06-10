@@ -150,6 +150,14 @@ css:
       body: JSON.stringify({email: email, name: name, utm_source: 'report_download'})
     }).then(function(){}).catch(function(){});
 
+    // Send report download email
+    var fnReport = document.querySelector('meta[name="fn-report-email"]');
+    fetch(fnReport ? fnReport.getAttribute('content') : '', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({data: {email: email, name: name}})
+    }).then(function(){}).catch(function(){});
+
     // Show success after brief delay
     setTimeout(function() {
       form.style.display = 'none';

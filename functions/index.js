@@ -260,6 +260,71 @@ exports.sendContactMessage = onRequest(
 
 
 
+// ===== REPORT DOWNLOAD EMAIL =====
+
+exports.sendReportDownloadEmail = onRequest(
+  { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const body = req.body.data || req.body;
+    const { name, email } = body;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      res.status(400).json({ error: "Invalid email" });
+      return;
+    }
+
+    const firstName = (name || "").trim().split(" ")[0] || "there";
+
+    const htmlBody = `
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;">
+  <p style="margin:0 0 4px;font-size:9px;font-weight:700;letter-spacing:0.2em;color:#9333EA;text-transform:uppercase;">RESEARCH REPORT</p>
+  <h1 style="font-size:22px;font-weight:800;color:#0F172A;margin:0 0 16px;letter-spacing:-0.02em;">Your AI Workforce Disruption Report is Ready</h1>
+  <p style="font-size:14px;color:#334155;line-height:1.6;margin:0 0 24px;">Hi ${firstName}, thank you for downloading the report. Here is your personal download link — it does not expire.</p>
+
+  <div style="text-align:center;margin:24px 0;">
+    <a href="https://hasanjaffal.com/report/2028-AI-Workforce-Disruption-Report.pdf" style="display:inline-block;padding:14px 32px;background:#9333EA;color:#ffffff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;">Download Report (PDF)</a>
+  </div>
+
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px 20px;margin:24px 0;">
+    <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#64748B;text-transform:uppercase;">What's inside</p>
+    <ul style="margin:0;padding:0 0 0 16px;font-size:13px;color:#334155;line-height:1.8;">
+      <li>154 professional roles forensically audited</li>
+      <li>Task-level automation feasibility scores</li>
+      <li>4 disruption class classifications</li>
+      <li>30-day self-audit protocol with templates</li>
+      <li>Strategic adaptation framework</li>
+    </ul>
+  </div>
+
+  <p style="font-size:13px;color:#334155;line-height:1.6;margin:0 0 16px;">Want a personalized assessment for your exact role? Try the AI Job Risk Analyzer:</p>
+  <a href="https://hasanjaffal.com/ai-job-risk-analyzer/" style="font-size:13px;color:#9333EA;font-weight:600;text-decoration:none;">→ Launch AI Job Risk Analyzer</a>
+
+  <p style="font-size:12px;color:#94A3B8;margin:32px 0 0;">— Hasan Jaffal · hasanjaffal.com</p>
+</div>`;
+
+    try {
+      const resend = new Resend(RESEND_API_KEY.value());
+      await resend.emails.send({
+        from: "Hasan Jaffal <hasan@hasanjaffal.com>",
+        to: email.trim().toLowerCase(),
+        subject: "Your AI Workforce Disruption Report — Download Link",
+        html: htmlBody
+      });
+
+      res.status(200).json({ result: "success" });
+    } catch (err) {
+      console.error("Report email error:", err);
+      res.status(500).json({ error: "Failed to send" });
+    }
+  }
+);
+
+
 // ===== AI JOB RISK ANALYZER =====
 
 const VALID_SENIORITY = [

@@ -1,0 +1,70 @@
+---
+layout: template
+title: "Moat Identification Worksheet"
+share-title: "Moat Identification Worksheet — AI Job Risk Self-Audit"
+share-description: "Identify which of your activities are structurally un-automatable. Rank your human moats by time invested and organizational visibility."
+permalink: /ai-templates/moat-identification-template/
+template_title: "Moat Identification Worksheet"
+template_description: "Identify which of your current activities are structurally un-automatable and why. Rank your human moats by organizational visibility and time investment."
+template_category: "Career & AI Risk"
+template_audience: "All professionals, Managers, Team Leads"
+template_format: "PDF · 1 page"
+template_updated: "June 2026"
+template_pdf: "/report/templates/week-2-moat-identification.pdf"
+template_cta_text: "Download the full worksheet with moat ranking table, category classification, and visibility scoring."
+whats_inside:
+  - Moat Assessment Table
+  - 5 Un-Automatable Categories
+  - Visibility Scoring Guide
+  - Moat-to-Role Alignment Check
+who_for:
+  - Professionals in Week 2 of the 30-Day Protocol
+  - Managers assessing team resilience
+  - Anyone identifying their career insurance
+when_to_use:
+  - After completing Week 1 Task Decomposition
+  - During role transition planning
+  - Performance review preparation
+  - Team skill mapping sessions
+mistakes:
+  - Confusing "hard to do" with "hard to automate"
+  - Listing skills instead of activities
+  - Ignoring organizational visibility
+  - Assuming all Layer 4-5 work is a moat
+  - Not testing with the question "Could AI do this with full data access?"
+tips:
+  - For each Layer 4-5 activity ask "Could AI do this without a human?"
+  - If yes, it's not a moat — it's high-layer execution
+  - If no, identify WHY (relationship, accountability, ambiguity, context, ethics)
+  - Prioritize moats with HIGH organizational visibility
+  - Your strongest moats combine un-automatability with visible impact
+prompt: |
+  Help me identify my human moats — the activities in my role that are
+  structurally un-automatable by AI.
+
+  My role: [JOB TITLE]
+  My Layer 4-5 activities from Week 1: [LIST THEM]
+
+  For each activity, evaluate:
+  1. Could an AI system with full access to my tools and data do this
+     without a human in the loop? (Yes/No)
+  2. If No — why not? Classify the reason:
+     - Relationship-dependent (trust, history, personal credibility)
+     - Accountability-dependent (personal liability, sign-off authority)
+     - Ambiguity-dependent (no clear "correct" answer exists)
+     - Context-dependent (requires institutional/unwritten knowledge)
+     - Ethical-dependent (values-based judgment required)
+  3. Rate organizational visibility: High / Medium / Low
+  4. Rank from strongest to weakest moat
+
+  Return a ranked table of my top 5 moats with evidence.
+---
+
+<div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+  {% include template-whats-inside.html items=page.whats_inside %}
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
+  {% include template-prompt.html prompt=page.prompt %}
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
+
+</div>

@@ -1,0 +1,85 @@
+---
+layout: template
+title: "Task Decomposition Worksheet"
+share-title: "Task Decomposition Worksheet — AI Job Risk Self-Audit"
+share-description: "Track your daily tasks across 5 operational layers. Calculate your Execution-to-Judgment Ratio and personal automation index."
+permalink: /ai-templates/task-decomposition-template/
+template_title: "Task Decomposition Worksheet"
+template_description: "Map exactly where your time goes — not where you think it goes. Track every work activity across 5 operational layers and calculate your personal Execution-to-Judgment Ratio."
+template_category: "Career & AI Risk"
+template_audience: "All professionals, Managers, Analysts"
+template_format: "PDF · 1 page"
+template_updated: "June 2026"
+template_pdf: "/report/templates/week-1-task-decomposition.pdf"
+template_cta_text: "Download the full worksheet with layer definitions, time tracking grid, and EJR calculation."
+whats_inside:
+  - 5-Layer Classification Guide
+  - Daily Time Tracking Grid
+  - Layer Allocation Calculator
+  - EJR Formula & Benchmark
+  - Personal Automation Index
+who_for:
+  - Professionals assessing AI risk
+  - Managers auditing team exposure
+  - Analysts evaluating role vulnerability
+  - Anyone in the 30-Day Self-Audit Protocol
+when_to_use:
+  - Week 1 of the 30-Day Protocol
+  - Annual career risk review
+  - Before role transition planning
+  - Team workforce planning sessions
+mistakes:
+  - Categorizing by what you think you do, not what you actually do
+  - Counting meetings as strategy when they're coordination
+  - Ignoring the time spent on email and admin
+  - Self-reporting without tracking for a full week
+  - Comparing yourself to job description instead of actual time
+tips:
+  - Track in 30-minute blocks for 5 consecutive days
+  - Be brutally honest about which layer each activity falls in
+  - If in doubt between layers, choose the lower one
+  - Compare your EJR to the Chapter III benchmark for your role
+  - If EJR exceeds 60%, begin repositioning immediately
+prompt: |
+  I need to decompose my professional role into the 5 operational layers
+  to calculate my Execution-to-Judgment Ratio.
+
+  My role: [JOB TITLE]
+  My daily activities: [LIST YOUR TYPICAL DAILY TASKS]
+
+  For each activity I listed, classify it into one of these layers:
+  - Layer 1 (Execution): Data entry, formatting, copying, routing
+  - Layer 2 (Analysis): Processing data, building reports, summarizing
+  - Layer 3 (Coordination): Scheduling, status updates, information relay
+  - Layer 4 (Judgment): Decisions with trade-offs, stakeholder negotiation
+  - Layer 5 (Strategy): Direction-setting, resource allocation, vision
+
+  Then calculate:
+  - Time percentage per layer
+  - EJR = (Layer 1 + Layer 2 + Layer 3) / Total
+  - Personal Automation Index estimate
+
+  Be honest and conservative. If an activity could be in multiple layers,
+  assign it to the lowest applicable layer.
+---
+
+<div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+  {% include template-whats-inside.html items=page.whats_inside %}
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
+
+  <div style="padding:24px;border:1px solid var(--slate-border);border-radius:10px;">
+    <h3 style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0 0 12px;">The 5 Operational Layers</h3>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="padding:10px 14px;background:var(--slate-bg);border-radius:6px;border-left:3px solid #DC2626;"><strong style="font-size:0.82rem;">Layer 1: Execution</strong> <span style="font-size:0.78rem;color:var(--text-muted);">— Data entry, formatting, copying, routing</span></div>
+      <div style="padding:10px 14px;background:var(--slate-bg);border-radius:6px;border-left:3px solid #F59E0B;"><strong style="font-size:0.82rem;">Layer 2: Analysis</strong> <span style="font-size:0.78rem;color:var(--text-muted);">— Processing data, building reports, summarizing</span></div>
+      <div style="padding:10px 14px;background:var(--slate-bg);border-radius:6px;border-left:3px solid #F59E0B;"><strong style="font-size:0.82rem;">Layer 3: Coordination</strong> <span style="font-size:0.78rem;color:var(--text-muted);">— Scheduling, status updates, information relay</span></div>
+      <div style="padding:10px 14px;background:var(--slate-bg);border-radius:6px;border-left:3px solid #10B981;"><strong style="font-size:0.82rem;">Layer 4: Judgment</strong> <span style="font-size:0.78rem;color:var(--text-muted);">— Decisions with trade-offs, stakeholder negotiation</span></div>
+      <div style="padding:10px 14px;background:var(--slate-bg);border-radius:6px;border-left:3px solid #10B981;"><strong style="font-size:0.82rem;">Layer 5: Strategy</strong> <span style="font-size:0.78rem;color:var(--text-muted);">— Direction-setting, resource allocation, vision</span></div>
+    </div>
+  </div>
+
+  {% include template-prompt.html prompt=page.prompt %}
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
+
+</div>

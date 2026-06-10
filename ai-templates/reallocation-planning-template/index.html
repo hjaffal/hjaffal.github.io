@@ -1,0 +1,71 @@
+---
+layout: template
+title: "Reallocation Planning Worksheet"
+share-title: "Reallocation Planning Worksheet — AI Job Risk Self-Audit"
+share-description: "Plan what to automate, delegate, or eliminate. Map freed time to judgment-layer moat activities."
+permalink: /ai-templates/reallocation-planning-template/
+template_title: "Reallocation Planning Worksheet"
+template_description: "Design a concrete plan to shift time from execution to judgment. Identify what to automate, delegate, or eliminate — and where to reinvest the freed hours."
+template_category: "Career & AI Risk"
+template_audience: "All professionals, Managers"
+template_format: "PDF · 1 page"
+template_updated: "June 2026"
+template_pdf: "/report/templates/week-3-reallocation-planning.pdf"
+template_cta_text: "Download the full worksheet with elimination planning, reinvestment mapping, and new EJR targets."
+whats_inside:
+  - Tasks to Eliminate/Automate Table
+  - Time Freed Calculator
+  - Reinvestment Plan
+  - New EJR Target Setting
+  - Manager Proposal Draft Prompt
+who_for:
+  - Professionals in Week 3 of the 30-Day Protocol
+  - Managers restructuring team workflows
+  - Anyone preparing for role evolution
+when_to_use:
+  - After completing Week 2 Moat Identification
+  - When planning automation of your own work
+  - Before proposing role changes to leadership
+mistakes:
+  - Planning to automate tasks you don't actually control
+  - Reinvesting freed time into more execution work
+  - Setting unrealistic EJR targets
+  - Not considering what tools exist for automation
+  - Forgetting to plan the manager conversation
+tips:
+  - Start with the easiest task to automate or delegate
+  - Calculate actual hours freed, not percentages
+  - Reinvest 100% of freed time into moat activities
+  - Draft a one-paragraph role evolution pitch
+  - Target reducing EJR by at least 15 percentage points
+prompt: |
+  Help me create a reallocation plan for my professional role.
+
+  My role: [JOB TITLE]
+  My current EJR: [X]%
+  My top 3 execution-layer time consumers:
+  1. [TASK] — [X] hours/week
+  2. [TASK] — [X] hours/week
+  3. [TASK] — [X] hours/week
+
+  My top moats from Week 2: [LIST THEM]
+
+  For each execution task, recommend:
+  - Automate (with what tool/method?)
+  - Delegate (to whom or what?)
+  - Eliminate (why isn't it needed?)
+
+  Then create a reinvestment plan: how to allocate the freed hours
+  into my identified moat activities.
+
+  Calculate my new target EJR after reallocation.
+---
+
+<div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+  {% include template-whats-inside.html items=page.whats_inside %}
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
+  {% include template-prompt.html prompt=page.prompt %}
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
+
+</div>

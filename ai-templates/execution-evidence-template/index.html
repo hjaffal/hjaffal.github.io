@@ -1,0 +1,65 @@
+---
+layout: template
+title: "Execution & Evidence Building Worksheet"
+share-title: "Execution & Evidence Building Worksheet — AI Job Risk Self-Audit"
+share-description: "Implement your reallocation plan. Document daily judgment decisions AI could not make. Build evidence for your manager conversation."
+permalink: /ai-templates/execution-evidence-template/
+template_title: "Execution & Evidence Building Worksheet"
+template_description: "Implement the reallocation from Week 3 and document results. Track one judgment-layer decision per day that AI could not have made. Build the evidence for organizational credibility."
+template_category: "Career & AI Risk"
+template_audience: "All professionals"
+template_format: "PDF · 1 page"
+template_updated: "June 2026"
+template_pdf: "/report/templates/week-4-execution-evidence.pdf"
+template_cta_text: "Download the full worksheet with daily decision log, EJR tracker, and manager conversation guide."
+whats_inside:
+  - Daily Decision Log (Mon-Fri)
+  - Updated EJR Measurement
+  - Manager Conversation Script
+  - Evidence Summary
+who_for:
+  - Professionals in Week 4 of the 30-Day Protocol
+  - Anyone building a case for role evolution
+  - Managers documenting team value
+when_to_use:
+  - Final week of the 30-Day Protocol
+  - Before performance reviews
+  - Before role change conversations
+  - When building a promotion case
+mistakes:
+  - Logging tasks instead of decisions
+  - Not explaining why AI couldn't have done it
+  - Waiting until the end of the week to fill it in
+  - Being too vague about the outcome
+  - Skipping the manager conversation
+tips:
+  - Fill in each day's entry before leaving work
+  - Focus on decisions where you used judgment, not just experience
+  - The "AI couldn't do this because" column is the most important one
+  - Schedule the manager conversation for Friday of Week 4
+  - Frame it positively — you're offering more strategic value
+prompt: |
+  Help me document my judgment-layer decisions for this week.
+
+  My role: [JOB TITLE]
+  Today's activities: [DESCRIBE WHAT YOU DID TODAY]
+
+  Identify the ONE decision I made today that an AI system could NOT have made,
+  even with full access to my tools and data. Explain:
+  1. What was the decision?
+  2. Why couldn't AI make it? (ambiguity, accountability, relationship, context, ethics)
+  3. What was the outcome?
+
+  Then help me draft a talking point for my manager conversation:
+  "This week I [specific judgment activity] which resulted in [outcome].
+  An AI system could not have done this because [reason]."
+---
+
+<div class="blog-post" style="display:flex;flex-direction:column;gap:32px;">
+
+  {% include template-whats-inside.html items=page.whats_inside %}
+  {% include template-who-when.html who=page.who_for when=page.when_to_use %}
+  {% include template-prompt.html prompt=page.prompt %}
+  {% include template-mistakes-tips.html mistakes=page.mistakes tips=page.tips %}
+
+</div>
