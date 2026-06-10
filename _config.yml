@@ -108,6 +108,8 @@ exclude:
   - README.md
   - screenshot.png
   - docs/
+  - scripts/
+  - all-ai-job-risk-audits.md
 
 plugins:
   - jekyll-paginate

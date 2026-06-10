@@ -566,6 +566,98 @@
   line-height: 1.5;
 }
 
+/* Report Banner */
+.dir-report-banner {
+  padding: 32px 48px;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--dark);
+}
+
+.dir-report-banner-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  background: rgba(147,51,234,0.06);
+  border: 1px solid rgba(147,51,234,0.2);
+  border-radius: 12px;
+}
+
+.dir-report-banner-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(147,51,234,0.12);
+  border-radius: 10px;
+  color: #9333EA;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.dir-report-banner-text {
+  flex: 1;
+}
+
+.dir-report-banner-text strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 3px;
+}
+
+.dir-report-banner-text span {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.dir-report-banner-btn {
+  padding: 10px 20px;
+  background: #9333EA;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.dir-report-banner-btn:hover {
+  background: #7C22CB;
+  color: #fff;
+}
+
+/* Homepage report link */
+.hp-dw-report-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9333EA;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.hp-dw-report-link:hover {
+  opacity: 0.8;
+  color: #9333EA;
+}
+
+@media (max-width: 640px) {
+  .dir-report-banner-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+}
+
 /* CTA Section */
 .dir-cta {
   padding: 64px 48px;

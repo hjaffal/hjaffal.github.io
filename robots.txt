@@ -31,5 +31,6 @@ Disallow: /newsletter/admin/
 Disallow: /newsletter/preferences/
 Disallow: /page*/
 Disallow: /assets/pdf/
+Disallow: /report/
 
 Sitemap: {{ site.url }}/sitemap.xml
