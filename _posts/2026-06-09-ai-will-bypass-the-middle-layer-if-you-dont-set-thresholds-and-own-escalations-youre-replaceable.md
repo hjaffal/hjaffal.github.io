@@ -8,6 +8,9 @@ tags:
 topic: ai-topic
 archetype: compare
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-09-ai-will-bypass-the-middle-layer-if-you-dont-set-thresholds-and-own-escalations-youre-replaceable.webp
+share-img: /assets/img/posts/2026-06-09-ai-will-bypass-the-middle-layer-if-you-dont-set-thresholds-and-own-escalations-youre-replaceable.webp
+
 ---
 
 Most people believe AI will wipe out junior roles first and “level up” the middle. That’s backwards. AI erases the middle layer that lives on tools, status updates, and templated analysis. What’s left is judgment: setting thresholds, taking sides on trade-offs, and deciding when to escalate.
