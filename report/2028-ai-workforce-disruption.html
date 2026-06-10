@@ -16,19 +16,47 @@ css:
 
 <div class="rpt-page">
 
-  <!-- Hero -->
+  <!-- Hero with download form -->
   <section class="rpt-hero">
     <div class="rpt-hero-orb-1"></div>
     <div class="rpt-hero-orb-2"></div>
-    <div class="rpt-hero-content">
-      <span class="rpt-hero-label">FREE RESEARCH REPORT · 2026</span>
-      <h1 class="rpt-hero-title">2028 Agentic AI<br><span>Workforce Disruption Report</span></h1>
-      <p class="rpt-hero-desc">A forensic audit of 154 professional roles against the 24-month agentic automation window. Task-level exposure data. Disruption classifications. Strategic countermeasures.</p>
-      <div class="rpt-hero-stats">
-        <div class="rpt-stat"><strong>154</strong><span>Roles Audited</span></div>
-        <div class="rpt-stat"><strong>182</strong><span>Pages</span></div>
-        <div class="rpt-stat"><strong>4</strong><span>Disruption Classes</span></div>
-        <div class="rpt-stat"><strong>24mo</strong><span>Forecast Window</span></div>
+    <div class="rpt-hero-grid">
+      <div class="rpt-hero-left">
+        <span class="rpt-hero-label">FREE RESEARCH REPORT · 2026</span>
+        <h1 class="rpt-hero-title">AI Workforce<br>Disruption<br><span>Research Report</span></h1>
+        <p class="rpt-hero-desc">A forensic audit of 154 professional roles against the 24-month agentic automation window. Task-level exposure data. Disruption classifications. Strategic countermeasures.</p>
+        <div class="rpt-hero-stats">
+          <div class="rpt-stat"><strong>154</strong><span>Roles Audited</span></div>
+          <div class="rpt-stat"><strong>4</strong><span>Disruption Classes</span></div>
+          <div class="rpt-stat"><strong>24mo</strong><span>Forecast Window</span></div>
+        </div>
+      </div>
+      <div class="rpt-hero-right" id="download">
+        <div class="rpt-hero-form-card">
+          <form class="rpt-form" id="rpt-download-form">
+            <span class="rpt-form-title">Download the Full Report</span>
+            <p class="rpt-form-subtitle">Enter your details to get the complete PDF.</p>
+            <div class="rpt-form-field">
+              <label for="rpt-name">Full Name</label>
+              <input type="text" id="rpt-name" required placeholder="Your name" maxlength="200">
+            </div>
+            <div class="rpt-form-field">
+              <label for="rpt-email">Email</label>
+              <input type="email" id="rpt-email" required placeholder="your@email.com">
+            </div>
+            <button type="submit" class="rpt-form-btn" id="rpt-submit">
+              <span class="rpt-btn-text"><i class="fas fa-download"></i> Download Report (PDF)</span>
+              <span class="rpt-btn-loading" style="display:none;"><i class="fas fa-circle-notch fa-spin"></i> Processing...</span>
+            </button>
+            <p class="rpt-form-note">By downloading, you agree to receive occasional updates. Unsubscribe anytime.</p>
+          </form>
+          <div class="rpt-success" id="rpt-success" style="display:none;">
+            <div class="rpt-success-icon"><i class="fas fa-check-circle"></i></div>
+            <h3>Your report is ready.</h3>
+            <p>Check your email. You can also download directly:</p>
+            <a href="/report/2028-AI-Workforce-Disruption-Report.pdf" class="rpt-download-btn" download><i class="fas fa-file-pdf"></i> Download PDF</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -56,40 +84,6 @@ css:
         <div class="rpt-feature-icon"><i class="fas fa-chart-bar"></i></div>
         <h3>Visual Data & Charts</h3>
         <p>Sector heatmaps, seniority analysis, role compression models, and the Five Forces of Agentic Displacement.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download Gate -->
-  <section class="rpt-download" id="download">
-    <div class="rpt-download-inner">
-      <div class="rpt-download-left">
-        <span class="rpt-download-label">FREE DOWNLOAD</span>
-        <h2 class="rpt-download-title">Get the Full Report</h2>
-        <p class="rpt-download-desc">Enter your name and email to receive the complete PDF. You'll also receive our weekly writing on AI, risk, and operational intelligence.</p>
-      </div>
-      <div class="rpt-download-right">
-        <form class="rpt-form" id="rpt-download-form">
-          <div class="rpt-form-field">
-            <label for="rpt-name">Full Name</label>
-            <input type="text" id="rpt-name" required placeholder="Your name" maxlength="200">
-          </div>
-          <div class="rpt-form-field">
-            <label for="rpt-email">Email</label>
-            <input type="email" id="rpt-email" required placeholder="your@email.com">
-          </div>
-          <button type="submit" class="rpt-form-btn" id="rpt-submit">
-            <span class="rpt-btn-text"><i class="fas fa-download"></i> Download Report (PDF)</span>
-            <span class="rpt-btn-loading" style="display:none;"><i class="fas fa-circle-notch fa-spin"></i> Processing...</span>
-          </button>
-          <p class="rpt-form-note">By downloading, you agree to receive occasional updates. Unsubscribe anytime.</p>
-        </form>
-        <div class="rpt-success" id="rpt-success" style="display:none;">
-          <div class="rpt-success-icon"><i class="fas fa-check-circle"></i></div>
-          <h3>Your report is ready.</h3>
-          <p>Check your email for the download link. You can also download directly:</p>
-          <a href="/report/2028-AI-Workforce-Disruption-Report.pdf" class="rpt-download-btn" download><i class="fas fa-file-pdf"></i> Download PDF (1.9 MB)</a>
-        </div>
       </div>
     </div>
   </section>
