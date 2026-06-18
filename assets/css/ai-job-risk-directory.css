@@ -707,7 +707,7 @@
   color: #fff;
 }
 
-/* Homepage report link */
+/* Homepage widget report link */
 .hp-dw-report-link {
   display: inline-block;
   margin-top: 16px;
@@ -721,6 +721,61 @@
 .hp-dw-report-link:hover {
   opacity: 0.8;
   color: #9333EA;
+}
+
+/* Homepage widget autocomplete */
+.hp-dw-search-wrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.hp-dw-search-wrap .hp-dw-search-input {
+  flex: 1;
+  border-radius: 10px 0 0 10px;
+}
+
+.hp-dw-search-wrap .hp-dw-search-btn {
+  border-radius: 0 10px 10px 0;
+}
+
+.hp-dw-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #1E293B;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.hp-dw-ac-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s;
+}
+
+.hp-dw-ac-item:last-child { border-bottom: none; }
+.hp-dw-ac-item:hover { background: rgba(147,51,234,0.12); }
+
+.hp-dw-ac-item span:first-child {
+  font-size: 0.85rem;
+  color: #F8FAFC;
+  font-weight: 500;
+}
+
+.hp-dw-ac-item span:first-child strong {
+  color: #9333EA;
+  font-weight: 700;
 }
 
 @media (max-width: 640px) {

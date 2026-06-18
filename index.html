@@ -72,8 +72,12 @@ css:
       <h2 class="hp-dw-title">Is your role safe from the 2028 agentic shift?</h2>
       <p class="hp-dw-desc">Search 100+ audited roles. See your raw 24-month automation index before the market prices it in.</p>
       <form class="hp-dw-search-form" action="/ai-job-risk-directory/" method="get" role="search" aria-label="Search the AI Job Risk Directory">
-        <input type="text" name="q" class="hp-dw-search-input" placeholder="Enter your job title (e.g., Data Analyst, Project Manager)..." autocomplete="off" aria-label="Job title search">
-        <button type="submit" class="hp-dw-search-btn"><i class="fas fa-arrow-right"></i></button>
+        <div class="hp-dw-search-wrap">
+          <input type="text" name="q" id="hp-dw-search" class="hp-dw-search-input" placeholder="Enter your job title (e.g., Data Analyst, Project Manager)..." autocomplete="off" aria-label="Job title search">
+          <button type="submit" class="hp-dw-search-btn"><i class="fas fa-arrow-right"></i></button>
+          <div class="hp-dw-autocomplete" id="hp-dw-autocomplete" style="display:none;"></div>
+        </div>
+      </form>
       </form>
       <div class="hp-dw-stats">
         <span class="hp-dw-stat"><strong>100+</strong> roles audited</span>
@@ -86,6 +90,33 @@ css:
     </div>
   </div>
 </section>
+
+<script>
+(function(){
+  var roles = [{% for role in site.data.ai_job_risk_directory %}{"t":"{{ role.title }}","s":"{{ role.slug }}","i":{{ role.automation_index }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  var input = document.getElementById('hp-dw-search');
+  var dropdown = document.getElementById('hp-dw-autocomplete');
+  if (!input || !dropdown) return;
+
+  function getColor(i) { return i >= 75 ? '#DC2626' : i >= 60 ? '#F59E0B' : i >= 40 ? '#9333EA' : '#10B981'; }
+
+  input.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    if (q.length < 2) { dropdown.style.display = 'none'; return; }
+    var matches = roles.filter(function(r) { return r.t.toLowerCase().indexOf(q) !== -1; }).slice(0, 6);
+    if (!matches.length) { dropdown.style.display = 'none'; return; }
+    dropdown.innerHTML = matches.map(function(m) {
+      var color = getColor(m.i);
+      var hl = m.t.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<strong>$1</strong>');
+      return '<a href="/ai-job-risk/' + m.s + '/" class="hp-dw-ac-item"><span>' + hl + '</span><span style="color:' + color + ';font-weight:700;font-size:0.75rem;">' + m.i + '%</span></a>';
+    }).join('');
+    dropdown.style.display = 'block';
+  });
+
+  input.addEventListener('blur', function() { setTimeout(function() { dropdown.style.display = 'none'; }, 200); });
+  input.addEventListener('focus', function() { if (this.value.length >= 2) this.dispatchEvent(new Event('input')); });
+})();
+</script>
 
 <!-- TOOLS -->
 <section class="hp-tools">
