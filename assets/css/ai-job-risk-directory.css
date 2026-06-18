@@ -978,11 +978,14 @@
   .dir-table thead { display: none; }
 
   .dir-table tbody tr {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 6px 12px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--slate-border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--slate-border);
+    border-radius: 10px;
+    background: var(--white);
   }
 
   .dir-table td {
@@ -990,19 +993,28 @@
   }
 
   .dir-cell-title {
-    grid-column: 1 / -1;
+    order: 1;
+  }
+
+  .dir-cell-title a {
+    font-size: 0.95rem;
+    font-weight: 700;
   }
 
   .dir-cell-index {
+    order: 2;
     text-align: left;
   }
 
   .dir-cell-class {
-    grid-column: 1 / -1;
+    order: 3;
   }
 
   .dir-cell-link {
-    grid-column: 1 / -1;
+    order: 4;
+    padding-top: 6px;
+    border-top: 1px solid var(--slate-border);
+  }
     text-align: left;
     padding-top: 4px;
   }
