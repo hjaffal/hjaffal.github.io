@@ -8,6 +8,9 @@ tags:
 topic: ai-topic
 archetype: explain
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-11-build-ai-operations-that-bend-under-load-give-signals-authority-or-pay-for-noise.webp
+share-img: /assets/img/posts/2026-06-11-build-ai-operations-that-bend-under-load-give-signals-authority-or-pay-for-noise.webp
+
 ---
 
 Most teams believe better models and more alerts make them safer. I disagree. If your decision path is slow or ownerless, AI just multiplies the pain and the bill.

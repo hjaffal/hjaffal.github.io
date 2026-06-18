@@ -8,6 +8,9 @@ tags:
 topic: risk-topic
 archetype: write
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence.webp
+share-img: /assets/img/posts/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence.webp
+
 ---
 
 Start with action. On Monday, print your metric catalog and your dashboard list. By Friday, any metric that does not trigger a specific action should be paused. Reporting explains what happened; intelligence changes what happens next.

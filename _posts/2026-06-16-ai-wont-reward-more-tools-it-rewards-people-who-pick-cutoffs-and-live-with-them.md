@@ -8,6 +8,9 @@ tags:
 topic: ai-topic
 archetype: describe
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them.webp
+share-img: /assets/img/posts/2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them.webp
+
 ---
 
 Most people think the safest move in an AI world is to learn more tools. I disagree. AI makes tool work cheap. It exposes the people who can’t set a cutoff, own a loss, or call an escalation.
