@@ -144,6 +144,19 @@ css:
   </div>
 </section>
 
+<!-- Crawlable role index for SEO — all 154 links visible to search engines -->
+<section class="dir-seo-links" aria-label="Complete role index">
+  <div class="dir-seo-inner">
+    <h2 class="dir-seo-title">All Audited Roles</h2>
+    <ul class="dir-seo-list">
+      {% assign sorted_roles = site.data.ai_job_risk_directory | sort: "title" %}
+      {% for role in sorted_roles %}
+      <li><a href="/ai-job-risk/{{ role.slug }}/">{{ role.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
 <section class="dir-cta">
   <div class="dir-cta-inner">
     <div class="dir-cta-icon"><i class="fas fa-crosshairs"></i></div>
