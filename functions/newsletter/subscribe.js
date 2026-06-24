@@ -75,7 +75,7 @@ function buildMainWebsiteWelcome(unsubscribeUrl) {
 <!-- Welcome -->
 <tr><td style="padding:32px 32px 24px;">
   <p style="margin:0 0 16px;font-size:18px;font-weight:700;color:#0F172A;">Welcome — you're in.</p>
-  <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.7;">I write about where AI, dashboards, data signals, and leadership fail in real operations. Sharp, practical, no filler. Expect writing every week.</p>
+  <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.7;">I write about where AI, dashboards, data signals, and leadership fail in real operations. Sharp, practical, no filler. The weekly decision operations briefing.</p>
 </td></tr>
 
 <!-- Positions -->

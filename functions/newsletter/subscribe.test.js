@@ -49,14 +49,15 @@ describe("sendWelcomeEmail", () => {
     await sendWelcomeEmail("test@example.com", "token123", "fake-api-key", null);
 
     const sentEmail = mockResendInstance.getLastSentEmail();
-    expect(sentEmail.html).toContain("AI, risk, operations, and decision-making");
+    expect(sentEmail.html).toContain("AI & Decision Operations");
+    expect(sentEmail.html).toContain("Risk Intelligence");
   });
 
-  it("includes expected frequency (weekly writing)", async () => {
+  it("includes expected frequency (decision operations briefing)", async () => {
     await sendWelcomeEmail("test@example.com", "token123", "fake-api-key", null);
 
     const sentEmail = mockResendInstance.getLastSentEmail();
-    expect(sentEmail.html).toContain("weekly writing");
+    expect(sentEmail.html).toContain("decision operations briefing");
   });
 
   it("includes personalized unsubscribe link with raw token", async () => {

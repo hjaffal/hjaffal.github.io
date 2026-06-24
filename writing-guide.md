@@ -545,7 +545,7 @@ Do not repeat the same characters. Examples should feel realistic and operationa
 
 **Newsletter promise:**
 
-> "Weekly writing on AI, risk, and decisions. How to use AI in operations and risk — and how AI is reshaping the skills that matter at work."
+> "Join 1,000+ operators who use this intelligence to shorten their signal-to-action time. Get the weekly decision operations briefing."
 
 **Secondary CTAs:** Use a tool, read another article.
 

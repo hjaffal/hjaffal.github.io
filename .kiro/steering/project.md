@@ -86,7 +86,7 @@ This is Hasan Jaffal's personal authority website. The site positions Hasan arou
 - The frontend should send only: email, score, resultBand, jobFamily, weakestCategory, and strongestCategory.
 - Do NOT edit files using terminal commands (sed, mv, rm). Use `str_replace`, `fs_write`, `fs_append`, `delete_file` tools instead.
 - Do NOT mention templates as a positioning tool — they are for SEO traffic only.
-- Use "weekly writing" not "weekly essays."
+- Use "the weekly decision operations briefing" not "weekly essays" or generic newsletter language.
 
 ## Frontend Architecture
 

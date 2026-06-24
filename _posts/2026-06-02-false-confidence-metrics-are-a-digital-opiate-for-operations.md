@@ -53,4 +53,4 @@ These aren't just numbers; they're commands. This shifts your operational rhythm
 
 Are you content watching your operation on a dashboard that says 'all clear,' or do you demand a system that forces immediate intervention when the subtle signs of trouble appear? Which side are you on?
 
-If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Weekly writing on AI, risk, and decisions. How to use AI in operations and risk — and how AI is reshaping the skills that matter at work.
+If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Join 1,000+ operators who use this intelligence to shorten their signal-to-action time.

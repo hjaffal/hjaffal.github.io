@@ -62,4 +62,4 @@ This approach transforms a passive number into an active signal demanding a deci
 
 Are your dashboards a sophisticated radar system, helping you navigate digital battlefields and spot threats before they hit? Or are they just pretty lights, designed to make you feel good until the inevitable crash?
 
-If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Weekly writing on AI, risk, and decisions. How to use AI in operations and risk — and how AI is reshaping the skills that matter at work.
+If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Join 1,000+ operators who use this intelligence to shorten their signal-to-action time.

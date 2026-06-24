@@ -59,4 +59,4 @@ So, are your metrics guiding active decisions, or are they just a detailed histo
 
 ---
 
-If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — weekly writing on AI, risk, and decisions.
+If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Join 1,000+ operators who use this intelligence to shorten their signal-to-action time.
