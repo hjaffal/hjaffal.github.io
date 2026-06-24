@@ -22,3 +22,6 @@ chat_with_me_box: false
 13. Wien ass responsabel fir ze kachen? — *Who is responsible for cooking?*
 14. Hutt Dir haut gekacht? — *Did you cook today?*
 15. Wie mécht d'Poubelle eidel? — *Who empties the bin?*
+16. Wat fir eng Zort Wunneng hat Dir als Kand? — *What kind of home did you have as a child?*
+17. Hutt Dir als Kand en Hausdéier gehat? — *Did you have a pet as a child?*
+18. Hutt Dir elo en Hausdéier? Wann net, firwat net? — *Do you have a pet now? If not, why not?*
