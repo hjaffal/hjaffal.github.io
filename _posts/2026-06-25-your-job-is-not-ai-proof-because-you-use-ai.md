@@ -6,12 +6,6 @@ share-description: "Forget generic AI career advice. The real AI job risk comes 
 tags:
   - ai-decision-operations
   - ai-job-risk
-topic: fake-ai-safety-advice
-archetype: predict
-keywords:
-  - "AI job risk"
-  - "AI career advice"
-  - "AI proof career"
 author: Hasan J.
 ---
 
@@ -45,7 +39,7 @@ Here’s the difference:
 
 Let’s take "Sarah," a compliance analyst at "Evergreen Financial." For years, her job was to pull transaction data, run it through pre-defined rules in a system, and flag anything above a certain dollar amount for review. She was excellent at operating the tool. Now, an AI system does this 10x faster and flags *nuance* the old rules missed. Sarah’s old job is gone. Her new value comes from working with legal counsel to *define* new, dynamic thresholds, understanding the *risk tolerance* for the bank, and deciding when to *escalate* directly to law enforcement versus a manual review. She's not just using the AI; she's *designing* its operational parameters and owning the critical trade-offs. This is moving from information worker to [AI & Decision Operations](/positions/ai-decision-operations/).
 
-A recent report by PwC found that "AI adoption is creating a significant 'upskilling emergency'" for 69% of global employees, highlighting that "employees who only operate tools are most at risk of having tasks automated away." [PwC Global Workforce Hopes and Fears Survey 2023](https://www.pwc.com/gx/en/issues/workforce/hopes-and-fears-2023.html) underlines this exact point: the shift isn't about AI eliminating jobs entirely, but rapidly changing what constitutes value in a role.
+A  report by PwC found that "AI adoption is creating a significant 'upskilling emergency'" for 69% of global employees, highlighting that "employees who only operate tools are most at risk of having tasks automated away." [PwC Global Workforce Hopes and Fears Survey 2023](https://www.pwc.com/gx/en/news-room/press-releases/2023/pwc-global-workforce-hopes-and-fears-survey-2023.html) underlines this exact point: the shift isn't about AI eliminating jobs entirely, but rapidly changing what constitutes value in a role.
 
 When AI automates your current output, will your organization still need your expertise to make the *actual decisions*, or will they simply need a better tool?
 
