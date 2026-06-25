@@ -8,6 +8,8 @@ tags:
 topic: ai-topic
 archetype: describe
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
+share-img: /assets/img/posts/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
 ---
 
 Start today by picking one decision your system makes at scale. Pull the last 50 cases where an AI score or rule drove an action. Label each as right, wrong, or unclear based on outcome you care about. Write down what would have triggered a different action in real time. Do this now and you will see where you need judgment, not another tool.
