@@ -15,6 +15,7 @@ keywords:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-25-7-signs-your-intelligence-is-just-useless-analytics-and-why-ai-loves-them.webp
 share-img: /assets/img/posts/2026-06-25-7-signs-your-intelligence-is-just-useless-analytics-and-why-ai-loves-them.webp
+tldr: "Most teams confuse reporting with intelligence. If your metrics don't trigger a specific action, they're decoration. Here are 7 signs your analytics function is producing useless output: no one acts on your dashboards, you measure activity not outcomes, thresholds exist without owners, alerts go to inboxes not people, you optimize for visual polish over decision speed, your best analysts are stuck on recurring reports, and AI will automate all of it because none of it requires judgment. Fix it by tying every metric to an owner, a threshold, and a time-to-act."
 
 ---
 

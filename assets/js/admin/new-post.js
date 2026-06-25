@@ -458,11 +458,11 @@ function initAIGenerateButton() {
       statusEl.innerHTML = '<div class="nla-ai-loading"><div class="nla-spinner"></div><span>Generating post…</span></div>';
     }
 
-    // Set up timeout (60s)
+    // Set up timeout (120s to allow for retries on forbidden phrases)
     const controller = new AbortController();
     const timeoutId = setTimeout(function() {
       controller.abort();
-    }, 60000);
+    }, 120000);
 
     try {
       const generatePostUrl = getApiUrls().generatePost;
