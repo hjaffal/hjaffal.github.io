@@ -13,6 +13,9 @@ keywords:
   - "reporting is not intelligence"
   - "decision operations"
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-25-7-signs-your-intelligence-is-just-useless-analytics-and-why-ai-loves-them.webp
+share-img: /assets/img/posts/2026-06-25-7-signs-your-intelligence-is-just-useless-analytics-and-why-ai-loves-them.webp
+
 ---
 
 The weekly BI review: A polished deck, green lights across every chart, smiling faces. Yet, you feel the cold sweat. Because outside that room, operations are leaking value like a busted pipe, and those beautiful dashboards are doing nothing to stop it.
