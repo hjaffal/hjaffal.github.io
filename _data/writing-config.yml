@@ -16,7 +16,7 @@ archetypes:
     instruction: "Predict organizational or workforce shifts. Make a specific claim about what will change in the next 12 months and why."
   - id: listicle
     name: "Listicle"
-    instruction: "Structure the article as a numbered list (5-10 items). Each item gets a bold heading, a 2-3 sentence explanation, and one concrete example or consequence. The list must have a unifying thesis — not just a collection. Open with why the list matters, close with a forced-choice question. Title format: 'N [Things/Signs/Reasons/Ways] ...' — the number sets reader expectations."
+    instruction: "OVERRIDE the standard article structure. Write a numbered listicle (5-8 items). Title MUST start with a number (e.g., '7 Signs...', '5 Ways...'). Use ## numbered headings for each item (e.g., '## 1. Bold claim'). Under each heading: 2-3 sentences explaining the point, then one concrete example or consequence. Open with a short intro on why this list matters. Close with a forced-choice question + CTA. Readers should get value from headings alone. Do NOT write long prose between items."
 
 content_mix:
   - id: confrontation

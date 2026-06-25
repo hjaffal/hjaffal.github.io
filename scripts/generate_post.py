@@ -83,7 +83,7 @@ ARTICLE_FORMS = [
     "Make a prediction about what will change in the next 12 months and why",
     "Explain what leaders must stop doing immediately and what to do instead",
     "Describe the minimum viable version of a system that actually works",
-    "Structure the article as a numbered listicle (5-10 items). Each item gets a bold heading, 2-3 sentence explanation, and one concrete example. Title must start with a number. The list needs a unifying thesis.",
+    "Structure the article as a numbered listicle (5-8 items). OVERRIDE the standard structure. Title MUST start with a number (e.g., '7 Signs...', '5 Ways...'). Use ## numbered headings for each item. Under each heading: 2-3 sentences + one concrete example. Open with why the list matters. Close with a forced-choice question. Keep items tight and scannable.",
 ]
 
 TONES = [

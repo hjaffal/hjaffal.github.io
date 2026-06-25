@@ -97,9 +97,11 @@ const CONFIG = {
  */
 function buildPrompt(params) {
   const {
-    position, topic, archetype, contentMix, techniques, tone,
+    position, topic, archetype, archetypeId, contentMix, techniques, tone,
     existingTitles, existingTopics, existingKeywords
   } = params;
+
+  const isListicle = archetypeId === "listicle" || (archetype && archetype.toLowerCase().includes("listicle"));
 
   const recentTitlesText = (existingTitles && existingTitles.length > 0)
     ? existingTitles.slice(0, 30).map(t => "- " + t).join("\n")
@@ -182,6 +184,30 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 
 === ARTICLE STRUCTURE (follow this order) ===
 
+${isListicle ? `
+THIS IS A LISTICLE. DO NOT use the standard essay structure. Follow THIS structure EXACTLY:
+
+1. HOOK — 1-2 sentences creating tension about why this list matters NOW. No generic intros.
+2. INTRO — 2-3 sentences with the unifying thesis. Why these items belong together.
+3. THE LIST — This is the BODY of the article. Use ## numbered headings:
+   ## 1. [Bold scannable claim]
+   2-3 sentences explaining the point. Then one concrete example or consequence.
+   
+   ## 2. [Bold scannable claim]
+   2-3 sentences. One example.
+   
+   (Continue for 5-8 items total)
+4. FORCED-POSITION QUESTION — One question that makes the reader pick a side.
+5. CTA — Newsletter link.
+
+CRITICAL LISTICLE RULES:
+- Title MUST start with a number: "7 Signs...", "5 Ways...", "8 Reasons..."
+- EVERY item MUST have its own ## heading with a number prefix
+- NO long prose paragraphs between items. Each item is self-contained.
+- Readers should understand the entire article by reading ONLY the ## headings
+- Do NOT add sections like "The Lie of..." or "From X to Y:" — those are essay structures, not listicles
+- The list IS the article. Not an intro with a list buried inside.
+` : `
 1. HOOK — Opening that creates immediate tension or curiosity (1-2 sentences)
 2. ANSWER BLOCK — 40-60 words that directly answer the article's core question. Clear, no fluff, keyword included. This helps AI systems extract a direct answer.
 3. TENSION — The uncomfortable truth or conflict (why this matters, what most people get wrong)
@@ -189,6 +215,7 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 5. RECOMMENDATION — What to do about it (one concrete operational example, fictional company/manager allowed)
 6. FORCED-POSITION QUESTION — A question that makes the reader choose a side (no neutral answer possible)
 7. CTA — Newsletter subscription: "${CONFIG.newsletter_cta}"
+`}
 
 === LENGTH & FORMATTING ===
 
@@ -199,7 +226,6 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 - Include at least ONE comparison table or contrast block (e.g., "Weak teams do X. Strong teams do Y.")
 - No dense text blocks. Highly scannable.
 - For FRAMEWORK archetype: The table is the centerpiece. Give the framework a memorable name in a ## heading. The table must have specific columns (e.g., Signal | Threshold | Action | Rollback). Number every step. Include at least one "if/then" decision rule.
-- For LISTICLE archetype: Title MUST start with a number (e.g., "7 Signs..." or "5 Ways..."). Structure as a numbered list with bold item headings. Each item needs 2-3 sentences + one example. Open with why the list matters. Close with a forced-choice question. Highly scannable — readers should get value from headings alone.
 
 === SEO REQUIREMENTS ===
 
