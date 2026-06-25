@@ -124,6 +124,7 @@ function extractFieldsManually(text) {
     share_description: extractField('share_description'),
     meta_title: extractField('meta_title'),
     excerpt: extractField('excerpt'),
+    tldr: extractField('tldr'),
     topic: extractField('topic'),
     archetype: extractField('archetype'),
     body: extractBody(),
