@@ -7,6 +7,8 @@ tags:
   - ai-decision-operations
   - ai-job-risk
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-25-your-job-is-not-ai-proof-because-you-use-ai.webp
+share-img: /assets/img/posts/2026-06-25-your-job-is-not-ai-proof-because-you-use-ai.webp
 ---
 
 The "AI proof career" advice you're hearing is mostly garbage. It's designed to make you feel safe, not prepare you for the brutal efficiency AI is bringing to the workplace.
