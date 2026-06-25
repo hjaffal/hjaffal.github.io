@@ -8,8 +8,8 @@ tags:
 topic: ai-topic
 archetype: describe
 author: Hasan J.
-thumbnail-img: /assets/img/posts/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
-share-img: /assets/img/posts/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
+thumbnail-img: /assets/img/posts/2026-06-22-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
+share-img: /assets/img/posts/2026-06-22-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
 tldr: "A six-month roadmap to move from tool operator to decision shaper. Month 1: map one high-volume decision and define regret in business terms. Month 2: set numeric thresholds and a risk budget you can spend without executive approval. Month 3: build the escalation path with timebox at each step. Month 4: create levers you can toggle in minutes with documented side effects. Month 5: install feedback loops and decision logging. Month 6: hand routine choices to automation and keep the judgment layer. Use the DRASTIC framework (Define, Risk budget, Alerts, Stops, Triage, Information, Cadence) under pressure. Stop operating tools — start owning outcomes."
 ---
 

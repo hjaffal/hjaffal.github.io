@@ -7,8 +7,8 @@ tags:
   - ai-decision-operations
   - ai-job-risk
 author: Hasan J.
-thumbnail-img: /assets/img/posts/2026-06-25-your-job-is-not-ai-proof-because-you-use-ai.webp
-share-img: /assets/img/posts/2026-06-25-your-job-is-not-ai-proof-because-you-use-ai.webp
+thumbnail-img: /assets/img/posts/2026-06-24-your-job-is-not-ai-proof-because-you-use-ai.webp
+share-img: /assets/img/posts/2026-06-24-your-job-is-not-ai-proof-because-you-use-ai.webp
 tldr: "Using AI tools doesn't make you AI-proof. It proves you're a tool operator — and tool operators are exactly what AI replaces. The real risk isn't AI replacing specific tasks; it's AI exposing the lack of judgment in roles that only operate interfaces. Your career becomes durable by mastering the judgment to set thresholds, own trade-offs, and know when to escalate. Stop learning to prompt better. Start becoming the person who defines the operational parameters, understands the financial impacts of over- and under-alerting, and holds ultimate accountability for outcomes. That's decision ownership, not tool fluency."
 ---
 
