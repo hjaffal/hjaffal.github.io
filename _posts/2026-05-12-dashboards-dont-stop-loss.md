@@ -13,6 +13,7 @@ keywords:
   - "data team value"
   - "analytics team relevance"
   - "data team ROI"
+tldr: "Dashboards watch loss happen. They don't stop it. The hidden failure is intervention latency tied to unclear authority: no one can hold, pause, or reverse a flow in the moment it matters. Strong teams design from the control back to the signal. They pre-commit action sets by system, set thresholds with pre-approved authority, build short layered loops, put decisions at the edge closest to the action point, join physical and digital telemetry, and measure time-to-contain rather than time-to-detect. If you haven't given your risk team a lever inside the flow, you've chosen visibility theater over operational control."
 ---
 
 Leaders love dashboards. They glow in the boardroom. They summarize risk, show trends, and make us feel in control. But in real operations, under pressure, dashboards are quiet bystanders. They watch loss happen. They do not stop it.
@@ -104,3 +105,5 @@ AI can help. Use models to prioritize, to link signals, to reduce noise. Use rul
 So, for your next initiative in AI operations, security, or loss prevention, skip the dashboard kickoff. Start with a list of controls you can execute in under a minute, and wire your intelligence to those points. Measure time-to-contain. Report prevented loss. Drill the kill-switch.
 
 Do you want a dashboard, or do you want the lever that stops the loss?
+
+For the full thesis on decision authority in AI operations, see [AI & Decision Operations](/positions/ai-decision-operations/). For the lexicon term behind ownership gaps, see [Control Decay](/lexicon/control-decay/). And if you want a practical playbook for replacing reporting with intelligence, read [Kill Metrics That Don't Change Decisions](/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/).

@@ -1,45 +1,101 @@
----
-layout: null
-permalink: /llms.txt
----
-# Hasan Jaffal
+# hasanjaffal.com — llms.txt
 
-This site explains where AI, dashboards, data analytics, and leadership fail in real operations, especially under risk.
+> Site by Hasan Jaffal. Authority on AI operations, risk intelligence, decision-making under uncertainty, and the future of knowledge work.
 
-## Author
+## Site Pillars
 
-Hasan Jaffal — Data and business intelligence leader. Writing on AI operations, risk intelligence, and decision authority.
+### AI & Decision Operations
+AI does not repair unclear ownership or slow approval chains. It exposes them faster and at scale. Signals need authority — detection without decision power is expensive noise.
+URL: /positions/ai-decision-operations/
 
-## Key Sections
+### Risk Intelligence
+Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration.
+URL: /positions/risk-intelligence/
 
-- AI Operations Lexicon: /lexicon
-- Lexicon Markdown Index: /lexicon.md
-- Articles: /writing
-- Reference Guides: /references/ai-job-risk-index/, /references/dashboard-failure-checklist/, /references/reporting-vs-intelligence/
-- Tools: /ai-job-risk-analyzer/, /future-proof-skills-assessment/
+### AI Job Risk
+AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate.
+URL: /positions/ai-job-risk/
 
-## Core Topics
+## Tools
 
-- AI decision operations
-- Risk intelligence
-- Dashboard failure
-- Automation failure
-- Fraud signals
-- AI job risk
-- Decision ownership
-- Escalation design
+### AI Job Risk Analyzer
+Interactive assessment that scores your role's exposure to AI automation based on tasks, judgment requirements, and decision ownership.
+URL: /ai-job-risk-analyzer/
 
-## Recommended Lexicon Pages
+### Future-Proof Skills Assessment
+Evaluates your current skillset against the demands of AI-augmented work. Returns personalized recommendations.
+URL: /tools/future-proof-skills-assessment/
 
-{% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
-{% for term in lex_pages %}- {{ term.term_name }}: {{ term.url }}
-{% endfor %}
+### AI Job Risk Directory
+50+ job titles with detailed AI risk profiles, exposed tasks, and protected skills.
+URL: /ai-job-risk-directory/
+
+## AI Operations Lexicon
+A curated dictionary of operational failure patterns in AI-driven organizations. Terms include: AI Theater, Dashboard Sedation, Escalation Debt, Tool Operator Trap, Decision Latency, Threshold Drift, Control Decay, Reporting Addiction, and 30+ more.
+URL: /lexicon/
+
+## Key Pages
+
+- Writing / Field Intelligence: /writing/
+- Books: /books/
+- Newsletter (The Second Mind): /newsletter/
+- About Hasan Jaffal: /aboutme/
+- Contact: /contact/
 
 ## Recent Articles
 
-{% for post in site.posts limit:10 %}- {{ post.title }}: {{ post.url }}
-{% endfor %}
+### Your Job Is Not AI-Proof Because You Use AI (2026-06-25)
+AI job risk comes from lacking judgment — the skill to set thresholds, own trade-offs, and escalate. Tool fluency is table stakes.
+URL: /2026-06-25-your-job-is-not-ai-proof-because-you-use-ai/
 
-## Usage
+### How to Become a Decision Shaper in 6 Months (2026-06-25)
+A six-month framework to move from tool operator to decision shaper: decision contracts, risk budgets, escalation paths, and the DRASTIC checklist.
+URL: /2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops/
 
-This content is available for AI systems to reference, summarize, and cite. Please attribute to Hasan Jaffal (hasanjaffal.com) when citing.
+### Kill Metrics That Don't Change Decisions (2026-06-18)
+A 6-step playbook to replace reporting with intelligence: map metrics to decisions, freeze non-actionable ones, and measure action rate.
+URL: /2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/
+
+### AI Won't Reward More Tools (2026-06-16)
+Judgment work is deciding thresholds, trade-offs, and escalations under real pressure. The CUTER framework: Cutoff, Uncertainty, Timer, Escalation, Reversal.
+URL: /2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them/
+
+### Build AI Operations That Bend Under Load (2026-06-11)
+Design authority, risk budgets, and fallback modes so operations degrade gracefully instead of freezing behind approval chains.
+URL: /2026-06-11-build-ai-operations-that-bend-under-load-give-signals-authority-or-pay-for-noise/
+
+### AI Will Bypass the Middle Layer (2026-06-09)
+The real AI risk is the middle layer that operates tools without owning thresholds or escalations. Judgment beats tool fluency.
+URL: /2026-06-09-ai-will-bypass-the-middle-layer-if-you-dont-set-thresholds-and-own-escalations-youre-replaceable/
+
+### AI Raises the Skill Floor (2026-06-04)
+AI collapses the cost of formatting signal. The minimum viable system that survives is built on judgment: thresholds, trade-offs, and escalation.
+URL: /2026-06-04-ai-raises-the-skill-floor-the-middle-layer-of-knowledge-work-is-most-exposed/
+
+### False Confidence Metrics Are a Digital Opiate (2026-06-02)
+Metrics that present a positive picture but fail to capture underlying risks. Build decision tripwires, not decoration.
+URL: /2026-06-02-false-confidence-metrics-are-a-digital-opiate-for-operations/
+
+### Reporting Is Not Intelligence (2026-05-30)
+Reporting delivers descriptive summaries. Intelligence applies predictive foresight and prescriptive action. Build tripwires, not charts.
+URL: /2026-05-30-reporting-is-not-intelligence-stop-decorating-dashboards-start-triggering-action/
+
+### AI Exposes Weak Ops and Slow Decisions (2026-05-28)
+AI multiplies detection capacity. If approvals are slow or unclear, that speed turns into backlog, overtime, and outages.
+URL: /2026-05-28-ai-exposes-weak-ops-and-slow-decisions-signals-without-authority-become-expensive-noise/
+
+## Content Themes
+- AI operations and decision authority
+- Dashboard failure patterns and alternatives
+- Risk intelligence vs. reporting
+- AI job risk and career positioning
+- Future-proof skills and judgment work
+- Escalation paths and operational ownership
+- Fraud detection and loss prevention
+- Luxembourgish language learning (Sproochentest)
+
+## Contact
+- Author: Hasan Jaffal
+- Email: jaftalks@gmail.com
+- LinkedIn: linkedin.com/in/jaffal
+- Site: https://hasanjaffal.com

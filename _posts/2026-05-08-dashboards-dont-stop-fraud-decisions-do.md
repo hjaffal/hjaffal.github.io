@@ -13,6 +13,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "approval chains"
+tldr: "Your dashboard won't save you at 2 a.m. The only clock that matters in fraud is time from first weak signal to first strong decision. Most teams don't measure it. AI operations fail because aggregation blinds you to micro-structure attacks, ownership is fragmented across teams, and safe optics beat hard actions. Strong teams put decisions next to signals, pre-commit tripwires that auto-raise friction, measure time-to-intervention like uptime, give real authority to night shifts, and drill like security. Stop worshipping the chart. Build the circuit between signal and lever."
 ---
 
 Your dashboard will not save you. Not tonight. Not when signals get noisy, the model drifts, and someone is actively testing your defenses. Dashboards show you the past. Operations is about what you do in the next five minutes.
@@ -68,3 +69,5 @@ None of this needs a new model. It needs a spine and a switchboard. It needs lea
 Stop worshipping the chart. Start building the circuit between signal and lever. Treat operational risk as an engineering problem with tight feedback, not as a slide problem with monthly reporting. Intelligence matters, but only insofar as it shortens the path to a clean decision.
 
 So ask yourself, in your next incident: will you request another dashboard, or will you authorize a five-minute kill-switch and live with the courage of that choice?
+
+For the full thesis on why detection without decision power is expensive noise, see [AI & Decision Operations](/positions/ai-decision-operations/). For the lexicon term behind this, read [Decision Latency](/lexicon/decision-latency/). And if you want a playbook for wiring signals to controls, see [Ship Decisions, Not Dashboards](/2026-05-09-stop-shipping-dashboards-start-shipping-decisions-under-risk/).

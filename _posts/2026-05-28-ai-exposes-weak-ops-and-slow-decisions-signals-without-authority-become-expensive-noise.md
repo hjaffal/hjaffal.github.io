@@ -14,6 +14,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "approval chains"
+tldr: "AI multiplies your detection capacity. If approvals are slow or unclear, that speed turns into backlog, overtime, and outages. A new risk model went live, alerts spiked to hundreds overnight, and the only people who could press hold were asleep. By sunrise: 1,000+ queue, model paused, five business days of lost coverage. The model wasn't the bottleneck — the org chart was. Fix this by pushing authority down with guardrails: budget risk like finance budgets cash, define what the front line can do without permission, set time-to-decision SLOs, and test the path with load. Signals without authority are expensive noise."
 ---
 
 2:17 a.m., the payouts channel turned red.
@@ -58,3 +59,5 @@ The lesson from that marketplace was simple. We didn’t need another feature. W
 If you’re about to ship an AI system into operations, write one thing first: the authority map. Name the owners, the thresholds, the budgets, and the SLOs. Put it in the runbook, tie it to access control, and test it with load. If you can’t give the signal a hand that can act within seconds to minutes, do not brag about millisecond inference.
 
 Choose a side: will you push decision rights down with guardrails and accept bounded mistakes, or will you keep approvals slow and pay in backlog, burn, and blind spots?
+
+For the full thesis on why signals need authority, see [AI & Decision Operations](/positions/ai-decision-operations/). For a detailed framework on building operations that bend under load, read [Build AI Operations That Bend Under Load](/2026-06-11-build-ai-operations-that-bend-under-load-give-signals-authority-or-pay-for-noise/). And for the lexicon term behind slow approval cultures, see [Decision Latency](/lexicon/decision-latency/).

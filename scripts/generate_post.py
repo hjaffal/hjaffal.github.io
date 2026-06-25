@@ -83,6 +83,7 @@ ARTICLE_FORMS = [
     "Make a prediction about what will change in the next 12 months and why",
     "Explain what leaders must stop doing immediately and what to do instead",
     "Describe the minimum viable version of a system that actually works",
+    "Structure the article as a numbered listicle (5-10 items). Each item gets a bold heading, 2-3 sentence explanation, and one concrete example. Title must start with a number. The list needs a unifying thesis.",
 ]
 
 TONES = [
@@ -165,6 +166,7 @@ Return ONLY valid JSON:
   "subtitle": "",
   "share_description": "",
   "tags": ["{selected_position["tag"]}"],
+  "tldr": "80-120 word summary. Direct, sharp tone. Captures the main argument and actionable takeaway.",
   "body": ""
 }}
 """
@@ -190,6 +192,7 @@ share_description = data["share_description"].strip()
 # Force the tag to be only the selected position
 tags = [selected_position["tag"]]
 body = data["body"].strip()
+tldr = data.get("tldr", "").strip()
 
 slug = slugify(title)
 filename = f"_posts/{TODAY}-{slug}.md"
@@ -202,6 +205,9 @@ tags_yaml = "\n".join([f"  - {tag}" for tag in tags])
 # Derive topic slug from the selected angle (simplified mapping)
 topic_slug = selected_angle.lower().replace(" ", "-").replace("'", "")[:30] if selected_angle else ""
 
+# Build tldr line
+tldr_line = f'tldr: "{yaml_escape(tldr)}"' if tldr else ""
+
 markdown = f"""---
 layout: post
 title: "{yaml_escape(title)}"
@@ -212,6 +218,7 @@ tags:
 topic: {selected_position["tag"].split("-")[0]}-topic
 archetype: {selected_form.split(" ")[0].lower() if selected_form else "contrarian"}
 author: Hasan J.
+{tldr_line}
 ---
 
 {body}

@@ -14,6 +14,7 @@ keywords:
   - "prompt engineering"
   - "prompt engineer career"
   - "AI prompt jobs"
+tldr: "AI already handles the reporting layer of data analysis — SQL, dashboards, formatted summaries. If your value is 'I can get you the number,' you're competing with a tool that works at 2 a.m. for a fraction of your salary. What protects analysts is accountability: framing questions, owning recommendations, naming trade-offs, and following up on outcomes. The dividing line isn't technical skill, it's willingness to be wrong and bear the consequences. Move toward decisions. That's the moat AI can't cross — not because it's impossible, but because nobody will let a model be accountable."
 ---
 
 Most data analysts spend Monday morning the same way: pulling last week's numbers, formatting a report, and sending it to someone who glances at it during a meeting. That ritual is now something a language model can do in under a minute. The question isn't whether AI will touch your job. It already has. The question is which parts of your job you actually own.

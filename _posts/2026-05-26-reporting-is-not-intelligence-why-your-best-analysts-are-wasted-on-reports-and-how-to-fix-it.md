@@ -14,6 +14,7 @@ keywords:
   - "alert fatigue"
   - "alert noise"
   - "false positives"
+tldr: "Your best analysts are wasted on decks. Reporting explains what happened — intelligence changes what happens next. Average teams put senior analysts on slides, track lagging KPIs, and celebrate insight instead of action. Strong teams map every metric to a lever, use leading signals, pre-authorize actions, pair analysts on-call with engineers, and measure time-to-first-control-change. Stop treating your sharpest analyst as a deck machine. Wire them to the levers: pager, runbook, rollback. Their job is to bend the curve in the next hour, not polish the monthly readout. Accept the occasional bruise or keep losing in silence."
 ---
 
 7:42 a.m. Monday. Slack is lit. Chargebacks pop in LATAM, support tickets double, and the CFO wants a slide before the 9 a.m. standup. Mira, your sharpest analyst, stops her model work and starts slicing yesterday’s payments. By 8:35, she’s got three charts and a neat summary. You walk into the meeting with a tidy story of what happened. You walk out with no change to how the system works.
@@ -63,3 +64,5 @@ None of this is about being reckless. It’s about building a system where decis
 Mira should not be your deck machine. She should be the person who hears the pager, cites the trigger, and moves the lever with a clear rollback. Let others polish the monthly readout. Her job is to bend the curve in the next hour.
 
 So choose: will you wire your best analysts to the levers and accept the occasional bruise, or keep them exporting CSVs while risk drains you in silence?
+
+For the full thesis on why reporting is not intelligence, see [Risk Intelligence](/positions/risk-intelligence/). For a 6-step playbook to kill metrics nobody acts on, read [Kill Metrics That Don't Change Decisions](/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/). And for the lexicon term behind this pattern, see [Reporting Addiction](/lexicon/reporting-addiction/).

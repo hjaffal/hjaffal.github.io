@@ -10,7 +10,7 @@ archetype: compare
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-09-ai-will-bypass-the-middle-layer-if-you-dont-set-thresholds-and-own-escalations-youre-replaceable.webp
 share-img: /assets/img/posts/2026-06-09-ai-will-bypass-the-middle-layer-if-you-dont-set-thresholds-and-own-escalations-youre-replaceable.webp
-
+tldr: "AI doesn't eat entry-level work first — it eats the middle layer that operates tools without owning trade-offs. AI collapses the cost of getting to a decent draft of anything: SQL, models, dashboards, slides. It does not collapse the cost of deciding. The person who sets the threshold and signs for the impact is the one management keeps. When a spike hits, average teams pull a Looker explore and promise a Monday readout. Strong operators set an immediate hold, define the trade-off explicitly, get sign-off in minutes, and own the fallout by name. That's judgment. AI didn't do it. Stop polishing dashboards — start volunteering for hard calls."
 ---
 
 Most people believe AI will wipe out junior roles first and “level up” the middle. That’s backwards. AI erases the middle layer that lives on tools, status updates, and templated analysis. What’s left is judgment: setting thresholds, taking sides on trade-offs, and deciding when to escalate.
@@ -67,3 +67,5 @@ If you’re an individual contributor stuck in the middle layer, stop polishing 
 The entry level survives by doing what AI still can’t reach cheaply: fieldwork, messy data capture, human conversations, on-the-ground checks. The senior level survives by carrying decision risk. The middle that only formats signals gets squeezed from both sides.
 
 In the next incident, when the model lights up, will you flip the threshold and sign your name to the trade-off, or forward a screenshot and hope someone else decides?
+
+For the full thesis on AI and the skill floor, see [AI Job Risk](/positions/ai-job-risk/). For a framework to evaluate where your own work stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). And for the lexicon term behind this trap, see [Tool Operator Trap](/lexicon/tool-operator-trap/).

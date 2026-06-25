@@ -14,6 +14,7 @@ keywords:
   - "prompt engineering"
   - "prompt engineer career"
   - "AI prompt jobs"
+tldr: "Stop asking what tool to learn. The skills that protect you from AI aren't technical — they're the human capacities upstream of any tool. Problem framing: define what you're actually solving before reaching for data. Trade-off ownership: name what you're giving up and defend the choice. Communication under uncertainty: calibrate confidence honestly. Error detection: catch when AI is confidently wrong. Stakeholder navigation: get decisions made in political reality. Build these through practice, not courses. Own decisions, bear consequences, navigate complexity. That's durable."
 ---
 
 Every time AI makes headlines, the same advice appears: learn Python, take a prompt engineering course, get certified in machine learning. This advice isn't wrong exactly, but it misses the point. The skills that protect you from AI displacement aren't technical skills that AI itself is rapidly acquiring. They're the human capacities that sit upstream of any tool — the ability to frame problems, own trade-offs, communicate decisions under uncertainty, and recognize when an AI output is confidently wrong.

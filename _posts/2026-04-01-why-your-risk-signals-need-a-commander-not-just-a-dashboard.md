@@ -12,6 +12,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "approval chains"
+tldr: "A risk signal without decision authority is just noise. Applying the OODA loop reveals that most teams excel at observing and orienting but stall at deciding and acting. Approval chains, committee reviews, and unclear ownership turn fast detection into slow loss. Fix this by pre-authorizing actions for specific risk thresholds, assigning a single empowered person per signal, and building clear playbooks. For every critical alert, name the person who decides and the action they take immediately. If you can't, you've built a dashboard, not a defense system."
 ---
 
 **Key takeaways:** A risk signal without immediate decision authority is just noise. Applying principles from military decision-making, like the OODA loop, reveals that speed and empowered action are critical. Teams must pre-define who decides and acts the moment a signal fires, rather than relying on slow approval chains.
@@ -34,3 +35,5 @@ Stronger operations teams understand that risk response is a decision-making cha
 For your next risk model or anomaly detection project, don't just focus on the signal's fidelity. Map out the full OODA loop. For every critical alert, ask these questions: "Who is the *single person* authorized to make a decision on this, right now?" and "What is the *specific action* they are empowered to take, immediately?" If you can't name the person and the action without hesitation, your signal isn't truly actionable. You're building a dashboard, not a defense system.
 
 If you want to understand how to build systems that act, not just report, consider joining my [newsletter](/#newsletter-signup) for more insights from the field.
+
+For a deeper look at how strong teams wire signals to controls, read [Pre-Wired Controls: How to Stop Fraud Before the Meeting Starts](/2026-05-02-dashboards-dont-stop-fraud-pre-wired-decisions-do/). And for the lexicon term behind this pattern, see [Decision Latency](/lexicon/decision-latency/).

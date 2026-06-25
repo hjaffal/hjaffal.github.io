@@ -262,3 +262,19 @@
   color: var(--text-soft);
   font-weight: 600;
 }
+
+
+/* TL;DR summary block */
+.post-tldr {
+  background: var(--surface-alt, #f4f4f5);
+  border-left: 4px solid var(--accent, #2563eb);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #374151);
+}
+.post-tldr strong {
+  color: var(--text-primary, #111827);
+}

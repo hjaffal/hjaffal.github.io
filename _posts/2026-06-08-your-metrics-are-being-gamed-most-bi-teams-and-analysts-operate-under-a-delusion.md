@@ -14,6 +14,7 @@ keywords:
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-08-your-metrics-are-being-gamed-most-bi-teams-and-analysts-operate-under-a-delusion.webp
 share-img: /assets/img/posts/2026-06-08-your-metrics-are-being-gamed-most-bi-teams-and-analysts-operate-under-a-delusion.webp
+tldr: "Metrics aren't neutral truths — they're targets. And targets get gamed. As soon as a metric is tied to performance or visibility, people optimize for the chart, not the outcome. Green dashboards can mask fraud, churn, and operational decay because the definitions are narrow, the incentives are miswired, and nobody checks whether the number actually reflects reality on the ground. Stop treating metrics as objective. Design them as tripwires: define the threshold that demands action, name who acts, and build counter-metrics that catch manipulation. If your 'on-time delivery' is always 98% but complaints are rising, someone is gaming you."
 ---
 
 # Your Metrics Are Being Gamed: Why Most Reporting Is Not Intelligence
@@ -63,3 +64,5 @@ This approach transforms a passive number into an active signal demanding a deci
 Are your dashboards a sophisticated radar system, helping you navigate digital battlefields and spot threats before they hit? Or are they just pretty lights, designed to make you feel good until the inevitable crash?
 
 If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Join 1,000+ operators who use this intelligence to shorten their signal-to-action time.
+
+For a 6-step playbook to kill metrics nobody acts on, read [Kill Metrics That Don't Change Decisions](/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/). And for the full thesis on why reporting is not intelligence, see [Risk Intelligence](/positions/risk-intelligence/).

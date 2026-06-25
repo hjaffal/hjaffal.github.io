@@ -10,6 +10,7 @@ archetype: describe
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-04-ai-raises-the-skill-floor-the-middle-layer-of-knowledge-work-is-most-exposed.webp
 share-img: /assets/img/posts/2026-06-04-ai-raises-the-skill-floor-the-middle-layer-of-knowledge-work-is-most-exposed.webp
+tldr: "AI lifts the minimum bar for useful work. The most exposed layer is the middle: people who convert inputs into tidy artifacts without owning decisions. Models now produce summaries, dashboards, and classifications faster than humans. If your value is packaging signal rather than deciding what to do with it, you're on the line. The safest skill is judgment: setting thresholds tied to loss, owning uncomfortable trade-offs, and knowing when to escalate. Build a minimum viable system with a named decision owner, a defined loss function, live thresholds with playbooks, reversible change paths measured in minutes, and closed-loop learning."
 ---
 
 AI is lifting the minimum bar for useful work. The layer most exposed is the middle: people who convert inputs into tidy artifacts without owning decisions. Models now produce summaries, dashboards, and first-pass classifications faster than humans ever did. If your value is packaging signal rather than deciding what to do with it, you are on the line.

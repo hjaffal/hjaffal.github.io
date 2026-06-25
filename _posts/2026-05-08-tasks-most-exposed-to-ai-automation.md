@@ -14,6 +14,7 @@ keywords:
   - "information work dying"
   - "AI replacing information workers"
   - "data entry automation"
+tldr: "AI doesn't replace jobs wholesale — it replaces tasks. The exposed tasks share four traits: repetitive, rule-based, low-context, and low-consequence. Data entry, report generation, scheduling, first-draft writing, basic code generation, and pattern matching in structured data are all highly exposed. What's protected: stakeholder negotiation, escalation decisions, problem framing, accountability-bearing decisions, and relationship-dependent work. Audit your own role at the task level. Score each task against those four characteristics. Then deliberately shift your time toward the protected work — the judgment calls that require context, relationships, and skin in the game."
 ---
 
 People talk about AI replacing jobs, but that framing is too blunt. AI doesn't replace jobs wholesale — it replaces tasks. A job is a bundle of tasks, and some of those tasks are far more exposed than others. The useful question isn't "will my job be automated?" It's "which of my tasks are exposed, and what percentage of my role do they represent?"

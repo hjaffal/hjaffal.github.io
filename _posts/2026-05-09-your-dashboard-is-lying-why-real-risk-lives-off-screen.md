@@ -13,6 +13,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "decision bottleneck"
+tldr: "Dashboards hide real risk by design. They aggregate by hour, smooth spikes into averages, exclude exceptions from reporting, and use stale baselines that attackers exploit. The failure point isn't the model — it's the decision boundary and the feedback loop. Strong teams define the decision unit at the smallest operational level, instrument negative space (what's missing, not just what's present), wire floor intelligence into model features within 48 hours, treat exceptions as first-class signals, and run red-team fraud weekly. If your dashboard looks green and your gut says 'off,' trust your gut and find the blind spot."
 ---
 
 If you need a clean dashboard to feel safe, you are already late. Operational risk does not arrive in green tiles. It slips through gaps your data model ignores, your reporting trims, and your leadership rewards.
@@ -77,3 +78,5 @@ This is operational risk, not slideware. When the dash stays green and your gut 
 Dashboards are not bad. They are maps. But the territory is messy, adversarial, and fast. If your AI, your data analytics, and your reporting do not respect that, you will always be late to risk detection and early to apology.
 
 So choose: will you keep shipping green dashboards to make the room feel calm, or will you wire your AI operations to the floor and take the hit on vanity to stop real loss?
+
+For the position behind this argument, see [Risk Intelligence](/positions/risk-intelligence/). For more on how green dashboards mask real operational failures, read [Green Metrics, Real Losses](/2026-05-11-green-dashboards-red-reality/). And for the lexicon term that describes this numbing effect, see [Dashboard Sedation](/lexicon/dashboard-sedation/).

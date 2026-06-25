@@ -14,6 +14,7 @@ keywords:
   - "escalation failure"
   - "escalation path"
   - "no escalation"
+tldr: "AI doesn't improve operations automatically — it highlights existing weaknesses at speed. If you deploy a model into a reactive operating model without pre-wired decision ownership, you get more alerts, more reports, and the same losses. The critical question before any AI deployment: for every output this model could generate, who is pre-authorized to act, and what are their specific triggers and boundaries? Do not deploy an AI model until a specific owner is assigned for every potential signal, with clear authority and escalation paths defined before the model goes live. Build the decision muscles before AI exercises them."
 ---
 
 **Key takeaways:** AI doesn't automatically improve operations; it highlights existing weaknesses at speed. To extract real value, you must first pre-wire clear decision ownership and escalation paths. Your operating model needs to be proactive, not reactive, to the insights AI delivers.
@@ -35,3 +36,5 @@ This means having a pre-agreed playbook for every alert type and scenario the AI
 To apply this rule this week, take one AI model you are currently deploying or planning to deploy. Map out three potential outputs it could generate. For each output, identify the specific individual or team explicitly responsible for acting. Then, define their exact decision authority: what can they do, under what conditions, and what is the precise escalation path if a situation falls outside their scope? If you can't clearly draw that line and communicate it to the owner, stop. Your operation isn't ready, and your AI will only highlight that fact faster.
 
 Unclear decision paths are the silent killers of operational efficiency. If you're struggling to translate AI insights into real impact, [join my newsletter for more practical strategies on building decision-ready operations.](https://hasanjaffal.com/newsletter)
+
+For the full thesis behind this argument, see [AI & Decision Operations](/positions/ai-decision-operations/). And for a detailed breakdown of how unclear escalation paths kill AI projects, read [Why Your AI Project Fails When Nobody Owns the Escalation Path](/2026-05-25-why-your-ai-project-fails-when-nobody-owns-the-escalation-path/).

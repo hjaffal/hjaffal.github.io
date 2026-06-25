@@ -12,6 +12,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "approval chains"
+tldr: "Most operational failures aren't model failures — they're decision failures. Dashboards show everything except what to do next. The real gap is authority, latency, and capacity. When fraud spikes, if no single owner can throttle traffic within minutes, you lose. Strong teams design decision-making as an operational product: pre-commit action SLAs by risk class, bind thresholds to loss budgets and reviewer capacity, couple detection with operational telemetry, put authority on the same screen as the alert, and drill the stop-the-line action weekly. Good data doesn't guarantee good outcomes. Short paths to action do."
 ---
 
 Dashboards don’t decide. People under time pressure do. Most failures I audit are not about bad models or missing data. They are about slow decisions, unclear authority, and dashboards that show everything except what to do next.
@@ -57,3 +58,5 @@ If you lead analytics, risk, fraud, security, or loss prevention, ask three thin
 Good data does not guarantee good outcomes. Clean reporting is not the same as operational risk control. The teams that win under pressure do simple things well: narrow authority, short paths to action, and controls that respect capacity and time. Everyone else debates dashboards while losses settle.
 
 So, when the next surge or attack hits, will you be dashboard-rich and decision-poor, or will you give named people the authority, levers, and SLAs to act the moment the fraud signals flare?
+
+For more on this thesis, see [AI & Decision Operations](/positions/ai-decision-operations/). If you want to understand why reporting never equals intelligence, read [Reporting Is Not Intelligence](/2026-05-30-reporting-is-not-intelligence-stop-decorating-dashboards-start-triggering-action/). And for the lexicon term behind green-dashboard paralysis, see [Dashboard Sedation](/lexicon/dashboard-sedation/).

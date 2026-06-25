@@ -14,6 +14,7 @@ keywords:
   - "AI career advice"
   - "AI proof career"
   - "safe from AI"
+tldr: "Half a PM's week — status updates, scheduling, timeline generation, documentation — is already automatable. The other half — scope negotiation, escalation judgment, stakeholder trust, conflict resolution — is not. PMs who built their identity around keeping everyone informed are exposed. PMs who make hard calls, take positions on priority, and own the consequences when they're wrong are safe. Audit your week: if administrative hours outweigh judgment hours, restructure your role before someone else does. Move toward decisions with consequences. That's the work AI can't replace."
 ---
 
 Every project manager knows the feeling: you spend half your week chasing status updates, reformatting timelines, and writing summaries that nobody reads carefully. That half of your job is now automatable. The other half — the part where you negotiate scope with a difficult stakeholder, decide what to escalate, and make judgment calls about risk — is not. The problem is that many PMs have built their entire identity around the first half.

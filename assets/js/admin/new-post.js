@@ -29,10 +29,11 @@ let editingPostState = null;
 /** Current draft ID (if editing a Firestore draft) */
 let currentDraftId = null;
 
-/** Generated metadata (topic, archetype, keywords) — set after AI generation */
+/** Generated metadata (topic, archetype, keywords, tldr) — set after AI generation */
 let generatedTopic = null;
 let generatedArchetype = null;
 let generatedKeywords = null;
+let generatedTldr = null;
 
 // --- Draft API Helpers ---
 
@@ -557,6 +558,7 @@ function initAIGenerateButton() {
       generatedTopic = result.topic || null;
       generatedArchetype = result.archetype || null;
       generatedKeywords = result.keywords || null;
+      generatedTldr = result.tldr || null;
 
       // Update char counts
       updateCharCount('post-title', 150);
@@ -727,7 +729,11 @@ async function handlePostFormSubmit(e) {
         shareTitle: metaTitle,
         shareDescription: metaDesc,
         featuredImage: featuredImg,
-        body: bodyMarkdown
+        body: bodyMarkdown,
+        topic: generatedTopic || undefined,
+        archetype: generatedArchetype || undefined,
+        keywords: generatedKeywords || undefined,
+        tldr: generatedTldr || undefined
       })
     });
 

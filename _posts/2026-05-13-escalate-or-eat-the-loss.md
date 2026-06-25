@@ -12,6 +12,7 @@ keywords:
   - "escalation failure"
   - "escalation path"
   - "no escalation"
+tldr: "Good teams build sharp risk signals and still get burned — not because the models are bad, but because nobody owns the jump from 'we see trouble' to 'we pulled the brake.' That gap is escalation discipline. The fix: make authority explicit and pre-delegated by shift, map thresholds to actions not colors, write down latency budgets by risk type, log every decision, rehearse monthly with fake alerts off-hours, and build a real kill switch for every critical flow. Escalation discipline costs — it wakes people, triggers false positives, and interrupts roadmaps. The alternative costs more."
 ---
 
 I’ve watched good teams build sharp risk signals and still get burned. Not because the models were bad. Because nobody owned the jump from "we see trouble" to "we pulled the brake." That gap — escalation discipline — is the hidden failure pattern that eats timelines, budgets, and trust.
@@ -63,3 +64,5 @@ One more scene. Different company, same pattern. Content abuse model flags a sur
 I’m not anti-automation. I’m anti-automation theater. AI operations and data analytics give you early warning. They do not supply courage, authority, or a phone number. That’s on you. If your project plan treats escalation as an afterthought, don’t be surprised when the budget shows you the cost.
 
 So pick a side: will you fund and enforce a 24/7 escalation chain with real authority this quarter, or will you keep pretending that alerting equals control?
+
+For the full thesis on why signals without authority become noise, see [AI & Decision Operations](/positions/ai-decision-operations/). For the lexicon term behind this failure pattern, see [Escalation Debt](/lexicon/escalation-debt/). And for a look at how AI exposes these gaps at scale, read [AI Models Don't Repair Operations](/2026-05-25-ai-models-dont-repair-operations-they-expose-unclear-escalation-paths/).

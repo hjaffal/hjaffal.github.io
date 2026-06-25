@@ -13,6 +13,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "decision bottleneck"
+tldr: "Dashboards stay green while losses pile up because metrics are averaged by day, rolled up by region, and buffered by batch. Fraud is local, bursty, and fast — your reporting is none of those. The failure is decision tempo. Define exposure limits at the smallest unit you control. Treat certain fraud signals as circuit breakers, not nudges. Add soft security signals to real-time data. Build a live exposure ledger showing dollars at risk right now. Give operators a visible kill switch. Commit to two-tier decisions: contain first, prove second. Leadership slows risk by asking for proof. Ask instead: what's the smallest action to cap exposure while we learn?"
 ---
 
 Dashboards don’t run operations. People do. And when risk shows up, the screen often stays green while the cash walks out the door.
@@ -69,3 +70,6 @@ One more hard truth: leadership slows risk by asking for proof. “Show me the d
 AI, data analytics, dashboards, and reporting are tools. Intelligence is how you stitch them to decisions. Operational risk, fraud, and security don’t reward elegance. They reward teams that narrow the blast radius fast, learn in the small, and only then tidy up the charts for the post‑mortem.
 
 So pick a side: will you keep polishing dashboards for tomorrow’s meeting, or will you give your operators the authority and tools to cap today’s loss in the next five minutes?
+
+
+For the full thesis on why signals need authority, see [AI & Decision Operations](/positions/ai-decision-operations/). For the lexicon term behind this numbing green-dashboard effect, see [Dashboard Sedation](/lexicon/dashboard-sedation/). And if you want to understand why AI makes this gap worse, read [AI Exposes Weak Ops and Slow Decisions](/2026-05-28-ai-exposes-weak-ops-and-slow-decisions-signals-without-authority-become-expensive-noise/).

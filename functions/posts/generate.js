@@ -67,6 +67,7 @@ const ARCHETYPES = [
   { id: "framework", instruction: "Create a named, original framework (give it a memorable name like 'The 4-Lever System' or 'The Threshold Control Model'). Structure it as a precise decision tool — NOT general guidelines. MUST include: (1) A clear, branded name for the framework. (2) A markdown table showing inputs, conditions, or decision criteria with specific values/thresholds. (3) Numbered steps with exact actions (not vague advice). (4) At least one 'if X then Y' decision rule. (5) A concrete before/after contrast showing weak approach vs. this framework applied. The reader should be able to print this and use it in their next meeting." },
   { id: "breakdown", instruction: "Analyze a real or fictional operational failure. Start with the scene, show what went wrong, extract the principle." },
   { id: "prediction", instruction: "Predict organizational or workforce shifts. Make a specific claim about what will change in the next 12 months and why." },
+  { id: "listicle", instruction: "Structure the article as a numbered list (5-10 items). Each item gets a bold heading, a 2-3 sentence explanation, and one concrete example or consequence. The list must have a unifying thesis — not just a collection. Open with why the list matters, close with a forced-choice question. Title format: 'N [Things/Signs/Reasons/Ways] ...' — the number sets reader expectations and improves CTR." },
 ];
 
 const CONTENT_MIX = [
@@ -314,6 +315,7 @@ const generatePost = onRequest(
       shareDescription: (data.share_description || data.shareDescription || "").trim(),
       metaTitle: (data.meta_title || data.metaTitle || "").trim(),
       excerpt: (data.excerpt || "").trim(),
+      tldr: (data.tldr || "").trim(),
       tags: [positionTag],
       topic: data.topic || selectedTopic.slug,
       archetype: data.archetype || requestedArchetype || "",

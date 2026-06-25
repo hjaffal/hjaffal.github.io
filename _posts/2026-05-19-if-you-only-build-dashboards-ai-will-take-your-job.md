@@ -13,6 +13,7 @@ keywords:
   - "white collar automation"
   - "AI job loss"
   - "knowledge work automation"
+tldr: "AI can already generate the chart, write the commentary, and send the email. If your job is to report, your job is going away. Analysts who ship reports without owning a decision are overhead. Analysts who define decisions, risks, and actions are operators. The fix for leaders: inventory every dashboard and name the decision it supports, move analysts into decision pods with engineers, grant decision rights in writing, measure decision latency not data freshness, and change hiring to require decision design. Your resume should show decisions you controlled, not dashboards you presented."
 ---
 
 AI will not politely wait for your next dashboard refresh. It will generate the chart, write the commentary, and schedule the email. If your job is to report, your job is going away.
@@ -69,3 +70,5 @@ If you are an analyst, pick your lane now. Learn the systems where actions happe
 If you are a leader, you owe your team clarity. Tell them which jobs are moving to AI. Stop pretending everyone will be “upskilled.” Some work is ending. Replace it with work that changes outcomes.
 
 You can keep feeding dashboards to meetings, or you can build controls that move money, risk, and time. Which will you do?
+
+For the full thesis on this shift, see [AI & Decision Operations](/positions/ai-decision-operations/). For the lexicon term behind this pattern, see [Tool Operator Trap](/lexicon/tool-operator-trap/). And if you want to understand how this split plays out for data analysts specifically, read [Will AI Replace Data Analysts?](/2026-04-08-will-ai-replace-data-analysts/).

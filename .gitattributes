@@ -33,6 +33,7 @@ Dockerfile text eol=lf
 *.jpeg binary
 *.gif binary
 *.png binary
+*.webp binary
 *.t3x binary
 *.t3d binary
 *.exe binary

@@ -12,6 +12,7 @@ archetype: framework
 keywords:
   - "information work dying"
   - "data entry automation"
+tldr: "Expertise used to mean having answers nobody else had. AI dissolved that advantage. Knowledge is no longer scarce, and insight is no longer slow. What people actually need now is meaning — someone who can interpret machine output through the lens of pressure, responsibility, and context. The expert's role is evolving from final-word authority to bridge between data and understanding. If you've built your identity on knowing more than others, rebuild it around understanding deeper than others. That's the shift that keeps you relevant."
 ---
 
 There is a moment in every career when something shifts quietly beneath your feet, and you realize the ground you have been standing on is no longer the same. For me, that moment happened in a room I had walked into with confidence many times before.
@@ -35,3 +36,5 @@ That moment became the seed for one of the core ideas in my book, The Second Min
 If you have ever felt the world shifting under your feet, if you've wondered where your value lies when machines seem to know so much, you are exactly the reader this book was written for.
 
 Because the future does not belong to the ones who know the most. It belongs to the ones who understand the deepest.
+
+This shift — from having answers to creating meaning — is exactly why [AI-proof skills are a myth](/2026-05-20-ai-proof-skills-are-a-myth/). The real safety is in positioning yourself around judgment and decision ownership. If you want to understand where your current skills stand, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/).

@@ -14,6 +14,7 @@ keywords:
   - "busy work disappearing"
   - "AI eliminating tasks"
   - "routine work automation"
+tldr: "AI doesn't just automate junior work — it exposes whether senior operators actually own decisions or are just advanced tool users. The old definition of senior (mastering SQL, Excel, dashboards) is now table stakes. The new definition: setting thresholds and owning the trade-offs between false positives and false negatives, defining escalation paths, and being accountable for net business impact — not just model accuracy. If your value hinges on knowing arcane tools, AI just made your contribution obsolete. Seniority now means governing the system within a business context and signing off on operational risk."
 ---
 
 A functional AI system in operations or analytics isn't just an algorithm. It's a structured decision engine with clearly defined human interfaces. You build it with distinct layers: the AI performs the routine, high-volume tasks. Humans handle the exceptions, the edge cases, and the *consequences*.
@@ -43,3 +44,5 @@ Average teams, on the other hand, treat AI as a magic box. They expect the AI to
 AI has not made hard decisions go away. It has just accelerated the pace at which those decisions must be made and mercilessly exposed who is actually capable of making them. Your 'senior' talent now faces a clear choice: master the tools, or master the judgment required to govern the tools and own the trade-offs.
 
 Will you invest in senior operators who can expertly run the machines, or those who can skillfully navigate the unpredictable human and business consequences of the machines' output?
+
+For the full thesis on why AI raises the skill floor, see [AI Job Risk](/positions/ai-job-risk/). For the lexicon term behind this exposure, see [Tool Operator Trap](/lexicon/tool-operator-trap/). And if you want to understand the broader split between tool operators and decision shapers, read [Analytics Jobs Will Split in Two](/2026-05-17-analytics-jobs-will-split-in-two-ai-will-automate-tool-operators-decision-shapers-will-control-outcomes/).

@@ -14,6 +14,7 @@ keywords:
   - "white collar automation"
   - "AI job loss"
   - "knowledge work automation"
+tldr: "AI handles execution increasingly well — processing data, running rules, generating reports. What it cannot do is define the 'why' and 'when.' Your career safety lies in the judgment layer: setting operational thresholds, owning trade-offs between competing outcomes (false positives vs. fraud losses), and knowing precisely when to override or escalate beyond the model's output. A tool operator monitors the queue. A judgment-focused professional decides if the threshold is optimal, owns the business impact of errors, and designs the human-AI interaction. Identify one automated process in your domain and become the person who owns the risk when that decision goes wrong."
 ---
 
 **Key takeaways:** As AI automates more execution tasks, your career shifts from merely operating tools to applying critical judgment. AI handles the 'how,' but it cannot define the 'why' or 'when.' Focus on developing skills in setting operational thresholds, owning trade-offs between competing outcomes, and knowing precisely when to override or escalate beyond the machine's output.
@@ -33,3 +34,5 @@ Stronger operators don't just use AI; they define its boundaries. They own the o
 This week, identify one automated process in your domain. Pinpoint the last human decision point where someone could intervene, change a parameter, or override a recommendation. Ask yourself: who truly owns the risk if that decision, or lack thereof, goes wrong? That owner is exercising judgment, not just executing. Seek to be that owner, and build your career around that accountability.
 
 If you want to see where your own work is exposed, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/).
+
+For the full thesis on why AI changes the skill floor, see [AI Job Risk](/positions/ai-job-risk/). And for a deeper look at how analytics roles are splitting into tool operators vs. decision shapers, read [Analytics Jobs Will Split in Two](/2026-05-17-analytics-jobs-will-split-in-two-ai-will-automate-tool-operators-decision-shapers-will-control-outcomes/).

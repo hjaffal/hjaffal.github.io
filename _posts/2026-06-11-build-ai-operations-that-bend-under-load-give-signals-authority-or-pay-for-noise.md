@@ -10,7 +10,7 @@ archetype: explain
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-11-build-ai-operations-that-bend-under-load-give-signals-authority-or-pay-for-noise.webp
 share-img: /assets/img/posts/2026-06-11-build-ai-operations-that-bend-under-load-give-signals-authority-or-pay-for-noise.webp
-
+tldr: "Better models and more alerts don't make you safer if your decision path is slow or ownerless. AI just multiplies the pain. When pressure spikes, your system should degrade gracefully with bounded loss, not freeze behind an approval chain. Design for this: tie authority to decision latency (not seniority), budget authority in dollars and cases per shift, separate reversible from irreversible actions, route by decision not by model, pre-commit escalation paths with hard timers, and practice failure monthly. You either accept more reversible false positives during a surge, or accept compounding losses while you seek consensus. Choose in advance."
 ---
 
 Most teams believe better models and more alerts make them safer. I disagree. If your decision path is slow or ownerless, AI just multiplies the pain and the bill.
@@ -57,3 +57,5 @@ Average teams tune their models and study dashboards. Strong teams tune their de
 The uncomfortable trade-off: you either accept more reversible false positives during a surge, or you accept compounding losses while you seek consensus. You can’t have both perfect accuracy and fast control when the system is on fire. Choose the error you’re willing to pay for in advance and encode it in your modes.
 
 If your next spike hits at 9:17 a.m., do you let the model act within a risk budget by 9:30, or do you wait for approvals and fund the attackers until 5:30?
+
+For the full thesis on why signals need authority, see [AI & Decision Operations](/positions/ai-decision-operations/). For a practical framework on picking cutoffs under pressure, read [AI Won't Reward More Tools](/2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them/). And for the lexicon term behind this, see [Decision Latency](/lexicon/decision-latency/).

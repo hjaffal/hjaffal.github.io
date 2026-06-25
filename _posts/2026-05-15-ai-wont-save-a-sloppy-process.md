@@ -12,6 +12,7 @@ keywords:
   - "slow decisions"
   - "decision latency"
   - "decision bottleneck"
+tldr: "AI doesn't fix sloppy processes — it amplifies them. Models fail in handoffs, time pressure, missing context, and silence after bad outcomes. Before deploying any model, define decision SLOs (max time to decide, max error rate for irreversible actions), pre-wire safe fallbacks (last-known-good heuristics), contract-test your inputs (assert preconditions before scoring), and build an operator console for action under pressure. Your value as a PM shifts from getting the model shipped to making it safe when everything around it is messy. Own the plumbing, the on-call, the rollback, and the postmortem."
 ---
 
 Everyone worries that AI will take jobs. The uncomfortable truth for project managers is different: your job gets safer when you harden the operating process, and riskier when you ship a clever model into a weak workflow.
@@ -59,3 +60,5 @@ One more field note: decision reversibility beats accuracy when truth is delayed
 When AI enters the workflow, your value as a project manager moves from “getting the model shipped” to “making it safe and useful when everything around it is messy.” Models shine when the operating process is tight. They crumble when the plumbing leaks. Be the owner of the plumbing.
 
 So choose: will you own the decisions and the dull guardrails that keep them safe, or will you let the model take the wheel and hope the mess cleans itself up?
+
+For the full thesis on why AI exposes weak processes, see [AI & Decision Operations](/positions/ai-decision-operations/). For a concrete example of how models fail when nobody owns escalation, read [Why Your AI Project Fails When Nobody Owns the Escalation Path](/2026-05-25-why-your-ai-project-fails-when-nobody-owns-the-escalation-path/). And for the lexicon term that captures this pattern, see [Automation Fog](/lexicon/automation-fog/).

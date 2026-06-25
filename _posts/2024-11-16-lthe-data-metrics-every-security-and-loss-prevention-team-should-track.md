@@ -14,6 +14,7 @@ keywords:
   - "data team value"
   - "analytics team relevance"
   - "data team ROI"
+tldr: "Security and loss prevention teams drown in data but often track the wrong things. Focus on four categories: incident management (frequency, response time, prevention rate), compliance (training completion, standards adherence), resource management (equipment uptime, staffing ratios), and cost efficiency (program cost, cost per incident prevented). Align metrics to strategic goals, not vanity. The point is not to track everything but to zero in on metrics that drive action and prove your program's value. Good metrics build a proactive security strategy; bad ones just document failure."
 ---
 If you’re working in Security and Loss Prevention (S&LP), you know data isn’t just “nice to have”—it’s essential. But with so much data available, how do you know what’s actually worth tracking? The right metrics can be the difference between just putting out fires and actually building a proactive, data-driven security strategy.
 
@@ -87,3 +88,6 @@ In Security and Loss Prevention, data is more than just numbers on a screen—it
 The goal isn’t to track every metric imaginable but to zero in on the ones that provide real insights and drive action. Start with these categories, and you’ll find that your S&LP program isn’t just reacting to problems—it’s actively preventing them and continuously improving.
 
 With the right data, your team can confidently protect what matters most, creating a security strategy that’s efficient, effective, and built to last.
+
+
+For more on turning these metrics into decision triggers, see [Reporting Is Not Intelligence](/2026-05-30-reporting-is-not-intelligence-stop-decorating-dashboards-start-triggering-action/). And for a framework on choosing metrics that predict rather than just record, read [Leading vs. Lagging Indicators](/2024-11-18-leading-vs-lagging-indicators/).

@@ -10,7 +10,7 @@ archetype: describe
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them.webp
 share-img: /assets/img/posts/2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them.webp
-
+tldr: "Most people think safety in an AI world means learning more tools. Wrong. AI makes tool work cheap and exposes people who can't set a cutoff, own a loss, or call an escalation. Use the CUTER framework: Cutoff (where action flips), Uncertainty (your error budget), Timer (when you review or escalate), Escalation (who decides if timer expires), Reversal (conditions to revert). In a real incident, we ran CUTER in 12 minutes, lifted thresholds for risky clusters, set an explicit error budget, defined a 90-minute timer, named the decider, and bent the chargeback curve. That's judgment. Tools suggested; humans committed."
 ---
 
 Most people think the safest move in an AI world is to learn more tools. I disagree. AI makes tool work cheap. It exposes the people who can’t set a cutoff, own a loss, or call an escalation.
@@ -68,3 +68,5 @@ And when they miss, strong teams publish the decision trail and adjust the CUTER
 The common advice says: learn more AI tools to stay relevant. I say: learn to cut. Learn to price uncertainty. Learn to set a timer and to escalate without apology. Tools are getting smarter. Judgment is getting rarer.
 
 So pick a side: when the next surge hits, will you name a cutoff and sign your name under the loss, or will you keep tuning while the loss signs your name for you?
+
+For a 6-month roadmap to build decision-shaping skills, read [How to Become a Decision Shaper in 6 Months](/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops/). For the full thesis on AI and the skill floor, see [AI Job Risk](/positions/ai-job-risk/). And if you want to assess your own exposure, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/).

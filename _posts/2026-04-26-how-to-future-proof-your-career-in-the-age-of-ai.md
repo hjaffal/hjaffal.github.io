@@ -14,6 +14,7 @@ keywords:
   - "AI career advice"
   - "AI proof career"
   - "safe from AI"
+tldr: "Future-proofing isn't a certification or a tool — it's a positioning strategy. Move from output-based work to decision-based work. AI produces outputs; it can't own decisions because decisions require accountability and a person willing to be wrong. Audit your week: hours spent producing things vs. deciding things. Shift toward judgment, trade-offs, and ownership. The people who thrive are positioned where priorities get set, not where tasks get executed. Start this week: take ownership of one decision you currently defer, frame the options, make a recommendation, and follow up on the outcome."
 ---
 
 The phrase "future-proof your career" gets thrown around like there's a checklist you can complete and then stop worrying. Learn this tool. Get this certification. Add this keyword to your LinkedIn. But future-proofing isn't a one-time action. It's a positioning strategy — and most people are positioning themselves in exactly the wrong place.

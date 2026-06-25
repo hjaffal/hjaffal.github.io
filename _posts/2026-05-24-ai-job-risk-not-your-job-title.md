@@ -13,6 +13,7 @@ archetype: framework
 keywords:
   - "AI proof career"
   - "safe from AI"
+tldr: "AI job risk isn't about whether your title survives — it's about how much of your work depends on repeatable execution. A manager chasing updates, an analyst producing recurring dashboards, a coordinator moving information without influencing decisions — all exposed regardless of title. The safer skillset connects output to judgment: not just producing the report but explaining what it means, what decision it supports, what risk is hidden, and what action should follow. Being busy is not being protected. If your current tasks were automated tomorrow, ask what would still make you valuable. Build from there."
 ---
 
 For a long time, **experience gave people a strong sense of safety at work**. If you knew the process, the tools, the reports, the hidden steps, and the people behind the system, you had value. You were the person others came to when something was unclear. You knew where the numbers came from, which report to trust, and which part of the process always needed manual fixing.
@@ -72,3 +73,5 @@ The result is not meant to comfort you. It is meant to give you a clearer signal
 AI will affect your work. That part is no longer theoretical. The useful question is what you do before the pressure becomes obvious.
 
 **[Take the AI Job Risk Assessment →](/ai-job-risk-analyzer/)**
+
+For a deeper look at why the skills that matter are judgment and decision ownership, read [What Skills Should I Learn Because of AI](/2026-04-29-what-skills-should-i-learn-because-of-ai/). And for the position behind this argument, see [AI Job Risk](/positions/ai-job-risk/).

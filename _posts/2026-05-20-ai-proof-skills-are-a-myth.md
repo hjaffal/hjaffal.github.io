@@ -14,6 +14,7 @@ keywords:
   - "AI career advice"
   - "AI proof career"
   - "safe from AI"
+tldr: "There is no such thing as an AI-proof skill. The boundary between what AI can and cannot do moves constantly in one direction. Stop looking for permanent safety and start looking for harder-to-replace positioning. What's harder to replace right now: judgment under genuine ambiguity, contextual accountability (skin in the game), relationship-based influence, escalation judgment, and novel problem-solving in environments with no training data. Build these through practice — owning decisions, bearing consequences, navigating complexity — not through courses. The goal isn't a permanent safe harbor. It's staying ahead of the wave."
 ---
 
 Every few weeks, someone publishes a list of "AI-proof skills" — creativity, empathy, critical thinking, leadership. The implication is that if you develop these skills, you're safe. You can stop worrying. The robots won't come for you. This is comforting, and it's wrong. Nothing is permanently AI-proof. The honest framing is different: some skills are harder to replace right now, and the goal is to stay on the harder-to-replace side of the line as that line moves.

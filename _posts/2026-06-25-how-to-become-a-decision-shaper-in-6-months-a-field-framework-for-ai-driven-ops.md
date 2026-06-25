@@ -10,7 +10,10 @@ archetype: describe
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
 share-img: /assets/img/posts/2026-06-25-how-to-become-a-decision-shaper-in-6-months-a-field-framework-for-ai-driven-ops.webp
+tldr: "A six-month roadmap to move from tool operator to decision shaper. Month 1: map one high-volume decision and define regret in business terms. Month 2: set numeric thresholds and a risk budget you can spend without executive approval. Month 3: build the escalation path with timebox at each step. Month 4: create levers you can toggle in minutes with documented side effects. Month 5: install feedback loops and decision logging. Month 6: hand routine choices to automation and keep the judgment layer. Use the DRASTIC framework (Define, Risk budget, Alerts, Stops, Triage, Information, Cadence) under pressure. Stop operating tools — start owning outcomes."
 ---
+
+If you have been operating tools and want to understand why that position is exposed, read [AI Won't Reward More Tools — It Rewards People Who Pick Cutoffs](/2026-06-16-ai-wont-reward-more-tools-it-rewards-people-who-pick-cutoffs-and-live-with-them/) first. Then come back here for the roadmap.
 
 Start today by picking one decision your system makes at scale. Pull the last 50 cases where an AI score or rule drove an action. Label each as right, wrong, or unclear based on outcome you care about. Write down what would have triggered a different action in real time. Do this now and you will see where you need judgment, not another tool.
 
@@ -27,6 +30,8 @@ Month 4: Create levers you can pull fast. Add slowdowns, blocks, approvals requi
 Month 5: Install feedback loops and decision logging. Capture every override and lever change with who, why, and what threshold triggered it. Review weekly for regret, not blame: what signal would have avoided the override, and what cutoff would have made it automatic. Turn repeated overrides into new thresholds or policies. Publish a short changelog to make learning visible.
 
 Month 6: Hand routine choices to the system and keep the judgment. Move the median case to automation under your thresholds. Keep human review for cases that break your risk budget, hit unusual patterns, or cross your timeboxes. Your value is now in shaping cutoffs, picking levers, and owning the escalation. Write your successor playbook so others can operate; you keep improving the contract.
+
+This progression mirrors the split I described in [Analytics Jobs Will Split in Two](/2026-05-17-analytics-jobs-will-split-in-two-ai-will-automate-tool-operators-decision-shapers-will-control-outcomes/) — you are deliberately moving from the tool-operator side to the decision-shaper side.
 
 Use the DRASTIC framework to hold it all together under pressure. DRASTIC is Define the decision, Risk budget, Alerts and thresholds, Stops and slowdowns, Triage and escalation, Information logging, and Cadence of reviews. Print DRASTIC on your runbook cover and use it as a checklist in every incident. The team will copy what you model.
 
@@ -45,5 +50,7 @@ Make this stick by taking visible ownership. Volunteer for the next on-call and 
 If you manage people, tie growth to decision ownership. Promote the analysts who write thresholds, pull levers, and escalate on time. Rotate operators through on-call so everyone learns the pain of vague policies. Reward teams that retire dashboards that do not change decisions.
 
 Do not wait for your title to change. Pick one decision, write the contract, and own the next incident. In six months you will not be the person clicking buttons; you will be the person shaping outcomes.
+
+If you want a structured way to evaluate your current exposure, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It shows you which parts of your role are exposed and what to build next.
 
 Choose a side: six months from now, will you publish thresholds and carry the pager, or will you keep polishing tools while others make the calls?

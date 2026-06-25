@@ -199,6 +199,7 @@ ${CONFIG.signature_metaphors.map(m => "- " + m).join("\n")}
 - Include at least ONE comparison table or contrast block (e.g., "Weak teams do X. Strong teams do Y.")
 - No dense text blocks. Highly scannable.
 - For FRAMEWORK archetype: The table is the centerpiece. Give the framework a memorable name in a ## heading. The table must have specific columns (e.g., Signal | Threshold | Action | Rollback). Number every step. Include at least one "if/then" decision rule.
+- For LISTICLE archetype: Title MUST start with a number (e.g., "7 Signs..." or "5 Ways..."). Structure as a numbered list with bold item headings. Each item needs 2-3 sentences + one example. Open with why the list matters. Close with a forced-choice question. Highly scannable — readers should get value from headings alone.
 
 === SEO REQUIREMENTS ===
 
@@ -282,6 +283,7 @@ Return ONLY valid JSON with this exact structure.
 CRITICAL: The "body" field MUST contain at least 2 markdown links to internal pages (e.g. [text](/path/)).
 CRITICAL: The "body" field MUST end with a CTA that includes a markdown link to /newsletter/.
 CRITICAL: The "editorial_checklist" field MUST contain all 17 items with pass/fail evaluation.
+CRITICAL: The "tldr" field MUST be a concise 80-120 word summary of the article's main argument and actionable takeaway. Write in direct, sharp tone. This appears as a highlighted block at the top of the article for quick scanning.
 
 {
   "title": "SEO + curiosity hybrid title, max 150 chars",
@@ -289,6 +291,7 @@ CRITICAL: The "editorial_checklist" field MUST contain all 17 items with pass/fa
   "share_description": "Social sharing description, max 160 chars",
   "meta_title": "SEO title, max 70 chars",
   "excerpt": "1-2 sentence teaser, max 300 chars",
+  "tldr": "80-120 word summary. Direct, sharp. Captures the main argument and actionable takeaway. No fluff.",
   "tags": ["${position.tag}"],
   "topic": "${topic ? topic.slug : ""}",
   "archetype": "${archetype ? archetype.split(' ')[0].toLowerCase() : ""}",

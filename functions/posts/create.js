@@ -51,7 +51,7 @@ const createPost = onRequest(
       return;
     }
 
-    const { title, slug, author, tags, status, date, excerpt, shareTitle, shareDescription, featuredImage, body, topic, archetype, keywords } = req.body;
+    const { title, slug, author, tags, status, date, excerpt, shareTitle, shareDescription, featuredImage, body, topic, archetype, keywords, tldr } = req.body;
 
     // Validate required fields
     if (!title || typeof title !== "string" || title.trim().length === 0) {
@@ -114,7 +114,8 @@ const createPost = onRequest(
       status,
       topic,
       archetype,
-      keywords
+      keywords,
+      tldr
     });
 
     const fileContent = frontMatter + body.trim() + "\n";
@@ -165,7 +166,7 @@ function slugify(title) {
  * @param {object} params - Post metadata
  * @returns {string} Front matter block including opening/closing ---
  */
-function buildFrontMatter({ title, shareTitle, shareDescription, tags, author, featuredImage, status, topic, archetype, keywords }) {
+function buildFrontMatter({ title, shareTitle, shareDescription, tags, author, featuredImage, status, topic, archetype, keywords, tldr }) {
   function yamlEscape(value) {
     if (!value) return "";
     return value.replace(/"/g, '\\"');
@@ -209,6 +210,10 @@ function buildFrontMatter({ title, shareTitle, shareDescription, tags, author, f
   if (featuredImage) {
     fm += `thumbnail-img: ${featuredImage}\n`;
     fm += `share-img: ${featuredImage}\n`;
+  }
+
+  if (tldr) {
+    fm += `tldr: "${yamlEscape(tldr)}"\n`;
   }
 
   if (status === "draft") {

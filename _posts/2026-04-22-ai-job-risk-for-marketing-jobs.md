@@ -13,6 +13,7 @@ share-img: /assets/img/posts/2026-04-22-ai-job-risk-for-marketing-jobs.webp
 keywords:
   - "white collar automation"
   - "knowledge work automation"
+tldr: "AI is coming fast for marketing execution — content production, ad copy variations, campaign reports, asset resizing. It's slower to reach marketing judgment — brand strategy, audience intuition, campaign kills, positioning decisions. The dividing line is executor vs. strategist. If your week is mostly producing volume, you're competing with a tool that produces at near-zero cost. Shift toward the decisions: what the brand stands for, which audiences to pursue, when to kill a campaign despite good metrics. Treat AI as your production team and focus your time on the judgment calls that determine whether the production matters."
 ---
 
 Walk into any marketing department and you'll find two kinds of people. There are the ones who produce — writing blog posts, creating ad variations, pulling campaign reports, resizing assets. And there are the ones who decide — choosing which audience to target, determining what the brand should stand for, making the call on whether to kill a campaign that's underperforming. AI is coming for the first group fast. The second group has more time, but not infinite time.

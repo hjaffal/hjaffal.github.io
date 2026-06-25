@@ -10,7 +10,7 @@ archetype: write
 author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence.webp
 share-img: /assets/img/posts/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence.webp
-
+tldr: "Any metric that doesn't trigger a specific action should be paused. Here's the 6-step playbook: map every metric to a decision, owner, and time-to-action. Announce a 14-day freeze with a reinstatement process. Convert the top 5 metrics into binary signals with commands. Create a transparent metric graveyard with a recovery door. Replace status meetings with 20-minute action reviews. Track only two meta-metrics: action rate and time-to-decision. Kill quietly by asking recipients one question: when this number moves, what do you do in the next hour? If they can't answer, pause it. Keep decisions fast and ownership clear."
 ---
 
 Start with action. On Monday, print your metric catalog and your dashboard list. By Friday, any metric that does not trigger a specific action should be paused. Reporting explains what happened; intelligence changes what happens next.
@@ -72,3 +72,5 @@ Schedule a quarterly purge where every team must kill one metric or convert one 
 Your move
 By Friday, either your metrics trigger decisions or they go to the graveyard with a recovery door. That’s how you kill noise without losing trust.
 This week, which side are you on: keep sending reports no one acts on, or delete them until they earn a trigger, an owner, and a time-to-action?
+
+For the full thesis on why reporting is not intelligence, see [Risk Intelligence](/positions/risk-intelligence/). For a deeper look at why false confidence metrics numb operations, read [False Confidence Metrics Are a Digital Opiate](/2026-06-02-false-confidence-metrics-are-a-digital-opiate-for-operations/). And for the lexicon term behind this, see [Reporting Addiction](/lexicon/reporting-addiction/).

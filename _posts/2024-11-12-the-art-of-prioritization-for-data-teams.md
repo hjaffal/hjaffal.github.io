@@ -13,6 +13,7 @@ archetype: framework
 keywords:
   - "decision latency"
   - "decision bottleneck"
+tldr: "Data teams that say yes to everything become busy but ineffective. The highest-value move is deciding what not to do. Stop building dashboards for trivial metrics, stop fulfilling low-impact ad hoc requests, and focus your limited capacity on scalable work tied to strategic goals. Prioritize ruthlessly using impact criteria, communicate trade-offs to stakeholders, and measure outcomes. The difference between a busy team and an effective one is the willingness to say no to work that doesn't change decisions."
 ---
 
 In data teams, one of the biggest challenges is managing the endless flow of requests and demands. Often, we find ourselves saying "yes" to everything—addressing minor requests, building reports for every metric imaginable, or developing tools that are only marginally impactful. However, overloading the team with tasks that have low strategic value drains resources, reduces focus, and limits the team’s ability to deliver meaningful outcomes.
@@ -30,7 +31,7 @@ When data teams try to fulfill every request, regardless of its impact, several 
 Responding to numerous low-impact requests may help individuals temporarily speed up their work, but it drains time and resources that could be spent on more strategic initiatives.
 
 ### 2. Wasted Resources
-Developing tools and dashboards for trivial metrics consumes valuable team bandwidth. These metrics might seem helpful in isolation but often provide little overall business value.
+Developing tools and dashboards for trivial metrics consumes valuable team bandwidth. These metrics might seem helpful in isolation but often provide little overall business value. This is a symptom of what I call [Dashboard Addiction](/lexicon/dashboard-sedation/) — teams building more charts because it feels productive, even when those charts never drive action.
 
 ### 3. Lost Recognition
 Building dashboards and reports that fall outside the core scope of the data team dilutes focus, drains resources, and often goes unnoticed, as it’s not directly aligned with the team’s primary goals.
@@ -79,4 +80,6 @@ Regularly track and share the impact of the team’s work on key business metric
 For data teams, the key to success isn’t just deciding what to work on—it’s also deciding **what not to work on**. By focusing on high-impact, scalable projects that align with organizational priorities, data teams can enhance their efficiency, deliver valuable insights, and gain greater recognition for their work. Saying “no” isn’t about rejecting requests; it’s about making strategic choices that maximize the team’s potential and ensure meaningful contributions to the business.
 
 In a fast-paced environment where data is central to decision-making, choosing what matters most is the difference between being busy and being effective.
+
+If your team is stuck in the cycle of endless requests, the deeper issue may be that [reporting is not intelligence](/positions/risk-intelligence/) — your analysts are explaining what happened instead of changing what happens next. The real shift is moving from output to [decision ownership](/positions/ai-decision-operations/).
 ```

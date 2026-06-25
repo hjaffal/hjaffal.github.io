@@ -12,6 +12,7 @@ keywords:
   - "productivity trap"
   - "AI productivity"
   - "doing more with AI"
+tldr: "Analytics is splitting into two roles: tool operators who produce dashboards and queries, and decision shapers who own thresholds, budgets, and trade-offs. AI makes the first group's output near-free, so management skips to the person who can pull the lever. The exposed: analysts generating reports, BI developers shipping static charts, translators summarizing data for meetings. The protected: people who set kill switches, own loss curves, and push controls to production. Same data, different outcome — one person ships charts, the other ships a decision. AI can build the chart. It cannot own the trade-off. Choose your side now."
 ---
 
 AI has ended the comfortable middle in data analytics. The work is splitting in two: people who operate tools, and people who shape decisions. The first group is getting automated. The second group will stay small and powerful. If you think this is hype, you are the one at risk.
@@ -60,3 +61,5 @@ This split will also change how AI governance works. The question is not “is t
 The future of work in data analytics is not a mystery. Tool operation becomes a commodity. Decision-making becomes the job. Many roles will go away. A smaller number will be paid more to own hard calls.
 
 Choose with intent. Will you be the person who operates the tool, or the person who shapes the decision?
+
+For the full thesis on AI and decision authority, see [AI & Decision Operations](/positions/ai-decision-operations/). If you want to assess where your own skills stand, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). And for a deeper look at why "AI-proof skills" is the wrong frame, read [AI-Proof Skills Are a Myth](/2026-05-20-ai-proof-skills-are-a-myth/).

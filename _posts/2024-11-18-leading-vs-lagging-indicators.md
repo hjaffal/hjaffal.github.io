@@ -14,6 +14,7 @@ keywords:
   - "data team value"
   - "analytics team relevance"
   - "data team ROI"
+tldr: "Lagging indicators tell you what already happened. Leading indicators tell you what's about to happen. Most teams over-index on backward-looking metrics like quarterly losses and miss the forward-looking signals like refund spikes or delivery anomalies that allow early intervention. Balance both: use leading indicators to drive real-time decisions and prevent escalation, use lagging indicators to validate and refine strategy. If your metrics only explain the past, you're always reacting. The teams that win act on signals before the P&L confirms the damage."
 ---
 In early 2024, Google faced a fascinating internal challenge: a sharp decline in employee morale and satisfaction despite strong financial performance. During an all-hands meeting, employees raised concerns about the lack of pay raises and ongoing cost-cutting measures. CEO Sundar Pichai and CFO Ruth Porat were confronted with tough questions about the disconnect between leadership and workforce sentiment. While lagging indicators like financial metrics showed a thriving business, leading indicators such as employee satisfaction surveys and participation in internal initiatives could have flagged the issue much earlier. [(Source)](https://nypost.com/2024/05/09/business/google-workers-complain-of-decline-in-morale-lack-of-pay-raise/?utm_source=hasanjaffal.com)
 
@@ -102,3 +103,8 @@ Balancing these metrics ensures that we’re not just responding to problems but
 Whether you’re running predictive models, optimizing operations, or managing risks, balancing leading and lagging indicators is key to success. **Leading indicators** enable proactive decision-making, while **lagging indicators** provide validation and insights for improvement.
 
 In my experience, this balance is what allows teams to stay ahead of challenges, adapt quickly, and continuously improve. Are you tracking the right metrics to drive your strategy forward? Share your thoughts or examples in the comments—I’d love to hear how you’re balancing your indicators!
+
+
+---
+
+If your indicators produce insights but nobody acts on them, the problem may not be the metrics — it may be a [decision authority gap](/positions/ai-decision-operations/). For a deeper look at why dashboards alone fail under real risk, see [Why Good Data Fails Under Real Risk](/2026-05-07-dashboards-dont-decide-why-good-data-fails-under-real-risk/). And to understand how AI is reshaping which skills matter most, read [What Skills Should I Learn Because of AI](/2026-04-29-what-skills-should-i-learn-because-of-ai/).
