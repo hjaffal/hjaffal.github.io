@@ -86,6 +86,42 @@ Expand your scope. The mid-career leaders who thrive in 2028 are those who can l
 
 ---
 
+
+---
+
+## AI Tools Already Threatening This Role
+
+| Tool / Platform | What It Does | Timeline |
+|:---|:---|:---:|
+| **Splunk User Behavior Analytics (UBA)** | Automates the identification of anomalous patterns in financial transactions, network activity, or employee behavior, flagging potential fraud or operational risks without extensive manual data review. | Already live |
+| **Moody's Analytics RiskIntegrity Suite** | Performs sophisticated predictive modeling for credit risk, market risk, and stress testing, generating automated risk assessments and scenario analyses that traditionally required significant human expertise. | Already live |
+| **ServiceNow GRC (Governance, Risk, and Compliance)** | Streamlines and automates compliance checks, policy adherence monitoring, and initial risk report generation, reducing the need for manual oversight and documentation tasks for regulatory compliance. | 6-12 months |
+
+---
+
+## Real-World Scenario
+
+Veridian Capital, a mid-sized investment firm, recently deployed an AI-powered operational risk platform that integrates with their trading systems and employee activity logs. This system, developed with components from DataRobot, now identifies potential insider trading patterns and compliance breaches in real-time, providing immediate alerts and risk scores. This has allowed Veridian to reallocate over half its junior operational risk managers from daily monitoring and manual report generation to more strategic roles focusing on AI model governance and framework development.
+
+---
+
+## Career Pivot Paths
+
+**→ AI Risk & Ethics Specialist**
+Risk Managers possess an inherent understanding of identifying, assessing, and mitigating complex risks, making them perfectly suited to govern the ethical and operational implications of AI systems. Target role: *AI Governance & Ethical AI Lead*.
+
+**→ Data Integrity & Governance Manager**
+Their experience in scrutinizing data quality and lineage for accurate risk assessment is critical for ensuring the reliability and trustworthiness of data used in AI models. Target role: *Risk Data Governance Architect*.
+
+**→ Enterprise Resilience Strategist**
+Their holistic view of potential threats to an organization's operations and financial stability directly translates to designing systems and processes that can withstand major disruptions, including AI failures. Target role: *Business Continuity & Resilience Director*.
+
+---
+
+## The Unique Risk for This Role
+
+For Risk Managers, AI presents a unique paradox: while it automates the identification of known risks, it simultaneously generates entirely new categories of 'black box' and ethical risks (e.g., algorithmic bias, systemic AI failures). This means the core skill of a human Risk Manager is shifting from merely assessing existing threats to becoming an expert in governing and mitigating the risks inherent in the AI systems themselves, a complexity few other roles face directly.
+
 ## The Bottom Line
 
 The Risk Manager role is well-positioned against AI disruption, but not immune. The routine and operational portions will be automated, concentrating the role more tightly around leadership, judgment, and human coordination. This is an upgrade if you're ready for it.
