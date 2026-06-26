@@ -53,7 +53,6 @@
     var payload = {
       email: email,
       utm_source: opts.source || 'website',
-      page_url: window.location.pathname,
       website_url: opts.honeypot || ''
     };
     if (opts.name) payload.name = opts.name;
