@@ -143,7 +143,7 @@ export async function loadSubscribers() {
         s.openCount || 0,
         s.clickCount || 0,
         calcEngagement(s.openCount || 0, s.clickCount || 0, s.editionsReceived || 0),
-        s.pageUrl || '',
+        s.pageUrl || s.utmSource || '',
         formatDate(s.subscribedAt),
         '',
         s.id
