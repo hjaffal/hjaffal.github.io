@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { Stack, Redirect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator } from 'react-native';
 import { AuthProvider, useAuth } from './lib/auth-context';
@@ -14,19 +14,6 @@ function RootNavigator() {
     );
   }
 
-  if (!user) {
-    return (
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: '#0f0d1a' },
-        }}
-      >
-        <Stack.Screen name="auth" />
-      </Stack>
-    );
-  }
-
   return (
     <Stack
       screenOptions={{
@@ -35,6 +22,7 @@ function RootNavigator() {
         animation: 'slide_from_right',
       }}
     >
+      <Stack.Screen name="auth" />
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="speaking/[topic]" />
       <Stack.Screen name="vocab/[category]" />
