@@ -73,9 +73,17 @@ export default function ProfileScreen() {
 
   const handleSignOut = async () => {
     try {
-      await signOut(auth);
+      const { getAuth } = require('firebase/auth');
+      const { signOut: firebaseSignOut } = require('firebase/auth');
+      const currentAuth = getAuth();
+      await firebaseSignOut(currentAuth);
     } catch (e) {
-      console.log('Sign out error:', e.message);
+      // Fallback: clear AsyncStorage auth state manually
+      try {
+        const keys = await AsyncStorage.getAllKeys();
+        const authKeys = keys.filter(k => k.startsWith('firebase:'));
+        if (authKeys.length > 0) await AsyncStorage.multiRemove(authKeys);
+      } catch (e2) {}
     }
   };
 
