@@ -1,14 +1,18 @@
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
-import { useFocusEffect } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { signOut } from 'firebase/auth';
+import { db, auth } from '../lib/firebase';
+import { useAuth } from '../lib/auth-context';
 import { TOPICS } from '../data/topics';
 import { VOCAB_CATEGORIES } from '../data/vocab';
 
 export default function ProgressScreen() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [stats, setStats] = useState({
     topicsVisited: 0,
     wordsReviewed: 0,
@@ -93,6 +97,33 @@ export default function ProgressScreen() {
       </View>
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
+        {/* User Card */}
+        {user ? (
+          <View style={styles.userCard}>
+            <View style={styles.userAvatar}>
+              <Text style={styles.userAvatarText}>
+                {(user.displayName || user.email || 'U').charAt(0).toUpperCase()}
+              </Text>
+            </View>
+            <View style={styles.userInfo}>
+              <Text style={styles.userName}>{user.displayName || 'Learner'}</Text>
+              <Text style={styles.userEmail}>{user.email}</Text>
+            </View>
+            <TouchableOpacity style={styles.logoutBtn} onPress={() => signOut(auth)}>
+              <Ionicons name="log-out-outline" size={20} color="#6b7280" />
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <TouchableOpacity style={styles.signInCard} onPress={() => router.push('/auth')} activeOpacity={0.8}>
+            <Ionicons name="person-circle-outline" size={24} color="#a78bfa" />
+            <View style={styles.signInInfo}>
+              <Text style={styles.signInTitle}>Sign in to sync progress</Text>
+              <Text style={styles.signInDesc}>Your progress is saved locally. Sign in to sync across devices.</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="#6b7280" />
+          </TouchableOpacity>
+        )}
+
         <View style={styles.statsGrid}>
           <StatCard
             icon="mic-outline"
@@ -208,4 +239,27 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: '#2d2640',
   },
   tipText: { flex: 1, fontSize: 14, color: '#9ca3af', lineHeight: 20 },
+
+  // User card
+  userCard: {
+    flexDirection: 'row', alignItems: 'center', backgroundColor: '#1a1726',
+    borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#2d2640', marginBottom: 16,
+  },
+  userAvatar: {
+    width: 40, height: 40, borderRadius: 20, backgroundColor: '#9333ea',
+    alignItems: 'center', justifyContent: 'center', marginRight: 12,
+  },
+  userAvatarText: { fontSize: 18, fontWeight: '700', color: '#fff' },
+  userInfo: { flex: 1 },
+  userName: { fontSize: 15, fontWeight: '600', color: '#f3f4f6', marginBottom: 2 },
+  userEmail: { fontSize: 12, color: '#6b7280' },
+  logoutBtn: { padding: 8 },
+  signInCard: {
+    flexDirection: 'row', alignItems: 'center', backgroundColor: '#1a1726',
+    borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#9333ea40', marginBottom: 16,
+    gap: 12,
+  },
+  signInInfo: { flex: 1 },
+  signInTitle: { fontSize: 14, fontWeight: '600', color: '#f3f4f6', marginBottom: 2 },
+  signInDesc: { fontSize: 12, color: '#6b7280' },
 });
