@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Sproochentest",
+    "slug": "sproochentest",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "sproochentest",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#1e1b4b"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hasanjaffal.sproochentest"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1e1b4b"
+      },
+      "package": "com.hasanjaffal.sproochentest"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-asset"
+    ]
+  }
+}
