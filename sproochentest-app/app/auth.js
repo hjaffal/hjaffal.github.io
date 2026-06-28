@@ -1,18 +1,14 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useState } from 'react';
-import { useRouter, Redirect } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import { auth } from './lib/firebase';
-import { useAuth } from './lib/auth-context';
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function AuthScreen() {
-  const { user } = useAuth();
-  const router = useRouter();
   const [mode, setMode] = useState('login'); // 'login' or 'signup'
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,11 +20,6 @@ export default function AuthScreen() {
     iosClientId: '760741109890-dp38reicl2aen3jm7e6orcuj92tueo1c.apps.googleusercontent.com',
     webClientId: '760741109890-25vautp1ena3ubti5ei1fnhjqhnpqkfd.apps.googleusercontent.com',
   });
-
-  // If already logged in, redirect to tabs
-  if (user) {
-    return <Redirect href="/(tabs)" />;
-  }
 
   const handleEmailAuth = async () => {
     setError('');
@@ -44,7 +35,7 @@ export default function AuthScreen() {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
-      router.replace('/(tabs)');
+      
     } catch (err) {
       setError(getErrorMessage(err.code));
     } finally {
@@ -59,7 +50,7 @@ export default function AuthScreen() {
         const { id_token } = result.params;
         const credential = GoogleAuthProvider.credential(id_token);
         await signInWithCredential(auth, credential);
-        router.replace('/(tabs)');
+        
       }
     } catch (err) {
       setError('Google sign-in failed. Try email instead.');
