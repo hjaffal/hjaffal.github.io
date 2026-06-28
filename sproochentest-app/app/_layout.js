@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator } from 'react-native';
 import { AuthProvider, useAuth } from './lib/auth-context';
-import AuthScreen from './auth';
+import AuthScreen from './lib/AuthScreen';
 
 function AppContent() {
   const { user, loading } = useAuth();
