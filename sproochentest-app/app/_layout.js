@@ -20,31 +20,7 @@ function InlineAuth() {
   var _f = useState(false), loading = _f[0], setLoading = _f[1];
 
   function handleGoogleSignIn() {
-    setError('');
-    setLoading(true);
-    var nonce = Math.random().toString(36).substring(2, 15);
-    var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth?' +
-      'client_id=' + GOOGLE_CLIENT_ID +
-      '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
-      '&response_type=id_token' +
-      '&scope=openid%20profile%20email' +
-      '&nonce=' + nonce;
-
-    WebBrowser.openAuthSessionAsync(authUrl, REDIRECT_URI).then(function(result) {
-      if (result.type === 'success' && result.url) {
-        var fragment = result.url.split('#')[1] || '';
-        var params = new URLSearchParams(fragment);
-        var idToken = params.get('id_token');
-        if (idToken) {
-          var credential = GoogleAuthProvider.credential(idToken);
-          return signInWithCredential(auth, credential);
-        }
-      }
-    }).catch(function(err) {
-      setError('Google sign-in failed. Try email.');
-    }).finally(function() {
-      setLoading(false);
-    });
+    setError('Google Sign-In will be available in the production app. Please use email for now.');
   }
 
   function handleSubmit() {
