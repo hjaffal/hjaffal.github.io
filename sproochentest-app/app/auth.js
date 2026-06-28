@@ -169,11 +169,6 @@ export default function AuthScreen() {
               </Text>
             </Text>
           </TouchableOpacity>
-
-          {/* Skip */}
-          <TouchableOpacity style={styles.skipBtn} onPress={() => router.replace('/(tabs)')}>
-            <Text style={styles.skipText}>Continue as Guest</Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -213,6 +208,4 @@ const styles = StyleSheet.create({
   toggleBtn: { alignItems: 'center', marginTop: 20 },
   toggleText: { fontSize: 14, color: '#9ca3af' },
   toggleLink: { color: '#a78bfa', fontWeight: '600' },
-  skipBtn: { alignItems: 'center', marginTop: 16 },
-  skipText: { fontSize: 14, color: '#6b7280', textDecorationLine: 'underline' },
 });
