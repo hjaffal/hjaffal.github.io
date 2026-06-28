@@ -73,18 +73,8 @@ export default function ProfileScreen() {
 
   const handleSignOut = async () => {
     try {
-      const { getAuth } = require('firebase/auth');
-      const { signOut: firebaseSignOut } = require('firebase/auth');
-      const currentAuth = getAuth();
-      await firebaseSignOut(currentAuth);
-    } catch (e) {
-      // Fallback: clear AsyncStorage auth state manually
-      try {
-        const keys = await AsyncStorage.getAllKeys();
-        const authKeys = keys.filter(k => k.startsWith('firebase:'));
-        if (authKeys.length > 0) await AsyncStorage.multiRemove(authKeys);
-      } catch (e2) {}
-    }
+      await signOut(auth);
+    } catch (e) {}
   };
 
   const displayName = user?.displayName || 'Learner';
@@ -96,6 +86,7 @@ export default function ProfileScreen() {
         <Text style={styles.headerLabel}>SPROOCHENTEST</Text>
         <Text style={styles.headerTitle}>Profile</Text>
         <Text style={styles.headerDesc}>Your account and stats</Text>
+        <Text style={{ color: '#ef4444', fontSize: 12, marginTop: 4 }}>v4 — inline auth</Text>
       </View>
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
