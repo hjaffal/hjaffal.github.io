@@ -3,7 +3,8 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 import { useState, useRef, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from '../lib/auth-context';
+import { recordWordReview } from '../lib/progress';
 import { VOCAB_CATEGORIES } from '../data/vocab';
 
 const AUDIO_BASE = 'https://hasanjaffal.com/assets/audio/vocab';
@@ -18,6 +19,7 @@ export default function FlashcardScreen() {
   const soundRef = useRef(null);
 
   const category = VOCAB_CATEGORIES.find((c) => c.id === categoryId);
+  const { user } = useAuth();
 
   useEffect(() => {
     return () => {
@@ -39,12 +41,9 @@ export default function FlashcardScreen() {
   const totalWords = category.words.length;
 
   const trackWord = async () => {
-    try {
-      const reviewed = await AsyncStorage.getItem('reviewedWords');
-      const set = new Set(JSON.parse(reviewed || '[]'));
-      set.add(word.id);
-      await AsyncStorage.setItem('reviewedWords', JSON.stringify([...set]));
-    } catch (e) {}
+    if (user) {
+      await recordWordReview(user.uid, word.id, true, user.displayName || 'Learner');
+    }
   };
 
   const nextCard = () => {

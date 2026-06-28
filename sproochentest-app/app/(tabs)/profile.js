@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { useAuth } from '../lib/auth-context';
+import { loadProgressFromFirestore } from '../lib/progress';
 import { TOPICS } from '../data/topics';
 import { VOCAB_CATEGORIES } from '../data/vocab';
 
@@ -14,6 +15,7 @@ export default function ProfileScreen() {
   const [stats, setStats] = useState({
     topicsVisited: 0,
     wordsReviewed: 0,
+    xp: 0,
     totalTopics: TOPICS.length,
     totalWords: VOCAB_CATEGORIES.reduce((sum, c) => sum + c.words.length, 0),
   });
@@ -29,12 +31,20 @@ export default function ProfileScreen() {
 
   const loadStats = async () => {
     try {
+      if (!user) return;
+      // Load from Firestore (same as web)
+      const progress = await loadProgressFromFirestore(user.uid);
+      const wordsReviewed = Object.keys(progress.words || {}).length;
+      const xp = (progress.stats && progress.stats.totalXp) || 0;
+
+      // Topics visited from AsyncStorage (local to device)
       const visited = await AsyncStorage.getItem('visitedTopics');
-      const reviewed = await AsyncStorage.getItem('reviewedWords');
+
       setStats((prev) => ({
         ...prev,
         topicsVisited: visited ? JSON.parse(visited).length : 0,
-        wordsReviewed: reviewed ? JSON.parse(reviewed).length : 0,
+        wordsReviewed,
+        xp,
       }));
     } catch (e) {}
   };
