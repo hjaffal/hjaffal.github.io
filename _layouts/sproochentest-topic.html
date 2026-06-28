@@ -102,3 +102,56 @@ css:
   }
 })();
 </script>
+
+<script>
+// Question audio playback — inject play buttons next to each question
+(function() {
+  var permalink = '{{ page.permalink }}';
+  var topicSlug = permalink.replace(/^\/sproochentest\//, '').replace(/\/$/, '');
+  var list = document.getElementById('sp-questions-list');
+  if (!list) return;
+
+  var items = list.querySelectorAll('li');
+  var audioCache = {};
+
+  items.forEach(function(item, i) {
+    var id = 'q' + String(i + 1).padStart(2, '0');
+    var audioPath = '/assets/audio/questions/' + topicSlug + '/' + id + '.m4a';
+
+    // Create play button
+    var btn = document.createElement('button');
+    btn.className = 'sp-question-audio-btn';
+    btn.setAttribute('data-audio', audioPath);
+    btn.setAttribute('aria-label', 'Play question');
+    btn.setAttribute('title', 'Listen');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+    btn.style.display = 'none';
+
+    item.insertBefore(btn, item.firstChild);
+
+    // Check if audio exists
+    var test = new Audio();
+    test.preload = 'metadata';
+    test.src = audioPath;
+    test.onloadedmetadata = function() {
+      btn.style.display = '';
+      audioCache[audioPath] = test;
+    };
+  });
+
+  // Delegate click
+  list.addEventListener('click', function(e) {
+    var btn = e.target.closest('.sp-question-audio-btn');
+    if (!btn) return;
+    var path = btn.getAttribute('data-audio');
+    if (!path) return;
+    var audio = audioCache[path];
+    if (!audio) {
+      audio = new Audio(path);
+      audioCache[path] = audio;
+    }
+    audio.currentTime = 0;
+    audio.play().catch(function() {});
+  });
+})();
+</script>

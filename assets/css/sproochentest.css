@@ -1635,3 +1635,34 @@
   }
 }
 
+
+
+/* Question audio play button */
+.sp-question-audio-btn {
+  background: var(--dark, #1e1b4b);
+  border: none;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  vertical-align: middle;
+  margin-right: 8px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.sp-question-audio-btn:hover {
+  background: var(--accent, #9333EA);
+}
+.sp-questions-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+.sp-question-audio-btn + * {
+  flex: 1;
+}
