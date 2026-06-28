@@ -2,14 +2,9 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, signInWithCredential } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { AuthProvider, useAuth } from './lib/auth-context';
 import { auth } from './lib/firebase';
-import * as WebBrowser from 'expo-web-browser';
-import * as Google from 'expo-auth-session/providers/google';
-
-WebBrowser.maybeCompleteAuthSession();
 
 function InlineAuth() {
   const [mode, setMode] = useState('login');
@@ -18,25 +13,6 @@ function InlineAuth() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    iosClientId: '760741109890-dp38reicl2aen3jm7e6orcuj92tueo1c.apps.googleusercontent.com',
-    webClientId: '760741109890-25vautp1ena3ubti5ei1fnhjqhnpqkfd.apps.googleusercontent.com',
-  });
-
-  const handleGoogleSignIn = async () => {
-    try {
-      setError('');
-      const result = await promptAsync();
-      if (result?.type === 'success') {
-        const { id_token } = result.params;
-        const credential = GoogleAuthProvider.credential(id_token);
-        await signInWithCredential(auth, credential);
-      }
-    } catch (err) {
-      setError('Google sign-in failed: ' + (err.message || ''));
-    }
-  };
 
   const handleSubmit = async () => {
     setError('');
@@ -74,17 +50,6 @@ function InlineAuth() {
         <Text style={s.title}>{mode === 'signup' ? 'Create Account' : 'Welcome Back'}</Text>
         <Text style={s.desc}>{mode === 'signup' ? 'Sign up to track your progress.' : 'Sign in to continue learning.'}</Text>
 
-        <TouchableOpacity style={s.googleBtn} onPress={handleGoogleSignIn} activeOpacity={0.8}>
-          <Ionicons name="logo-google" size={20} color="#fff" />
-          <Text style={s.googleBtnText}>Continue with Google</Text>
-        </TouchableOpacity>
-
-        <View style={s.divider}>
-          <View style={s.dividerLine} />
-          <Text style={s.dividerText}>or</Text>
-          <View style={s.dividerLine} />
-        </View>
-
         {mode === 'signup' && (
           <TextInput style={s.input} placeholder="Display Name" placeholderTextColor="#6b7280" value={name} onChangeText={setName} autoCapitalize="words" />
         )}
@@ -118,11 +83,6 @@ const s = StyleSheet.create({
   error: { color: '#ef4444', fontSize: 13, marginBottom: 12 },
   btn: { backgroundColor: '#9333ea', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 4 },
   btnText: { fontSize: 16, fontWeight: '700', color: '#fff' },
-  googleBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, backgroundColor: '#2d2640', borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#3d3650', marginBottom: 4 },
-  googleBtnText: { fontSize: 15, fontWeight: '600', color: '#f3f4f6' },
-  divider: { flexDirection: 'row', alignItems: 'center', marginVertical: 16 },
-  dividerLine: { flex: 1, height: 1, backgroundColor: '#2d2640' },
-  dividerText: { paddingHorizontal: 12, fontSize: 13, color: '#6b7280' },
   toggle: { alignItems: 'center', marginTop: 20 },
   toggleText: { fontSize: 14, color: '#9ca3af' },
   toggleLink: { color: '#a78bfa', fontWeight: '600' },
