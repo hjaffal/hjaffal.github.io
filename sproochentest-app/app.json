@@ -8,6 +8,7 @@
     "scheme": "sproochentest",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
+    "owner": "jaftalks",
     "splash": {
       "backgroundColor": "#1e1b4b"
     },
@@ -28,6 +29,20 @@
     "plugins": [
       "expo-router",
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "202264e7-867b-4967-b967-fc580f12f9b8"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/202264e7-867b-4967-b967-fc580f12f9b8"
+    }
   }
 }
