@@ -1,9 +1,9 @@
-import { Stack, Redirect } from 'expo-router';
+import { Slot, Redirect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator } from 'react-native';
 import { AuthProvider, useAuth } from './lib/auth-context';
 
-function RootNavigator() {
+function AuthGate() {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -14,27 +14,14 @@ function RootNavigator() {
     );
   }
 
-  return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: '#0f0d1a' },
-        animation: 'slide_from_right',
-      }}
-    >
-      <Stack.Screen name="auth" />
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="speaking/[topic]" />
-      <Stack.Screen name="vocab/[category]" />
-    </Stack>
-  );
+  return <Slot />;
 }
 
 export default function RootLayout() {
   return (
     <AuthProvider>
       <StatusBar style="light" />
-      <RootNavigator />
+      <AuthGate />
     </AuthProvider>
   );
 }
