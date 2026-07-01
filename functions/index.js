@@ -29,6 +29,10 @@ exports.generateLinkedInPosts = generateLinkedInPosts;
 const { manageLexicon } = require("./posts/lexicon");
 exports.manageLexicon = manageLexicon;
 
+// ===== TESTIMONIALS MODULE EXPORTS =====
+const { testimonials } = require("./testimonials");
+exports.testimonials = testimonials;
+
 // ===== NEWSLETTER MODULE EXPORTS =====
 const { subscribeNewsletter } = require("./newsletter/subscribe");
 const { newsletterPreferences } = require("./newsletter/preferences");

@@ -31,6 +31,9 @@ fn_linkedin_posts: "https://europe-west1-hasanjaffal.cloudfunctions.net/generate
 fn_manage_lexicon: "https://managelexicon-vgheoh5xza-ew.a.run.app"
 fn_backfill_tokens: "https://europe-west1-hasanjaffal.cloudfunctions.net/backfillTokens"
 
+# Sproochentest testimonials
+fn_testimonials: "https://testimonials-vgheoh5xza-ew.a.run.app"
+
 # Firebase web config (API key is safe to expose — restricted by domain)
 firebase_api_key: "AIzaSyAc7rsjmMeWjR5AzBEOWZfFzRjOQdNZtoQ"
 firebase_auth_domain: "hasanjaffal.firebaseapp.com"

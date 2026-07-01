@@ -1,0 +1,558 @@
+---
+layout: page
+title: "Sproochentest Community Board"
+subtitle: "Testimonials & Feedback"
+share-title: "Sproochentest Community Board — Testimonials & Feedback"
+share-description: "See what other learners say about their Sproochentest preparation experience. Share your own story or feedback."
+permalink: /sproochentest/testimonials/
+show-avatar: false
+chat_with_me_box: false
+full-width: true
+css:
+  - "/assets/css/sproochentest.css"
+---
+
+<meta name="fn-testimonials" content="{{ site.data.firebase.fn_testimonials }}">
+
+{% include sproochentest-gtag.html %}
+{% include sproochentest-header.html %}
+
+<style>
+.navbar { display: none !important; }
+footer.site-footer { display: none !important; }
+
+.testimonials-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #FFFFFF;
+}
+
+.testimonials-hero {
+  background: var(--dark, #0F172A);
+  padding: 80px 0 48px;
+  text-align: center;
+}
+
+.testimonials-hero h1 {
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #F8FAFC;
+  margin: 0 0 8px;
+}
+
+.testimonials-hero p {
+  font-size: 0.92rem;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.testimonials-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Testimonials Grid */
+.testimonials-section {
+  padding: 48px 0;
+}
+
+.testimonials-section-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--dark, #0F172A);
+  margin: 0 0 24px;
+}
+
+.testimonials-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.testimonial-card {
+  background: var(--slate-bg, #F8FAFC);
+  border: 1px solid var(--slate-border, #E2E8F0);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.testimonial-stars {
+  color: #F59E0B;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.testimonial-message {
+  font-size: 0.9rem;
+  color: var(--text-muted, #475569);
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+
+.testimonial-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: var(--dark, #0F172A);
+}
+
+.testimonial-date {
+  color: var(--text-soft, #94A3B8);
+}
+
+.testimonials-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted, #64748B);
+  font-size: 0.9rem;
+}
+
+.testimonials-loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-soft, #94A3B8);
+  font-size: 0.85rem;
+}
+
+/* Forms */
+.testimonial-form-section {
+  padding: 48px 0;
+  border-top: 1px solid var(--slate-border, #E2E8F0);
+}
+
+.form-card {
+  background: var(--slate-bg, #F8FAFC);
+  border: 1px solid var(--slate-border, #E2E8F0);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.form-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark, #0F172A);
+  margin: 0 0 6px;
+}
+
+.form-card .form-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted, #64748B);
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dark, #0F172A);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  border: 1px solid var(--slate-border, #E2E8F0);
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--dark, #0F172A);
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #9333EA;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Star Rating Selector */
+.star-selector {
+  display: flex;
+  gap: 4px;
+}
+
+.star-selector .star-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #CBD5E1;
+  cursor: pointer;
+  padding: 2px;
+  transition: color 0.15s;
+}
+
+.star-selector .star-btn.active,
+.star-selector .star-btn:hover {
+  color: #F59E0B;
+}
+
+.form-submit-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--dark, #0F172A);
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.form-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-success {
+  display: none;
+  padding: 14px 18px;
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #166534;
+  margin-top: 16px;
+}
+
+.form-error {
+  display: none;
+  padding: 14px 18px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #991B1B;
+  margin-top: 16px;
+}
+
+/* Honeypot */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Feedback section */
+.feedback-section {
+  padding: 48px 0 64px;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9333EA;
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .testimonials-container {
+    padding: 0 16px;
+  }
+  .form-card {
+    padding: 20px;
+  }
+  .testimonial-card {
+    padding: 16px 18px;
+  }
+}
+</style>
+
+<div class="testimonials-page">
+
+  <!-- Hero -->
+  <div class="testimonials-hero">
+    <div class="testimonials-container">
+      <h1>Community Board</h1>
+      <p>What learners say about their Sproochentest preparation</p>
+    </div>
+  </div>
+
+  <!-- Section 1: Public Testimonials -->
+  <div class="testimonials-section">
+    <div class="testimonials-container">
+      <a href="/sproochentest/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Sproochentest</a>
+
+      <h2 class="testimonials-section-title">What learners say</h2>
+
+      <div id="testimonials-loading" class="testimonials-loading">
+        Loading testimonials...
+      </div>
+
+      <div id="testimonials-grid" class="testimonials-grid" style="display:none;"></div>
+
+      <div id="testimonials-empty" class="testimonials-empty" style="display:none;">
+        No testimonials yet. Be the first to share your experience!
+      </div>
+
+      <!-- Submit Testimonial Form -->
+      <div class="testimonial-form-section">
+        <div class="form-card">
+          <h3>Share your experience</h3>
+          <p class="form-desc">Your testimonial will appear on this page after review.</p>
+
+          <form id="testimonial-form">
+            <div class="form-group">
+              <label for="t-name">Your name</label>
+              <input type="text" id="t-name" name="name" placeholder="e.g. Maria S." required maxlength="200">
+            </div>
+
+            <div class="form-group">
+              <label>Rating</label>
+              <div class="star-selector" id="star-selector">
+                <button type="button" class="star-btn" data-value="1">★</button>
+                <button type="button" class="star-btn" data-value="2">★</button>
+                <button type="button" class="star-btn" data-value="3">★</button>
+                <button type="button" class="star-btn" data-value="4">★</button>
+                <button type="button" class="star-btn" data-value="5">★</button>
+              </div>
+              <input type="hidden" id="t-rating" name="rating" value="5">
+            </div>
+
+            <div class="form-group">
+              <label for="t-message">Your message</label>
+              <textarea id="t-message" name="message" placeholder="How did this guide help you prepare?" required maxlength="2000"></textarea>
+            </div>
+
+            <!-- Honeypot -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="t-website">Website</label>
+              <input type="text" id="t-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button type="submit" class="form-submit-btn" id="t-submit-btn">Submit Testimonial</button>
+
+            <div class="form-success" id="t-success">Thank you! Your testimonial will appear after review.</div>
+            <div class="form-error" id="t-error">Something went wrong. Please try again.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Private Feedback -->
+  <div class="feedback-section">
+    <div class="testimonials-container">
+      <div class="form-card">
+        <h3>Help us improve</h3>
+        <p class="form-desc">Private feedback — only visible to us. Let us know what's working and what could be better.</p>
+
+        <form id="feedback-form">
+          <div class="form-group">
+            <label for="f-message">Your feedback</label>
+            <textarea id="f-message" name="message" placeholder="What would you like to see improved?" required maxlength="2000"></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="f-company">Company</label>
+            <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="form-submit-btn" id="f-submit-btn">Send Feedback</button>
+
+          <div class="form-success" id="f-success">Thank you for your feedback!</div>
+          <div class="form-error" id="f-error">Something went wrong. Please try again.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% include sproochentest-footer.html %}
+
+<script>
+(function() {
+  const API_URL = document.querySelector('meta[name="fn-testimonials"]').content;
+
+  // ===== Load Testimonials =====
+  async function loadTestimonials() {
+    const grid = document.getElementById('testimonials-grid');
+    const loading = document.getElementById('testimonials-loading');
+    const empty = document.getElementById('testimonials-empty');
+
+    try {
+      const res = await fetch(API_URL + '?action=list');
+      const data = await res.json();
+
+      loading.style.display = 'none';
+
+      if (!data.testimonials || data.testimonials.length === 0) {
+        empty.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      grid.innerHTML = data.testimonials.map(t => {
+        const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+        const date = t.createdAt ? new Date(t.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        return `
+          <div class="testimonial-card">
+            <div class="testimonial-stars">${stars}</div>
+            <p class="testimonial-message">${escapeHtml(t.message)}</p>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">${escapeHtml(t.name)}</span>
+              <span class="testimonial-date">${date}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    } catch (err) {
+      loading.style.display = 'none';
+      empty.style.display = 'block';
+      empty.textContent = 'Could not load testimonials. Please try again later.';
+    }
+  }
+
+  // ===== Star Selector =====
+  const starSelector = document.getElementById('star-selector');
+  const ratingInput = document.getElementById('t-rating');
+  let currentRating = 5;
+
+  function updateStars(value) {
+    currentRating = value;
+    ratingInput.value = value;
+    starSelector.querySelectorAll('.star-btn').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.value) <= value);
+    });
+  }
+
+  starSelector.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('click', () => updateStars(parseInt(btn.dataset.value)));
+  });
+
+  // Initialize with 5 stars selected
+  updateStars(5);
+
+  // ===== Testimonial Form Submit =====
+  document.getElementById('testimonial-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('t-submit-btn');
+    const success = document.getElementById('t-success');
+    const error = document.getElementById('t-error');
+
+    success.style.display = 'none';
+    error.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    const payload = {
+      name: document.getElementById('t-name').value.trim(),
+      message: document.getElementById('t-message').value.trim(),
+      rating: currentRating,
+      type: 'public',
+      honeypot: document.getElementById('t-website').value
+    };
+
+    try {
+      const res = await fetch(API_URL + '?action=submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        success.style.display = 'block';
+        this.reset();
+        updateStars(5);
+      } else {
+        error.style.display = 'block';
+      }
+    } catch (err) {
+      error.style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Submit Testimonial';
+  });
+
+  // ===== Feedback Form Submit =====
+  document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('f-submit-btn');
+    const success = document.getElementById('f-success');
+    const error = document.getElementById('f-error');
+
+    success.style.display = 'none';
+    error.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const payload = {
+      name: 'Anonymous',
+      message: document.getElementById('f-message').value.trim(),
+      rating: 5,
+      type: 'private',
+      honeypot: document.getElementById('f-company').value
+    };
+
+    try {
+      const res = await fetch(API_URL + '?action=submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        success.style.display = 'block';
+        this.reset();
+      } else {
+        error.style.display = 'block';
+      }
+    } catch (err) {
+      error.style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Send Feedback';
+  });
+
+  // ===== Utility =====
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Load on page ready
+  loadTestimonials();
+})();
+</script>
