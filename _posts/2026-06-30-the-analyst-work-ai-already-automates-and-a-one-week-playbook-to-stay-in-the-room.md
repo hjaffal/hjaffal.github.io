@@ -8,6 +8,8 @@ tags:
 topic: ai-topic
 archetype: write
 author: Hasan J.
+thumbnail-img: /assets/img/posts/2026-06-30-the-analyst-work-ai-already-automates-and-a-one-week-playbook-to-stay-in-the-room.webp
+share-img: /assets/img/posts/2026-06-30-the-analyst-work-ai-already-automates-and-a-one-week-playbook-to-stay-in-the-room.webp
 tldr: "AI now automates big chunks of analyst work: query drafting, data cleanup, anomaly detection, ticket triage, and weekly commentary. That means the safe skill is no longer “I can operate the tools,” it’s judgment under pressure. This post starts with a real scene, names the tasks disappearing right now, and gives a 7-step playbook you can run this week. You’ll map decisions to costs, set cutoffs, convert reports into triggers, and harden your escalation path. There’s one uncomfortable choice you can’t dodge: accept friction or accept loss—and own it out loud."
 ---
 
