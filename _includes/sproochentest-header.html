@@ -5,7 +5,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <nav class="sp-header-nav" id="sp-header-nav">
-      <a href="/sproochentest/gesondheet/" class="{% if page.layout == 'sproochentest-topic' %}sp-nav-active{% endif %}">Speaking</a>
+      <a href="/sproochentest-speaking-practice/" class="{% if page.layout == 'sproochentest-topic' or page.url == '/sproochentest-speaking-practice/' or page.url == '/sproochentest/mock-exam/' %}sp-nav-active{% endif %}">Speaking</a>
       <a href="/sproochentest-image-description/" class="{% if page.url == '/sproochentest-image-description/' %}sp-nav-active{% endif %}">Describing Images</a>
       <a href="/sproochentest-listening-practice/" class="{% if page.url == '/sproochentest-listening-practice/' %}sp-nav-active{% endif %}">Listening</a>
       <a href="/sproochentest/vocab/" class="{% if page.url == '/sproochentest/vocab/' %}sp-nav-active{% endif %}">Vocab</a>

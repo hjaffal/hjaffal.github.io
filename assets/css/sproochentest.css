@@ -1993,3 +1993,233 @@ main.container-fluid:has(.sp-topic-page) {
     margin-right: 8px;
   }
 }
+
+
+/* ===== MOCK EXAM ===== */
+
+.sp-mock-exam {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-mock-step {
+  width: 100%;
+  padding: 48px 24px;
+}
+
+.sp-mock-hidden {
+  display: none !important;
+}
+
+.sp-mock-center {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sp-mock-title {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+  margin: 12px 0 12px;
+}
+
+.sp-mock-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+/* Topic choice buttons */
+.sp-mock-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.sp-mock-topic-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 28px 24px;
+  background: var(--white);
+  border: 2px solid var(--slate-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sp-mock-topic-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(147, 51, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.sp-mock-topic-btn strong {
+  font-size: 1.15rem;
+  color: var(--dark);
+}
+
+.sp-mock-topic-btn span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Exam header */
+.sp-mock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding: 16px 24px;
+  background: var(--slate-bg);
+  border-radius: 10px;
+  border: 1px solid var(--slate-border);
+}
+
+.sp-mock-topic-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.sp-mock-timer {
+  font-family: var(--mono, monospace);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.05em;
+}
+
+.sp-mock-timer-warn {
+  color: #EF4444;
+}
+
+/* Progress */
+.sp-mock-progress {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.sp-mock-progress #mock-q-num {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+/* Audio player area */
+.sp-mock-player {
+  margin-bottom: 40px;
+}
+
+.sp-mock-audio-icon {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94A3B8;
+  transition: all 0.3s;
+}
+
+.sp-mock-audio-icon.sp-mock-playing {
+  color: var(--accent);
+  box-shadow: 0 0 0 8px rgba(147, 51, 234, 0.1);
+}
+
+.sp-mock-instruction {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Action buttons */
+.sp-mock-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.sp-mock-btn {
+  padding: 14px 28px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sp-mock-btn-next {
+  background: var(--dark);
+  color: #fff;
+}
+
+.sp-mock-btn-next:hover {
+  background: var(--accent);
+}
+
+.sp-mock-btn-replay {
+  background: transparent;
+  color: var(--dark);
+  border: 1px solid var(--slate-border);
+}
+
+.sp-mock-btn-replay:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sp-mock-btn-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sp-mock-btn-disabled:hover {
+  border-color: var(--slate-border);
+  color: var(--dark);
+}
+
+/* Done screen */
+.sp-mock-done-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.sp-mock-done-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .sp-mock-actions,
+  .sp-mock-done-actions {
+    flex-direction: column;
+  }
+
+  .sp-mock-header {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .sp-mock-btn {
+    justify-content: center;
+  }
+}

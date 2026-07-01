@@ -1,0 +1,275 @@
+---
+layout: page
+title:
+subtitle:
+full-width: true
+share-title: "Sproochentest Mock Exam — Simulate the A2 Speaking Test"
+share-description: "Simulate real Sproochentest conditions: pick a topic, listen to 10 random questions audio-only, and answer within 5 minutes."
+chat_with_me_box: false
+show-avatar: false
+permalink: /sproochentest/mock-exam/
+published: false
+css:
+  - "/assets/css/sproochentest.css"
+---
+
+{% include sproochentest-gtag.html %}
+{% include sproochentest-header.html %}
+
+<style>.navbar { display: none !important; } footer.site-footer { display: none !important; }</style>
+
+<div class="sp-page">
+  <div class="sp-mock-exam" id="mock-exam">
+
+    <!-- Step 1: Choose Topic -->
+    <div class="sp-mock-step" id="mock-step-choose">
+      <div class="sp-mock-center">
+        <span class="field-label">SIMULATIOUN</span>
+        <h1 class="sp-mock-title">Sproochentest Simulatioun</h1>
+        <p class="sp-mock-desc">Wéi beim richtegen Examen: Dir kritt zwou Themen zur Auswiel. Wielt eent, an Dir héiert zéng Froen — nëmmen als Audio, ouni Text. Dir hutt fënnef Minutten Zäit.</p>
+
+        <div class="sp-mock-topics" id="mock-topics">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Countdown + Questions -->
+    <div class="sp-mock-step sp-mock-hidden" id="mock-step-exam">
+      <div class="sp-mock-center">
+        <div class="sp-mock-header">
+          <div class="sp-mock-topic-label" id="mock-topic-label"></div>
+          <div class="sp-mock-timer" id="mock-timer">05:00</div>
+        </div>
+
+        <div class="sp-mock-progress" id="mock-progress">
+          <span id="mock-q-num">1</span> / <span id="mock-q-total">10</span>
+        </div>
+
+        <div class="sp-mock-player">
+          <div class="sp-mock-audio-icon" id="mock-audio-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </div>
+          <p class="sp-mock-instruction" id="mock-instruction">Lauschtert d'Fro an äntwert haart.</p>
+        </div>
+
+        <div class="sp-mock-actions">
+          <button class="sp-mock-btn sp-mock-btn-replay" id="mock-btn-replay">
+            <i class="fas fa-redo"></i> Nach eng Kéier
+          </button>
+          <button class="sp-mock-btn sp-mock-btn-next" id="mock-btn-next">
+            Weider <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Done -->
+    <div class="sp-mock-step sp-mock-hidden" id="mock-step-done">
+      <div class="sp-mock-center">
+        <div class="sp-mock-done-icon">🎉</div>
+        <h2 class="sp-mock-title">Gutt gemaach!</h2>
+        <p class="sp-mock-desc" id="mock-done-msg">Dir hutt all 10 Froen beäntwert.</p>
+        <div class="sp-mock-done-actions">
+          <button class="sp-mock-btn sp-mock-btn-next" id="mock-btn-restart">Nach eng Kéier probéieren</button>
+          <a href="/sproochentest-speaking-practice/" class="sp-mock-btn sp-mock-btn-replay">All Themen</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% include sproochentest-footer.html %}
+
+<script>
+(function() {
+  var TOPICS = {
+    "akafen": { name: "Akafen", count: 16 },
+    "gesondheet": { name: "Gesondheet", count: 13 },
+    "kaddoen": { name: "Kaddoen", count: 12 },
+    "kreativitaeit-hobbyen": { name: "Hobbyen", count: 10 },
+    "liesen": { name: "Liesen", count: 22 },
+    "medien-technologien": { name: "Medien & Technologien", count: 19 },
+    "moud-kleeder": { name: "Moud & Kleeder", count: 13 },
+    "musek": { name: "Musek", count: 14 },
+    "reesen-vakanz": { name: "Reesen & Vakanz", count: 15 },
+    "sport": { name: "Sport", count: 12 },
+    "sproochen": { name: "Sproochen", count: 15 },
+    "stot-machen": { name: "Stot Machen", count: 18 },
+    "summer-wantar": { name: "Summer & Wanter", count: 12 },
+    "tourismus": { name: "Tourismus", count: 15 },
+    "transport": { name: "Transport", count: 11 },
+    "wunnen": { name: "Wunnen", count: 18 }
+  };
+
+  var slugs = Object.keys(TOPICS);
+  var stepChoose = document.getElementById('mock-step-choose');
+  var stepExam = document.getElementById('mock-step-exam');
+  var stepDone = document.getElementById('mock-step-done');
+  var topicsEl = document.getElementById('mock-topics');
+  var timerEl = document.getElementById('mock-timer');
+  var topicLabel = document.getElementById('mock-topic-label');
+  var qNum = document.getElementById('mock-q-num');
+  var qTotal = document.getElementById('mock-q-total');
+  var audioIcon = document.getElementById('mock-audio-icon');
+  var instruction = document.getElementById('mock-instruction');
+  var btnReplay = document.getElementById('mock-btn-replay');
+  var btnNext = document.getElementById('mock-btn-next');
+  var btnRestart = document.getElementById('mock-btn-restart');
+  var doneMsg = document.getElementById('mock-done-msg');
+
+  var currentAudio = null;
+  var questions = [];
+  var currentQ = 0;
+  var replayUsed = false;
+  var timerInterval = null;
+  var timeLeft = 300; // 5 minutes
+
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+
+  function pickTwo() {
+    var shuffled = shuffle(slugs.slice());
+    return [shuffled[0], shuffled[1]];
+  }
+
+  function showChoose() {
+    stepChoose.classList.remove('sp-mock-hidden');
+    stepExam.classList.add('sp-mock-hidden');
+    stepDone.classList.add('sp-mock-hidden');
+    clearInterval(timerInterval);
+
+    var two = pickTwo();
+    topicsEl.innerHTML = two.map(function(slug) {
+      var t = TOPICS[slug];
+      return '<button class="sp-mock-topic-btn" data-slug="' + slug + '">' +
+        '<strong>' + t.name + '</strong>' +
+        '<span>' + t.count + ' Froen</span>' +
+      '</button>';
+    }).join('');
+  }
+
+  function startExam(slug) {
+    var topic = TOPICS[slug];
+    // Pick 10 random questions (audio indices)
+    var indices = [];
+    for (var i = 1; i <= topic.count; i++) indices.push(i);
+    shuffle(indices);
+    questions = indices.slice(0, 10).map(function(n) {
+      return '/assets/audio/questions/' + slug + '/q' + String(n).padStart(2, '0') + '.m4a';
+    });
+
+    currentQ = 0;
+    timeLeft = 300;
+    replayUsed = false;
+
+    topicLabel.textContent = topic.name;
+    qTotal.textContent = questions.length;
+
+    stepChoose.classList.add('sp-mock-hidden');
+    stepExam.classList.remove('sp-mock-hidden');
+    stepDone.classList.add('sp-mock-hidden');
+
+    updateTimer();
+    timerInterval = setInterval(function() {
+      timeLeft--;
+      updateTimer();
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        showDone(true);
+      }
+    }, 1000);
+
+    playQuestion();
+  }
+
+  function updateTimer() {
+    var m = Math.floor(timeLeft / 60);
+    var s = timeLeft % 60;
+    timerEl.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    if (timeLeft <= 60) {
+      timerEl.classList.add('sp-mock-timer-warn');
+    } else {
+      timerEl.classList.remove('sp-mock-timer-warn');
+    }
+  }
+
+  function playQuestion() {
+    qNum.textContent = currentQ + 1;
+    replayUsed = false;
+    btnReplay.disabled = false;
+    btnReplay.classList.remove('sp-mock-btn-disabled');
+    instruction.textContent = 'Lauschtert d\'Fro an äntwert haart.';
+    audioIcon.classList.add('sp-mock-playing');
+
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+
+    currentAudio = new Audio(questions[currentQ]);
+    currentAudio.play().catch(function() {});
+    currentAudio.onended = function() {
+      audioIcon.classList.remove('sp-mock-playing');
+    };
+  }
+
+  function replay() {
+    if (replayUsed) return;
+    replayUsed = true;
+    btnReplay.disabled = true;
+    btnReplay.classList.add('sp-mock-btn-disabled');
+    instruction.textContent = 'Schonn nees gespillt. Äntwert d\'Fro.';
+    audioIcon.classList.add('sp-mock-playing');
+
+    if (currentAudio) {
+      currentAudio.currentTime = 0;
+      currentAudio.play().catch(function() {});
+      currentAudio.onended = function() {
+        audioIcon.classList.remove('sp-mock-playing');
+      };
+    }
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    if (currentQ >= questions.length) {
+      showDone(false);
+    } else {
+      playQuestion();
+    }
+  }
+
+  function showDone(timedOut) {
+    clearInterval(timerInterval);
+    if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+    stepExam.classList.add('sp-mock-hidden');
+    stepDone.classList.remove('sp-mock-hidden');
+    if (timedOut) {
+      doneMsg.textContent = 'D\'Zäit ass eriwwer! Dir waart bei der Fro ' + (currentQ + 1) + ' vun ' + questions.length + '.';
+    } else {
+      doneMsg.textContent = 'Dir hutt all ' + questions.length + ' Froen beäntwert. Gutt gemaach!';
+    }
+  }
+
+  // Event listeners
+  topicsEl.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-slug]');
+    if (!btn) return;
+    startExam(btn.dataset.slug);
+  });
+
+  btnReplay.addEventListener('click', replay);
+  btnNext.addEventListener('click', nextQuestion);
+  btnRestart.addEventListener('click', showChoose);
+
+  // Init
+  showChoose();
+})();
+</script>
