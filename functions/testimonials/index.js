@@ -118,7 +118,7 @@ async function handleSubmit(req, res) {
     try {
       const resend = new Resend(RESEND_API_KEY.value());
       const charLabel = CHARACTER_LABELS[character] || character;
-      const firestoreUrl = `https://console.firebase.google.com/project/hasanjaffal/firestore/databases/-default-/data/sproochentest_testimonials/${docRef.id}`;
+      const firestoreUrl = `https://hasanjaffal.com/newsletter/admin/#testimonials`;
 
       await resend.emails.send({
         from: "Sproochentest <hasan@hasanjaffal.com>",
@@ -146,9 +146,9 @@ async function handleSubmit(req, res) {
               </tr>
             </table>
             <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #E2E8F0;">
-              <a href="${firestoreUrl}" style="display: inline-block; padding: 10px 20px; background: #9333EA; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">Approve in Firestore</a>
+              <a href="${firestoreUrl}" style="display: inline-block; padding: 10px 20px; background: #9333EA; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">Review in Admin</a>
             </div>
-            <p style="margin-top: 16px; font-size: 12px; color: #94A3B8;">Change status from "pending" to "approved" to display on the community board.</p>
+            <p style="margin-top: 16px; font-size: 12px; color: #94A3B8;">Go to the Admin panel → Sproochentest → Testimonials to approve or reject.</p>
           </div>
         `,
       });

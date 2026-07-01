@@ -15,6 +15,8 @@ css:
 {% include sproochentest-gtag.html %}
 {% include sproochentest-header.html %}
 
+<meta name="fn-testimonials" content="{{ site.data.firebase.fn_testimonials }}">
+
 <style>.navbar { display: none !important; } footer.site-footer { display: none !important; }</style>
 
 <div class="sp-page">
@@ -287,11 +289,85 @@ css:
     <div class="sp-container" style="text-align:center;">
       <h2 class="sp-h2">Community Board</h2>
       <p>See what other learners say about their Sproochentest preparation experience.</p>
-      <div style="margin-top:20px;">
-        <a href="/sproochentest/testimonials/" class="sp-section-btn">View Testimonials →</a>
+
+      <!-- Testimonials Carousel -->
+      <div class="sp-testimonials-carousel" id="sp-testimonials-carousel" style="margin:28px auto 24px;max-width:600px;position:relative;min-height:120px;">
+        <div class="sp-carousel-track" id="sp-carousel-track" style="overflow:hidden;border-radius:12px;background:var(--white,#fff);border:1px solid var(--slate-border,#e2e8f0);padding:24px 28px;text-align:left;">
+          <p style="font-size:0.85rem;color:var(--text-soft,#94a3b8);text-align:center;">Loading...</p>
+        </div>
+        <div style="display:flex;justify-content:center;gap:6px;margin-top:12px;" id="sp-carousel-dots"></div>
+      </div>
+
+      <div style="margin-top:8px;">
+        <a href="/sproochentest/testimonials/" class="sp-section-btn">View All & Share Yours →</a>
       </div>
     </div>
   </div>
+
+  <script>
+  (function() {
+    var carousel = document.getElementById('sp-carousel-track');
+    var dotsEl = document.getElementById('sp-carousel-dots');
+    if (!carousel) return;
+
+    var fnUrl = document.querySelector('meta[name="fn-testimonials"]');
+    if (!fnUrl) { carousel.innerHTML = ''; return; }
+
+    fetch(fnUrl.getAttribute('content') + '?action=list')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var items = (data.testimonials || []).slice(0, 5);
+        if (items.length === 0) {
+          carousel.parentElement.style.display = 'none';
+          return;
+        }
+
+        var current = 0;
+
+        function render() {
+          var t = items[current];
+          var charEmoji = { love: '🤩', meh: '🤷', grumpy: '😤', student: '📚', exam: '📝', passed: '🎉' }[t.character] || '💬';
+          carousel.innerHTML = '<div style="display:flex;align-items:flex-start;gap:12px;">' +
+            '<span style="font-size:1.5rem;flex-shrink:0;">' + charEmoji + '</span>' +
+            '<div style="flex:1;">' +
+              '<p style="font-size:0.9rem;color:var(--dark,#0f172a);line-height:1.6;margin:0 0 8px;font-style:italic;">"' + escHtml(t.experience) + '"</p>' +
+              '<span style="font-size:0.78rem;font-weight:600;color:var(--text-muted,#64748b);">— ' + escHtml(t.name) + '</span>' +
+            '</div>' +
+          '</div>';
+
+          // Dots
+          dotsEl.innerHTML = items.map(function(_, i) {
+            return '<span style="width:8px;height:8px;border-radius:50%;background:' + (i === current ? '#9333EA' : '#E2E8F0') + ';display:inline-block;cursor:pointer;" data-i="' + i + '"></span>';
+          }).join('');
+        }
+
+        render();
+
+        // Auto-advance
+        var timer = setInterval(function() {
+          current = (current + 1) % items.length;
+          render();
+        }, 5000);
+
+        // Click dots
+        dotsEl.addEventListener('click', function(e) {
+          var dot = e.target.closest('[data-i]');
+          if (!dot) return;
+          current = parseInt(dot.dataset.i);
+          render();
+          clearInterval(timer);
+          timer = setInterval(function() { current = (current + 1) % items.length; render(); }, 5000);
+        });
+
+        function escHtml(text) {
+          var d = document.createElement('div');
+          d.textContent = text;
+          return d.innerHTML;
+        }
+      })
+      .catch(function() { carousel.parentElement.style.display = 'none'; });
+  })();
+  </script>
 
   <div class="sp-section sp-section-alt">
     <div class="sp-container">
