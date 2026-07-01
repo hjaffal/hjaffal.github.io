@@ -1,12 +1,125 @@
 <footer class="sp-footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      <span>© {{ site.time | date: '%Y' }} <a href="/" style="color:inherit;">{{ site.author }}</a></span>
-      <span class="footer-sep">·</span>
-      <span>Based in Luxembourg</span>
+  <div class="sp-footer-inner">
+    <div class="sp-footer-grid">
+      <!-- Brand -->
+      <div class="sp-footer-col">
+        <a href="/sproochentest/" class="sp-footer-logo">Sproochentest Prep</a>
+        <p class="sp-footer-tagline">Free study guide for the Luxembourgish nationality test.</p>
+      </div>
+
+      <!-- Practice -->
+      <div class="sp-footer-col">
+        <h4 class="sp-footer-title">Practice</h4>
+        <ul class="sp-footer-links">
+          <li><a href="/sproochentest/vocab/">Vocabulary Engine</a></li>
+          <li><a href="/sproochentest/gesondheet/">Speaking Topics</a></li>
+          <li><a href="/sproochentest-image-description/">Image Description</a></li>
+          <li><a href="/sproochentest-listening-practice/">Listening Practice</a></li>
+          <li><a href="/sproochentest-materials/">Downloads</a></li>
+        </ul>
+      </div>
+
+      <!-- Community -->
+      <div class="sp-footer-col">
+        <h4 class="sp-footer-title">Community</h4>
+        <ul class="sp-footer-links">
+          <li><a href="/sproochentest/testimonials/">Community Board</a></li>
+          <li><a href="/sproochentest/about/">About the Guide</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="sp-footer-col">
+        <h4 class="sp-footer-title">Resources</h4>
+        <ul class="sp-footer-links">
+          <li><a href="https://sproochmaschinn.lu" target="_blank" rel="noopener">Sproochmaschinn (TTS)</a></li>
+          <li><a href="https://lod.lu" target="_blank" rel="noopener">LOD Dictionary</a></li>
+          <li><a href="https://inll.lu" target="_blank" rel="noopener">INLL (Official)</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-right">
-      <a href="/sproochentest/">SproochenTest Study Guide</a>
+
+    <div class="sp-footer-bottom">
+      <span>© {{ site.time | date: '%Y' }} <a href="/" style="color:inherit;">{{ site.author }}</a> · Made in Luxembourg 🇱🇺</span>
     </div>
   </div>
 </footer>
+
+<style>
+.sp-footer {
+  background: var(--dark, #0F172A);
+  border-top: 1px solid #1E293B;
+  padding: 48px 0 32px;
+  margin-top: 0;
+}
+.sp-footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.sp-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.sp-footer-logo {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #F8FAFC;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+.sp-footer-tagline {
+  font-size: 0.82rem;
+  color: #94A3B8;
+  line-height: 1.5;
+  margin: 0;
+}
+.sp-footer-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  margin: 0 0 12px;
+}
+.sp-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sp-footer-links li {
+  margin-bottom: 8px;
+}
+.sp-footer-links a {
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.sp-footer-links a:hover {
+  color: #F8FAFC;
+}
+.sp-footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid #1E293B;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #64748B;
+}
+@media (max-width: 700px) {
+  .sp-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .sp-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+</style>
