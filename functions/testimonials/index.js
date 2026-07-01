@@ -45,6 +45,9 @@ const testimonials = onRequest(
  * Character labels for email display.
  */
 const CHARACTER_LABELS = {
+  love: "Love it! 🤩",
+  meh: "It's okay 🤷",
+  grumpy: "Needs work 😤",
   student: "De Student (Still learning)",
   exam: "Am Examen (Exam ready)",
   passed: "Bestoungen! (Passed)",
@@ -65,7 +68,7 @@ async function handleSubmit(req, res) {
   }
 
   // Validate character
-  const validCharacters = ["student", "exam", "passed"];
+  const validCharacters = ["love", "meh", "grumpy", "student", "exam", "passed"];
   if (!character || !validCharacters.includes(character)) {
     res.status(400).json({ error: "Invalid character" });
     return;

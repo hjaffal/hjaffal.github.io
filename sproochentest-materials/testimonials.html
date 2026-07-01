@@ -385,19 +385,19 @@ footer.site-footer { display: none !important; }
 
           <form id="testimonial-form">
             <!-- Character Picker -->
-            <label style="display:block; font-size:0.82rem; font-weight:600; color:var(--dark, #0F172A); margin-bottom:10px;">Where are you on your journey?</label>
+            <label style="display:block; font-size:0.82rem; font-weight:600; color:var(--dark, #0F172A); margin-bottom:10px;">How do you feel about the site?</label>
             <div class="character-picker" id="character-picker">
-              <div class="character-option" data-character="student" tabindex="0" role="radio" aria-checked="false" aria-label="Still learning">
-                <div class="character-svg" id="char-student"></div>
-                <span class="character-label">Still learning</span>
+              <div class="character-option" data-character="love" tabindex="0" role="radio" aria-checked="false" aria-label="Love it!">
+                <div class="character-svg" id="char-love"></div>
+                <span class="character-label">Love it! 🤩</span>
               </div>
-              <div class="character-option" data-character="exam" tabindex="0" role="radio" aria-checked="false" aria-label="Exam ready">
-                <div class="character-svg" id="char-exam"></div>
-                <span class="character-label">Exam ready</span>
+              <div class="character-option" data-character="meh" tabindex="0" role="radio" aria-checked="false" aria-label="It's okay">
+                <div class="character-svg" id="char-meh"></div>
+                <span class="character-label">It's okay 🤷</span>
               </div>
-              <div class="character-option" data-character="passed" tabindex="0" role="radio" aria-checked="false" aria-label="Bestoungen!">
-                <div class="character-svg" id="char-passed"></div>
-                <span class="character-label">Bestoungen!</span>
+              <div class="character-option" data-character="grumpy" tabindex="0" role="radio" aria-checked="false" aria-label="Needs work">
+                <div class="character-svg" id="char-grumpy"></div>
+                <span class="character-label">Needs work 😤</span>
               </div>
             </div>
 
@@ -442,78 +442,70 @@ footer.site-footer { display: none !important; }
 (function() {
   const API_URL = document.querySelector('meta[name="fn-testimonials"]').content;
 
-  // ===== SVG Characters (defined once, reused everywhere) =====
+  // ===== SVG Characters (fun satisfaction characters) =====
   function getCharacterSVG(character, size) {
     const w = size || 64;
     const svgs = {
-      student: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Desk -->
-        <rect x="15" y="55" width="50" height="4" rx="2" fill="#E2E8F0"/>
-        <rect x="18" y="59" width="4" height="14" rx="1" fill="#CBD5E1"/>
-        <rect x="58" y="59" width="4" height="14" rx="1" fill="#CBD5E1"/>
-        <!-- Open book on desk -->
-        <path d="M30 48 L40 51 L50 48 L50 55 L40 52 L30 55 Z" fill="#9333EA" opacity="0.85"/>
-        <line x1="40" y1="51" x2="40" y2="52" stroke="#F8FAFC" stroke-width="0.5"/>
-        <!-- Person -->
-        <circle cx="40" cy="26" r="9" fill="#0F172A"/>
-        <path d="M30 38 C30 34 34 32 40 32 C46 32 50 34 50 38 L50 52 L30 52 Z" fill="#0F172A"/>
-        <!-- Arms on desk -->
-        <path d="M30 44 L24 50 L26 52" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
-        <path d="M50 44 L56 50 L54 52" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+      love: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Round face -->
+        <circle cx="40" cy="40" r="28" fill="#FEF3C7"/>
+        <circle cx="40" cy="40" r="28" stroke="#F59E0B" stroke-width="2"/>
+        <!-- Heart eyes -->
+        <path d="M28 33 C28 29 32 27 34 30 C36 27 40 29 40 33 C40 37 34 40 34 40 C34 40 28 37 28 33Z" fill="#EF4444"/>
+        <path d="M40 33 C40 29 44 27 46 30 C48 27 52 29 52 33 C52 37 46 40 46 40 C46 40 40 37 40 33Z" fill="#EF4444"/>
+        <!-- Big smile -->
+        <path d="M28 46 Q40 58 52 46" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Blush -->
+        <circle cx="26" cy="46" r="4" fill="#FECACA" opacity="0.6"/>
+        <circle cx="54" cy="46" r="4" fill="#FECACA" opacity="0.6"/>
+        <!-- Sparkles -->
+        <circle cx="62" cy="14" r="3" fill="#9333EA" opacity="0.7"/>
+        <circle cx="16" cy="18" r="2" fill="#F59E0B" opacity="0.7"/>
+        <circle cx="68" cy="28" r="2" fill="#9333EA" opacity="0.5"/>
       </svg>`,
-      exam: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Person -->
-        <circle cx="40" cy="22" r="9" fill="#0F172A"/>
-        <!-- Focused expression -->
-        <path d="M36 21 L38 20" stroke="#F8FAFC" stroke-width="1" stroke-linecap="round"/>
-        <path d="M42 21 L44 20" stroke="#F8FAFC" stroke-width="1" stroke-linecap="round"/>
-        <path d="M37 26 L43 26" stroke="#F8FAFC" stroke-width="1" stroke-linecap="round"/>
-        <!-- Body -->
-        <path d="M30 34 C30 30 34 28 40 28 C46 28 50 30 50 34 L50 55 L30 55 Z" fill="#0F172A"/>
-        <!-- Paper in hand -->
-        <rect x="44" y="38" width="16" height="20" rx="2" fill="#9333EA" opacity="0.85"/>
-        <line x1="48" y1="43" x2="57" y2="43" stroke="#F8FAFC" stroke-width="1"/>
-        <line x1="48" y1="47" x2="56" y2="47" stroke="#F8FAFC" stroke-width="1"/>
-        <line x1="48" y1="51" x2="54" y2="51" stroke="#F8FAFC" stroke-width="1"/>
-        <!-- Pencil -->
-        <rect x="42" y="56" width="2" height="12" rx="1" fill="#F59E0B" transform="rotate(-15 43 62)"/>
-        <polygon points="42,68 43,72 44,68" fill="#0F172A" transform="rotate(-15 43 62)"/>
-        <!-- Arm holding paper -->
-        <path d="M50 40 L52 38" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+      meh: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Round face -->
+        <circle cx="40" cy="40" r="28" fill="#F1F5F9"/>
+        <circle cx="40" cy="40" r="28" stroke="#94A3B8" stroke-width="2"/>
+        <!-- Side-eye pupils -->
+        <circle cx="32" cy="36" r="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <circle cx="34" cy="37" r="2.5" fill="#0F172A"/>
+        <circle cx="48" cy="36" r="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <circle cx="50" cy="37" r="2.5" fill="#0F172A"/>
+        <!-- Raised eyebrow -->
+        <path d="M44 28 Q48 25 53 27" stroke="#0F172A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- Straight mouth -->
+        <path d="M32 50 L48 50" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Shrug hand -->
+        <path d="M64 55 L68 48" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="69" cy="46" r="3" fill="#FEF3C7" stroke="#94A3B8" stroke-width="1"/>
       </svg>`,
-      passed: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Person -->
-        <circle cx="40" cy="24" r="9" fill="#0F172A"/>
-        <!-- Happy face -->
-        <path d="M36 23 L38 22" stroke="#F8FAFC" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M42 23 L44 22" stroke="#F8FAFC" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M36 27 Q40 31 44 27" stroke="#F8FAFC" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-        <!-- Body -->
-        <path d="M33 36 C33 32 36 30 40 30 C44 30 47 32 47 36 L47 54 L33 54 Z" fill="#0F172A"/>
-        <!-- Raised arms -->
-        <path d="M33 38 L22 24" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-        <path d="M47 38 L58 24" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-        <!-- Luxembourg flag (left hand) -->
-        <rect x="16" y="12" width="14" height="12" rx="1.5" fill="none" stroke="#CBD5E1" stroke-width="0.5"/>
-        <rect x="16" y="12" width="14" height="4" fill="#EF4444"/>
-        <rect x="16" y="16" width="14" height="4" fill="#FFFFFF"/>
-        <rect x="16" y="20" width="14" height="4" fill="#3B82F6"/>
-        <!-- Celebration sparkles -->
-        <circle cx="60" cy="16" r="2" fill="#9333EA" opacity="0.7"/>
-        <circle cx="64" cy="22" r="1.5" fill="#F59E0B" opacity="0.7"/>
-        <circle cx="18" cy="8" r="1.5" fill="#9333EA" opacity="0.5"/>
-        <!-- Legs -->
-        <rect x="36" y="54" width="3.5" height="12" rx="1.5" fill="#0F172A"/>
-        <rect x="41" y="54" width="3.5" height="12" rx="1.5" fill="#0F172A"/>
+      grumpy: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Round face -->
+        <circle cx="40" cy="40" r="28" fill="#FEE2E2"/>
+        <circle cx="40" cy="40" r="28" stroke="#EF4444" stroke-width="2"/>
+        <!-- Angry eyebrows -->
+        <path d="M24 28 L34 32" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M56 28 L46 32" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Squinting eyes -->
+        <path d="M28 36 L36 36" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M44 36 L52 36" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Grumpy mouth -->
+        <path d="M30 52 Q40 46 50 52" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Steam puffs -->
+        <circle cx="18" cy="20" r="3" fill="#EF4444" opacity="0.3"/>
+        <circle cx="14" cy="14" r="2" fill="#EF4444" opacity="0.2"/>
+        <circle cx="62" cy="20" r="3" fill="#EF4444" opacity="0.3"/>
+        <circle cx="66" cy="14" r="2" fill="#EF4444" opacity="0.2"/>
       </svg>`
     };
-    return svgs[character] || svgs.student;
+    return svgs[character] || svgs.love;
   }
 
   // ===== Render SVGs into character picker =====
-  document.getElementById('char-student').innerHTML = getCharacterSVG('student', 64);
-  document.getElementById('char-exam').innerHTML = getCharacterSVG('exam', 64);
-  document.getElementById('char-passed').innerHTML = getCharacterSVG('passed', 64);
+  document.getElementById('char-love').innerHTML = getCharacterSVG('love', 64);
+  document.getElementById('char-meh').innerHTML = getCharacterSVG('meh', 64);
+  document.getElementById('char-grumpy').innerHTML = getCharacterSVG('grumpy', 64);
 
   // ===== Character Picker =====
   let selectedCharacter = null;
