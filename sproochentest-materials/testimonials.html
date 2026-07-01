@@ -78,10 +78,20 @@ footer.site-footer { display: none !important; }
   padding: 20px 24px;
 }
 
-.testimonial-stars {
-  color: #F59E0B;
-  font-size: 0.85rem;
-  margin-bottom: 10px;
+.testimonial-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.testimonial-card-icon {
+  flex-shrink: 0;
+}
+
+.testimonial-card-icon svg {
+  width: 40px;
+  height: 40px;
 }
 
 .testimonial-message {
@@ -121,7 +131,7 @@ footer.site-footer { display: none !important; }
   font-size: 0.85rem;
 }
 
-/* Forms */
+/* Form Section */
 .testimonial-form-section {
   padding: 48px 0;
   border-top: 1px solid var(--slate-border, #E2E8F0);
@@ -144,8 +154,60 @@ footer.site-footer { display: none !important; }
 .form-card .form-desc {
   font-size: 0.85rem;
   color: var(--text-muted, #64748B);
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   line-height: 1.5;
+}
+
+/* Character Picker */
+.character-picker {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.character-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  border: 2px solid var(--slate-border, #E2E8F0);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s, background 0.2s;
+  background: #FFFFFF;
+  flex: 1;
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.character-option:hover {
+  border-color: #C4B5FD;
+  transform: translateY(-2px);
+}
+
+.character-option.selected {
+  border-color: #9333EA;
+  background: #FAF5FF;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+.character-option svg {
+  width: 64px;
+  height: 64px;
+}
+
+.character-option .character-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted, #64748B);
+  text-align: center;
+}
+
+.character-option.selected .character-label {
+  color: #9333EA;
 }
 
 .form-group {
@@ -184,47 +246,36 @@ footer.site-footer { display: none !important; }
   resize: vertical;
 }
 
-/* Star Rating Selector */
-.star-selector {
-  display: flex;
-  gap: 4px;
-}
-
-.star-selector .star-btn {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  color: #CBD5E1;
-  cursor: pointer;
-  padding: 2px;
-  transition: color 0.15s;
-}
-
-.star-selector .star-btn.active,
-.star-selector .star-btn:hover {
-  color: #F59E0B;
+.emoji-note {
+  font-size: 0.8rem;
+  color: var(--text-soft, #94A3B8);
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 .form-submit-btn {
   display: inline-block;
   padding: 12px 24px;
-  background: var(--dark, #0F172A);
+  background: #9333EA;
   color: #FFFFFF;
   font-size: 0.88rem;
   font-weight: 700;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.15s;
+  margin-top: 8px;
 }
 
 .form-submit-btn:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .form-submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .form-success {
@@ -259,11 +310,6 @@ footer.site-footer { display: none !important; }
   overflow: hidden;
 }
 
-/* Feedback section */
-.feedback-section {
-  padding: 48px 0 64px;
-}
-
 /* Back link */
 .back-link {
   display: inline-flex;
@@ -290,6 +336,17 @@ footer.site-footer { display: none !important; }
   .testimonial-card {
     padding: 16px 18px;
   }
+  .character-picker {
+    gap: 10px;
+  }
+  .character-option {
+    padding: 12px 10px;
+    min-width: 90px;
+  }
+  .character-option svg {
+    width: 48px;
+    height: 48px;
+  }
 }
 </style>
 
@@ -299,7 +356,7 @@ footer.site-footer { display: none !important; }
   <div class="testimonials-hero">
     <div class="testimonials-container">
       <h1>Community Board</h1>
-      <p>What learners say about their Sproochentest preparation</p>
+      <p>Share your Sproochentest journey</p>
     </div>
   </div>
 
@@ -317,37 +374,49 @@ footer.site-footer { display: none !important; }
       <div id="testimonials-grid" class="testimonials-grid" style="display:none;"></div>
 
       <div id="testimonials-empty" class="testimonials-empty" style="display:none;">
-        No testimonials yet. Be the first to share your experience!
+        No testimonials yet. Be the first to share your experience! 🎉
       </div>
 
-      <!-- Submit Testimonial Form -->
+      <!-- Submit Form -->
       <div class="testimonial-form-section">
         <div class="form-card">
           <h3>Share your experience</h3>
-          <p class="form-desc">Your testimonial will appear on this page after review.</p>
+          <p class="form-desc">Pick your stage, tell your story. Your note will appear after review.</p>
 
           <form id="testimonial-form">
+            <!-- Character Picker -->
+            <label style="display:block; font-size:0.82rem; font-weight:600; color:var(--dark, #0F172A); margin-bottom:10px;">Where are you on your journey?</label>
+            <div class="character-picker" id="character-picker">
+              <div class="character-option" data-character="student" tabindex="0" role="radio" aria-checked="false" aria-label="Still learning">
+                <div class="character-svg" id="char-student"></div>
+                <span class="character-label">Still learning</span>
+              </div>
+              <div class="character-option" data-character="exam" tabindex="0" role="radio" aria-checked="false" aria-label="Exam ready">
+                <div class="character-svg" id="char-exam"></div>
+                <span class="character-label">Exam ready</span>
+              </div>
+              <div class="character-option" data-character="passed" tabindex="0" role="radio" aria-checked="false" aria-label="Bestoungen!">
+                <div class="character-svg" id="char-passed"></div>
+                <span class="character-label">Bestoungen!</span>
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="t-name">Your name</label>
+              <label for="t-name">Your name or nickname</label>
               <input type="text" id="t-name" name="name" placeholder="e.g. Maria S." required maxlength="200">
             </div>
 
             <div class="form-group">
-              <label>Rating</label>
-              <div class="star-selector" id="star-selector">
-                <button type="button" class="star-btn" data-value="1">★</button>
-                <button type="button" class="star-btn" data-value="2">★</button>
-                <button type="button" class="star-btn" data-value="3">★</button>
-                <button type="button" class="star-btn" data-value="4">★</button>
-                <button type="button" class="star-btn" data-value="5">★</button>
-              </div>
-              <input type="hidden" id="t-rating" name="rating" value="5">
+              <label for="t-experience">What helped you most?</label>
+              <textarea id="t-experience" name="experience" placeholder="The speaking topics helped me practice for..." required maxlength="2000"></textarea>
             </div>
 
             <div class="form-group">
-              <label for="t-message">Your message</label>
-              <textarea id="t-message" name="message" placeholder="How did this guide help you prepare?" required maxlength="2000"></textarea>
+              <label for="t-improvement">What could be better?</label>
+              <textarea id="t-improvement" name="improvement" placeholder="I wish there was more..." maxlength="2000"></textarea>
             </div>
+
+            <p class="emoji-note">Feel free to use emojis! 🎉📚🇱🇺</p>
 
             <!-- Honeypot -->
             <div class="hp-field" aria-hidden="true">
@@ -355,40 +424,12 @@ footer.site-footer { display: none !important; }
               <input type="text" id="t-website" name="website" tabindex="-1" autocomplete="off">
             </div>
 
-            <button type="submit" class="form-submit-btn" id="t-submit-btn">Submit Testimonial</button>
+            <button type="submit" class="form-submit-btn" id="t-submit-btn">Share my experience ✨</button>
 
-            <div class="form-success" id="t-success">Thank you! Your testimonial will appear after review.</div>
+            <div class="form-success" id="t-success">Thanks for sharing! Your note will appear after review. 🙏</div>
             <div class="form-error" id="t-error">Something went wrong. Please try again.</div>
           </form>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 2: Private Feedback -->
-  <div class="feedback-section">
-    <div class="testimonials-container">
-      <div class="form-card">
-        <h3>Help us improve</h3>
-        <p class="form-desc">Private feedback — only visible to us. Let us know what's working and what could be better.</p>
-
-        <form id="feedback-form">
-          <div class="form-group">
-            <label for="f-message">Your feedback</label>
-            <textarea id="f-message" name="message" placeholder="What would you like to see improved?" required maxlength="2000"></textarea>
-          </div>
-
-          <!-- Honeypot -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="f-company">Company</label>
-            <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off">
-          </div>
-
-          <button type="submit" class="form-submit-btn" id="f-submit-btn">Send Feedback</button>
-
-          <div class="form-success" id="f-success">Thank you for your feedback!</div>
-          <div class="form-error" id="f-error">Something went wrong. Please try again.</div>
-        </form>
       </div>
     </div>
   </div>
@@ -400,6 +441,104 @@ footer.site-footer { display: none !important; }
 <script>
 (function() {
   const API_URL = document.querySelector('meta[name="fn-testimonials"]').content;
+
+  // ===== SVG Characters (defined once, reused everywhere) =====
+  function getCharacterSVG(character, size) {
+    const w = size || 64;
+    const svgs = {
+      student: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Desk -->
+        <rect x="15" y="55" width="50" height="4" rx="2" fill="#E2E8F0"/>
+        <rect x="18" y="59" width="4" height="14" rx="1" fill="#CBD5E1"/>
+        <rect x="58" y="59" width="4" height="14" rx="1" fill="#CBD5E1"/>
+        <!-- Open book on desk -->
+        <path d="M30 48 L40 51 L50 48 L50 55 L40 52 L30 55 Z" fill="#9333EA" opacity="0.85"/>
+        <line x1="40" y1="51" x2="40" y2="52" stroke="#F8FAFC" stroke-width="0.5"/>
+        <!-- Person -->
+        <circle cx="40" cy="26" r="9" fill="#0F172A"/>
+        <path d="M30 38 C30 34 34 32 40 32 C46 32 50 34 50 38 L50 52 L30 52 Z" fill="#0F172A"/>
+        <!-- Arms on desk -->
+        <path d="M30 44 L24 50 L26 52" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+        <path d="M50 44 L56 50 L54 52" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+      </svg>`,
+      exam: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Person -->
+        <circle cx="40" cy="22" r="9" fill="#0F172A"/>
+        <!-- Focused expression -->
+        <path d="M36 21 L38 20" stroke="#F8FAFC" stroke-width="1" stroke-linecap="round"/>
+        <path d="M42 21 L44 20" stroke="#F8FAFC" stroke-width="1" stroke-linecap="round"/>
+        <path d="M37 26 L43 26" stroke="#F8FAFC" stroke-width="1" stroke-linecap="round"/>
+        <!-- Body -->
+        <path d="M30 34 C30 30 34 28 40 28 C46 28 50 30 50 34 L50 55 L30 55 Z" fill="#0F172A"/>
+        <!-- Paper in hand -->
+        <rect x="44" y="38" width="16" height="20" rx="2" fill="#9333EA" opacity="0.85"/>
+        <line x1="48" y1="43" x2="57" y2="43" stroke="#F8FAFC" stroke-width="1"/>
+        <line x1="48" y1="47" x2="56" y2="47" stroke="#F8FAFC" stroke-width="1"/>
+        <line x1="48" y1="51" x2="54" y2="51" stroke="#F8FAFC" stroke-width="1"/>
+        <!-- Pencil -->
+        <rect x="42" y="56" width="2" height="12" rx="1" fill="#F59E0B" transform="rotate(-15 43 62)"/>
+        <polygon points="42,68 43,72 44,68" fill="#0F172A" transform="rotate(-15 43 62)"/>
+        <!-- Arm holding paper -->
+        <path d="M50 40 L52 38" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+      </svg>`,
+      passed: `<svg viewBox="0 0 80 80" width="${w}" height="${w}" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Person -->
+        <circle cx="40" cy="24" r="9" fill="#0F172A"/>
+        <!-- Happy face -->
+        <path d="M36 23 L38 22" stroke="#F8FAFC" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M42 23 L44 22" stroke="#F8FAFC" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M36 27 Q40 31 44 27" stroke="#F8FAFC" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        <!-- Body -->
+        <path d="M33 36 C33 32 36 30 40 30 C44 30 47 32 47 36 L47 54 L33 54 Z" fill="#0F172A"/>
+        <!-- Raised arms -->
+        <path d="M33 38 L22 24" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M47 38 L58 24" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+        <!-- Luxembourg flag (left hand) -->
+        <rect x="16" y="12" width="14" height="12" rx="1.5" fill="none" stroke="#CBD5E1" stroke-width="0.5"/>
+        <rect x="16" y="12" width="14" height="4" fill="#EF4444"/>
+        <rect x="16" y="16" width="14" height="4" fill="#FFFFFF"/>
+        <rect x="16" y="20" width="14" height="4" fill="#3B82F6"/>
+        <!-- Celebration sparkles -->
+        <circle cx="60" cy="16" r="2" fill="#9333EA" opacity="0.7"/>
+        <circle cx="64" cy="22" r="1.5" fill="#F59E0B" opacity="0.7"/>
+        <circle cx="18" cy="8" r="1.5" fill="#9333EA" opacity="0.5"/>
+        <!-- Legs -->
+        <rect x="36" y="54" width="3.5" height="12" rx="1.5" fill="#0F172A"/>
+        <rect x="41" y="54" width="3.5" height="12" rx="1.5" fill="#0F172A"/>
+      </svg>`
+    };
+    return svgs[character] || svgs.student;
+  }
+
+  // ===== Render SVGs into character picker =====
+  document.getElementById('char-student').innerHTML = getCharacterSVG('student', 64);
+  document.getElementById('char-exam').innerHTML = getCharacterSVG('exam', 64);
+  document.getElementById('char-passed').innerHTML = getCharacterSVG('passed', 64);
+
+  // ===== Character Picker =====
+  let selectedCharacter = null;
+  const picker = document.getElementById('character-picker');
+  const options = picker.querySelectorAll('.character-option');
+
+  function selectCharacter(el) {
+    options.forEach(opt => {
+      opt.classList.remove('selected');
+      opt.setAttribute('aria-checked', 'false');
+    });
+    el.classList.add('selected');
+    el.setAttribute('aria-checked', 'true');
+    selectedCharacter = el.dataset.character;
+  }
+
+  options.forEach(opt => {
+    opt.addEventListener('click', () => selectCharacter(opt));
+    opt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectCharacter(opt);
+      }
+    });
+  });
 
   // ===== Load Testimonials =====
   async function loadTestimonials() {
@@ -420,16 +559,18 @@ footer.site-footer { display: none !important; }
 
       grid.style.display = 'grid';
       grid.innerHTML = data.testimonials.map(t => {
-        const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
         const date = t.createdAt ? new Date(t.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        const charIcon = getCharacterSVG(t.character || 'student', 40);
         return `
           <div class="testimonial-card">
-            <div class="testimonial-stars">${stars}</div>
-            <p class="testimonial-message">${escapeHtml(t.message)}</p>
-            <div class="testimonial-meta">
-              <span class="testimonial-name">${escapeHtml(t.name)}</span>
-              <span class="testimonial-date">${date}</span>
+            <div class="testimonial-card-header">
+              <div class="testimonial-card-icon">${charIcon}</div>
+              <div>
+                <span class="testimonial-name">${escapeHtml(t.name)}</span>
+                <span class="testimonial-date" style="display:block;">${date}</span>
+              </div>
             </div>
+            <p class="testimonial-message">${escapeHtml(t.experience)}</p>
           </div>
         `;
       }).join('');
@@ -440,27 +581,7 @@ footer.site-footer { display: none !important; }
     }
   }
 
-  // ===== Star Selector =====
-  const starSelector = document.getElementById('star-selector');
-  const ratingInput = document.getElementById('t-rating');
-  let currentRating = 5;
-
-  function updateStars(value) {
-    currentRating = value;
-    ratingInput.value = value;
-    starSelector.querySelectorAll('.star-btn').forEach(btn => {
-      btn.classList.toggle('active', parseInt(btn.dataset.value) <= value);
-    });
-  }
-
-  starSelector.querySelectorAll('.star-btn').forEach(btn => {
-    btn.addEventListener('click', () => updateStars(parseInt(btn.dataset.value)));
-  });
-
-  // Initialize with 5 stars selected
-  updateStars(5);
-
-  // ===== Testimonial Form Submit =====
+  // ===== Form Submit =====
   document.getElementById('testimonial-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -470,13 +591,21 @@ footer.site-footer { display: none !important; }
 
     success.style.display = 'none';
     error.style.display = 'none';
+
+    if (!selectedCharacter) {
+      error.textContent = 'Please pick your journey stage above!';
+      error.style.display = 'block';
+      return;
+    }
+
     btn.disabled = true;
     btn.textContent = 'Submitting...';
 
     const payload = {
+      character: selectedCharacter,
       name: document.getElementById('t-name').value.trim(),
-      message: document.getElementById('t-message').value.trim(),
-      rating: currentRating,
+      experience: document.getElementById('t-experience').value.trim(),
+      improvement: document.getElementById('t-improvement').value.trim(),
       type: 'public',
       honeypot: document.getElementById('t-website').value
     };
@@ -491,58 +620,22 @@ footer.site-footer { display: none !important; }
       if (res.ok) {
         success.style.display = 'block';
         this.reset();
-        updateStars(5);
+        selectedCharacter = null;
+        options.forEach(opt => {
+          opt.classList.remove('selected');
+          opt.setAttribute('aria-checked', 'false');
+        });
       } else {
+        error.textContent = 'Something went wrong. Please try again.';
         error.style.display = 'block';
       }
     } catch (err) {
+      error.textContent = 'Something went wrong. Please try again.';
       error.style.display = 'block';
     }
 
     btn.disabled = false;
-    btn.textContent = 'Submit Testimonial';
-  });
-
-  // ===== Feedback Form Submit =====
-  document.getElementById('feedback-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById('f-submit-btn');
-    const success = document.getElementById('f-success');
-    const error = document.getElementById('f-error');
-
-    success.style.display = 'none';
-    error.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    const payload = {
-      name: 'Anonymous',
-      message: document.getElementById('f-message').value.trim(),
-      rating: 5,
-      type: 'private',
-      honeypot: document.getElementById('f-company').value
-    };
-
-    try {
-      const res = await fetch(API_URL + '?action=submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        success.style.display = 'block';
-        this.reset();
-      } else {
-        error.style.display = 'block';
-      }
-    } catch (err) {
-      error.style.display = 'block';
-    }
-
-    btn.disabled = false;
-    btn.textContent = 'Send Feedback';
+    btn.textContent = 'Share my experience ✨';
   });
 
   // ===== Utility =====
