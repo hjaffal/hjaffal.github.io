@@ -360,6 +360,13 @@
   padding-top: 60px;
 }
 
+/* Remove Bootstrap container padding for topic pages */
+main.container-fluid:has(.sp-topic-page) {
+  padding: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
 .sp-topic-sidebar {
   background: var(--dark);
   padding: 40px 24px;
@@ -1098,6 +1105,9 @@
   position: relative;
   font-weight: 600;
   color: var(--dark);
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
 }
 
 .sp-topic-content ol > li::before {
@@ -1106,6 +1116,7 @@
   left: 0;
   font-weight: 700;
   color: var(--accent);
+  flex-shrink: 0;
 }
 
 .sp-topic-content ol > li > ul {
@@ -1618,6 +1629,18 @@
   color: #fff !important;
 }
 
+.sp-hero-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  padding: 14px 32px;
+  font-size: 0.9rem;
+}
+
+.sp-hero-btn-primary:hover {
+  background: #7C22CB;
+  border-color: #7C22CB;
+}
+
 .sp-hero-links .sp-section-btn:hover {
   background: var(--accent) !important;
   border-color: var(--accent) !important;
@@ -1632,6 +1655,267 @@
   .sp-hero-links .sp-section-btn,
   .sp-hero-btn {
     text-align: center;
+  }
+}
+
+/* ===== PATH GRID (Start Here) ===== */
+
+.sp-path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sp-path-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sp-path-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(147, 51, 234, 0.08);
+  transform: translateY(-2px);
+}
+
+.sp-path-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.sp-path-icon i {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.sp-path-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px;
+}
+
+.sp-path-card p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.sp-path-cta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.sp-path-card:hover .sp-path-cta {
+  color: #7C22CB;
+}
+
+@media (max-width: 700px) {
+  .sp-path-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .sp-path-card {
+    padding: 24px 20px;
+  }
+}
+
+/* ===== TOPICS GRID (Speaking) ===== */
+
+.sp-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.sp-topic-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sp-topic-card:hover {
+  border-color: var(--accent);
+  background: rgba(147, 51, 234, 0.02);
+}
+
+.sp-topic-card i {
+  font-size: 1rem;
+  color: var(--accent);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sp-topic-card span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.sp-topic-card:hover span {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .sp-topics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== DUO GRID (Image + Downloads side by side) ===== */
+
+.sp-duo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.sp-duo-card {
+  padding: 32px 28px;
+  background: var(--white);
+  border: 1px solid var(--slate-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-duo-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.sp-duo-icon i {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.sp-duo-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 10px;
+}
+
+.sp-duo-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.sp-duo-card .sp-section-btn {
+  align-self: flex-start;
+}
+
+@media (max-width: 700px) {
+  .sp-duo-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sp-duo-card {
+    padding: 24px 20px;
+  }
+}
+
+/* ===== RESULT SIGNAL BANNER ===== */
+
+.sp-result-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.sp-result-banner:hover {
+  transform: translateY(-1px);
+}
+
+.sp-result-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  background: rgba(147, 51, 234, 0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-result-icon i {
+  font-size: 1.2rem;
+  color: #9333EA;
+}
+
+.sp-result-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-result-text strong {
+  font-size: 1rem;
+  color: #F8FAFC;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sp-result-text span {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.sp-result-arrow {
+  color: #9333EA;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .sp-result-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .sp-result-arrow {
+    display: none;
   }
 }
 
@@ -1665,4 +1949,47 @@
 }
 .sp-question-audio-btn + * {
   flex: 1;
+}
+
+/* Fix questions with audio button on mobile */
+.sp-topic-content ol li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sp-topic-content ol li .sp-question-audio-btn {
+  margin-top: 2px;
+  margin-right: 10px;
+}
+
+.sp-question-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-question-text em {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+@media (max-width: 800px) {
+  .sp-topic-content ol li {
+    padding-left: 32px;
+  }
+
+  .sp-question-text {
+    display: block;
+  }
+
+  .sp-question-text em {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .sp-question-audio-btn {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    margin-right: 8px;
+  }
 }

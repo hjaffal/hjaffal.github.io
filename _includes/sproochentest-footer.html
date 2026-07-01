@@ -29,14 +29,16 @@
         </ul>
       </div>
 
-      <!-- Resources -->
+      <!-- Newsletter -->
       <div class="sp-footer-col">
-        <h4 class="sp-footer-title">Resources</h4>
-        <ul class="sp-footer-links">
-          <li><a href="https://sproochmaschinn.lu" target="_blank" rel="noopener">Sproochmaschinn (TTS)</a></li>
-          <li><a href="https://lod.lu" target="_blank" rel="noopener">LOD Dictionary</a></li>
-          <li><a href="https://inll.lu" target="_blank" rel="noopener">INLL (Official)</a></li>
-        </ul>
+        <h4 class="sp-footer-title">Stay Updated</h4>
+        <p class="sp-footer-tagline" style="margin-bottom:12px;">New topics and practice materials in your inbox.</p>
+        <form class="sp-footer-form" onsubmit="return handleNewsletterSubscribe(event, this, 'sproochentest')">
+          <input type="email" placeholder="your@email.com" required class="sp-footer-input">
+          <input type="text" name="website_url" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="sp-footer-submit">Subscribe</button>
+          <p class="nl-subscribe-msg" style="display:none;margin:8px 0 0;font-size:0.78rem;color:#10B981;"></p>
+        </form>
       </div>
     </div>
 
@@ -121,5 +123,42 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+}
+
+.sp-footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sp-footer-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  color: #F8FAFC;
+  outline: none;
+  box-sizing: border-box;
+}
+.sp-footer-input::placeholder {
+  color: #64748B;
+}
+.sp-footer-input:focus {
+  border-color: #9333EA;
+}
+.sp-footer-submit {
+  padding: 10px 16px;
+  background: #9333EA;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sp-footer-submit:hover {
+  background: #7C22CB;
 }
 </style>
