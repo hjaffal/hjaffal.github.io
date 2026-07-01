@@ -81,6 +81,11 @@ css:
       <button class="nla-nav-item" data-panel="lexicon" type="button">
         <span class="nla-nav-icon">📖</span> Lexicon
       </button>
+
+      <div class="nla-nav-section-label">Sproochentest</div>
+      <button class="nla-nav-item" data-panel="testimonials" type="button">
+        <span class="nla-nav-icon">💬</span> Testimonials
+      </button>
     </nav>
     <div class="nla-sidebar-links">
       <a href="https://hasanjaffal.com" class="nla-sidebar-link" target="_blank">🌐 Public Website</a>
@@ -855,6 +860,32 @@ css:
       </div>
     </div>
 
+    <!-- Testimonials Panel -->
+    <div class="nla-panel" id="panel-testimonials" hidden>
+      <div class="nla-panel-header">
+        <h1 class="nla-panel-title">Testimonials</h1>
+        <p class="nla-panel-desc">Review and approve community testimonials.</p>
+      </div>
+      <div class="nla-testimonials-filters">
+        <select class="nla-select" id="testimonials-filter-status">
+          <option value="pending">Pending Review</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+      <div id="testimonials-loading" class="nla-loading">
+        <div class="nla-spinner"></div>
+        <p>Loading testimonials…</p>
+      </div>
+      <div id="testimonials-error" class="nla-error" hidden></div>
+      <div id="testimonials-empty" class="nla-empty" hidden>
+        <span class="nla-empty-icon">💬</span>
+        <p>No testimonials found.</p>
+      </div>
+      <div id="testimonials-list" hidden></div>
+    </div>
+
     <!-- LinkedIn Side Panel -->
     <div id="linkedin-panel" class="nla-linkedin-panel" hidden>
       <div class="nla-linkedin-header">
@@ -899,7 +930,8 @@ init({
     listAssessments: "{{ site.data.firebase.fn_list_assessments }}",
     backfillTokens: "{{ site.data.firebase.fn_backfill_tokens }}",
     linkedinPosts: "{{ site.data.firebase.fn_linkedin_posts }}",
-    manageLexicon: "{{ site.data.firebase.fn_manage_lexicon }}"
+    manageLexicon: "{{ site.data.firebase.fn_manage_lexicon }}",
+    testimonials: "{{ site.data.firebase.fn_testimonials }}"
   }
 });
 </script>

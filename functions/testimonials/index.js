@@ -2,6 +2,7 @@ const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const { Resend } = require("resend");
 const admin = require("firebase-admin");
+const { verifyAdminToken } = require("../newsletter/auth");
 
 const db = admin.firestore();
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
@@ -10,8 +11,10 @@ const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
  * testimonials Cloud Function
  * Handles testimonial submission and listing for Sproochentest community board.
  *
- * POST ?action=submit — Submit a new testimonial
- * GET  ?action=list  — List approved public testimonials
+ * POST ?action=submit      — Submit a new testimonial
+ * GET  ?action=list        — List approved public testimonials
+ * GET  ?action=admin-list  — List testimonials by status (admin, requires auth)
+ * POST ?action=admin-update — Approve, reject, or delete a testimonial (admin, requires auth)
  */
 const testimonials = onRequest(
   { region: "europe-west1", cors: true, secrets: [RESEND_API_KEY] },
@@ -24,6 +27,14 @@ const testimonials = onRequest(
 
     if (req.method === "GET" && action === "list") {
       return handleList(req, res);
+    }
+
+    if (req.method === "GET" && action === "admin-list") {
+      return handleAdminList(req, res);
+    }
+
+    if (req.method === "POST" && action === "admin-update") {
+      return handleAdminUpdate(req, res);
     }
 
     res.status(400).json({ error: "Invalid action or method" });
@@ -178,6 +189,102 @@ async function handleList(req, res) {
   } catch (err) {
     console.error("Testimonial list error:", err.message);
     res.status(500).json({ error: "Failed to load testimonials" });
+  }
+}
+
+/**
+ * Handle admin listing of testimonials by status.
+ * GET ?action=admin-list&status=pending|approved|rejected|all
+ * Requires Firebase Auth token.
+ */
+async function handleAdminList(req, res) {
+  try {
+    await verifyAdminToken(req);
+  } catch (err) {
+    res.status(err.statusCode || 401).json({ error: err.message });
+    return;
+  }
+
+  const status = req.query.status || "pending";
+
+  try {
+    let query = db.collection("sproochentest_testimonials");
+
+    if (status !== "all") {
+      query = query.where("status", "==", status);
+    }
+
+    query = query.orderBy("createdAt", "desc").limit(50);
+    const snapshot = await query.get();
+
+    const testimonials = snapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        name: data.name || "",
+        character: data.character || "student",
+        experience: data.experience || data.message || "",
+        improvement: data.improvement || "",
+        type: data.type || "public",
+        status: data.status || "pending",
+        createdAt: data.createdAt ? data.createdAt.toDate().toISOString() : null,
+      };
+    });
+
+    res.status(200).json({ testimonials });
+  } catch (err) {
+    console.error("Admin testimonial list error:", err.message);
+    res.status(500).json({ error: "Failed to load testimonials" });
+  }
+}
+
+/**
+ * Handle admin update (approve, reject, delete) of a testimonial.
+ * POST ?action=admin-update
+ * Body: { id, status } where status is "approved", "rejected", or "delete"
+ * Requires Firebase Auth token.
+ */
+async function handleAdminUpdate(req, res) {
+  try {
+    await verifyAdminToken(req);
+  } catch (err) {
+    res.status(err.statusCode || 401).json({ error: err.message });
+    return;
+  }
+
+  const body = req.body.data || req.body;
+  const { id, status } = body;
+
+  if (!id || typeof id !== "string") {
+    res.status(400).json({ error: "Missing testimonial id" });
+    return;
+  }
+
+  const validStatuses = ["approved", "rejected", "delete"];
+  if (!status || !validStatuses.includes(status)) {
+    res.status(400).json({ error: "Invalid status. Use: approved, rejected, or delete" });
+    return;
+  }
+
+  try {
+    const docRef = db.collection("sproochentest_testimonials").doc(id);
+    const doc = await docRef.get();
+
+    if (!doc.exists) {
+      res.status(404).json({ error: "Testimonial not found" });
+      return;
+    }
+
+    if (status === "delete") {
+      await docRef.delete();
+      res.status(200).json({ result: "deleted" });
+    } else {
+      await docRef.update({ status });
+      res.status(200).json({ result: status });
+    }
+  } catch (err) {
+    console.error("Admin testimonial update error:", err.message);
+    res.status(500).json({ error: "Failed to update testimonial" });
   }
 }
 
