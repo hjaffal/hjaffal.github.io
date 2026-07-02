@@ -188,7 +188,7 @@
 }
 
 .nl-toggle-input:focus + .nl-toggle-track {
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .nl-prefs-segment-info {
@@ -347,7 +347,7 @@
 .nl-prefs-name-input:focus {
   border-color: var(--accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 /* Responsive */

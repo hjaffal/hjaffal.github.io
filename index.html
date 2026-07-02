@@ -9,7 +9,6 @@ chat_with_me_box: false
 show-avatar: false
 css:
   - "/assets/css/homepage.css"
-  - "/assets/css/ai-job-risk-directory.css"
 ---
 
 <!-- HERO -->
@@ -25,7 +24,7 @@ css:
       <p class="hp-hero-audience">For leaders, analysts, and operators who need decisions before problems become obvious.</p>
       <div class="hp-hero-ctas">
         <a href="/writing" class="hp-hero-cta-primary">Read My Articles</a>
-        <a href="/books" class="hp-hero-cta-ghost">View the Book</a>
+        <a href="/ai-job-risk-analyzer/" class="hp-hero-cta-ghost">Assess the AI Risk to Your Job</a>
       </div>
     </div>
 
@@ -62,110 +61,6 @@ css:
   </div>
 </section>
 
-<!-- AI JOB RISK DIRECTORY WIDGET -->
-<section class="hp-directory-widget">
-  <div class="hp-dw-inner">
-    <div class="hp-dw-orb-1"></div>
-    <div class="hp-dw-orb-2"></div>
-    <div class="hp-dw-content">
-      <span class="hp-dw-label">AI JOB RISK DIRECTORY</span>
-      <h2 class="hp-dw-title">Is your role safe from the 2028 agentic shift?</h2>
-      <p class="hp-dw-desc">Search 100+ audited roles. See your raw 24-month automation index before the market prices it in.</p>
-      <form class="hp-dw-search-form" action="/ai-job-risk-directory/" method="get" role="search" aria-label="Search the AI Job Risk Directory">
-        <div class="hp-dw-search-wrap">
-          <input type="text" name="q" id="hp-dw-search" class="hp-dw-search-input" placeholder="Enter your job title (e.g., Data Analyst, Project Manager)..." autocomplete="off" aria-label="Job title search">
-          <button type="submit" class="hp-dw-search-btn"><i class="fas fa-arrow-right"></i></button>
-          <div class="hp-dw-autocomplete" id="hp-dw-autocomplete" style="display:none;"></div>
-        </div>
-      </form>
-      </form>
-      <div class="hp-dw-stats">
-        <span class="hp-dw-stat"><strong>100+</strong> roles audited</span>
-        <span class="hp-dw-stat-sep">·</span>
-        <span class="hp-dw-stat"><strong>24-month</strong> outlook</span>
-        <span class="hp-dw-stat-sep">·</span>
-        <span class="hp-dw-stat"><strong>Task-level</strong> granularity</span>
-      </div>
-      <a href="/report/2028-ai-workforce-disruption/#download" class="hp-dw-report-link">📄 Download the full AI Workforce Disruption Research Report (free) →</a>
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  var roles = [{% for role in site.data.ai_job_risk_directory %}{"t":"{{ role.title }}","s":"{{ role.slug }}","i":{{ role.automation_index }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
-  var input = document.getElementById('hp-dw-search');
-  var dropdown = document.getElementById('hp-dw-autocomplete');
-  if (!input || !dropdown) return;
-
-  function getColor(i) { return i >= 75 ? '#DC2626' : i >= 60 ? '#F59E0B' : i >= 40 ? '#9333EA' : '#10B981'; }
-
-  input.addEventListener('input', function() {
-    var q = this.value.toLowerCase().trim();
-    if (q.length < 2) { dropdown.style.display = 'none'; return; }
-    var matches = roles.filter(function(r) { return r.t.toLowerCase().indexOf(q) !== -1; }).slice(0, 6);
-    if (!matches.length) { dropdown.style.display = 'none'; return; }
-    dropdown.innerHTML = matches.map(function(m) {
-      var color = getColor(m.i);
-      var hl = m.t.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<strong>$1</strong>');
-      return '<a href="/ai-job-risk/' + m.s + '/" class="hp-dw-ac-item"><span>' + hl + '</span><span style="color:' + color + ';font-weight:700;font-size:0.75rem;">' + m.i + '%</span></a>';
-    }).join('');
-    dropdown.style.display = 'block';
-  });
-
-  input.addEventListener('blur', function() { setTimeout(function() { dropdown.style.display = 'none'; }, 200); });
-  input.addEventListener('focus', function() { if (this.value.length >= 2) this.dispatchEvent(new Event('input')); });
-})();
-</script>
-
-<!-- TOOLS -->
-<section class="hp-tools">
-  {% include section-header.html label="FREE TOOLS" title="AI-Powered" em="Assessments." %}
-  <div class="hp-tools-grid">
-    <a href="/ai-job-risk-analyzer/" class="hp-tool-card">
-      <div class="hp-tool-icon"><i class="fas fa-robot"></i></div>
-      <span class="hp-tool-badge">AI-POWERED</span>
-      <h3 class="hp-tool-title">AI Job Risk Analyzer</h3>
-      <p class="hp-tool-desc">Get a personalized risk report for your role. See which tasks are exposed, identify skill gaps, and get a 30-day plan.</p>
-      <div class="hp-tool-meta">
-        <span><i class="fas fa-clock"></i> 3 min</span>
-        <span><i class="fas fa-envelope"></i> Full report by email</span>
-      </div>
-      <span class="hp-tool-cta">Analyze my role →</span>
-    </a>
-    <a href="/future-proof-skills-assessment/" class="hp-tool-card">
-      <div class="hp-tool-icon"><i class="fas fa-shield-alt"></i></div>
-      <span class="hp-tool-badge">INTERACTIVE</span>
-      <h3 class="hp-tool-title">Future-Proof Skills Assessment</h3>
-      <p class="hp-tool-desc">Find out if your current skills make you exposed, adaptable, or harder to replace as AI changes work.</p>
-      <div class="hp-tool-meta">
-        <span><i class="fas fa-clock"></i> 5 min</span>
-        <span><i class="fas fa-list-check"></i> 12 questions</span>
-      </div>
-      <span class="hp-tool-cta">Take the assessment →</span>
-    </a>
-  </div>
-</section>
-
-<!-- BOOK -->
-<section class="hp-book">
-  <div class="hp-book-grid">
-    <img src="/assets/img/second-mind-cover.jpg" alt="The Second Mind book by Hasan Jaffal on AI, thinking, and human judgment" class="hp-book-cover" />
-    <div>
-      <span class="field-label">FEATURED BOOK</span>
-      <h2 class="hp-book-title">The Second Mind: Can Learning Machines Help Us Stay Human?</h2>
-      <p class="hp-book-desc">A deeply human exploration of how AI is reshaping the way we think, create, and lead. Not about machines replacing people — about what it means to stay human in a world that is learning to think with us.</p>
-      <div class="hp-book-tags">
-        <span class="hp-book-tag">Decision-Making</span>
-        <span class="hp-book-tag">Leadership</span>
-        <span class="hp-book-tag">AI Strategy</span>
-        <span class="hp-book-tag">Ethics</span>
-      </div>
-      <a href="https://www.amazon.com/Second-Mind-Learning-Machines-Human/dp/B0G1JC3FYC" target="_blank" rel="noopener" class="hp-dark-btn">View on Amazon →</a>
-    </div>
-  </div>
-</section>
-
 <!-- LATEST UPDATES -->
 <section class="hp-latest">
   {% include section-header.html label="LATEST UPDATES" title="Recent" em="Writing." %}
@@ -197,29 +92,4 @@ css:
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="hp-newsletter">
-  <div class="hp-newsletter-grid">
-    <div>
-      <span class="field-label">THE SECOND MIND NEWSLETTER</span>
-      <h2 class="hp-section-title">Field Notes on Risk, Intelligence, and AI.</h2>
-      <p class="hp-nl-desc">Join 1,000+ operators who use this intelligence to shorten their signal-to-action time. Get the weekly decision operations briefing.</p>
-      <div class="hp-nl-list">
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-nl-item-text">Risk signals and weak patterns</span></div>
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-nl-item-text">AI in real operations</span></div>
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-nl-item-text">Decisions under uncertainty</span></div>
-        <div class="hp-proof-item"><span class="hp-proof-dot">&#9679;</span><span class="hp-nl-item-text">Intelligence vs. reporting</span></div>
-      </div>
-    </div>
-    <div class="hp-newsletter-form">
-      <h3 class="hp-nl-form-title">Subscribe for free</h3>
-      <p class="hp-nl-form-desc">Join readers working in risk, intelligence, AI, and operational leadership.</p>
-      <form class="nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'homepage')">
-        <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
-        <input type="text" name="website_url" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button type="submit" class="nl-subscribe-btn">Subscribe</button>
-        <p class="nl-subscribe-msg" style="display:none;"></p>
-      </form>
-    </div>
-  </div>
-</section>
+

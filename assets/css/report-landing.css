@@ -9,9 +9,9 @@
 .rpt-hero-left {}
 .rpt-hero-right {}
 .rpt-hero-content { max-width:640px; margin:0 auto; position:relative; text-align:center; }
-.rpt-hero-label { font-family:var(--mono); font-size:0.6rem; font-weight:600; letter-spacing:0.2em; color:#9333EA; display:block; margin-bottom:14px; }
+.rpt-hero-label { font-family:var(--mono); font-size:0.6rem; font-weight:600; letter-spacing:0.2em; color:#2563EB; display:block; margin-bottom:14px; }
 .rpt-hero-title { font-size:clamp(26px,4vw,36px); font-weight:800; letter-spacing:-0.035em; line-height:1.12; color:#F8FAFC; margin:0 0 16px; }
-.rpt-hero-title span { color:#9333EA; }
+.rpt-hero-title span { color:#2563EB; }
 .rpt-hero-desc { font-size:0.88rem; color:#94A3B8; line-height:1.6; margin:0 0 24px; }
 .rpt-hero-stats { display:flex; gap:14px; flex-wrap:wrap; }
 .rpt-stat { display:flex; flex-direction:column; align-items:center; gap:3px; padding:8px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; }
@@ -37,9 +37,9 @@
 .rpt-form-field label { display:block; font-size:0.7rem; font-weight:600; color:#94A3B8; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:5px; }
 .rpt-form-field input { width:100%; padding:11px 14px; border:1px solid rgba(255,255,255,0.15); border-radius:8px; font-size:0.85rem; background:rgba(255,255,255,0.06); color:#F8FAFC; outline:none; transition:border-color 0.2s; }
 .rpt-form-field input::placeholder { color:#64748B; }
-.rpt-form-field input:focus { border-color:#9333EA; }
-.rpt-form-btn { width:100%; padding:13px; background:#9333EA; color:#fff; border:none; border-radius:8px; font-size:0.88rem; font-weight:700; font-family:var(--sans); cursor:pointer; transition:background 0.2s; }
-.rpt-form-btn:hover { background:#7C22CB; }
+.rpt-form-field input:focus { border-color:#2563EB; }
+.rpt-form-btn { width:100%; padding:13px; background:#2563EB; color:#fff; border:none; border-radius:8px; font-size:0.88rem; font-weight:700; font-family:var(--sans); cursor:pointer; transition:background 0.2s; }
+.rpt-form-btn:hover { background:#1D4ED8; }
 .rpt-form-btn:disabled { opacity:0.5; cursor:not-allowed; }
 .rpt-form-note { font-size:0.68rem; color:#64748B; margin:0; text-align:center; }
 

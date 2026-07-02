@@ -46,7 +46,7 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #9333EA;
+  color: #2563EB;
   display: block;
   margin-bottom: 12px;
 }
@@ -61,7 +61,7 @@
 }
 
 .ct-hero-title span {
-  color: #9333EA;
+  color: #2563EB;
 }
 
 .ct-hero-desc {
@@ -122,7 +122,7 @@
 
 .ct-channel-newsletter {
   background: rgba(147,51,234,0.08);
-  color: #9333EA;
+  color: #2563EB;
 }
 
 .ct-channel-info {
@@ -225,7 +225,7 @@
 .contact-input:focus,
 .contact-textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.06);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.06);
 }
 
 .contact-input::placeholder,

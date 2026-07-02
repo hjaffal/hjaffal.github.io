@@ -97,7 +97,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-nav-item.active {
   color: #fff;
-  background: rgba(147, 51, 234, 0.15);
+  background: rgba(37, 99, 235, 0.15);
   border-left-color: var(--accent);
   font-weight: 600;
 }
@@ -320,7 +320,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-google-btn:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.12);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
   transform: translateY(-1px);
 }
 
@@ -975,7 +975,7 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 
 .nla-table tr:hover td {
-  background: rgba(147, 51, 234, 0.02);
+  background: rgba(37, 99, 235, 0.02);
 }
 
 .nla-table-actions {
@@ -1000,7 +1000,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-btn-sm:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(147, 51, 234, 0.04);
+  background: rgba(37, 99, 235, 0.04);
 }
 
 .nla-btn-sm.danger:hover {
@@ -1037,7 +1037,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-input:focus {
   border-color: var(--accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 .nla-input[readonly] {
@@ -1062,7 +1062,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-textarea:focus {
   border-color: var(--accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 .nla-select {
@@ -1081,7 +1081,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-select:focus {
   border-color: var(--accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 /* ─── Buttons ─── */
@@ -1102,12 +1102,12 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-btn-primary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.2);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
 .nla-btn-primary:hover {
   background: var(--accent-hover);
-  box-shadow: 0 4px 14px rgba(147, 51, 234, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
   transform: translateY(-1px);
 }
 
@@ -1127,7 +1127,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-btn-secondary:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(147, 51, 234, 0.04);
+  background: rgba(37, 99, 235, 0.04);
 }
 
 /* ─── Post List (Compose) ─── */
@@ -1533,7 +1533,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 /* ─── Position Badges ─── */
 .nla-badge-position {
-  background: rgba(147, 51, 234, 0.08);
+  background: rgba(37, 99, 235, 0.08);
   color: var(--accent);
 }
 
@@ -1660,7 +1660,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-editor:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 .nla-editor:empty::before {
@@ -1729,7 +1729,7 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 
 .gridjs-tr:hover td {
-  background: rgba(147, 51, 234, 0.02) !important;
+  background: rgba(37, 99, 235, 0.02) !important;
 }
 
 .gridjs-search {
@@ -1748,7 +1748,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .gridjs-search-input:focus {
   border-color: var(--accent) !important;
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08) !important;
 }
 
 .gridjs-pages button {
@@ -1982,7 +1982,7 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 
 .nla-mode-btn:hover {
-  background: rgba(147, 51, 234, 0.04);
+  background: rgba(37, 99, 235, 0.04);
 }
 
 .nla-mode-btn.active {
@@ -2032,7 +2032,7 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 
 .nla-post-form .nla-editor-btn:hover {
-  background: rgba(147, 51, 234, 0.08);
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .nla-post-form .nla-editor-btn.active {
@@ -2301,18 +2301,18 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 
 .nla-ai-direction-card:hover {
-  border-color: rgba(147, 51, 234, 0.4);
-  background: rgba(147, 51, 234, 0.02);
+  border-color: rgba(37, 99, 235, 0.4);
+  background: rgba(37, 99, 235, 0.02);
 }
 
 .nla-ai-direction-card:hover::before {
-  border-color: rgba(147, 51, 234, 0.4);
+  border-color: rgba(37, 99, 235, 0.4);
 }
 
 .nla-ai-direction-card.selected {
   border-color: var(--accent);
-  background: rgba(147, 51, 234, 0.04);
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+  background: rgba(37, 99, 235, 0.04);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .nla-ai-direction-card.selected::before {

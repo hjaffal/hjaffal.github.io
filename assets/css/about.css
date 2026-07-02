@@ -46,7 +46,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #9333EA;
+  color: #2563EB;
   display: block;
   margin-bottom: 10px;
 }
@@ -133,7 +133,7 @@
 
 /* ===== ABOUT SPROOCHENTEST ===== */
 .about-sproochentest-box { padding: 28px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 12px; margin-top: 12px; position: relative; overflow: hidden; }
-.about-sproochentest-orb { position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; border-radius: 50%; background: rgba(147, 51, 234, 0.05); }
+.about-sproochentest-orb { position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; border-radius: 50%; background: rgba(37, 99, 235, 0.05); }
 .about-sproochentest-row { display: flex; align-items: flex-start; gap: 18px; position: relative; }
 .about-sproochentest-icon { width: 44px; height: 44px; background: #0F172A; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem; }
 .about-sproochentest-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin: 0 0 10px; }

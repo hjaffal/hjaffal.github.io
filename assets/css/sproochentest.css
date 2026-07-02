@@ -40,8 +40,8 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 10px;
-  background: rgba(147, 51, 234, 0.08);
-  border: 1px solid rgba(147, 51, 234, 0.2);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   border-radius: 4px;
   padding: 12px 18px;
   font-size: 0.78rem;
@@ -99,7 +99,7 @@
 .sp-checklist a:hover {
   border-color: var(--accent);
   color: var(--accent) !important;
-  background: rgba(147, 51, 234, 0.04);
+  background: rgba(37, 99, 235, 0.04);
 }
 
 /* Cards */
@@ -561,14 +561,14 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-gate-card-form input:focus {
-  border-color: #9333EA;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.08);
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 .sp-gate-card-form button[type="submit"] {
   width: 100%;
   padding: 12px 18px;
-  background: #9333EA;
+  background: #2563EB;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -578,7 +578,7 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-gate-card-form button[type="submit"]:hover {
-  background: #7C22CB;
+  background: #1D4ED8;
 }
 
 .sp-gate-card-note {
@@ -855,8 +855,8 @@ main.container-fluid:has(.sp-topic-page) {
 .sp-phrase-highlight {
   margin-top: 16px;
   padding: 16px;
-  background: rgba(147, 51, 234, 0.04);
-  border: 1px solid rgba(147, 51, 234, 0.15);
+  background: rgba(37, 99, 235, 0.04);
+  border: 1px solid rgba(37, 99, 235, 0.15);
   border-radius: 3px;
 }
 
@@ -928,8 +928,8 @@ main.container-fluid:has(.sp-topic-page) {
 /* Disclaimer in light background */
 .sp-topic-content .sp-disclaimer {
   color: var(--text-muted);
-  background: rgba(147, 51, 234, 0.04);
-  border-color: rgba(147, 51, 234, 0.15);
+  background: rgba(37, 99, 235, 0.04);
+  border-color: rgba(37, 99, 235, 0.15);
 }
 
 .sp-topic-content .sp-disclaimer span {
@@ -1283,7 +1283,7 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-topic-content ol > li > ul > li.selected {
-  background: rgba(147, 51, 234, 0.08);
+  background: rgba(37, 99, 235, 0.08);
   border: 1px solid var(--accent);
   font-weight: 600;
   color: var(--dark);
@@ -1406,7 +1406,7 @@ main.container-fluid:has(.sp-topic-page) {
 
 .listen-overview-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.06);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
 }
 
 .listen-overview-card h4 {
@@ -1637,8 +1637,8 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-hero-btn-primary:hover {
-  background: #7C22CB;
-  border-color: #7C22CB;
+  background: #1D4ED8;
+  border-color: #1D4ED8;
 }
 
 .sp-hero-links .sp-section-btn:hover {
@@ -1681,7 +1681,7 @@ main.container-fluid:has(.sp-topic-page) {
 
 .sp-path-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(147, 51, 234, 0.08);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
   transform: translateY(-2px);
 }
 
@@ -1723,7 +1723,7 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-path-card:hover .sp-path-cta {
-  color: #7C22CB;
+  color: #1D4ED8;
 }
 
 @media (max-width: 700px) {
@@ -1759,7 +1759,7 @@ main.container-fluid:has(.sp-topic-page) {
 
 .sp-topic-card:hover {
   border-color: var(--accent);
-  background: rgba(147, 51, 234, 0.02);
+  background: rgba(37, 99, 235, 0.02);
 }
 
 .sp-topic-card i {
@@ -1870,7 +1870,7 @@ main.container-fluid:has(.sp-topic-page) {
   flex-shrink: 0;
   width: 52px;
   height: 52px;
-  background: rgba(147, 51, 234, 0.12);
+  background: rgba(37, 99, 235, 0.12);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1879,7 +1879,7 @@ main.container-fluid:has(.sp-topic-page) {
 
 .sp-result-icon i {
   font-size: 1.2rem;
-  color: #9333EA;
+  color: #2563EB;
 }
 
 .sp-result-text {
@@ -1901,7 +1901,7 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-result-arrow {
-  color: #9333EA;
+  color: #2563EB;
   font-size: 0.9rem;
   flex-shrink: 0;
 }
@@ -1940,7 +1940,7 @@ main.container-fluid:has(.sp-topic-page) {
   flex-shrink: 0;
 }
 .sp-question-audio-btn:hover {
-  background: var(--accent, #9333EA);
+  background: var(--accent, #2563EB);
 }
 .sp-questions-list li {
   display: flex;
@@ -2057,7 +2057,7 @@ main.container-fluid:has(.sp-topic-page) {
 
 .sp-mock-topic-btn:hover {
   border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(147, 51, 234, 0.1);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
   transform: translateY(-2px);
 }
 
@@ -2134,7 +2134,7 @@ main.container-fluid:has(.sp-topic-page) {
 
 .sp-mock-audio-icon.sp-mock-playing {
   color: var(--accent);
-  box-shadow: 0 0 0 8px rgba(147, 51, 234, 0.1);
+  box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.1);
 }
 
 .sp-mock-instruction {
@@ -2238,8 +2238,8 @@ main.container-fluid:has(.sp-topic-page) {
   align-items: center;
   gap: 16px;
   padding: 20px 24px;
-  background: rgba(147, 51, 234, 0.04);
-  border: 1px solid rgba(147, 51, 234, 0.15);
+  background: rgba(37, 99, 235, 0.04);
+  border: 1px solid rgba(37, 99, 235, 0.15);
   border-radius: 10px;
 }
 
@@ -2279,7 +2279,7 @@ main.container-fluid:has(.sp-topic-page) {
 }
 
 .sp-testimonial-banner-btn:hover {
-  background: #7C22CB;
+  background: #1D4ED8;
 }
 
 @media (max-width: 700px) {

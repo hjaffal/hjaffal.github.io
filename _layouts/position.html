@@ -1,34 +1,47 @@
 ---
 layout: base
 css:
-  - "/assets/css/post.css"
   - "/assets/css/position.css"
 ---
 
-<main class="post-layout-wrapper">
-  <div class="page-with-sidebar">
-    <div class="page-main post-main">
 
-      <div class="post-hero-accent">
-        <div class="post-hero-accent-inner">
-          <div class="post-hero-accent-shape"></div>
-          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
-        </div>
-      </div>
 
-      <div class="post-heading">
-        <span class="post-heading-tags"><a href="/writing">POSITION {{ page.position_number }}</a></span>
-        <h1>{{ page.position_title }}</h1>
-        <p class="post-heading-subtitle">{{ page.position_thesis }}</p>
-      </div>
+<main class="pos-page">
 
+  <!-- Hero -->
+  <section class="pos-hero">
+    <div class="pos-hero-inner">
+      <span class="pos-hero-num">Position {{ page.position_number }}</span>
+      <h1 class="pos-hero-title">{{ page.position_title }}</h1>
+      <p class="pos-hero-thesis">{{ page.position_thesis }}</p>
       {% include position-nav.html active=page.position_tag %}
+    </div>
+  </section>
 
-      <div class="blog-post">
+  <!-- Content -->
+  <section class="pos-content">
+    <div class="pos-content-inner">
+
+      {% if page.featured_guide %}
+      <a href="{{ page.featured_guide.url }}" class="pos-featured-guide">
+        <div class="pos-featured-icon"><span>&#9889;</span></div>
+        <div class="pos-featured-content">
+          <span class="pos-featured-label">GUIDE</span>
+          <span class="pos-featured-title">{{ page.featured_guide.title }}</span>
+        </div>
+        <span class="pos-featured-arrow">→</span>
+      </a>
+      {% endif %}
+
+      {% if content != "" and content != nil %}
+      <div class="pos-body">
         {{ content }}
+      </div>
+      {% endif %}
 
-        {% if site.data.topics[page.position_tag] %}
-        <h2>Topics</h2>
+      {% if site.data.topics[page.position_tag] %}
+      <div class="pos-topics-section">
+        <h2 class="pos-section-title">Topics</h2>
         <div class="pos-topics-grid">
           {% for topic in site.data.topics[page.position_tag] %}
           {% assign topic_posts = site.posts | where: "topic", topic.slug %}
@@ -40,41 +53,34 @@ css:
           {% endif %}
           {% endfor %}
         </div>
-        {% endif %}
-
-        <h2>Articles in this position</h2>
       </div>
-
-      {% if page.featured_guide %}
-      <a href="{{ page.featured_guide.url }}" class="pos-featured-guide">
-        <div class="pos-featured-icon">
-          <span>&#9889;</span>
-        </div>
-        <div class="pos-featured-content">
-          <span class="pos-featured-label">GUIDE</span>
-          <span class="pos-featured-title">{{ page.featured_guide.title }}</span>
-        </div>
-        <span class="pos-featured-arrow">→</span>
-      </a>
       {% endif %}
 
-      <div class="pos-articles-list">
+      <h2 class="pos-section-title">Articles</h2>
+
+      <div class="pos-articles-grid">
         {% for post in site.tags[page.position_tag] %}
-        <a href="{{ post.url | relative_url }}" class="pos-article-row">
-          <div class="pos-article-info">
-            <span class="pos-article-title">{{ post.title }}</span>
-            <span class="pos-article-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</span>
+        <a href="{{ post.url | relative_url }}" class="pos-article-card">
+          <div class="pos-article-card-img">
+            {% if post.thumbnail-img %}
+            <img src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="pos-article-card-fallback" style="display:none;">
+              <span>{{ post.title | truncate: 60 }}</span>
+            </div>
+            {% else %}
+            <div class="pos-article-card-fallback">
+              <span>{{ post.title | truncate: 60 }}</span>
+            </div>
+            {% endif %}
           </div>
-          <div class="pos-article-meta">
-            <span class="pos-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
-            <span class="pos-article-arrow">→</span>
-          </div>
+          <span class="pos-article-card-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <h3 class="pos-article-card-title">{{ post.title }}</h3>
         </a>
         {% endfor %}
       </div>
 
       {% if site.data.references[page.position_tag] %}
-      <h2 style="margin-top:40px;">Reference Guides</h2>
+      <h2 class="pos-section-title" style="margin-top:48px;">Reference Guides</h2>
       <div class="pos-references-grid">
         {% for ref in site.data.references[page.position_tag] %}
         <a href="{{ ref.url }}" class="pos-reference-card">
@@ -88,11 +94,6 @@ css:
       {% include position-crosslinks.html active=page.position_tag %}
 
     </div>
+  </section>
 
-    <aside class="page-sidebar">
-      {% include newsletter.html %}
-      {% include sidebar-recent.html %}
-      {% include sidebar-templates.html %}
-    </aside>
-  </div>
 </main>

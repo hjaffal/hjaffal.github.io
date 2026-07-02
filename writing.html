@@ -23,77 +23,57 @@ css:
   <!-- Hero -->
   <section class="wr-hero">
     <div class="wr-hero-inner">
-      <span class="field-label">FIELD INTELLIGENCE</span>
+      <span class="field-label">THE SECOND MIND</span>
       <h1 class="wr-hero-title">Three positions.<br>One operating <em>thesis.</em></h1>
       <p class="wr-hero-desc">I write about where AI, dashboards, data signals, and leadership fail in real operations. Each position is a lens — backed by articles, field experience, and uncomfortable trade-offs.</p>
+
+      <div class="wr-positions-row">
+        {% for p in site.data.positions %}
+        <a href="{{ p.url }}" class="wr-pos-chip">
+          <span class="wr-pos-chip-num">{{ p.number }}</span>
+          <span class="wr-pos-chip-title">{{ p.title }}</span>
+          <i class="fas fa-arrow-right wr-pos-chip-arrow"></i>
+        </a>
+        {% endfor %}
+      </div>
     </div>
   </section>
 
-  <!-- Position cards -->
-  <section class="wr-positions">
-    <div class="wr-positions-grid">
-      {% for p in site.data.positions %}
-      <a href="{{ p.url }}" class="hp-position-card">
-        <div class="hp-position-header">
-          <span class="hp-position-num">{{ p.number }}</span>
-          <span class="hp-position-tag">{{ p.tag }}</span>
-        </div>
-        <h3 class="hp-position-title">{{ p.title }}</h3>
-        <p class="hp-position-desc">{{ p.thesis }}</p>
-        <div class="wr-pos-footer">
-          <span class="hp-position-cta">{{ p.cta }} →</span>
-          <span class="wr-pos-count">{{ site.tags[p.tag].size }} posts</span>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- All posts -->
+  <!-- Filter bar -->
   <section class="wr-articles" id="wr-articles-section">
-    <div class="wr-articles-header">
-      <span class="wr-articles-label">ALL ARTICLES</span>
-      <span class="wr-articles-count" id="wr-articles-count">{{ site.posts.size }} posts</span>
-    </div>
     <div class="wr-filter-bar">
-      <button class="wr-filter-btn active" data-filter="all">All</button>
-      <button class="wr-filter-btn" data-filter="ai-decision-operations">AI & Decision Operations</button>
-      <button class="wr-filter-btn" data-filter="risk-intelligence">Risk Intelligence</button>
-      <button class="wr-filter-btn" data-filter="ai-job-risk">AI Job Risk</button>
+      <a class="wr-filter-link active" data-filter="all" href="#">Latest</a>
+      <span class="wr-filter-sep">|</span>
+      <a class="wr-filter-link" data-filter="ai-decision-operations" href="#">AI & Decision Ops</a>
+      <span class="wr-filter-sep">|</span>
+      <a class="wr-filter-link" data-filter="risk-intelligence" href="#">Risk Intelligence</a>
+      <span class="wr-filter-sep">|</span>
+      <a class="wr-filter-link" data-filter="ai-job-risk" href="#">AI Job Risk</a>
     </div>
-    <div class="wr-topic-filter-bar" id="wr-topic-filters" hidden>
-      <button class="wr-topic-btn active" data-topic="all">All Topics</button>
-    </div>
+
     <div class="wr-cards-grid" id="wr-articles-list">
       {% for post in site.posts %}
-      <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}" data-topic="{{ post.topic }}">
+      <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}">
         <div class="wr-card-img-wrap">
           {% if post.thumbnail-img %}
           <img class="wr-card-img" src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="wr-card-img-fallback" style="display:none;">
-            <span class="wr-card-img-title">{{ post.title | xml_escape | truncate: 60 }}</span>
+            <span class="wr-card-img-title">{{ post.title | xml_escape | truncate: 80 }}</span>
           </div>
           {% else %}
           <div class="wr-card-img-fallback">
-            <span class="wr-card-img-title">{{ post.title | truncate: 60 }}</span>
+            <span class="wr-card-img-title">{{ post.title | truncate: 80 }}</span>
           </div>
           {% endif %}
         </div>
-        <div class="wr-card-body">
-          <div class="wr-card-tags">
-            {% for tag in post.tags %}
-            <span class="wr-card-tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-          <h3 class="wr-card-title">{{ post.title }}</h3>
-          <p class="wr-card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-          <span class="wr-card-date">{{ post.date | date: "%b %d, %Y" }}</span>
-        </div>
+        <span class="wr-card-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <h3 class="wr-card-title">{{ post.title }}</h3>
       </a>
       {% endfor %}
     </div>
+
     <div class="wr-load-more-wrap" id="wr-load-more-wrap">
-      <button class="wr-load-more-btn" id="wr-load-more">Load more articles</button>
+      <button class="wr-load-more-btn" id="wr-load-more">Load more...</button>
     </div>
   </section>
 
@@ -101,76 +81,24 @@ css:
 
 <script>
 (function() {
-  var PAGE_SIZE = 9;
+  var PAGE_SIZE = 8;
   var visibleCount = PAGE_SIZE;
   var currentFilter = 'all';
-  var currentTopic = 'all';
   var allCards = Array.from(document.querySelectorAll('.wr-card'));
   var loadMoreWrap = document.getElementById('wr-load-more-wrap');
   var loadMoreBtn = document.getElementById('wr-load-more');
-  var countEl = document.getElementById('wr-articles-count');
-  var topicBar = document.getElementById('wr-topic-filters');
-
-  // Topics per position
-  var TOPICS = {
-    'ai-decision-operations': [
-      { slug: 'ai-theater', name: 'AI Theater' },
-      { slug: 'fake-ai-transformation', name: 'Fake AI Transformation' },
-      { slug: 'slow-decision-cultures', name: 'Slow Decision Cultures' },
-      { slug: 'ai-accountability-vacuum', name: 'AI Accountability Vacuum' },
-      { slug: 'automation-failure-loops', name: 'Automation Failure Loops' },
-      { slug: 'human-bottleneck-myth', name: 'Human Bottleneck Myth' },
-      { slug: 'ai-governance-bureaucracy', name: 'AI Governance Bureaucracy' },
-      { slug: 'meeting-driven-operations', name: 'Meeting-Driven Operations' },
-      { slug: 'escalation-collapse', name: 'Escalation Collapse' },
-      { slug: 'operational-cowardice', name: 'Operational Cowardice' },
-    ],
-    'risk-intelligence': [
-      { slug: 'dashboard-addiction', name: 'Dashboard Addiction' },
-      { slug: 'kpi-theater', name: 'KPI Theater' },
-      { slug: 'reporting-bureaucracy', name: 'Reporting Bureaucracy' },
-      { slug: 'alert-spam', name: 'Alert Spam' },
-      { slug: 'data-without-ownership', name: 'Data Without Ownership' },
-      { slug: 'false-confidence-metrics', name: 'False Confidence Metrics' },
-      { slug: 'vanity-analytics', name: 'Vanity Analytics' },
-      { slug: 'intelligence-vs-reporting', name: 'Intelligence vs Reporting' },
-      { slug: 'data-team-irrelevance', name: 'Data Team Irrelevance' },
-      { slug: 'metric-manipulation', name: 'Metric Manipulation' },
-    ],
-    'ai-job-risk': [
-      { slug: 'white-collar-automation', name: 'White-Collar Automation' },
-      { slug: 'fake-ai-safety-advice', name: 'Fake AI Safety Advice' },
-      { slug: 'productivity-trap', name: 'Productivity Trap' },
-      { slug: 'middle-management-exposure', name: 'Middle Management Exposure' },
-      { slug: 'collapse-of-busy-work', name: 'The Collapse of Busy Work' },
-      { slug: 'prompt-engineer-hype', name: 'Prompt Engineer Hype' },
-      { slug: 'knowledge-worker-oversupply', name: 'Knowledge Worker Oversupply' },
-      { slug: 'credential-irrelevance', name: 'Credential Irrelevance' },
-      { slug: 'ai-career-delusion', name: 'AI Career Delusion' },
-      { slug: 'death-of-information-work', name: 'The Death of Information Work' },
-    ]
-  };
 
   function getFiltered() {
-    var cards = allCards;
-    if (currentFilter !== 'all') {
-      cards = cards.filter(function(card) {
-        return card.dataset.tags && card.dataset.tags.indexOf(currentFilter) !== -1;
-      });
-    }
-    if (currentTopic !== 'all') {
-      cards = cards.filter(function(card) {
-        return card.dataset.topic === currentTopic;
-      });
-    }
-    return cards;
+    if (currentFilter === 'all') return allCards;
+    return allCards.filter(function(card) {
+      return card.dataset.tags && card.dataset.tags.indexOf(currentFilter) !== -1;
+    });
   }
 
   function render() {
     var filtered = getFiltered();
     allCards.forEach(function(card) { card.style.display = 'none'; });
     filtered.slice(0, visibleCount).forEach(function(card) { card.style.display = ''; });
-    countEl.textContent = filtered.length + ' posts';
     if (visibleCount >= filtered.length) {
       loadMoreWrap.style.display = 'none';
     } else {
@@ -178,54 +106,18 @@ css:
     }
   }
 
-  function showTopicBar(position) {
-    var topics = TOPICS[position];
-    if (!topics) { topicBar.hidden = true; return; }
-
-    // Only show topics that have at least one post
-    var topicsWithPosts = topics.filter(function(t) {
-      return allCards.some(function(card) { return card.dataset.topic === t.slug; });
-    });
-    if (topicsWithPosts.length === 0) { topicBar.hidden = true; return; }
-
-    var html = '<button class="wr-topic-btn active" data-topic="all">All Topics</button>';
-    topicsWithPosts.forEach(function(t) {
-      html += '<button class="wr-topic-btn" data-topic="' + t.slug + '">' + t.name + '</button>';
-    });
-    topicBar.innerHTML = html;
-    topicBar.hidden = false;
-
-    // Wire topic button clicks
-    topicBar.querySelectorAll('.wr-topic-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        topicBar.querySelectorAll('.wr-topic-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        currentTopic = btn.dataset.topic;
-        visibleCount = PAGE_SIZE;
-        render();
-      });
-    });
-  }
-
-  // Position filter buttons
-  document.querySelectorAll('.wr-filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.wr-filter-btn').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
-      currentTopic = 'all';
+  // Filter link clicks
+  document.querySelectorAll('.wr-filter-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('.wr-filter-link').forEach(function(l) { l.classList.remove('active'); });
+      link.classList.add('active');
+      currentFilter = link.dataset.filter;
       visibleCount = PAGE_SIZE;
-
-      if (currentFilter === 'all') {
-        topicBar.hidden = true;
-      } else {
-        showTopicBar(currentFilter);
-      }
       render();
     });
   });
 
-  // Load More click
   loadMoreBtn.addEventListener('click', function() {
     visibleCount += PAGE_SIZE;
     render();
