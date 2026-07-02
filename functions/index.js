@@ -62,6 +62,9 @@ exports.listAssessments = listAssessments;
 const { backfillTokens } = require("./newsletter/backfill-tokens");
 exports.backfillTokens = backfillTokens;
 
+const { weeklyVocabReengagement } = require("./newsletter/reengagement");
+exports.weeklyVocabReengagement = weeklyVocabReengagement;
+
 const VALID_BANDS = ["exposed", "adaptable", "harder_to_replace"];
 const VALID_FAMILIES = [
   "data_analytics_bi", "operations_process_program", "manager_team_leader",
