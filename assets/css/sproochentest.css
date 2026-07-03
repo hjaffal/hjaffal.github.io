@@ -1794,6 +1794,12 @@ main.container-fluid:has(.sp-topic-page) {
   gap: 24px;
 }
 
+.sp-trio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
 .sp-duo-card {
   padding: 32px 28px;
   background: var(--white);
@@ -1840,6 +1846,11 @@ main.container-fluid:has(.sp-topic-page) {
 
 @media (max-width: 700px) {
   .sp-duo-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sp-trio-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -2297,4 +2308,121 @@ main.container-fluid:has(.sp-topic-page) {
     width: 100%;
     text-align: center;
   }
+}
+
+
+/* ===== RESULT SIGNAL CARDS ===== */
+
+.result-signal-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.result-signal-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--slate-border);
+}
+
+.result-signal-fail {
+  background: #FEF2F2;
+  border-color: #FECACA;
+}
+
+.result-signal-pass {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+}
+
+.result-signal-number {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  min-width: 40px;
+  text-align: center;
+}
+
+.result-signal-fail .result-signal-number {
+  color: #DC2626;
+}
+
+.result-signal-pass .result-signal-number {
+  color: #10B981;
+}
+
+.result-signal-text strong {
+  font-size: 0.88rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.result-signal-text p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .result-signal-table {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== PRO TIP CARD ===== */
+
+.sp-protip-card {
+  display: block;
+  padding: 28px 28px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid #334155;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.sp-protip-card:hover {
+  border-color: #FBBF24;
+  transform: translateY(-1px);
+}
+
+.sp-protip-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FBBF24;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sp-protip-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.sp-protip-desc {
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.sp-protip-cta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #FBBF24;
+}
+
+.sp-protip-card:hover .sp-protip-cta {
+  color: #FCD34D;
 }
