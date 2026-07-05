@@ -1,0 +1,144 @@
+/* ===== CV PAGE ===== */
+
+.cv-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Hide the page layout title since we have our own */
+.intro-header + .container-md h1:first-child,
+.intro-header + .container-fluid h1:first-child {
+  display: none;
+}
+
+/* Back link */
+.cv-content > p:first-child a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748B;
+  text-decoration: none;
+}
+
+.cv-content > p:first-child a:hover {
+  color: var(--accent);
+}
+
+/* Name */
+.cv-content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 16px 0 6px;
+  text-align: center;
+  border: none !important;
+  border-bottom: none !important;
+  padding-bottom: 0;
+}
+
+/* Headline + contact (paragraphs directly after h1) */
+.cv-content h1 + p {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.cv-content h1 + p + p {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #64748B;
+  margin-bottom: 0;
+}
+
+.cv-content h1 + p + p a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Section headings */
+.cv-content h2 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0F172A;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E2E8F0;
+  border-top: none;
+}
+
+/* Company headings */
+.cv-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 20px 0 4px;
+  border: none !important;
+  border-bottom: none !important;
+  padding-bottom: 0;
+}
+
+/* Paragraphs */
+.cv-content p {
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* Bold (position titles, etc.) */
+.cv-content strong {
+  color: #0F172A;
+  font-weight: 600;
+}
+
+/* Bullet points */
+.cv-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 20px;
+}
+
+.cv-content ul li {
+  font-size: 0.85rem;
+  color: #334155;
+  line-height: 1.65;
+  padding: 3px 0 3px 16px;
+  position: relative;
+  border: none;
+}
+
+.cv-content ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #94A3B8;
+}
+
+/* Horizontal rules */
+.cv-content hr {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 28px 0;
+}
+
+/* About page CV button */
+.about-cv-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff !important;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.about-cv-btn:hover {
+  background: var(--accent-hover);
+  color: #fff !important;
+}
