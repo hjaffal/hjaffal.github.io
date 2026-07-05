@@ -157,3 +157,23 @@
 .icon-text-card-icon svg { stroke: #fff; }
 .icon-text-card-title { font-size: 0.85rem; font-weight: 600; color: var(--dark); display: block; }
 .icon-text-card-desc { font-size: 0.72rem; color: var(--text-muted); }
+
+
+/* CV button */
+.about-cv-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff !important;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: background 0.2s;
+}
+
+.about-cv-btn:hover {
+  background: var(--accent-hover);
+  color: #fff !important;
+}
