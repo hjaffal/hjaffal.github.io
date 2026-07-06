@@ -19,7 +19,7 @@ css:
 
 **Director \| Product . Data . Analytics . Intelligence. Science**
 
-Luxembourg · +352 691 997 601 · [jaftalks@gmail.com](mailto:jaftalks@gmail.com) · [LinkedIn](https://linkedin.com/in/jaffal)
+Luxembourg · [LinkedIn](https://linkedin.com/in/jaffal)
 
 ---
 
