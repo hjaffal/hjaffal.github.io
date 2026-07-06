@@ -36,10 +36,20 @@
    * @param {Function} [opts.onSuccess] - Called on successful subscribe
    * @param {Function} [opts.onError] - Called on failure
    */
+  // Blocked disposable/temporary email domains
+  var BLOCKED_DOMAINS = ['maildrop.cc'];
+
   HJ.subscribe = function(opts) {
     var email = (opts.email || '').trim();
     if (!email) {
       if (opts.onError) opts.onError('Email is required');
+      return;
+    }
+
+    // Block disposable email domains
+    var domain = email.split('@')[1] || '';
+    if (BLOCKED_DOMAINS.indexOf(domain.toLowerCase()) !== -1) {
+      if (opts.onError) opts.onError('Please use a different email address. Disposable emails are not supported.');
       return;
     }
 

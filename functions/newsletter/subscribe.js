@@ -271,6 +271,15 @@ const subscribeNewsletter = onRequest(
     }
 
     const normalizedEmailAddr = normalizeEmail(email);
+
+    // Block disposable/temporary email domains
+    const blockedDomains = ["maildrop.cc"];
+    const emailDomain = normalizedEmailAddr.split("@")[1] || "";
+    if (blockedDomains.includes(emailDomain.toLowerCase())) {
+      res.status(400).json({ error: "Please use a different email address." });
+      return;
+    }
+
     const utmSource = utm_source || "website";
 
     // Determine if this is a sproochentest-related subscription

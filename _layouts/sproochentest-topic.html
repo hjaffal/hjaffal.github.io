@@ -109,7 +109,22 @@ css:
         source: 'sproochentest_gate',
         honeypot: (document.getElementById('sp-gate-honeypot') || {}).value || '',
         onSuccess: function() { unlock(); },
-        onError: function() { unlock(); }
+        onError: function(errMsg) {
+          if (errMsg && errMsg.indexOf('different email') !== -1) {
+            btn.disabled = false;
+            btn.textContent = 'Unlock All Questions';
+            var errEl = form.querySelector('.sp-gate-error');
+            if (!errEl) {
+              errEl = document.createElement('p');
+              errEl.className = 'sp-gate-error';
+              errEl.style.cssText = 'color:#DC2626;font-size:0.78rem;margin:8px 0 0;';
+              form.appendChild(errEl);
+            }
+            errEl.textContent = errMsg;
+          } else {
+            unlock();
+          }
+        }
       });
     });
   }

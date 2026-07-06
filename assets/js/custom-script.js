@@ -21,9 +21,9 @@ function handleNewsletterSubscribe(e, form, source) {
       btn.textContent = 'Subscribed';
       form.querySelector('input[type="email"]').disabled = true;
     },
-    onError: function() {
+    onError: function(errMsg) {
       msg.style.display = 'block';
-      msg.textContent = 'Something went wrong. Try again.';
+      msg.textContent = errMsg || 'Something went wrong. Try again.';
       msg.style.color = '#DC2626';
       btn.disabled = false;
       btn.textContent = 'Subscribe';

@@ -181,9 +181,9 @@ function handleGatedSubscribe(e, form) {
       document.getElementById('gated-full').style.display = 'block';
       document.getElementById('gated-cta').style.display = 'none';
     },
-    onError: function() {
+    onError: function(errMsg) {
       msg.style.display = 'block';
-      msg.textContent = 'Something went wrong. Try again.';
+      msg.textContent = errMsg || 'Something went wrong. Try again.';
       msg.style.color = '#DC2626';
       btn.disabled = false;
       btn.textContent = 'Subscribe & Read';
