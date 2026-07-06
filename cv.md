@@ -17,7 +17,7 @@ css:
 
 # Hasan Jaffal
 
-**Director of Data \| Head of Data Engineering, Data Science & Analytics**
+**Director \| Product . Data . Analytics . Intelligence. Science**
 
 Luxembourg · +352 691 997 601 · [jaftalks@gmail.com](mailto:jaftalks@gmail.com) · [LinkedIn](https://linkedin.com/in/jaffal)
 
@@ -35,8 +35,12 @@ Partners with VP/SVP leaders in Operations, Finance, and Technology on investmen
 
 ## Professional Experience
 
-### Amazon — International Analytics & Data Services
+### Amazon
 **Luxembourg**
+
+**Sr. Manager - Analytics and Data Products - Security and Loss Prevention**, May 2026 – Present
+- Lead the global analytics organization, supporting a multi-billion-dollar business with data-driven decision-making.
+- Expand analytics focus from operational optimisation to broader business optimisation, supporting initiatives in reducing impact of operations disruptive events.
 
 **Head of International Analytics and Data Services**, May 2025 – Present
 
@@ -84,6 +88,7 @@ Partners with VP/SVP leaders in Operations, Finance, and Technology on investmen
 
 **Head of PMO & Chief Product Officer**, Jan 2007 – Jun 2018
 
+- Progressed from Software Development Engineer to Chief Product Officer over 10 years.
 - Led the product portfolio and PMO for analytics and geospatial platforms used by governments, NGOs and enterprises.
 - Oversaw multiple product lines and client projects, using data to track adoption, performance and impact, and to prioritise investment.
 - Built and scaled delivery processes, governance and multi-disciplinary teams, improving predictability and customer satisfaction.
