@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/wunnen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wou wunnt Dir? Säit wéini? — *Where do you live? Since when?*

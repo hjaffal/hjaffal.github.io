@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/sport/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Maacht Dir gär Sport an Ärer Fräizäit? — *Do you like doing sport in your free time?*

@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/summer-wantar/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Zënter wéini wunnt Dir zu Lëtzebuerg? Wat fir eng Joreszäit sidd Dir komm? — *Since when do you live in Luxembourg? What season did you arrive?*

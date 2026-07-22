@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/stot-machen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wunnt Dir eleng? — *Do you live alone?*

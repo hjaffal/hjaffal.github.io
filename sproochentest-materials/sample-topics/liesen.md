@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/liesen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Liest Dir gär? Wa jo, wat liest Dir? — *Do you like reading? If yes, what do you read?*

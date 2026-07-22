@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/kreativitaeit-hobbyen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wat maacht Dir gär an der Woch no der Aarbecht? — *What do you like doing after work during the week?*

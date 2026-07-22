@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/akafen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wéi oft maacht Dir d'Kommissiounen? — *How often do you do the shopping?*

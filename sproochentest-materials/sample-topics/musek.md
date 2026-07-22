@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/musek/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Lauschtert Dir gär Musek? — *Do you like listening to music?*

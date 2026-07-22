@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/tourismus/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Vu wou kommt Dir? — *Where do you come from?*

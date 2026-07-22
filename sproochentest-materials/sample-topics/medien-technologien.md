@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/medien-technologien/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wat heescht fir Iech Technologie? — *What does technology mean for you?*

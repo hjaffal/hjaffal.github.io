@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/sproochen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wat ass Är Mammesprooch? — *What is your mother tongue?*

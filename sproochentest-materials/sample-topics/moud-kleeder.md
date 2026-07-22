@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/moud-kleeder/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wéi wichteg ass d'Moud fir Iech? — *How important is fashion for you?*

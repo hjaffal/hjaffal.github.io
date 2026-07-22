@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/reesen-vakanz/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wéi oft gitt Dir an d'Vakanz? — *How often do you go on holiday?*

@@ -5,6 +5,7 @@ subtitle: "Sproochentest Speaking Practice — Sample Questions"
 permalink: /sproochentest/kaddoen/
 show-avatar: false
 chat_with_me_box: false
+published: false
 ---
 
 1. Wéini schenkt Dir enger Persoun e Kaddo? — *When do you give someone a gift?*
