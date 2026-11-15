@@ -4,7 +4,7 @@ title:
 subtitle:
 permalink: /cv/
 share-title: "Curriculum Vitae — Hasan Jaffal"
-share-description: "Analytics and data leader with 18+ years of experience. Head of International Analytics and Data Services at Amazon."
+share-description: "Head of Analytics, AI and Data Science Leadership, Security and Loss Prevention. Leading global Loss Prevention and Risk Analytics at Amazon."
 show-avatar: false
 chat_with_me_box: false
 css:
@@ -17,109 +17,98 @@ css:
 
 # Hasan Jaffal
 
-**Director \| Product . Data . Analytics . Intelligence. Science**
+**Head of Analytics | AI and Data Science Leadership | Security and Loss Prevention**
 
-Luxembourg · [LinkedIn](https://linkedin.com/in/jaffal)
+Luxembourg · [jaftalks@gmail.com](mailto:jaftalks@gmail.com) · [LinkedIn](https://linkedin.com/in/jaffal)
 
----
+## Executive Profile
 
-## Executive Summary
+I lead global Loss Prevention and Risk Analytics at Amazon and contribute to technology strategy for its Worldwide Security organisation. I work with senior leaders in Security, Operations, Finance and Technology to decide which risks warrant investment, where to commit resources to strengthen operational resilience and how to measure the impact.
 
-International data and AI leader heading analytics and data services for a 32-country network across EMEA, LATAM, and APAC. Accountable for turning a multi-billion-dollar operations and loss cost base into decision intelligence, automation, and measurable P&L impact on petabyte-scale data and billions of events.
+I set the AI strategy for the organization, prioritising loss forecasting and early detection of theft and fraud so field leaders can decide where to intervene. I built the international data science organisation serving 21 countries and led senior managers and a wider team.
 
-Owns data strategy, AI strategy, and the analytics roadmap for core operational processes, from planning and forecasting to performance management and exception handling. Provides technical leadership across data engineering, data platforms, and data science: reviewing design documents for models and major analytics features, setting expectations for data quality, freshness and reliability, and partnering closely with principal engineers on complex architectures.
-
-Partners with VP/SVP leaders in Operations, Finance, and Technology on investment prioritisation, operating model design, and large-scale transformation. Experienced in leading globally distributed teams and in mission-driven, volunteer governance settings.
-
----
+Before Amazon, I progressed from software engineering to chief officer roles with responsibility for product strategy, technology portfolio management and service delivery. At ArabiaGIS I led the PMO. At Nabed I led product, engineering, data and content teams across four countries.
 
 ## Professional Experience
 
 ### Amazon
-**Luxembourg**
 
-**Sr. Manager - Analytics and Data Products - Security and Loss Prevention**, May 2026 – Present
-- Lead the global analytics organization, supporting a multi-billion-dollar business with data-driven decision-making.
-- Expand analytics focus from operational optimisation to broader business optimisation, supporting initiatives in reducing impact of operations disruptive events.
+**Security and Loss Prevention · Luxembourg**
 
-**Head of International Analytics and Data Services**, May 2025 – Present
+**Senior Manager, Analytics and Data Services**
 
-- Lead the International analytics organisation for 21 countries across EMEA, LATAM and APAC, supporting a multi-billion-dollar business with data-driven decision-making.
-- Act as a thought partner to senior Product, Operations and Finance leaders, using analytics to shape strategy, surface opportunities and challenge assumptions.
-- Manage a team of 3 senior managers and a wider organisation of ~27 analysts, analytics engineers and data professionals, organised in embedded analytics pods aligned to key domains.
-- Expand analytics focus from operational optimisation to broader business optimisation, supporting initiatives in network design, cost management, risk, and customer experience.
-- Define and refine key metrics, measurement strategies and KPI frameworks used by executives and cross-functional teams to track performance and make trade-offs.
-- Drive improvements in documentation, standardisation and enablement for analytics, making self-service and reusable assets a core part of how the organisation operates.
-- Partner with central data engineering and data platform teams on the evolution of the analytics stack on AWS (S3, Redshift, RDS and related services), ensuring data models and pipelines support fast, reliable analysis at scale.
-- Collaborate with data science teams to turn advanced models into usable analytics outputs and decision tools for product and business stakeholders.
+May 2026 – Present
 
-**Head of EMEA Data Services & Analytics**, Dec 2022 – Apr 2025
+- Set the global Loss Prevention and Risk Analytics roadmap. Direct scientists and analysts working on theft and fraud detection.
 
-- Led the EMEA analytics and data services function for 500+ sites across 13+ countries, providing embedded analytics support to regional leadership and functional teams.
-- Built a product-style operating model for analytics with clear domains, backlogs and roadmaps, aligned to the priorities of Product, Operations and Finance stakeholders.
-- Developed scoring and prioritisation frameworks that guided where to focus resources across markets and initiatives, improving efficiency and business impact.
-- Standardised core metrics, dashboards and definitions, reducing conflicting views of performance and speeding up decision-making across countries.
-- Mentored analytics leads and senior ICs, raising the bar on analytical rigor, stakeholder influence and communication.
-- Worked with distributed teams and near/offshore resources, establishing common ways of working and ensuring consistent quality across locations.
+- Guide analysis of how disruptions affect operations, helping Security and Operations leaders prioritise business continuity planning where the potential impact is greatest.
 
-**Senior Product Manager — Data & Analytics**, Jan 2020 – Nov 2022
+- Own the function’s operating expenditure (OpEx) and capital expenditure (CapEx). Allocate funding and team capacity according to the losses an initiative could prevent or the disruption it could reduce.
 
-- Led product strategy and delivery for analytics platforms used by 500+ sites in 13+ countries, covering operational performance, vendor spend and service quality.
-- Owned the full analytics product lifecycle: identifying opportunities with stakeholders, defining metrics and success criteria, prioritising work, and leading delivery and rollout.
-- Drove high-impact analyses and initiatives, including an ML and computer-vision–based anomaly detection product that created an estimated $50M+ yearly benefit.
-- Designed and launched a global knowledge and best-practice platform that reduced non-productive time for frontline teams by 18% and improved adoption of analytics.
-- Used experimentation (A/B testing, controlled rollouts) to validate changes, de-risk launches and focus investment on the most impactful features.
+- Contribute to Amazon’s worldwide security technology strategy and shape the operating model for AI with leaders in Security, Operations, Finance and Technology. Help define AI standards and how teams assess risk and compliance before scaling a use case.
 
----
+**Head of International Analytics and Data Services (EMEA, APAC, LATAM)**
+
+May 2025 – May 2026
+
+- Built a cross-regional data science organisation for Security and Loss Prevention. Led three senior managers and a wider team of approximately 27 professionals serving 21 countries.
+
+- Led digital and AI transformation in loss forecasting and alerting. Took use cases from ideation through proof of value (PoV) to deployment across regions, combining predictive models with real-time reporting so field leaders could decide where to intervene.
+
+- Improved loss forecast accuracy across the regions and helped reduce shrinkage by millions of dollars.
+
+**Head of EMEA Data Services and Analytics**
+
+November 2022 – April 2025
+
+- Directed Security and Loss Prevention analytics for more than 500 sites across at least 13 countries. Worked with regional Operations and Finance leaders to prioritise financial exposure and field security risks.
+
+- Introduced machine learning for early risk detection. Led the team that developed and deployed models to help field security teams respond to emerging threats.
+
+**Senior Product Manager**
+
+January 2020 – November 2022
+
+- Owned product strategy and delivery for Security and Loss Prevention technology, including tools that automated risk management and investigative workflows.
+
+- Led a machine learning and computer vision initiative for anomaly detection with an estimated annual benefit of more than $50 million.
+
+- Launched a global knowledge-sharing platform that reduced non-productive time for frontline teams by 18%.
 
 ### Nabed Health Education Solutions
+
 **Lebanon**
 
-**Chief Product and Services Officer**, Jul 2018 – Dec 2019
+**Chief Product and Services Officer**
 
-- Owned strategy and delivery for a multi-country digital health platform reaching 300M+ Arabic-speaking users.
-- Led cross-functional teams (product, data, engineering, content) across 4 countries, using data on usage and outcomes to drive roadmap decisions.
-- Worked with institutional clients (health organisations, NGOs) to define success metrics and reporting requirements, ensuring analytics supported programme goals.
+July 2018 – December 2019
 
----
+- Owned product strategy and service delivery for a digital health platform. Led product, engineering, data and content teams across four countries.
+
+- Agreed programme success measures with health organisations and NGOs and used platform usage and outcomes to prioritise improvements.
 
 ### ArabiaGIS
+
 **Lebanon**
 
-**Head of PMO & Chief Product Officer**, Jan 2007 – Jun 2018
+**Chief Product Officer and Head of PMO**
 
-- Progressed from Software Development Engineer to Chief Product Officer over 10 years.
-- Led the product portfolio and PMO for analytics and geospatial platforms used by governments, NGOs and enterprises.
-- Oversaw multiple product lines and client projects, using data to track adoption, performance and impact, and to prioritise investment.
-- Built and scaled delivery processes, governance and multi-disciplinary teams, improving predictability and customer satisfaction.
+February 2008 – June 2018 · Company tenure
 
----
+- Progressed from software development engineer to Chief Product Officer and Head of the Project Management Office (PMO).
 
+- Led a portfolio of geospatial and analytics products for government, enterprise and nonprofit clients. Set investment priorities across product lines and established project governance through common planning and delivery reviews for multidisciplinary teams.
 
-## Community & Governance
+## Board Experience
 
-**PMI Lebanon Chapter — Vice President of Administration**, 2013
+Elected Board Member, Administration · Project Management Institute, Lebanon Chapter
 
-Elected board member responsible for governance and administration for the Project Management Institute Lebanon Chapter. Led regional-scale initiatives to improve chapter operations, member engagement and programme delivery.
+## Education
 
-**Public Speaking & Volunteering**
-
-Frequent volunteer speaker on topics including public governance, monitoring and control, online image building, community engagement and agile project management.
-
----
-
-## Education & Certification
-
-**B.S. in Computer Science**, 2006
-Lebanese University
-
-**Project Management Professional (PMP)**, 2012
-Project Management Institute
-
----
+Bachelor of Science in Computer Science · Lebanese University · 2006
 
 ## Languages
 
-English — C1 · Arabic — Native · French — B2 · Luxembourgish — A2
+Arabic (native) · English (C1) · French (B2) · Luxembourgish (A2)
 
 </div>
