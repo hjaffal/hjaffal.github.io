@@ -15,7 +15,7 @@ css:
 
 # Hasan Jaffal
 
-**Head of Analytics | AI and Data Science Leadership | Security and Loss Prevention**
+**Head of Analytics - AI and Data Science Leadership - Security and Loss Prevention**
 
 Luxembourg · [jaftalks@gmail.com](mailto:jaftalks@gmail.com) · [LinkedIn](https://linkedin.com/in/jaffal)
 
@@ -32,7 +32,6 @@ Before Amazon, I progressed from software engineering to chief officer roles wit
 ### Amazon - Security and Loss Prevention · Luxembourg
 
 #### Senior Manager, Analytics and Data Services
-
 May 2026 – Present
 
 - Set the global Loss Prevention and Risk Analytics roadmap. Direct scientists and analysts working on theft and fraud detection.
@@ -41,7 +40,6 @@ May 2026 – Present
 - Contribute to Amazon’s worldwide security technology strategy and shape the operating model for AI with leaders in Security, Operations, Finance and Technology. Help define AI standards and how teams assess risk and compliance before scaling a use case.
 
 #### Head of International Analytics and Data Services (EMEA, APAC, LATAM)
-
 May 2025 – May 2026
 
 - Built a cross-regional data science organisation for Security and Loss Prevention. Led three senior managers and a wider team of approximately 27 professionals serving 21 countries.
@@ -49,37 +47,29 @@ May 2025 – May 2026
 - Improved loss forecast accuracy across the regions and helped reduce shrinkage by millions of dollars.
 
 #### Head of EMEA Data Services and Analytics
-
 November 2022 – April 2025
 
 - Directed Security and Loss Prevention analytics for more than 500 sites across at least 13 countries. Worked with regional Operations and Finance leaders to prioritise financial exposure and field security risks.
 - Introduced machine learning for early risk detection. Led the team that developed and deployed models to help field security teams respond to emerging threats.
 
 #### Senior Product Manager
-
 January 2020 – November 2022
 
 - Owned product strategy and delivery for Security and Loss Prevention technology, including tools that automated risk management and investigative workflows.
 - Led a machine learning and computer vision initiative for anomaly detection with an estimated annual benefit of more than $50 million.
 - Launched a global knowledge-sharing platform that reduced non-productive time for frontline teams by 18%.
 
-### Nabed Health Education Solutions
-
-**Lebanon**
+### Nabed Health Education Solutions - Lebanon
 
 #### Chief Product and Services Officer
-
 July 2018 – December 2019
 
 - Owned product strategy and service delivery for a digital health platform. Led product, engineering, data and content teams across four countries.
 - Agreed programme success measures with health organisations and NGOs and used platform usage and outcomes to prioritise improvements.
 
-### ArabiaGIS
-
-**Lebanon**
+### ArabiaGIS - Lebanon
 
 #### Chief Product Officer and Head of PMO
-
 February 2008 – June 2018 · Company tenure
 
 - Progressed from software development engineer to Chief Product Officer and Head of the Project Management Office (PMO).
