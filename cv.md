@@ -29,9 +29,7 @@ Before Amazon, I progressed from software engineering to chief officer roles wit
 
 ## Professional Experience
 
-### Amazon
-
-**Security and Loss Prevention · Luxembourg**
+### Amazon - Security and Loss Prevention · Luxembourg
 
 #### Senior Manager, Analytics and Data Services
 
