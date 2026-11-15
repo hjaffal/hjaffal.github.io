@@ -80,6 +80,14 @@
   padding-bottom: 0;
 }
 
+/* Role headings */
+.cv-content h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0F172A;
+  margin: 18px 0 4px;
+}
+
 /* Paragraphs */
 .cv-content p {
   font-size: 0.88rem;
