@@ -159,6 +159,20 @@
 .icon-text-card-desc { font-size: 0.72rem; color: var(--text-muted); }
 
 
+.about-gepackt-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 18px;
+  color: var(--dark);
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-decoration: none !important;
+}
+.about-gepackt-brand img { flex-shrink: 0; }
+.about-gepackt-dot { color: #6b50e6; }
+
 /* CV button */
 .about-cv-btn {
   display: inline-block;
