@@ -2,16 +2,31 @@
 layout: page
 title:
 permalink: /404.html
+full-width: true
 show-avatar: false
 chat_with_me_box: false
 ---
 
-<section class="error-page">
-  <span class="error-code">404</span>
-  <h1 class="error-title">Page not found.</h1>
-  <p class="error-desc">The page you're looking for doesn't exist or has been moved.</p>
-  <div class="error-actions">
-    <a href="/" class="error-btn-primary">Back to homepage</a>
-    <a href="/writing" class="error-btn-secondary">Read articles</a>
+<section class="error-page" aria-labelledby="error-title">
+  <div class="error-content">
+    <p class="error-kicker">404 · PAGE NOT FOUND</p>
+    <h1 class="error-title" id="error-title">We couldn’t find this page.</h1>
+    <p class="error-desc">The link may have changed, or the address might be incomplete. The ideas are still here—choose a useful place to continue.</p>
+    <div class="error-actions">
+      <a href="{{ '/' | relative_url }}" class="error-btn-primary">Return to homepage <span aria-hidden="true">→</span></a>
+      <a href="{{ '/writing/' | relative_url }}" class="error-btn-secondary">Browse all writing</a>
+    </div>
+    <p class="error-help">Looking for something specific? <a href="{{ '/contact/' | relative_url }}">Get in touch.</a></p>
+  </div>
+  <aside class="error-guide" aria-labelledby="error-guide-title">
+    <p class="error-guide-kicker">EXPLORE THE WRITING</p>
+    <h2 id="error-guide-title">Start with a question.</h2>
+    <p>Four reader questions help make sense of AI at work.</p>
+    <nav class="error-topic-list" aria-label="Writing topics">
+      {% for topic in site.data.writing.topics %}
+        <a href="{{ topic.url | relative_url }}"><span>{{ topic.label }}</span><span aria-hidden="true">→</span></a>
+      {% endfor %}
+    </nav>
+  </aside>
   </div>
 </section>
