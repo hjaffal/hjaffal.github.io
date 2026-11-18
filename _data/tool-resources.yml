@@ -1,0 +1,31 @@
+worksheets:
+  - title: Task Decomposition Worksheet
+    question: Understand where the time goes.
+    description: Map work activities across operational layers and calculate the balance between execution and judgment.
+    use: Reviewing an individual role or preparing a team discussion about changing tasks.
+    format: PDF · 1 page
+    url: /ai-templates/task-decomposition-template/
+  - title: Reallocation Planning Worksheet
+    question: Plan what changes in the work.
+    description: Identify tasks to automate, delegate, or eliminate, and decide where the released time should go.
+    use: Turning a task review into a concrete plan for using capacity differently.
+    format: PDF · 1 page
+    url: /ai-templates/reallocation-planning-template/
+  - title: Role Evolution Proposal
+    question: Make the proposed change explicit.
+    description: Set out the current role, proposed responsibilities, expected outcomes, and a 90-day implementation plan.
+    use: Preparing a structured conversation with a manager about responsibilities and development.
+    format: PDF · 1 page
+    url: /ai-templates/role-evolution-proposal-template/
+  - title: AI Dashboard Review Template
+    question: Connect the numbers to a decision.
+    description: Review metrics, investigate anomalies, add business context, and identify the actions the information supports.
+    use: Preparing an operational or business review that goes beyond a summary of performance.
+    format: PDF · 7 pages
+    url: /ai-templates/ai-dashboard-review-template/
+  - title: AI Root Cause Analysis Template
+    question: Investigate what needs to change.
+    description: Structure an investigation using a timeline, a 5-Why chain, evidence grading, and corrective-action tracking.
+    use: Examining an operational problem and documenting the evidence behind a proposed response.
+    format: PDF · 8 pages
+    url: /ai-templates/ai-root-cause-analysis-template/

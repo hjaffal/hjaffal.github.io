@@ -1,13 +1,1 @@
-{% comment %}
-  Position navigation bar — shows all positions as pills, highlights the active one.
-  Usage: {% include position-nav.html active="ai-decision-operations" %}
-{% endcomment %}
-<div class="pos-nav">
-  {% for p in site.data.positions %}
-    {% if p.tag == include.active %}
-    <span class="pos-nav-active">{{ p.tag }}</span>
-    {% else %}
-    <a href="{{ p.url }}" class="pos-nav-link">{{ p.tag }}</a>
-    {% endif %}
-  {% endfor %}
-</div>
+<nav class="pub-topic-nav" aria-label="Writing topics">{% for topic in site.data.writing.topics %}<a href="{{ topic.url | relative_url }}"{% if topic.id == include.active %} aria-current="page"{% endif %}>{{ topic.label }}</a>{% endfor %}</nav>

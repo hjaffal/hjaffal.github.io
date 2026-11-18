@@ -3,21 +3,14 @@ layout: cv
 title:
 subtitle:
 permalink: /cv/
-share-title: "Curriculum Vitae — Hasan Jaffal"
+share-title: "Hasan Jaffal — Curriculum Vitae"
 share-description: "Head of Analytics, AI and Data Science Leadership, Security and Loss Prevention. Leading global Loss Prevention and Risk Analytics at Amazon."
+last_modified_at: 2026-11-18
 show-avatar: false
 chat_with_me_box: false
 css:
   - "/assets/css/cv.css"
 ---
-
-[← Back to About](/aboutme/)
-
-# Hasan Jaffal
-
-**Head of Analytics - AI and Data Science Leadership - Security and Loss Prevention**
-
-Luxembourg · [jaftalks@gmail.com](mailto:jaftalks@gmail.com) · [LinkedIn](https://linkedin.com/in/jaffal)
 
 ## Executive Profile
 

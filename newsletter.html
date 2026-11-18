@@ -1,56 +1,21 @@
 ---
-layout: page
-title:
-subtitle:
-full-width: true
+layout: base
+title: The Second Mind Newsletter
 share-title: "The Second Mind Newsletter — Hasan Jaffal"
-share-description: "Field notes on risk, intelligence, and AI. How organizations detect risk, make decisions, and act under uncertainty."
-chat_with_me_box: false
-show-avatar: false
+share-description: "Receive Hasan Jaffal's articles on AI opportunities, investment decisions, people and adoption, and the evidence of business value. Read a sample before subscribing."
 permalink: /newsletter/
+show-avatar: false
+last_modified_at: 2026-11-18
 css:
-  - "/assets/css/newsletter.css"
+  - /assets/css/reading.css
+  - /assets/css/publication-pages.css
 ---
-
-<div class="nl-simple">
-  <div class="nl-simple-grid">
-    <div class="nl-simple-left">
-      <span class="field-label">THE SECOND MIND NEWSLETTER</span>
-      <h1 class="nl-simple-title">Field Notes on Risk, Intelligence, and <em>AI.</em></h1>
-      <p class="nl-simple-desc">Join 1,000+ operators who use this intelligence to shorten their signal-to-action time. Get the weekly decision operations briefing.</p>
-
-      <div class="nl-simple-features">
-        <div class="nl-simple-feature">
-          <i class="fas fa-bolt"></i>
-          <span>Risk signals and weak patterns</span>
-        </div>
-        <div class="nl-simple-feature">
-          <i class="fas fa-robot"></i>
-          <span>AI in real operations</span>
-        </div>
-        <div class="nl-simple-feature">
-          <i class="fas fa-crosshairs"></i>
-          <span>Decisions under uncertainty</span>
-        </div>
-        <div class="nl-simple-feature">
-          <i class="fas fa-chart-line"></i>
-          <span>Intelligence vs. reporting</span>
-        </div>
-      </div>
-
-      <a href="/writing" class="nl-simple-link"><i class="fas fa-arrow-right"></i> Read past posts</a>
-    </div>
-    <div class="nl-simple-right">
-      <div class="nl-simple-form">
-        <h3>Subscribe for free</h3>
-        <p class="nl-simple-form-desc">Join 1,000+ operators working in risk, intelligence, AI, and decision operations.</p>
-        <form class="nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'newsletter_page')">
-          <input type="email" placeholder="your@email.com" required class="nl-subscribe-input">
-          <input type="text" name="website_url" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="nl-subscribe-btn">Subscribe</button>
-          <p class="nl-subscribe-msg" style="display:none;"></p>
-        </form>
-      </div>
-    </div>
+<main class="pub-page"><div class="pub-wrap">
+  <header class="pub-intro"><p class="pub-kicker">THE NEWSLETTER</p><h1>The Second Mind.<br><span>A closer look at AI and business.</span></h1><p>Articles on the opportunities AI makes possible, the decisions behind adoption, and the evidence of what changed. Written by Hasan Jaffal.</p></header>
+  <div class="newsletter-opening">
+    <section aria-labelledby="newsletter-promise"><h2 id="newsletter-promise">The questions worth returning to.</h2><p>Where could AI change what your business is capable of? Which opportunity deserves investment? How does the work change for your people? And did the result justify the cost?</p><p>I explore those questions through practical articles on business decisions, analytics, and operational change. The aim is to leave you with a question to test or a decision you can make more confidently.</p><a class="pub-link" href="#newsletter-samples">Read a sample article ↓</a></section>
+    <section class="publication-signup" aria-labelledby="subscribe-title"><p class="pub-kicker">READ BY EMAIL</p><h2 id="subscribe-title">Get the next edition.</h2><p>Subscribe for free. You can unsubscribe using the link in any edition.</p><a class="pub-link newsletter-sample-link" href="#newsletter-samples">Read sample articles first →</a><form class="publication-subscribe nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'newsletter_page')"><label for="newsletter-email">Email address</label><input type="email" id="newsletter-email" name="email" autocomplete="email" placeholder="you@example.com" required class="nl-subscribe-input"><input type="text" name="website_url" class="publication-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="nl-subscribe-btn">Subscribe to The Second Mind</button><p class="nl-subscribe-msg" role="status" aria-live="polite" style="display:none;"></p></form></section>
   </div>
-</div>
+  <section id="newsletter-samples" aria-labelledby="samples-title"><div class="pub-section-heading"><div><p class="pub-kicker">BEFORE YOU SUBSCRIBE</p><h2 id="samples-title">A sample of the writing.</h2></div><a class="pub-link" href="{{ '/writing/' | relative_url }}">All articles →</a></div><p class="publication-explainer">These articles show the themes and approach behind the newsletter. You can read them on the site without subscribing.</p><div class="pub-essay-list">{% assign sample_keys = '2026-09-22-the-hidden-cost|2026-07-14-ai-made-tools-easy|2026-11-12-if-a-metric' | split: '|' %}{% for key in sample_keys %}{% assign sample = site.posts | where_exp: 'post', 'post.path contains key' | first %}{% include publication-essay.html post=sample %}{% endfor %}</div></section>
+  <aside class="publication-closing"><p>Prefer browsing at your own pace? Explore the <a href="{{ '/topics/' | relative_url }}">four writing topics</a> or follow the <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a>.</p></aside>
+</div></main>

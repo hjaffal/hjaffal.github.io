@@ -1,6 +1,6 @@
 # hasanjaffal.com
 
-Personal authority website for Hasan Jaffal — writing on AI, risk intelligence, operational decision-making, and future-proof skills. Built with Jekyll, Firebase Cloud Functions, and hosted on GitHub Pages.
+Personal publication by Hasan Jaffal — articles on AI opportunities, investment decisions, people and adoption, and the evidence of business value. Built with Jekyll, Firebase Cloud Functions, and hosted on GitHub Pages.
 
 **Live:** [hasanjaffal.com](https://www.hasanjaffal.com)
 
@@ -9,21 +9,21 @@ Personal authority website for Hasan Jaffal — writing on AI, risk intelligence
 ## What this site contains
 
 ### Main website
-- **Homepage** — Authority positioning with book promotion, newsletter embed, and featured posts
-- **Writing** — Blog posts organized by 4 canonical positions (AI Operations, Decision Authority, Risk Intelligence, AI and Work)
+- **Homepage** — Editorial introduction, featured articles, and links to the four writing topics
+- **Writing** — Searchable article library organized by Opportunities, Investment decisions, People & adoption, and Outcomes & evidence
 - **Tools** — Interactive assessments (AI Job Risk Analyzer, Future-Proof Skills Assessment)
 - **Books** — Publication page for "The Second Mind"
 - **Newsletter** — The Second Mind newsletter with admin panel
 - **Templates** — SEO-focused downloadable resources
 - **About** — Professional background
-- **Contact** — Contact form with office hours booking
+- **Contact** — Accessible contact form with a separate, optional newsletter signup
 
-### Position Pages (`/positions/`)
-Four canonical content pillars, each with a dedicated landing page:
-- **AI Operations** — AI exposes weak operations
-- **Decision Authority** — Signals need authority
-- **Risk Intelligence** — Reporting is not intelligence
-- **AI and Work** — AI is changing the skill floor
+### Topic pages (`/topics/`)
+Four reader questions organize the writing: Opportunities, Investment decisions, People & adoption, and Outcomes & evidence. Each topic has a starting article, reading questions, and related articles. Legacy `/positions/` URLs redirect to the corresponding topic.
+
+Topic definitions and editorial overrides live in `_data/writing.yml`. New posts can set `reading_topics` (an array of `opportunities`, `investment`, `adoption`, or `value`). `_includes/reading-topics.html` resolves the same classification for the writing library, article breadcrumbs, related reading, and topic pages. Existing content tags remain compatible.
+
+Article pages use the shared editorial layout, an optional summary, a generated table of contents when headings are available, and related articles. An optional `article_image`, `article_image_alt`, and `article_image_caption` can add a meaningful illustration.
 
 ### Tools (`/tools/`)
 - **AI Job Risk Analyzer** — Personalized AI risk assessment with Gemini-powered analysis, interactive dashboard, and 30-day action plan
@@ -162,6 +162,9 @@ bundle install
 
 # Start Jekyll server
 bundle exec jekyll serve
+
+# Check historical links and search metadata after a build
+python3 scripts/check-publication.py
 
 # Run frontend tests
 npm test

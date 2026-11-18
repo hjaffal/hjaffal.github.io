@@ -2,17 +2,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
+  "@id": {{ page.url | absolute_url | append: '#article' | jsonify }},
   "headline": {{ page.title | jsonify }},
   "author": {
     "@type": "Person",
+    "@id": {{ '/aboutme/#person' | absolute_url | jsonify }},
     "name": "Hasan Jaffal",
     "url": "https://hasanjaffal.com/aboutme/"
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hasan Jaffal",
-    "url": "https://hasanjaffal.com"
-  },
+  "publisher": {"@id": {{ '/aboutme/#person' | absolute_url | jsonify }}},
+  "isPartOf": {"@id": {{ '/#website' | absolute_url | jsonify }}},
+  "inLanguage": "en",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   {% if page.last-updated %}"dateModified": "{{ page.last-updated }}",{% else %}"dateModified": "{{ page.date | date_to_xmlschema }}",{% endif %}
   "description": {{ page.share-description | default: page.subtitle | default: page.excerpt | strip_html | truncate: 160 | jsonify }},

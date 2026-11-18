@@ -1,133 +1,28 @@
 ---
-layout: page
-title:
-subtitle:
-share-title: "Free AI Career Tools — Will AI Replace Your Job?"
-share-description: "Free tools to assess how AI impacts your job. Get your AI risk score, find exposed tasks, identify skill gaps, and build a plan to stay relevant."
-chat_with_me_box: false
-show-avatar: false
-full-width: true
+layout: base
+title: AI Tools & Practical Worksheets
+share-title: "AI Tools & Practical Worksheets — Hasan Jaffal"
+share-description: "Explore assessments, task-mapping worksheets, planning templates, and reference guides for understanding how AI changes work and operational decisions."
 permalink: /tools/
+show-avatar: false
+last_modified_at: 2026-11-18
 css:
-  - "/assets/css/tools.css"
+  - /assets/css/reading.css
+  - /assets/css/tools.css
 ---
+<main class="pub-page resources-page"><div class="pub-wrap">
+  <header class="pub-intro"><p class="pub-kicker">TOOLS & RESOURCES</p><h1>Examine the work.<br><span>Plan what changes.</span></h1><p>Assessments and practical worksheets for understanding how AI affects tasks, developing skills, and connecting information to better decisions. Choose a resource for the question you are working through.</p></header>
+  <nav class="resource-navigation" aria-label="Resource sections"><a href="#assessments">Assessments</a><a href="#worksheets">Worksheets & templates</a><a href="#references">Reference material</a></nav>
 
-<!-- Hero -->
-<section class="tools-hero">
-  <div class="tools-hero-inner">
-    <span class="tools-hero-label">FREE AI CAREER TOOLS</span>
-    <h1 class="tools-hero-title">Will AI Replace <em>Your Job?</em></h1>
-    <p class="tools-hero-desc">AI is not replacing entire jobs — it is automating specific tasks. These tools help you understand which parts of your work are exposed, what skills to build, and how to position yourself.</p>
-  </div>
-</section>
+  <section class="resource-section" id="assessments" aria-labelledby="assessments-title"><div class="pub-section-heading"><div><p class="pub-kicker">UNDERSTAND A ROLE</p><h2 id="assessments-title">Two ways to take stock.</h2></div></div><p class="resource-section-description">These assessments focus on individual roles and skills. For a team discussion about changing the work, start with the worksheets below.</p><div class="assessment-grid">
+    <article class="assessment-entry"><p class="pub-kicker">AI-ASSISTED ASSESSMENT</p><h3><a href="{{ '/ai-job-risk-analyzer/' | relative_url }}">AI Job Risk Analyzer</a></h3><p>Describe your role and tasks to explore which activities are exposed to automation and where judgment remains important.</p><dl><div><dt>Useful for</dt><dd>Taking a closer look at the tasks within your role.</dd></div><div><dt>What you get</dt><dd>Task-level analysis, skill-development suggestions, and a 30-day action plan.</dd></div></dl><div class="assessment-access"><span>Free · Report by email</span><a class="pub-link" href="{{ '/ai-job-risk-analyzer/' | relative_url }}">Explore your role →</a></div></article>
+    <article class="assessment-entry"><p class="pub-kicker">SELF-ASSESSMENT</p><h3><a href="{{ '/future-proof-skills-assessment/' | relative_url }}">Future-Proof Skills Assessment</a></h3><p>Reflect on your AI literacy, judgment, business understanding, and communication to identify areas for development.</p><dl><div><dt>Useful for</dt><dd>Preparing a learning plan or a development conversation.</dd></div><div><dt>What you get</dt><dd>A review across four skill dimensions with personalized recommendations.</dd></div></dl><div class="assessment-access"><span>Free · Interactive questions</span><a class="pub-link" href="{{ '/future-proof-skills-assessment/' | relative_url }}">Review your skills →</a></div></article>
+  </div></section>
 
-<!-- Tools Grid -->
-<section class="tools-cards">
-  <div class="tools-cards-inner">
+  <section class="resource-section" id="worksheets" aria-labelledby="worksheets-title"><div class="pub-section-heading"><div><p class="pub-kicker">WORK THROUGH A QUESTION</p><h2 id="worksheets-title">Put the discussion on paper.</h2></div><a class="pub-link" href="{{ '/ai-templates/' | relative_url }}">All templates →</a></div><p class="resource-section-description">Use a worksheet to make the work, the proposed change, and the next decision explicit. Each link opens a resource page with a preview and download details.</p><div class="worksheet-list">{% for resource in site.data.tool-resources.worksheets %}<article class="worksheet-entry"><div><p class="resource-format">{{ resource.format }}</p><h3>{{ resource.question }}</h3></div><div><h4><a href="{{ resource.url | relative_url }}">{{ resource.title }}</a></h4><p>{{ resource.description }}</p><p class="worksheet-use"><strong>Use when:</strong> {{ resource.use }}</p><a class="pub-link" href="{{ resource.url | relative_url }}">Open the resource →</a></div></article>{% endfor %}</div></section>
 
-    <a href="/ai-job-risk-analyzer/" class="tools-card">
-      <div class="tools-card-badge">Most Popular</div>
-      <div class="tools-card-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      <h2 class="tools-card-title">AI Job Risk Analyzer</h2>
-      <p class="tools-card-desc">Get a personalized AI risk analysis for your role. Understand which tasks are exposed, identify skill gaps, and receive a 30-day action plan.</p>
-      <ul class="tools-card-features">
-        <li>AI-powered analysis by Gemini</li>
-        <li>Task-level exposure breakdown</li>
-        <li>Personalized 30-day plan</li>
-        <li>Full report sent to your email</li>
-      </ul>
-      <div class="tools-card-footer">
-        <span class="tools-card-time">~3 minutes</span>
-        <span class="tools-card-cta">Start Free Assessment →</span>
-      </div>
-    </a>
+  <section class="resource-section" id="references" aria-labelledby="references-title"><div class="pub-section-heading"><div><p class="pub-kicker">EXPLORE THE CONTEXT</p><h2 id="references-title">Reference material.</h2></div></div><div class="reference-grid"><article><h3><a href="{{ '/ai-job-risk-directory/' | relative_url }}">AI Job Risk Directory</a></h3><p>Browse role profiles to examine task exposure, responsibilities, and skills in different professional contexts.</p><a class="pub-link" href="{{ '/ai-job-risk-directory/' | relative_url }}">Browse role profiles →</a></article><article><h3><a href="{{ '/lexicon/' | relative_url }}">AI Operations Lexicon</a></h3><p>Explore the language used in the writing about operational decisions, ownership, signals, and AI adoption.</p><a class="pub-link" href="{{ '/lexicon/' | relative_url }}">Explore the lexicon →</a></article></div></section>
 
-    <a href="/future-proof-skills-assessment/" class="tools-card">
-      <div class="tools-card-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <h2 class="tools-card-title">Future-Proof Skills Assessment</h2>
-      <p class="tools-card-desc">Assess your AI literacy, judgment, business understanding, and communication. See whether your skillset makes you exposed, adaptable, or harder to replace.</p>
-      <ul class="tools-card-features">
-        <li>12 targeted questions</li>
-        <li>Score across 4 skill dimensions</li>
-        <li>Personalized recommendations</li>
-        <li>Instant results</li>
-      </ul>
-      <div class="tools-card-footer">
-        <span class="tools-card-time">~5 minutes</span>
-        <span class="tools-card-cta">Take the Assessment →</span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- How it works -->
-<section class="tools-how">
-  <div class="tools-how-inner">
-    <h2 class="tools-how-title">How It Works</h2>
-    <div class="tools-how-grid">
-      <div class="tools-how-step">
-        <span class="tools-how-num">1</span>
-        <h3>Answer a few questions</h3>
-        <p>Tell us about your role, tasks, and industry. No account needed.</p>
-      </div>
-      <div class="tools-how-step">
-        <span class="tools-how-num">2</span>
-        <h3>Get your analysis</h3>
-        <p>AI evaluates your exposure at the task level — not generic job-title predictions.</p>
-      </div>
-      <div class="tools-how-step">
-        <span class="tools-how-num">3</span>
-        <h3>Build your plan</h3>
-        <p>Receive specific skills to develop and actions to take this month.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SEO content -->
-<section class="tools-seo">
-  <div class="tools-seo-inner">
-    <h2>How AI Is Changing Jobs</h2>
-    <p>AI is not coming for your job in one move. It is coming for your tasks — one at a time. Reporting, data entry, scheduling, first-draft writing, pattern matching, and routine analysis are already being automated. The professionals who only do those tasks are the most exposed.</p>
-    <p>But AI cannot replace judgment under uncertainty, stakeholder navigation, cross-domain thinking, or accountability for outcomes. The question is not whether AI will affect your role. The question is which parts of your role are at risk — and whether you are building the skills that survive.</p>
-
-    <h2>Who Are These Tools For?</h2>
-    <p>Anyone working in data, operations, management, product, marketing, admin, or technical roles who wants to understand how AI affects their specific position. Whether you are an entry-level analyst or a senior director, these tools give you personalized insight — not one-size-fits-all career advice.</p>
-  </div>
-</section>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Free AI Career Tools",
-  "description": "Free tools to assess how AI impacts your job. Get your AI risk score, find exposed tasks, identify skill gaps, and build a plan to stay relevant.",
-  "url": "https://hasanjaffal.com/tools/",
-  "author": {
-    "@type": "Person",
-    "name": "Hasan Jaffal",
-    "url": "https://hasanjaffal.com"
-  },
-  "hasPart": [
-    {
-      "@type": "WebApplication",
-      "name": "AI Job Risk Analyzer",
-      "url": "https://hasanjaffal.com/ai-job-risk-analyzer/",
-      "applicationCategory": "BusinessApplication",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    },
-    {
-      "@type": "WebApplication",
-      "name": "Future-Proof Skills Assessment",
-      "url": "https://hasanjaffal.com/future-proof-skills-assessment/",
-      "applicationCategory": "BusinessApplication",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }
-  ]
-}
-</script>
+  <aside class="resource-reading"><h2>Bring the tools back to the business question.</h2><p>A worksheet or assessment can help structure the discussion. The broader questions remain what becomes possible, what deserves investment, how people adopt the change, and what evidence would justify continuing.</p><nav aria-label="Related writing topics">{% for topic in site.data.writing.topics %}<a class="pub-link" href="{{ topic.url | relative_url }}">{{ topic.label }} →</a>{% endfor %}</nav></aside>
+</div></main>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":{{ '/tools/#tools-list' | absolute_url | jsonify }},"name":"AI tools and practical resources","itemListElement":[{"@type":"ListItem","position":1,"name":"AI Job Risk Analyzer","url":{{ '/ai-job-risk-analyzer/' | absolute_url | jsonify }}},{"@type":"ListItem","position":2,"name":"Future-Proof Skills Assessment","url":{{ '/future-proof-skills-assessment/' | absolute_url | jsonify }}}{% for resource in site.data.tool-resources.worksheets %},{"@type":"ListItem","position":{{ forloop.index | plus: 2 }},"name":{{ resource.title | jsonify }},"url":{{ resource.url | absolute_url | jsonify }}}{% endfor %},{"@type":"ListItem","position":8,"name":"AI Job Risk Directory","url":{{ '/ai-job-risk-directory/' | absolute_url | jsonify }}},{"@type":"ListItem","position":9,"name":"AI Operations Lexicon","url":{{ '/lexicon/' | absolute_url | jsonify }}}]}</script>

@@ -1,20 +1,25 @@
-- tag: ai-decision-operations
+# Compatibility data for older templates. Topic definitions live in writing.yml.
+- tag: opportunities
   number: "01"
-  title: "AI exposes weak operations and slow decisions"
-  thesis: "AI does not repair unclear ownership or slow approval chains. It exposes them faster and at scale. Signals need authority — detection without decision power is expensive noise."
-  cta: "Explore AI and decision operations"
-  url: "/positions/ai-decision-operations/"
-
-- tag: risk-intelligence
+  title: Opportunities
+  thesis: Where could AI make a difference?
+  cta: Explore opportunities
+  url: /topics/opportunities/
+- tag: investment
   number: "02"
-  title: "Reporting is not intelligence"
-  thesis: "Reporting explains what happened. Intelligence changes what happens next. If metrics do not trigger action, they are decoration."
-  cta: "Explore risk intelligence"
-  url: "/positions/risk-intelligence/"
-
-- tag: ai-job-risk
+  title: Investment decisions
+  thesis: What deserves investment?
+  cta: Explore investment decisions
+  url: /topics/investment-decisions/
+- tag: adoption
   number: "03"
-  title: "AI is changing the skill floor"
-  thesis: "AI exposes people who only operate tools. The safer skillset is judgment: setting thresholds, owning trade-offs, and knowing when to escalate."
-  cta: "Explore AI job risk"
-  url: "/positions/ai-job-risk/"
+  title: People & adoption
+  thesis: What needs to change in the work?
+  cta: Explore people & adoption
+  url: /topics/people-and-adoption/
+- tag: value
+  number: "04"
+  title: Outcomes & evidence
+  thesis: How do we judge the result?
+  cta: Explore outcomes & evidence
+  url: /topics/outcomes-and-evidence/

@@ -1,0 +1,17 @@
+{% assign schema_canonical = page.canonical_url | default: page.url | absolute_url | strip_index %}
+{% assign schema_topic = site.data.writing.topics | where: 'id', page.reading_topic | first %}
+{% assign schema_name = page.share-title | default: page.title | default: site.title | strip_html %}
+{% assign schema_description = page.share-description | default: page.subtitle | default: page.content | strip_html | normalize_whitespace | truncatewords: 45 %}
+{% assign webpage_type = 'WebPage' %}{% if page.url == '/aboutme/' %}{% assign webpage_type = 'AboutPage' %}{% elsif page.url == '/cv/' %}{% assign webpage_type = 'ProfilePage' %}{% elsif page.url == '/contact/' %}{% assign webpage_type = 'ContactPage' %}{% elsif page.reading_topic or page.url == '/topics/' or page.url == '/writing/' or page.url == '/books/' or page.url == '/tools/' or page.url == '/ai-templates/' or page.url == '/lexicon/' or page.url == '/ai-job-risk-directory/' %}{% assign webpage_type = 'CollectionPage' %}{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebSite", "@id": {{ '/#website' | absolute_url | jsonify }}, "url": {{ '/' | absolute_url | jsonify }}, "name": "Hasan Jaffal", "description": "Articles on AI opportunities, investment decisions, people and adoption, and the evidence of business value.", "inLanguage": "en", "publisher": {"@id": {{ '/aboutme/#person' | absolute_url | jsonify }}}},
+    {"@type": "Person", "@id": {{ '/aboutme/#person' | absolute_url | jsonify }}, "name": "Hasan Jaffal", "url": {{ '/aboutme/' | absolute_url | jsonify }}, "image": {{ '/assets/img/hasanjaffal.jpeg' | absolute_url | jsonify }}, "description": "Writer and leader with a background in analytics, data, product leadership, and AI adoption in operational environments.", "sameAs": ["https://www.linkedin.com/in/jaffal"]},
+    {"@type": {{ webpage_type | jsonify }}, "@id": {{ schema_canonical | append: '#webpage' | jsonify }}, "url": {{ schema_canonical | jsonify }}, "name": {{ schema_name | jsonify }}, "description": {{ schema_description | jsonify }}, "inLanguage": "en", "isPartOf": {"@id": {{ '/#website' | absolute_url | jsonify }}}, "author": {"@id": {{ '/aboutme/#person' | absolute_url | jsonify }}}
+    {% if page.last_modified_at %}, "dateModified": {{ page.last_modified_at | date_to_xmlschema | jsonify }}{% endif %}
+    {% if page.url == '/aboutme/' or page.url == '/cv/' %}, "mainEntity": {"@id": {{ '/aboutme/#person' | absolute_url | jsonify }}}{% elsif page.reading_topic %}, "about": {"@type": "Thing", "name": {{ schema_topic.label | jsonify }}}, "mainEntity": {"@id": {{ schema_canonical | append: '#article-list' | jsonify }}}{% elsif page.url == '/books/' %}, "mainEntity": {"@id": {{ '/books/#publications' | absolute_url | jsonify }}}{% elsif page.url == '/tools/' %}, "mainEntity": {"@id": {{ '/tools/#tools-list' | absolute_url | jsonify }}}{% elsif page.id %}, "mainEntity": {"@id": {{ schema_canonical | append: '#article' | jsonify }}}{% endif %}}
+  ]
+}
+</script>

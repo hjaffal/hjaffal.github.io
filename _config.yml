@@ -3,31 +3,32 @@ url: "https://hasanjaffal.com"
 author: Hasan Jaffal
 
 navbar-links:
-  Writing:
-    - _url: "writing"
-    - AI & Decision Operations: "positions/ai-decision-operations"
-    - Risk Intelligence: "positions/risk-intelligence"
-    - AI Job Risk: "positions/ai-job-risk"
+  Writing: "writing"
+  Topics:
+    - _url: "topics"
+    - Opportunities: "topics/opportunities"
+    - Investment decisions: "topics/investment-decisions"
+    - People & adoption: "topics/people-and-adoption"
+    - Outcomes & evidence: "topics/outcomes-and-evidence"
+  About: "aboutme"
+  Newsletter: "newsletter"
   Tools:
     - _url: "tools"
     - AI Job Risk Analyzer: "ai-job-risk-analyzer"
+    - AI Job Risk Directory: "ai-job-risk-directory"
     - Future-Proof Skills Assessment: "future-proof-skills-assessment"
-  AI Job Risk: "ai-job-risk-directory"
-  Newsletter: "newsletter"
-  Lexicon: "lexicon"
-  About:
-    - _url: "aboutme"
-    - About Hasan: "aboutme"
-    - Contact: "contact"
+    - Templates: "ai-templates"
+    - Lexicon: "lexicon"
+  Contact: "contact"
 
-avatar: "/assets/img/og-default.png"
+avatar: "/og-default.png"
 round-avatar: false
 
 social-network-links:
   email: "jaftalks@gmail.com"
   linkedin: jaffal
 
-rss-description: "Writing on data, AI, risk, fraud analytics, loss prevention, and operational decision-making."
+rss-description: "Articles on AI opportunities, investment decisions, people and adoption, and the evidence of business value."
 
 share-links-active:
   twitter: true
@@ -63,6 +64,7 @@ footer-hover-col: "#9333EA"
 
 site-css:
   - "/assets/css/global.css"
+  - "/assets/css/header.css"
 
 site-js:
   - "/assets/js/subscribe.js"

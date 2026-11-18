@@ -1,0 +1,4 @@
+{% assign list_canonical = page.canonical_url | default: page.url | absolute_url | strip_index %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":{{ list_canonical | append: '#article-list' | jsonify }},"name":{{ current_topic.label | append: ' articles' | jsonify }},"itemListElement":[
+{% assign list_count = 0 %}{% for listed_post in site.posts %}{% capture listed_ids %}{% include reading-topics.html post=listed_post %}{% endcapture %}{% assign listed_topics = listed_ids | strip | split: '|' %}{% if listed_topics contains current_topic.id and list_count < 6 %}{% if list_count > 0 %},{% endif %}{% assign list_count = list_count | plus: 1 %}{"@type":"ListItem","position":{{ list_count }},"name":{{ listed_post.title | jsonify }},"url":{{ listed_post.url | absolute_url | jsonify }}}{% endif %}{% endfor %}
+]}</script>

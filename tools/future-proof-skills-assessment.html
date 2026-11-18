@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: base
 title:
 subtitle:
 share-title: "Future-Proof Skills Assessment: What Should You Learn in the Age of AI?"
@@ -11,68 +11,20 @@ head-extra:
   - noindex.html
 sitemap: false
 css:
-  - "/assets/css/assessment.css"
+  - /assets/css/reading.css
+  - /assets/css/resource-suite.css
+  - /assets/css/resource-apps.css
 ---
 
-<style>
-.fps-wrap { max-width: 640px; margin: 0 auto; padding: 40px 0 80px; }
-.fps-header { text-align: center; margin-bottom: 40px; }
-.fps-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 12px; }
-.fps-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; color: var(--dark); margin: 0 0 12px; }
-.fps-sub { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
-.fps-progress { display: flex; gap: 4px; margin-bottom: 32px; }
-.fps-progress-bar { flex: 1; height: 4px; border-radius: 2px; background: var(--slate-border); transition: background 0.3s; }
-.fps-progress-bar.active { background: var(--accent); }
-.fps-step { display: none; }
-.fps-step.visible { display: block; }
-.fps-question { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 0 0 20px; line-height: 1.35; }
-.fps-options { display: flex; flex-direction: column; gap: 10px; }
-.fps-option { display: block; padding: 16px 20px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 10px; font-size: 0.88rem; color: var(--dark); cursor: pointer; transition: border-color 0.2s, background 0.2s; line-height: 1.4; }
-.fps-option:hover { border-color: var(--accent); }
-.fps-option.selected { border-color: var(--accent); background: rgba(147,51,234,0.06); }
-.fps-nav { display: flex; justify-content: space-between; margin-top: 28px; }
-.fps-btn { padding: 11px 24px; font-size: 0.8rem; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
-.fps-btn-next { background: var(--accent); color: #fff; }
-.fps-btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
-.fps-btn-back { background: var(--slate-bg); border: 1px solid var(--slate-border); color: var(--dark); }
-.fps-result { text-align: center; }
-.fps-result-band { font-size: 1.6rem; font-weight: 800; color: var(--accent); margin: 0 0 8px; }
-.fps-result-score { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px; }
-.fps-result-desc { font-size: 0.92rem; color: var(--dark); line-height: 1.6; margin: 0 0 28px; text-align: left; }
-.fps-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; text-align: left; }
-.fps-cat-card { padding: 14px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 8px; }
-.fps-cat-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-soft); display: block; margin-bottom: 4px; }
-.fps-cat-value { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
-.fps-skills { text-align: left; margin-bottom: 32px; }
-.fps-skills h3 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin: 0 0 12px; }
-.fps-skill-item { padding: 10px 14px; background: var(--slate-bg); border-radius: 6px; margin-bottom: 6px; font-size: 0.85rem; color: var(--dark); font-weight: 500; }
-.fps-email-box { padding: 24px; background: var(--slate-bg); border: 1px solid var(--slate-border); border-radius: 12px; margin-top: 28px; }
-.fps-email-box h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
-.fps-email-box p { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 14px; }
-.fps-email-form { display: flex; flex-direction: column; }
-.fps-email-form input[type="text"],
-.fps-email-form input[type="email"] { width: 100%; padding: 10px 14px; border: 1px solid var(--slate-border); border-radius: 8px; font-size: 0.85rem; outline: none; margin-bottom: 8px; box-sizing: border-box; }
-.fps-email-form input[type="text"]:focus,
-.fps-email-form input[type="email"]:focus { border-color: var(--accent); }
-.fps-email-form input[type="checkbox"] { width: 16px; height: 16px; margin: 0; flex-shrink: 0; }
-.fps-email-form button { width: 100%; padding: 12px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
-.fps-email-form button:disabled { opacity: 0.4; cursor: not-allowed; }
-.fps-faq { margin-top: 64px; border-top: 1px solid var(--slate-border); padding-top: 40px; }
-.fps-faq h2 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin: 0 0 24px; }
-.fps-faq-item { margin-bottom: 20px; }
-.fps-faq-item h3 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin: 0 0 6px; }
-.fps-faq-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
-</style>
-
-<div class="fps-wrap">
+<main class="pub-page rs-page"><div class="pub-wrap"><nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="/tools/">Tools</a><span aria-hidden="true">/</span><a href="/future-proof-skills-assessment/">About this assessment</a></nav><div class="fps-wrap">
   <div class="fps-header">
     <span class="fps-label">INTERACTIVE ASSESSMENT</span>
     <h1 class="fps-title">Future-Proof Skills Assessment</h1>
     <p class="fps-sub">AI is not only removing tasks. It is changing the skill floor. This assessment helps you see whether your current skills make you exposed, adaptable, or harder to replace.</p>
   </div>
 
-  <div class="fps-progress" id="fps-progress"></div>
-  <div id="fps-container"></div>
+  <p id="fps-step-status" class="rs-count" aria-live="polite"></p><div class="fps-progress" id="fps-progress" aria-hidden="true"></div>
+  <noscript><p class="rs-note">This interactive assessment needs JavaScript. You can also explore the <a href="/topics/people-and-adoption/">people and adoption guide</a>.</p></noscript><div id="fps-container"></div>
 
   <!-- FAQ -->
   <div class="fps-faq">
@@ -96,6 +48,7 @@ css:
   </div>
 </div>
 
+</div></main>
 <script>
 /* Assessment logic — kept inline because it uses Liquid variables (site.data.firebase).
    To extract: set window.FPS_CONFIG = {...} in a <script> block, then load assessment.js externally. */
@@ -175,20 +128,28 @@ function buildProgress(){
   }
 }
 
+var previousStep = -1;
 function render(){
+  var changed = previousStep !== state.currentStep; previousStep = state.currentStep;
   buildProgress();
+  document.getElementById('fps-step-status').textContent = state.currentStep < 14 ? 'Step ' + (state.currentStep + 1) + ' of 14' : 'Your result';
   if(state.currentStep===0) renderJobFamily();
   else if(state.currentStep===1) renderSeniority();
   else if(state.currentStep<10) renderCoreQ(state.currentStep-2);
   else if(state.currentStep<14) renderRoleQ(state.currentStep-10);
   else renderResult();
+  container.querySelectorAll('.fps-option').forEach(function(el){el.setAttribute('aria-pressed',el.classList.contains('selected'));});
+  var heading = container.querySelector('.fps-question, .fps-result-band');
+  if(heading){heading.setAttribute('tabindex','-1');heading.setAttribute('role','heading');heading.setAttribute('aria-level','2');}
+  if(changed && heading && state.currentStep > 0) { heading.focus({preventScroll:true}); if(heading.getBoundingClientRect().top < 100) heading.scrollIntoView({block:'start'}); }
+  else {var selected=container.querySelector('.fps-option.selected');if(selected)selected.focus({preventScroll:true});}
 }
 
 function renderJobFamily(){
   var html='<div class="fps-step visible"><p class="fps-question">Which type of work best describes your current role?</p><div class="fps-options">';
   for(var i=0;i<jobLabels.length;i++){
     var sel=state.jobFamily===i?' selected':'';
-    html+='<div class="fps-option'+sel+'" data-idx="'+i+'">'+jobLabels[i]+'</div>';
+    html+='<button type="button" class="fps-option'+sel+'" data-idx="'+i+'">'+jobLabels[i]+'</button>';
   }
   html+='</div><div class="fps-nav"><div></div><button class="fps-btn fps-btn-next" '+(state.jobFamily===null?'disabled':'')+'>Next</button></div></div>';
   container.innerHTML=html;
@@ -202,7 +163,7 @@ function renderSeniority(){
   var html='<div class="fps-step visible"><p class="fps-question">What is your seniority level?</p><div class="fps-options">';
   for(var i=0;i<seniorityLabels.length;i++){
     var sel=state.seniority===i?' selected':'';
-    html+='<div class="fps-option'+sel+'" data-idx="'+i+'">'+seniorityLabels[i]+'</div>';
+    html+='<button type="button" class="fps-option'+sel+'" data-idx="'+i+'">'+seniorityLabels[i]+'</button>';
   }
   html+='</div><div class="fps-nav"><button class="fps-btn fps-btn-back">Back</button><button class="fps-btn fps-btn-next" '+(state.seniority===null?'disabled':'')+'>Next</button></div></div>';
   container.innerHTML=html;
@@ -229,7 +190,7 @@ function renderQuestion(q,ansIdx,step){
   var html='<div class="fps-step visible"><p class="fps-question">'+q.q+'</p><div class="fps-options">';
   for(var i=0;i<q.opts.length;i++){
     var sel=current===i?' selected':'';
-    html+='<div class="fps-option'+sel+'" data-idx="'+i+'">'+q.opts[i]+'</div>';
+    html+='<button type="button" class="fps-option'+sel+'" data-idx="'+i+'">'+q.opts[i]+'</button>';
   }
   html+='</div><div class="fps-nav"><button class="fps-btn fps-btn-back">Back</button><button class="fps-btn fps-btn-next" '+(current===null?'disabled':'')+'>Next</button></div></div>';
   container.innerHTML=html;
@@ -279,22 +240,22 @@ function renderResult(){
   html+='<p class="fps-result-score">Score: '+score+' / 36</p>';
   html+='<p class="fps-result-desc">'+desc+'</p>';
   html+='<div class="fps-cats">';
-  html+='<div class="fps-cat-card"><span class="fps-cat-label">Strongest</span><span class="fps-cat-value">'+strongest+'</span></div>';
-  html+='<div class="fps-cat-card"><span class="fps-cat-label">Weakest</span><span class="fps-cat-value">'+weakest+'</span></div>';
+  html+='<div class="fps-cat-card"><span class="fps-cat-label">Strongest</span><span class="fps-cat-value">'+strongest.replace(/-/g,' ')+'</span></div>';
+  html+='<div class="fps-cat-card"><span class="fps-cat-label">Weakest</span><span class="fps-cat-value">'+weakest.replace(/-/g,' ')+'</span></div>';
   html+='</div>';
   html+='<div class="fps-skills"><h3>Recommended skills to learn next</h3>';
   for(var s=0;s<skills.length;s++){html+='<div class="fps-skill-item">'+skills[s]+'</div>';}
   html+='</div>';
   html+='<div class="fps-email-box"><h3>Get the full Future-Proof Skills Guide</h3><p>Enter your details to receive the complete guide with learning paths and action steps.</p>';
   html+='<form class="fps-email-form" id="fps-email-form">';
-  html+='<input type="text" placeholder="Full name" required id="fps-name-input">';
-  html+='<input type="email" placeholder="your@email.com" required id="fps-email-input">';
-  html+='<input type="text" placeholder="Job title" required id="fps-jobtitle-input">';
-  html+='<input type="text" placeholder="Country or region" required id="fps-country-input">';
+  html+='<label for="fps-name-input">Full name</label><input type="text" placeholder="Full name" required id="fps-name-input">';
+  html+='<label for="fps-email-input">Email</label><input type="email" placeholder="your@email.com" required id="fps-email-input">';
+  html+='<label for="fps-jobtitle-input">Job title</label><input type="text" placeholder="Job title" required id="fps-jobtitle-input">';
+  html+='<label for="fps-country-input">Country or region</label><input type="text" placeholder="Country or region" required id="fps-country-input">';
   html+='<label style="display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:var(--text-muted);margin:4px 0 14px;cursor:pointer;"><input type="checkbox" id="fps-consent" style="margin-top:2px;accent-color:var(--accent);"><span>I agree to receive the newsletter and my personalized guide by email.</span></label>';
   html+='<button type="submit" id="fps-submit-btn" disabled>Send guide</button>';
   html+='</form>';
-  html+='<p id="fps-email-msg" style="display:none;font-size:0.78rem;color:var(--accent);margin:10px 0 0;font-weight:500;"></p>';
+  html+='<p role="status" id="fps-email-msg" style="display:none;font-size:0.78rem;color:var(--accent);margin:10px 0 0;font-weight:500;"></p>';
   html+='</div></div>';
   container.innerHTML=html;
 
@@ -314,9 +275,7 @@ function renderResult(){
     var country=document.getElementById('fps-country-input').value.trim();
     if(!name||!email||!jobTitle||!country)return;
     if(!document.getElementById('fps-consent').checked)return;
-    // Store subscription
-    localStorage.setItem('tpl_subscribed','1');
-    localStorage.setItem('tpl_email',email);
+    submitBtn.disabled = true;
 
     // Map job family to valid backend values
     var jobFamilyMap = {
@@ -356,15 +315,19 @@ function renderResult(){
       body: JSON.stringify({data: callData})
     }).then(function(res){
       if(res.ok){
+        localStorage.setItem('tpl_subscribed','1');
+        localStorage.setItem('tpl_email',email);
         document.getElementById('fps-email-msg').style.display='block';
         document.getElementById('fps-email-msg').textContent='Guide sent. Check your inbox.';
         document.getElementById('fps-email-form').style.display='none';
       } else {
+        submitBtn.disabled = false;
         document.getElementById('fps-email-msg').style.display='block';
         document.getElementById('fps-email-msg').textContent='Email could not be sent. Try again.';
         document.getElementById('fps-email-msg').style.color='#DC2626';
       }
     }).catch(function(){
+      submitBtn.disabled = false;
       document.getElementById('fps-email-msg').style.display='block';
       document.getElementById('fps-email-msg').textContent='Email could not be sent. Try again.';
       document.getElementById('fps-email-msg').style.color='#DC2626';

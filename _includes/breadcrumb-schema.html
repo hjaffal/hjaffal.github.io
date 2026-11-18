@@ -1,0 +1,5 @@
+{% assign crumb_url = page.canonical_url | default: page.url | absolute_url | strip_index %}
+{% if page.id %}{% capture crumb_ids %}{% include reading-topics.html post=page %}{% endcapture %}{% assign crumb_primary = crumb_ids | strip | split: '|' | first %}{% assign crumb_topic = site.data.writing.topics | where: 'id', crumb_primary | first %}{% elsif page.reading_topic %}{% assign crumb_topic = site.data.writing.topics | where: 'id', page.reading_topic | first %}{% endif %}
+{% if page.id or page.reading_topic %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Writing","item":{{ '/writing/' | absolute_url | jsonify }}},{"@type":"ListItem","position":2,"name":{% if page.id %}{{ crumb_topic.label | jsonify }}{% else %}"Topics"{% endif %},"item":{% if page.id %}{{ crumb_topic.url | absolute_url | jsonify }}{% else %}{{ '/topics/' | absolute_url | jsonify }}{% endif %}},{"@type":"ListItem","position":3,"name":{% if page.id %}{{ page.title | jsonify }}{% else %}{{ crumb_topic.label | jsonify }}{% endif %},"item":{{ crumb_url | jsonify }}}]}</script>
+{% endif %}

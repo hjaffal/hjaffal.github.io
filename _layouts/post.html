@@ -1,108 +1,36 @@
 ---
 layout: base
 css:
-  - "/assets/css/post.css"
+  - /assets/css/reading.css
+js:
+  - /assets/js/article.js
 ---
-
 {% include article-schema.html %}
 {% include faq-schema.html %}
-<main class="post-layout-wrapper">
-  <div class="page-with-sidebar">
-    <div class="page-main post-main">
-
-      <div class="post-hero-accent">
-        <div class="post-hero-accent-inner">
-          <div class="post-hero-accent-shape"></div>
-          <div class="post-hero-accent-shape-2"></div>
-        </div>
+{% capture article_topic_ids %}{% include reading-topics.html post=page %}{% endcapture %}
+{% assign article_topics = article_topic_ids | strip | split: '|' %}
+{% assign primary_id = article_topics | first %}
+{% assign primary_topic = site.data.writing.topics | where: 'id', primary_id | first %}
+<main class="pub-page article-page">
+  <div class="pub-wrap">
+    <nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/writing/' | relative_url }}">Writing</a><span aria-hidden="true">/</span><a href="{{ primary_topic.url | relative_url }}">{{ primary_topic.label }}</a><span aria-hidden="true">/</span><span aria-current="page">Article</span></nav>
+    <article>
+      <header class="article-heading"><div class="article-topics">{% for topic in site.data.writing.topics %}{% if article_topics contains topic.id %}<a href="{{ topic.url | relative_url }}">{{ topic.label }}</a>{% endif %}{% endfor %}</div><h1>{{ page.title }}</h1>{% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}<div class="article-byline"><a href="{{ '/aboutme/' | relative_url }}"><img src="{{ '/assets/img/hasanjaffal.jpeg' | relative_url }}" alt="" width="40" height="40"><span>{{ site.author }}</span></a><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time><span>{% assign words = content | number_of_words %}{{ words | divided_by: 200 | plus: 1 }} min read</span>{% if page.last-updated %}<span>Updated {{ page.last-updated | date: '%B %-d, %Y' }}</span>{% endif %}</div></header>
+      <div class="article-reading-column">
+        {% if page.tldr %}<details class="article-summary"><summary>The argument in brief</summary><p>{{ page.tldr }}</p></details>{% endif %}
+        <details class="article-contents" id="article-contents" hidden><summary>In this article</summary><nav aria-label="In this article"><ol id="article-contents-list"></ol></nav></details>
+        {% if page.before-content %}<div class="before-content">{% for file in page.before-content %}{% include {{ file }} %}{% endfor %}</div>{% endif %}
+        {% if page.article_image %}<figure class="article-figure"><img src="{{ page.article_image | relative_url }}" alt="{{ page.article_image_alt | escape }}">{% if page.article_image_caption %}<figcaption>{{ page.article_image_caption }}</figcaption>{% endif %}</figure>{% endif %}
+        <div class="article-prose" id="article-prose">{{ content | replace: '<h1', '<h2' | replace: '</h1>', '</h2>' }}</div>
+        {% if page.after-content %}<div class="after-content">{% for file in page.after-content %}{% include {{ file }} %}{% endfor %}</div>{% endif %}
+        <div class="article-end"><a class="pub-link" href="{{ primary_topic.url | relative_url }}">More on {{ primary_topic.label | downcase }} →</a><button type="button" id="article-copy" hidden>Copy article link</button><span id="article-copy-status" role="status" aria-live="polite"></span></div>
       </div>
-
-      <div class="post-heading">
-        {% include post-breadcrumb.html %}
-        {% if page.tags.size > 0 %}
-        <span class="post-heading-tags">
-          {% for tag in page.tags %}<a href="/positions/{{- tag -}}/">{{ tag | upcase }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}
-        </span>
-        {% endif %}
-        <h1>{{ page.title }}</h1>
-        {% if page.subtitle %}
-        <p class="post-heading-subtitle">{{ page.subtitle }}</p>
-        {% endif %}
-        {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
-        <span class="post-meta">Published on {{ page.date | date: date_format }}</span>
-      </div>
-
-      {% if page.tldr %}
-      <div class="post-tldr">
-        <strong>TL;DR:</strong> {{ page.tldr }}
-      </div>
-      {% endif %}
-
-      {% if page.before-content %}
-        <div class="before-content">
-          {% for file in page.before-content %}
-            {% include {{ file }} %}
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      {% if page.thumbnail-img %}
-      <div class="post-featured-image">
-        <img src="{{ page.thumbnail-img }}" alt="{{ page.title | xml_escape }}" loading="lazy" onerror="this.parentElement.classList.add('post-featured-image-default');this.src='/assets/img/posts/default.webp';this.insertAdjacentHTML('afterend','<span class=post-featured-image-title>{{ page.title | xml_escape }}</span>')">
-      </div>
-      {% else %}
-      <div class="post-featured-image post-featured-image-default">
-        <img src="/assets/img/posts/default.webp" alt="{{ page.title | xml_escape }}" loading="lazy">
-        <span class="post-featured-image-title">{{ page.title }}</span>
-      </div>
-      {% endif %}
-
-      <div class="blog-post">
-        {{ content }}
-      </div>
-
-      {% if page.after-content %}
-        <div class="after-content">
-          {% for file in page.after-content %}
-            {% include {{ file }} %}
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      {% include post-related-reading.html %}
-
-      {% if page.social-share %}
-        {% include social-share.html %}
-      {% endif %}
-
-      <ul class="pagination blog-pager">
-        {% if page.previous.url %}
-        <li class="page-item previous">
-          <a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title | strip_html | xml_escape}}">
-            <i class="fas fa-arrow-left" alt="Previous Post"></i>
-            <span class="d-none d-sm-inline-block">Previous Post</span>
-          </a>
-        </li>
-        {% endif %}
-        {% if page.next.url %}
-        <li class="page-item next">
-          <a class="page-link" href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title | strip_html | xml_escape}}">
-            <span class="d-none d-sm-inline-block">Next Post</span>
-            <i class="fas fa-arrow-right" alt="Next Post"></i>
-          </a>
-        </li>
-        {% endif %}
-      </ul>
-
-      {% include comments.html %}
-    </div>
-
-    <aside class="page-sidebar">
-      {% include sidebar-position.html %}
-      {% include newsletter.html %}
-      {% include sidebar-related.html %}
-      {% include sidebar-recent.html %}
-      {% include sidebar-templates.html %}
-    </aside>
+    </article>
+    <section class="article-related" aria-labelledby="related-title"><div class="pub-section-heading"><div><p class="pub-kicker">CONTINUE READING</p><h2 id="related-title">More to explore.</h2></div><a class="pub-link" href="{{ '/writing/' | relative_url }}">All articles →</a></div><div class="pub-essay-list">
+      {% assign related_count = 0 %}
+      {% for related in site.posts %}{% capture related_ids %}{% include reading-topics.html post=related %}{% endcapture %}{% assign related_topics = related_ids | strip | split: '|' %}{% if related.url != page.url and related_topics contains primary_id and related_count < 3 %}{% include publication-essay.html post=related %}{% assign related_count = related_count | plus: 1 %}{% endif %}{% endfor %}
+    </div></section>
+    <aside class="article-author"><p>Written by <a href="{{ '/aboutme/' | relative_url }}">{{ site.author }}</a>. I explore what AI makes possible, what people change, and the evidence of business value.</p><a class="pub-link" href="{{ '/newsletter/' | relative_url }}">Read future articles by email →</a></aside>
+    {% include comments.html %}
   </div>
 </main>

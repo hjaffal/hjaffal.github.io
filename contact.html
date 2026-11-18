@@ -1,64 +1,18 @@
 ---
-layout: page
-title:
-subtitle:
-share-title: "Contact — Hasan Jaffal"
-share-description: "Get in touch with Hasan Jaffal. Send a message about AI, risk intelligence, operational decision-making, or collaboration."
-chat_with_me_box: false
-show-avatar: false
+layout: base
+title: Contact Hasan Jaffal
+share-title: "Contact Hasan Jaffal"
+share-description: "Send Hasan Jaffal a question, correction, business situation, or collaboration idea about AI adoption, analytics, and business decisions."
 permalink: /contact/
+show-avatar: false
+last_modified_at: 2026-11-18
 css:
-  - "/assets/css/contact.css"
+  - /assets/css/reading.css
+  - /assets/css/publication-pages.css
+js:
+  - /assets/js/contact.js
 ---
-
-<div class="ct-page">
-
-  <!-- Hero -->
-  <section class="ct-hero">
-    <div class="ct-hero-orb-1"></div>
-    <div class="ct-hero-orb-2"></div>
-    <div class="ct-hero-content">
-      <span class="ct-hero-label">GET IN TOUCH</span>
-      <h1 class="ct-hero-title">Let's <span>Connect.</span></h1>
-      <p class="ct-hero-desc">Have a question, want to collaborate, or need to report something? Choose how you'd like to reach me.</p>
-    </div>
-  </section>
-
-  <!-- Channels -->
-  <section class="ct-channels">
-    <a href="https://www.linkedin.com/in/jaffal" target="_blank" rel="noopener" class="ct-channel-card">
-      <div class="ct-channel-icon ct-channel-linkedin"><i class="fab fa-linkedin-in"></i></div>
-      <div class="ct-channel-info">
-        <strong>Connect on LinkedIn</strong>
-        <span>Best for professional networking</span>
-      </div>
-      <i class="fas fa-arrow-right ct-channel-arrow"></i>
-    </a>
-    <a href="/newsletter/" class="ct-channel-card">
-      <div class="ct-channel-icon ct-channel-newsletter"><i class="fas fa-envelope-open-text"></i></div>
-      <div class="ct-channel-info">
-        <strong>Subscribe to the Newsletter</strong>
-        <span>The weekly decision operations briefing</span>
-      </div>
-      <i class="fas fa-arrow-right ct-channel-arrow"></i>
-    </a>
-  </section>
-
-  <!-- Form Section -->
-  <section class="ct-form-section">
-    <div class="ct-form-header">
-      <h2 class="ct-form-title">Send a Message</h2>
-      <p class="ct-form-desc">I'll get back to you within a few days.</p>
-    </div>
-
-    <div id="contact-success-banner" class="contact-banner" style="display:none;">
-      <i class="fas fa-check-circle"></i>
-      <span>Thank you for your message! I'll get in touch soon.</span>
-    </div>
-
-    <div id="contact-form-area">
-      {% include contact-form.html %}
-    </div>
-  </section>
-
-</div>
+<main class="pub-page contact-publication"><div class="pub-wrap">
+  <header class="pub-intro"><p class="pub-kicker">CONTACT</p><h1>A question, a correction,<br><span>or something worth examining?</span></h1><p>If my writing connects with a decision you are facing—or your experience challenges an argument—I would like to hear from you.</p></header>
+  <div class="contact-opening"><section aria-labelledby="contact-message-title"><h2 id="contact-message-title">Send a message.</h2><p>Tell me the situation and what you would like to discuss. For a correction, include a link to the article and the evidence I should review.</p><div id="contact-success-banner" class="contact-banner" role="status" hidden>Thank you for your message.</div><div id="contact-form-area">{% include contact-form.html %}</div></section><aside class="contact-alternatives"><p class="pub-kicker">OTHER WAYS TO REACH ME</p><h2>Keep in touch.</h2><p><a href="mailto:{{ site.social-network-links.email }}">{{ site.social-network-links.email }}</a></p><p><a class="pub-link" href="https://www.linkedin.com/in/jaffal" target="_blank" rel="noopener">Connect on LinkedIn ↗</a></p><hr><p>To receive future articles, visit <a href="{{ '/newsletter/' | relative_url }}">The Second Mind newsletter</a>. You can send a message here without joining the mailing list.</p><p>For questions about Gepackt or the Sproochentest resources, include the page or exercise you were using.</p></aside></div>
+</div></main>

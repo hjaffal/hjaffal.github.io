@@ -1,17 +1,1 @@
-{% comment %}
-  Cross-links grid — shows the other positions.
-  Usage: {% include position-crosslinks.html active="ai-decision-operations" %}
-{% endcomment %}
-<div class="pos-crosslinks">
-  <h3 class="pos-crosslinks-title">Other positions</h3>
-  <div class="pos-crosslinks-grid">
-    {% for p in site.data.positions %}
-      {% if p.tag != include.active %}
-      <a href="{{ p.url }}" class="pos-crosslinks-card">
-        <span class="pos-crosslinks-num">POSITION {{ p.number }}</span>
-        <span class="pos-crosslinks-name">{{ p.title }}</span>
-      </a>
-      {% endif %}
-    {% endfor %}
-  </div>
-</div>
+<section class="pub-other-topics" aria-labelledby="other-topics-title"><h2 id="other-topics-title">Explore another question.</h2><div>{% for topic in site.data.writing.topics %}{% if topic.id != include.active %}<a href="{{ topic.url | relative_url }}"><span class="pub-kicker">{{ topic.label }}</span><span>{{ topic.question }} →</span></a>{% endif %}{% endfor %}</div></section>

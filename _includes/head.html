@@ -17,7 +17,7 @@
 
   {% capture title %}
     {%- if site.title and site.title-on-all-pages and (site.title != pagetitle) -%}
-      {{ pagetitle }} | {{ site.title }}
+      {% if pagetitle contains site.title %}{{ pagetitle }}{% else %}{{ pagetitle }} | {{ site.title }}{% endif %}
     {%- else -%}
       {{ pagetitle }}
     {%- endif -%}
@@ -154,12 +154,12 @@
   <meta property="og:article:author" content="{{ author }}">
   {% endif %}
   <meta property="og:article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:url" content="{{ page.canonical_url | default: page.url | absolute_url | strip_index }}">
+  <link rel="canonical" href="{{ page.canonical_url | default: page.url | absolute_url | strip_index }}">
   {% else %}
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ page.url | absolute_url | strip_index }}">
-  <link rel="canonical" href="{{ page.url | absolute_url | strip_index }}">
+  <meta property="og:url" content="{{ page.canonical_url | default: page.url | absolute_url | strip_index }}">
+  <link rel="canonical" href="{{ page.canonical_url | default: page.url | absolute_url | strip_index }}">
   {% endif %}
 
   {% if img != "" and img != site.avatar %}
@@ -188,7 +188,10 @@
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
   {% endif %}
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}" />
-  <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
+  {% assign png_favicon = site.static_files | where: 'path', '/favicon.png' | size %}{% if png_favicon > 0 %}<link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />{% endif %}
+
+  {% include site-identity-schema.html %}
+  {% include breadcrumb-schema.html %}
 
   {% if page.head-extra %}
     {% for file in page.head-extra %}

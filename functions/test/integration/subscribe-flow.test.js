@@ -117,10 +117,11 @@ describe("Integration: Subscribe → Welcome Email Flow", () => {
       await subscribeNewsletter(req, res);
 
       const sentEmail = mockResendInstance.getLastSentEmail();
-      // Validates: Requirement 2.2 - newsletter name, content topics, frequency
+      // Welcome copy follows the current publication mission and topic destinations.
       expect(sentEmail.html).toContain("THE SECOND MIND");
-      expect(sentEmail.html).toContain("AI, risk, operations, and decision-making");
-      expect(sentEmail.html).toContain("weekly");
+      for (const path of ["opportunities", "investment-decisions", "people-and-adoption", "outcomes-and-evidence"]) {
+        expect(sentEmail.html).toContain(`href="https://hasanjaffal.com/topics/${path}/"`);
+      }
       expect(sentEmail.subject).toBe("Welcome to The Second Mind");
     });
 

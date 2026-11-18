@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: base
 title:
 subtitle:
 share-title: "AI Job Risk Analyzer — How Exposed Is Your Role?"
@@ -8,10 +8,13 @@ chat_with_me_box: false
 show-avatar: false
 permalink: /tools/ai-job-risk-analyzer/
 css:
-  - "/assets/css/job-risk-analyzer.css"
+  - /assets/css/job-risk-analyzer.css
+  - /assets/css/reading.css
+  - /assets/css/resource-suite.css
+  - /assets/css/resource-apps.css
 ---
 
-<div class="wiz-container">
+<main class="pub-page rs-page"><div class="pub-wrap"><nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="/tools/">Tools</a><span aria-hidden="true">/</span><a href="/ai-job-risk-analyzer/">About this analyzer</a></nav><header class="rs-app-heading"><p class="pub-kicker">PEOPLE & ADOPTION · INTERACTIVE TOOL</p><h1>AI Job Risk Analyzer</h1><p>Start with the work you actually do. Review your tasks, describe your AI use, and create a report to help plan your next steps.</p><p class="rs-app-note">The report requires your name, email, and consent to receive the newsletter. Its estimates are a starting point for reflection.</p></header><noscript><p class="rs-note">This interactive analyzer needs JavaScript. The <a href="/ai-job-risk-directory/">role directory</a> is available without it.</p></noscript><div class="wiz-container">
   <!-- Progress Bar -->
   <div class="wiz-progress">
     <div class="wiz-progress-bar" id="wiz-progress-bar"></div>
@@ -43,7 +46,7 @@ css:
 
     <div class="wiz-field">
       <label for="wiz-job-title">Job Title <span class="wiz-req">*</span></label>
-      <input type="text" id="wiz-job-title" required maxlength="200" placeholder="e.g. Data Analyst, Project Manager" autofocus>
+      <input type="text" id="wiz-job-title" required maxlength="200" placeholder="e.g. Data Analyst, Project Manager">
     </div>
 
     <div class="wiz-row">
@@ -72,7 +75,7 @@ css:
     </div>
 
     <button type="button" class="wiz-btn-next" id="wiz-next-1">Next →</button>
-    <p class="wiz-error" id="wiz-error-1" style="display:none;"></p>
+    <p class="wiz-error" role="alert" id="wiz-error-1" style="display:none;"></p>
   </div>
 
   <!-- STEP 2: Operational Reality -->
@@ -99,7 +102,7 @@ css:
     <div class="wiz-tasks" id="wiz-tasks" style="display:none;">
       <div class="wiz-tasks-list" id="wiz-tasks-list"></div>
       <div class="wiz-tasks-add">
-        <input type="text" id="wiz-tasks-custom" placeholder="+ Add a custom task..." maxlength="200">
+        <label for="wiz-tasks-custom">Add a task (press Enter to include it)</label><input type="text" id="wiz-tasks-custom" placeholder="+ Add a custom task..." maxlength="200">
       </div>
     </div>
 
@@ -107,8 +110,8 @@ css:
       <button type="button" class="wiz-btn-back" id="wiz-back-2">← Back</button>
       <button type="button" class="wiz-btn-next" id="wiz-next-2" disabled>Next →</button>
     </div>
+    <p class="wiz-error" role="alert" id="wiz-error-2" style="display:none;"></p>
   </div>
-
   <!-- STEP 3: AI Mindset -->
   <div class="wiz-step" id="wiz-step-3">
     <div class="wiz-step-header">
@@ -149,9 +152,9 @@ css:
 
     <div class="wiz-nav-row">
       <button type="button" class="wiz-btn-back" id="wiz-back-3">← Back</button>
-      <button type="button" class="wiz-btn-next wiz-btn-accent" id="wiz-next-3">Run Forensic Audit →</button>
+      <button type="button" class="wiz-btn-next wiz-btn-accent" id="wiz-next-3">Continue to delivery →</button>
     </div>
-    <p class="wiz-error" id="wiz-error-3" style="display:none;"></p>
+    <p class="wiz-error" role="alert" id="wiz-error-3" style="display:none;"></p>
   </div>
 
   <!-- LOADING STATE -->
@@ -165,9 +168,9 @@ css:
   <!-- STEP 4: Tollgate -->
   <div class="wiz-step" id="wiz-step-4">
     <div class="wiz-step-header">
-      <span class="wiz-step-label">YOUR AUDIT IS READY</span>
-      <h2 class="wiz-step-title">Your 24-Month Forensic Audit is Ready.</h2>
-      <p class="wiz-step-desc">Where should we send your resilience score and 30-day action plan?</p>
+      <span class="wiz-step-label">STEP 4 OF 4 · DELIVERY</span>
+      <h2 class="wiz-step-title">Create your report</h2>
+      <p class="wiz-step-desc">Provide your details to generate the report and receive it by email.</p>
     </div>
 
     <div class="wiz-field">
@@ -188,12 +191,13 @@ css:
     </div>
 
     <button type="button" class="wiz-btn-next wiz-btn-reveal" id="wiz-submit">
-      <span class="wiz-submit-text">Reveal My Score →</span>
+      <span class="wiz-submit-text">Create my report →</span>
       <span class="wiz-submit-loading" style="display:none;"><i class="fas fa-circle-notch fa-spin"></i> Generating...</span>
     </button>
-    <p class="wiz-error" id="wiz-error-4" style="display:none;"></p>
+    <p class="wiz-error" role="alert" id="wiz-error-4" style="display:none;"></p>
   </div>
 
+  <section class="wiz-step" id="wiz-complete" aria-labelledby="wiz-complete-title"><p class="pub-kicker">REPORT CREATED</p><h2 id="wiz-complete-title" class="wiz-step-title">Your report is ready to explore.</h2><p class="wiz-step-desc">Your full analysis is available in the dashboard. A copy has also been sent to your email.</p><a class="rs-button" id="wiz-complete-link" href="/tools/ai-job-risk-report/">Open my report →</a><p class="rs-count">Use the report to examine your task mix and choose what to investigate next.</p></section>
   <!-- RESULTS -->
   <div class="wiz-step" id="wiz-results">
     <div class="wiz-dashboard-link" id="wiz-dashboard-link" style="display:none;">
@@ -267,6 +271,7 @@ css:
   </div>
 </div>
 
+</div></main>
 <script>
 (function() {
   // State
@@ -285,10 +290,10 @@ css:
     });
     var target = document.getElementById('wiz-step-' + id) || document.getElementById('wiz-' + id);
     if (target) {
-      setTimeout(function() { target.classList.add('wiz-step-visible'); }, 20);
+      setTimeout(function() { target.classList.add('wiz-step-visible'); var title=target.querySelector('h2'); if(title){title.tabIndex=-1;title.focus({preventScroll:true}); if(title.getBoundingClientRect().top < 100) title.scrollIntoView({block:'start'});} }, 20);
     }
     // Update progress bar
-    var pct = progressMap[id] || (id === 'loading' ? 85 : id === 'results' ? 100 : 0);
+    var pct = progressMap[id] || (id === 'loading' ? 85 : (id === 'results' || id === 'complete') ? 100 : 0);
     progressBar.style.width = pct + '%';
     // Update dots
     var stepNum = typeof id === 'number' ? id : (id === 'loading' ? 4 : id === 'results' ? 4 : 1);
@@ -422,26 +427,8 @@ css:
     if (!concern) { shakeField(document.getElementById('wiz-concern')); }
     if (!usage || !concern) { showError(3, 'Please fill in all required fields.'); return; }
 
-    // Trigger loading state
-    showStep('loading');
-    runLoadingSequence();
+    showStep(4);
   });
-
-  function runLoadingSequence() {
-    var texts = ['Mapping agentic capabilities...', 'Evaluating execution leverage...', 'Scoring task vulnerability...', 'Finalizing resilience profile...'];
-    var textEl = document.getElementById('wiz-loader-text');
-    var i = 0;
-    textEl.textContent = texts[0];
-    var interval = setInterval(function() {
-      i++;
-      if (i >= texts.length) {
-        clearInterval(interval);
-        setTimeout(function() { showStep(4); }, 600);
-        return;
-      }
-      textEl.textContent = texts[i];
-    }, 900);
-  }
 
   // STEP 4: Submit
   document.getElementById('wiz-submit').addEventListener('click', function() {
@@ -483,52 +470,34 @@ css:
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({data: payload})
-    }).then(function(r) { return r.json(); })
+    }).then(function(r) { if(!r.ok) throw new Error('Request failed'); return r.json(); })
     .then(function(data) {
+      if(data.reportToken && typeof data.score !== 'number' && typeof data.resilience !== 'number') {
+        document.getElementById('wiz-complete-link').href = '/tools/ai-job-risk-report/?token=' + encodeURIComponent(data.reportToken);
+        showStep('complete'); return;
+      }
+      if(typeof data.score !== 'number' && typeof data.resilience !== 'number') throw new Error('Missing report');
       renderResults(data, payload, checkedTasks);
       showStep('results');
     }).catch(function() {
-      // Fallback: show results with computed score
-      var fallback = computeLocalScore(payload, checkedTasks);
-      renderResults(fallback, payload, checkedTasks);
-      showStep('results');
+      showError(4, 'Your report could not be generated. Your answers are still here. Please try again.');
+      btn.disabled = false;
+      btn.querySelector('.wiz-submit-text').style.display = 'inline';
+      btn.querySelector('.wiz-submit-loading').style.display = 'none';
     });
   });
-
-  function computeLocalScore(payload, tasks) {
-    var base = 60;
-    if (payload.aiUsage === 'daily' || payload.aiUsage === 'manage_ai') base -= 15;
-    else if (payload.aiUsage === 'weekly') base -= 8;
-    else if (payload.aiUsage === 'no_ai') base += 10;
-
-    if (payload.seniority === 'executive' || payload.seniority === 'director') base -= 12;
-    else if (payload.seniority === 'entry_level') base += 10;
-
-    base = Math.max(15, Math.min(95, base + Math.floor(Math.random() * 10) - 5));
-    var resilience = 100 - base;
-
-    return {
-      score: base,
-      resilience: resilience,
-      archetype: resilience >= 60 ? 'Strategic Operator' : resilience >= 40 ? 'Adaptive Professional' : 'Execution Specialist',
-      band: resilience >= 60 ? 'Low Risk' : resilience >= 40 ? 'Moderate Risk' : 'High Risk',
-      exposure: 'Your task profile shows significant overlap with current AI agent capabilities, particularly in routine execution and reporting tasks.',
-      moat: 'Your strongest defense lies in stakeholder judgment, contextual decision-making, and cross-functional coordination.',
-      pivot: 'Focus the next 30 days on reducing time spent on automatable execution and increasing time in strategic, judgment-based activities.'
-    };
-  }
 
   function renderResults(data, payload, checkedTasks) {
     // Dashboard link
     if (data.reportToken) {
       var dashLink = document.getElementById('wiz-dashboard-link');
       var dashHref = document.getElementById('wiz-dashboard-href');
-      dashHref.href = '/tools/ai-job-risk-report/?token=' + data.reportToken;
+      dashHref.href = '/tools/ai-job-risk-report/?token=' + encodeURIComponent(data.reportToken);
       dashLink.style.display = 'block';
     }
 
-    var score = data.score || data.resilience || 50;
-    var resilience = data.resilience || (100 - score);
+    var score = typeof data.score === 'number' ? data.score : 100 - data.resilience;
+    var resilience = typeof data.resilience === 'number' ? data.resilience : 100 - score;
     if (data.score && !data.resilience) resilience = 100 - data.score;
     if (data.resilience && !data.score) score = 100 - data.resilience;
     var riskScore = typeof data.score !== 'undefined' ? data.score : (100 - resilience);

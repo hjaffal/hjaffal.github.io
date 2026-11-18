@@ -1,121 +1,52 @@
 ---
 layout: base
 css:
-  - "/assets/css/template.css"
+  - /assets/css/template.css
+  - /assets/css/reading.css
+  - /assets/css/resource-suite.css
+  - /assets/css/resource-apps.css
 ---
-
-<main class="post-layout-wrapper">
-  <div class="page-with-sidebar">
-    <div class="page-main post-main">
-
-      <div class="post-hero-accent">
-        <div class="post-hero-accent-inner">
-          <div class="post-hero-accent-shape"></div>
-          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
-        </div>
-      </div>
-
-      <div class="post-heading">
-        <span class="post-heading-tags"><a href="/ai-templates/">AI TEMPLATE</a> · <a href="/ai-templates/">{{ page.template_category | upcase }}</a></span>
-        <h1>{{ page.template_title }}</h1>
-        <p class="post-heading-subtitle">{{ page.template_description }}</p>
-        <span class="post-meta">Last updated {{ page.template_updated }}</span>
-      </div>
-
-      <!-- Meta cards -->
-      <div class="tpl-meta-grid">
-        <div class="tpl-meta-card">
-          <span class="tpl-meta-label">Category</span>
-          <span class="tpl-meta-value">{{ page.template_category }}</span>
-        </div>
-        <div class="tpl-meta-card">
-          <span class="tpl-meta-label">Audience</span>
-          <span class="tpl-meta-value">{{ page.template_audience }}</span>
-        </div>
-        <div class="tpl-meta-card">
-          <span class="tpl-meta-label">Format</span>
-          <span class="tpl-meta-value">{{ page.template_format }}</span>
-        </div>
-      </div>
-
-      <!-- Download -->
-      <button onclick="handleTemplateDownload()" class="tpl-download-btn">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download Template (PDF)
-      </button>
-
-      <!-- Page-specific content -->
-      {{ content }}
-
-      <!-- Download CTA -->
-      <div class="tpl-download-cta">
-        <p>{{ page.template_cta_text | default: "Download the full template with tables, examples, and best practices." }}</p>
-        <button onclick="handleTemplateDownload()">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Template (PDF)
-        </button>
-      </div>
-
-      <!-- Related -->
-      <div class="tpl-related">
-        <h3>Related Templates</h3>
-        <div class="tpl-related-grid">
-          {% if page.permalink != '/ai-templates/ai-weekly-business-review-template/' %}
-          <a href="/ai-templates/ai-weekly-business-review-template/" class="tpl-related-link">Weekly Business Review</a>
-          {% endif %}
-          {% if page.permalink != '/ai-templates/ai-root-cause-analysis-template/' %}
-          <a href="/ai-templates/ai-root-cause-analysis-template/" class="tpl-related-link">Root Cause Analysis</a>
-          {% endif %}
-          {% if page.permalink != '/ai-templates/ai-dashboard-review-template/' %}
-          <a href="/ai-templates/ai-dashboard-review-template/" class="tpl-related-link">Dashboard Review</a>
-          {% endif %}
-        </div>
-      </div>
-
-    </div>
-
-    <aside class="page-sidebar">
-      {% include newsletter.html %}
-      {% include sidebar-templates.html %}
-      {% include sidebar-recent.html %}
-    </aside>
-  </div>
-</main>
-
+<main class="pub-page rs-page"><div class="pub-wrap"><nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="/tools/">Tools</a><span aria-hidden="true">/</span><a href="/ai-templates/">AI Templates</a></nav><article class="rs-reading"><header class="pub-intro"><p class="pub-kicker">{{ page.template_category | upcase }} · TEMPLATE</p><h1>{{ page.template_title }}</h1><p>{{ page.template_description }}</p></header><div class="rs-meta"><span><strong>For</strong>{{ page.template_audience }}</span><span><strong>Format</strong>{{ page.template_format }}</span><span><strong>Updated</strong>{{ page.template_updated }}</span></div><div class="rs-download"><button class="rs-button" onclick="handleTemplateDownload()">Download PDF ↓</button><p>The download form also signs you up for new templates and operational guides.</p></div><div class="rs-prose">{{ content }}</div><div class="rs-download"><button class="rs-button" onclick="handleTemplateDownload()">Download PDF ↓</button><a class="pub-link" href="/ai-templates/">Browse all templates →</a></div></article></div></main>
 <!-- Email gate modal -->
 <div id="template-download-gate" class="tpl-gate">
   <div onclick="closeGate()" class="tpl-gate-overlay"></div>
-  <div class="tpl-gate-modal">
-    <button onclick="closeGate()" class="tpl-gate-close">&times;</button>
+  <div class="tpl-gate-modal" role="dialog" aria-modal="true" aria-labelledby="template-gate-title">
+    <button onclick="closeGate()" class="tpl-gate-close" aria-label="Close download form">&times;</button>
     <div class="tpl-gate-icon">
       <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </div>
-    <h3 class="tpl-gate-title">Enter your details to download</h3>
+    <h3 class="tpl-gate-title" id="template-gate-title">Enter your details to download</h3>
     <p class="tpl-gate-desc">Get the template and receive new AI templates and operational guides.</p>
     <form id="template-gate-form" onsubmit="submitGateEmail(event)" class="tpl-gate-form">
-      <input type="text" id="template-gate-name" placeholder="Your name" required class="tpl-gate-input">
-      <input type="email" id="template-gate-email" placeholder="your@email.com" required class="tpl-gate-input">
+      <label for="template-gate-name">Name</label><input type="text" id="template-gate-name" placeholder="Your name" required class="tpl-gate-input">
+      <label for="template-gate-email">Email</label><input type="email" id="template-gate-email" placeholder="your@email.com" required class="tpl-gate-input">
       <button type="submit" class="tpl-gate-submit">Download</button>
-    </form>
+    </form><p id="template-gate-status" role="status"></p>
     <p class="tpl-gate-note">One-time only. After this you can download all templates directly.</p>
   </div>
 </div>
 
 <script>
+var gateTrigger;
 var TEMPLATE_FILE = '{{ page.template_pdf }}';
 
 function handleTemplateDownload() {
   if (localStorage.getItem('sp_subscribed')) { triggerFile(TEMPLATE_FILE); }
-  else { document.getElementById('template-download-gate').style.display = 'block'; document.getElementById('template-gate-email').focus(); }
+  else { gateTrigger = document.activeElement; document.getElementById('template-download-gate').style.display = 'block'; document.getElementById('template-gate-email').focus(); }
 }
-function closeGate() { document.getElementById('template-download-gate').style.display = 'none'; }
+function closeGate() { document.getElementById('template-download-gate').style.display = 'none'; if (gateTrigger) gateTrigger.focus(); }
 function submitGateEmail(e) {
   e.preventDefault();
   var name = document.getElementById('template-gate-name').value;
   var email = document.getElementById('template-gate-email').value;
   if (!email) return;
-  HJ.subscribe({ email: email, name: name, source: 'template_download' });
-  var f = TEMPLATE_FILE; closeGate(); triggerFile(f);
+  var button = document.querySelector('#template-gate-form button');
+  var message = document.getElementById('template-gate-status');
+  button.disabled = true; message.textContent = 'Preparing your download…';
+  HJ.subscribe({ email: email, name: name, source: 'template_download',
+    onSuccess: function(){ button.disabled = false; message.textContent = ''; closeGate(); triggerFile(TEMPLATE_FILE); },
+    onError: function(){ button.disabled = false; message.textContent = 'The download could not be prepared. Please try again.'; }
+  });
 }
 function triggerFile(file) {
   // Track download
@@ -137,3 +68,4 @@ function copyPrompt() {
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGate();});
 </script>
+<script>document.getElementById('template-download-gate').addEventListener('keydown',function(e){if(e.key!=='Tab')return;var nodes=this.querySelectorAll('button,input');var first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}});</script>

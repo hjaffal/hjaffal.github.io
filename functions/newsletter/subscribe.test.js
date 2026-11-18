@@ -45,19 +45,21 @@ describe("sendWelcomeEmail", () => {
     expect(sentEmail.html).toContain("THE SECOND MIND");
   });
 
-  it("includes content topics (AI, risk, operations, decision-making)", async () => {
+  it("introduces the four current writing topics", async () => {
     await sendWelcomeEmail("test@example.com", "token123", "fake-api-key", null);
 
     const sentEmail = mockResendInstance.getLastSentEmail();
-    expect(sentEmail.html).toContain("AI & Decision Operations");
-    expect(sentEmail.html).toContain("Risk Intelligence");
+    for (const topic of ["Opportunities", "Investment decisions", "People &amp; adoption", "Outcomes &amp; evidence"]) {
+      expect(sentEmail.html).toContain(topic);
+    }
   });
 
-  it("includes expected frequency (decision operations briefing)", async () => {
+  it("explains the purpose of the writing without promising a publishing schedule", async () => {
     await sendWelcomeEmail("test@example.com", "token123", "fake-api-key", null);
 
     const sentEmail = mockResendInstance.getLastSentEmail();
-    expect(sentEmail.html).toContain("decision operations briefing");
+    expect(sentEmail.html).toContain("examine the evidence");
+    expect(sentEmail.html).not.toContain("weekly");
   });
 
   it("includes personalized unsubscribe link with raw token", async () => {

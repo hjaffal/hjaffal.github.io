@@ -31,6 +31,12 @@
   {% endfor %}
 {% endif %}
 
+{% if layout.js %}
+  {% for js in layout.js %}
+    {% unless page.js contains js %}<script src="{{ js | relative_url }}"></script>{% endunless %}
+  {% endfor %}
+{% endif %}
+
 {% if page.js %}
   {% for js in page.js %}
     <script src="{{ js | relative_url }}"></script>

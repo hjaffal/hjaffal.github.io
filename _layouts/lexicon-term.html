@@ -1,9 +1,9 @@
 ---
 layout: base
 css:
-  - "/assets/css/lexicon.css"
+  - /assets/css/reading.css
+  - /assets/css/resource-suite.css
 ---
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,47 +32,15 @@ css:
 }
 </script>
 
-<main class="lex-term-page">
-  <nav class="lex-breadcrumb">
-    <a href="/">Home</a> › <a href="/lexicon/">Lexicon</a> › <a href="/lexicon/?topic={{ page.topic }}">{{ page.topic | replace: '-', ' ' | capitalize }}</a> › <span>{{ page.term_name }}</span>
-  </nav>
-
-  <article class="lex-term-article">
-    <header class="lex-term-header">
-      <span class="lex-term-cat">{{ page.topic | replace: '-', ' ' | upcase }}</span>
-      <h1 class="lex-term-title">{{ page.term_name }}</h1>
-      <p class="lex-term-pos-def"><strong>{{ page.term_name }}</strong> ({{ page.pos }}) {{ page.definition }}</p>
-    </header>
-
-    <section class="lex-term-section">
-      <h2>Explanation</h2>
-      <p>{{ page.explanation }}</p>
-    </section>
-
-    <section class="lex-term-section">
-      <h2>Operational Example</h2>
-      <p>{{ page.example }}</p>
-    </section>
-
-    <section class="lex-term-section">
-      <h2>Why It Matters</h2>
-      <p>{{ page.why_it_matters }}</p>
-    </section>
-
-    <section class="lex-term-section">
-      <h2>What Most Teams Get Wrong</h2>
-      <p>{{ page.teams_get_wrong }}</p>
-    </section>
-
-    <section class="lex-term-section">
-      <h2>What Strong Teams Do Differently</h2>
-      <p>{{ page.strong_teams }}</p>
-    </section>
-
+<main class="pub-page rs-page"><div class="pub-wrap"><nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="/lexicon/">Lexicon</a><span aria-hidden="true">/</span><a href="/lexicon/?topic={{ page.topic }}">{{ page.topic | replace: '-', ' ' | capitalize }}</a></nav><article class="rs-reading"><header class="pub-intro"><p class="pub-kicker">A WORKING DEFINITION · {{ page.pos }}</p><h1>{{ page.term_name }}</h1><p>By <a href="/aboutme/">Hasan Jaffal</a> · The AI Operations Lexicon</p></header><p class="rs-definition">{{ page.definition }}</p><div class="rs-prose"><section class="rs-term-section"><h2>Explanation</h2><p>{{ page.explanation }}</p></section>
+<section class="rs-term-section"><h2>An operational example</h2><p>{{ page.example }}</p></section>
+<section class="rs-term-section"><h2>Why it matters</h2><p>{{ page.why_it_matters }}</p></section>
+<section class="rs-term-section"><h2>What teams get wrong</h2><p>{{ page.teams_get_wrong }}</p></section>
+<section class="rs-term-section"><h2>A more useful response</h2><p>{{ page.strong_teams }}</p></section>
     <!-- Related Terms: random 3 from same topic -->
-    <section class="lex-term-section">
+    <section class="rs-term-section">
       <h2>Related Terms</h2>
-      <div class="lex-related-terms">
+      <div class="rs-term-links">
         {% assign lex_pages = site.pages | where: "layout", "lexicon-term" %}
         {% assign same_topic = "" %}
         {% for t in lex_pages %}
@@ -84,7 +52,7 @@ css:
         {% for item in topic_items limit: 3 %}
           {% if item != "" %}
             {% assign parts = item | split: "|||" %}
-            <a href="{{ parts[0] }}" class="lex-related-chip">{{ parts[1] }}</a>
+            <a href="{{ parts[0] }}" class="pub-link">{{ parts[1] }}</a>
           {% endif %}
         {% endfor %}
       </div>
@@ -93,11 +61,11 @@ css:
     <!-- Related Articles: from same topic -->
     {% assign related_posts = site.posts | where: "topic", page.topic | slice: 0, 4 %}
     {% if related_posts.size > 0 %}
-    <section class="lex-term-section">
+    <section class="rs-term-section">
       <h2>Related Articles</h2>
-      <div class="lex-related-articles">
+      <div class="rs-term-links">
         {% for post in related_posts %}
-        <a href="{{ post.url | relative_url }}" class="lex-related-article">
+        <a href="{{ post.url | relative_url }}" class="pub-link">
           <span class="lex-related-article-title">{{ post.title }}</span>
           <span class="lex-related-article-date">{{ post.date | date: "%b %d, %Y" }}</span>
         </a>
@@ -106,39 +74,4 @@ css:
     </section>
     {% endif %}
 
-    <footer class="lex-term-footer">
-      <span class="lex-term-meta">By Hasan Jaffal</span>
-      <div class="lex-term-share">
-        <a href="https://twitter.com/intent/tweet?text={{ page.term_name | url_encode }}%3A%20{{ page.definition | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" title="Share on X"><i class="fab fa-x-twitter"></i></a>
-        {% capture li_text %}📖 {{ page.term_name }} ({{ page.pos }})
-
-{{ page.definition }}
-
-💡 {{ page.explanation }}
-
-⚠️ What teams get wrong:
-{{ page.teams_get_wrong }}
-
-✅ What strong teams do:
-{{ page.strong_teams }}
-
-🔗 Full definition: https://hasanjaffal.com{{ page.url }}
-
-#AIOperations #RiskIntelligence #OperationalExcellence #Leadership #AI{% endcapture %}
-        <a href="https://www.linkedin.com/feed/?shareActive=true&text={{ li_text | url_encode }}" target="_blank" rel="noopener" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </footer>
-
-    <!-- Newsletter Banner -->
-    <div class="lex-newsletter-banner">
-      <div class="lex-newsletter-text">
-        <strong>The Second Mind</strong> — The weekly decision operations briefing for 1,000+ operators.
-      </div>
-      <form class="lex-newsletter-form nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'lexicon')">
-        <input type="email" placeholder="your@email.com" required class="lex-newsletter-input nl-subscribe-input">
-        <button type="submit" class="lex-newsletter-btn nl-subscribe-btn">Subscribe</button>
-        <p class="nl-subscribe-msg" style="display:none;"></p>
-      </form>
-    </div>
-  </article>
-</main>
+</div><footer class="rs-footer"><p>A term for discussing what changes when AI meets business operations.</p><a class="pub-link" href="/lexicon/">Explore more definitions →</a></footer></article></div></main>

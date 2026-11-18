@@ -2,6 +2,7 @@ const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const { Resend } = require("resend");
 const admin = require("firebase-admin");
+const { renderSkillsGuide, renderContactNotification, renderReportDownload, renderJobRiskReport, renderToolInvitation } = require("./email/portal");
 
 admin.initializeApp();
 const db = admin.firestore();
@@ -62,8 +63,9 @@ exports.listAssessments = listAssessments;
 const { backfillTokens } = require("./newsletter/backfill-tokens");
 exports.backfillTokens = backfillTokens;
 
-const { weeklyVocabReengagement } = require("./newsletter/reengagement");
-exports.weeklyVocabReengagement = weeklyVocabReengagement;
+// DISABLED — weekly re-engagement scheduler removed to stop Cloud Scheduler job
+// const { weeklyVocabReengagement } = require("./newsletter/reengagement");
+// exports.weeklyVocabReengagement = weeklyVocabReengagement;
 
 const VALID_BANDS = ["exposed", "adaptable", "harder_to_replace"];
 const VALID_FAMILIES = [
@@ -128,37 +130,7 @@ exports.sendFutureProofSkillsGuide = onRequest(
     const strongDisplay = strongestCategory.replace(/_/g, " ");
 
     // Build email HTML
-    const htmlBody = `
-      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;">
-        <h1 style="font-size:22px;font-weight:800;color:#0F172A;margin:0 0 8px;">Your Future-Proof Skills Assessment Result</h1>
-        <p style="font-size:14px;color:#64748B;margin:0 0 24px;">Here is your personalized result from the assessment.</p>
-
-        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:20px;margin-bottom:24px;">
-          <p style="font-size:13px;color:#64748B;margin:0 0 4px;">Result</p>
-          <p style="font-size:20px;font-weight:800;color:#9333EA;margin:0 0 12px;">${bandDisplay}</p>
-          <p style="font-size:13px;color:#64748B;margin:0;">Score: <strong>${scoreInt} / 36</strong></p>
-        </div>
-
-        <div style="display:flex;gap:12px;margin-bottom:24px;">
-          <div style="flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;margin-right:6px;">
-            <p style="font-size:11px;color:#94A3B8;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.05em;">Strongest</p>
-            <p style="font-size:14px;font-weight:600;color:#0F172A;margin:0;">${strongDisplay}</p>
-          </div>
-          <div style="flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;margin-left:6px;">
-            <p style="font-size:11px;color:#94A3B8;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.05em;">Weakest</p>
-            <p style="font-size:14px;font-weight:600;color:#0F172A;margin:0;">${weakDisplay}</p>
-          </div>
-        </div>
-
-        <p style="font-size:14px;color:#334155;line-height:1.6;margin:0 0 24px;">
-          AI is changing the skill floor. The safest skills are judgment, communication, business understanding, and AI literacy. People who only operate tools are increasingly exposed. People who own decisions, trade-offs, and escalation are harder to replace.
-        </p>
-
-        <a href="https://hasanjaffal.com/assets/pdf/future-proof-skills-guide.pdf" style="display:inline-block;padding:12px 24px;background:#0F172A;color:#ffffff;font-size:14px;font-weight:600;border-radius:6px;text-decoration:none;">Download the Full Guide (PDF)</a>
-
-        <p style="font-size:12px;color:#94A3B8;margin:24px 0 0;">— Hasan Jaffal · hasanjaffal.com</p>
-      </div>
-    `;
+    const htmlBody = renderSkillsGuide({ name, score: scoreInt, band: bandDisplay, strongest: strongDisplay, weakest: weakDisplay });
 
     try {
       // Send guide email via Resend
@@ -224,17 +196,7 @@ exports.sendContactMessage = onRequest(
       return;
     }
 
-    const htmlBody = `
-      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;padding:24px;">
-        <h2 style="font-size:18px;color:#0F172A;margin:0 0 16px;">New message from hasanjaffal.com</h2>
-        <table style="font-size:14px;color:#334155;border-collapse:collapse;width:100%;">
-          <tr><td style="padding:8px 0;font-weight:600;width:80px;vertical-align:top;">From:</td><td style="padding:8px 0;">${name}</td></tr>
-          <tr><td style="padding:8px 0;font-weight:600;vertical-align:top;">Email:</td><td style="padding:8px 0;"><a href="mailto:${email}">${email}</a></td></tr>
-          ${subject ? `<tr><td style="padding:8px 0;font-weight:600;vertical-align:top;">Subject:</td><td style="padding:8px 0;">${subject}</td></tr>` : ''}
-          <tr><td style="padding:8px 0;font-weight:600;vertical-align:top;">Message:</td><td style="padding:8px 0;white-space:pre-wrap;">${message}</td></tr>
-        </table>
-      </div>
-    `;
+    const htmlBody = renderContactNotification({ name, email, subject, message });
 
     try {
       // Send contact message via Resend
@@ -287,32 +249,7 @@ exports.sendReportDownloadEmail = onRequest(
 
     const firstName = (name || "").trim().split(" ")[0] || "there";
 
-    const htmlBody = `
-<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;">
-  <p style="margin:0 0 4px;font-size:9px;font-weight:700;letter-spacing:0.2em;color:#9333EA;text-transform:uppercase;">RESEARCH REPORT</p>
-  <h1 style="font-size:22px;font-weight:800;color:#0F172A;margin:0 0 16px;letter-spacing:-0.02em;">Your AI Workforce Disruption Report is Ready</h1>
-  <p style="font-size:14px;color:#334155;line-height:1.6;margin:0 0 24px;">Hi ${firstName}, thank you for downloading the report. Here is your personal download link — it does not expire.</p>
-
-  <div style="text-align:center;margin:24px 0;">
-    <a href="https://hasanjaffal.com/report/2028-AI-Workforce-Disruption-Report.pdf" style="display:inline-block;padding:14px 32px;background:#9333EA;color:#ffffff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;">Download Report (PDF)</a>
-  </div>
-
-  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px 20px;margin:24px 0;">
-    <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#64748B;text-transform:uppercase;">What's inside</p>
-    <ul style="margin:0;padding:0 0 0 16px;font-size:13px;color:#334155;line-height:1.8;">
-      <li>154 professional roles forensically audited</li>
-      <li>Task-level automation feasibility scores</li>
-      <li>4 disruption class classifications</li>
-      <li>30-day self-audit protocol with templates</li>
-      <li>Strategic adaptation framework</li>
-    </ul>
-  </div>
-
-  <p style="font-size:13px;color:#334155;line-height:1.6;margin:0 0 16px;">Want a personalized assessment for your exact role? Try the AI Job Risk Analyzer:</p>
-  <a href="https://hasanjaffal.com/ai-job-risk-analyzer/" style="font-size:13px;color:#9333EA;font-weight:600;text-decoration:none;">→ Launch AI Job Risk Analyzer</a>
-
-  <p style="font-size:12px;color:#94A3B8;margin:32px 0 0;">— Hasan Jaffal · hasanjaffal.com</p>
-</div>`;
+    const htmlBody = renderReportDownload({ firstName });
 
     try {
       const resend = new Resend(RESEND_API_KEY.value());
@@ -555,81 +492,7 @@ Return this exact JSON structure:
 
       // 3. Send short summary email with CTA
       const resend = new Resend(RESEND_API_KEY.value());
-      const riskColor = analysis.risk_level === "High" ? "#DC2626" :
-                        analysis.risk_level === "Medium" ? "#D97706" : "#0D9488";
-      const riskBg = analysis.risk_level === "High" ? "#FEF2F2" :
-                     analysis.risk_level === "Medium" ? "#FEF3C7" : "#F0FDF4";
-
-      const topExposed = (analysis.exposed_tasks || []).slice(0, 3);
-      const topSkills = (analysis.recommended_skills || []).slice(0, 3);
-
-      const exposedHtml = topExposed.map(t => {
-        const taskName = typeof t === 'string' ? t : t.task;
-        return `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">⚠ ${taskName}</td></tr>`;
-      }).join("");
-
-      const skillsHtml = topSkills.map(s =>
-        `<tr><td style="padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #F1F5F9;">→ ${s}</td></tr>`
-      ).join("");
-
-      const htmlBody = `
-<div style="background:#F4F7FB;padding:0;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F4F7FB;">
-<tr><td align="center" style="padding:24px 16px;">
-<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,0.06);">
-
-<!-- Header -->
-<tr><td style="background:#0F172A;padding:24px 32px;border-bottom:3px solid #0D9488;">
-  <p style="margin:0 0 2px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#0D9488;">HASAN JAFFAL</p>
-  <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#F8FAFC;">Your AI Job Risk Report is Ready</p>
-  <p style="margin:0;font-size:12px;color:#94A3B8;">Personalized analysis for ${firstName}</p>
-</td></tr>
-
-<!-- Score -->
-<tr><td style="padding:32px;text-align:center;">
-  <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 14px;">
-    <tr><td style="width:88px;height:88px;border-radius:50%;border:6px solid ${riskColor};text-align:center;vertical-align:middle;line-height:76px;">
-      <span style="font-size:36px;font-weight:800;color:#0F172A;">${analysis.risk_score}</span>
-    </td></tr>
-  </table>
-  <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 12px;">
-    <tr><td style="padding:5px 14px;background:${riskBg};border-radius:16px;">
-      <span style="font-size:12px;font-weight:700;color:${riskColor};">● ${analysis.risk_level.toUpperCase()} RISK</span>
-    </td></tr>
-  </table>
-  <p style="margin:0;font-size:13px;color:#64748B;line-height:1.5;max-width:420px;margin:0 auto;">${analysis.summary}</p>
-</td></tr>
-
-<!-- Exposed Tasks -->
-<tr><td style="padding:0 32px 24px;">
-  <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#DC2626;">TOP EXPOSED TASKS</p>
-  <table cellpadding="0" cellspacing="0" border="0" width="100%">${exposedHtml}</table>
-</td></tr>
-
-<!-- Recommended Skills -->
-<tr><td style="padding:0 32px 28px;">
-  <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#0D9488;">SKILLS TO BUILD</p>
-  <table cellpadding="0" cellspacing="0" border="0" width="100%">${skillsHtml}</table>
-</td></tr>
-
-<!-- CTA -->
-<tr><td style="padding:24px 32px;text-align:center;background:#F8FAFC;border-top:1px solid #E2E8F0;">
-  <p style="margin:0 0 16px;font-size:14px;font-weight:600;color:#0F172A;">Your full interactive dashboard is ready.</p>
-  <a href="${reportUrl}" style="display:inline-block;padding:14px 32px;background:#0D9488;color:#ffffff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;">View Your Full AI Risk Dashboard →</a>
-  <p style="margin:14px 0 0;font-size:11px;color:#94A3B8;">Includes detailed charts, skill gap analysis, and your 30-day action plan.</p>
-</td></tr>
-
-<!-- Footer -->
-<tr><td style="padding:24px 32px;border-top:1px solid #E2E8F0;text-align:center;">
-  <p style="margin:0 0 8px;font-size:12px;color:#64748B;line-height:1.5;">I write about where AI, data, dashboards, and leadership fail in real operations — and what professionals can do about it.</p>
-  <a href="https://hasanjaffal.com/writing/" style="font-size:12px;color:#0D9488;font-weight:600;text-decoration:none;">Read more on hasanjaffal.com →</a>
-  <p style="margin:16px 0 0;font-size:10px;color:#94A3B8;">You received this because you used the AI Job Risk Analyzer.<br>This report is private to ${normalizedEmail}.</p>
-</td></tr>
-
-</table>
-</td></tr>
-</table>
-</div>`;
+      const htmlBody = renderJobRiskReport({ name, jobTitle, industry, country, analysis, reportUrl, email: normalizedEmail });
 
       await resend.emails.send({
         from: "Hasan Jaffal <hasan@hasanjaffal.com>",
@@ -965,33 +828,7 @@ exports.shareToolWithFriend = onRequest(
     const firstName = friendName.trim().split(" ")[0];
     const sender = senderName ? senderName.trim() : "Someone";
 
-    const htmlBody = `
-<div style="background:#F4F7FB;padding:0;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#F4F7FB;">
-<tr><td align="center" style="padding:24px 16px;">
-<table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:12px;overflow:hidden;">
-
-<tr><td style="background:#0F172A;padding:24px 32px;border-bottom:3px solid #0D9488;">
-  <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#F8FAFC;">You've been invited to try something</p>
-  <p style="margin:0;font-size:12px;color:#94A3B8;">${sender} thinks you should check this out</p>
-</td></tr>
-
-<tr><td style="padding:32px;">
-  <p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.6;">Hi ${firstName},</p>
-  <p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.6;">${sender} used the <strong>AI Job Risk Analyzer</strong> and thought you'd find it useful too.</p>
-  <p style="margin:0 0 24px;font-size:14px;color:#334155;line-height:1.6;">It's a free tool that analyzes your job role and tells you which tasks are most exposed to AI automation, what skills to build, and gives you a personalized 30-day action plan.</p>
-  <a href="https://hasanjaffal.com/ai-job-risk-analyzer/" style="display:inline-block;padding:14px 28px;background:#0D9488;color:#ffffff;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;">Try the AI Job Risk Analyzer →</a>
-  <p style="margin:20px 0 0;font-size:12px;color:#94A3B8;">Takes 3 minutes. Full report by email. Free.</p>
-</td></tr>
-
-<tr><td style="padding:20px 32px;border-top:1px solid #E2E8F0;text-align:center;">
-  <p style="margin:0;font-size:10px;color:#94A3B8;">Sent via hasanjaffal.com · You received this because ${sender} shared this tool with you.</p>
-</td></tr>
-
-</table>
-</td></tr>
-</table>
-</div>`;
+    const htmlBody = renderToolInvitation({ firstName, sender });
 
     try {
       const resend = new Resend(RESEND_API_KEY.value());

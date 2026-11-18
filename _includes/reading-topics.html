@@ -1,0 +1,11 @@
+{%- assign rt_post = include.post -%}
+{%- assign rt_key = rt_post.path | remove: '_posts/' | remove: '.md' | remove: '.markdown' -%}
+{%- assign rt_values = rt_post.reading_topics | default: site.data.writing.overrides[rt_key] -%}
+{%- unless rt_values -%}
+  {%- if rt_post.tags contains 'risk-intelligence' or rt_post.position_tag == 'risk-intelligence' -%}
+    {%- assign rt_values = 'value' | split: ',' -%}
+  {%- else -%}
+    {%- assign rt_values = 'adoption' | split: ',' -%}
+  {%- endif -%}
+{%- endunless -%}
+{{- rt_values | join: '|' -}}

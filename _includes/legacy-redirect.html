@@ -1,0 +1,2 @@
+<script>(function () { var next = new URL({{ page.redirect_to | relative_url | jsonify }}, location.origin); new URLSearchParams(location.search).forEach(function (value, key) { next.searchParams.set(key, value); }); next.hash = location.hash || next.hash; location.replace(next.href); })();</script>
+<meta http-equiv="refresh" content="0;url={{ page.redirect_to | relative_url }}">

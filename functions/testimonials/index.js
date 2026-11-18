@@ -4,6 +4,8 @@ const { Resend } = require("resend");
 const admin = require("firebase-admin");
 const { verifyAdminToken } = require("../newsletter/auth");
 
+const { renderTestimonialNotification } = require("../email/portal");
+
 const db = admin.firestore();
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 
@@ -124,33 +126,7 @@ async function handleSubmit(req, res) {
         from: "Sproochentest <hasan@hasanjaffal.com>",
         to: "jaftalks@gmail.com",
         subject: `New Sproochentest Testimonial from ${name.trim()}`,
-        html: `
-          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 560px; margin: 0 auto; padding: 24px;">
-            <h2 style="color: #0F172A; margin-bottom: 24px;">New Testimonial Submitted</h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 0; font-weight: 600; color: #64748B; width: 120px;">Character:</td>
-                <td style="padding: 8px 0; color: #0F172A;">${charLabel}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; font-weight: 600; color: #64748B;">Name:</td>
-                <td style="padding: 8px 0; color: #0F172A;">${name.trim()}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; font-weight: 600; color: #64748B; vertical-align: top;">Experience:</td>
-                <td style="padding: 8px 0; color: #0F172A;">${experience.trim()}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; font-weight: 600; color: #64748B; vertical-align: top;">Improvement:</td>
-                <td style="padding: 8px 0; color: #0F172A;">${improvement ? improvement.trim() : "<em>Not provided</em>"}</td>
-              </tr>
-            </table>
-            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #E2E8F0;">
-              <a href="${firestoreUrl}" style="display: inline-block; padding: 10px 20px; background: #9333EA; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">Review in Admin</a>
-            </div>
-            <p style="margin-top: 16px; font-size: 12px; color: #94A3B8;">Go to the Admin panel → Sproochentest → Testimonials to approve or reject.</p>
-          </div>
-        `,
+        html: renderTestimonialNotification({ character: charLabel, name: name.trim(), experience: experience.trim(), improvement: improvement ? improvement.trim() : "", adminUrl: firestoreUrl }),
       });
     } catch (emailErr) {
       // Don't fail the submission if email fails

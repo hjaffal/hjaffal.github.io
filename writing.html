@@ -2,127 +2,51 @@
 layout: page
 title:
 subtitle:
-share-title: "Writing — Hasan Jaffal"
-share-description: "Where data, AI, dashboards, and leadership fail under real risk. Writing for leaders who need decisions before problems become obvious."
+share-title: "Writing on AI and Business — Hasan Jaffal"
+share-description: "Explore articles on AI opportunities, investment decisions, people and adoption, and the evidence of business value."
 chat_with_me_box: false
 show-avatar: false
-full-width: true
 permalink: /writing/
 css:
   - "/assets/css/writing.css"
+js:
+  - "/assets/js/writing.js"
 ---
+<div class="writing-library">
+  <div class="wl-wrap">
+    <header class="wl-intro"><p class="wl-kicker">THE ARTICLE LIBRARY</p><h1>Writing on AI <span>and business.</span></h1><p>Where could AI change what a business is capable of? What would it take for people to put it into practice? And how would we know it was worth the investment?</p></header>
 
-<style>
-.intro-header{display:none !important;}
-.container-fluid{padding:0 !important;}
-.col{padding:0 !important;}
-</style>
+    <section class="wl-paths" aria-labelledby="paths-title"><div class="wl-section-heading"><h2 id="paths-title">Start with a question.</h2><p>Find a starting article, then explore the related writing.</p></div><div class="wl-question-grid">
+      {% for topic in site.data.writing.topics %}<a class="wl-question" data-topic-link="{{ topic.id }}" href="?topic={{ topic.id }}#wr-articles-section" aria-controls="wr-articles-list"><span class="wl-kicker">{{ topic.label }}</span><span class="wl-question-title">{{ topic.question }} <span aria-hidden="true">→</span></span></a>{% endfor %}
+    </div></section>
 
-<div class="wr-page">
-
-  <!-- Hero -->
-  <section class="wr-hero">
-    <div class="wr-hero-inner">
-      <span class="field-label">THE SECOND MIND</span>
-      <h1 class="wr-hero-title">Three positions.<br>One operating <em>thesis.</em></h1>
-      <p class="wr-hero-desc">I write about where AI, dashboards, data signals, and leadership fail in real operations. Each position is a lens — backed by articles, field experience, and uncomfortable trade-offs.</p>
-
-      <div class="wr-positions-row">
-        {% for p in site.data.positions %}
-        <a href="{{ p.url }}" class="wr-pos-chip">
-          <span class="wr-pos-chip-num">{{ p.number }}</span>
-          <span class="wr-pos-chip-title">{{ p.title }}</span>
-          <i class="fas fa-arrow-right wr-pos-chip-arrow"></i>
-        </a>
+    <section class="wl-archive" id="wr-articles-section" aria-labelledby="archive-title">
+      <div class="wl-section-heading"><div><p class="wl-kicker">EXPLORE THE WRITING</p><h2 id="archive-title">All articles</h2></div><a class="wl-text-link" href="/newsletter/">Read by email →</a></div>
+      <div class="wl-topic-intro" id="wl-topic-intro" hidden>
+        {% for topic in site.data.writing.topics %}{% assign start = site.posts | where: 'slug', topic.start | first %}{% unless start %}{% assign start = site.posts | where_exp: 'post', 'post.path contains topic.start' | first %}{% endunless %}
+        <div class="wl-recommendation" data-topic-intro="{{ topic.id }}" hidden><p>{{ topic.description }}</p><div><p class="wl-kicker">SUGGESTED FIRST READ</p><h3><a href="{{ start.url | relative_url }}">{{ start.title }}</a></h3><p>{{ topic.reason }}</p><a class="wl-text-link" href="{{ topic.url | relative_url }}">Explore {{ topic.label | downcase }} →</a></div></div>{% endfor %}
+      </div>
+      <div class="wl-controls" id="wl-controls" hidden>
+        <div class="wl-filter-links" aria-label="Filter articles by question"><a class="is-active" data-topic-link="all" href="/writing/#wr-articles-section" aria-current="true">All articles</a>{% for topic in site.data.writing.topics %}<a data-topic-link="{{ topic.id }}" href="?topic={{ topic.id }}#wr-articles-section">{{ topic.label }}</a>{% endfor %}</div>
+        <div class="wl-search-row"><div class="wl-search"><label for="wl-search">Search titles and summaries</label><input type="search" id="wl-search" placeholder="Try skills, costs, or fraud" autocomplete="off" aria-controls="wr-articles-list"></div><div class="wl-sort"><label for="wl-sort">Sort by</label><select id="wl-sort" aria-controls="wr-articles-list"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="shortest">Shortest read</option></select></div></div>
+        <div class="wl-results-bar"><p id="wl-results-status" role="status" aria-live="polite" aria-atomic="true"></p><button type="button" id="wl-reset" hidden>Clear filters</button></div>
+      </div>
+      <noscript><p class="wl-noscript">All articles are listed below, newest first. Search and question filters are available when JavaScript is enabled.</p></noscript>
+      <div class="wl-essays" id="wr-articles-list">
+        {% for post in site.posts %}
+          {% capture topic_ids %}{% include reading-topics.html post=post %}{% endcapture %}
+          {% assign reading_topics = topic_ids | strip | split: '|' %}
+          {% assign summary = post.share-description | default: post.subtitle | default: post.excerpt | strip_html | normalize_whitespace | truncatewords: 34 %}
+          {% assign words = post.content | number_of_words %}{% assign minutes = words | divided_by: 200 | plus: 1 %}
+          <article class="wl-essay" data-topics="{{ reading_topics | join: ' ' }}" data-date="{{ post.date | date: '%s' }}" data-minutes="{{ minutes }}">
+            <div class="wl-essay-meta"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %-d, %Y' }}</time><span>{{ minutes }} min read</span></div>
+            <div><div class="wl-essay-topics">{% for topic in site.data.writing.topics %}{% if reading_topics contains topic.id %}<span>{{ topic.label }}</span>{% endif %}{% endfor %}</div><h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3><p class="wl-summary">{{ summary }}</p><a class="wl-text-link" href="{{ post.url | relative_url }}">Read the article →</a></div>
+          </article>
         {% endfor %}
       </div>
-    </div>
-  </section>
-
-  <!-- Filter bar -->
-  <section class="wr-articles" id="wr-articles-section">
-    <div class="wr-filter-bar">
-      <a class="wr-filter-link active" data-filter="all" href="#">Latest</a>
-      <span class="wr-filter-sep">|</span>
-      <a class="wr-filter-link" data-filter="ai-decision-operations" href="#">AI & Decision Ops</a>
-      <span class="wr-filter-sep">|</span>
-      <a class="wr-filter-link" data-filter="risk-intelligence" href="#">Risk Intelligence</a>
-      <span class="wr-filter-sep">|</span>
-      <a class="wr-filter-link" data-filter="ai-job-risk" href="#">AI Job Risk</a>
-    </div>
-
-    <div class="wr-cards-grid" id="wr-articles-list">
-      {% for post in site.posts %}
-      <a href="{{ post.url | relative_url }}" class="wr-card" data-tags="{{ post.tags | join: ' ' }}">
-        <div class="wr-card-img-wrap">
-          {% if post.thumbnail-img %}
-          <img class="wr-card-img" src="{{ post.thumbnail-img }}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="wr-card-img-fallback" style="display:none;">
-            <span class="wr-card-img-title">{{ post.title | xml_escape | truncate: 80 }}</span>
-          </div>
-          {% else %}
-          <div class="wr-card-img-fallback">
-            <span class="wr-card-img-title">{{ post.title | truncate: 80 }}</span>
-          </div>
-          {% endif %}
-        </div>
-        <span class="wr-card-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h3 class="wr-card-title">{{ post.title }}</h3>
-      </a>
-      {% endfor %}
-    </div>
-
-    <div class="wr-load-more-wrap" id="wr-load-more-wrap">
-      <button class="wr-load-more-btn" id="wr-load-more">Load more...</button>
-    </div>
-  </section>
-
+      <div class="wl-empty" id="wl-empty" hidden><h3>No articles match this search.</h3><p>Try a broader term or clear the filters to explore all the writing.</p><button type="button" id="wl-empty-reset">Show all articles</button></div>
+      <div class="wl-more" id="wl-more-wrap" hidden><button type="button" id="wl-more">Show more articles</button></div>
+    </section>
+    <aside class="wl-note"><p>The writing draws on analytics, data, and operational leadership. The questions I return to are what became possible, what people changed, and what evidence connects that work to the result.</p><a class="wl-text-link" href="/aboutme/">About the author →</a></aside>
+  </div>
 </div>
-
-<script>
-(function() {
-  var PAGE_SIZE = 8;
-  var visibleCount = PAGE_SIZE;
-  var currentFilter = 'all';
-  var allCards = Array.from(document.querySelectorAll('.wr-card'));
-  var loadMoreWrap = document.getElementById('wr-load-more-wrap');
-  var loadMoreBtn = document.getElementById('wr-load-more');
-
-  function getFiltered() {
-    if (currentFilter === 'all') return allCards;
-    return allCards.filter(function(card) {
-      return card.dataset.tags && card.dataset.tags.indexOf(currentFilter) !== -1;
-    });
-  }
-
-  function render() {
-    var filtered = getFiltered();
-    allCards.forEach(function(card) { card.style.display = 'none'; });
-    filtered.slice(0, visibleCount).forEach(function(card) { card.style.display = ''; });
-    if (visibleCount >= filtered.length) {
-      loadMoreWrap.style.display = 'none';
-    } else {
-      loadMoreWrap.style.display = '';
-    }
-  }
-
-  // Filter link clicks
-  document.querySelectorAll('.wr-filter-link').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelectorAll('.wr-filter-link').forEach(function(l) { l.classList.remove('active'); });
-      link.classList.add('active');
-      currentFilter = link.dataset.filter;
-      visibleCount = PAGE_SIZE;
-      render();
-    });
-  });
-
-  loadMoreBtn.addEventListener('click', function() {
-    visibleCount += PAGE_SIZE;
-    render();
-  });
-
-  render();
-})();
-</script>

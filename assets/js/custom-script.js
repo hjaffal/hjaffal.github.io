@@ -17,14 +17,14 @@ function handleNewsletterSubscribe(e, form, source) {
     onSuccess: function() {
       msg.style.display = 'block';
       msg.textContent = 'You are subscribed.';
-      msg.style.color = 'var(--accent, #9333EA)';
+      msg.style.color = 'var(--subscription-success, #7734ce)';
       btn.textContent = 'Subscribed';
       form.querySelector('input[type="email"]').disabled = true;
     },
     onError: function(errMsg) {
       msg.style.display = 'block';
       msg.textContent = errMsg || 'Something went wrong. Try again.';
-      msg.style.color = '#DC2626';
+      msg.style.color = 'var(--subscription-error, #b91c1c)';
       btn.disabled = false;
       btn.textContent = 'Subscribe';
     }

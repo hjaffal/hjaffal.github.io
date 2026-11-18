@@ -1,0 +1,37 @@
+{
+  "name": "Sample reader",
+  "jobTitle": "Operations Manager",
+  "industry": "Retail",
+  "seniority": "manager",
+  "country": "Luxembourg",
+  "submittedAt": "2026-11-18T10:00:00.000Z",
+  "inputs": { "mainTasks": "Review weekly metrics, coordinate incident responses, coach team members, set operating priorities", "aiUsage": "weekly", "aiConcern": "skills_outdated", "skillsToLearn": "AI workflow design and evaluation" },
+  "result": {
+    "risk_score": 62,
+    "risk_level": "Medium",
+    "summary": "Routine reporting and coordination account for a meaningful part of this example role. AI could reduce the time spent gathering information and preparing updates. The more useful question is how that changes the manager’s responsibility for judgment, coaching, and decisions.",
+    "risk_distribution": { "exposed_pct": 40, "moderate_pct": 35, "protected_pct": 25 },
+    "radar": { "ai_literacy": 55, "judgment": 82, "communication": 76, "strategy": 65, "technical": 48, "leadership": 80 },
+    "breakdown": { "automation_exposure": 62, "human_judgment_strength": 82, "skill_gap_urgency": 58, "action_readiness": 65, "ai_literacy": 55 },
+    "exposed_tasks": [
+      { "task": "Prepare the weekly business review", "exposure_pct": 78, "reason": "Collecting metrics and drafting a first summary are repeatable activities. Setting priorities and deciding what to do about an exception still need context." },
+      { "task": "Coordinate routine status updates", "exposure_pct": 65, "reason": "AI could gather updates and highlight overdue actions, while the manager handles exceptions and competing commitments." }
+    ],
+    "protected_tasks": [
+      { "task": "Decide how to respond to an operational incident", "protection_pct": 85, "judgment_area": "Context & accountability" },
+      { "task": "Coach a team through a change in responsibilities", "protection_pct": 88, "judgment_area": "Relationships & judgment" }
+    ],
+    "skill_gaps": [
+      { "skill": "Evaluate AI-generated recommendations", "priority": "HIGH", "action": "Compare one AI-generated review with your own analysis. Record missed context and unsupported claims." },
+      { "skill": "Redesign a workflow around human review", "priority": "MEDIUM", "action": "Map who reviews an AI output, what evidence they need, and when to escalate." }
+    ],
+    "recommended_skills": ["AI workflow evaluation", "Decision-making under uncertainty", "Change communication"],
+    "thirty_day_plan": [
+      { "week": 1, "title": "Observe the actual work", "actions": "Track the time spent collecting information, drafting updates, and making decisions. Ask the team where repeated work gets in the way.", "output": "A simple task and time map." },
+      { "week": 2, "title": "Try one bounded change", "actions": "Use AI to draft a non-sensitive weekly summary. Review every claim and record where human context changes the recommendation.", "output": "A reviewed draft and an error log." },
+      { "week": 3, "title": "Agree how responsibilities change", "actions": "Discuss what the team would do with the time released. Set review ownership and escalation rules before changing the routine.", "output": "An agreed workflow and a named reviewer." },
+      { "week": 4, "title": "Review the evidence", "actions": "Compare time, quality, and decision usefulness against the original process. Decide whether to continue, adapt, or stop the experiment.", "output": "A short evidence review and a next-step decision." }
+    ],
+    "final_advice": "Begin with one reporting workflow, rather than an entire role. Use the time released to improve the quality and speed of decisions, and collect evidence that the change is useful."
+  }
+}

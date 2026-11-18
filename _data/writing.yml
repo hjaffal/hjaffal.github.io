@@ -1,0 +1,58 @@
+# Reader questions and editorial overrides for the existing article archive.
+# New posts can set reading_topics in front matter; overrides take precedence
+# over the legacy tag fallback in writing.html.
+topics:
+  - id: opportunities
+    url: /topics/opportunities/
+    questions:
+      - What could change for customers or the business?
+      - What work is constrained by information, time, or capacity?
+      - What would a small test help us learn?
+    label: Opportunities
+    question: Where could AI make a difference?
+    description: Look at the work, the information available, and what could become possible for customers or the business.
+    start: 2024-11-14-predictive-analytics-in-security-and-loss-prevention
+    reason: A starting point for thinking about the shift from reacting to losses to anticipating them.
+  - id: investment
+    url: /topics/investment-decisions/
+    questions:
+      - What outcome would justify the full cost?
+      - What alternatives should we compare, including doing nothing?
+      - What evidence would make us stop or change course?
+    label: Investment decisions
+    question: What deserves investment?
+    description: Examine priorities, operational costs, and the conditions an idea needs before it can deliver value.
+    start: 2024-11-12-the-art-of-prioritization-for-data-teams
+    reason: Start with the broader investment discipline of choosing useful work and saying no to low-impact requests.
+  - id: adoption
+    url: /topics/people-and-adoption/
+    questions:
+      - How will the work and responsibilities change?
+      - What expertise and new skills will people need?
+      - Who can act on what AI produces?
+    label: People & adoption
+    question: What needs to change in the work?
+    description: Explore skills, responsibilities, workflows, and the decisions people need to own.
+    start: 2026-07-14-ai-made-tools-easy-judgment-got-hard-how-strong-teams-operate-differently
+    reason: An article on the judgment and trade-offs people need to own when AI can generate the options.
+  - id: value
+    url: /topics/outcomes-and-evidence/
+    questions:
+      - What changed for customers or the business?
+      - How much of the improvement can we attribute to AI?
+      - Did the result justify the full cost and further investment?
+    label: Outcomes & evidence
+    question: How do we judge the result?
+    description: Consider which measures support a decision, what changed, and what the numbers leave unanswered.
+    start: 2024-11-18-leading-vs-lagging-indicators
+    reason: Begin with choosing measures that help you distinguish progress from a report of the past.
+overrides:
+  2024-11-12-the-art-of-prioritization-for-data-teams: [investment]
+  2024-11-14-predictive-analytics-in-security-and-loss-prevention: [opportunities]
+  2024-11-16-lthe-data-metrics-every-security-and-loss-prevention-team-should-track: [value]
+  2024-11-18-leading-vs-lagging-indicators: [value]
+  2025-05-06-the-moment-i-realized-expertise-was-changing-forever: [adoption]
+  2026-05-08-tasks-most-exposed-to-ai-automation: [opportunities, adoption]
+  2026-06-30-the-analyst-work-ai-already-automates-and-a-one-week-playbook-to-stay-in-the-room: [opportunities, adoption]
+  2026-09-22-the-hidden-cost-of-deploying-ai-into-unclear-ownership: [investment, adoption]
+  2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first: [investment, adoption]
