@@ -34,14 +34,21 @@ css:
     </div>
 
     <section class="jh-writing" aria-labelledby="selected-title">
-      <div class="jh-section-heading"><div><p class="jh-kicker">CONTINUE READING</p><h2 id="selected-title">Decisions, people, and evidence.</h2></div><a class="jh-read" href="/writing/">All writing →</a></div>
-      {% assign selections = '2026-05-08-tasks-most-exposed-to-ai-automation|2026-07-14-ai-made-tools-easy|2026-11-12-if-a-metric' | split: '|' %}
-      {% assign descriptions = 'Which tasks are candidates for automation, and where do context, relationships, and accountability still matter?|When AI can generate the options, what judgment and skills do people need to develop?|Which numbers help you decide what to do next—and which simply describe what already happened?' | split: '|' %}
-      {% assign labels = 'FINDING OPPORTUNITIES|PEOPLE & JUDGMENT|MEASUREMENT & ACTION' | split: '|' %}
+      <div class="jh-section-heading"><h2 id="selected-title">Latest by topic</h2><a class="jh-read" href="{{ '/writing/' | relative_url }}">All writing →</a></div>
       <div class="jh-essay-list">
-        {% for selection in selections %}
-          {% assign article = site.posts | where_exp: "post", "post.path contains selection" | first %}
-          <article class="jh-essay"><div class="jh-essay-category"><span class="jh-kicker">{{ labels[forloop.index0] }}</span><span>{{ article.date | date: "%b %-d, %Y" }}</span></div><div><h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3><p>{{ descriptions[forloop.index0] }}</p><a class="jh-read" href="{{ article.url | relative_url }}">Read the article →</a></div></article>
+        {% for topic in site.data.writing.topics %}
+          {% for article in site.posts %}
+            {% capture article_topic_ids %}{% include reading-topics.html post=article %}{% endcapture %}
+            {% assign article_topics = article_topic_ids | strip | split: '|' %}
+            {% if article_topics contains topic.id %}
+              {% assign summary = article.share-description | default: article.subtitle | default: article.excerpt | strip_html | normalize_whitespace | truncatewords: 34 %}
+              <article class="jh-essay">
+                <div class="jh-essay-category"><span class="jh-kicker">{{ topic.label | escape }}</span><time datetime="{{ article.date | date: '%Y-%m-%d' }}">{{ article.date | date: '%b %-d, %Y' }}</time></div>
+                <div><h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3><p>{{ summary }}</p><a class="jh-read" href="{{ article.url | relative_url }}">Read the article →</a></div>
+              </article>
+              {% break %}
+            {% endif %}
+          {% endfor %}
         {% endfor %}
       </div>
     </section>
