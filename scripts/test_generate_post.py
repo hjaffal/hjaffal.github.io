@@ -69,6 +69,22 @@ class ArticleValidationTests(unittest.TestCase):
         article = self.valid_article()
         self.assertEqual(validate_article(article, self.topic, [], self.topics), [])
 
+    def test_short_summary_passes(self):
+        article = self.valid_article()
+        article["tldr"] = " ".join(
+            ["Compare AI with realistic alternatives and the full cost."] * 6
+        )
+        self.assertEqual(count_words(article["tldr"]), 54)
+        self.assertEqual(validate_article(article, self.topic, [], self.topics), [])
+
+    def test_summary_over_100_words_fails(self):
+        article = self.valid_article()
+        article["tldr"] = " ".join(["word"] * 101)
+        self.assertIn(
+            "Summary must be no more than 100 words (got 101)",
+            validate_article(article, self.topic, [], self.topics),
+        )
+
     def test_topic_selection_uses_current_coverage(self):
         writing = load_yaml(WRITING_PATH)
         recent_posts = [{"reading_topics": ["opportunities", "adoption"]}]

@@ -202,7 +202,7 @@ LENGTH AND SEARCH:
 - Include a concise 40-60 word answer near the beginning, after the opening.
 - Put that exact answer in the "answer" JSON field and include it verbatim in the body
   as a blockquote after the opening paragraph.
-- Include a 60-100 word summary for the article page.
+- Include a concise summary for the article page, up to 100 words.
 - Share description must be no more than 160 characters.
 
 INTERNAL LINKS:
@@ -225,7 +225,7 @@ Return ONLY valid JSON, with this structure:
   "share_description": "Accurate social description",
   "excerpt": "Short article preview",
   "answer": "40-60 word direct answer",
-  "tldr": "60-100 word summary",
+  "tldr": "Concise summary, up to 100 words",
   "reading_topics": ["{topic["id"]}"],
   "keywords": ["primary keyword", "secondary keyword", "secondary keyword"],
   "body": "Full Markdown article"
@@ -275,9 +275,11 @@ def validate_article(data, topic, recent_posts, topics):
     if len(data.get("excerpt", "").strip()) > 300:
         errors.append("Excerpt exceeds 300 characters")
 
-    summary_words = count_words(data.get("tldr", ""))
-    if not 60 <= summary_words <= 100:
-        errors.append("Summary must be 60-100 words (got {})".format(summary_words))
+    summary = data.get("tldr")
+    if isinstance(summary, str):
+        summary_words = count_words(summary)
+        if summary_words > 100:
+            errors.append("Summary must be no more than 100 words (got {})".format(summary_words))
     answer = data.get("answer", "").strip()
     answer_words = count_words(answer)
     if not 40 <= answer_words <= 60:
