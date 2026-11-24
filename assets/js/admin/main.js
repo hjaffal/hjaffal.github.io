@@ -173,9 +173,6 @@ export async function switchPanel(panelName) {
   } else if (panelName === 'lexicon') {
     const { loadLexicon } = await import('./lexicon.js');
     loadLexicon();
-  } else if (panelName === 'vocab-analytics') {
-    const { loadVocabAnalytics } = await import('./vocab-analytics.js');
-    loadVocabAnalytics();
   } else if (panelName === 'testimonials') {
     const { loadTestimonials } = await import('./testimonials.js');
     loadTestimonials();

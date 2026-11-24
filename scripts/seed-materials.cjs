@@ -13,27 +13,6 @@ const COLLECTION = "downloadable_materials";
 
 const materials = [
   {
-    file: "/assets/pdf/Sproochentest Adjective Guide.pdf",
-    fileName: "Sproochentest Adjective Guide.pdf",
-    title: "Adjective Declension Guide",
-    category: "sproochentest",
-    downloads: 0
-  },
-  {
-    file: "/assets/pdf/Sproochentest Articles and Prepositions Guide.pdf",
-    fileName: "Sproochentest Articles and Prepositions Guide.pdf",
-    title: "Articles & Prepositions Guide",
-    category: "sproochentest",
-    downloads: 0
-  },
-  {
-    file: "/assets/pdf/Sproochentest Picture Description Guide.pdf",
-    fileName: "Sproochentest Picture Description Guide.pdf",
-    title: "Picture Description Master Sheet",
-    category: "sproochentest",
-    downloads: 0
-  },
-  {
     file: "/assets/pdf/ai-dashboard-review-template.pdf",
     fileName: "ai-dashboard-review-template.pdf",
     title: "AI Dashboard Review Template",
