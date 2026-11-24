@@ -1,0 +1,32 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for post in site.posts %}
+  {%- unless post.sitemap == false or post.published == false %}
+  <url>
+    <loc>{{ site.url | append: post.url | xml_escape }}</loc>
+    {%- if post.last_modified_at or post.date %}
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+  {%- endunless %}
+{%- endfor %}
+{%- for page in site.pages %}
+  {%- assign excluded = false %}
+  {%- if page.sitemap == false or page.published == false or page.url == '/404.html' or page.url contains '/assets/' or page.url contains '/report/' or page.url contains '/compatibility/' or page.url contains '/newsletter/admin/' or page.url contains '/newsletter/preferences/' %}
+    {%- assign excluded = true %}
+  {%- endif %}
+  {%- unless excluded %}
+  <url>
+    <loc>{{ site.url | append: page.url | xml_escape }}</loc>
+    {%- if page.last_modified_at %}
+    <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+    {%- elsif page.date %}
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+  {%- endunless %}
+{%- endfor %}
+</urlset>
