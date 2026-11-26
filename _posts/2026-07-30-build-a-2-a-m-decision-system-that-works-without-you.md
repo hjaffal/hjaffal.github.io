@@ -1,84 +1,109 @@
 ---
 layout: post
-title: "Build a 2 A.M. Decision System That Works Without You"
-subtitle: "AI exposes weak ownership. Here’s the minimum setup that acts when no manager is online."
-share-description: "AI doesn’t fix slow approvals or unclear owners. It exposes them. Here’s a blunt, minimum system that makes decisions at 2 a.m. without a manager: thresholds, authority, timers, reversible actions, and audit. Pick: execute and own the fallout, or wait and pay for delay."
+title: "How Should an Organisation Act on AI Signals at Night?"
+subtitle: "AI does not keep office hours. The question is whether the organisation's authority to act does, and what leaders should allow to happen automatically while approvers sleep."
+share-title: "How Should an Organisation Act on AI Signals at Night?"
+share-description: "Out-of-hours AI alerts need the same authority as daytime ones: a rota role, small reversible automated actions, and a morning review against agreed rules."
+excerpt: "AI flags problems at any hour, but most approval chains work office hours. Leaders can close that gap with a rota role holding daytime authority, limited automation for reversible actions, and a disciplined morning review."
+tldr: "With the same authority at night as by day, held by a role on a published rota, and with automation allowed to take small, reversible actions when no one responds in time. Larger or irreversible actions wait for a person. Every night-time action is logged and reviewed the next morning against the rules agreed in advance, not against hindsight."
+reading_topics:
+  - "adoption"
 tags:
   - ai-decision-operations
 topic: ai-topic
 archetype: describe
-author: Hasan J.
-tldr: "AI speeds detection. It does not grant authority. At 2 a.m., detection without decision power is expensive noise. This post lays out the minimum viable system that actually works when no manager is online: a small set of signals tied to pre-approved actions, hard thresholds and timers, clear spend/risk caps, reversible-first automation with real write access, and a tight audit/rollback loop. Strong teams ship this and drill it. Average teams argue in Slack and wake up to losses. You have to pick the trade-off: tolerate some false positives and own them, or bleed while waiting for permission."
+author: Hasan Jaffal
+keywords:
+  - "out of hours incident response"
+  - "AI automated actions"
+  - "on-call decision authority"
+  - "AI operations governance"
+faq:
+  - q: "Should AI be allowed to act automatically at night?"
+    a: "For a small set of reversible actions with tight limits, often yes. Pausing an offer for a few hours or adding verification for a risky group can be undone in the morning. Irreversible or large actions should wait for a person. The boundary between the two should be written down and approved in advance."
+  - q: "Who should be on call for AI alerts?"
+    a: "A role with real authority, not a messenger. The person on call should be able to act within agreed limits without waking an approver, have direct access to the controls involved, and know exactly when to escalate. A rota without authority only moves the waiting from the morning to the night."
+  - q: "How should night-time decisions be reviewed?"
+    a: "Against the rules that were agreed in advance, not against hindsight. The morning review asks whether the action was within its limits and followed the procedure. Where the rule itself proved wrong, the rule is changed. People who acted in good faith within the rules should be supported, not blamed."
+last-updated: 2026-11-26
 ---
 
-2:11 a.m., Friday. The model flags a 5x spike in refunds tied to two prepaid cards and a promo code. The on-call analyst sees it, posts in Slack, tags a manager, and waits. Finance is asleep. Marketing is offline. Legal is not on-call. By 6:00 a.m., $87,400 is gone and a cohort of abusers taught your system it can be farmed.
+## Why do AI signals at night expose the approval chain?
 
-AI didn’t fail. Your decision system did. Detection without decision power is expensive noise.
+AI does not keep office hours. A model can detect abuse of a promotion, a surge in refunds or a failing service at any time, including the hours when fewest people are working. The person on call sees the alert, posts it, tags a manager and waits, because the people with authority to act are asleep. By the morning, the response is obvious and late.
 
-You cannot “improve comms” or “tighten SLAs” and hope for better nights. The only system that works at 2 a.m. is one that can act with no new approvals. That requires real authority, not vibes.
+Leaders often treat this as a communication problem: better paging, faster escalation, a stricter response target. Those help at the margins, and they miss the larger question: does the organisation's authority to act exist outside office hours at all? If it does not, no amount of alerting will produce a timely response.
 
-Here’s the minimum viable version that actually works.
+In my judgement, the night shift is where weak decision rights become most visible, because there is nobody to improvise permission from. That makes it a useful place to design them properly.
 
-1) Name the signals, and tie each to a single action.
-- One owner per signal. Not a committee.
-- Each signal is a contract: “If X crosses Y for Z minutes, do A now.” Not “alert and discuss.”
-- Kill 80% of your alerts. If a signal can’t trigger an action, it isn’t a signal. It’s a report.
+## What does AI change at night, and what does it not change?
 
-2) Assign hard authority and budgets.
-- The on-call role (human or automation) holds the keys up to a cap: “Can incur up to $50k revenue hit per night to prevent larger loss.”
-- Publish this. If you can’t put a number on it, you don’t have authority—you have theater.
+AI changes how much is noticed out of hours. Signals that once waited for the morning report now arrive in real time, and some can trigger actions automatically.
 
-3) Set thresholds and timers before the incident.
-- Cutoffs are specific: “Refund rate > 2.5x baseline for 10 minutes with >200 events.”
-- Timers are ruthless: “60 seconds to human-ack. If no ack, automation executes.”
-- Irreversible actions require two independent sensors. Reversible actions fire on one.
+AI does not change who is accountable for those actions, what risk is acceptable or what customers experience when a control fires at three in the morning. Automation that acts without agreed limits is not a solution to slow approvals; it is a different risk.
 
-4) Ship reversible-first actions with write access.
-- Auto-pause promos. Throttle sign-ups by source. Require 2FA on suspect cohorts. Cap order value. Switch to safe payment rails. All reversible.
-- The automation account needs production write rights. If it can’t change state, your “AI ops” is just a siren.
-- Backout is one command: “resume_promo PROMO123” or “throttle_signups off.” ChatOps, not tickets.
+## Find the value: which signals really need a night-time response?
 
-5) Bundle evidence with every action.
-- Attach the snapshot: metric deltas, top offenders, cohort breakdown, the exact query. No dashboards to hunt.
-- Freeze the evidence with the action so you can audit without re-running flaky data later.
+Most alerts can wait until morning without harm, and they should. The value lies in the few signals where a delay of six or eight hours causes real loss or harm: fraud and abuse that compound by the hour, failures that affect many customers, security events that spread.
 
-6) Log the decision and do a 9 a.m. cut-and-dry review.
-- Write who/what/when/why to an immutable log.
-- In the morning, judge the call by the pre-set rules, not by outcomes alone. Adjust thresholds if needed. Keep or kill the signal.
+For each candidate, estimate what an overnight delay costs, using recent incidents. That number decides whether the signal deserves night-time authority, and how much the organisation should be willing to spend, in staff and in customer friction, to act on it quickly.
 
-7) Drill monthly at 2 a.m.
-- Ten-minute tabletop: run the play for real in staging and once in prod on a low-impact control (e.g., throttle a sandbox source). If it breaks, fix it that day.
+**Decision for the sponsor:** which signals cost enough when they wait until morning to justify acting on them at night?
 
-A real example from a food delivery marketplace I worked with:
+## Lead the change: what may people and automation do while approvers sleep?
 
-Before: Marketing launched a “$20 off 3 orders” promo. Abusers chained prepaid cards and VPNs. The model flagged it. On-call posted. Marketing had the permission to pause; they weren’t on-call. Finance had the authority to cap; they were not in the room. Loss: $90k, plus mornings of finger-pointing.
+The core principle is that authority should not change with the clock. The role on call at night should hold the same written authority as its daytime equivalent, with direct access to the controls involved. A rota without authority only moves the waiting from the morning to the night.
 
-After: We named a signal: PROMO-DRAIN-01. Rule: “Refunds + promo usage > 3x baseline, cohorts concentrated in top 3 ASNs, duration 7 minutes, n>150.” Action: auto-pause affected promo for 30 minutes and force 3DS on the cohort. Timer: 60 seconds for human-ack, then execute. Authority: on-call allowed up to $40k nightly revenue impact. Backout: /resume_promo PROMOID. Evidence: top segments, chargeback overlap, method-of-payment mix, diffs vs previous 24 hours.
+Automation can then cover the moments when no person responds in time, within a short written policy that leaders approve in advance. A sensible policy draws three lines:
 
-Two weeks later, 2:07 a.m., pattern repeats. The system pauses the promo, applies 3DS to the noisy segment, and throttles sign-ups from three ASNs. Loss contained to $6k. A handful of angry tweets. We slept. In the morning, we adjusted the ASN list and tightened the timer to 45 seconds.
+- **Automatic, reversible actions.** Small actions that can be undone easily, such as pausing an offer for a few hours or adding verification for a risky group, may fire automatically if the person on call does not respond within a set time.
+- **Stronger evidence for larger actions.** Anything larger requires two independent signals agreeing, not one.
+- **People for irreversible actions.** Anything that cannot be undone, or that affects many customers, waits for a person with the authority to approve it.
 
-That is the point: trade pain you can afford now for pain you can’t afford later.
+Every automated or human action records the evidence that triggered it, so that the morning review does not depend on reconstructing what the data showed at the time. The wider principle of bounded authority is set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/), and the design of reversible controls in [which controls should be ready before a fraud spike starts](/2026-05-02-dashboards-dont-stop-fraud-pre-wired-decisions-do/).
 
-The uncomfortable trade-off: you either accept false positives and some customer anger, or you accept real loss and a reputation among abusers that you are slow. Pick one. Pretending there’s a perfect setting is how you end up paying both bills.
+**Decision for the sponsor:** what may the person on call and the automation do at night, and where must they stop and wait?
 
-What strong teams do differently:
-- They measure time-to-decision, not time-to-detection. The clock stops when the system changes state.
-- They grant production write access to automation and on-call humans with audit, not with endless approvals.
-- They keep the action catalog tiny, reversible, and tested. They don’t ship 30 options no one uses under stress.
-- They publish a one-page “use of force” policy: what the system can do, up to what cost, for how long.
-- They back the on-call when a good-faith call turns out wrong. They fix the rule, not the person.
+## Prove the impact: are night-time decisions faster and still sound?
 
-Average teams do the opposite:
-- They flood Slack with screenshots and ask for “quick eyes.”
-- They route authority to whoever is awake, not to the role designed to decide.
-- They confuse dashboards with decisions. They think more features beat clear thresholds.
-- They set timers for comfort, not for risk. Minutes turn into hours. The loss curve doesn’t care.
+Two comparisons show whether the design works. First, compare time to action at night with time to action during the day, for the same signals. If nights are still much slower, authority or access is missing somewhere. Second, compare losses from night-time events before and after the change.
 
-If you want this running next week, here’s the bare bones:
-- Pick three signals that correlate to real loss. Tie each to one reversible action.
-- Write the threshold, timer, and cap in plain English. Publish it.
-- Give the automation account write access for those three actions. No exceptions.
-- Build ChatOps commands for execute and backout. Log everything.
-- Run a 30-minute drill at 2 a.m. Fix whatever breaks. Repeat monthly.
+The morning review is where soundness is checked. It should judge each action against the rules agreed in advance, not against hindsight. Was the action within its limits? Was the evidence recorded? Where the rule itself proved wrong, change the rule. People who acted in good faith within the rules should be supported, or the next person on call will hesitate.
 
-AI will keep finding problems faster. Without authority, you only pay for better alarms. So choose: will your 2 a.m. system execute and apologize when needed, or will it wait and explain the losses at 9 a.m.?
+Track reversals too. A high share of automated actions reversed in the morning suggests thresholds that are too sensitive; almost none may suggest limits that are too timid.
+
+**Decision for the sponsor:** on the evidence of the morning reviews, should the night-time authority and automation be widened, narrowed or kept as they are?
+
+## What does it cost, and what is the simpler alternative?
+
+The costs are a properly authorised rota, the engineering to let automation change system settings safely, the logging around every action, and the customer friction caused by actions that prove unnecessary. There is also a governance cost: leaders must agree, in writing, what they are willing to let happen without them.
+
+The simpler alternative is to start with one signal. Give the person on call written authority for one reversible action, test it once in calm conditions, and review every use for a month. If that alone removes most overnight losses for that signal, the organisation has its pattern for the rest.
+
+## Questions to put to your team
+
+1. Which of our signals cost real money or harm when they wait until morning?
+2. Does the person on call have the same authority at night as by day?
+3. Which actions are we comfortable letting automation take, and which must wait for a person?
+4. Is the evidence behind each night-time action recorded at the time?
+5. Do our morning reviews judge actions against the rules or against hindsight?
+
+## Frequently asked questions
+
+### Should AI be allowed to act automatically at night?
+
+For a small set of reversible actions with tight limits, often yes. Pausing an offer for a few hours or adding verification for a risky group can be undone in the morning. Irreversible or large actions should wait for a person. The boundary between the two should be written down and approved in advance.
+
+### Who should be on call for AI alerts?
+
+A role with real authority, not a messenger. The person on call should be able to act within agreed limits without waking an approver, have direct access to the controls involved, and know exactly when to escalate. A rota without authority only moves the waiting from the morning to the night.
+
+### How should night-time decisions be reviewed?
+
+Against the rules that were agreed in advance, not against hindsight. The morning review asks whether the action was within its limits and followed the procedure. Where the rule itself proved wrong, the rule is changed. People who acted in good faith within the rules should be supported, not blamed.
+
+## Sources
+
+- This article draws on the author's judgement and on the related articles linked above; it contains no external statistics.
+
+The question is not whether something will go wrong at night, but whether the organisation has decided in daylight what it will do when it does. More on the people side of this is in the [people and adoption](/topics/people-and-adoption/) topic, and on removing delays generally in [where time is lost between an AI alert and action](/2026-10-15-ai-will-expose-your-slow-decisions-a-framework-to-cut-delay-under-risk/).

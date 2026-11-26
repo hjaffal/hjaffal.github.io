@@ -11,13 +11,13 @@ head-extra:
   - noindex.html
 ext-css:
   - "https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
-  - "https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css"
 css:
   - "/assets/css/newsletter-admin.css"
 ---
 
 <!-- Auth: Sign-in (shown when not authenticated) -->
 <div id="nla-auth" class="nla-auth">
+  <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true"><rect x="25.5" y="1.5" width="12" height="12" rx="2.5" fill="#FF6B4A"/><rect x="25.5" y="19.5" width="12" height="12" rx="2.5" fill="#5B2EFF"/><rect x="25.5" y="34.5" width="12" height="12" rx="2.5" fill="#5B2EFF"/><rect x="10.5" y="34.5" width="12" height="12" rx="2.5" fill="#5B2EFF"/></svg>
   <h2 class="nla-auth-title">Sign in to continue</h2>
   <p class="nla-auth-desc">Only authorized administrators can access this dashboard.</p>
   <button class="nla-google-btn" id="nla-google-signin" type="button" aria-label="Sign in with Google">
@@ -35,59 +35,48 @@ css:
   <aside class="nla-sidebar" id="nla-sidebar">
     <div class="nla-sidebar-header">
       <div class="nla-sidebar-logo">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#9333EA"/>
-          <path d="M10 12h12M10 16h12M10 20h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="nla-sidebar-logo-text">Admin Panel</span>
+        <svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><rect x="25.5" y="1.5" width="12" height="12" rx="2.5" fill="#FF6B4A"/><rect x="25.5" y="19.5" width="12" height="12" rx="2.5" fill="#8B6CFF"/><rect x="25.5" y="34.5" width="12" height="12" rx="2.5" fill="#8B6CFF"/><rect x="10.5" y="34.5" width="12" height="12" rx="2.5" fill="#8B6CFF"/></svg>
+        <span class="nla-sidebar-logo-text">Hasan Jaffal<small>Admin</small></span>
       </div>
     </div>
     <nav class="nla-sidebar-nav">
       <div class="nla-nav-section-label">Dashboard</div>
       <button class="nla-nav-item active" data-panel="dashboard" type="button">
-        <span class="nla-nav-icon">📊</span> Dashboard
-      </button>
-
-      <div class="nla-nav-section-label">Posts</div>
-      <button class="nla-nav-item" data-panel="posts" type="button">
-        <span class="nla-nav-icon">📝</span> All Posts
-      </button>
-      <button class="nla-nav-item" data-panel="new-post" type="button">
-        <span class="nla-nav-icon">✍️</span> New Post
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span> Dashboard
       </button>
 
       <div class="nla-nav-section-label">Newsletter</div>
       <button class="nla-nav-item" data-panel="compose" type="button">
-        <span class="nla-nav-icon">✉️</span> Compose
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg></span> Compose
       </button>
       <button class="nla-nav-item" data-panel="subscribers" type="button">
-        <span class="nla-nav-icon">👥</span> Subscribers
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.7c1.9.8 3.1 2.6 3.5 5.3"/></svg></span> Subscribers
       </button>
       <button class="nla-nav-item" data-panel="analytics" type="button">
-        <span class="nla-nav-icon">📈</span> Analytics
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span> Analytics
       </button>
       <div class="nla-nav-section-label">Downloads</div>
       <button class="nla-nav-item" data-panel="downloads" type="button">
-        <span class="nla-nav-icon">📊</span> Analytics
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></svg></span> Analytics
       </button>
 
       <div class="nla-nav-section-label">Tools</div>
       <button class="nla-nav-item" data-panel="assessments" type="button">
-        <span class="nla-nav-icon">🎯</span> Job Assessments
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span> Job Assessments
       </button>
       <button class="nla-nav-item" data-panel="lexicon" type="button">
-        <span class="nla-nav-icon">📖</span> Lexicon
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5v-15ZM4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></span> Lexicon
       </button>
 
       <div class="nla-nav-section-label">Sproochentest</div>
       <button class="nla-nav-item" data-panel="testimonials" type="button">
-        <span class="nla-nav-icon">💬</span> Testimonials
+        <span class="nla-nav-icon"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg></span> Testimonials
       </button>
     </nav>
     <div class="nla-sidebar-links">
-      <a href="https://hasanjaffal.com" class="nla-sidebar-link" target="_blank">🌐 Public Website</a>
+      <a href="https://hasanjaffal.com" class="nla-sidebar-link" target="_blank"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.5 5.2 3.5 8.5s-1.2 6.1-3.5 8.5c-2.3-2.4-3.5-5.2-3.5-8.5S9.7 5.9 12 3.5Z"/></svg> Public website</a>
       <div class="nla-sidebar-submenu">
-        <button class="nla-sidebar-submenu-title" id="config-toggle" type="button">⚙️ Config <span class="nla-submenu-arrow">›</span></button>
+        <button class="nla-sidebar-submenu-title" id="config-toggle" type="button"><svg class="nla-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg> Config <span class="nla-submenu-arrow">›</span></button>
         <div class="nla-submenu-items" id="config-items" hidden>
           <a href="https://www.godaddy.com/" class="nla-sidebar-link nla-sidebar-sublink" target="_blank" rel="noopener">GoDaddy</a>
           <a href="https://resend.com/" class="nla-sidebar-link nla-sidebar-sublink" target="_blank" rel="noopener">Resend</a>
@@ -266,225 +255,6 @@ css:
       </div>
     </div>
 
-    <!-- Posts Panel -->
-    <div class="nla-panel" id="panel-posts" hidden>
-      <div class="nla-panel-header">
-        <h1 class="nla-panel-title">All Posts</h1>
-        <p class="nla-panel-desc">Manage your blog posts.</p>
-      </div>
-
-      <!-- Drafts Section -->
-      <div id="drafts-section" class="nla-dash-section" hidden>
-        <h2 class="nla-dash-section-title">Drafts</h2>
-        <div id="drafts-list" class="nla-drafts-list"></div>
-      </div>
-
-      <div class="nla-posts-toolbar" id="posts-toolbar" hidden>
-        <input type="search" class="nla-input nla-posts-search" id="posts-search" placeholder="Search by title, slug, position…" aria-label="Search posts">
-        <div class="nla-posts-filters">
-          <select class="nla-select" id="posts-filter-position" aria-label="Filter by position">
-            <option value="all">All Positions</option>
-            <option value="ai-decision-operations">AI & Decision Operations</option>
-            <option value="risk-intelligence">Risk Intelligence</option>
-            <option value="ai-job-risk">AI Job Risk</option>
-          </select>
-        </div>
-      </div>
-      <div id="posts-loading" class="nla-loading">
-        <div class="nla-spinner" role="status" aria-label="Loading posts"></div>
-        <p>Loading posts…</p>
-      </div>
-      <div id="posts-error" class="nla-error" hidden></div>
-      <div id="posts-empty" class="nla-empty" hidden>
-        <span class="nla-empty-icon">📝</span>
-        <p>No posts have been created yet.</p>
-        <button class="nla-btn nla-btn-primary" onclick="switchPanel('new-post')">Create First Post</button>
-      </div>
-      <div id="posts-content" hidden></div>
-      <div id="post-detail-panel" class="nla-post-detail" hidden>
-        <button class="nla-btn-sm" id="close-detail-btn" type="button" aria-label="Close detail panel">✕ Close</button>
-        <div id="post-detail-content"></div>
-      </div>
-    </div>
-
-    <!-- New Post Panel -->
-    <div class="nla-panel" id="panel-new-post" hidden>
-      <div class="nla-panel-header">
-        <h1 class="nla-panel-title">New Post</h1>
-        <p class="nla-panel-desc">Create a new blog post.</p>
-      </div>
-
-      <!-- Mode Toggle -->
-      <div class="nla-mode-toggle" id="post-mode-toggle">
-        <button class="nla-mode-btn active" id="mode-scratch" type="button">Start from Scratch</button>
-        <button class="nla-mode-btn" id="mode-ai" type="button">Generate with AI</button>
-      </div>
-
-      <!-- Scratch Mode: Post Creation Form -->
-      <div id="post-form-container">
-        <form id="post-creation-form" class="nla-post-form" novalidate>
-          <div class="nla-post-form-grid">
-            <div class="nla-form-group">
-              <label class="nla-label" for="post-title">Title <span class="nla-required">*</span></label>
-              <input type="text" class="nla-input" id="post-title" maxlength="150" required placeholder="Post title">
-              <span class="nla-char-count" id="post-title-count">0/150</span>
-              <span class="nla-field-error" id="post-title-error"></span>
-            </div>
-
-            <div class="nla-form-group">
-              <label class="nla-label" for="post-slug">Slug</label>
-              <input type="text" class="nla-input" id="post-slug" maxlength="80" placeholder="auto-generated-from-title">
-              <span class="nla-char-count" id="post-slug-count">0/80</span>
-            </div>
-
-            <div class="nla-form-group">
-              <label class="nla-label" for="post-author">Author</label>
-              <input type="text" class="nla-input" id="post-author" value="Hasan J.">
-            </div>
-
-            <div class="nla-form-group">
-              <label class="nla-label">Position</label>
-              <div class="nla-checkbox-group" id="post-position-group">
-                <label class="nla-checkbox-label"><input type="checkbox" value="ai-decision-operations"> AI & Decision Operations</label>
-                <label class="nla-checkbox-label"><input type="checkbox" value="risk-intelligence"> Risk Intelligence</label>
-                <label class="nla-checkbox-label"><input type="checkbox" value="ai-job-risk"> AI Job Risk</label>
-              </div>
-            </div>
-
-            <div class="nla-form-group">
-              <label class="nla-label" for="post-date">Published Date</label>
-              <input type="date" class="nla-input" id="post-date">
-            </div>
-
-            <div class="nla-form-group nla-form-full">
-              <label class="nla-label" for="post-excerpt">Excerpt</label>
-              <textarea class="nla-input" id="post-excerpt" maxlength="300" rows="2" placeholder="Brief description of the post"></textarea>
-              <span class="nla-char-count" id="post-excerpt-count">0/300</span>
-            </div>
-
-            <div class="nla-form-group">
-              <label class="nla-label" for="post-meta-title">Meta Title</label>
-              <input type="text" class="nla-input" id="post-meta-title" maxlength="70" placeholder="SEO title">
-              <span class="nla-char-count" id="post-meta-title-count">0/70</span>
-            </div>
-
-            <div class="nla-form-group">
-              <label class="nla-label" for="post-meta-desc">Meta Description</label>
-              <input type="text" class="nla-input" id="post-meta-desc" maxlength="160" placeholder="SEO description">
-              <span class="nla-char-count" id="post-meta-desc-count">0/160</span>
-            </div>
-
-            <div class="nla-form-group nla-form-full">
-              <label class="nla-label" for="post-featured-img">Featured Image Path</label>
-              <input type="text" class="nla-input" id="post-featured-img" placeholder="/assets/img/posts/...">
-            </div>
-          </div>
-
-          <!-- Body editor (EasyMDE) -->
-          <div class="nla-form-group nla-form-full">
-            <label class="nla-label" for="post-body-textarea">Body <span class="nla-required">*</span></label>
-            <textarea id="post-body-textarea"></textarea>
-            <span class="nla-field-error" id="post-body-error"></span>
-          </div>
-
-          <div class="nla-form-actions">
-            <button type="button" class="nla-btn" id="post-cancel-btn">Cancel</button>
-            <button type="button" class="nla-btn" id="post-draft-btn">Save Draft</button>
-            <button type="button" class="nla-btn" id="post-preview-btn">Preview</button>
-            <button type="button" class="nla-btn nla-btn-primary" id="post-publish-btn">Publish</button>
-            <span class="nla-post-status-badge" id="post-status-badge" hidden></span>
-          </div>
-        </form>
-      </div>
-
-      <!-- AI Mode: Direction Selection -->
-      <div id="ai-generate-container" hidden>
-        <h3 class="nla-section-title">Select a content direction</h3>
-        <div class="nla-ai-directions" id="ai-directions">
-          <div class="nla-ai-direction-card" data-position="ai-decision-operations">
-            <h4>AI & Decision Operations</h4>
-            <p>AI exposes weak operations and slow decisions. Signals need authority to become action.</p>
-          </div>
-          <div class="nla-ai-direction-card" data-position="risk-intelligence">
-            <h4>Risk Intelligence</h4>
-            <p>Reporting explains what happened. Intelligence tells you what to do next.</p>
-          </div>
-          <div class="nla-ai-direction-card" data-position="ai-job-risk">
-            <h4>AI Job Risk</h4>
-            <p>AI exposes people who only operate tools but cannot think without them.</p>
-          </div>
-        </div>
-
-        <div class="nla-ai-options">
-          <div class="nla-form-group">
-            <label class="nla-label" for="ai-topic">Topic</label>
-            <select class="nla-select" id="ai-topic">
-              <option value="">Random</option>
-            </select>
-          </div>
-          <div class="nla-form-group">
-            <label class="nla-label" for="ai-archetype">Archetype</label>
-            <select class="nla-select" id="ai-archetype">
-              <option value="">Random</option>
-              <option value="contrarian">Contrarian Opinion</option>
-              <option value="framework">Framework / How-To</option>
-              <option value="breakdown">Operational Breakdown</option>
-              <option value="prediction">Prediction / Future Risk</option>
-              <option value="listicle">Listicle</option>
-            </select>
-          </div>
-          <div class="nla-form-group">
-            <label class="nla-label" for="ai-content-mix">Content Mix</label>
-            <select class="nla-select" id="ai-content-mix">
-              <option value="">Random</option>
-              <option value="confrontation">High confrontation</option>
-              <option value="practical">Practical insight</option>
-              <option value="predictive">Predictive</option>
-              <option value="humor">Humor / light</option>
-            </select>
-          </div>
-          <div class="nla-form-group">
-            <label class="nla-label" for="ai-tone">Tone</label>
-            <select class="nla-select" id="ai-tone">
-              <option value="">Random</option>
-              <option value="Direct and blunt. No softening.">Direct & Blunt</option>
-              <option value="Analytical and precise. Use structure.">Analytical & Precise</option>
-              <option value="Narrative-driven. Start with a scene.">Narrative-Driven</option>
-              <option value="Practical and operator-focused.">Operator-Focused</option>
-              <option value="Contrarian. Take the opposite position.">Contrarian</option>
-              <option value="Light but still authoritative.">Light & Authoritative</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="nla-form-group">
-          <label class="nla-label">Writing Techniques (select 2-4)</label>
-          <div class="nla-ai-techniques" id="ai-techniques-checkboxes">
-            <label class="nla-check-label"><input type="checkbox" value="Contrast"> Contrast</label>
-            <label class="nla-check-label"><input type="checkbox" value="Metaphors & Analogies"> Metaphors</label>
-            <label class="nla-check-label"><input type="checkbox" value="Imagery"> Imagery</label>
-            <label class="nla-check-label"><input type="checkbox" value="Strong verbs"> Strong verbs</label>
-            <label class="nla-check-label"><input type="checkbox" value="Repetition"> Repetition</label>
-            <label class="nla-check-label"><input type="checkbox" value="Pattern interrupts"> Pattern interrupts</label>
-            <label class="nla-check-label"><input type="checkbox" value="Narrative hooks"> Narrative hooks</label>
-            <label class="nla-check-label"><input type="checkbox" value="Open loops"> Open loops</label>
-            <label class="nla-check-label"><input type="checkbox" value="Tension escalation"> Tension escalation</label>
-            <label class="nla-check-label"><input type="checkbox" value="Short punch sentences"> Short punches</label>
-            <label class="nla-check-label"><input type="checkbox" value="Counterintuitive claims"> Counterintuitive</label>
-            <label class="nla-check-label"><input type="checkbox" value="Story framing"> Story framing</label>
-            <label class="nla-check-label"><input type="checkbox" value="Forced choice questions"> Forced choice</label>
-            <label class="nla-check-label"><input type="checkbox" value="Foreshadowing"> Foreshadowing</label>
-          </div>
-        </div>
-
-        <div class="nla-ai-actions">
-          <button class="nla-btn nla-btn-primary nla-ai-generate-btn" id="ai-generate-btn" disabled type="button">Generate Post</button>
-          <span class="nla-ai-word-count" id="ai-word-count" hidden></span>
-        </div>
-        <div id="ai-generate-status"></div>
-      </div>
-    </div>
-
     <!-- Compose Panel -->
     <div class="nla-panel" id="panel-compose" hidden>
       <div class="nla-panel-header">
@@ -615,7 +385,7 @@ css:
       <div id="sub-content" hidden>
         <div id="sub-grid"></div>
         <div id="sub-empty" class="nla-empty" hidden>
-          <div class="nla-empty-icon">👥</div>
+          <div class="nla-empty-icon"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.7c1.9.8 3.1 2.6 3.5 5.3"/></svg></div>
           No subscribers found.
         </div>
       </div>
@@ -859,32 +629,16 @@ css:
       </div>
       <div id="testimonials-error" class="nla-error" hidden></div>
       <div id="testimonials-empty" class="nla-empty" hidden>
-        <span class="nla-empty-icon">💬</span>
+        <span class="nla-empty-icon"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg></span>
         <p>No testimonials found.</p>
       </div>
       <div id="testimonials-list" hidden></div>
     </div>
 
-    <!-- LinkedIn Side Panel -->
-    <div id="linkedin-panel" class="nla-linkedin-panel" hidden>
-      <div class="nla-linkedin-header">
-        <button class="nla-linkedin-close" id="linkedin-close" type="button">✕</button>
-        <h2 class="nla-linkedin-title">LinkedIn Posts</h2>
-        <p class="nla-linkedin-subtitle" id="linkedin-article-title"></p>
-      </div>
-      <div class="nla-linkedin-actions">
-        <button class="nla-btn nla-btn-primary" id="linkedin-generate-btn" type="button">🤖 Generate with AI</button>
-        <span class="nla-linkedin-status" id="linkedin-status"></span>
-      </div>
-      <div class="nla-linkedin-posts" id="linkedin-posts-list"></div>
-    </div>
-    <div id="linkedin-overlay" class="nla-linkedin-overlay" hidden></div>
-
   </main>
 </div><!-- end .nla-layout -->
 
 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
 <script type="module">
@@ -900,15 +654,9 @@ init({
     analytics: "{{ site.data.firebase.fn_get_analytics }}",
     subscribers: "{{ site.data.firebase.fn_manage_subscribers }}",
     import: "{{ site.data.firebase.fn_import_subscribers }}",
-    createPost: "{{ site.data.firebase.fn_create_post }}",
-    generatePost: "{{ site.data.firebase.fn_generate_post }}",
-    getPost: "{{ site.data.firebase.fn_get_post }}",
-    updatePost: "{{ site.data.firebase.fn_update_post }}",
-    manageDrafts: "{{ site.data.firebase.fn_manage_drafts }}",
     trackDownload: "{{ site.data.firebase.fn_track_download }}",
     listAssessments: "{{ site.data.firebase.fn_list_assessments }}",
     backfillTokens: "{{ site.data.firebase.fn_backfill_tokens }}",
-    linkedinPosts: "{{ site.data.firebase.fn_linkedin_posts }}",
     manageLexicon: "{{ site.data.firebase.fn_manage_lexicon }}",
     testimonials: "{{ site.data.firebase.fn_testimonials }}"
   }

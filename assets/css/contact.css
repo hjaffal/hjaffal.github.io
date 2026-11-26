@@ -10,7 +10,7 @@
   position: relative;
   overflow: hidden;
   padding: 72px 48px 56px;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  background: linear-gradient(135deg, #1A1033 0%, #1A1033 50%, #1A1033 100%);
   text-align: center;
 }
 
@@ -44,29 +44,29 @@
   font-family: var(--mono);
   font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #2563EB;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #5B2EFF;
   display: block;
   margin-bottom: 12px;
 }
 
 .ct-hero-title {
   font-size: clamp(28px, 4vw, 40px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.12;
-  color: #F8FAFC;
+  color: #EEE9FF;
   margin: 0 0 14px;
 }
 
 .ct-hero-title span {
-  color: #2563EB;
+  color: #5B2EFF;
 }
 
 .ct-hero-desc {
   font-size: 0.92rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.6;
   margin: 0;
 }
@@ -122,7 +122,7 @@
 
 .ct-channel-newsletter {
   background: rgba(147,51,234,0.08);
-  color: #2563EB;
+  color: #5B2EFF;
 }
 
 .ct-channel-info {
@@ -133,7 +133,7 @@
 
 .ct-channel-info strong {
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
 }
 
@@ -167,7 +167,7 @@
 
 .ct-form-title {
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--dark);
   margin: 0 0 6px;
@@ -203,8 +203,8 @@
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0;
   display: block;
 }
 
@@ -282,7 +282,7 @@ select.contact-input {
   background: var(--accent);
   color: #fff;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
   font-family: var(--sans);
   border-radius: 8px;
   border: none;
@@ -323,7 +323,7 @@ select.contact-input {
 
 .contact-success-title {
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -356,15 +356,15 @@ select.contact-input {
 .contact-error {
   display: none;
   padding: 14px 18px;
-  background: #FEF2F2;
-  border: 1px solid #FECACA;
+  background: #EEE9FF;
+  border: 1px solid #D4CBFF;
   border-radius: 8px;
   margin-top: 16px;
 }
 
 .contact-error-text {
   font-size: 0.82rem;
-  color: #991B1B;
+  color: #C93A22;
   margin: 0;
   display: flex;
   align-items: center;
@@ -377,18 +377,18 @@ select.contact-input {
   align-items: center;
   gap: 12px;
   padding: 14px 18px;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
+  background: #EEE9FF;
+  border: 1px solid #D4CBFF;
   border-radius: 8px;
   margin-bottom: 24px;
-  color: #065F46;
+  color: #4A4560;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .contact-banner i {
   font-size: 1rem;
-  color: #10B981;
+  color: #8B6CFF;
 }
 
 /* Spinner */
@@ -397,8 +397,8 @@ select.contact-input {
 
 /* Dark mode */
 [data-theme="dark"] .ct-channel-card {
-  background: #1E293B;
-  border-color: #334155;
+  background: #1A1033;
+  border-color: #4A4560;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
@@ -407,20 +407,20 @@ select.contact-input {
   box-shadow: 0 8px 24px rgba(147,51,234,0.12);
 }
 
-[data-theme="dark"] .ct-channel-info strong { color: #F1F5F9; }
+[data-theme="dark"] .ct-channel-info strong { color: #EEE9FF; }
 
 [data-theme="dark"] .contact-banner {
-  background: #064E3B;
-  border-color: #065F46;
-  color: #A7F3D0;
+  background: #4A4560;
+  border-color: #4A4560;
+  color: #D4CBFF;
 }
 
 [data-theme="dark"] .contact-error {
-  background: #450A0A;
-  border-color: #7F1D1D;
+  background: #C93A22;
+  border-color: #C93A22;
 }
 
-[data-theme="dark"] .contact-error-text { color: #FCA5A5; }
+[data-theme="dark"] .contact-error-text { color: #D4CBFF; }
 
 /* Responsive */
 @media screen and (max-width: 640px) {

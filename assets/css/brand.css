@@ -1,0 +1,125 @@
+/* Hasan Jaffal brand base, loaded last on every page.
+   Source of truth: branding/brand-identity.md in the notes repo. Headings Space Grotesk Bold, text Inter 400/600,
+   violet-black heroes, flat 1px rules and 6px corners, one coral moment per page. */
+:root {
+  --brand-violet: #5B2EFF; --brand-ink: #1A1033; --brand-coral: #FF6B4A; --brand-coral-deep: #C93A22;
+  --brand-soft-violet: #8B6CFF; --brand-lilac: #D4CBFF; --brand-mist: #EEE9FF; --brand-body: #4A4560;
+  --brand-rule: #E2DDF2; --brand-raised: #261A47;
+  --brand-head: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --brand-text: Inter, 'Helvetica Neue', Arial, sans-serif;
+}
+body { font-family: var(--brand-text); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--brand-head) !important; font-weight: 700 !important; letter-spacing: -.02em; }
+
+/* Violet-black hero band for every page header (full-bleed without changing markup). */
+.rs-hero, .article-page .pub-breadcrumb, .article-heading {
+  background: var(--brand-ink); box-shadow: 0 0 0 100vmax var(--brand-ink); clip-path: inset(0 -100vmax); border: 0 !important; color: var(--brand-lilac);
+}
+.rs-hero h1, .article-heading h1 { color: #FFFFFF !important; }
+.rs-hero p, .rs-hero .pub-kicker, .rs-hero .rs-kicker, .article-heading .article-subtitle, .article-heading .article-byline, .article-heading .article-byline * { color: var(--brand-lilac) !important; }
+.rs-hero a, .article-page .pub-breadcrumb a, .article-heading .article-topics a { color: #FFFFFF !important; }
+.article-page .pub-breadcrumb, .article-page .pub-breadcrumb > span { color: var(--brand-lilac) !important; }
+[data-theme="dark"] .rs-hero, [data-theme="dark"] .article-page .pub-breadcrumb, [data-theme="dark"] .article-heading { background: var(--brand-raised); box-shadow: 0 0 0 100vmax var(--brand-raised); }
+
+/* Retire the legacy theme fonts (Lora, Open Sans) wherever its variables are still used. */
+:root { --body-font: var(--brand-text); --header-font: var(--brand-text); --serif: var(--brand-head); }
+
+/* Flat callouts: mist fill, 6px corners, no accent borders. */
+.article-summary, .article-contents, .rs-note, .rs-definition, .article-prose blockquote { border-left: 0 !important; border-radius: 6px; background: var(--brand-mist); }
+.article-prose blockquote { padding: 20px 24px !important; color: var(--brand-ink); }
+.article-prose blockquote p:last-child { margin-bottom: 0; }
+
+/* The single coral moment on an article: the invitation to talk. */
+.brand-cta { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 20px; border-radius: 4px; background: var(--brand-coral); color: var(--brand-ink) !important; font-weight: 600; font-size: 15px; text-decoration: none !important; }
+.brand-cta:hover { background: #FF8466; }
+
+/* Article hero spacing. */
+.article-page .pub-breadcrumb { padding-top: 16px; }
+.article-heading { max-width: none !important; padding: 24px 0 48px !important; margin-bottom: 40px; }
+.article-heading h1 { max-width: 22ch; font-size: clamp(36px, 4.6vw, 58px) !important; line-height: 1.08 !important; }
+.article-heading .article-subtitle { max-width: 760px; font-size: 20px; line-height: 1.6; }
+.article-heading .article-topics a { font-size: 14px; font-weight: 600; }
+.article-heading .article-byline img { border-radius: 4px; }
+.article-author .publication-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 16px; }
+
+/* Every page header is a violet-black band, including app, report and lexicon headers and the links above them. */
+.rs-app-heading, .report-heading, .rs-reading > .pub-intro,
+.pub-breadcrumb:has(+ .rs-hero), .pub-breadcrumb:has(+ .rs-app-heading), .pub-breadcrumb:has(+ .report-heading), .pub-breadcrumb:has(+ .rs-reading),
+.rs-back:has(+ .rs-hero) {
+  background: var(--brand-ink); box-shadow: 0 0 0 100vmax var(--brand-ink); clip-path: inset(0 -100vmax); border: 0 !important; color: var(--brand-lilac);
+}
+.rs-hero, .rs-app-heading, .report-heading, .rs-reading > .pub-intro { padding-top: 40px !important; padding-bottom: 48px !important; margin-bottom: 40px !important; }
+.rs-app-heading { max-width: none; margin-top: 0; }
+.rs-app-heading h1, .report-heading h1, .rs-reading > .pub-intro h1 { color: #FFFFFF !important; }
+.rs-app-heading p, .rs-app-heading .pub-kicker, .report-heading p, .report-heading .pub-kicker, .rs-reading > .pub-intro p, .rs-reading > .pub-intro .pub-kicker { color: var(--brand-lilac) !important; }
+.rs-app-heading a, .report-heading a, .pub-intro a, .rs-reading > .pub-intro a,
+.pub-breadcrumb:has(+ .rs-hero) a, .pub-breadcrumb:has(+ .rs-app-heading) a, .pub-breadcrumb:has(+ .report-heading) a, .pub-breadcrumb:has(+ .rs-reading) a, .rs-back:has(+ .rs-hero) a { color: #FFFFFF !important; }
+.pub-breadcrumb:has(+ .rs-hero), .pub-breadcrumb:has(+ .rs-app-heading), .pub-breadcrumb:has(+ .report-heading), .pub-breadcrumb:has(+ .rs-reading), .rs-back:has(+ .rs-hero) { padding-top: 16px; }
+.pub-breadcrumb:has(+ .rs-hero) > span, .pub-breadcrumb:has(+ .rs-app-heading) > span, .pub-breadcrumb:has(+ .report-heading) > span, .pub-breadcrumb:has(+ .rs-reading) > span { color: var(--brand-lilac) !important; }
+.rs-hero h1 em, .rs-hero h1 span, .pub-intro h1 span, .pub-intro h1 em { color: var(--brand-soft-violet) !important; font-style: normal; }
+/* A mist card inside a dark hero keeps dark text. */
+.rs-hero .rs-note, .rs-hero .rs-note p, .rs-hero .rs-note h2, .rs-hero .rs-note h3, .rs-hero .rs-note strong { color: var(--brand-ink) !important; }
+.rs-hero .rs-note a { color: var(--brand-violet) !important; }
+[data-theme="dark"] :is(.rs-app-heading, .report-heading, .rs-reading > .pub-intro, .pub-breadcrumb:has(+ .rs-hero), .pub-breadcrumb:has(+ .rs-app-heading), .pub-breadcrumb:has(+ .report-heading), .pub-breadcrumb:has(+ .rs-reading), .rs-back:has(+ .rs-hero)) { background: var(--brand-raised); box-shadow: 0 0 0 100vmax var(--brand-raised); }
+
+/* Article hero: no rule under the byline. */
+.article-heading .article-byline { border: 0 !important; }
+
+/* Flat cards: 1px rule all round, 6px corners, no coloured top borders. */
+.rs-card, .rs-launch, .resource-card, .tool-card { border: 1px solid var(--brand-rule) !important; border-radius: 6px !important; box-shadow: none !important; }
+
+/* Violet button for secondary actions (coral is kept for the one main action). */
+.brand-button { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 20px; border-radius: 4px; background: var(--brand-violet); color: #FFFFFF !important; font-weight: 600; font-size: 15px; text-decoration: none !important; }
+.brand-button:hover { background: #4720D9; }
+
+/* No monospace in the brand: labels that used it become Inter. */
+:root { --mono: var(--brand-text); }
+
+/* Job risk audits: the automation index is the page's result figure. */
+.audit-figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0 0 40px; }
+.audit-figures > div { border: 1px solid var(--brand-rule); border-radius: 6px; padding: 20px 24px; }
+.audit-figures dt { font-size: 14px; font-weight: 600; color: var(--brand-violet); margin-bottom: 8px; }
+.audit-figures dd { margin: 0; font-family: var(--brand-head); font-weight: 700; font-size: 22px; line-height: 1.2; color: var(--brand-ink); }
+.audit-figures dd.audit-figure-result { font-size: 56px; line-height: 1; color: var(--brand-coral); }
+.audit-next { background: var(--brand-mist); border-radius: 6px; padding: 28px; margin: 40px 0 56px; }
+.audit-next h2 { font-size: 26px; margin: 0 0 12px; }
+.audit-next p { font-size: 17px; line-height: 1.7; color: var(--brand-body); }
+.audit-next-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 8px; }
+.risk-critical, .risk-high { color: var(--brand-coral-deep) !important; font-weight: 600; }
+.risk-medium { color: var(--brand-violet) !important; font-weight: 600; }
+.risk-low { color: var(--brand-body) !important; }
+@media (max-width: 700px) { .audit-figures { grid-template-columns: 1fr; } .audit-figures dd.audit-figure-result { font-size: 44px; } }
+
+/* Books: the book is the page's main action, so its button is the coral moment. */
+.books-page .publication-button { background: var(--brand-coral) !important; color: var(--brand-ink) !important; border-color: var(--brand-coral) !important; }
+.books-page .publication-button:hover { background: #FF8466 !important; }
+.publication-cover-stage { border-bottom: 0 !important; border-radius: 6px; }
+.publication-cover-stage img { box-shadow: none !important; border-radius: 2px; }
+.assessment-entry { border: 1px solid var(--brand-rule) !important; border-radius: 6px; }
+.assessment-entry:hover { border-color: var(--brand-violet) !important; }
+[tabindex="-1"]:focus { outline: none; }
+
+/* Inter weights are 400 and 600 only: bold text and table headers use Semibold. */
+strong, b { font-weight: 600; }
+th { font-weight: 600 !important; }
+.brand-label { font-family: var(--brand-text) !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--brand-violet); margin: 0 0 12px; }
+/* No monospace in the brand: code and prompts read in Inter on a mist panel. */
+code, kbd, samp, pre { font-family: var(--brand-text) !important; }
+/* Bordered launch cards need inner padding. */
+.rs-launch { padding: 36px 40px !important; }
+@media (max-width: 600px) { .rs-launch { padding: 24px !important; } }
+
+/* Dropdowns: one brand chevron with room around it, instead of each browser's native arrow. */
+select:not([multiple]):not([size]) {
+  -webkit-appearance: none; appearance: none;
+  padding-right: 44px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%231A1033' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important; background-position: right 16px center !important; background-size: 12px 8px !important;
+}
+[data-theme="dark"] select:not([multiple]):not([size]) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23D4CBFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+
+/* "(opens in a new tab)" hint added to external links: read by screen readers, not shown. */
+.ext-hint { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.article-short-answer { padding: 20px 24px; } .article-short-answer .pub-kicker { margin-bottom: 8px; } .article-short-answer p:last-child { margin: 0; font-size: 17px; line-height: 1.7; color: var(--brand-ink); }

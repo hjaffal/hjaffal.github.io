@@ -2,8 +2,8 @@
 layout: page
 title:
 subtitle:
-share-title: "Writing on AI and Business — Hasan Jaffal"
-share-description: "Explore articles on AI opportunities, investment decisions, people and adoption, and the evidence of business value."
+share-title: "Writing on AI value — Hasan Jaffal"
+share-description: "Articles for leaders deciding where AI is worth investing in, how to lead the change it requires, and how to prove what it was worth."
 chat_with_me_box: false
 show-avatar: false
 permalink: /writing/
@@ -14,17 +14,17 @@ js:
 ---
 <div class="writing-library">
   <div class="wl-wrap">
-    <header class="wl-intro"><p class="wl-kicker">THE ARTICLE LIBRARY</p><h1>Writing on AI <span>and business.</span></h1><p>Where could AI change what a business is capable of? What would it take for people to put it into practice? And how would we know it was worth the investment?</p></header>
+    <header class="wl-intro"><p class="wl-kicker">Writing by Hasan Jaffal</p><h1>Writing on AI value.</h1><p>Articles for leaders deciding where AI is worth investing in, how to lead the change it requires, and how to prove what it was worth. Each one starts from the decision a sponsor faces.</p></header>
 
-    <section class="wl-paths" aria-labelledby="paths-title"><div class="wl-section-heading"><h2 id="paths-title">Start with a question.</h2><p>Find a starting article, then explore the related writing.</p></div><div class="wl-question-grid">
-      {% for topic in site.data.writing.topics %}<a class="wl-question" data-topic-link="{{ topic.id }}" href="?topic={{ topic.id }}#wr-articles-section" aria-controls="wr-articles-list"><span class="wl-kicker">{{ topic.label }}</span><span class="wl-question-title">{{ topic.question }} <span aria-hidden="true">→</span></span></a>{% endfor %}
+    <section class="wl-paths" aria-labelledby="paths-title"><div class="wl-section-heading"><h2 id="paths-title">Start with a question.</h2><p>Each question has a suggested first read.</p></div><div class="wl-question-grid">
+      {% for topic in site.data.writing.topics %}<a class="wl-question" data-stage="{{ topic.stage }}" data-topic-link="{{ topic.id }}" href="?topic={{ topic.id }}#wr-articles-section" aria-controls="wr-articles-list"><span class="wl-kicker">{{ topic.stage }} · {{ topic.label }}</span><span class="wl-question-title">{{ topic.question }} <span aria-hidden="true">→</span></span></a>{% endfor %}
     </div></section>
 
     <section class="wl-archive" id="wr-articles-section" aria-labelledby="archive-title">
-      <div class="wl-section-heading"><div><p class="wl-kicker">EXPLORE THE WRITING</p><h2 id="archive-title">All articles</h2></div><a class="wl-text-link" href="/newsletter/">Read by email →</a></div>
+      <div class="wl-section-heading"><div><p class="wl-kicker">The library</p><h2 id="archive-title">All articles</h2></div><a class="wl-text-link" href="/newsletter/">Read by email →</a></div>
       <div class="wl-topic-intro" id="wl-topic-intro" hidden>
         {% for topic in site.data.writing.topics %}{% assign start = site.posts | where: 'slug', topic.start | first %}{% unless start %}{% assign start = site.posts | where_exp: 'post', 'post.path contains topic.start' | first %}{% endunless %}
-        <div class="wl-recommendation" data-topic-intro="{{ topic.id }}" hidden><p>{{ topic.description }}</p><div><p class="wl-kicker">SUGGESTED FIRST READ</p><h3><a href="{{ start.url | relative_url }}">{{ start.title }}</a></h3><p>{{ topic.reason }}</p><a class="wl-text-link" href="{{ topic.url | relative_url }}">Explore {{ topic.label | downcase }} →</a></div></div>{% endfor %}
+        <div class="wl-recommendation" data-topic-intro="{{ topic.id }}" hidden><p>{{ topic.description }}</p><div><p class="wl-kicker">Suggested first read</p><h3><a href="{{ start.url | relative_url }}">{{ start.title }}</a></h3><p>{{ topic.reason }}</p><a class="wl-text-link" href="{{ topic.url | relative_url }}">Explore {{ topic.label | downcase }} →</a></div></div>{% endfor %}
       </div>
       <div class="wl-controls" id="wl-controls" hidden>
         <div class="wl-filter-links" aria-label="Filter articles by question"><a class="is-active" data-topic-link="all" href="/writing/#wr-articles-section" aria-current="true">All articles</a>{% for topic in site.data.writing.topics %}<a data-topic-link="{{ topic.id }}" href="?topic={{ topic.id }}#wr-articles-section">{{ topic.label }}</a>{% endfor %}</div>
@@ -47,6 +47,6 @@ js:
       <div class="wl-empty" id="wl-empty" hidden><h3>No articles match this search.</h3><p>Try a broader term or clear the filters to explore all the writing.</p><button type="button" id="wl-empty-reset">Show all articles</button></div>
       <div class="wl-more" id="wl-more-wrap" hidden><button type="button" id="wl-more">Show more articles</button></div>
     </section>
-    <aside class="wl-note"><p>The writing draws on analytics, data, and operational leadership. The questions I return to are what became possible, what people changed, and what evidence connects that work to the result.</p><a class="wl-text-link" href="/aboutme/">About the author →</a></aside>
+    <aside class="wl-note"><p>I write from a background in analytics, data and product leadership across global operations. The questions I return to are what deserves investment, who has to work differently, and what evidence shows it paid.</p><a class="wl-text-link" href="/aboutme/">About Hasan Jaffal →</a></aside>
   </div>
 </div>

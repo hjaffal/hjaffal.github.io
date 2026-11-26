@@ -5,13 +5,13 @@
 .publication-cover-stage img { display: block; width: 100%; max-width: 224px; height: auto; box-shadow: 7px 10px 20px #24113225; }
 .publication-cover figcaption { font-size: 13px; line-height: 1.7; color: var(--pub-muted); padding-top: 14px; }
 .publication-detail > .pub-kicker { margin-bottom: 14px; }
-.publication-detail h2 { font: 400 clamp(34px, 3.5vw, 46px)/1.15 Georgia, 'Times New Roman', serif; letter-spacing: -.02em; margin: 0 0 12px; }
+.publication-detail h2 { font: 400 clamp(34px, 3.5vw, 46px)/1.15 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.02em; margin: 0 0 12px; }
 .publication-subtitle { color: var(--pub-purple); font-size: 21px; line-height: 1.5; margin-bottom: 24px; }
 .publication-detail > p:not(.pub-kicker):not(.publication-subtitle) { color: var(--pub-muted); font-size: 17px; line-height: 1.8; }
 .publication-detail > .publication-deck { color: var(--pub-ink) !important; font-size: 18px !important; }
 .publication-purchase { margin: 26px 0; }
-.publication-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 48px; padding: 12px 20px; background: #7734ce; color: #fff; font-size: 15px; font-weight: 600; border-radius: 4px; }
-.publication-button:hover { color: #fff; background: #6025ab; }
+.publication-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 48px; padding: 12px 20px; background: #5B2EFF; color: #fff; font-size: 15px; font-weight: 600; border-radius: 4px; }
+.publication-button:hover { color: #fff; background: #4720D9; }
 .publication-purchase > span { display: block; color: var(--pub-muted); font-size: 13px; line-height: 1.7; margin-top: 9px; }
 .publication-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; padding: 20px 0; margin: 0; border-block: 1px solid var(--pub-line); }
 .publication-facts dt, .publication-report-facts dt { color: var(--pub-muted); font-size: 12px; line-height: 1.6; font-weight: 400; margin-bottom: 5px; }
@@ -24,7 +24,7 @@
 .publication-report { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 48px; border-top: 1px solid var(--pub-line); padding: 36px 0; }
 .publication-report-cover { background: var(--pub-soft); padding: 18px; align-self: start; }
 .publication-report-cover img { display: block; width: 100%; height: auto; box-shadow: 3px 5px 14px #24113218; }
-.publication-report h2 { font: 400 32px/1.25 Georgia, 'Times New Roman', serif; letter-spacing: -.01em; margin: 0 0 10px; }
+.publication-report h2 { font: 400 32px/1.25 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.01em; margin: 0 0 10px; }
 .publication-report-subtitle { font-size: 18px; line-height: 1.6; margin-bottom: 16px; color: var(--pub-ink); }
 .publication-report p:not(.pub-kicker):not(.publication-report-subtitle):not(.publication-access-note) { font-size: 17px; line-height: 1.8; max-width: 740px; color: var(--pub-muted); }
 .publication-report-facts { display: flex; flex-wrap: wrap; gap: 16px 40px; margin: 22px 0 14px; }

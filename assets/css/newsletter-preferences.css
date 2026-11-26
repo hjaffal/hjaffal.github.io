@@ -12,7 +12,7 @@
 
 .nl-prefs-title {
   font-size: clamp(24px, 3vw, 32px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
   color: var(--dark);
@@ -75,7 +75,7 @@
 
 .nl-prefs-error h2 {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -113,7 +113,7 @@
 
 .nl-prefs-form-header h2 {
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 4px;
 }
@@ -257,8 +257,8 @@
 }
 
 .nl-prefs-unsubscribe-btn:hover {
-  border-color: #EF4444;
-  color: #EF4444;
+  border-color: #FF6B4A;
+  color: #FF6B4A;
 }
 
 /* Success state */
@@ -271,18 +271,18 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #ECFDF5;
+  background: #EEE9FF;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  color: #059669;
+  color: #8B6CFF;
   font-size: 1.2rem;
 }
 
 .nl-prefs-success h2 {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }

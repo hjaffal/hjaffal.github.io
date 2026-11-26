@@ -1,69 +1,121 @@
 ---
 layout: post
-title: "Assign Decision Rights Now: How to Turn AI Signals Into Fast, Authorized Actions"
-subtitle: "AI exposes weak ownership and slow approvals. Pre-commit authority before the next incident."
-share-description: "AI speeds up detection, not approvals. Here’s a one-week playbook to pre-commit decision rights so alerts trigger authorized action, not meetings."
+title: "Who Should Be Allowed to Act on an AI Signal?"
+subtitle: "AI has made detection fast. The delay that remains is authority, and leaders can remove it before the next incident rather than during it."
+share-title: "Who Should Be Allowed to Act on an AI Signal?"
+share-description: "AI speeds up detection, not approvals. Give one role written authority for bounded, reversible actions, set the risk budget and review every decision."
+excerpt: "AI finds problems faster than most approval chains can respond. The answer is not another dashboard but delegated, bounded authority: one role per signal, a written limit on what it may do, and a review of every decision."
+tldr: "One named role per signal, with written authority to take a bounded, reversible action within a set time and without further approval. Irreversible actions keep their approvals. The sponsor sets the risk budget in advance and reviews a log of every decision. Without that, faster detection mostly produces faster meetings, while the loss continues at the same speed as before."
+reading_topics:
+  - "adoption"
 tags:
   - ai-decision-operations
 topic: ai-topic
 archetype: write
-author: Hasan J.
-tldr: "AI makes weak operations obvious. It finds issues faster than your approval chain can act. Without pre-committed decision rights, signals become expensive noise. This post gives a one‑week playbook: map signals to concrete actions, name a single decision owner for each, set authority bands and cutoffs, write short runbooks that translate alerts into orders, rehearse with a live drill, and measure time‑to‑action. The uncomfortable trade‑off: accept bounded false positives and some customer friction, or accept slow decisions and real losses. Strong teams choose speed with guardrails and take responsibility for outcomes. Average teams add dashboards and hope. Pick a side before the next spike."
+keywords:
+  - "AI decision rights"
+  - "who should act on AI alerts"
+  - "AI incident response authority"
+  - "fraud response decision making"
+  - "AI operating model"
+faq:
+  - q: "What is a decision right?"
+    a: "A decision right is written permission for a named role to make a specific decision, within stated limits, without asking anyone else. For an AI signal it states who may act, which actions they may take, how large or long those actions may be, and when the decision must be escalated instead."
+  - q: "How do you stop people acting on AI false positives?"
+    a: "You cannot avoid them entirely, so you limit their cost. Delegate only reversible actions, cap their size and duration, require a quick review afterwards, and track how often actions were later reversed. If the reversal rate is too high, tighten the threshold or narrow the authority rather than removing it."
+  - q: "Who should own fraud response outside office hours?"
+    a: "A role on a published rota, not whoever happens to be awake. That role needs the same written authority at night as by day, the tools to act directly, and a clear escalation path for anything outside its limits. Approvers who are asleep cannot be part of a response measured in minutes."
+  - q: "Does delegating decision rights require new technology?"
+    a: "Rarely. Most organisations can start with what they have: an on-call rota, a written authority table, existing switches and settings, and a shared log. Technology helps later, by attaching the recommended action and its evidence to each alert, but the hard part is agreeing the authority itself."
+author: Hasan Jaffal
+last-updated: 2026-11-26
 ---
 
-AI accelerates detection. It does not shorten approval chains. That gap is where money is lost, customers are hurt, and teams burn out.
+## Why does faster detection not lead to faster action?
 
-Signals need authority. Detection without decision power is expensive noise. If your model escalates to three managers and legal before anyone can block, throttle, or approve, the AI only multiplies the pain you already had.
+AI has made detection fast and cheap. A model can flag a fraud pattern, an abuse spike or an operational failure within minutes. What it cannot do is shorten the chain of approvals that follows. When an alert reaches three managers, a legal review and a finance sign-off before anyone may act, the organisation has bought faster alarms, not faster responses.
 
-A concrete example: Last Q4, a North American marketplace rolled out a new fraud classifier on a Friday. Within hours it flagged a cluster of high‑risk sellers. Trust & Safety staffed the pager. Finance controlled account holds. Legal wanted a review for any bulk action. Everyone was reachable, nobody was authorized. Orders shipped over the weekend. By Monday, the window for a clean stop had closed. The AI was fast. The system was slow.
+Leaders who want better outcomes from AI usually invest in better models and better dashboards. It is a reasonable instinct, and it misses a larger question: who is allowed to act on a signal, within what limits, while the signal is still useful? Detection without authority to act is, in practice, expensive noise.
 
-The root cause was simple: no pre‑committed decision rights. The alert had no owner with the authority to act within minutes. Every handoff added time. By the time the “right” people agreed, the best move was gone.
+The gap is not unique to AI. In McKinsey's [2019 global survey on decision making](https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency), only 20% of respondents said their organisations excel at decision making, and 61% said most of the time they spend on decisions is used ineffectively. AI exposes that weakness faster, because it produces more decisions to make.
 
-The uncomfortable trade‑off you must face: you can buy speed by accepting bounded false positives and some customer friction, or you can buy certainty by waiting for approvals and accept real loss and noise. There is no third option where you keep committee sign‑offs and also move fast under load.
+## What does AI change about decisions, and what does it not change?
 
-Here is a practical, one‑week playbook to pre‑commit decision rights before the next crisis.
+AI changes the volume and timing of decisions. Signals arrive more often, earlier and at any hour. A process designed for a weekly review now receives a stream of alerts that each demand an answer.
 
-1) Inventory the top 10 signals and bind each to a decision
-- Pull the last 90 days of your noisiest or most consequential alerts (fraud spikes, auth failures, latency breaches, policy violations, chargeback surges).
-- For each signal, write the decision it must trigger in plain language: block, throttle, freeze, raise price, degrade feature, notify only.
-- Add two constraints beside each: max time‑to‑act (e.g., 5 minutes) and max duration of the action (e.g., up to 30 minutes pending review).
+AI does not change who holds authority, what a wrong decision costs or how much risk the organisation will accept. Those remain leadership choices. If they are not made in advance, they are made under pressure, by whoever is available, or not at all.
 
-2) Name one Decision Owner per signal, with an on‑call rotation
-- For every signal, assign a single role (not a committee) that is authorized to execute the bound action within the time limit.
-- Publish an on‑call schedule and escalation ladder (1 backup) that spans nights and weekends.
-- Make it explicit: the Decision Owner is judged on time‑to‑action and adherence to the band, not on asking for permission.
+## Find the value: which signals deserve delegated authority?
 
-3) Set authority bands and cutoffs in writing
-- For each signal, define the maximum move the Decision Owner can make without further approval: “May block up to X% of traffic for Y minutes,” “May freeze up to N accounts per hour,” “May auto‑refund orders under $A.”
-- Define the cutoff for automatic action vs. human review (e.g., model score ≥ 0.92 with corroborating heuristic = auto‑block within 2 minutes; else escalate to human within 10 minutes).
-- Tie each band to a risk budget owned by a VP or GM. If the band is exceeded, the budget holder is paged, not the frontline operator.
+Not every alert deserves a decision right. Most should be batched, reviewed or switched off. Delegated authority belongs to the few signals where a late decision costs real money or harm: a fraud surge, an account takeover pattern, abuse of a promotion, a failure that affects customers.
 
-4) Translate alerts into orders with a 1‑page runbook
-- For every signal, write a short runbook that starts with an order: “If [condition], then [action] within [time].” No prose, no theory.
-- Include exact commands, dashboards, toggles, and message templates. Put them where the alert links land.
-- Require runbooks be testable without production impact (sandbox or canary path) and that the Decision Owner can run them end‑to‑end.
+For each candidate signal, ask two questions. What decision should it trigger: block, slow down, hold for review, pause a promotion, or notify only? And what does a delay of an hour, or a night, cost? A signal that cannot be tied to a decision is a report, and it should be treated as one.
 
-5) Run a 2‑hour live drill this week
-- Replay the last real incident for two signals. Fire the alert in a test channel. Time from alert to action.
-- Observe every pause. Was it missing access? A Slack debate? A legal check? Fix the top two blockers before you end the session.
-- Capture three metrics: time‑to‑ack, time‑to‑first‑action, time‑to‑stabilize. These become your weekly health checks.
+**Decision for the sponsor:** which signals justify delegated authority, and what is a late decision on each of them costing today?
 
-6) Close the loop with review and adjustments
-- Within 24 hours of the drill, adjust authority bands and cutoffs based on what actually happened.
-- Start a daily, 5‑minute digest that lists each triggered decision, who acted, when, and whether the band was respected.
-- Schedule a monthly decision audit by the budget holder: keep, expand, or retire the bands based on outcomes and customer impact.
+## Lead the change: who decides, and within what limits?
 
-This is not about tools. You can do it with your current stack: pager, chat, a shared doc, and your feature flags. The hard part is pre‑committing who decides what, how fast, and how big a move they can make without a meeting.
+The core of the answer is simple to state and hard to agree: one named role per signal, with written authority. The role, not a person, owns the decision, so the authority survives holidays and night shifts.
 
-What strong teams do differently:
-- They center responsibility on a named Decision Owner, not a channel.
-- They spend political capital upfront to grant authority bands, then defend operators who use them inside the lines.
-- They separate reversible and irreversible moves. Reversible moves get wide bands and fast action. Irreversible moves get narrow bands and templated approvals.
-- They test under load with drills and measure time‑to‑action as a first‑class KPI.
-- They accept that a small, visible error inside a band is cheaper than a slow, invisible failure across a weekend.
+That authority is defined by an authority band: the largest action the role may take without further approval. For example, a fraud duty lead may hold new-account transactions above a set value for up to six hours, or a promotion owner may pause one campaign for the rest of the day. Bands are wide for reversible actions, which can be undone quickly, and narrow for irreversible ones, which keep their approvals.
 
-Average teams do the opposite. They add dashboards, widen distribution lists, and lengthen approval paths. They congratulate themselves on “visibility” while outcomes slip. AI makes that gap visible because the model keeps finding work your process refuses to finish.
+Three further agreements make the band usable:
 
-Two common objections surface fast. “Legal won’t allow bulk actions.” Narrow the band and define thresholds that trigger legal after the first reversible move, not before it. “What if the model is wrong?” Set a tight rollback plan and a small risk budget per day; escalate when you burn it. Both are solvable once you put the bands in writing.
+- **A time limit.** The role must act, or escalate, within a set time. If it does neither, a pre-agreed default applies, usually the more cautious action.
+- **Pre-cleared approvals.** Legal, compliance and finance agree the bands in calm hours, not in the middle of an incident.
+- **A stated trade-off.** Faster action means some good customers will meet friction. The sponsor should decide in advance which cost the organisation will accept first: friction or loss.
 
-The crisis will not announce itself. Your choice is to decide the decision rights now or improvise permissions in the dark. When the next alert fires at 2 a.m., do you want an operator with clear authority to act within minutes, or a meeting that arrives after the damage? Choose and live with it.
+An illustrative example, not a documented case: a retailer sees a sudden rise in new accounts redeeming a promotion. Under a committee model, the alert waits for marketing, finance and legal. Under delegated authority, the promotion owner pauses redemptions for new accounts for four hours within an agreed band, logs the decision, and the team reviews it the next morning.
+
+**Decision for the sponsor:** what risk budget will the organisation delegate, to which roles, and which actions must still be approved?
+
+## Prove the impact: are decisions faster, and is the loss lower?
+
+Delegated authority needs evidence, both to keep it and to adjust it. Four measures do most of the work:
+
+- **Time to first action** from the moment the signal fires.
+- **Loss contained** compared with similar events before the change.
+- **Cost of false positives**, in customer friction, complaints and reversed actions.
+- **Use of the band**: how often the role acted, escalated or let the default apply.
+
+Every decision should be recorded in a short log: the signal, the action, the owner, the time and the outcome. The sponsor reviews the log regularly and decides whether each band should widen, narrow or be retired. Practising the response in calm conditions, with a timed drill on a recent incident, often reveals the real blocks: missing access, an unclear owner, or an approval that nobody knew was required.
+
+**Decision for the sponsor:** on the evidence of the log and the drills, should each authority band be kept, widened, narrowed or retired?
+
+## What does it cost, and what is the cheaper alternative?
+
+The cost of delegated authority is mostly organisational: the time to agree bands with legal and finance, a published rota, training, and the friction caused by actions that turn out to be unnecessary. The technology cost is usually small, because most organisations already have the switches and settings they need.
+
+The cheaper first step is often enough to show the value: clarify who owns three important signals, write down what each owner may do, and run one drill. That costs little and frequently shortens response times before any new detection is bought. It is also the logic behind testing AI on one bounded problem, as in [should you invest in AI for supply chain loss prevention](/2026-11-23-should-you-invest-in-ai-for-supply-chain-loss-prevention-buy-the-decision-not-the-alerts/).
+
+## Questions to put to your team
+
+1. For our three most important signals, who may act today without asking anyone?
+2. What may they do, how far, and for how long?
+3. Which actions are reversible, and which must keep their approvals?
+4. How long does it take, on average, from signal to first action?
+5. When did we last practise the response?
+
+## Frequently asked questions
+
+### What is a decision right?
+
+A decision right is written permission for a named role to make a specific decision, within stated limits, without asking anyone else. For an AI signal it states who may act, which actions they may take, how large or long those actions may be, and when the decision must be escalated instead.
+
+### How do you stop people acting on AI false positives?
+
+You cannot avoid them entirely, so you limit their cost. Delegate only reversible actions, cap their size and duration, require a quick review afterwards, and track how often actions were later reversed. If the reversal rate is too high, tighten the threshold or narrow the authority rather than removing it.
+
+### Who should own fraud response outside office hours?
+
+A role on a published rota, not whoever happens to be awake. That role needs the same written authority at night as by day, the tools to act directly, and a clear escalation path for anything outside its limits. Approvers who are asleep cannot be part of a response measured in minutes.
+
+### Does delegating decision rights require new technology?
+
+Rarely. Most organisations can start with what they have: an on-call rota, a written authority table, existing switches and settings, and a shared log. Technology helps later, by attaching the recommended action and its evidence to each alert, but the hard part is agreeing the authority itself.
+
+## Sources
+
+- McKinsey & Company, [Decision making in the age of urgency](https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency), global survey, 2019.
+
+AI will keep finding problems faster than committees can meet. The organisations that benefit will be those that decided, in calm conditions, who may act and how far. More on the people side of AI adoption is in the [people and adoption](/topics/people-and-adoption/) topic, and on one way to apply this in [understanding why products come back](/2026-11-24-can-ai-make-product-returns-useful-a-small-test-to-turn-free-text-and-photos-into-fixable-causes/).

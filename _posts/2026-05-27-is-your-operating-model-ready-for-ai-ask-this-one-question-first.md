@@ -1,40 +1,111 @@
 ---
+title: Is Your Operating Model Ready for AI?
+subtitle: AI does not improve an operating model on its own. It shows, at speed, where decisions, ownership and workflows were never designed for it.
+share-title: Is Your Operating Model Ready for AI? Ask This One Question First
+share-description: An operating model is ready for AI when every output it produces has an owner with authority to act, a workflow that uses it and a measure of result.
+excerpt: 'Many organisations deploy AI into operating models built for a slower world. One question tests readiness: for every output the AI could produce, who is already authorised to act on it, and what changes in the workflow when they do?'
+tldr: 'It is ready when you can answer one question for every output the AI could produce: who is already authorised to act on it, within what limits, and what changes in the workflow when they do? If the answer is a meeting, a shared inbox or nobody, the operating model is not ready, however good the model is. Redesigning the workflow usually matters more than the model.'
+keywords:
+- AI operating model
+- AI readiness assessment
+- AI workflow redesign
+- AI value capture
+- escalation failure
+- escalation path
+- no escalation
+faq:
+- q: What is an operating model?
+  a: 'An operating model describes how an organisation actually delivers its work: who makes which decisions, how work flows between teams, which systems and data are used, and how performance is measured. It is the practical arrangement behind the organisation chart, and it determines whether a new capability such as AI is used or ignored.'
+- q: How do you assess AI readiness?
+  a: 'Take one planned AI use and list the outputs it could produce. For each, check four things: who is authorised to act on it, which workflow changes when they do, whether the people involved have the skills and time, and how the result will be measured. Gaps in any of the four show where the operating model needs work.'
+- q: Why does workflow redesign matter for AI value?
+  a: Because AI that is added to an unchanged workflow tends to produce extra information rather than different work. McKinsey's research on generative AI found that, of 25 attributes tested, the redesign of workflows had the biggest effect on whether organisations saw an impact on earnings. The model changes what is possible; the workflow decides what happens.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "Is Your Operating Model Ready for AI? Ask This One Question First"
-share-title: "Operating Model Checklist for AI: Are You Ready?"
-share-description: "Deploying AI? Ensure your operating model is pre-wired for action. Learn the one decision rule that prevents AI from just exposing your operational weaknesses."
 tags:
-  - ai-decision-operations
-author: Hasan J.
+- ai-decision-operations
 thumbnail-img: /assets/img/posts/2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first.webp
 share-img: /assets/img/posts/2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first.webp
 topic: escalation-collapse
 archetype: framework
-keywords:
-  - "escalation failure"
-  - "escalation path"
-  - "no escalation"
-tldr: "AI doesn't improve operations automatically — it highlights existing weaknesses at speed. If you deploy a model into a reactive operating model without pre-wired decision ownership, you get more alerts, more reports, and the same losses. The critical question before any AI deployment: for every output this model could generate, who is pre-authorized to act, and what are their specific triggers and boundaries? Do not deploy an AI model until a specific owner is assigned for every potential signal, with clear authority and escalation paths defined before the model goes live. Build the decision muscles before AI exercises them."
 ---
 
-**Key takeaways:** AI doesn't automatically improve operations; it highlights existing weaknesses at speed. To extract real value, you must first pre-wire clear decision ownership and escalation paths. Your operating model needs to be proactive, not reactive, to the insights AI delivers.
+## Why does AI expose the operating model?
 
-You’re investing heavily in AI models, expecting them to streamline operations, cut costs, or catch risks faster. But after deployment, do you find yourself with more alerts, more reports, and still the same losses? The common mistake is believing AI will magically fix a messy process.
+Organisations invest in AI expecting it to streamline operations, cut costs or catch risks sooner. After deployment, many find something else: more alerts, more reports and the same results. The model is working. The operating model around it was designed for a slower world, in which decisions were fewer and could wait for the next meeting.
 
-It won't. AI models expose the rot in your operating model, but they don't repair it. They turn unclear ownership, slow escalation, and broken workflows into undeniable, high-volume problems that can overwhelm your teams.
+Leaders usually ask whether their data and technology are ready for AI. Those are real questions, and they miss a larger one: is the way the organisation makes decisions, assigns ownership and organises work ready to use what the AI produces?
 
-Imagine an AI model designed to detect subtle fraud patterns in real-time. It flags 10 suspicious transactions an hour, sending alerts to a general inbox. A junior analyst reviews a few, unsure if they have authority to freeze an account. They escalate to their manager, who's in meetings. The alert sits, waiting. By the time a decision is made hours later, the fraudulent transactions have cleared, or the opportunity for intervention has passed. The AI worked perfectly, delivering timely, accurate signals, but the operation failed. The model exposed a critical decision-making gap, not solved it.
+The research points in the same direction. McKinsey's survey of how organisations are [rewiring to capture value from generative AI](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-how-organizations-are-rewiring-to-capture-value) found that, of 25 attributes tested, the redesign of workflows had the biggest effect on an organisation's ability to see an impact on earnings.
 
-The mistake isn't with the AI, it's deploying powerful AI into a reactive operating model. You're building a Formula 1 engine and putting it into a car without a steering wheel or brakes. Many teams hyper-focus on model accuracy, data pipelines, and scalable infrastructure. They neglect the crucial "last mile" of decision execution, assuming the humans will just figure it out. This isn't an AI problem; it's an operational readiness problem that AI will expose at scale.
+## What does AI change in an operating model, and what does it not change?
 
-Stronger operators recognize that AI's true value isn't in its *detection* capabilities alone, but in its *decision enablement*. Before they even consider deploying a model, they ask a critical question: "For every output this AI could generate, who is *pre-authorized* to act, and what are their specific triggers and boundaries?" This question forces a shift from reactive problem-solving to proactive operational design.
+AI changes the supply of information and recommendations. It can produce more signals, faster, about more parts of the business than any team could before.
 
-This leads to a practical decision rule: **Do not deploy an AI model until a specific owner is assigned for every potential signal, with clear authority and escalation paths defined *before* the model goes live.**
+AI does not change who is allowed to act, how work moves between teams, what people are measured on or how much capacity they have. If those stay as they were, the new supply of information has nowhere to go.
 
-This means having a pre-agreed playbook for every alert type and scenario the AI might flag. It requires defining clear thresholds where an automatic action is taken versus where human review is mandatory. It means empowering your frontline operators with the agency to *act* – to freeze an account, block a transaction, or trigger a specific human investigation – without needing a meeting for every single instance. This isn't about giving away unchecked power; it's about designing controls that are hard-coded into the workflow, providing clear guardrails and defined limits within which rapid decisions can be made. You're building decision muscles *before* the AI starts exercising them, not hoping they develop under pressure.
+## Find the value: which outputs would change what the business does?
 
-To apply this rule this week, take one AI model you are currently deploying or planning to deploy. Map out three potential outputs it could generate. For each output, identify the specific individual or team explicitly responsible for acting. Then, define their exact decision authority: what can they do, under what conditions, and what is the precise escalation path if a situation falls outside their scope? If you can't clearly draw that line and communicate it to the owner, stop. Your operation isn't ready, and your AI will only highlight that fact faster.
+The readiness test starts with one planned AI use. List the outputs it could produce: an alert, a recommendation, a forecast, a ranked list. For each, ask the single question that matters most: who is already authorised to act on it, and what changes in the workflow when they do?
 
-Unclear decision paths are the silent killers of operational efficiency. If you're struggling to translate AI insights into real impact, [join my newsletter for more practical strategies on building decision-ready operations.](https://hasanjaffal.com/newsletter)
+Outputs with a clear answer are where the value is. Outputs whose answer is "it goes to a meeting", "it goes to a shared inbox" or "we are not sure" are where the value will leak. Mapping them before deployment shows how much of the expected benefit the operating model can actually deliver.
 
-For the full thesis behind this argument, see [AI & Decision Operations](/positions/ai-decision-operations/). And for a detailed breakdown of how unclear escalation paths kill AI projects, read [Why Your AI Project Fails When Nobody Owns the Escalation Path](/2026-05-25-why-your-ai-project-fails-when-nobody-owns-the-escalation-path/).
+**Decision for the sponsor:** for our planned AI use, how many of its outputs have an owner and a workflow ready to use them?
+
+## Lead the change: what must change in the operating model?
+
+Four parts of the operating model usually need attention:
+
+- **Decision rights.** For each output, a named role with written authority to act within limits, as set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
+- **Workflow.** The work itself is redesigned around the output, rather than the output being added to existing work. If a forecast arrives daily but planning happens monthly, the planning cycle has to change.
+- **Capacity and skills.** The people who act need the time and the skills to do so. More recommendations with the same team and the same workload produce backlogs.
+- **Measures and incentives.** People are measured on results the AI should improve, not on activity. If teams are rewarded for following the old process, they will.
+
+In my judgement, the hardest of the four is usually decision rights, because it means some people giving up control. That is why it needs a sponsor, not only a project team.
+
+An illustrative example, not a documented case: a retailer deploys a model that forecasts store demand daily, while replenishment orders are still approved in a weekly meeting. The forecasts are accurate and mostly unused, because the workflow they were meant to change still runs on a weekly rhythm. The fix is not a better forecast but a daily ordering decision, owned by a named role, with limits on how far it may depart from the weekly plan.
+
+**Decision for the sponsor:** which of the four needs changing first, and who will lead the change?
+
+## Prove the impact: is the operating model using what the AI produces?
+
+Measure use, not only availability. For each AI output, track the share that led to an action, the time from output to action, and the result of the action against a baseline. Outputs that are rarely acted on show where the operating model still blocks value.
+
+Review the picture after each cycle of change. If redesigning one workflow doubles the share of outputs acted on, that is evidence for redesigning the next. If it does not, the bottleneck is elsewhere, perhaps in capacity or incentives.
+
+**Decision for the sponsor:** on the evidence, is the operating model now using what the AI produces, and where is the next bottleneck?
+
+## What does it cost, and what is the simpler alternative?
+
+The costs are organisational rather than technical: leadership time, negotiation over decision rights, redesigning workflows, training, and sometimes changing how people are measured. These costs are often larger than the model's, and they are usually the ones that determine whether it pays.
+
+The simpler first step is to run the readiness test on one planned use before deployment: list its outputs and answer the single question for each. It costs a few hours and often prevents a deployment that would have produced only reports. It also gives the sponsor a clear list of what must change before go-live. The process side of the same question is covered in [should you fix the process before deploying an AI model](/2026-05-15-ai-wont-save-a-sloppy-process/).
+
+## Questions to put to your team
+
+1. For each output our AI will produce, who is already authorised to act on it?
+2. Which workflows must change for those outputs to be used?
+3. Do the people who act have the time and skills to do so?
+4. Are they measured on the results the AI should improve, or on activity?
+5. How will we know how much of what the AI produces is actually used?
+
+## Frequently asked questions
+
+### What is an operating model?
+
+An operating model describes how an organisation actually delivers its work: who makes which decisions, how work flows between teams, which systems and data are used, and how performance is measured. It is the practical arrangement behind the organisation chart, and it determines whether a new capability such as AI is used or ignored.
+
+### How do you assess AI readiness?
+
+Take one planned AI use and list the outputs it could produce. For each, check four things: who is authorised to act on it, which workflow changes when they do, whether the people involved have the skills and time, and how the result will be measured. Gaps in any of the four show where the operating model needs work.
+
+### Why does workflow redesign matter for AI value?
+
+Because AI that is added to an unchanged workflow tends to produce extra information rather than different work. McKinsey's research on generative AI found that, of 25 attributes tested, the redesign of workflows had the biggest effect on whether organisations saw an impact on earnings. The model changes what is possible; the workflow decides what happens.
+
+## Sources
+
+- McKinsey & Company, [The state of AI: How organizations are rewiring to capture value](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-how-organizations-are-rewiring-to-capture-value), March 2025.
+
+AI changes what an organisation can know. The operating model decides what it does about it. Testing that before deployment is the cheapest way to protect the investment. More on this is in the [people and adoption](/topics/people-and-adoption/) and [investment decisions](/topics/investment-decisions/) topics, and on the cost of getting it wrong in [what unclear ownership costs an AI investment](/2026-09-22-the-hidden-cost-of-deploying-ai-into-unclear-ownership/).

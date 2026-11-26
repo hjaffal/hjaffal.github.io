@@ -2,10 +2,10 @@
 layout: base
 title:
 share-title: "Topics — Hasan Jaffal"
-share-description: "Explore AI opportunities, investment decisions, people and adoption, and outcomes and evidence."
+share-description: "Four questions behind every AI investment: where AI could make a difference, what deserves investment, what needs to change in the work, and how to judge the result."
 permalink: /topics/
 show-avatar: false
 css:
   - /assets/css/reading.css
 ---
-<main class="pub-page"><div class="pub-wrap"><header class="pub-intro"><p class="pub-kicker">EXPLORE THE WRITING</p><h1>Four questions.<br><span>A way into the work.</span></h1><p>Articles organized around the decisions behind AI adoption, from recognizing an opportunity to judging what it delivered.</p></header><div class="pub-topic-index">{% for topic in site.data.writing.topics %}<section><p class="pub-kicker">{{ topic.label }}</p><h2><a href="{{ topic.url | relative_url }}">{{ topic.question }}</a></h2><p>{{ topic.description }}</p><a class="pub-link" href="{{ topic.url | relative_url }}">Explore the topic →</a></section>{% endfor %}</div></div></main>
+<main class="pub-page"><div class="pub-wrap"><header class="pub-intro"><p class="pub-kicker">Topics</p><h1>Four questions behind every AI investment.</h1><p>Each topic gathers the articles on one decision, from recognising an opportunity to judging what it delivered.</p></header><div class="pub-topic-index">{% for topic in site.data.writing.topics %}<section data-stage="{{ topic.stage }}"><p class="pub-kicker">{{ topic.stage }} · {{ topic.label }}</p><h2><a href="{{ topic.url | relative_url }}">{{ topic.question }}</a></h2><p>{{ topic.description }}</p><a class="pub-link" href="{{ topic.url | relative_url }}">Explore the topic →</a></section>{% endfor %}</div></div></main>

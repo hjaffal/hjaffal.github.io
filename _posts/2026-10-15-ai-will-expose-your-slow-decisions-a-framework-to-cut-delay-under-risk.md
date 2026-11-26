@@ -1,63 +1,118 @@
 ---
 layout: post
-title: "AI Will Expose Your Slow Decisions: A Framework to Cut Delay Under Risk"
-subtitle: "Map the path, assign authority, set the clock, and pre-approve the levers."
-share-description: "Your model isn’t slow. Your decision path is. Use this framework to remove the real delays—unclear ownership, weak authority, missing packets, and no timer—so AI signals turn into authorized actions under pressure."
+title: "Where Is Time Lost Between an AI Alert and Action?"
+subtitle: "The model is rarely the slow part. Most delay sits in five places between the alert and the action, and each has a leadership fix."
+share-title: "Where Is Time Lost Between an AI Alert and Action?"
+share-description: "The model is rarely the slow part. Time is lost in ownership, permission, information, tooling and unagreed trade-offs. Measure each and fix the largest."
+excerpt: "Most organisations measure how quickly their models detect a problem, and few measure how long it takes to act. The delay usually sits in five places, and each can be found, measured and removed."
+tldr: "Usually in five places: finding who owns the alert, waiting for permission, gathering more information, working through the tools needed to act, and hesitating over a trade-off nobody agreed in advance. The model is rarely the slow part. Measure the time each step takes for one important signal, then remove the largest delay first, before investing in faster detection."
+reading_topics:
+  - "adoption"
 tags:
   - ai-decision-operations
 topic: ai-topic
 archetype: describe
-author: Hasan J.
-tldr: "AI speeds up detection, not decisions. The real drag is unclear ownership, weak authority, missing context, and no decision clock. This post gives you a simple framework: frame the event and outcome, name the decider by role, confirm authority and constraints, assemble a minimal decision packet, start a timer with auto‑escalation, and package levers into one‑click plays with a backstop. A real marketplace case shows where time is lost and how strong teams cut it. You’ll face an uncomfortable trade‑off: accept customer friction to protect the balance sheet, or accept loss to avoid noise. Pick now, not during the incident."
+author: Hasan Jaffal
+keywords:
+  - "time to action"
+  - "decision latency"
+  - "AI incident response time"
+  - "reduce response time"
+  - "AI alert handling"
+faq:
+  - q: "What is decision latency?"
+    a: "Decision latency is the time between the moment an organisation has enough information to act and the moment it actually acts. It is different from detection time, which measures how quickly a problem is noticed. In many organisations decision latency is far longer than detection time, and far less often measured."
+  - q: "What is a decision packet?"
+    a: "A decision packet is the smallest set of facts a decision-maker needs to act on a particular kind of alert: what changed, how large it is, who is affected, the actions available and their likely cost. Attaching it to the alert automatically removes the delay of gathering information by hand."
+  - q: "How do you measure time from alert to action?"
+    a: "Record timestamps for each step on recent events of one important signal: when the alert fired, when an owner acknowledged it, when a decision was made and when the action took effect. The differences show where time goes. Repeat the measurement after each change to confirm the delay has actually shrunk."
+last-updated: 2026-11-26
 ---
 
-The slowest part of your AI stack is your decision path under risk. Models raise signals in seconds; your org takes hours to move a lever. You don’t need a bigger dashboard. You need a path from detection to authorized action with a clock on it.
+## Why is the model rarely the slow part?
 
-Here is a field-tested framework to cut delay when the pressure is on. Build it on your highest-risk signals first, then roll it out across the board. The order matters because each step removes a specific block where time is lost.
+AI has made detection fast. A model can flag a problem within seconds of it appearing. Yet many organisations still take hours to respond, and when they investigate the delay they usually look at the model: could it be faster, more accurate, better tuned?
 
-1) Frame the event and the outcome.
-Write a two-sentence event brief the moment a spike hits: what changed, and what outcome you want. Example: “Promo abuse spike on new accounts. Goal: stop leakage fast while keeping good orders flowing.” Force this brief into the alert channel as a pinned note. It prevents drift and anchors every later choice.
+That is a reasonable place to start, and it misses where most of the time goes. The slowest part of an AI-supported operation is usually the path from the alert to an authorised action. Most organisations measure detection time carefully and decision time not at all.
 
-2) Name the decider by role, not person.
-Every high-impact signal needs one role that owns the call. “Payments Duty Lead decides on thresholds for P0 card fraud spikes.” Publish the roster and on-call rotation. If the person is out, the role still exists, and the timer continues.
+The cost of slow response is well documented in security. The [IBM Cost of a Data Breach Report 2024](https://www.ibm.com/think/insights/whats-new-2024-cost-of-a-data-breach-report) puts the global average cost of a breach at $4.88 million, and the average time to identify and contain one at 258 days. Every stage of that timeline is an opportunity to lose less.
 
-3) Confirm authority and constraints before the incident.
-Pre-delegate the levers that this role can pull without extra approvals: blocklists, throttle rates, step-up checks, temporary holds. Add explicit guardrails: max duration, customer segment scope, audit trail requirements. If the decider lacks authority, your signal is noise by design.
+## What does AI change about response time, and what does it not change?
 
-4) Assemble a minimal decision packet.
-Deciders stall when they need more context. Define the smallest set of facts they need to act: trend delta, top three cohorts, false-positive estimate band, current lever state, and one risk/cost estimate for each lever. Bind this packet to the alert so it auto-populates. If the packet is incomplete after T minutes, ship the lever with a conservative default and backstop it later.
+AI removes most of the delay in noticing. It can also shorten the time spent understanding an alert, by assembling the evidence around it.
 
-5) Start the clock and enforce escalations.
-Set timers by severity. For P0, the first lever decision is due in 15 minutes; for P1, 60 minutes. If the timer hits, auto-escalate to the next role and announce the default action. No silent timeouts. The clock turns “we’re looking” into “we’re committing.”
+AI does not remove the delays that come from how the organisation is arranged: unclear ownership, approvals that must be sought, tools that take many steps, and choices that nobody has agreed to make. Those delays are leadership matters, and they are usually the larger part of the total.
 
-6) Package the lever into a one-click play with a backstop.
-A decision that needs six tools and three teams isn’t a decision. Pre-build plays (“Tighten signup velocity 40% on net-new devices for four hours”) with rollback steps and post-action checks. Attach a backstop: when to loosen again, who validates impact, and what data ends the play.
+## Find the value: how long does each step actually take?
 
-Where time is actually lost under risk:
-- Routing: the signal bounces between channels while people ask, “Who owns this?” Fix it by stating the decider role in the alert.
-- Permission: the decider needs approval from Legal, PR, or a VP. Fix it with pre-delegation and guardrails.
-- Packet: the decider waits for more data. Fix it with the minimal packet and a default.
-- Tooling: the action takes too many steps. Fix it by packaging plays.
-- Nerves: people fear the headline. Fix it by agreeing on the trade-off before the incident and writing it down.
+The first step is measurement. Choose one important signal and record, for recent events, when the alert fired, when an owner acknowledged it, when a decision was made and when the action took effect. The gaps show where the time goes.
 
-A real example: A large marketplace I supported in 2023 went into a holiday promo with a new abuse model. Friday afternoon, alerts lit up. The duty analyst saw bad signups spiking and flagged a freeze on new-account redemptions. Product asked for “one more chart.” Legal wanted to review messaging. The VP was on a flight. Two hours later, the freeze went in. Fraud slowed, but not before a wave hit the balance sheet and support queues.
+In my judgement, the delay usually concentrates in five places:
 
-We ran the framework the next week. The event brief template went into the alert. The “Promo Abuse Duty Lead” role got authority to throttle new accounts for up to six hours, within named segments, with required logs. The minimal packet was added to the alert: trend delta, device overlap, top referrer patterns, and current lever state. P0 timer set to 15 minutes with an auto-escalation to the GM. We packaged two plays with rollbacks.
+| Where time is lost | What it looks like | The leadership fix |
+|---|---|---|
+| Ownership | The alert moves between channels while people ask who owns it | Name the owning role in the alert itself |
+| Permission | The owner must seek approval from legal, finance or a senior manager | Agree authority and limits in advance |
+| Information | The owner waits for more data before acting | Attach a standard decision packet to the alert |
+| Tooling | Acting takes many steps across several systems | Prepare the action as a single, reversible step |
+| Nerve | Nobody wants to own the trade-off, so the decision drifts | Agree in advance which cost to accept first |
 
-Next Friday, the spike returned. The duty lead posted the brief in two minutes. The packet auto-populated. At minute 7, they tightened the signup flow and required step-up for a high-risk referrer. A backstop reminded them to review after two hours. Losses were contained, and the weekend was quiet. The difference wasn’t a better model; it was a shorter path with authority and a clock.
+An illustrative example, not a documented case: a team measures its refund-abuse alert over its last ten events. Detection takes under a minute. Acknowledgement takes twenty minutes, because the alert goes to a shared channel. The decision takes three hours, because the owner needs a finance manager's approval to pause refunds. The model is not the problem; the permission is.
 
-You must face one uncomfortable trade-off: friction vs. loss. In a real surge, you won’t balance them perfectly. Decide now which you will hurt first. If the balance sheet matters more this quarter, write it down and set thresholds that bias toward tighter controls with fast rollback. If customer experience is your north star, cap the levers you will tolerate and own the expected loss.
+**Decision for the sponsor:** for our most important signal, which of the five delays is largest, and what is it costing?
 
-What strong teams do differently:
-- They bind each critical signal to one role, one lever set, and one timer. No shared ownership, no “please advise.”
-- They pre-approve the levers with Legal and Compliance during calm hours, not in the incident channel.
-- They practice decisions. Quarterly drills run the plays end-to-end with clocks running and rollbacks tested. Logs are audited.
-- They keep the packet small and standard. If an analyst adds a chart mid-incident, it must change the lever or it gets parked.
-- They publish defaults. If the packet is late or the decider is out, the platform applies the conservative play and announces it.
-- They close the loop. After-action reviews result in changes to authority, packets, or plays within a week, not a memo that dies.
+## Lead the change: how is each delay removed?
 
-Build this path for three signals this month: large-amount withdrawals, promo abuse, and account-takeover login spikes. Name the deciders, write the briefs and defaults, and package one-click plays with rollbacks. Put timers on them and run a drill. You will feel faster because you removed the places where time really dies.
+Each delay has a different owner and a different fix, and leaders should address the largest first rather than all at once.
 
-AI will keep finding trouble faster than your current approvals can move. That is not a technology problem. It is an authority and timing problem. Fix the path, or pay for noise and loss.
+**Ownership** is fixed by naming the responsible role in the alert, with a rota behind it, so that the question "who owns this?" never needs asking. **Permission** is fixed by agreeing authority and limits in calm conditions, so that the owner does not need to ask during the event; the approach is set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
 
-Choose now: when the next surge hits, do you tighten first and apologize to good users, or do you keep doors open and accept the loss?
+**Information** is fixed with a decision packet: the smallest set of facts the decision needs, such as what changed, how large it is, who is affected, the actions available and their likely cost, attached to the alert automatically. If the packet is incomplete after an agreed time, a cautious default action applies. **Tooling** is fixed by preparing common actions as single, reversible steps, as described in [which controls should be ready before a fraud spike starts](/2026-05-02-dashboards-dont-stop-fraud-pre-wired-decisions-do/).
+
+**Nerve** is the hardest. Under pressure, people hesitate because every option has a cost: friction for genuine customers, or continued loss. Leaders remove the hesitation by deciding in advance which cost the organisation will accept first, and writing it down.
+
+**Decision for the sponsor:** which delay will we remove first, who owns the fix, and by when?
+
+## Prove the impact: has the time from alert to action fallen?
+
+Repeat the measurement after each change, on the same signal. The time between each step should shrink where the fix was applied. If it does not, the fix was in the wrong place, or the delay has simply moved elsewhere.
+
+Speed alone is not the goal. Track the quality of decisions alongside it: losses contained, actions later reversed, and the cost to genuine customers. A faster path that produces many unnecessary actions has traded one problem for another.
+
+Practise the response periodically on a recent event. A timed rehearsal shows delays that a document does not, such as a missing permission or an access right nobody tested.
+
+**Decision for the sponsor:** on the evidence, has the path from alert to action become faster without becoming careless, and which delay comes next?
+
+## What does it cost, and what is the simpler alternative?
+
+Most of the fixes cost leadership time and modest engineering: agreeing authority, writing decision packets, preparing actions as single steps and maintaining a rota. They are usually cheaper than a new detection system, and they make any future investment in detection more valuable.
+
+The simplest first step costs almost nothing: measure the five delays for one signal over its last few events. That measurement alone often redirects investment from the model, which was fast enough, to the organisation, which was not.
+
+## Questions to put to your team
+
+1. For our most important signal, how long does each step from alert to action take?
+2. Does every alert name the role that owns it?
+3. What permission does the owner still need to seek during an event?
+4. What information does the owner wait for, and could it arrive with the alert?
+5. Have we agreed in advance which cost we accept first: friction or loss?
+
+## Frequently asked questions
+
+### What is decision latency?
+
+Decision latency is the time between the moment an organisation has enough information to act and the moment it actually acts. It is different from detection time, which measures how quickly a problem is noticed. In many organisations decision latency is far longer than detection time, and far less often measured.
+
+### What is a decision packet?
+
+A decision packet is the smallest set of facts a decision-maker needs to act on a particular kind of alert: what changed, how large it is, who is affected, the actions available and their likely cost. Attaching it to the alert automatically removes the delay of gathering information by hand.
+
+### How do you measure time from alert to action?
+
+Record timestamps for each step on recent events of one important signal: when the alert fired, when an owner acknowledged it, when a decision was made and when the action took effect. The differences show where time goes. Repeat the measurement after each change to confirm the delay has actually shrunk.
+
+## Sources
+
+- IBM, [Cost of a Data Breach Report 2024: what's new](https://www.ibm.com/think/insights/whats-new-2024-cost-of-a-data-breach-report), July 2024.
+
+Faster detection is valuable only when the organisation can act at a similar speed. Finding where the time goes is the quickest way to make an existing AI investment pay. More on this is in the [people and adoption](/topics/people-and-adoption/) topic, and on acting outside office hours in [how an organisation should act on AI signals at night](/2026-07-30-build-a-2-a-m-decision-system-that-works-without-you/).

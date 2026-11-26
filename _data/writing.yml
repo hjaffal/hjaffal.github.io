@@ -3,6 +3,7 @@
 # over the legacy tag fallback in writing.html.
 topics:
   - id: opportunities
+    stage: Find
     url: /topics/opportunities/
     questions:
       - What could change for customers or the business?
@@ -14,6 +15,7 @@ topics:
     start: 2024-11-14-predictive-analytics-in-security-and-loss-prevention
     reason: A starting point for thinking about the shift from reacting to losses to anticipating them.
   - id: investment
+    stage: Find
     url: /topics/investment-decisions/
     questions:
       - What outcome would justify the full cost?
@@ -25,6 +27,7 @@ topics:
     start: 2024-11-12-the-art-of-prioritization-for-data-teams
     reason: Start with the broader investment discipline of choosing useful work and saying no to low-impact requests.
   - id: adoption
+    stage: Lead
     url: /topics/people-and-adoption/
     questions:
       - How will the work and responsibilities change?
@@ -36,6 +39,7 @@ topics:
     start: 2026-07-14-ai-made-tools-easy-judgment-got-hard-how-strong-teams-operate-differently
     reason: An article on the judgment and trade-offs people need to own when AI can generate the options.
   - id: value
+    stage: Prove
     url: /topics/outcomes-and-evidence/
     questions:
       - What changed for customers or the business?

@@ -1,82 +1,113 @@
 ---
+title: Which Three Questions Decide Whether a Metric Is Worth Keeping?
+subtitle: 'A measure that changes no decision is not worth keeping. Three questions test whether a number earns its place: what decision it triggers, what action follows, and what cost the organisation accepts.'
+share-title: Which Three Questions Decide Whether a Metric Is Worth Keeping?
+share-description: A metric is worth keeping if it names the decision it triggers and its owner, the action that follows and the cost it is willing to accept to act.
+excerpt: 'Most organisations measure more than they use. Three questions separate the measures that change decisions from the ones that decorate reports: what decision does it trigger, what action follows, and what cost will we accept to act on it?'
+tldr: Ask three questions of every metric. What decision does it trigger, at what threshold, and who owns that decision? What action follows, and how large is it? What cost will we accept to take that action, and how will we measure it alongside? A metric that cannot answer all three describes the past but will not change the future, and it competes for attention with those that can.
+keywords:
+- metrics that matter
+- actionable metrics
+- KPI selection
+- decision metrics
+faq:
+- q: What makes a metric actionable?
+  a: 'A metric is actionable when it is connected to a specific decision: a threshold at which someone acts, a named owner, a defined action and an agreed cost of acting. Without those connections, a metric may be accurate and interesting, but nobody is expected to do anything differently when it moves.'
+- q: What is a counter-metric?
+  a: A counter-metric measures the cost of acting on a primary metric. If tightening verification reduces fraud, the counter-metric might be the drop in genuine customers completing sign-up. Reporting the two together keeps the trade-off visible, so the action can be adjusted before its side effects outweigh its benefits.
+- q: How many metrics should a leadership team track?
+  a: There is no fixed number, but it should be small enough that each one can answer the three questions and be discussed when it moves. If a leadership report contains measures nobody can link to a decision, it contains too many, however few that is.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "If a Metric Won’t Change Your Next Move, Cut It: Three Questions That Make Numbers Intelligent"
-subtitle: "Reporting describes the past. Intelligence dictates the next action."
-share-description: "Most teams worship dashboards. Strong teams force numbers to trigger moves. Use three hard questions and a one‑week playbook to turn metrics into decisions—or delete them."
 tags:
-  - risk-intelligence
+- risk-intelligence
 topic: risk-topic
 archetype: write
-author: Hasan J.
-tldr: "Most teams confuse reporting with intelligence. Reporting explains what happened; intelligence changes what happens next. If a metric can’t trigger a move with a clear owner, lever, and accepted downside, it’s decoration. Use three questions to qualify every metric, then run a six-step playbook this week: inventory metrics, write decision cards, set thresholds and timers, pre-approve levers and authority, log actions, and prune ruthlessly. Strong teams don’t add charts—they remove everything that doesn’t force a decision under risk."
 ---
 
-Most teams believe more reporting equals better control. They’re wrong. Reporting explains yesterday. Intelligence changes tomorrow.
+## Why does more reporting not mean more control?
 
-If a number doesn’t force a move, it’s set dressing for slides. Pretty, polite, and useless when it’s time to pull a lever.
+Most organisations believe that more measurement brings more control. Reports grow, dashboards multiply and every important area acquires its own set of numbers. Yet when a problem appears, the numbers often describe it accurately and change nothing, because nobody was expected to act when they moved.
 
-Here are the three questions every metric must answer to qualify as intelligence:
+Leaders usually respond by asking for better or more timely measures. Those can help, and they miss the larger question: what is each measure for? A measure that changes no decision is not worth keeping. It describes the past, takes up attention and makes the measures that matter harder to see.
 
-1) What decision does this metric trigger, at what threshold, and who owns the call within how many minutes?
-2) Which lever will we pull immediately when it fires, and by exactly how much?
-3) What downside are we willing to accept to move it, and how will we measure that cost in parallel?
+Three questions test whether a measure earns its place. They are simple to ask and often uncomfortable to answer.
 
-If you can’t answer all three in one breath, you don’t have intelligence. You have a scoreboard without a coach.
+## What does AI change in measurement, and what does it not change?
 
-A real workplace example:
+AI changes the supply of measures. New metrics, forecasts and summaries can be produced almost without cost, so the number of candidates for attention grows quickly.
 
-Last November, at 10:41 a.m., a mid-market marketplace in Austin saw a spike in new-account coupon abuse. The weekly fraud review had a clean chart: “Promo misuse attempts +38%.” People nodded. No one moved.
+AI does not change the number of decisions an organisation can make well, or the attention its leaders have. The more measures are produced, the more important it becomes to keep only those connected to a decision.
 
-By 12:05 p.m., support tickets ballooned. The on-call analyst, Carla, could see the spike in self-serve dashboards but had no authority to tighten the “one-per-user” rule. Policy said to wait for the growth lead because conversion might drop. Growth was in a customer meeting. Abuse kept climbing.
+## Find the value: which of our metrics answer the three questions?
 
-A month earlier, the team had defined only “reporting.” The metric existed. The decision did not.
+The three questions are:
 
-In January, they changed it. They rewrote the metric card for “Promo abuse rate (per 1,000 sign-ups)” to answer the three questions:
+1. **What decision does this metric trigger, at what threshold, and who owns that decision?** If no decision, threshold or owner can be named, the measure is describing rather than steering.
+2. **What action follows when it fires, and how large is that action?** A decision without a defined action becomes a discussion.
+3. **What cost will we accept to take that action, and how will we measure it alongside?** Every action has a price, such as friction for customers, lost revenue or staff time. Naming it in advance, and tracking it with a counter-metric, prevents the action from being reversed the moment it hurts.
 
-- Decision/Owner/Timer: If abuse rate > 7/1,000 for 15 minutes, on-call risk owns a 30-minute decision.
-- Lever: Increase phone verification strictness from medium to strict, and block VPN ASNs 3–5 for two hours.
-- Downside accepted: Up to 0.9% drop in same-day conversion; track with counter-metric in the same panel.
+Apply them to the measures in the main leadership report. Most organisations find that only a minority can answer all three.
 
-In February, the spike returned at 9:13 a.m. Carla flipped the levers by 9:21. Abuse fell within 20 minutes. Conversion dipped 0.6% for two hours. Finance synced later, and they kept the setting for the day.
+The third question is the one most often skipped. Leaders readily agree that a measure should trigger action, and then reverse the action when its cost appears: complaints from sales, a dip in conversion, friction for customers. Agreeing the acceptable cost in advance, and measuring it openly, is what lets the action survive its first week.
 
-Same data. Different rules. Intelligence, not reporting.
+**Decision for the sponsor:** how many of our leadership measures can answer all three questions, and what should happen to the rest?
 
-The uncomfortable trade-off you must face:
+## Lead the change: how do leaders apply the three questions?
 
-You either accept some immediate pain—friction, false positives, angry sales—or you accept unbounded loss and slow death by committee. You cannot keep both high conversion and zero abuse during an active attack. You pick the wound you will treat and you write it down in advance so the operator can cut without asking permission.
+The questions become useful when they are applied as a rule rather than an exercise:
 
-Strong teams vs average teams:
+- **For existing measures,** those that cannot answer all three are either rebuilt until they can, or paused, as described in [how to retire metrics without losing control](/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/).
+- **For new measures,** the three answers are required before the measure is added to any regular report.
+- **For each surviving measure,** the answers are written next to it: the threshold, the owner, the action, the accepted cost and the counter-metric.
 
-Average teams decorate dashboards, then ask for alignment. They set “targets” but never sign the authority to pay the cost of hitting them. When risk shows up, they escalate, they wait, and they postmortem.
+An illustrative example, not a documented case: a measure of promotion abuse per thousand new sign-ups is rewritten so that, above an agreed level for a sustained period, the risk owner on duty tightens phone verification for new accounts, accepting a small, measured drop in same-day sign-ups. The measure now carries its decision with it.
 
-Strong teams prune until every remaining metric owns a decision, a lever, and a priced downside. They pre-approve moves and timers. They log actions and costs as first-class data. They are proud of what they delete because what remains actually moves money and risk.
+**Decision for the sponsor:** will the three questions become the rule for every measure in our leadership reports?
 
-A practical playbook you can run this week:
+## Prove the impact: are our measures now changing decisions?
 
-1) Inventory and kill: Export your top 30 metrics. For each, try to answer the three questions in writing. If you can’t fill all three fields in 60 seconds, park or delete it. Aim to cut at least a third.
+Track two things for each measure that remains: how often it triggered a decision, and how quickly. A measure that never triggers may have a threshold set too loosely, or may not be needed. One that triggers constantly may need a better threshold or a different action.
 
-2) Write decision cards: For the survivors, create a one-page metric card with owner, threshold, timer, lever change (with specific increments), and the accepted downside with its counter-metric. Store these where your on-call lives, not in a wiki graveyard.
+Review the counter-metrics too. If an action's accepted cost proves larger than expected, adjust the action or the threshold, openly and on the record. Over time, the leadership report should become shorter and more consequential. Presenting the decisions that measures trigger is covered in [how risk intelligence should be presented to executives](/2026-10-22-dashboards-dont-move-money-how-to-present-risk-intelligence-that-forces-a-decision/).
 
-3) Set timers and pages: Add time bounds to alerts. “X exceeds Y for Z minutes” should page the owner with the decision card linked. If there’s no page and no timer, it’s a newsletter, not an alert.
+Review the three answers for each measure at least once a year, or whenever the business changes significantly. Thresholds drift out of date, owners move roles and actions that once made sense stop fitting the operation. A measure that answered all three questions last year may not answer them now.
 
-4) Pre-approve levers and authority: Get explicit sign-off from legal, finance, and growth on the exact lever changes and the max downside you’ll accept without a meeting. Put the approval in the card. If you need a meeting during an incident, you already lost.
+**Decision for the sponsor:** on the evidence, are our remaining measures triggering timely decisions, and are their accepted costs as expected?
 
-5) Instrument the decision, not just the data: Create a simple form or script that logs when an alert fired, who acted, what lever moved, how fast, and both the primary metric and the counter-metric over the next two hours. This is your accountability layer.
+## What does it cost, and what is the simpler alternative?
 
-6) Weekly cut and sharpen: Review every fired alert and every ignored one. If an alert never fired in 30 days, consolidate or retire it. If it fired but didn’t lead to a move, fix the lever, authority, or threshold. Celebrate deletions and tighten the rest.
+The costs are mostly in agreement. Naming owners, thresholds and accepted costs requires leaders to commit in advance to actions that may be unpopular when they happen. Pausing measures that fail the test will disappoint some of the people who produce or rely on them.
 
-Notes on the three questions in practice:
+The simpler first step is to ask the three questions of the five measures the leadership team looks at most. It takes an hour, and it usually shows where the organisation's attention is being spent on numbers that change nothing. Measures that reassure without informing are discussed in [what a false-confidence metric is and how to spot one](/2026-06-02-false-confidence-metrics-are-a-digital-opiate-for-operations/).
 
-- Decision specificity beats model precision. A 72% accurate signal with a pre-approved lever will often outperform a 94% model stuck behind approval.
-- The lever must be measurable and reversible. “Call the vendor” is not a lever. “Raise KYC threshold from 0.65 to 0.72 for 4 hours” is.
-- The priced downside prevents cowardice and panic. Without it, you either never act or you overreact. With it, the operator acts within guardrails.
+The three questions also help when a new measure is proposed. Asking them before the measure is built, rather than after it appears in a report, prevents much of the clutter from forming in the first place, and it makes the person requesting the measure think about how it will be used.
 
-Common objections, answered:
+## Questions to put to your team
 
-- “But we need full context.” You need enough context to act within the timer. Full context is for the retro.
-- “This might hurt conversion.” Yes. That’s the cost you priced in. You chose it on a calm day so you can execute on a hot one.
-- “We can automate later.” Great. First, prove the decision and the lever work manually. Then automate what’s real.
+1. For each of our main measures, what decision does it trigger and who owns it?
+2. What action follows when it fires, and how large is that action?
+3. What cost have we agreed to accept to act on it?
+4. Which counter-metric shows that cost?
+5. Which measures fail the three questions, and what should happen to them?
 
-Stop trying to make perfect dashboards. Make reliable moves. The gap between reporting and intelligence is not data quality—it’s owned decisions, ready levers, and priced costs.
+## Frequently asked questions
 
-Pick your side now: Do you want a dashboard that tells a story about yesterday, or a console that forces a move in the next 10 minutes?
+### What makes a metric actionable?
+
+A metric is actionable when it is connected to a specific decision: a threshold at which someone acts, a named owner, a defined action and an agreed cost of acting. Without those connections, a metric may be accurate and interesting, but nobody is expected to do anything differently when it moves.
+
+### What is a counter-metric?
+
+A counter-metric measures the cost of acting on a primary metric. If tightening verification reduces fraud, the counter-metric might be the drop in genuine customers completing sign-up. Reporting the two together keeps the trade-off visible, so the action can be adjusted before its side effects outweigh its benefits.
+
+### How many metrics should a leadership team track?
+
+There is no fixed number, but it should be small enough that each one can answer the three questions and be discussed when it moves. If a leadership report contains measures nobody can link to a decision, it contains too many, however few that is.
+
+## Sources
+
+- This article draws on the author's judgement and on the related articles linked above; it contains no external statistics.
+
+Every measure competes for the same limited attention of the same few people. Keeping only those that change decisions is how an organisation turns measurement into control. More on this is in the [outcomes and evidence](/topics/outcomes-and-evidence/) topic.

@@ -7,7 +7,7 @@
 .resource-section-description { max-width: 800px; color: var(--pub-muted); font-size: 17px; line-height: 1.8; margin-bottom: 26px; }
 .assessment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .assessment-entry { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--pub-line); border-top: 2px solid var(--pub-purple); background: var(--pub-paper); }
-.assessment-entry h3 { font: 400 29px/1.25 Georgia, 'Times New Roman', serif; letter-spacing: -.01em; margin: 0 0 16px; }
+.assessment-entry h3 { font: 400 29px/1.25 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.01em; margin: 0 0 16px; }
 .assessment-entry h3 a, .worksheet-entry h4 a, .reference-grid h3 a { color: var(--pub-ink); }
 .assessment-entry h3 a:hover, .worksheet-entry h4 a:hover, .reference-grid h3 a:hover { color: var(--pub-purple); }
 .assessment-entry > p:not(.pub-kicker) { color: var(--pub-muted); font-size: 17px; line-height: 1.8; margin-bottom: 22px; }
@@ -19,14 +19,14 @@
 .assessment-access > span { color: var(--pub-muted); font-size: 13px; line-height: 1.7; }
 .worksheet-entry { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 48px; border-top: 1px solid var(--pub-line); padding: 26px 0; }
 .resource-format { color: var(--pub-muted); font-size: 13px; line-height: 1.6; margin-bottom: 12px; }
-.worksheet-entry h3 { font: 400 27px/1.3 Georgia, 'Times New Roman', serif; letter-spacing: -.01em; margin: 0; }
+.worksheet-entry h3 { font: 400 27px/1.3 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.01em; margin: 0; }
 .worksheet-entry h4 { font-size: 18px; line-height: 1.5; font-weight: 600; letter-spacing: -.015em; margin: 0 0 12px; }
 .worksheet-entry > div > p:not(.resource-format) { font-size: 17px; line-height: 1.8; color: var(--pub-muted); margin-bottom: 12px; }
 .worksheet-entry .worksheet-use { font-size: 15px !important; }
 .worksheet-use strong { font-weight: 600; color: var(--pub-ink); }
 .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
 .reference-grid article { padding-top: 22px; border-top: 1px solid var(--pub-line); }
-.reference-grid h3 { font: 400 27px/1.3 Georgia, 'Times New Roman', serif; letter-spacing: -.01em; margin: 0 0 14px; }
+.reference-grid h3 { font: 400 27px/1.3 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.01em; margin: 0 0 14px; }
 .reference-grid p { font-size: 17px; line-height: 1.8; color: var(--pub-muted); }
 .resource-reading { padding: 28px 0 40px; border-top: 1px solid var(--pub-line); }
 .resource-reading h2 { font-size: 26px; font-weight: 600; letter-spacing: -.025em; line-height: 1.3; margin: 0 0 16px; }

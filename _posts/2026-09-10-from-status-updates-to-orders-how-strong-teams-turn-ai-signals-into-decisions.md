@@ -1,78 +1,105 @@
 ---
+title: How Do You Turn a Status Meeting Into a Decision Meeting?
+subtitle: A status meeting asks what we saw. A decision meeting asks what we will do, who owns it and what cost we accept. AI makes the difference expensive.
+share-title: How Do You Turn a Status Meeting Into a Decision Meeting?
+share-description: Status meetings review what AI found; decision meetings end each item with an action, an owner and an accepted cost. How to make the change in practice.
+excerpt: 'As AI produces more signals, recurring meetings that review dashboards fall further behind. A decision meeting is built differently: fewer people, items that arrive with a proposed action, and a log of what was decided and by whom.'
+tldr: 'Change what each agenda item must produce. In a decision meeting, every item arrives with a proposed action, the people who can approve it are in the room, and the item ends with a recorded decision: the action, the owner, the time window and the cost the organisation accepts. Items without a proposed action wait. The meeting becomes smaller, shorter and far more useful.'
+keywords:
+- decision meeting
+- effective meetings
+- status meeting alternative
+- decision log
+faq:
+- q: What is the difference between a status meeting and a decision meeting?
+  a: 'A status meeting shares information about what has happened, so that people are aware of it. A decision meeting exists to make choices: each item ends with an action, an owner, a time window and an accepted cost. Both have a place, but recurring status meetings are often treated as if they were decision meetings.'
+- q: Who should attend a decision meeting?
+  a: The smallest group that can approve the likely decisions, and no more. Anyone whose signature would be needed for a probable action should attend or delegate their authority to someone who does. People who only need to know the outcome can read the decision log afterwards.
+- q: What should a decision log record?
+  a: 'For each decision: the signal or issue, the action decided, the owner, the time window, the cost or risk accepted, and when the result will be reviewed. The log makes decisions visible to people who were not present, supports audit and shows over time which kinds of decision actually improved results.'
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "From Status Updates to Orders: How Strong Teams Turn AI Signals Into Decisions"
-subtitle: "AI speeds detection. Only authority speeds action."
-share-description: "AI multiplies signals. Without authority, they become noise. Replace status updates with decision meetings where every alert ends in an order owned by a name, time, and budget."
 tags:
-  - ai-decision-operations
+- ai-decision-operations
 topic: ai-topic
 archetype: compare
-author: Hasan J.
-tldr: "AI won’t fix slow approvals or fuzzy ownership. It exposes them. Replace status updates with decision meetings: one owner, a pre-committed playbook, and clear authority to act within guardrails. Bind each AI signal to a decision, timestamp, budget, and assignee in the room. Cut alert volume to what you can actually decide. The uncomfortable trade-off: give frontline operators power to hurt short-term metrics to protect long-term risk, or keep power centralized and pay for noise. Pick speed with guardrails or keep reading dashboards that don’t move reality."
 ---
 
-Cancel your next status update. Replace it with a decision meeting. Same people, same time, different outcome: one order per signal.
+## Why do status meetings fall behind when AI arrives?
 
-AI does not cure unclear ownership or slow approvals. It exposes both, faster and at scale. If a signal cannot trigger an authorized action, it is expensive noise.
+Many organisations review AI signals in a recurring meeting. The model flags a pattern, the team walks through dashboards, someone asks about false positives, someone else about revenue impact, legal asks to review the wording, and the meeting agrees to keep watching and revisit next week. By then the decision is obvious and late.
 
-The difference is simple. A status update answers, “What did we see?” A decision meeting answers, “What will we do now, who owns it, and what budget or risk are we burning to do it?” Only the second changes the week.
+Leaders often respond by adding more data to the meeting: more charts, more alerts, more attendees. It is an understandable response, and it misses the larger question: is the meeting designed to share information, or to make decisions? A status meeting answers "what did we see?" A decision meeting answers "what will we do, who owns it and what cost do we accept?" Only the second changes the week.
 
-A real scene: Last month I sat in a Tuesday fraud huddle at a mid-market marketplace. Their model flagged a surge in gift-card purchases from new devices. Ops walked through dashboards. Product wondered about false positives. Finance asked about revenue impact. Legal wanted to review language in the checkout hold message. Thirty minutes in, they agreed to “monitor and revisit on Friday.”
+The broader pattern is familiar. In McKinsey's [2019 global survey on decision making](https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency), 61% of respondents said most of the time they spend making decisions is used ineffectively. AI adds to the number of decisions to make, so the cost of ineffective meetings rises with it.
 
-By Thursday night, chargebacks landed. Same attendees. Same charts. Now the decision was obvious but late. Everyone worked the weekend and still took a larger loss than the playbook hold would have caused. The AI did its job. The org didn’t.
+## What does AI change in meetings, and what does it not change?
 
-Average teams run status updates:
-- They invite many, but no one in the room can pull a lever without asking someone not present.
-- They review dashboards and sentiment, not thresholds and orders.
-- They generate tickets and follow-ups, not decisions with budgets and consequences.
-- They say “let’s monitor” because no one owns the risk trade-off.
+AI changes the volume and pace of items that could come to a meeting. A weekly review designed for a handful of issues now faces a steady stream of signals, each with evidence attached.
 
-Strong teams run decision meetings:
-- One named owner has pre-approved authority within guardrails. No extra sign-off for actions under that limit.
-- Each agenda item is a signal with a recommended order from a runbook (e.g., “Hold new-device gift cards for 24 hours if lift > X”).
-- They time-box discussion and end with a signed order in the channel: owner, action, scope, start/stop, and what metric may temporarily suffer.
-- They log every decision, outcome, and rollback for learning and audit.
+AI does not change who in the room has authority, how the agenda is built or how decisions are recorded. Those are design choices, and they determine whether more signals lead to more decisions or simply to longer meetings.
 
-Turn your next meeting into a decision meeting with five moves:
-1) Publish a one-page authority table. For each domain (fraud, reliability, pricing, LLM safety), name the owner and their budget for pain (e.g., “Fraud lead can increase review rate up to 3% of orders for 72 hours”). If it’s not written, it’s not real.
-2) Convert dashboards into playbooks. For top signals, pre-commit an action ladder: hold, throttle, feature flag, price delta, traffic reroute. Tie each rung to a threshold and owner.
-3) Bring the smallest room that can act. If someone’s signature is needed for a likely action, they must attend or delegate authority. Observers read the log later.
-4) Require a decision log entry before you move to the next item. The log has five fields: signal, order, owner, time window, risk/revenue impact allowed. No entry, no next slide.
-5) Cap alert volume to your decision capacity. If the team can only decide 10 things a week, you only surface your top 10 alerts. Everything else is batched for async review.
+## Find the value: which meetings should become decision meetings?
 
-What average teams do when AI volume spikes:
-- Add more charts and alerts to “get ahead of it.”
-- Lengthen meetings, invite more stakeholders, and still ask for post-meeting approvals.
-- Spread ownership across committees to “ensure alignment.”
-- Measure “coverage” and “visibility,” then wonder why time-to-action grows.
+Not every meeting should change. Some exist to inform, and that is legitimate. The candidates are recurring meetings where action is expected but rarely taken: operational reviews that end with "let's monitor", risk huddles where the same issue returns each week, and reviews of AI signals where the main output is follow-up tickets.
 
-What strong teams do when AI volume spikes:
-- Shrink the surface area. They kill alerts that no one can act on within their guardrails.
-- Pre-bind the top 5 actions to owners with budgeted risk. They spend a week arguing the budget, not a quarter arguing every incident.
-- Run a standing rollback window. Every order must include a reversal trigger and the exact check to test it.
-- Audit the decision log monthly. Actions that produced no change get culled; owners that never spend their budget get reset or replaced.
+Look at the last few weeks of such a meeting. How many items ended in a decision with an owner? How many returned unchanged? How many required an approval from someone who was not present? Those numbers show what the meeting is actually producing.
 
-A concrete example of the shift:
-- Average meeting: “Model shows 2x spike in promo abuse from new accounts. False positives look high. Let’s keep watching. Can Legal review the updated promo terms? Product, add a Jira to rate-limit redemptions. We’ll reconvene if it gets worse.” Outcome: nothing changes, loss accrues, another meeting scheduled.
-- Strong meeting: “Signal AB-237: promo-abuse spike on new accounts. Playbook step 2 recommends raising the redemption cooldown to 24 hours for new accounts. Authority: Growth Ops can accept up to a 1% drop in redemptions for 48 hours. Order: Apply cooldown now, start at 2 p.m., measure lift and revenue impact at 10 p.m., rollback if net margin delta > threshold. Owner: Growth Ops lead. Legal to review copy async.” Outcome: decision executed in minutes.
+**Decision for the sponsor:** which recurring meetings are expected to produce decisions, and how many decisions did they produce last month?
 
-The uncomfortable trade-off: you must choose between empowering frontline owners to hurt near-term metrics within a budget, or keeping control centralized and absorbing slow, compounding losses. There is no safe middle where everyone agrees and speed stays high. Speed costs trust up front. Delay costs money and reputation later.
+## Lead the change: how is a decision meeting designed?
 
-Make signals carry authority:
-- Every alert template includes the proposed order and who is authorized to execute it without asking.
-- Default bias is to act, then review. Inaction requires justification that is written and owned.
-- If an alert fires three times without a decision, it is suppressed until a playbook exists. No more paging people to admire the problem.
+The change is mostly in the rules of the meeting, not in its tools:
 
-Design the meeting mechanics so they cannot drift back to status:
-- Agenda is cut to items that have a proposed order. If a presenter shows a chart without a proposed order, they lose the slot next week.
-- The facilitator keeps a visible clock and reads back the order before moving on. “We are holding 2% of orders from new devices for 24 hours. Owner is X. Start now, end tomorrow at 6 p.m., rollback if A/B check fails.”
-- Decisions are posted to a channel with a standard format. Tooling can be crude. A pinned doc beats a polished dashboard that triggers nothing.
+- **Items arrive with a proposed action.** An item without a proposed action, an owner and a recommended limit waits until it has one. Presenting a chart without a proposal is not an agenda item.
+- **The smallest room that can act.** Anyone whose approval a likely action needs is present, or has delegated authority to someone who is. Observers read the outcome afterwards.
+- **An authority table.** A short, written table states what each owner may approve without further sign-off, as described in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
+- **Every item ends with a recorded decision.** The action, the owner, the time window, the cost accepted and the review date, or an explicit decision not to act and why.
+- **The agenda matches capacity.** If the team can make ten good decisions a week, the meeting takes the ten most important signals. The rest are batched or switched off.
 
-How to start this week:
-- Write the authority table for two domains. Get legal and finance to pre-approve the budgets. Expect arguments. Finish anyway.
-- Pick three alerts. For each, draft the action ladder and owners. Share it, ask for corrections, lock it for 30 days.
-- Run your next meeting with the log on screen. Refuse to end an item without an order or an explicit kill. People adapt fast when the rule is clear.
+An illustrative example, not a documented case: an item in a weekly review reads "promotion abuse up on new accounts" and shows three charts. In a decision meeting the same item arrives as a proposal: lengthen the redemption cooldown for new accounts to a day, owned by the growth operations lead, accepting a small drop in redemptions for two days, reviewed on Friday. The discussion is about whether to accept that cost, not about what the charts mean.
 
-AI made detection cheap. Decisions are still expensive. Spend your time where cost turns into impact: authority, playbooks, and meeting mechanics that end in orders.
+**Decision for the sponsor:** which meeting will change first, and who will hold it to the new rules?
 
-Next week, when that model pings you at 2 p.m., which room will you run: a status update that records concern, or a decision meeting that issues an order?
+## Prove the impact: is the meeting producing better decisions?
+
+The decision log is the evidence. Over several weeks it shows how many items ended in decisions, how long issues took from first appearing to being decided, and how often decisions needed approval outside the meeting.
+
+The log also shows quality. Review the decisions after their time windows end. Which actions changed results? Which were reversed? Which issues kept returning because the action did not address them? That review turns the meeting from a ritual into a learning system.
+
+**Decision for the sponsor:** on the evidence of the log, is the meeting producing decisions that improve results, and should the format be extended to other meetings?
+
+## What does it cost, and what is the simpler alternative?
+
+The costs are small in money and real in discomfort. People who are used to attending lose their seat; presenters must arrive with proposals rather than charts; owners must accept accountability for decisions that are recorded. Writing the first authority table usually involves disagreement.
+
+The simpler first step is to apply one rule to one meeting for a month: every item must end with a recorded decision or an explicit decision not to act. That single rule tends to change how people prepare, because nobody wants to bring an item that cannot end in a decision. Where the real delays sit outside the meeting, [where time is lost between an AI alert and action](/2026-10-15-ai-will-expose-your-slow-decisions-a-framework-to-cut-delay-under-risk/) offers a way to find them.
+
+## Questions to put to your team
+
+1. In our main operational meeting, how many items ended with a decision last month?
+2. How many decisions needed approval from someone who was not in the room?
+3. Do agenda items arrive with a proposed action, or with charts?
+4. Do we record what was decided, by whom and with what accepted cost?
+5. Does the number of items match how many decisions we can make well?
+
+## Frequently asked questions
+
+### What is the difference between a status meeting and a decision meeting?
+
+A status meeting shares information about what has happened, so that people are aware of it. A decision meeting exists to make choices: each item ends with an action, an owner, a time window and an accepted cost. Both have a place, but recurring status meetings are often treated as if they were decision meetings.
+
+### Who should attend a decision meeting?
+
+The smallest group that can approve the likely decisions, and no more. Anyone whose signature would be needed for a probable action should attend or delegate their authority to someone who does. People who only need to know the outcome can read the decision log afterwards.
+
+### What should a decision log record?
+
+For each decision: the signal or issue, the action decided, the owner, the time window, the cost or risk accepted, and when the result will be reviewed. The log makes decisions visible to people who were not present, supports audit and shows over time which kinds of decision actually improved results.
+
+## Sources
+
+- McKinsey & Company, [Decision making in the age of urgency](https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency), global survey, 2019.
+
+Meetings are where many organisations decide whether AI changes anything at all. Designing them to produce decisions, rather than awareness, is one of the least expensive changes a leader can make. More on this is in the [people and adoption](/topics/people-and-adoption/) topic.

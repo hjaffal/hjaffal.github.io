@@ -14,9 +14,8 @@ Resolve conflicts in this order:
 
 1. `_data/writing.yml` for the four reader topics and their questions.
 2. `aboutme.html` for the professional mission.
-3. `scripts/generate_post.py` for the current article-generation contract and validation rules.
-4. `_data/writing-config.yml` for supporting editorial vocabulary, topics, and ideas.
-5. Recent `_posts/*.md` for current voice and duplication checks.
+3. `_data/writing-config.yml` for supporting editorial vocabulary, topics, and ideas.
+4. Recent `_posts/*.md` for current voice and duplication checks.
 
 Do not import obsolete system text that conflicts with the current mission. In particular:
 

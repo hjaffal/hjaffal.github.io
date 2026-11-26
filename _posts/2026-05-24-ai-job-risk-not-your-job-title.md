@@ -1,77 +1,116 @@
 ---
+title: Why Is AI Job Risk About Your Work, Not Your Job Title?
+subtitle: Two people with the same title can face very different risks. What matters is how much of the work behind the title is repeatable execution, and how much connects output to judgement.
+share-title: AI Job Risk Is Not About Your Job Title
+share-description: 'AI job risk depends on the work behind your title: how much is repeatable execution and how much is judgement. How to assess your real exposure.'
+excerpt: Job titles hide very different kinds of work. Two people with the same title can face very different exposure to AI, depending on how much of their week is repeatable execution and how much connects output to decisions.
+tldr: Because the same title can describe very different work. AI is taking over repeatable execution, such as standard reports, first drafts and routine processing, wherever it sits. A manager whose week is mostly status reporting may be more exposed than an analyst who owns a decision. Look at the work behind your title, not the title itself, and move your time towards judgement.
+keywords:
+- AI job risk
+- will AI replace my job
+- job title AI exposure
+- AI and experience
+- AI proof career
+- safe from AI
+faq:
+- q: Is my job at risk from AI?
+  a: 'The more useful question is how much of your work is at risk. Look at the tasks behind your title: how many are repeatable execution that AI can already do, and how many connect output to judgement, relationships and decisions? Your answer to that question matters more than your title or your industry.'
+- q: Does experience protect you from AI?
+  a: 'Experience protects you when it gives you judgement: knowing which problems matter, what to recommend and how people will respond. Experience that consists mainly of knowing how to operate a process or produce a standard output protects you less, because AI is learning to do those things too.'
+- q: Will AI make most jobs disappear?
+  a: The evidence points mainly to transformation rather than disappearance. The International Labour Organization's 2025 study concludes that, because of the continued need for human input, most jobs are more likely to be transformed than made redundant. The change happens inside jobs, task by task.
+- q: Is learning to use AI tools enough?
+  a: It helps, but it is not enough on its own. Using AI tools well is becoming a basic expectation. If you use them only to produce the same outputs faster, your work remains as exposed as before. The protection comes from using the time they free for judgement and decisions.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "AI Job Risk Is Not About Your Job Title"
-share-title: "AI Job Risk Is Not About Your Job Title"
-share-description: "AI job risk is not only about whether your job can be automated. It is about whether your skills depend on repeatable tasks or on judgment, context, and decision-making."
 tags:
-  - ai-job-risk
-author: Hasan J.
+- ai-job-risk
 thumbnail-img: /assets/img/posts/2026-05-24-ai-job-risk-not-your-job-title.jpg
 share-img: /assets/img/posts/2026-05-24-ai-job-risk-not-your-job-title.jpg
 topic: fake-ai-safety-advice
 archetype: framework
-keywords:
-  - "AI proof career"
-  - "safe from AI"
-tldr: "AI job risk isn't about whether your title survives — it's about how much of your work depends on repeatable execution. A manager chasing updates, an analyst producing recurring dashboards, a coordinator moving information without influencing decisions — all exposed regardless of title. The safer skillset connects output to judgment: not just producing the report but explaining what it means, what decision it supports, what risk is hidden, and what action should follow. Being busy is not being protected. If your current tasks were automated tomorrow, ask what would still make you valuable. Build from there."
 ---
 
-For a long time, **experience gave people a strong sense of safety at work**. If you knew the process, the tools, the reports, the hidden steps, and the people behind the system, you had value. You were the person others came to when something was unclear. You knew where the numbers came from, which report to trust, and which part of the process always needed manual fixing.
+## Why does a job title tell you so little about AI risk?
 
-That kind of knowledge still matters. The mistake is assuming it protects people in the same way it used to. AI is changing the protection around work. It is not only making people faster. It is making some types of experience easier to copy, compress, or bypass.
+For a long time, experience gave people a strong sense of security at work. If you knew the process, the tools, the reports and the people behind the system, you were valuable. You were the person others came to when something needed doing properly.
 
-This is why the question "Will AI replace my job?" is too weak. It sounds important, but it pushes people toward the wrong answer. Most jobs will not disappear in one clean moment. What will happen first is quieter. Pieces of the job will become cheaper, faster, or less dependent on the person who used to do them.
+That knowledge still matters. The mistake is assuming it protects people in the same way as before. The common question, "will AI replace my job?", points people towards their title, and titles hide very different kinds of work. Two people with the same title can face very different risks, depending on what they actually do all week.
 
-A report that took half a day can become a prompt and a review. A first draft that needed a specialist can be created in minutes. A summary that used to require meetings can be generated from notes. A basic analysis that once needed manual effort can now be produced quickly enough to change expectations.
+The research points in the same direction. The [International Labour Organization's 2025 study](https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure) concludes that, because of the continued need for human input, most jobs are more likely to be transformed than made redundant. Transformation happens to the work inside a job, which is why the work is what to look at.
 
-That does not mean people become useless. It means the shape of their value is being tested.
+## What does AI change in jobs, and what does it not change?
 
-## The real risk is not your job title
+AI changes the value of repeatable execution wherever it sits in an organisation. A report that took half a day becomes a request and a review. A first draft that needed a specialist appears in minutes. A summary that someone spent an hour preparing arrives instantly.
 
-The real risk is how much of your work depends on repeatable execution. A title can sound safe while the work underneath it is exposed. A manager can spend most of the week chasing updates. An analyst can spend most of the month producing recurring dashboards. A coordinator can move information between teams without influencing the decision. A marketer can create content without shaping the message. A technical person can complete tickets without owning the trade-offs behind the system.
+AI does not change the value of connecting output to judgement: explaining what a report means, what should happen next, what risk to accept and who needs to act. That work exists in many roles, junior and senior, and it is the part of each role that holds its value.
 
-In each case, the title does not tell the full story. The work does.
+## Find the value: how much of your work is repeatable execution?
 
-This is where many people are underestimating AI job risk. They look at their role and ask whether the entire job can be automated. That is the wrong level of analysis. The better question is whether the most visible parts of the job can be reduced. If the answer is yes, the role may still exist, but the person doing it will need to move up the value chain.
+The real risk is how much of your work depends on repeatable execution. A title can sound senior while the work underneath it is exposed. A manager whose week is mostly compiling status reports may be more exposed than a junior analyst who owns a recurring decision.
 
-## The exposed skillset
+The exposed pattern is usually narrow: being given a task, completing it and passing the output to someone else. It is useful work, and it is the pattern AI handles best. The more durable pattern connects output to judgement: it produces the report and also explains what it means, what should be done and why.
 
-The exposed skillset is usually narrow. It depends on being given a task, completing it, and passing the output to someone else. It is useful, but it does not create enough decision value. If your work mostly stops at "here is the report," "here is the summary," or "here is the update," AI will put pressure on that work because AI is good at producing output.
+In my judgement, most people find a mix of both in their week, and the balance matters more than the title. A task-by-task method for measuring it is set out in [which tasks are most exposed to AI automation](/2026-05-08-tasks-most-exposed-to-ai-automation/), and the [AI Job Risk Analyzer](/ai-job-risk-analyzer/) offers a structured version.
 
-## The safer skillset
+**Decision for you:** looking past your title, what share of your week is repeatable execution, and what share connects output to judgement?
 
-The safer skillset is different. It connects output to judgment. It does not only produce the report. It explains what the report means, what decision it should support, what risk is hidden inside it, and what action should happen next. That shift matters because organizations do not need more content, more dashboards, or more summaries. They need better decisions.
+## Lead the change: how do you move from execution to judgement?
 
-This is the part many people miss. Learning AI tools is useful, but it is not enough. Prompting alone will not make someone future-proof. If a person can use AI but cannot judge the quality of the output, connect it to business impact, or explain the trade-offs clearly, they are still exposed.
+The shift is practical:
 
-The people who become harder to replace will be the ones who combine AI literacy with judgment, communication, and business understanding. They will know how to use AI, but they will also know when not to trust it. They will know how to move faster, but also how to slow down when the decision carries risk. They will know how to produce an answer, but more importantly, how to explain why the answer matters.
+- **Use AI for the execution.** Let tools produce the standard outputs, and check them.
+- **Add the "so what".** For every output you deliver, add what it means and what you recommend.
+- **Take on the next step.** Offer to own the decision your output informs, or at least to help make it.
+- **Stay busy with the right work.** Being busy is not the same as being protected. A full week of execution is still an exposed week.
 
-## Being busy is not being protected
+An illustrative example, not a documented case: two team leads in the same function hold the same title. One spends most of the week compiling updates for senior management. The other delegates the compiling to a tool and spends the time resolving the issues the updates reveal. On paper their roles are identical; in practice their exposure is very different.
 
-I see this clearly in analytics work. A dashboard can look useful because it is clean, updated, and full of metrics. But if nobody knows what decision it supports, it is not intelligence. It is decoration. The same logic applies to people. A person can be busy, responsive, and technically competent, but if their work does not influence decisions, their value is more fragile than they think.
+**Decision for you:** which piece of repeatable execution will you hand to AI, and what judgement will you add in its place?
 
-Being busy is not the same as being protected. Many busy tasks are exactly the tasks AI will reduce first. The safer question is uncomfortable but necessary: if your current tasks were automated tomorrow, what would still make you valuable?
+## Prove the impact: how do you show your work goes beyond execution?
 
-A weak answer is "I know how to do the process." That helps, but it may not be enough. A stronger answer is "I understand where the process breaks, how to improve it, which trade-offs matter, and how to guide the next decision." That is a different level of value.
+Keep a record of the decisions and outcomes your work influenced, not only the outputs you produced. Over time, that record describes your role more accurately than your title does, and it is what to bring to conversations about your development.
 
-## AI job risk is a skills problem
+Repeat the assessment of your week every few months. If the share of execution is falling and the share of judgement is rising, your position is strengthening, whatever your title says. How skills fit into this picture is discussed in [whether there really are AI-proof skills](/2026-05-20-ai-proof-skills-are-a-myth/).
 
-This is why AI job risk should be treated as a skills problem, not only a technology problem. The people most exposed are not always the least capable. Many are skilled people whose work has been shaped too narrowly. They were rewarded for execution, speed, and reliability. Those things still matter, but they are no longer enough on their own.
+**Decision for you:** what will you record to show your work goes beyond execution, and when will you reassess your week?
 
-The next layer of skills is broader. People need to understand AI, but also business impact. They need analytical thinking, but also communication. They need technical fluency, but also judgment. They need to know how to complete work, but also how to challenge weak assumptions and recommend action.
+## What does it cost, and what is the simpler alternative?
 
-That is the real future-proof skillset.
+Moving away from execution carries some risk. It means taking on work that is less predictable and more visible when it goes wrong, and it may mean letting go of tasks you are known for doing well. Some organisations still reward reliable execution more than judgement, at least for now.
 
-## Find out where you stand
+The simpler first step is to add one sentence of interpretation and one recommendation to the next output you deliver. It costs a few minutes and starts to change how your work is used. A broader view of positioning a career is set out in [how to future-proof your career in the age of AI](/2026-04-26-how-to-future-proof-your-career-in-the-age-of-ai/).
 
-This is also why I built the [AI Job Risk Analyzer](/ai-job-risk-analyzer/). It is not meant to predict whether your job will disappear. Nobody can honestly promise that. The point is to help you see where your current skills are exposed and what you may need to strengthen next.
+## Questions to ask yourself
 
-The assessment looks beyond your job title. It asks how you work, how you use AI, how close you are to decisions, how well you understand business impact, and whether your value depends mostly on tasks or judgment. At the end, it gives you a personalized dashboard that shows whether your current skillset is exposed, adaptable, or harder to replace.
+1. If I describe my week rather than my title, how much of it is repeatable execution?
+2. Which of my outputs could AI produce today with a little checking?
+3. Do I explain what my outputs mean and what should happen next?
+4. Which decision could I offer to own?
+5. Am I busy with execution, or with judgement?
 
-The result is not meant to comfort you. It is meant to give you a clearer signal. If your work is too task-based, you need to build stronger AI literacy, decision judgment, communication, and business understanding. If you are already moving toward judgment and impact, the goal is to keep strengthening that position.
+## Frequently asked questions
 
-AI will affect your work. That part is no longer theoretical. The useful question is what you do before the pressure becomes obvious.
+### Is my job at risk from AI?
 
-**[Take the AI Job Risk Assessment →](/ai-job-risk-analyzer/)**
+The more useful question is how much of your work is at risk. Look at the tasks behind your title: how many are repeatable execution that AI can already do, and how many connect output to judgement, relationships and decisions? Your answer to that question matters more than your title or your industry.
 
-For a deeper look at why the skills that matter are judgment and decision ownership, read [What Skills Should I Learn Because of AI](/2026-04-29-what-skills-should-i-learn-because-of-ai/). And for the position behind this argument, see [AI Job Risk](/positions/ai-job-risk/).
+### Does experience protect you from AI?
+
+Experience protects you when it gives you judgement: knowing which problems matter, what to recommend and how people will respond. Experience that consists mainly of knowing how to operate a process or produce a standard output protects you less, because AI is learning to do those things too.
+
+### Will AI make most jobs disappear?
+
+The evidence points mainly to transformation rather than disappearance. The International Labour Organization's 2025 study concludes that, because of the continued need for human input, most jobs are more likely to be transformed than made redundant. The change happens inside jobs, task by task.
+
+### Is learning to use AI tools enough?
+
+It helps, but it is not enough on its own. Using AI tools well is becoming a basic expectation. If you use them only to produce the same outputs faster, your work remains as exposed as before. The protection comes from using the time they free for judgement and decisions.
+
+## Sources
+
+- International Labour Organization, [Generative AI and Jobs: A Refined Global Index of Occupational Exposure](https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure), Working Paper 140, 2025.
+
+A title describes where you sit. Your exposure to AI depends on what you do there. Looking honestly at the work behind the title is the first step to changing it. More on this is in the [people and adoption](/topics/people-and-adoption/) topic.

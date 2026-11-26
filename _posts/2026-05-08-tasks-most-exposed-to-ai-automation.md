@@ -1,76 +1,126 @@
 ---
+title: Which Tasks Are Most Exposed to AI Automation?
+subtitle: AI changes tasks before it changes jobs. Four features make a task exposed, and a simple audit of your own week shows how much of it carries them.
+share-title: 'Tasks Most Exposed to AI Automation: A Practical Breakdown'
+share-description: AI automates tasks, not whole jobs. Repetitive, rule-based, digital and easy-to-check tasks are most exposed. How to audit your own week task by task.
+excerpt: Asking whether AI will replace a job is too blunt. A job is a bundle of tasks, and some are far more exposed than others. Four features predict exposure, and auditing your own week against them shows where to move your time.
+tldr: 'Tasks that are repetitive, follow clear rules or patterns, work with digital information and produce outputs that are easy to check are the most exposed: drafting standard documents, summarising, data entry, routine analysis and scheduling. Tasks that depend on context, relationships, physical presence or accountability for consequences are much less exposed. Audit your own week task by task, not by job title.'
+keywords:
+- tasks exposed to AI automation
+- which tasks will AI automate
+- AI task automation
+- job automation risk
+- information work dying
+- AI replacing information workers
+- data entry automation
+faq:
+- q: Does AI replace jobs or tasks?
+  a: Mostly tasks. A job is a bundle of tasks with different levels of exposure. AI tends to take over the most exposed tasks first, which changes what the job consists of before it changes whether the job exists. The International Labour Organization's 2025 study concludes that most jobs are more likely to be transformed than made redundant.
+- q: What makes a task exposed to AI?
+  a: 'Four features together: the task is repetitive, it follows clear rules or patterns, it works with digital information such as text, numbers or images, and its output is easy to check. A task with all four is highly exposed; a task with one or two is much less so.'
+- q: Which occupations are most exposed to generative AI?
+  a: The International Labour Organization's 2025 study found that clerical occupations remain the most exposed, because much of their work involves processing and producing standard information. Globally, it estimates that one in four workers is in an occupation with some exposure to generative AI, with exposure higher in high-income countries.
+- q: How do I audit my own exposure?
+  a: List the tasks you do in a typical week, estimate the hours each takes, and score each against the four features of exposure. Add up the hours in highly exposed tasks. The share of your week they represent is a better guide to your risk than your job title.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "Tasks Most Exposed to AI Automation: A Practical Breakdown"
-share-title: "Tasks Most Exposed to AI Automation: A Breakdown"
-share-description: "Data entry, report generation, scheduling, first-draft writing, and pattern matching are exposed. Here's why — and what's not."
 tags:
-  - ai-job-risk
-author: Hasan J.
+- ai-job-risk
 thumbnail-img: /assets/img/posts/ai-job-risk-og.png
 share-img: /assets/img/posts/ai-job-risk-og.png
 topic: death-of-information-work
 archetype: framework
-keywords:
-  - "information work dying"
-  - "AI replacing information workers"
-  - "data entry automation"
-tldr: "AI doesn't replace jobs wholesale — it replaces tasks. The exposed tasks share four traits: repetitive, rule-based, low-context, and low-consequence. Data entry, report generation, scheduling, first-draft writing, basic code generation, and pattern matching in structured data are all highly exposed. What's protected: stakeholder negotiation, escalation decisions, problem framing, accountability-bearing decisions, and relationship-dependent work. Audit your own role at the task level. Score each task against those four characteristics. Then deliberately shift your time toward the protected work — the judgment calls that require context, relationships, and skin in the game."
 ---
 
-People talk about AI replacing jobs, but that framing is too blunt. AI doesn't replace jobs wholesale — it replaces tasks. A job is a bundle of tasks, and some of those tasks are far more exposed than others. The useful question isn't "will my job be automated?" It's "which of my tasks are exposed, and what percentage of my role do they represent?"
+## Why is "will AI replace my job?" too blunt a question?
 
-## The characteristics that make tasks exposed
+Discussion about AI and work usually asks whether particular jobs will disappear. That framing is too blunt to be useful. A job is a bundle of tasks, and the tasks within a single job can differ greatly in how exposed they are. AI tends to change the task mix of a job long before it decides whether the job exists.
 
-Before listing specific tasks, it helps to understand why certain work is vulnerable. Tasks that are most exposed to AI automation share a few characteristics. They're repetitive — the same basic process happens over and over with minor variations. They're rule-based — there's a clear logic that determines the correct output. They're low-context — you don't need deep organizational knowledge or relationship history to do them. And they're low-consequence — if the output is slightly wrong, the cost of correction is small.
+The common question is whether your job is at risk. It is a reasonable worry, and it misses the more useful question: which of your tasks are exposed, how much of your week they take, and where you could move that time? That question has a practical answer.
 
-When a task has all four characteristics, it's a near-perfect automation target. When it has three out of four, it's likely exposed within the next few years. When it has one or two, it's probably safe for now but worth monitoring. This framework is more useful than asking "can AI do this?" because the answer to that question is increasingly "yes" for almost everything — the real question is whether it's worth automating given the risk and context requirements.
+The research supports the task view. The [International Labour Organization's 2025 study](https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure) assessed around 30,000 tasks and estimates that one in four workers globally is in an occupation with some exposure to generative AI. It finds clerical occupations most exposed, and concludes that most jobs are more likely to be transformed than made redundant.
 
-## The most exposed tasks
+## What does AI change in tasks, and what does it not change?
 
-**Data entry and data transformation.** Moving information from one format to another, cleaning datasets, standardizing fields, reconciling records between systems. This work is almost entirely repetitive and rule-based. AI handles it faster and with fewer errors than humans, especially when the source data is structured or semi-structured.
+AI changes the cost of tasks that process and produce standard information. Drafting a routine document, summarising a long thread, extracting data from forms or writing a first-pass analysis can now take minutes rather than hours.
 
-**Report generation.** Pulling numbers from a database, formatting them into a standard template, adding basic commentary ("revenue was up 3% week-over-week"). This is the bread and butter of many analyst roles, and it's deeply exposed. The inputs are structured, the outputs are predictable, and the commentary follows patterns that models replicate easily.
+AI does not change tasks that depend on context it lacks, relationships it cannot form, physical presence or accountability for consequences. Negotiating with a difficult stakeholder, deciding which risk to accept or caring for someone in person remain largely human.
 
-**Scheduling and coordination.** Finding meeting times, managing calendars, sending reminders, coordinating logistics. These tasks are rule-based (find a time that works for everyone given these constraints) and low-context (you don't need to understand the business strategy to book a room). AI assistants already handle this well.
+## Find the value: which of your tasks carry the features of exposure?
 
-**First-draft writing.** Blog posts, email sequences, product descriptions, internal communications, documentation. Any writing task where the goal is "produce a competent first draft on this topic" is exposed. The drafts aren't always perfect, but they're good enough to edit — which means the human role shifts from writer to editor.
+Four features together make a task highly exposed:
 
-**Basic code generation.** Writing boilerplate code, implementing standard patterns, converting requirements into straightforward functions. AI coding assistants handle this well for common languages and frameworks. The exposed work is implementation of known patterns, not architectural decisions or novel problem-solving.
+| Feature | What it means | Examples |
+|---|---|---|
+| Repetitive | Done in much the same way many times | Weekly reports, standard replies |
+| Rule- or pattern-based | Follows clear rules or recognisable patterns | Categorising requests, checking forms |
+| Digital information | Works with text, numbers or images | Summaries, data entry, routine analysis |
+| Easy to check | The output can be verified quickly | Drafts, translations, formatting |
 
-**Pattern matching in structured data.** Identifying anomalies in financial transactions, flagging potential compliance issues in documents, categorizing support tickets, routing requests based on content. Any task where you're applying known rules to structured inputs is automatable.
+Tasks with all four, such as drafting standard documents, summarising, data entry, routine analysis and scheduling, are the most exposed. Tasks with one or two are much less so. Tasks that require deep context, relationships, physical work or responsibility for outcomes resist automation.
 
-**Template-based design.** Resizing images, creating variations of existing designs, generating social media graphics from templates, formatting documents according to brand guidelines. The creative judgment isn't exposed, but the production work is.
+To audit your own role, list the tasks in a typical week, estimate the hours each takes and score each against the four features. In my judgement, the share of your week spent on highly exposed tasks is a better guide to your risk than your job title. If you want a structured version of this exercise, the [AI Job Risk Analyzer](/ai-job-risk-analyzer/) breaks a role down task by task.
 
-**Status reporting and progress tracking.** Compiling updates from multiple sources, writing status summaries, maintaining project trackers. This is coordination work that AI tools can aggregate automatically from existing systems.
+**Decision for you:** what share of your week goes to tasks with three or four features of exposure?
 
-I explored how this plays out for specific roles in [Will AI Replace Data Analysts?](/2026-04-08-will-ai-replace-data-analysts/) and [AI Job Risk for Project Managers](/2026-04-15-ai-job-risk-for-project-managers/). The pattern is consistent: the execution layer of any role is more exposed than the judgment layer.
+## Lead the change: how do you move your time towards less exposed work?
 
-## What's NOT exposed — and why
+The goal is not to panic but to shift time deliberately:
 
-Understanding what's protected is just as important. Tasks that resist automation share their own characteristics: they require deep context, involve high-stakes judgment, depend on relationships, or carry real accountability.
+- **Let AI do the exposed tasks.** Use tools for the drafting, summarising and routine analysis, and check their output.
+- **Volunteer for judgement work.** Take on tasks that need context and accountability: decisions, negotiations, problems without a standard answer.
+- **Build the context others lack.** Deep knowledge of your organisation's customers, processes and people is what makes your judgement worth more than a tool's output.
+- **Strengthen relationships.** Work that depends on trust between people is among the least exposed, and it compounds over time.
 
-**Stakeholder negotiation.** Convincing a VP to cut scope, managing a client who's unhappy, building consensus across teams with competing priorities. This requires reading people, understanding organizational dynamics, and adapting your approach in real time. AI can draft the email, but it can't sit in the room and navigate the politics.
+An illustrative example, not a documented case: an operations coordinator finds that over half of their week is spent compiling reports and updating schedules, both highly exposed. They hand the first drafts to an AI tool and use the time to take ownership of supplier escalations, which require judgement and relationships. Within a few months, their role is described differently by everyone around them.
 
-**Escalation decisions.** Knowing when something is a normal problem and when it's a crisis that needs executive attention. This requires pattern recognition built from experience, organizational context, and the judgment to weigh the cost of escalating too early versus too late. Getting it wrong has real consequences.
+**Decision for you:** which exposed task will you hand to AI first, and which less exposed responsibility will you take on with the time?
 
-**Problem framing.** Deciding what question to ask before anyone starts analyzing. "Should we look at churn by segment or by cohort? Are we solving for retention or for revenue? Is this a product problem or a pricing problem?" The framing determines everything downstream, and it requires understanding the business at a level that AI doesn't have access to.
+## Prove the impact: how do you know your position is improving?
 
-**Accountability-bearing decisions.** Any decision where someone needs to say "I chose this, and if it's wrong, I own the consequences." Approving a risky trade. Signing off on a launch. Deciding to fire a vendor. These require a human who will bear the outcome.
+Repeat the audit every few months. If the share of your week in highly exposed tasks is falling and the share in judgement work is rising, your position is improving, whatever happens to your job title.
 
-**Relationship-dependent work.** Mentoring a junior employee. Building trust with a new client. Managing a team through a difficult transition. These tasks depend on human connection, emotional intelligence, and the kind of trust that's built over time through consistent behavior.
+Keep a record of the decisions and responsibilities you take on, and what came of them. That record is the evidence that your role is moving towards work AI does not replace. How this plays out for specific roles is discussed in [will AI replace data analysts](/2026-04-08-will-ai-replace-data-analysts/) and [which parts of a project manager's job AI will automate](/2026-04-15-ai-job-risk-for-project-managers/).
 
-If you want to see where your specific role stands, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+**Decision for you:** when will you repeat the audit, and what share of exposed work would count as progress?
 
-## How to use this framework
+## What does it cost, and what is the simpler alternative?
 
-The practical application is straightforward: audit your own role at the task level. List everything you do in a typical week. For each task, score it against the four characteristics (repetitive, rule-based, low-context, low-consequence). Tasks that score high on all four are your most exposed work. Tasks that score low are your most protected work.
+Moving time away from exposed tasks costs effort and some risk. Judgement work is less predictable, harder to measure and more visible when it goes wrong. Some organisations still reward the volume of routine output, which can make the shift feel unwise in the short term.
 
-Then look at the ratio. If 70% of your week is spent on exposed tasks, you have a positioning problem — not because your job will disappear tomorrow, but because the economic pressure to automate that work is building. Your organization may not act on it this quarter, but the incentive is there, and it grows every time the tools improve.
+The simpler first step is to list only your three most time-consuming tasks and score each against the four features. That takes ten minutes and usually shows clearly where to start. Why your job title is a poor guide to your risk is discussed in [why AI job risk is about your work, not your job title](/2026-05-24-ai-job-risk-not-your-job-title/).
 
-The goal isn't to panic. It's to deliberately shift your time toward the protected tasks. Volunteer for the work that requires judgment. Take on responsibilities that involve stakeholder management, decision-making, and accountability. Build your reputation around the work that's hard to automate, so that when the exposed tasks do get automated, you're already positioned on the right side.
+It also helps to remember that exposure is not the same as loss. A highly exposed task that AI performs well can free time for more valuable work, if you use the time deliberately. Exposure becomes a problem mainly when the freed time is filled with more of the same kind of work.
 
-## Practical takeaway
+## Questions to ask yourself
 
-AI automation isn't a binary event — it's a gradient. Some of your tasks are highly exposed right now. Others are safe for years. The smart move is to know which is which and actively migrate your time and identity toward the protected work. Don't wait for your organization to restructure your role. Restructure it yourself, one decision at a time.
+1. Which of my weekly tasks are repetitive, rule-based, digital and easy to check?
+2. How many hours a week do those tasks take?
+3. Which of my tasks depend on context, relationships or accountability?
+4. Which exposed task could AI take on this month?
+5. What would I do with the time?
 
-If you want a structured way to evaluate your exposure and build a plan, [take the AI Job Risk Assessment](/ai-job-risk-analyzer/). It breaks down your tasks, scores your exposure, and shows you exactly which skills to build next.
+## Frequently asked questions
+
+### Does AI replace jobs or tasks?
+
+Mostly tasks. A job is a bundle of tasks with different levels of exposure. AI tends to take over the most exposed tasks first, which changes what the job consists of before it changes whether the job exists. The International Labour Organization's 2025 study concludes that most jobs are more likely to be transformed than made redundant.
+
+### What makes a task exposed to AI?
+
+Four features together: the task is repetitive, it follows clear rules or patterns, it works with digital information such as text, numbers or images, and its output is easy to check. A task with all four is highly exposed; a task with one or two is much less so.
+
+### Which occupations are most exposed to generative AI?
+
+The International Labour Organization's 2025 study found that clerical occupations remain the most exposed, because much of their work involves processing and producing standard information. Globally, it estimates that one in four workers is in an occupation with some exposure to generative AI, with exposure higher in high-income countries.
+
+### How do I audit my own exposure?
+
+List the tasks you do in a typical week, estimate the hours each takes, and score each against the four features of exposure. Add up the hours in highly exposed tasks. The share of your week they represent is a better guide to your risk than your job title.
+
+## Sources
+
+- International Labour Organization, [Generative AI and Jobs: A Refined Global Index of Occupational Exposure](https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure), Working Paper 140, 2025.
+
+AI changes work one task at a time. Knowing which of your tasks it is reaching first is the most practical way to decide where to put your effort. More on this is in the [people and adoption](/topics/people-and-adoption/) and [opportunities](/topics/opportunities/) topics.

@@ -1,68 +1,115 @@
 ---
+title: How Do You Stop Teams Gaming the Metrics They Are Judged On?
+subtitle: 'When a measure becomes a target, people learn to move the number. The answer is not more policing but better design: paired measures, checks against reality and targets that reward results.'
+share-title: How Do You Stop Teams Gaming the Metrics They Are Judged On?
+share-description: When a measure becomes a target it gets gamed. Pair measures, check numbers against reality and reward outcomes so teams improve results, not reports.
+excerpt: Any measure tied to pay, promotion or reputation will be moved by the people judged on it, sometimes by improving results and sometimes by changing the number. Leaders reduce gaming by pairing measures, checking them against independent evidence and rewarding outcomes rather than reported activity.
+tldr: By designing measures that are hard to move without improving the result. Pair each target with a counter-measure that would reveal gaming, check reported numbers against independent evidence, reward outcomes rather than activity, and watch for numbers that look better than reality. When a measure becomes a target, people will move it; good design makes improving the result the easiest way to do so.
+keywords:
+- metric gaming
+- Goodhart's law
+- KPI manipulation
+- performance targets
+- metric manipulation
+- gaming metrics
+faq:
+- q: What is Goodhart's law?
+  a: It is the observation that a measure loses its value once it becomes a target, because people change their behaviour to move the number rather than the thing it represented. The best-known wording, "When a measure becomes a target, it ceases to be a good measure", comes from the anthropologist Marilyn Strathern's 1997 paper on university audit.
+- q: What is a counter-measure?
+  a: A counter-measure is a second metric reported alongside a target to reveal whether the target is being met in the wrong way. For example, on-time delivery is paired with customer complaints about late delivery, and tickets closed with tickets reopened. If the target improves while its counter-measure worsens, gaming or a reporting problem is likely.
+- q: Is metric gaming always dishonest?
+  a: 'No. Much of it is people responding rationally to the incentives they are given: focusing on what is measured, choosing easy cases or recording work in the most favourable way. That is why the main fix is better design of measures and incentives, with policing reserved for the rarer cases of deliberate falsification.'
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "Your Metrics Are Being Gamed: Most BI teams and analysts operate under a delusion"
-share-title: "Metric Manipulation: Reporting Is Not Intelligence"
-share-description: "Metrics aren't neutral; they're targets. If yours don't trigger action, you're not getting intelligence – you're getting gamed. Learn to spot metric manipulation."
 tags:
-  - risk-intelligence
+- risk-intelligence
 topic: metric-manipulation
 archetype: provide
-keywords:
-  - "metric manipulation"
-  - "gaming metrics"
-  - "Goodhart's law"
-author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-08-your-metrics-are-being-gamed-most-bi-teams-and-analysts-operate-under-a-delusion.webp
 share-img: /assets/img/posts/2026-06-08-your-metrics-are-being-gamed-most-bi-teams-and-analysts-operate-under-a-delusion.webp
-tldr: "Metrics aren't neutral truths — they're targets. And targets get gamed. As soon as a metric is tied to performance or visibility, people optimize for the chart, not the outcome. Green dashboards can mask fraud, churn, and operational decay because the definitions are narrow, the incentives are miswired, and nobody checks whether the number actually reflects reality on the ground. Stop treating metrics as objective. Design them as tripwires: define the threshold that demands action, name who acts, and build counter-metrics that catch manipulation. If your 'on-time delivery' is always 98% but complaints are rising, someone is gaming you."
 ---
 
-# Your Metrics Are Being Gamed: Why Most Reporting Is Not Intelligence
+## Why do measures stop working once people are judged on them?
 
-You're looking at a green dashboard, aren't you? Everything looks fine. But out in the field, the operation is bleeding. This isn't an accident. It's often by design, a direct result of how you're using — or misusing — `metric manipulation`.
+Measures are useful because they describe something real. Once a measure is tied to pay, promotion or reputation, the people judged on it have a reason to move the number, and there are usually two ways to do so: improve the result, or change how the result is recorded. Over time the second way tends to grow, and the measure drifts away from the reality it once described.
 
-**Reporting explains what happened. Intelligence changes what happens next. If your metrics do not trigger action, they are decoration. They tell you *what* without telling you *where* to fight.**
+Leaders who discover gaming usually respond with tighter definitions and more checking. That helps, and it misses the larger question: have we designed our measures and incentives so that improving the result is the easiest way to improve the number? If not, people will keep finding the other way.
 
-### The Fiction of Flawless Metrics
+The idea is long established. Its best-known wording, "When a measure becomes a target, it ceases to be a good measure", comes from the anthropologist Marilyn Strathern's [1997 paper on audit in British universities](https://en.wikipedia.org/wiki/Goodhart%27s_law), restating an observation by the economist Charles Goodhart. The cost of ignoring it can be severe. In 2016 the US Consumer Financial Protection Bureau [fined Wells Fargo $100 million](https://www.consumerfinance.gov/about-us/newsroom/consumer-financial-protection-bureau-fines-wells-fargo-100-million-widespread-illegal-practice-secretly-opening-unauthorized-accounts/) after employees, under pressure to meet sales targets, opened roughly 1.5 million deposit accounts that may not have been authorised by customers.
 
-Most BI teams and analysts operate under a delusion: that metrics are neutral, objective truths. They aren't. As soon as a metric is tied to performance, a bonus, or even just visibility, it becomes a target. And targets get gamed. This is classic [Goodhart's Law](https://en.wikipedia.org/wiki/Goodhart%27s_law) in action: "When a measure becomes a target, it ceases to be a good measure." It's not about malice; it's about human nature reacting to incentives. You've created the incentives, you own the outcome.
+## What does AI change about metric gaming, and what does it not change?
 
-I see companies spend millions on fancy dashboards, only to have their operational reality diverge wildly from the pretty charts. This isn't just a waste of money; it's a dangerous form of [Dashboard Sedation](/lexicon/dashboard-sedation/), lulling leadership into a false sense of security while the underlying problems fester. These are not intelligence systems; they're digital wallpaper.
+AI changes both sides. It can detect gaming patterns, such as numbers that move in suspicious steps or records that look better than the evidence around them. It can also make gaming easier, by producing plausible records and reports quickly.
 
-### When Green Means Go to Hell
+AI does not change the incentive. If people are rewarded for a number rather than a result, they will move the number, with or without AI. And a model trained on gamed data learns the gaming as if it were reality.
 
-What happens when you ignore `metric manipulation`? You get a system that incentivizes bad behavior. Think about the Wells Fargo scandal. Employees, pressured to meet aggressive sales targets, created millions of fake customer accounts. The metric was hit, the dashboard glowed green, but the bank was committing fraud on an industrial scale. 
+## Find the value: which of our targets are most likely to be gamed?
 
-You get operations that optimize for the chart, not the customer.
+Gaming is most likely where three conditions meet: the measure carries significant reward or consequence, the people measured control how it is recorded, and nobody checks it against independent evidence.
 
-*   **Weak teams:** Obsess over hitting the reported number. They hide issues, adjust definitions, or push problems to other departments to keep their metrics "clean." Their dashboards are always green, but their balance sheets are red. They're decorating, not acting.
-*   **Strong teams:** Treat metrics as **tripwires**. They design them to expose friction, flag anomalies, and force decisions. They expect red, because red means a problem has surfaced and can be addressed. Their focus is on the *action* the metric triggers, not the metric itself.
+Look at the targets that matter most to pay and promotion, and ask of each: could the people judged by it improve the number without improving the result? Where the answer is yes, look for signs: a target met suspiciously exactly, a measure improving while customer complaints, reopened cases or losses rise, or results that look much better in one team than in comparable ones.
 
-If your "on-time delivery" metric is always 98%, but customer complaints about late shipments are rising, you're either blind or complicit. Someone's **gaming metrics**, and you're letting them.
+**Decision for the sponsor:** which of our high-stakes targets could be met without improving the result, and is there any sign that they are?
 
-## Actionable Intelligence: From Reporting to Radar
+## Lead the change: how do leaders design measures that resist gaming?
 
-So, how do you stop `gaming metrics` and turn reporting into intelligence? You have to design for action from the ground up. This means building decision frameworks *into* your metric design.
+Four design choices make gaming harder and improvement easier:
 
-**Recommendation:** For every key metric, define the "if this, then that" action path. Don't just report the number; report the *thresholds* that demand a specific operational response, and assign the authority to *act*.
+- **Pair every target with a counter-measure.** Report on-time delivery alongside complaints about late delivery; tickets closed alongside tickets reopened; sales alongside cancellations. If the target improves while its counter-measure worsens, look closer.
+- **Check against independent evidence.** Compare reported numbers periodically with evidence the measured team does not control: customer surveys, samples of records, physical counts.
+- **Reward outcomes, not activity.** Tie incentives to results that are hard to fake, such as customers retained or losses reduced, rather than to counts of work done.
+- **Make it safe to report bad news.** Where a red number brings punishment, people hide red numbers. Leaders who treat honest bad news as useful get more of it.
 
-Consider "Apex Logistics," a fictional delivery company. Their old metric was "On-Time Delivery Rate," reported weekly. It looked great. But customers were furious about missed delivery windows. Why? Drivers, incentivized by the rate, were logging deliveries as "on-time" even if they dropped the package at the wrong house or an unsecured location, then circled back later. The dashboard was green. The customers were gone.
+The related problem of measures that reassure without informing is covered in [what a false-confidence metric is and how to spot one](/2026-06-02-false-confidence-metrics-are-a-digital-opiate-for-operations/).
 
-Apex re-designed their metrics as a **radar system**:
+An illustrative example, not a documented case: a delivery team reports a high on-time rate every week while complaints about late deliveries rise. Pairing the two measures shows that deliveries are being marked as delivered before they arrive. The fix is not punishment but a counter-measure and an independent check.
 
-1.  **Metric:** "Actual vs. Reported Delivery Time Discrepancy"
-    *   **Trigger:** If (Actual Delivery Time - Reported Delivery Time) > 15 minutes for >5% of a driver's routes in a day.
-    *   **Action:** System flags driver, routes for review, supervisor notified, immediate "Why was this?" audit.
-2.  **Metric:** "Customer Complaint % for On-Time Deliveries"
-    *   **Trigger:** If Customer Complaint % > 1% AND On-Time Delivery Rate > 95% (a counter-intuitive flag).
-    *   **Action:** Automated alert to operations manager, a deep dive into those specific "on-time" deliveries, and a review of the underlying reporting mechanism. This signals potential [Reporting vs Intelligence Framework](/references/reporting-vs-intelligence/) breakdown.
+**Decision for the sponsor:** what counter-measure will each high-stakes target carry, and which incentives need to change?
 
-This approach transforms a passive number into an active signal demanding a decision. It forces accountability. It means managers don't just see a number; they see a problem with a pre-wired response.
+## Prove the impact: are the numbers and the reality moving together?
 
-### Make the Hard Choice
+The evidence that gaming has reduced is that reported measures and independent evidence now move together. Track each target alongside its counter-measure and the periodic independent checks. Where they diverge, investigate before celebrating.
 
-Are your dashboards a sophisticated radar system, helping you navigate digital battlefields and spot threats before they hit? Or are they just pretty lights, designed to make you feel good until the inevitable crash?
+Review incentive outcomes too. Are rewards going to teams whose results, not just whose numbers, improved? Over time, the gap between what is reported and what is real should narrow. Choosing which measures deserve to exist at all is covered in [which three questions decide whether a metric is worth keeping](/2026-11-12-if-a-metric-wont-change-your-next-move-cut-it-three-questions-that-make-numbers-intelligent/).
 
-If this resonates, I write about this every week. [Subscribe to The Second Mind](/newsletter/) — Join 1,000+ operators who use this intelligence to shorten their signal-to-action time.
+Be careful with the first findings. When a counter-measure reveals that a target has been met in the wrong way, the instinct is to blame individuals. Usually the incentive and the measure created the behaviour, and changing them is what stops it from returning under a new name.
 
-For a 6-step playbook to kill metrics nobody acts on, read [Kill Metrics That Don't Change Decisions](/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/). And for the full thesis on why reporting is not intelligence, see [Risk Intelligence](/positions/risk-intelligence/).
+**Decision for the sponsor:** on the evidence, are our reported measures and independent checks moving together, and where do they still diverge?
+
+## What does it cost, and what is the simpler alternative?
+
+The costs include building counter-measures, running independent checks and redesigning incentives, which can be politically difficult. Reports also become less flattering, at least at first, as gaming stops inflating them.
+
+The simpler first step is to take the single target most closely tied to pay and add one counter-measure to its report. That alone often reveals whether the target has been drifting away from reality, and it costs very little.
+
+Senior leaders set the tone here. If they ask how a number was achieved as often as whether it was achieved, teams learn that the result matters more than the report, and gaming loses much of its appeal without any new rules.
+
+## Questions to put to your team
+
+1. Which of our targets could be met without improving the result?
+2. Does each important target have a counter-measure that would reveal gaming?
+3. When did we last check reported numbers against independent evidence?
+4. Do our incentives reward outcomes or reported activity?
+5. Is it safe for a team to report a red number?
+
+## Frequently asked questions
+
+### What is Goodhart's law?
+
+It is the observation that a measure loses its value once it becomes a target, because people change their behaviour to move the number rather than the thing it represented. The best-known wording, "When a measure becomes a target, it ceases to be a good measure", comes from the anthropologist Marilyn Strathern's 1997 paper on university audit.
+
+### What is a counter-measure?
+
+A counter-measure is a second metric reported alongside a target to reveal whether the target is being met in the wrong way. For example, on-time delivery is paired with customer complaints about late delivery, and tickets closed with tickets reopened. If the target improves while its counter-measure worsens, gaming or a reporting problem is likely.
+
+### Is metric gaming always dishonest?
+
+No. Much of it is people responding rationally to the incentives they are given: focusing on what is measured, choosing easy cases or recording work in the most favourable way. That is why the main fix is better design of measures and incentives, with policing reserved for the rarer cases of deliberate falsification.
+
+## Sources
+
+- Marilyn Strathern, "'Improving ratings': audit in the British University system", *European Review*, 5(3), 1997, as summarised in [Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law).
+- Consumer Financial Protection Bureau, [CFPB fines Wells Fargo $100 million for widespread illegal practice of secretly opening unauthorized accounts](https://www.consumerfinance.gov/about-us/newsroom/consumer-financial-protection-bureau-fines-wells-fargo-100-million-widespread-illegal-practice-secretly-opening-unauthorized-accounts/), September 2016.
+
+People will move whatever number they are judged on. The leader's task is to make improving the result the easiest way to move it. More on this is in the [outcomes and evidence](/topics/outcomes-and-evidence/) topic.

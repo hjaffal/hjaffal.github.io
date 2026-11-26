@@ -88,16 +88,13 @@ export function getApiUrls() {
 
 // --- Navigation ---
 
-// Track new-post panel initialization state
-let newPostPanelInitialized = false;
-let newPostPanelDefaultHTML = null;
 
 /**
  * Switch to a named panel.
  * Hides all panels, shows the target, updates sidebar active state,
  * dynamically imports and calls the appropriate panel module loader.
  *
- * @param {string} panelName - Panel identifier (e.g. 'dashboard', 'posts', 'new-post')
+ * @param {string} panelName - Panel identifier (e.g. 'dashboard', 'compose', 'subscribers')
  */
 export async function switchPanel(panelName) {
   const navItems = document.querySelectorAll('.nla-nav-item');
@@ -115,10 +112,6 @@ export async function switchPanel(panelName) {
   const panel = $('panel-' + panelName);
   if (panel) { panel.classList.add('active'); panel.hidden = false; }
 
-  // Hide post detail panel when switching panels
-  const detailPanel = document.getElementById('post-detail-panel');
-  if (detailPanel) detailPanel.hidden = true;
-
   // Close mobile sidebar
   const sidebar = $('nla-sidebar');
   const overlay = $('nla-sidebar-overlay');
@@ -129,32 +122,6 @@ export async function switchPanel(panelName) {
   if (panelName === 'dashboard' || panelName === 'overview') {
     const { loadOverview } = await import('./dashboard.js');
     loadOverview();
-  } else if (panelName === 'posts') {
-    const { loadPostsPanel } = await import('./posts.js');
-    loadPostsPanel();
-  } else if (panelName === 'new-post') {
-    const { initNewPostPanel, resetToCreateMode } = await import('./new-post.js');
-    if (!newPostPanelInitialized) {
-      // Store default HTML on first init for restore capability
-      const newPostPanel = $('panel-new-post');
-      if (newPostPanel && !newPostPanelDefaultHTML) {
-        newPostPanelDefaultHTML = newPostPanel.innerHTML;
-      }
-      initNewPostPanel();
-      newPostPanelInitialized = true;
-    } else if (!$('post-creation-form')) {
-      // Panel was replaced by editPost, restore it
-      const newPostPanel = $('panel-new-post');
-      if (newPostPanel && newPostPanelDefaultHTML) {
-        newPostPanel.innerHTML = newPostPanelDefaultHTML;
-        newPostPanelInitialized = false;
-        initNewPostPanel();
-        newPostPanelInitialized = true;
-      }
-    } else {
-      // Panel exists but may be in edit mode — reset to create mode
-      resetToCreateMode();
-    }
   } else if (panelName === 'compose') {
     const { loadPosts } = await import('./compose.js');
     loadPosts();
@@ -234,7 +201,7 @@ window.switchPanel = switchPanel;
  *
  * @param {Object} config
  * @param {Object} config.firebaseConfig - Firebase app config (apiKey, authDomain, projectId)
- * @param {Object} config.api - API endpoint URLs (send, analytics, subscribers, import, createPost, generatePost)
+ * @param {Object} config.api - API endpoint URLs (send, analytics, subscribers, import, ...)
  */
 export function init(config) {
   // Store API URLs for use by apiFetch and panel modules

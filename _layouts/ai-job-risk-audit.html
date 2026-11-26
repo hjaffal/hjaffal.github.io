@@ -1,7 +1,7 @@
 ---
 layout: base
 css:
-  - "/assets/css/ai-job-risk-audit.css"
+  - "/assets/css/reading.css"
 ---
 
 <script type="application/ld+json">
@@ -37,71 +37,29 @@ css:
 }
 </script>
 
-<main class="audit-layout-wrapper">
-  <div class="page-with-sidebar">
-    <div class="page-main post-main">
+<main class="pub-page article-page audit-page">
+  <div class="pub-wrap">
+    <nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/tools/' | relative_url }}">Tools</a><span aria-hidden="true">/</span><a href="{{ '/ai-job-risk-directory/' | relative_url }}">AI Job Risk Directory</a><span aria-hidden="true">/</span><span aria-current="page">{{ page.title | remove: 'AI Job Risk Audit: ' }}</span></nav>
+    <header class="article-heading">
+      <div class="article-topics"><a href="{{ '/ai-job-risk-directory/' | relative_url }}">AI Job Risk Directory</a></div>
+      <h1>{{ page.title }}</h1>
+      <p class="article-subtitle">{{ page.subtitle }}</p>
+    </header>
 
-      <div class="post-hero-accent">
-        <div class="post-hero-accent-inner">
-          <div class="post-hero-accent-shape"></div>
-          <div class="post-hero-accent-shape post-hero-accent-shape-2"></div>
-        </div>
-      </div>
+    <dl class="audit-figures">
+      <div><dt>Automation index</dt><dd class="audit-figure-result">{{ page.automation_index }}%</dd></div>
+      <div><dt>Disruption class</dt><dd>{{ page.disruption_class }}</dd></div>
+      <div><dt>Forecast window</dt><dd>24 months</dd></div>
+    </dl>
 
-      <div class="post-heading">
-        <span class="post-heading-tags"><a href="/ai-job-risk-directory/">AI JOB RISK DIRECTORY</a></span>
-        <h1>{{ page.title }}</h1>
-        <p class="post-heading-subtitle">{{ page.subtitle }}</p>
-      </div>
+    <div class="article-reading-column">
+      <div class="article-prose">{{ content }}</div>
 
-      <div class="audit-meta-bar">
-        <div class="audit-meta-item">
-          <span class="audit-meta-label">Automation Index</span>
-          {% if page.automation_index >= 75 %}
-          <span class="dir-badge dir-badge-critical audit-badge-lg">{{ page.automation_index }}%</span>
-          {% elsif page.automation_index >= 60 %}
-          <span class="dir-badge dir-badge-high audit-badge-lg">{{ page.automation_index }}%</span>
-          {% elsif page.automation_index >= 40 %}
-          <span class="dir-badge dir-badge-medium audit-badge-lg">{{ page.automation_index }}%</span>
-          {% else %}
-          <span class="dir-badge dir-badge-low audit-badge-lg">{{ page.automation_index }}%</span>
-          {% endif %}
-        </div>
-        <div class="audit-meta-item">
-          <span class="audit-meta-label">Disruption Class</span>
-          <span class="audit-meta-value">{{ page.disruption_class }}</span>
-        </div>
-        <div class="audit-meta-item">
-          <span class="audit-meta-label">Forecast Window</span>
-          <span class="audit-meta-value">24 Months</span>
-        </div>
-      </div>
-
-      <article class="blog-post audit-content">
-        {{ content }}
-      </article>
-
-      <div class="audit-cta-block">
-        <div class="audit-cta-inner">
-          <i class="fas fa-crosshairs audit-cta-icon"></i>
-          <div>
-            <h3 class="audit-cta-title">This is a generalized benchmark</h3>
-            <p class="audit-cta-desc">Your actual risk depends on your specific tasks, company context, and political capital. Get a personalized assessment.</p>
-          </div>
-          <a href="/ai-job-risk-analyzer/" class="audit-cta-btn">Analyze My Exact Role →</a>
-        </div>
-      </div>
-
-      <nav class="audit-nav" aria-label="Directory navigation">
-        <a href="/ai-job-risk-directory/" class="audit-nav-link">← Back to Full Directory</a>
-      </nav>
-
+      <aside class="audit-next">
+        <h2>This is a general benchmark.</h2>
+        <p>The figures above describe the role in general. Your own exposure depends on your specific tasks, your organisation and how decisions are made there. The analyzer builds a view from the work you actually do.</p>
+        <div class="audit-next-actions"><a class="brand-button" href="{{ '/ai-job-risk-analyzer/' | relative_url }}">Analyse your own role</a><a class="pub-link" href="{{ '/ai-job-risk-directory/' | relative_url }}">Back to the directory →</a></div>
+      </aside>
     </div>
-
-    <aside class="page-sidebar">
-      {% include newsletter.html %}
-      {% include sidebar-latest-roles.html %}
-      {% include sidebar-recent-ai-job-risk.html %}
-    </aside>
   </div>
 </main>

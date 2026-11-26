@@ -18,29 +18,29 @@
 }
 
 .result-signal-fail {
-  background: #FEF2F2;
-  border-color: #FECACA;
+  background: #EEE9FF;
+  border-color: #D4CBFF;
 }
 
 .result-signal-pass {
-  background: #ECFDF5;
-  border-color: #A7F3D0;
+  background: #EEE9FF;
+  border-color: #D4CBFF;
 }
 
 .result-signal-number {
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   min-width: 40px;
   text-align: center;
 }
 
 .result-signal-fail .result-signal-number {
-  color: #DC2626;
+  color: #C93A22;
 }
 
 .result-signal-pass .result-signal-number {
-  color: #10B981;
+  color: #8B6CFF;
 }
 
 .result-signal-text strong {

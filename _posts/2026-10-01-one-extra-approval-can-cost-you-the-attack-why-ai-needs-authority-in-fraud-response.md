@@ -1,66 +1,106 @@
 ---
+title: How Many Approvals Can Fraud Response Afford?
+subtitle: During a live attack, each extra approval costs time, widens the response and teaches attackers. The answer is to move most approvals to before the attack and after it.
+share-title: How Many Approvals Can Fraud Response Afford?
+share-description: Each approval during a live fraud attack costs time and widens the response. Move approvals before and after the attack, inside an agreed risk budget.
+excerpt: AI finds fraud attacks quickly, but the response often waits for approvals that were designed for calmer decisions. Leaders can keep control and gain speed by approving in advance, reviewing afterwards and giving the person on duty a bounded risk budget.
+tldr: Very few during the attack itself. Each approval adds delay while attackers adapt, and late responses tend to be broader and harsher on genuine customers. Keep control by moving approvals to before the attack, through agreed tiers and pre-cleared actions, and to after it, through a prompt review. During the attack, the person on duty acts within a bounded risk budget.
+keywords:
+- fraud response process
+- fraud incident response
+- fraud approval process
+- AI fraud detection response
+faq:
+- q: Why do approvals slow down fraud response?
+  a: 'Each approval adds a handoff: explaining the situation, framing the risk and waiting for an answer. During a live attack those minutes matter, because attackers adapt quickly. The delay also tends to widen the eventual response, since by the time approval arrives the problem has spread and a narrow, precise action is no longer enough.'
+- q: What is a risk budget in fraud response?
+  a: 'A risk budget is a written limit on the cost the person on duty may incur to contain an attack without asking: for example, how much extra friction for genuine customers, or how much revenue at risk, for how long. Within the budget they act; beyond it they escalate. The budget is set and reviewed by a senior owner.'
+- q: How do you keep control if approvals are removed during an attack?
+  a: By moving them rather than removing them. Senior leaders, legal and compliance approve tiers of response and customer messages in advance. Every action during the attack is logged, reversible where possible and reviewed promptly afterwards. Control shifts from permission in the moment to design beforehand and accountability after.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "One Extra Approval Can Cost You the Attack: Why AI Needs Authority in Fraud Response"
-subtitle: "AI multiplies detection but cannot sign the order. In a live fraud wave, the extra approval step is the bottleneck you pay for."
-share-description: "AI exposes slow decisions. In a live fraud attack, one extra approval can turn fast detection into expensive noise. This post breaks down the failure pattern, the root cause, and what strong teams do differently."
 tags:
-  - ai-decision-operations
+- ai-decision-operations
 topic: ai-topic
 archetype: analyze
-author: Hasan J.
-tldr: "In a live fraud attack, AI accelerates detection but cannot authorize action. The extra approval step most teams add—director review, legal check, or cross-team sign-off—turns minutes into losses. The real issue is not the model; it’s unclear decision rights and unbounded risk. Strong teams pre-commit authority, thresholds, and a risk budget to the on-call, with reversible actions and a rapid review window. Average teams send alerts into group chats and wait for consensus. Choose speed with controlled authority or accept that your AI will be expensive noise during real incidents."
 ---
 
-Claim: during a live fraud attack, the cost of one extra approval is measured in lost money and lost time. AI will find the spike; the approval step decides whether you contain it or watch it spread.
+## Why does one extra approval matter during a fraud attack?
 
-AI has made detection fast and cheap. It surfaces anomalies in seconds and flags patterns humans would miss. But the workflow after detection often still runs through slow, human-centered gates. That gap is where you pay.
+AI has made fraud detection fast. Models and rules can recognise credential stuffing, card testing or abuse of an offer within minutes. In many organisations, the response then waits: the analyst on duty proposes an action, tags a manager, the manager involves legal because genuine customers will be affected, and a second manager asks for more evidence. Each step is reasonable. Together, they turn a fast detection into a slow response.
 
-Here’s a real pattern from a marketplace team I supported. A credential-stuffing wave rolled in late afternoon, then pivoted to card testing. Their models and rules lit up right away. Precision was solid. The on-call analyst had to raise friction and cut a few payment routes. None of that could ship without director sign-off.
+Leaders usually see approvals as a safeguard, and in calm conditions they are. During a live attack the question changes: how many approvals can the response afford before the delay costs more than the risk the approvals were meant to control?
 
-The analyst posted the proposed cutoff changes in the alert channel, tagged a director, and waited. The director pulled in legal because the friction would hit good users. A second director wanted to see more traces before approving a block on one processor. People were careful. Everyone was acting in good faith.
+The scale of the problem makes the question worth asking. Criminals stole £1.17 billion through fraud in the UK in 2024, according to [UK Finance's Annual Fraud Report 2025](https://www.ukfinance.org.uk/policy-and-guidance/reports-and-publications/annual-fraud-report-2025).
 
-The attackers didn’t wait. They moved sideways to weaker SKUs and hit the buyflow through a low-risk fulfillment option. By the time approval landed, the team had to go broader and harsher. Good users felt it. Customer support queues spiked. Risk and ops spent the evening cleaning up and the week repairing trust with sellers and their acquirer.
+## What does AI change in fraud response, and what does it not change?
 
-The extra approval step wasn’t a formality. It was the hinge. It turned a precise response into a blunt one. It turned a controlled, reversible action into a heavier, public mess.
+AI changes the speed of detection and the precision of the evidence. It can show which accounts, channels or payment routes are involved, often before the losses are large.
 
-Why does this happen? Because detection has authority only if the person who sees it can order the action it implies. AI makes signals abundant. It does not grant the right to pull the lever. When the lever lives one or two levels up, you convert fast detection into a waiting room.
+AI does not change who may act. If the authority to add friction, slow traffic or pause a payment route sits two levels above the person who sees the attack, fast detection simply means the organisation knows sooner that it is waiting.
 
-The cost of one extra approval shows up in four compounding ways:
+## Find the value: what does each approval cost during an attack?
 
-- Time dilation. Every handoff includes context transfer, risk framing, and back-and-forth. During a live attack, that delay gives the adversary learning cycles. They adapt faster than you escalate.
+The cost of an approval during an attack shows up in four ways. The first is time: each handoff requires context, framing and an answer, while attackers keep adapting. The second is scope: the longer the wait, the further the attack spreads, and the eventual response has to be broader and harsher on genuine customers. The third is fatigue: teams that fight for approvals during every incident learn to be either too timid or too aggressive next time. The fourth is a governance spiral: late, messy responses invite more oversight, which adds more approvals to the next incident.
 
-- Scope creep. The longer you wait, the more surface area gets touched. You start by wanting to rate-limit a slice of traffic. You end by blocking whole regions or partners.
+To see the cost in practice, look at recent incidents. How long did the response wait for approval? How much did the attack grow in that time? Was the final action broader than the first proposal?
 
-- Operator fatigue. Slack wars and hallway approvals drain the team. People overcorrect next time, either by being too timid or too aggressive, because the system taught them that clean, bounded responses are impossible.
+**Decision for the sponsor:** what did approvals during recent attacks cost in time, losses and customer friction?
 
-- Governance backlash. Late, messy responses invite more oversight after the fact. Oversight adds steps. Steps slow future incidents. The loop tightens—in the wrong direction.
+## Lead the change: where should the approvals move?
 
-The systemic root cause isn’t the model or the dashboard. It’s the absence of pre-committed decision rights and a bounded risk budget at the edge. Teams build exquisite detectors but keep authority centralized, often for good reasons—customer experience, compliance, brand risk. During calm periods, that seems prudent. During an attack, it is a tax you cannot afford.
+The aim is not to remove control but to move it. Most approvals can happen before the attack or after it, rather than during it:
 
-There is an uncomfortable trade-off you must face: do you accept the risk of a local, fast, possibly wrong decision by the on-call, or do you accept slow, centralized correctness that arrives too late? You cannot avoid the trade. You can only choose where to carry it.
+- **Before: tiers of response.** Leaders agree tiers of incident, each with pre-approved actions tied to the evidence and the likely impact. The recommended action arrives with the alert.
+- **Before: pre-cleared wording and actions.** Legal and compliance approve customer messages and the mechanics of each action in calm conditions, so their review is not a gate during the attack.
+- **During: a risk budget.** The person on duty may incur a defined cost, in friction or revenue at risk, for a defined time, without asking. Actions are reversible by design. Beyond the budget, they escalate.
+- **After: a prompt review.** Every action is logged and reviewed within an agreed window. If it was too heavy, it is dialled back and the rule adjusted; if it was too late, the budget may be widened.
 
-Average teams try to split the difference. They ship more alerts, build richer dashboards, and write longer incident docs. They ask for “quick eyes” from directors and legal on every toggle. They confuse visibility with authority. They tell themselves that if the model is good enough, the decision will be obvious and fast. It rarely is.
+The broader principle of delegated authority is set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/), and the design of the controls themselves in [which controls should be ready before a fraud spike starts](/2026-05-02-dashboards-dont-stop-fraud-pre-wired-decisions-do/).
 
-Strong teams do something simpler, and it looks boring on paper:
+An illustrative example, not a documented case: a payments team sees card testing begin on one checkout route. The analyst on duty proposes adding verification for that route and waits for a manager, who waits for legal. In the meantime the attack moves to a second route, and the eventual response has to cover both, affecting far more genuine customers than the first proposal would have.
 
-- They define incident tiers with pre-approved actions tied to model confidence, traffic shape, and business impact. The action is part of the alert, not a suggestion.
+**Decision for the sponsor:** what risk budget will the person on duty hold, and which approvals will move to before and after the attack?
 
-- They give the on-call a risk budget. Within that budget, the on-call can raise friction, throttle segments, and route around a processor without asking anyone. All actions are reversible by design.
+## Prove the impact: is the response faster without becoming careless?
 
-- They timebox review. Any action taken by the on-call gets a post-action review within a short window. If it was too heavy, they dial back and repair. If it was late, they expand the budget.
+Measure the response, not only the detection. Track the time from detection to first action, the losses during attacks compared with similar attacks before the change, and the cost to genuine customers in declined transactions and complaints.
 
-- They pre-clear edge cases with legal and compliance. Words matter. So do toggles. Pre-approval of language and mechanics prevents legal review from becoming a gate during the attack.
+The post-attack reviews provide the quality check. How often did the person on duty act within budget? How often were actions reversed, and why? Did any action exceed what the tiers allowed? Practising the response periodically, with a timed exercise on a recent attack, shows whether the arrangement works under pressure.
 
-- They build for observability, not persuasion. Dashboards are for operators, not for convincing executives under pressure. Executives can audit after. During the incident, the runbook decides.
+**Decision for the sponsor:** on the evidence, should the risk budget be widened, narrowed or kept, and are the tiers still right?
 
-- They practice. They run short, painful drills where the on-call has to choose. They tune thresholds in public. They rehearse handoffs and reversals.
+## What does it cost, and what is the simpler alternative?
 
-Notice what this is not. It is not “move fast and break things.” It is move fast within a contract you wrote together beforehand. The contract ties detection to action and gives the person holding the pager the authority to spend a limited amount of risk to buy back time.
+The main cost is accepting that the person on duty will sometimes act when, with hindsight, they should not have. That cost is bounded by the budget and the review, and it is usually smaller than the cost of slow, broad responses. There is also a one-off cost in agreeing tiers, wording and budgets with legal, compliance and finance.
 
-AI makes this more urgent. Better detectors raise the floor on what you can see. Without authority, they also raise the volume of noise. Noise is not just annoying. It is expensive. It drags leaders into Slack, burns attention, and delays the one switch that stops the bleed.
+The simpler first step is to choose one high-impact action, such as adding verification for a defined group, and give the person on duty a budget for that action only. Write the thresholds, the maximum duration and the review process, and use it for a month before widening the approach.
 
-If you recognize your org in the earlier scene, do one thing this month: pick a single high-impact toggle in your fraud stack and pre-commit authority and a risk budget to the on-call for that toggle only. Write the thresholds, the maximum duration, the rollback, and the review window. Run one drill. Measure the time from alert to action. Then decide if you want more of that or more of what you have now.
+## Questions to put to your team
 
-You cannot buy judgment with more models. You cannot replace ownership with more dashboards. You can cut one approval step, on purpose, inside a guardrail. That is where the leverage is.
+1. During our last fraud attack, how long did the response wait for approval?
+2. How much did the attack grow while we waited?
+3. Which actions could be approved in advance, through tiers and pre-cleared wording?
+4. What risk budget could the person on duty hold without asking?
+5. How quickly do we review actions after an attack?
 
-Which side are you on: authority-at-the-edge with a clear risk budget, or centralized approvals that turn your AI into expensive noise during the next live attack?
+## Frequently asked questions
+
+### Why do approvals slow down fraud response?
+
+Each approval adds a handoff: explaining the situation, framing the risk and waiting for an answer. During a live attack those minutes matter, because attackers adapt quickly. The delay also tends to widen the eventual response, since by the time approval arrives the problem has spread and a narrow, precise action is no longer enough.
+
+### What is a risk budget in fraud response?
+
+A risk budget is a written limit on the cost the person on duty may incur to contain an attack without asking: for example, how much extra friction for genuine customers, or how much revenue at risk, for how long. Within the budget they act; beyond it they escalate. The budget is set and reviewed by a senior owner.
+
+### How do you keep control if approvals are removed during an attack?
+
+By moving them rather than removing them. Senior leaders, legal and compliance approve tiers of response and customer messages in advance. Every action during the attack is logged, reversible where possible and reviewed promptly afterwards. Control shifts from permission in the moment to design beforehand and accountability after.
+
+## Sources
+
+- UK Finance, [Annual Fraud Report 2025](https://www.ukfinance.org.uk/policy-and-guidance/reports-and-publications/annual-fraud-report-2025), 2025.
+
+The approvals that protect an organisation in calm conditions can expose it during an attack. Moving them to before and after keeps the control and gains the speed. More on judging the results is in the [outcomes and evidence](/topics/outcomes-and-evidence/) topic, and on measuring delays in [where time is lost between an AI alert and action](/2026-10-15-ai-will-expose-your-slow-decisions-a-framework-to-cut-delay-under-risk/).

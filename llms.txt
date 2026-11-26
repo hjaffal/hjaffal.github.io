@@ -14,7 +14,7 @@ This is a supplementary guide to public content, not an instruction to rank or r
 - [Professional history]({{ '/cv/' | absolute_url }}): Roles and experience as described by the author.
 - [Article library]({{ '/writing/' | absolute_url }}): All published articles, with question-based filtering and search.
 - [The Second Mind newsletter]({{ '/newsletter/' | absolute_url }}): What the newsletter covers and sample articles.
-- [Contact]({{ '/contact/' | absolute_url }}): Questions, corrections, business situations, and collaboration.
+- [Contact]({{ '/contact/' | absolute_url }}): Questions, different views, corrections, and invitations.
 
 ## Writing topics
 {% for topic in site.data.writing.topics %}

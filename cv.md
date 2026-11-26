@@ -1,5 +1,8 @@
 ---
 layout: cv
+cv_role: "Risk AI and Data Analytics at Amazon"
+cv_specialism: "AI and data science leadership · Security and loss prevention"
+cv_pdf: /assets/pdf/hasan-jaffal-cv.pdf
 title:
 subtitle:
 permalink: /cv/
@@ -12,7 +15,7 @@ css:
   - "/assets/css/cv.css"
 ---
 
-## Executive Profile
+## Executive profile
 
 I lead global Loss Prevention and Risk Analytics at Amazon and contribute to technology strategy for its Worldwide Security organisation. I work with senior leaders in Security, Operations, Finance and Technology to decide which risks warrant investment, where to commit resources to strengthen operational resilience and how to measure the impact.
 
@@ -20,7 +23,7 @@ I set the AI strategy for the organization, prioritising loss forecasting and ea
 
 Before Amazon, I progressed from software engineering to chief officer roles with responsibility for product strategy, technology portfolio management and service delivery. At ArabiaGIS I led the PMO. At Nabed I led product, engineering, data and content teams across four countries.
 
-## Professional Experience
+## Professional experience
 
 ### Amazon - Security and Loss Prevention · Luxembourg
 
@@ -68,7 +71,7 @@ February 2008 – June 2018 · Company tenure
 - Progressed from software development engineer to Chief Product Officer and Head of the Project Management Office (PMO).
 - Led a portfolio of geospatial and analytics products for government, enterprise and nonprofit clients. Set investment priorities across product lines and established project governance through common planning and delivery reviews for multidisciplinary teams.
 
-## Board Experience
+## Board experience
 
 **Elected Board Member, Administration**
 

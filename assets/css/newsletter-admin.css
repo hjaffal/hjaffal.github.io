@@ -57,7 +57,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-sidebar-logo-text {
   font-family: var(--sans);
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   letter-spacing: -0.02em;
 }
@@ -78,7 +78,7 @@ body:has(.nla-layout:not([hidden])) footer {
   width: 100%;
   padding: 12px 16px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   font-family: var(--sans);
   color: rgba(255, 255, 255, 0.6);
   background: transparent;
@@ -114,8 +114,8 @@ body:has(.nla-layout:not([hidden])) footer {
   font-size: 0.7rem;
   font-weight: 600;
   font-family: var(--sans);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.35);
   padding: 0 16px;
   margin-top: 20px;
@@ -141,7 +141,7 @@ body:has(.nla-layout:not([hidden])) footer {
   gap: 10px;
   padding: 9px 16px;
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   font-family: var(--sans);
   color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
@@ -170,8 +170,8 @@ body:has(.nla-layout:not([hidden])) footer {
   font-size: 0.78rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  text-transform: none;
+  letter-spacing: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -213,7 +213,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-user-email {
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.45);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -256,7 +256,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-panel-title {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   letter-spacing: -0.03em;
   margin: 0 0 6px;
@@ -288,7 +288,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-auth-title {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   margin: 0;
   letter-spacing: -0.03em;
@@ -416,15 +416,15 @@ body:has(.nla-layout:not([hidden])) footer {
   font-family: var(--sans);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-soft);
   margin: 0 0 10px;
 }
 
 .nla-stat-value {
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   letter-spacing: -0.03em;
   margin: 0;
@@ -447,9 +447,9 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-dash-card-title {
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-soft);
   margin: 0 0 16px;
 }
@@ -555,13 +555,13 @@ body:has(.nla-layout:not([hidden])) footer {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .nla-dash-line-chart-value {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
 }
 
@@ -586,9 +586,9 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-dash-section-title {
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-soft);
   margin: 0 0 14px;
   padding-bottom: 8px;
@@ -615,7 +615,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-dash-metric-value {
   display: block;
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -632,7 +632,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-dash-metric-label {
   display: block;
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-soft);
   margin-top: 4px;
 }
@@ -688,9 +688,9 @@ body:has(.nla-layout:not([hidden])) footer {
 
 /* Topic Coverage */
 .nla-dash-topic-coverage { font-size: 0.78rem; }
-.nla-dash-topic-summary { font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+.nla-dash-topic-summary { font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
 .nla-dash-topic-group { margin-bottom: 16px; }
-.nla-dash-topic-group-title { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); display: block; margin-bottom: 6px; }
+.nla-dash-topic-group-title { font-size: 0.65rem; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--text-soft); display: block; margin-bottom: 6px; }
 .nla-dash-topic-items { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 16px; }
 .nla-dash-topic-item { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
 .nla-dash-topic-name { font-size: 0.72rem; color: var(--dark); }
@@ -805,7 +805,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-dash-activity-title {
   display: block;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--dark);
   white-space: nowrap;
   overflow: hidden;
@@ -838,8 +838,8 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-dash-metric-group-title {
   font-size: 0.7rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--text-soft);
   margin: 0 0 10px;
 }
@@ -878,8 +878,8 @@ body:has(.nla-layout:not([hidden])) footer {
   text-align: left;
   font-size: 0.7rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--text-soft);
   padding: 8px 12px;
   border-bottom: 1px solid var(--slate-border);
@@ -901,13 +901,13 @@ body:has(.nla-layout:not([hidden])) footer {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ─── Section Titles ─── */
 .nla-section-title {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 16px;
 }
@@ -924,9 +924,9 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-card-header {
   font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--text-soft);
   margin: 0 0 20px;
   padding-bottom: 14px;
@@ -954,8 +954,8 @@ body:has(.nla-layout:not([hidden])) footer {
   font-family: var(--sans);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-soft);
   background: var(--slate-bg);
   border-bottom: 1px solid var(--slate-border);
@@ -1185,8 +1185,8 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-post-date {
   font-family: var(--mono);
   font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0;
   color: var(--text-soft);
   margin-top: 3px;
 }
@@ -1200,7 +1200,7 @@ body:has(.nla-layout:not([hidden])) footer {
   align-items: center;
   gap: 6px;
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-soft);
   cursor: pointer;
 }
@@ -1220,11 +1220,11 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-tool-section-title {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .nla-tool-fields {
@@ -1253,7 +1253,7 @@ body:has(.nla-layout:not([hidden])) footer {
   align-items: center;
   gap: 10px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--dark);
   cursor: pointer;
 }
@@ -1308,7 +1308,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-edit-form h4 {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 20px;
 }
@@ -1340,7 +1340,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-edition-subject {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -1368,7 +1368,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-edition-stat-value {
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
 }
 
@@ -1376,8 +1376,8 @@ body:has(.nla-layout:not([hidden])) footer {
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
   margin-top: 6px;
 }
 
@@ -1449,14 +1449,14 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-import-stat-value {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .nla-import-stat-label {
   font-size: 0.68rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
   margin-top: 6px;
 }
 
@@ -1492,7 +1492,7 @@ body:has(.nla-layout:not([hidden])) footer {
   font-weight: 600;
   border-radius: 20px;
   text-transform: capitalize;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .nla-badge-active {
@@ -1571,9 +1571,9 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-post-detail-label {
   font-size: 0.7rem;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--text-soft);
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
 }
 
 .nla-post-detail-value {
@@ -1686,7 +1686,7 @@ body:has(.nla-layout:not([hidden])) footer {
 
 .nla-editor b,
 .nla-editor strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* ─── Grid.js Overrides ─── */
@@ -1712,8 +1712,8 @@ body:has(.nla-layout:not([hidden])) footer {
   font-family: var(--sans) !important;
   font-size: 0.72rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   color: var(--text-soft) !important;
   background: var(--slate-bg) !important;
   border-bottom: 1px solid var(--slate-border) !important;
@@ -1973,7 +1973,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-mode-btn {
   padding: 10px 20px;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
   background: var(--slate-bg);
   color: var(--text-soft);
@@ -2242,7 +2242,7 @@ body:has(.nla-layout:not([hidden])) footer {
   padding: 12px 20px;
   border-radius: 8px;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   z-index: 9999;
   animation: nla-slideIn 0.3s ease;
 }
@@ -2324,7 +2324,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-ai-direction-card h4 {
   margin: 0 0 6px;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
 }
 
@@ -2422,7 +2422,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-ai-checklist h4 {
   margin: 0 0 12px;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 .nla-ai-checklist ul {
   list-style: none;
@@ -2514,7 +2514,7 @@ body:has(.nla-layout:not([hidden])) footer {
 .nla-linkedin-close:hover { color: var(--dark); }
 .nla-linkedin-title {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 4px;
   color: var(--dark);
 }
@@ -2571,7 +2571,7 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 .nla-linkedin-post-num {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
 }
 .nla-linkedin-post-date {
@@ -2631,3 +2631,145 @@ body:has(.nla-layout:not([hidden])) footer {
 }
 .nla-lex-ai-output ul { margin: 8px 0; padding-left: 18px; }
 .nla-lex-ai-output li { margin-bottom: 6px; }
+
+
+/* The admin is a full-screen tool: the public site header, footer and cookie notice are not shown here. */
+body:has(.nla-auth) .hj-header,
+body:has(.nla-auth) footer.site-footer,
+body:has(.nla-auth) .publication-cookie-note,
+body:has(.nla-auth) #cookie-banner,
+body:has(.nla-auth) .intro-header { display: none !important; }
+body:has(.nla-auth) > main { margin: 0 !important; padding: 0 !important; max-width: none !important; }
+.nla-sidebar-logo-text { display: flex; flex-direction: column; font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; font-size: 16px; line-height: 1.1; color: #FFFFFF; letter-spacing: .01em; }
+.nla-sidebar-logo-text small { font-family: Inter, 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 12px; color: #D4CBFF; letter-spacing: 0; margin-top: 2px; }
+.nla-nav-section-label { color: #D4CBFF !important; }
+.nla-auth { min-height: 100vh; padding: 48px 24px; }
+
+/* ===================================================================
+   Website theme (Hasan Jaffal brand): white pages, a white navigation
+   like the site header, a violet-black band like the page heroes, flat
+   cards with 1px rules and 6px corners, Inter labels in electric violet,
+   Space Grotesk numbers, 4px buttons and fields, simple line icons.
+   =================================================================== */
+.nla-layout, .nla-main { background: #FFFFFF; }
+
+/* Navigation: like the site header */
+.nla-sidebar { background: #FFFFFF; border-right: 1px solid #E2DDF2; }
+.nla-sidebar-header, .nla-sidebar-links, .nla-sidebar-footer { border-color: #E2DDF2 !important; }
+.nla-sidebar-logo svg rect:not(:first-child) { fill: #5B2EFF; }
+.nla-sidebar-logo-text { color: #1A1033; }
+.nla-sidebar-logo-text small { color: #5B2EFF; font-weight: 600; }
+.nla-nav-section-label { color: #5B2EFF !important; font-size: 13px; font-weight: 600; }
+.nla-nav-item { color: #4A4560; border-radius: 4px; background: transparent; }
+.nla-nav-item:hover { background: #EEE9FF; color: #5B2EFF; }
+.nla-nav-item.active { background: #EEE9FF; color: #5B2EFF; box-shadow: inset 3px 0 0 #5B2EFF; }
+.nla-nav-item.active::before { display: none; }
+.nla-nav-icon { display: inline-flex; width: 20px; justify-content: center; filter: none; opacity: 1; }
+.nla-icon { display: block; }
+.nla-sidebar-link, .nla-sidebar-submenu-title { color: #4A4560 !important; display: inline-flex; align-items: center; gap: 10px; }
+.nla-sidebar-link:hover, .nla-sidebar-submenu-title:hover { color: #5B2EFF !important; background: #EEE9FF; }
+.nla-user-email { color: #4A4560; }
+.nla-signout-btn { color: #1A1033; border: 1px solid #9C93B8; border-radius: 4px; }
+.nla-signout-btn:hover { color: #5B2EFF; border-color: #5B2EFF; background: transparent; }
+.nla-mobile-toggle { background: #1A1033; color: #FFFFFF; border-radius: 4px; }
+
+/* Panel header: like the page heroes */
+.nla-panel-header { margin: -40px -48px 36px; padding: 44px 48px 36px; background: #1A1033; }
+.nla-panel-title { color: #FFFFFF !important; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; margin-bottom: 10px; }
+.nla-panel-desc { color: #D4CBFF !important; font-size: 16px; }
+.nla-panel-count { color: #D4CBFF; }
+
+/* Cards and stats: flat, 1px rule, 6px corners */
+.nla-card, .nla-dash-card, .nla-stat-card, .nla-dash-metric, .nla-dash-position-card, .nla-edition-stat,
+.nla-import-stat, .nla-lex-gen, .nla-ai-direction-card, .nla-success, .nla-ai-error, .gridjs-wrapper {
+  border: 1px solid #E2DDF2 !important; border-radius: 6px !important; box-shadow: none !important;
+}
+.nla-success { background: #EEE9FF; }
+.nla-ai-error { border-color: #C93A22 !important; }
+
+/* Labels: Inter Semibold, electric violet, sentence case */
+.nla-dash-card-title, .nla-card-header, .nla-stat-label, .nla-dash-metric-label, .nla-dash-section-title,
+.nla-dash-metric-group-title, .nla-dash-topic-group-title, .nla-edition-stat-label, .nla-post-detail-label,
+.nla-dash-line-chart-title {
+  color: #5B2EFF !important; font-family: Inter, 'Helvetica Neue', Arial, sans-serif !important; font-weight: 600 !important; font-size: 14px !important; letter-spacing: 0 !important;
+}
+
+/* Big numbers: Space Grotesk Bold */
+.nla-stat-value, .nla-dash-metric-value, .nla-dash-metric-value-sm, .nla-edition-stat-value, .nla-import-stat-value, .nla-dash-line-chart-value {
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif !important; font-weight: 700 !important; color: #1A1033; letter-spacing: -.02em;
+}
+
+/* Buttons: 4px corners, flat */
+.nla-btn-primary, .nla-btn-secondary, .nla-btn-sm, .nla-ai-generate-btn, .nla-back-btn, .nla-editor-btn,
+.nla-mode-btn, .nla-dash-range-btn, .nla-google-btn, .nla-linkedin-copy-btn {
+  border-radius: 4px !important; box-shadow: none !important;
+}
+.nla-btn-primary, .nla-ai-generate-btn { background: #5B2EFF; color: #FFFFFF; border: 0; }
+.nla-btn-primary:hover, .nla-ai-generate-btn:hover { background: #4720D9; }
+.nla-btn-secondary, .nla-btn-sm, .nla-back-btn { background: #FFFFFF; color: #1A1033; border: 1px solid #9C93B8; }
+.nla-btn-secondary:hover, .nla-btn-sm:hover, .nla-back-btn:hover { border-color: #5B2EFF; color: #5B2EFF; }
+.nla-dash-range-btn.active, .nla-mode-btn.active { background: #5B2EFF !important; color: #FFFFFF !important; }
+
+/* Fields: as on the site's forms */
+.nla-input, .nla-select, .nla-textarea, .nla-filter-select, .gridjs-search-input {
+  border: 1px solid #9C93B8 !important; border-radius: 4px !important; box-shadow: none !important; background-color: #FFFFFF;
+}
+.nla-input:focus, .nla-select:focus, .nla-textarea:focus, .nla-filter-select:focus, .gridjs-search-input:focus {
+  outline: 3px solid #8B6CFF; outline-offset: 2px; border-color: #5B2EFF !important;
+}
+
+/* Tables */
+.gridjs-table { border-color: #E2DDF2; }
+th.gridjs-th { background: #EEE9FF !important; color: #1A1033 !important; border-color: #E2DDF2 !important; font-weight: 600; }
+td.gridjs-td { border-color: #E2DDF2 !important; }
+.gridjs-footer { box-shadow: none !important; border-color: #E2DDF2 !important; }
+.gridjs-pagination .gridjs-pages button { border-radius: 4px; }
+.gridjs-pagination .gridjs-pages button.gridjs-currentPage { background: #5B2EFF; color: #FFFFFF; }
+
+/* Loading and empty states */
+.nla-empty-icon { color: #5B2EFF; filter: none; opacity: 1; }
+
+/* Dark theme: violet-black and lilac, as on the website */
+[data-theme="dark"] .nla-layout, [data-theme="dark"] .nla-main, [data-theme="dark"] .nla-sidebar { background: #1A1033; }
+[data-theme="dark"] .nla-sidebar { border-color: #3A2C63; }
+[data-theme="dark"] .nla-sidebar-logo svg rect:not(:first-child) { fill: #8B6CFF; }
+[data-theme="dark"] .nla-sidebar-logo-text { color: #FFFFFF; }
+[data-theme="dark"] .nla-sidebar-logo-text small, [data-theme="dark"] .nla-nav-section-label { color: #D4CBFF !important; }
+[data-theme="dark"] .nla-nav-item, [data-theme="dark"] .nla-sidebar-link, [data-theme="dark"] .nla-sidebar-submenu-title, [data-theme="dark"] .nla-user-email { color: #D4CBFF !important; }
+[data-theme="dark"] .nla-nav-item:hover, [data-theme="dark"] .nla-nav-item.active, [data-theme="dark"] .nla-sidebar-link:hover { background: #261A47; color: #FFFFFF !important; }
+[data-theme="dark"] .nla-nav-item.active { box-shadow: inset 3px 0 0 #8B6CFF; }
+[data-theme="dark"] .nla-panel-header { background: #261A47; }
+[data-theme="dark"] .nla-card, [data-theme="dark"] .nla-dash-card, [data-theme="dark"] .nla-stat-card, [data-theme="dark"] .nla-dash-metric,
+[data-theme="dark"] .nla-dash-position-card, [data-theme="dark"] .nla-edition-stat, [data-theme="dark"] .gridjs-wrapper { background: #261A47; border-color: #3A2C63 !important; }
+[data-theme="dark"] .nla-dash-card-title, [data-theme="dark"] .nla-stat-label, [data-theme="dark"] .nla-dash-metric-label, [data-theme="dark"] .nla-card-header { color: #D4CBFF !important; }
+[data-theme="dark"] .nla-stat-value, [data-theme="dark"] .nla-dash-metric-value { color: #FFFFFF; }
+[data-theme="dark"] .nla-signout-btn, [data-theme="dark"] .nla-btn-secondary, [data-theme="dark"] .nla-btn-sm { background: transparent; color: #FFFFFF; border-color: #8B6CFF; }
+
+@media (max-width: 900px) {
+  .nla-panel-header { margin: -64px -20px 28px; padding: 76px 20px 28px; }
+}
+@media (max-width: 480px) {
+  .nla-panel-header { margin: -60px -16px 24px; padding: 72px 16px 24px; }
+}
+
+/* Dark theme: fields, dropdowns and tables on violet-black (the table library paints cells white by default). */
+[data-theme="dark"] .nla-input, [data-theme="dark"] .nla-select, [data-theme="dark"] .nla-textarea,
+[data-theme="dark"] .nla-filter-select, [data-theme="dark"] .gridjs-search-input,
+[data-theme="dark"] .nla-panel input:not([type="checkbox"]):not([type="radio"]), [data-theme="dark"] .nla-panel select, [data-theme="dark"] .nla-panel textarea {
+  background-color: #1A1033 !important; color: #FFFFFF !important; border-color: #8B6CFF !important;
+}
+[data-theme="dark"] .nla-panel input::placeholder, [data-theme="dark"] .nla-panel textarea::placeholder { color: #9C93B8 !important; opacity: 1; }
+[data-theme="dark"] .nla-panel select option { background: #1A1033; color: #FFFFFF; }
+[data-theme="dark"] .gridjs-wrapper, [data-theme="dark"] .gridjs-container, [data-theme="dark"] .gridjs-head,
+[data-theme="dark"] .gridjs-footer, [data-theme="dark"] .gridjs-table { background: #261A47 !important; border-color: #3A2C63 !important; color: #FFFFFF; }
+[data-theme="dark"] th.gridjs-th { background: #1A1033 !important; color: #FFFFFF !important; border-color: #3A2C63 !important; }
+[data-theme="dark"] th.gridjs-th-sort:hover, [data-theme="dark"] th.gridjs-th-sort:focus { background: #261A47 !important; }
+[data-theme="dark"] td.gridjs-td { background: #261A47 !important; color: #FFFFFF !important; border-color: #3A2C63 !important; }
+[data-theme="dark"] .gridjs-tr:hover td.gridjs-td { background: #2F2157 !important; }
+[data-theme="dark"] .gridjs-sort { filter: invert(1) brightness(1.4); }
+[data-theme="dark"] .gridjs-summary, [data-theme="dark"] .gridjs-pagination { color: #D4CBFF !important; }
+[data-theme="dark"] .gridjs-pagination .gridjs-pages button { background: #1A1033; color: #FFFFFF; border-color: #3A2C63; }
+[data-theme="dark"] .gridjs-pagination .gridjs-pages button:hover { background: #261A47; }
+[data-theme="dark"] .gridjs-pagination .gridjs-pages button.gridjs-currentPage { background: #5B2EFF; color: #FFFFFF; }
+[data-theme="dark"] .gridjs-loading-bar { background: #261A47 !important; }
+[data-theme="dark"] .nla-sidebar-header, [data-theme="dark"] .nla-sidebar-links, [data-theme="dark"] .nla-sidebar-footer { border-color: #3A2C63 !important; }

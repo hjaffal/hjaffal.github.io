@@ -1,7 +1,7 @@
 {% assign post_tag = page.tags[0] %}
 {% if post_tag %}
 <div class="sidebar-section" style="margin-top:28px;">
-  <span class="card-label">RELATED ARTICLES</span>
+  <span class="card-label">Related articles</span>
   <div style="margin-top:10px;">
     {% assign count = 0 %}
     {% for related in site.tags[post_tag] %}

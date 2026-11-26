@@ -19,9 +19,9 @@
 
 .pos-hero-num {
   font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   display: block;
   margin-bottom: 12px;
@@ -29,16 +29,16 @@
 
 .pos-hero-title {
   font-size: clamp(26px, 4vw, 40px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: #0F172A;
+  color: #1A1033;
   margin: 0 0 14px;
 }
 
 .pos-hero-thesis {
   font-size: 0.95rem;
-  color: #64748B;
+  color: #4A4560;
   line-height: 1.7;
   margin: 0 0 24px;
 }
@@ -62,11 +62,11 @@
 
 .pos-nav-link {
   padding: 6px 14px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  color: #0F172A;
+  background: #EEE9FF;
+  border: 1px solid #E2DDF2;
+  color: #1A1033;
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 5px;
   text-decoration: none;
 }
@@ -89,25 +89,25 @@
 
 .pos-section-title {
   font-size: 1.1rem;
-  font-weight: 700;
-  color: #0F172A;
+  font-weight: 600;
+  color: #1A1033;
   margin: 0 0 20px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2DDF2;
 }
 
 /* Body content */
 .pos-body {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: #334155;
+  color: #4A4560;
   margin-bottom: 40px;
 }
 
 .pos-body h2 {
   font-size: 1.1rem;
-  font-weight: 700;
-  color: #0F172A;
+  font-weight: 600;
+  color: #1A1033;
   margin: 32px 0 12px;
 }
 
@@ -122,7 +122,7 @@
   gap: 16px;
   padding: 20px;
   margin-bottom: 32px;
-  background: #0F172A;
+  background: #1A1033;
   border-radius: 10px;
   text-decoration: none;
   transition: opacity 0.2s;
@@ -151,9 +151,9 @@
 
 .pos-featured-label {
   font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   display: block;
   margin-bottom: 4px;
@@ -162,13 +162,13 @@
 .pos-featured-title {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #F8FAFC;
+  color: #EEE9FF;
   display: block;
 }
 
 .pos-featured-arrow {
   font-size: 0.75rem;
-  color: #94A3B8;
+  color: #9C93B8;
 }
 
 /* Topics grid */
@@ -184,15 +184,15 @@
 
 .pos-topic-card {
   padding: 14px 16px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  background: #EEE9FF;
+  border: 1px solid #E2DDF2;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   text-decoration: none !important;
-  color: #0F172A !important;
+  color: #1A1033 !important;
   transition: border-color 0.2s;
 }
 
@@ -203,12 +203,12 @@
 .pos-topic-name {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #0F172A;
+  color: #1A1033;
 }
 
 .pos-topic-count {
   font-size: 0.68rem;
-  color: #94A3B8;
+  color: #9C93B8;
   white-space: nowrap;
 }
 
@@ -223,20 +223,20 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: #0F172A;
+  color: #1A1033;
   transition: opacity 0.2s;
 }
 
 .pos-article-card:hover {
   opacity: 0.85;
-  color: #0F172A;
+  color: #1A1033;
 }
 
 .pos-article-card-img {
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
-  background: #F1F5F9;
+  background: #EEE9FF;
   margin-bottom: 12px;
 }
 
@@ -253,11 +253,11 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: #E8EDF3;
+  background: #E2DDF2;
 }
 
 .pos-article-card-fallback span {
-  color: #334155;
+  color: #4A4560;
   font-size: 0.85rem;
   font-weight: 600;
   text-align: center;
@@ -266,16 +266,16 @@
 
 .pos-article-card-date {
   font-size: 0.78rem;
-  color: #94A3B8;
+  color: #9C93B8;
   margin-bottom: 6px;
 }
 
 .pos-article-card-title {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.35;
   margin: 0;
-  color: #0F172A;
+  color: #1A1033;
 }
 
 /* Reference guides */
@@ -288,7 +288,7 @@
 
 .pos-reference-card {
   padding: 16px 18px;
-  background: #0F172A;
+  background: #1A1033;
   border-radius: 8px;
   text-decoration: none !important;
   color: inherit !important;
@@ -305,12 +305,12 @@
 .pos-reference-title {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #F8FAFC;
+  color: #EEE9FF;
 }
 
 .pos-reference-desc {
   font-size: 0.72rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.4;
 }
 
@@ -318,16 +318,16 @@
 .pos-crosslinks {
   margin-top: 40px;
   padding: 24px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  background: #EEE9FF;
+  border: 1px solid #E2DDF2;
   border-radius: 10px;
 }
 
 .pos-crosslinks-title {
   font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--accent);
   margin: 0 0 14px;
 }
@@ -341,10 +341,10 @@
 .pos-crosslinks-card {
   padding: 14px;
   background: #ffffff;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E2DDF2;
   border-radius: 8px;
   text-decoration: none !important;
-  color: #0F172A !important;
+  color: #1A1033 !important;
 }
 
 .pos-crosslinks-card:hover {
@@ -353,7 +353,7 @@
 
 .pos-crosslinks-num {
   font-size: 0.68rem;
-  color: #94A3B8;
+  color: #9C93B8;
   display: block;
   margin-bottom: 4px;
 }
@@ -361,7 +361,7 @@
 .pos-crosslinks-name {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #0F172A;
+  color: #1A1033;
 }
 
 /* Responsive */

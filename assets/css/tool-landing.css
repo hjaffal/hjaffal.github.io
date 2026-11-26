@@ -8,7 +8,7 @@
 .tl-hero {
   text-align: center;
   padding: 80px 32px 64px;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  background: linear-gradient(135deg, #1A1033 0%, #1A1033 50%, #1A1033 100%);
   position: relative;
   overflow: hidden;
 }
@@ -26,9 +26,9 @@
 
 .tl-hero-label {
   font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   display: block;
   margin-bottom: 16px;
@@ -37,17 +37,17 @@
 
 .tl-hero-title {
   font-size: clamp(28px, 4.5vw, 48px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.1;
-  color: #F8FAFC;
+  color: #EEE9FF;
   margin: 0 0 16px;
   position: relative;
 }
 
 .tl-hero-sub {
   font-size: 1.05rem;
-  color: #CBD5E1;
+  color: #E2DDF2;
   line-height: 1.65;
   margin: 0 auto 32px;
   max-width: 680px;
@@ -60,7 +60,7 @@
   background: var(--accent);
   color: #fff !important;
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.2s, transform 0.2s;
@@ -75,7 +75,7 @@
 
 .tl-hero-meta {
   font-size: 0.78rem;
-  color: #64748B;
+  color: #4A4560;
   margin: 16px 0 0;
   position: relative;
 }
@@ -91,7 +91,7 @@
 
 .tl-section-title {
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--dark);
   margin: 0 0 28px;
@@ -134,7 +134,7 @@
 
 .tl-feature h3 {
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -161,7 +161,7 @@
   gap: 12px;
   font-size: 0.9rem;
   color: var(--dark);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .tl-audience-item i {
@@ -206,14 +206,14 @@
   background: var(--dark);
   color: #fff;
   font-size: 0.85rem;
-  font-weight: 800;
+  font-weight: 600;
   border-radius: 50%;
   margin-bottom: 14px;
 }
 
 .tl-step h3 {
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -229,20 +229,20 @@
 .tl-cta-section {
   text-align: center;
   padding: 64px 32px;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  background: linear-gradient(135deg, #1A1033 0%, #1A1033 100%);
 }
 
 .tl-cta-title {
   font-size: 1.5rem;
-  font-weight: 800;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   margin: 0 0 12px;
   letter-spacing: -0.03em;
 }
 
 .tl-cta-desc {
   font-size: 0.95rem;
-  color: #94A3B8;
+  color: #9C93B8;
   margin: 0 0 28px;
 }
 
@@ -266,7 +266,7 @@
 
 .tl-faq-item h3 {
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -352,9 +352,9 @@
 
 .tl-crossref-badge {
   font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   display: block;
   margin-bottom: 6px;
@@ -362,7 +362,7 @@
 
 .tl-crossref-content h3 {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
 }
@@ -376,7 +376,7 @@
 
 .tl-crossref-cta {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
 }
 
@@ -389,16 +389,16 @@
 
 
 /* Share form */
-.tl-share-card { max-width: 640px; margin: 0 auto; padding: 36px 32px; background: var(--white, #fff); border: 1px solid var(--slate-border, #E2E8F0); border-radius: 14px; text-align: center; }
-.tl-share-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(37, 99, 235, 0.08); border-radius: 12px; font-size: 1.2rem; color: var(--accent, #2563EB); margin: 0 auto 16px; }
-.tl-share-title { font-size: 1.1rem; font-weight: 800; color: var(--dark, #0F172A); margin: 0 0 8px; }
-.tl-share-desc { font-size: 0.88rem; color: var(--text-muted, #64748B); margin: 0 0 20px; }
+.tl-share-card { max-width: 640px; margin: 0 auto; padding: 36px 32px; background: var(--white, #fff); border: 1px solid var(--slate-border, #E2DDF2); border-radius: 14px; text-align: center; }
+.tl-share-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(37, 99, 235, 0.08); border-radius: 12px; font-size: 1.2rem; color: var(--accent, #5B2EFF); margin: 0 auto 16px; }
+.tl-share-title { font-size: 1.1rem; font-weight: 600; color: var(--dark, #1A1033); margin: 0 0 8px; }
+.tl-share-desc { font-size: 0.88rem; color: var(--text-muted, #4A4560); margin: 0 0 20px; }
 .tl-share-form { max-width: 100%; }
 .tl-share-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.tl-share-input { flex: 1; min-width: 140px; padding: 11px 14px; border: 1px solid var(--slate-border, #E2E8F0); border-radius: 8px; font-size: 0.85rem; font-family: inherit; }
-.tl-share-input:focus { border-color: var(--accent, #2563EB); outline: none; }
-.tl-share-btn { padding: 11px 20px; background: var(--dark, #0F172A); color: #fff; border: none; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
-.tl-share-btn:hover { background: var(--accent, #2563EB); }
+.tl-share-input { flex: 1; min-width: 140px; padding: 11px 14px; border: 1px solid var(--slate-border, #E2DDF2); border-radius: 8px; font-size: 0.85rem; font-family: inherit; }
+.tl-share-input:focus { border-color: var(--accent, #5B2EFF); outline: none; }
+.tl-share-btn { padding: 11px 20px; background: var(--dark, #1A1033); color: #fff; border: none; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+.tl-share-btn:hover { background: var(--accent, #5B2EFF); }
 .tl-share-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .tl-share-msg { font-size: 0.78rem; font-weight: 600; margin-top: 12px; }
 

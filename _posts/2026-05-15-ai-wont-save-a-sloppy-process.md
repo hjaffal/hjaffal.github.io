@@ -1,64 +1,108 @@
 ---
+title: Should You Fix the Process Before Deploying an AI Model?
+subtitle: Models rarely fail in testing. They fail in handoffs, missing data and decisions nobody owns, which makes the process around the model the first investment.
+share-title: Should You Fix the Process Before Deploying an AI Model?
+share-description: 'AI models fail in weak processes: missing data, unowned decisions, no fallback. What to fix first, and how to tell whether the process is ready for AI.'
+excerpt: A model placed into a weak process makes the weakness faster. Before deployment, leaders should check the inputs, the ownership of each decision, the fallback when the model is unsure and the way mistakes are undone.
+tldr: 'Yes, in most cases, at least enough to make it safe. A model inherits the weaknesses of the process around it: unreliable inputs, decisions nobody owns, no fallback and no way to undo mistakes. Fix those first, deploy where actions are reversible, and measure decisions rather than model accuracy. The process is often where most of the value, and most of the risk, sits.'
+keywords:
+- AI deployment readiness
+- fix process before AI
+- AI implementation risks
+- AI model in production
+- slow decisions
+- decision latency
+- decision bottleneck
+faq:
+- q: Why do AI projects fail after a successful pilot?
+  a: Often because the pilot tested the model and not the process. In production the model meets late or missing data, unclear ownership of its decisions, and situations nobody planned for. Gartner predicted in 2024 that 30% of generative AI projects would be abandoned after proof of concept, citing poor data quality and inadequate risk controls among the causes.
+- q: What is a fallback for an AI model?
+  a: 'A fallback is a simple, safe way of making the decision when the model cannot be trusted: when its inputs are missing, its confidence is low or it is switched off. It might be a basic rule or a route to a person. A model without a fallback leaves the process with no answer when something goes wrong.'
+- q: Should an AI model be deployed everywhere at once?
+  a: Rarely. Start where decisions are frequent, low in stakes and easy to reverse, and expand as evidence builds. Avoid launching just before known periods of disruption, such as holidays or month-end, when unusual data is most likely and the people who could intervene may be away.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "AI Won't Save a Sloppy Process: Fix Your Workflow Before Deploying Models"
-subtitle: "What project managers must change before models touch real work"
-share-description: "AI changes the job for project managers: success depends less on model brilliance and more on tight operating process. Here’s what to fix before and after you switch it on."
 tags:
-  - ai-decision-operations
-author: Hasan J.
+- ai-decision-operations
 topic: slow-decision-cultures
 archetype: framework
-keywords:
-  - "slow decisions"
-  - "decision latency"
-  - "decision bottleneck"
-tldr: "AI doesn't fix sloppy processes — it amplifies them. Models fail in handoffs, time pressure, missing context, and silence after bad outcomes. Before deploying any model, define decision SLOs (max time to decide, max error rate for irreversible actions), pre-wire safe fallbacks (last-known-good heuristics), contract-test your inputs (assert preconditions before scoring), and build an operator console for action under pressure. Your value as a PM shifts from getting the model shipped to making it safe when everything around it is messy. Own the plumbing, the on-call, the rollback, and the postmortem."
 ---
 
-Everyone worries that AI will take jobs. The uncomfortable truth for project managers is different: your job gets safer when you harden the operating process, and riskier when you ship a clever model into a weak workflow.
+## Why do good models fail in production?
 
-Models don’t fail in the lab. They fail in handoffs, time pressure, missing context, and silence after bad outcomes. If your operating process is loose, predictive analytics will amplify the slop. That’s not a philosophical risk; it’s a queue Monday morning and a blown SLA by lunch.
+Most AI models perform well in testing. They fail later, in production, where they meet the process around them: data that arrives late or not at all, handoffs between teams, decisions that nobody clearly owns, and nights and holidays that the test data never included. A model placed into a weak process does not repair it. It makes the weakness faster.
 
-Here’s what actually changes when AI enters the workflow.
+Leaders preparing an AI deployment usually ask whether the model is good enough. It is a necessary question, and it misses a larger one: is the process ready to receive the model, and to cope when the model is wrong?
 
-First, the unit of work changes from “reporting and insights” to “decisions in motion.” You are not shipping data analytics anymore. You are shipping calls that move money, people, and promises. That means your KPIs shift: decision latency, reversibility, and recovery time become more important than offline accuracy.
+The evidence suggests the question is often skipped. In July 2024, [Gartner predicted](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025) that at least 30% of generative AI projects would be abandoned after proof of concept by the end of 2025, citing poor data quality, inadequate risk controls, escalating costs and unclear business value. Most of those causes sit in the process, not in the model.
 
-Second, AI operations introduces new failure surfaces. Upstream data contracts matter. Ground truth arrives late. A great model with a week-old label is a bad decision engine. Without data governance at the edges—schema checks, null traps, contract tests—your glamorous intelligence layer blames the wrong people when something breaks.
+## What does AI change in a process, and what does it not change?
 
-Third, ownership must be explicit. If you can’t name who owns a decision class (approve, route, schedule), then no one owns it when it goes sideways. In my experience, if you can’t name the person who will be embarrassed when the model misroutes a ticket, you don’t have a process—you have theater.
+AI changes the speed and volume of decisions. A process that once handled a few hundred cases a day by hand can suddenly route, approve or flag thousands. Every weakness in that process now operates at the same scale.
 
-A scene from last quarter:
+AI does not change the quality of the inputs, the ownership of the decisions or the organisation's ability to notice and undo a mistake. Those are properties of the process, and they determine whether a capable model creates value or creates incidents.
 
-Tuesday, 9:40 p.m. Eastern. Night shift. The claims triage model is routing inbound cases to adjusters. Vendor calendar feed failed two days earlier, quietly. The model thinks it’s a normal Tuesday. It fires heavy cases to a region on a local holiday. By 10:15, 312 claims sit untouched. Chat explodes. An adjuster tags me (PM on call) with a screenshot of idle queues on one side and overtime on the other. We hit the kill switch, fall back to the last safe heuristic (zip-to-region, skill-to-severity), and spin a batched reassign. It works, but we burn goodwill and the team stays late.
+## Find the value: which parts of the process will the model depend on?
 
-That night taught me two things: 1) the clever model wasn’t the asset—the boring fallback was; and 2) our process failure wasn’t technical, it was operational risk. No contract test on the calendar feed. No freeze window before holidays. No single owner for region coverage.
+The first step is to trace the decision the model will make, end to end. Where do its inputs come from, and what happens when one is late, incomplete or wrong? Who acts on its output? How is a wrong decision noticed, and how quickly can it be reversed?
 
-So, what should you change before your next model lands in production?
+The answers usually show where the value is. Sometimes the biggest gain is not the model at all but the process fix it forces: a data feed that should have been checked, a handoff that should have had an owner, a manual step that should have been removed. In my judgement, these fixes often deliver a large share of the benefit that was attributed to the model.
 
-- Give the decision a service level. Define decision SLOs: maximum time to decide, max tolerable error rate for irreversible actions, and time-to-rollback. Publish them like uptime targets. Add an on-call rotation for the decision, not just the API.
+**Decision for the sponsor:** which weaknesses in the process would make the model unsafe, and which of them are worth fixing whether or not the model goes ahead?
 
-- Pre-wire the exits. Build default decisions that are safe, fast, and dumb. Keep a last-known-good heuristic callable. Degrade gracefully: if confidence is low or a key feature is missing, route to human or to a conservative rule. That’s not anti-AI. That’s pro-uptime.
+## Lead the change: what must be in place before the model goes live?
 
-- Shorten the feedback loop. Labels arrive late in many real workflows. Make proxy outcomes to get earlier signal (e.g., callback within 2 hours, partial refunds flagged, human override rate). It’s better to track a rough, fast metric than to wait a week for truth.
+Five things make a process ready to receive a model:
 
-- Contract-test your inputs. Before the model scores, assert preconditions: expected column set, allowed ranges, freshness windows. If the data violates the contract, don’t score—switch to fallback and raise a page. You are preventing bad decision-making, not protecting model feelings.
+- **Checked inputs.** Before the model makes a decision, the process confirms that its inputs are present, recent and within expected ranges. If they are not, the model does not decide.
+- **A fallback.** When inputs fail or confidence is low, a simple, safe alternative takes over: a basic rule, or a route to a person.
+- **A named owner for each kind of decision.** Someone is responsible for the decisions the model makes, including the ones that go wrong, and has the authority to change or stop them. This is set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
+- **Reversibility.** Where possible, decisions can be undone cheaply. Where they cannot, a person reviews them first.
+- **A careful rollout.** Deploy first where decisions are frequent, low in stakes and easy to reverse, and avoid launching just before holidays, month-end or other known disruptions.
 
-- Roll out by decision surface, not by user count. Canary on low-stakes segments where reversibility is high. Freeze deployments before known volatility (payroll week, holiday, month-end). Put someone with line authority on pager during the first 48 hours.
+There is a real trade-off here. Removing people from the process lowers average cost and raises the risk of rare, expensive failures. Keeping people on every decision is safe and slow. The sponsor should choose deliberately where each kind of decision sits.
 
-- Build an operator console, not a vanity dashboard. Show queue health, exception counts, autopage conditions, and a single-click rollback. Reporting should support action under pressure, not a pretty monthly PDF.
+**Decision for the sponsor:** which conditions must be met before go-live, and who owns each kind of decision the model will make?
 
-- Make human-in-the-loop a feature, not a shame. Sample 10% of high-severity calls for review. Allow rapid escalation. Keep the edit button big and reachable.
+## Prove the impact: are the decisions better, not just the model?
 
-Now the uncomfortable trade-off: cost and speed versus control and sleep. If you remove humans to hit a cycle-time target, you will lower average cost and raise tail risk. If you keep humans on every decision, you will be safe and slow. Most teams try to split the difference and end up with slow and risky. Pick one area to go fast, and another to go safe. For example, automate entirely on low-dollar renewals, but force review on anything with legal exposure, even if the board wants “end-to-end AI.” That’s the price of real risk management.
+Offline accuracy is a poor guide to production value. Judge the deployment by its decisions: how quickly bad decisions were detected, how many were reversed, how far their effects spread, and how often the fallback was used.
 
-Job safety in the age of AI isn’t about learning to prompt better. It’s about becoming the person who can hold the line on operating discipline. You own the preconditions, the on-call duty, the rollback, the postmortem, and the change gates. You will fight for boring line items like contract tests and data governance when everyone else wants a new model feature. That’s how you protect the business and your role.
+Because true outcomes often arrive late, use early indicators where you can: the rate at which people override the model, the share of cases routed to the fallback, and complaints or reversals within days rather than months. Review a sample of high-stakes decisions regularly. A broader method for testing whether such work pays is discussed in [should you invest in AI for supply chain loss prevention](/2026-11-23-should-you-invest-in-ai-for-supply-chain-loss-prevention-buy-the-decision-not-the-alerts/).
 
-Also, stop grading your launch with offline metrics and a happy-path demo. Grade it with: how fast did we detect bad decisions, who got paged, what was the blast radius, and how many actions were irreversible. If your answers are slow, no one, large, and many—that’s not an AI problem. That’s a process you wouldn’t trust a summer intern with.
+**Decision for the sponsor:** on the evidence of decisions rather than accuracy, should the model be extended, kept within its current scope or withdrawn?
 
-One more field note: decision reversibility beats accuracy when truth is delayed. If you can cheaply unwind a call within hours, you can tolerate a bit more model noise. If every bad call burns a customer or triggers compliance, route to human, even if Finance hates the headcount line.
+## What does it cost, and what is the cheaper alternative?
 
-When AI enters the workflow, your value as a project manager moves from “getting the model shipped” to “making it safe and useful when everything around it is messy.” Models shine when the operating process is tight. They crumble when the plumbing leaks. Be the owner of the plumbing.
+Readiness work costs time before the model delivers anything: building input checks and fallbacks, agreeing ownership, designing reversals and planning the rollout. It can feel like delay, and it is usually the cheapest insurance the deployment will have.
 
-So choose: will you own the decisions and the dull guardrails that keep them safe, or will you let the model take the wheel and hope the mess cleans itself up?
+The cheaper alternative is sometimes to fix the process and not deploy the model at all. If the checked inputs, clear ownership and removed manual steps deliver most of the expected benefit, the model may not be worth its running cost yet. That outcome is a result, not a failure.
 
-For the full thesis on why AI exposes weak processes, see [AI & Decision Operations](/positions/ai-decision-operations/). For a concrete example of how models fail when nobody owns escalation, read [Why Your AI Project Fails When Nobody Owns the Escalation Path](/2026-05-25-why-your-ai-project-fails-when-nobody-owns-the-escalation-path/). And for the lexicon term that captures this pattern, see [Automation Fog](/lexicon/automation-fog/).
+## Questions to put to your team
+
+1. What happens today when one of the model's inputs is late or wrong?
+2. Who owns each kind of decision the model will make, including the wrong ones?
+3. What is the fallback when the model is unsure or switched off?
+4. Which decisions can be reversed cheaply, and which need a person first?
+5. Would fixing the process alone deliver most of the benefit?
+
+## Frequently asked questions
+
+### Why do AI projects fail after a successful pilot?
+
+Often because the pilot tested the model and not the process. In production the model meets late or missing data, unclear ownership of its decisions, and situations nobody planned for. Gartner predicted in 2024 that 30% of generative AI projects would be abandoned after proof of concept, citing poor data quality and inadequate risk controls among the causes.
+
+### What is a fallback for an AI model?
+
+A fallback is a simple, safe way of making the decision when the model cannot be trusted: when its inputs are missing, its confidence is low or it is switched off. It might be a basic rule or a route to a person. A model without a fallback leaves the process with no answer when something goes wrong.
+
+### Should an AI model be deployed everywhere at once?
+
+Rarely. Start where decisions are frequent, low in stakes and easy to reverse, and expand as evidence builds. Avoid launching just before known periods of disruption, such as holidays or month-end, when unusual data is most likely and the people who could intervene may be away.
+
+## Sources
+
+- Gartner, [Gartner predicts 30% of generative AI projects will be abandoned after proof of concept by end of 2025](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025), July 2024.
+
+A model is only as reliable as the process that feeds it and acts on it. Strengthening that process first is less visible than a launch, and it decides whether the launch is worth having. More on this is in the [people and adoption](/topics/people-and-adoption/) topic, and on organisational readiness in [is your operating model ready for AI](/2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first/).

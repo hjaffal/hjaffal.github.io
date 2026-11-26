@@ -1,93 +1,117 @@
 ---
+title: Which Loss Prevention Metrics Belong in a Board Report?
+subtitle: Security and loss prevention teams can track dozens of measures. A board needs a few, each tied to a decision it is willing to make.
+share-title: Which Loss Prevention Metrics Belong in a Board Report?
+share-description: 'A board report on loss prevention needs few metrics: loss rate, loss by cause, prevention versus detection, response time and cost per loss prevented.'
+excerpt: Loss prevention teams measure incidents, compliance, staffing and cost. A board needs a small set of those measures, each one connected to a decision about risk appetite, investment or accountability.
+tldr: 'Only the few that support a board-level decision: the loss rate against an agreed appetite, losses by cause, the share of losses prevented rather than detected afterwards, the time to respond to serious incidents and the cost of each loss prevented. Operational measures such as staffing ratios and equipment uptime belong in management reports, unless they threaten one of those five.'
+keywords:
+- loss prevention metrics
+- security metrics for board
+- retail shrink reporting
+- loss prevention KPIs
+- data team value
+- analytics team relevance
+- data team ROI
+faq:
+- q: What is shrink in retail?
+  a: Shrink is the loss of inventory that cannot be accounted for through sales, caused by theft from outside or inside the business, process and administrative errors, damage and fraud. It is usually expressed as a percentage of sales. The National Retail Federation reported average shrink of 1.6% of sales for 2022.
+- q: What is the difference between prevented and detected losses?
+  a: A prevented loss is stopped before value leaves the business, for example a fraudulent order blocked before dispatch. A detected loss is identified after it has happened, for example a stock discrepancy found at the next count. A rising share of prevented losses shows that controls are working earlier, not only that investigations are finding more.
+- q: How often should loss prevention metrics go to the board?
+  a: 'Usually quarterly, alongside other risk reporting, with an agreed exception process: if a measure moves outside the board''s stated appetite between meetings, the chair or the audit and risk committee is informed. Monthly operational detail should stay with management, so the board sees direction and decisions rather than noise.'
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "12 Key Metrics Every Security and Loss Prevention Team Should Track"
-subtitle: Choosing the Right Metrics for Loss Prevention
-share-description: "The essential metrics every security and loss prevention team should track across incident management, compliance, resources, and cost efficiency."
-tags: [risk-intelligence]
+tags:
+- risk-intelligence
 thumbnail-img: /assets/img/posts/2024-11-16-lthe-data-metrics-every-security-and-loss-prevention-team-should-track-thumb.png
 comments: true
 mathjax: true
-author: Hasan J.
 topic: data-team-irrelevance
 archetype: breakdown
-keywords:
-  - "data team value"
-  - "analytics team relevance"
-  - "data team ROI"
-tldr: "Security and loss prevention teams drown in data but often track the wrong things. Focus on four categories: incident management (frequency, response time, prevention rate), compliance (training completion, standards adherence), resource management (equipment uptime, staffing ratios), and cost efficiency (program cost, cost per incident prevented). Align metrics to strategic goals, not vanity. The point is not to track everything but to zero in on metrics that drive action and prove your program's value. Good metrics build a proactive security strategy; bad ones just document failure."
----
-If you’re working in Security and Loss Prevention (S&LP), you know data isn’t just “nice to have”—it’s essential. But with so much data available, how do you know what’s actually worth tracking? The right metrics can be the difference between just putting out fires and actually building a proactive, data-driven security strategy.
-
-Let’s talk about the key metrics every S&LP team should focus on. We’ll look at four main categories: Incident Management, Compliance, Resource Management, and Cost Efficiency. Together, these metrics create a solid foundation for understanding what’s working, what’s not, and where to improve.
-
-![The Data Metrics Every Security and Loss Prevention Team Should Track.](/assets/img/posts/2024-11-16-lthe-data-metrics-every-security-and-loss-prevention-team-should-track.png)
-
-
-
-
-## Incident Management: Using Data to Stay Ahead of Risks
-
-Incident management is the heart of S&LP, but it’s not just about reacting to problems as they happen. With the right data, you can identify patterns, adjust strategies, and ensure your team is always one step ahead. Here are the metrics to focus on:
-
-- **Onsite Incident Frequency**: How often are incidents happening at your facilities? Tracking this metric over time reveals risk hotspots and helps you pinpoint where to invest in preventive measures. If certain areas keep lighting up on the map, it’s time to take a closer look.
-
-- **Transit Incident Frequency**: Security doesn’t stop at your front door. For teams managing logistics, it’s important to track incidents during transit, like lost shipments or route deviations. This metric helps you identify risks along the supply chain and take proactive steps to secure your assets on the move.
-
-- **Incident Response Time**: Speed matters in security. How quickly can your team respond once an incident is detected? Tracking response times helps you see where processes can be improved. Use this data to cut down on response times and boost overall efficiency.
-
-- **Prevention vs. Detection Rate**: How many incidents are prevented before they happen versus those detected after the fact? This metric shows how effective your team is at anticipating risks and taking action proactively. A higher prevention rate means you’re staying ahead of potential threats rather than just reacting to them.
-
 ---
 
-## Compliance: Building a Culture of Security
+## Why do loss prevention reports rarely help the board decide?
 
-Compliance might sound like a formality, but it’s actually a key part of a successful security program. When everyone—from the security team to frontline employees—is aligned with security protocols, it builds a stronger, more resilient culture. These compliance metrics will give you a snapshot of how well your organization is following best practices:
+Security and loss prevention teams can measure a great deal: incidents on site and in transit, response times, compliance with procedures, staffing, equipment uptime, cost per incident and many more. When all of it reaches the board, the result is a long report that informs without asking for anything.
 
-- **Employee Engagement in Security Practices**: Are employees attending training sessions? Are they following protocols consistently? This metric tracks overall engagement in security practices, giving you insight into how much buy-in you have across the organization.
+Boards usually ask how much the organisation is losing and whether that is improving. Those are the right starting questions, and they miss a larger one: which few measures tell the board whether its decisions about risk appetite, investment and accountability are still right?
 
-- **Training Completion vs. Standards Compliance**: Think of this metric as a two-part check. First, are employees completing the required training? And second, are they following the standards covered in that training? By tracking both, you can assess the effectiveness of your training efforts.
+The scale justifies the attention. In the [National Retail Federation's National Retail Security Survey 2023](https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf), US retail shrink averaged 1.6% of sales in 2022, representing $112.1 billion in losses.
 
-- **Standards Adherence Rate**: This metric measures how closely employees stick to security standards across the board. High adherence minimizes risk and shows that your security practices are solid and consistently applied. If adherence is low, it might be time to reinforce training or reassess current protocols.
+## What does AI change in loss prevention reporting, and what does it not change?
 
----
+AI changes how much can be measured and how early. Models can estimate risk by site, product or route, and separate patterns of theft, fraud and error that once appeared as a single loss figure.
 
-## Resource Management: Maximizing Efficiency with Data
+AI does not change what a board needs from a report: a clear view of whether losses are within appetite, where they come from, and whether the organisation's controls and investments are working. More measurement makes the selection harder, not less important.
 
-Resources are always limited, whether it’s budget, time, or personnel. Resource management metrics help you make the most of what you’ve got, ensuring that your team and equipment are focused on high-impact areas. Here’s what to track:
+## Find the value: which measures support a board-level decision?
 
-- **Equipment Uptime**: Security equipment is only useful when it’s working. Tracking equipment uptime—whether it’s cameras, alarms, or access control systems—tells you how reliable your tech is. High uptime means your security network is running smoothly.
+Five measures usually carry the board's decisions:
 
-- **Personnel-to-Incident Ratio**: This metric shows if your team is staffed appropriately based on the volume of incidents you’re handling. A low ratio could mean your team is stretched too thin, leading to slower response times or overlooked incidents.
+| Measure | What it tells the board | The decision it supports |
+|---|---|---|
+| Loss rate against appetite | Whether losses are within the level the board accepted | Whether the appetite or the response needs to change |
+| Losses by cause | How much comes from external theft, internal theft, error and fraud | Where investment and accountability should sit |
+| Prevented versus detected | Whether controls act before value is lost | Whether to shift spending from investigation to prevention |
+| Response time for serious incidents | How quickly the organisation contains major events | Whether authority and capacity are adequate |
+| Cost per loss prevented | What each unit of prevention costs | Whether loss prevention spending is good value |
 
-- **Optimal vs. Current Staffing Levels**: Are you staffed just right, or do you need to adjust? Comparing optimal staffing levels with your current headcount helps you understand if you’re meeting security demands and where to allocate additional resources.
+Other measures, such as compliance with procedures, staffing levels, equipment uptime and incident counts by site, matter to management. They belong in the board report only when they threaten one of the five, for example when staffing gaps start to lengthen response times.
 
----
+Each measure also needs a stable definition. If losses by cause are reclassified from one quarter to the next, or prevented losses are estimated differently by each site, the board sees movement that reflects method rather than reality. Agreeing definitions once, and recording any change to them, is what makes the numbers comparable over time.
 
-## Cost Efficiency: Getting the Most Out of Your Budget
+**Decision for the sponsor:** which measures will the board receive, and what appetite is each one measured against?
 
-A security program is a crucial investment, but it needs to deliver value. Cost efficiency metrics help you understand whether your S&LP program is financially sustainable and effective. Here’s what to focus on:
+## Lead the change: who owns each measure, and what happens when it moves?
 
-- **Program Investment Cost**: This is the total cost of your S&LP program, covering personnel, equipment, technology, and training. Knowing the full investment helps you evaluate the overall value and impact of your program.
+A board measure is useful only if it has an owner and a consequence. Each of the five should have a named executive accountable for it, an agreed range of acceptable values, and a stated response when it moves outside that range: a review, an investment proposal or a change of control.
 
-- **Cost per Incident Prevented**: How much are you spending to prevent each incident? This metric helps you measure the financial efficiency of your security efforts. A lower cost per incident prevented means you’re getting more value from your program.
+Losses by cause deserve particular care, because causes often cross functions. External theft may sit with security, process errors with operations, and fraud with finance or digital teams. Assigning each cause an owner prevents the familiar pattern in which everyone reports the loss and nobody owns its reduction. The broader question of authority is covered in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
 
----
+**Decision for the sponsor:** which executive owns each measure, and what will happen when it moves outside its range?
 
-## Bringing It All Together: A Balanced Approach to Security Metrics
+## Prove the impact: are the board's decisions improving loss outcomes?
 
-Tracking metrics is all about finding the right balance. Not every data point is equally important, and your focus should be on metrics that align with your strategic goals. For example:
-- If preventing theft during transit is a priority, **Transit Incident Frequency** and **Incident Response Time** should be front and center.
-- If budget constraints are a major factor, focus on **Cost per Incident Prevented** to ensure a strong return on investment.
+Over several reporting cycles, the five measures should show whether the board's decisions are working. If prevention investment rose, did the share of prevented losses rise with it? If accountability for a cause was assigned, did losses from that cause fall? If response times were a concern, did they improve after authority or capacity changed?
 
----
+The report should also be honest about uncertainty. Loss figures depend on stock counts, classification of causes and estimates of prevented losses, all of which carry error. Showing the method alongside the number protects the board from false precision. The difference between measures that predict and measures that confirm is explored in [which leading indicators predict loss before it happens](/2024-11-18-leading-vs-lagging-indicators/).
 
-## Conclusion: Using Data to Drive Security and Loss Prevention
+**Decision for the sponsor:** on the evidence of several cycles, are the board's decisions reducing losses, and should the appetite or the investment change?
 
-In Security and Loss Prevention, data is more than just numbers on a screen—it’s a roadmap for making smarter decisions. By focusing on key metrics in **Incident Management**, **Compliance**, **Resource Management**, and **Cost Efficiency**, you’re building a data-driven approach that keeps your organization secure and sustainable.
+## What does it cost, and what is the simpler alternative?
 
-The goal isn’t to track every metric imaginable but to zero in on the ones that provide real insights and drive action. Start with these categories, and you’ll find that your S&LP program isn’t just reacting to problems—it’s actively preventing them and continuously improving.
+The cost of a better board report is mostly in agreement rather than data: deciding the appetite, assigning owners across functions, and agreeing how causes and prevented losses are classified. Some organisations will also need better data on causes before the second measure is reliable.
 
-With the right data, your team can confidently protect what matters most, creating a security strategy that’s efficient, effective, and built to last.
+The simpler alternative is to start with two measures: the loss rate against an agreed appetite, and losses by cause with an owner for each. Those two alone usually change the board conversation from "how much did we lose?" to "who is reducing which part of it, and how?"
 
+Whoever prepares the report should also show what changed since the last one and why: a new owner, a revised appetite, an investment approved. Boards remember decisions better than numbers, and a short record of what was decided last time makes it easier to judge whether those decisions worked.
 
-For more on turning these metrics into decision triggers, see [Reporting Is Not Intelligence](/2026-05-30-reporting-is-not-intelligence-stop-decorating-dashboards-start-triggering-action/). And for a framework on choosing metrics that predict rather than just record, read [Leading vs. Lagging Indicators](/2024-11-18-leading-vs-lagging-indicators/).
+## Questions to put to your team
+
+1. What loss rate has the board agreed to accept, and are we within it?
+2. How much of our loss comes from each cause, and who owns each one?
+3. What share of losses do we prevent rather than detect afterwards?
+4. How quickly do we contain serious incidents?
+5. What does each loss prevented cost us?
+
+## Frequently asked questions
+
+### What is shrink in retail?
+
+Shrink is the loss of inventory that cannot be accounted for through sales, caused by theft from outside or inside the business, process and administrative errors, damage and fraud. It is usually expressed as a percentage of sales. The National Retail Federation reported average shrink of 1.6% of sales for 2022.
+
+### What is the difference between prevented and detected losses?
+
+A prevented loss is stopped before value leaves the business, for example a fraudulent order blocked before dispatch. A detected loss is identified after it has happened, for example a stock discrepancy found at the next count. A rising share of prevented losses shows that controls are working earlier, not only that investigations are finding more.
+
+### How often should loss prevention metrics go to the board?
+
+Usually quarterly, alongside other risk reporting, with an agreed exception process: if a measure moves outside the board's stated appetite between meetings, the chair or the audit and risk committee is informed. Monthly operational detail should stay with management, so the board sees direction and decisions rather than noise.
+
+## Sources
+
+- National Retail Federation, [Shrink accounted for over $112 billion in industry losses in 2022](https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf), National Retail Security Survey 2023.
+
+A board does not need to see everything the loss prevention team measures. It needs to see whether its own decisions are working. More on judging results is in the [outcomes and evidence](/topics/outcomes-and-evidence/) topic, and on choosing measures generally in [which three questions decide whether a metric is worth keeping](/2026-11-12-if-a-metric-wont-change-your-next-move-cut-it-three-questions-that-make-numbers-intelligent/).

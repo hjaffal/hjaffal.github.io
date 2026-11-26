@@ -1,63 +1,106 @@
 ---
+title: What Does Unclear Ownership Cost an AI Investment?
+subtitle: The cost rarely appears on the model's scorecard. It appears as queues, overtime, missed windows and people who stop trusting the alerts.
+share-title: What Does Unclear Ownership Cost an AI Investment?
+share-description: 'Unclear ownership turns AI accuracy into coordination cost: queues, delays, extra reviews and lost trust. How finance leaders can measure it and stop it.'
+excerpt: When nobody clearly owns the actions an AI model implies, its accuracy turns into coordination cost. That cost is real, measurable and usually missing from the business case, which is why many AI investments report detection but not results.
+tldr: Often more than the model itself. When nobody clearly owns the action an AI output implies, each output starts a search for someone who may act. That search costs time, extra reviews, overtime and missed opportunities, and over time people stop trusting the alerts. The cost rarely appears in the business case, so measure it directly and make ownership a condition of funding.
+keywords:
+- AI ROI
+- AI business case
+- cost of unclear ownership
+- AI value realisation
+faq:
+- q: Why do AI investments fail to show financial results?
+  a: Often because the model's outputs do not reliably change what the business does. Accuracy is measured, but the actions and their results are not. When ownership of those actions is unclear, value leaks into delays and reviews. McKinsey's 2025 survey found only 39% of respondents reported any effect of AI on enterprise-wide earnings.
+- q: How do you measure the cost of unclear ownership?
+  a: Track, for a sample of AI outputs, the time from output to action, the number of people involved before someone acted, the share of outputs never acted on, and the value lost when actions came too late. Converting staff time and missed opportunities into money turns an invisible cost into a line in the business case.
+- q: Should ownership be a condition of funding an AI project?
+  a: In my judgement, yes. Before approving funding, finance and the sponsor can require a named owner for each kind of action the model implies, written limits on what that owner may do, and a measure of realised results. A model without an owner can still be built, but it should not be funded as an investment.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "The Hidden Cost of Deploying AI Into Unclear Ownership"
-subtitle: "Detection without authority becomes expensive noise. Fix decision power before you scale models."
-share-description: "AI accelerates detection, not decisions. If ownership and authority are fuzzy, every new signal creates cost, delay, and distrust. Here’s what to stop now—and what to do instead."
 tags:
-  - ai-decision-operations
+- ai-decision-operations
 topic: ai-topic
 archetype: explain
-author: Hasan J.
-tldr: "AI exposes weak operations. When ownership and authority are unclear, models produce alerts that no one can act on, creating queues, overtime, missed windows, and customer friction. The fix isn’t another dashboard—it’s decision power with limits. Stop shipping models into committees and collecting unactioned signals. Instead, assign a named owner with an action budget, pre-commit what happens at specific thresholds, cap alert volume to what you can execute, and measure decision latency like a reliability metric. Accept a bounded error rate or keep paying for delay. Pick one—and make it explicit."
 ---
 
-Claim: AI does not repair unclear ownership or slow approvals. It exposes them at speed. Every new signal without authority to act converts precision into coordination cost. That cost rarely shows on the model scorecard. It shows up as queues, overtime, missed windows, and credibility loss.
+## Why does unclear ownership not show up in the business case?
 
-Here is the logic. A model’s output is only valuable if it reliably changes what happens next. When ownership is fuzzy, each alert triggers a search for “who can push the button.” That search has a latency and a headcount. At low volume, teams absorb it. At scale, the search becomes the system. You end up paying to detect what you will not decide.
+An AI business case usually counts the cost of the model, the data and the integration, and estimates the value of better detection or prediction. What it rarely counts is the work that follows each output: finding someone who may act, gathering approvals, reviewing exceptions and repeating the cycle when the same issue returns.
 
-A concrete example. A national retailer rolled out an AI model to flag suspicious high-value returns across e‑commerce and stores. Loss Prevention, E‑commerce Ops, and Customer Care touched the flow; Legal and Brand reviewed exceptions. The model did its job and surfaced more suspect cases than the old rules. But agents could not hold or deny a refund without Policy sign‑off. On weekends and evenings, no one with authority was on the hook. Flags piled up into a multi‑day queue. Store managers overrode holds to clear lines. Customer Care issued appeasements to hit handle‑time targets. Chargeback windows slipped. The dashboard showed “strong lift,” but P&L impact was flat and goodwill costs rose. After three months, leadership questioned the model, not the decision chain.
+Leaders who want to know whether an AI investment is paying usually look at model performance and adoption. Those matter, and they miss a larger question: how much of the value the model creates is lost between its output and the action it implies? When nobody clearly owns that action, accuracy turns into coordination cost.
 
-Nothing was wrong with the model. The system had no owner with the right to act at the speed of detection.
+The gap between AI activity and financial results is wide. In McKinsey's [State of AI 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025) survey, only 39% of respondents said AI had any effect on enterprise-wide earnings, and most of those attributed less than 5% of earnings to it.
 
-The hidden cost compounds in three places:
-- Decision latency tax: Every extra handoff pushes actions past their useful window—refunds processed, fraud windows closed, service breaches logged.
-- Governance drag: When authority is unclear, teams add reviews to feel safe. Reviews become standing meetings that move information, not ownership.
-- Trust erosion: People learn that alerts don’t change outcomes. They stop looking. The best operators revert to manual heuristics.
+## What does AI change in the cost of coordination, and what does it not change?
 
-Leaders: what to stop immediately
-- Stop shipping models without naming a single operational owner who can take the action the model implies. If no one has that authority today, do not deploy.
-- Stop routing exceptions through Slack consensus or standing committees. Consensus is not a control; it’s a delay.
-- Stop counting alerts, precision, or lift as success if decision latency and executed actions are not tracked. Detection without execution is a vanity metric.
-- Stop using “pilot” to avoid authority decisions. A pilot without decision rights is a demo, not an operational test.
-- Stop adding reviewers to feel safer. More eyes without a final say only increases the queue.
+AI changes the volume of outputs that need an owner. At low volumes, teams absorb unclear ownership through goodwill and extra effort. At the volumes AI produces, the same arrangement creates queues, overtime and backlogs.
 
-What to do instead
-- Name an owner with a clear action budget. Write it down: “For signals above X, Y is authorized to do Z within N minutes, up to $K per week.” Tie it to a cost center.
-- Pre‑commit playbooks at thresholds. If the score crosses a line, the default is to act. Escalation is the exception, not the norm. Audit after, not before, within a set window.
-- Cap intake to capacity. If you cannot act on 1,000 alerts a day, don’t ingest 5,000. Either raise capacity or raise the threshold. Let the backlog be a signal, not a sink.
-- Measure decision latency like uptime. Define a target time to action by severity. Publish it. Page someone when you miss it. Models can ship later; lost windows don’t come back.
-- Bind signals to ledgers. Every model should connect to a budget (savings spent, losses avoided, appeasements issued). Owners must feel the trade in their numbers.
-- Sunset unowned signals. If a feed has no named owner and playbook after 30 days, turn it off. Quiet beats fake activity.
+AI does not change who is accountable or what people are rewarded for. If outputs fall between functions, and each function is measured on its own priorities, the outputs wait. More accuracy does not fix that; it adds to the queue.
 
-The uncomfortable trade‑off
-You must choose between speed with a bounded error rate or slow accuracy that destroys value. Fast action will include false positives. Slow action will miss windows and create real costs in labor and customer friction. Average teams pretend they can have both and end up with neither—high review load and stale actions. Strong teams make the trade explicit, set an error budget, and operate within it.
+## Find the value: where is the cost of unclear ownership hiding?
 
-What strong teams do differently
-- They design for authority first, then for accuracy. They start by deciding who owns the consequence and what that person can do without asking.
-- They push decision rights to the edge with guardrails: clear thresholds, dollar caps, post‑action audits, and a clean escalation path for outliers.
-- They track decision latency as a primary metric and treat misses as incidents to learn from, not reasons to add more reviewers.
-- They tune volume to execution. When capacity is tight, they raise thresholds or automate low‑risk actions. They never let a queue become the default.
-- They align incentives: the owner’s success is measured by realized outcomes, not model metrics. If nothing changes in the ledger, nothing shipped.
+The cost hides in three places. The first is delay: every extra handoff pushes actions past the window in which they were worth taking. The second is governance drag: when authority is unclear, teams add reviews to feel safe, and reviews become standing meetings that move information without moving ownership. The third is lost trust: when people learn that alerts rarely change outcomes, they stop looking, and the best operators return to their own judgement.
 
-Average teams do the opposite. They obsess over model metrics, schedule status reviews, and spread “input” across functions to feel aligned. When the alerts hit, they lack a named person who can say “do it now.” So they wait. They also confuse sign‑off with safety. In reality, delay is the larger risk.
+To find it, take a sample of recent AI outputs and trace each one. How long did it take to reach someone who could act? How many people were involved? Was it acted on at all? What did the delay cost? Converting staff time and missed opportunities into money turns an invisible cost into a number a finance leader can weigh.
 
-How to make this real in a week
-- Day 1: Inventory every AI or rules signal in production. For each, write the name of the human who can act without asking. If you can’t, you found a cost center.
-- Day 2: For top three signals by business impact, draft one‑page playbooks with thresholds, default actions, dollar caps, and post‑action audit windows.
-- Day 3: Set decision latency targets and alerting. Add them to your ops review next to precision and volume.
-- Day 4: Adjust thresholds to match current capacity. Stop ingest on any feed you cannot action within target time.
-- Day 5: Communicate the new authority model. Publish owners, actions, and caps. Turn off any signal still unowned.
+**Decision for the sponsor:** how much of the value our AI produces is lost between output and action, and is that cost in the business case?
 
-If you do nothing else, do this: never let detection outpace decision power. AI will keep finding more. If your authority model doesn’t scale with it, you are buying noise.
+## Lead the change: how do leaders make ownership a condition of investment?
 
-Forced‑position question: Will you grant explicit, measured decision rights at the edge and accept a bounded error rate, or will you keep central approvals and pay for delay with real money and trust?
+Ownership can be built into the way AI is funded and governed, rather than discovered after deployment:
+
+- **A named owner before funding.** For each kind of action the model implies, one role is named as owner, with written authority to act within limits. This is set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
+- **Outputs tied to a budget line.** Each model is linked to the line it should affect, such as losses avoided, costs saved or revenue retained, so that its owner sees the result in their own numbers.
+- **Volume matched to capacity.** If the owner can act on a certain number of outputs a day, the model produces no more than that, or the capacity is raised.
+- **A deadline for unowned signals.** An output with no owner after an agreed period is switched off. A quiet system is better than one that produces activity without results.
+
+In my judgement, the second point matters most to finance leaders, because it connects the model to a number the organisation already manages.
+
+An illustrative example, not a documented case: a model flags suspicious high-value returns across online and store channels. Loss prevention, e-commerce operations and customer service each touch the process, and legal reviews exceptions. Each flagged return waits while the teams agree who may refuse it. The refunds are processed before anyone decides, and the model's accuracy produces a report rather than a saving.
+
+**Decision for the sponsor:** will we require a named owner and a linked budget line before funding each AI use?
+
+## Prove the impact: is the investment producing results rather than activity?
+
+Report realised results, not detection. For each model, track the share of outputs acted on, the time from output to action, and the change in the budget line it is tied to, against a baseline. Track the coordination cost alongside: the staff time spent finding owners and seeking approvals.
+
+If the share of outputs acted on rises and the budget line moves, the investment is working. If accuracy improves while results stay flat, the problem is ownership or workflow, not the model. The operating-model side of this is covered in [is your operating model ready for AI](/2026-05-27-is-your-operating-model-ready-for-ai-ask-this-one-question-first/).
+
+**Decision for the sponsor:** on the evidence of realised results, should each AI use be funded further, restructured or stopped?
+
+## What does it cost, and what is the cheaper alternative?
+
+Clarifying ownership costs leadership time and some political capital, because it means deciding which function carries each action and accepting that its owner will sometimes be wrong. It may also mean switching off outputs that nobody will own, which can feel like losing value already paid for.
+
+The cheaper alternative is to measure before deciding: trace a sample of outputs for one model over a month. The result often makes the case for clear ownership more persuasively than any argument, and it costs only a few days of analysis.
+
+## Questions to put to your team
+
+1. For each AI model we run, who owns the actions its outputs imply?
+2. What share of its outputs were acted on last month?
+3. How much staff time goes into finding owners and seeking approvals?
+4. Which budget line should each model move, and is it moving?
+5. Which outputs have no owner, and should they be switched off?
+
+## Frequently asked questions
+
+### Why do AI investments fail to show financial results?
+
+Often because the model's outputs do not reliably change what the business does. Accuracy is measured, but the actions and their results are not. When ownership of those actions is unclear, value leaks into delays and reviews. McKinsey's 2025 survey found only 39% of respondents reported any effect of AI on enterprise-wide earnings.
+
+### How do you measure the cost of unclear ownership?
+
+Track, for a sample of AI outputs, the time from output to action, the number of people involved before someone acted, the share of outputs never acted on, and the value lost when actions came too late. Converting staff time and missed opportunities into money turns an invisible cost into a line in the business case.
+
+### Should ownership be a condition of funding an AI project?
+
+In my judgement, yes. Before approving funding, finance and the sponsor can require a named owner for each kind of action the model implies, written limits on what that owner may do, and a measure of realised results. A model without an owner can still be built, but it should not be funded as an investment.
+
+## Sources
+
+- McKinsey & Company, [The state of AI in 2025: Agents, innovation, and transformation](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025), November 2025.
+
+AI investments are often judged on what the model can see. Their returns depend on what the organisation does next, and on whether someone owns doing it. More on weighing these choices is in the [investment decisions](/topics/investment-decisions/) topic, and on fixing the process around a model in [should you fix the process before deploying an AI model](/2026-05-15-ai-wont-save-a-sloppy-process/).

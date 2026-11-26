@@ -3,48 +3,92 @@ layout: page
 title:
 subtitle:
 share-img: /assets/img/hasanjaffal.jpeg
-share-title: "AI Adoption & Business Value — Hasan Jaffal"
-share-description: "Hasan Jaffal writes about AI opportunities, investment decisions, people and adoption, and how to judge the business value AI actually delivered."
+share-title: "Hasan Jaffal: From AI hype to hard numbers"
+share-description: "Hasan Jaffal writes about how leaders in Europe and the Middle East find where AI is worth investing in, lead the change it requires, and prove the value it creates."
 chat_with_me_box: false
-last_modified_at: 2026-11-18
+last_modified_at: 2026-11-26
 show-avatar: false
 css:
   - "/assets/css/homepage.css"
 ---
 
-{% assign featured = site.posts | where_exp: "post", "post.path contains '2026-09-22-the-hidden-cost'" | first %}
+{% assign featured = site.posts | first %}
+{% assign topics = site.data.writing.topics %}
 <div class="journal-home">
-  <div class="jh-wrap">
-    <header class="jh-introduction">
-      <p class="jh-kicker">WRITING BY HASAN JAFFAL</p>
-      <h1>What AI makes possible.<br><span>What it takes to make it worthwhile.</span></h1>
-      <p>I write about where AI could change a business: the opportunities people recognize, the decisions they make, the skills they build, and the evidence of what actually improved.</p>
-    </header>
 
-    <div class="jh-opening">
-      <section class="jh-feature" aria-labelledby="featured-title">
-        <div class="jh-meta"><span class="jh-kicker">FEATURED Article</span><span>{{ featured.date | date: "%B %-d, %Y" }} · {% assign words = featured.content | number_of_words %}{{ words | divided_by: 200 | plus: 1 }} min read</span></div>
-        <h2 id="featured-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
-        <p class="jh-deck">An AI model flags more suspicious returns. Yet the people handling them cannot act, the queue grows, and the business sees little benefit. Where did the value go?</p>
-        <a class="jh-read" href="{{ featured.url | relative_url }}">Read the article <span aria-hidden="true">→</span></a>
-        <div class="jh-reading-question"><span>THE QUESTION TO CARRY INTO YOUR BUSINESS</span><p>If AI gave your team better information tomorrow, what would they be able to do differently?</p></div>
-      </section>
-
-
+  <section class="jh-hero" aria-labelledby="hero-title">
+    <div class="jh-wrap jh-hero-grid">
+      <div>
+        <p class="jh-label">Hasan Jaffal · Luxembourg</p>
+        <h1 id="hero-title">From AI hype to hard numbers.</h1>
+        <p class="jh-lede">I write about how leaders find where AI is worth investing in, lead the change it requires, and prove the value it creates. Ideas from practice, shared openly.</p>
+        <div class="jh-actions">
+          <a class="jh-cta" href="#latest-title">Read the latest article</a>
+          <a class="jh-link-light" href="{{ '/contact/' | relative_url }}">Start a conversation <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <img class="jh-portrait" src="/assets/img/hasanjaffal-cutout.webp" alt="Portrait of Hasan Jaffal" width="800" height="800" fetchpriority="high">
     </div>
+  </section>
+
+  <div class="jh-wrap">
+
+    <section class="jh-reframe" aria-labelledby="reframe-title">
+      <p class="jh-label">The question behind the question</p>
+      <h2 id="reframe-title">Most organisations have run AI pilots. Few can say what they were worth.</h2>
+      <p>The question leaders bring is usually whether the technology works. It is a fair question, and it misses a larger one: whether acting on what the AI produces will change a decision, a cost or a result that matters. I think about it in three stages, and each one ends with a decision for the sponsor.</p>
+    </section>
+
+    <section class="jh-method" aria-labelledby="method-title">
+      <h2 id="method-title" class="jh-visually-hidden">Find, Lead, Prove: a three-stage approach to AI value</h2>
+      <ol class="jh-stages">
+        <li class="jh-stage">
+          <div class="jh-blocks" aria-hidden="true"><i></i></div>
+          <p class="jh-label">1 · Find the value</p>
+          <h3>Where is AI worth investing in?</h3>
+          <p>Where the value pool sits, how large it is, where it is concentrated, and whether it deserves a structured test at all.</p>
+          <p class="jh-decision"><strong>Decision for the sponsor:</strong> is the pool large enough to justify a test, and where should it start?</p>
+          <p class="jh-stage-links"><a href="{{ topics[0].url | relative_url }}">{{ topics[0].label }} →</a><a href="{{ topics[1].url | relative_url }}">{{ topics[1].label }} →</a></p>
+        </li>
+        <li class="jh-stage">
+          <div class="jh-blocks" aria-hidden="true"><i></i><i></i></div>
+          <p class="jh-label">2 · Lead the change</p>
+          <h3>Who must work differently?</h3>
+          <p>Who acts on what the AI produces, who owns each decision, and what has been agreed before the results arrive.</p>
+          <p class="jh-decision"><strong>Decision for the sponsor:</strong> who owns the decision the AI informs, and what will they do differently?</p>
+          <p class="jh-stage-links"><a href="{{ topics[2].url | relative_url }}">{{ topics[2].label }} →</a></p>
+        </li>
+        <li class="jh-stage">
+          <div class="jh-blocks" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="jh-label">3 · Prove the impact</p>
+          <h3>Did it change the business?</h3>
+          <p>Whether the AI is reliable, whether acting on it moved a result, compared with what, and what the stop rule is.</p>
+          <p class="jh-decision"><strong>Decision for the sponsor:</strong> scale, change course or stop, on the evidence?</p>
+          <p class="jh-stage-links"><a href="{{ topics[3].url | relative_url }}">{{ topics[3].label }} →</a></p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="jh-feature" aria-labelledby="latest-title">
+      <div class="jh-meta"><span class="jh-label">Latest article</span><span>{{ featured.date | date: "%-d %B %Y" }} · {% assign words = featured.content | number_of_words %}{{ words | divided_by: 200 | plus: 1 }} min read</span></div>
+      <h2 id="latest-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
+      <p class="jh-deck">{{ featured.subtitle | default: featured.share-description }}</p>
+      <a class="jh-read" href="{{ featured.url | relative_url }}">Read the article <span aria-hidden="true">→</span></a>
+    </section>
 
     <section class="jh-writing" aria-labelledby="selected-title">
-      <div class="jh-section-heading"><h2 id="selected-title">Latest by topic</h2><a class="jh-read" href="{{ '/writing/' | relative_url }}">All writing →</a></div>
+      <div class="jh-section-heading"><h2 id="selected-title">Recent writing by question</h2><a class="jh-read" href="{{ '/writing/' | relative_url }}">All writing →</a></div>
       <div class="jh-essay-list">
-        {% for topic in site.data.writing.topics %}
+        {% for topic in topics %}
           {% for article in site.posts %}
+            {% if article.url == featured.url %}{% continue %}{% endif %}
             {% capture article_topic_ids %}{% include reading-topics.html post=article %}{% endcapture %}
             {% assign article_topics = article_topic_ids | strip | split: '|' %}
             {% if article_topics contains topic.id %}
               {% assign summary = article.share-description | default: article.subtitle | default: article.excerpt | strip_html | normalize_whitespace | truncatewords: 34 %}
               <article class="jh-essay">
-                <div class="jh-essay-category"><span class="jh-kicker">{{ topic.label | escape }}</span><time datetime="{{ article.date | date: '%Y-%m-%d' }}">{{ article.date | date: '%b %-d, %Y' }}</time></div>
-                <div><h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3><p>{{ summary }}</p><a class="jh-read" href="{{ article.url | relative_url }}">Read the article →</a></div>
+                <div class="jh-essay-category"><span class="jh-label">{{ topic.question | escape }}</span><time datetime="{{ article.date | date: '%Y-%m-%d' }}">{{ article.date | date: '%-d %b %Y' }}</time></div>
+                <div><h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3><p>{{ summary }}</p></div>
               </article>
               {% break %}
             {% endif %}
@@ -53,16 +97,26 @@ css:
       </div>
     </section>
 
-    <section class="jh-topic-section" aria-labelledby="home-topics-title"><h2 id="home-topics-title">Explore the questions behind AI adoption.</h2><nav class="jh-topic-links" aria-label="Writing topics">{% for topic in site.data.writing.topics %}<a href="{{ topic.url | relative_url }}">{{ topic.label }} →</a>{% endfor %}</nav></section>
-
     <section class="jh-author-note" aria-labelledby="approach-title">
-      <div class="jh-author"><img src="/assets/img/hasanjaffal.jpeg" alt="" width="56" height="56" loading="lazy"><div><h2 id="approach-title">Hasan Jaffal</h2><p>Analytics, data & product leadership</p></div></div>
-      <div><p>I start with what AI could make possible for customers and the business. Then I ask what changed, what it cost, and how much of the improvement we can attribute to AI. My writing draws on a background in analytics, data, and product leadership across global operations.</p><a class="jh-read" href="/aboutme/">About the author →</a></div>
+      <p class="jh-label">About the writing</p>
+      <div>
+        <h2 id="approach-title">Ideas from practice, shared to be tested.</h2>
+        <p>The ideas here come from my own work in analytics, data and product leadership across global operations. I write them down so that leaders and their teams can test them in their own organisations, and I teach for the same reason. If you are working on the same questions, I am always glad to compare notes.</p>
+        <a class="jh-read" href="{{ '/aboutme/' | relative_url }}">About Hasan Jaffal →</a>
+      </div>
     </section>
 
-    <section class="jh-newsletter" aria-labelledby="newsletter-title">
-      <div><p class="jh-kicker">THE SECOND MIND · NEWSLETTER</p><h2 id="newsletter-title">Keep reading.</h2><p>Get my writing on AI, business decisions, and the work of adoption in your inbox.</p><a class="jh-read" href="/newsletter/">About the newsletter →</a></div>
-      <form class="jh-subscribe nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'homepage')"><label for="home-newsletter-email">Your email address</label><div class="jh-input-row"><input id="home-newsletter-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required class="nl-subscribe-input"><button type="submit" class="nl-subscribe-btn">Subscribe</button></div><input type="text" name="website_url" class="jh-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="nl-subscribe-msg" role="status" aria-live="polite" style="display:none;"></p></form>
-    </section>
   </div>
+
+  <section class="jh-newsletter" aria-labelledby="newsletter-title">
+    <div class="jh-wrap jh-newsletter-grid">
+      <div>
+        <h2 id="newsletter-title">The Second Mind</h2>
+        <p class="jh-byline">by Hasan Jaffal</p>
+        <p>Writing on AI, business decisions and the work of proving value, in your inbox.</p>
+        <a class="jh-read" href="{{ '/newsletter/' | relative_url }}">About the newsletter →</a>
+      </div>
+      <form class="jh-subscribe nl-subscribe-form" onsubmit="return handleNewsletterSubscribe(event, this, 'homepage')"><label for="home-newsletter-email">Your email address</label><div class="jh-input-row"><input id="home-newsletter-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required class="nl-subscribe-input"><button type="submit" class="nl-subscribe-btn">Subscribe</button></div><input type="text" name="website_url" class="jh-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="nl-subscribe-msg" role="status" aria-live="polite" style="display:none;"></p></form>
+    </div>
+  </section>
 </div>

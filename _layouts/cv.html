@@ -2,18 +2,16 @@
 layout: base
 css:
   - /assets/css/reading.css
-js:
-  - /assets/js/cv.js
 ---
 <main class="pub-page cv-page"><div class="pub-wrap">
   <nav class="pub-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/aboutme/' | relative_url }}">About Hasan</a><span aria-hidden="true">/</span><span aria-current="page">Curriculum vitae</span></nav>
   <header class="cv-heading">
-    <div><p class="pub-kicker">CURRICULUM VITAE</p><h1 id="hasan-jaffal">Hasan Jaffal</h1><p class="cv-role">Head of Analytics</p><p class="cv-specialism">AI and data science leadership · Security and loss prevention</p></div>
-    <div class="cv-heading-action"><button type="button" id="cv-print" hidden>Print CV <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9V3h12v6M6 17H4V9h16v8h-2M6 14h12v7H6z"/><path d="M16 11h1"/></svg></button><span>Also formatted for paper.</span></div>
+    <div><p class="pub-kicker">Curriculum vitae</p><h1 id="hasan-jaffal">Hasan Jaffal</h1><p class="cv-role">{{ page.cv_role }}</p><p class="cv-specialism">{{ page.cv_specialism }}</p></div>
+    <div class="cv-heading-action"><a id="cv-print" href="{{ page.cv_pdf | relative_url }}" download="Hasan-Jaffal-CV.pdf">Download CV (PDF) <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14"/></svg></a></div>
   </header>
   <div class="cv-contact"><span>Luxembourg</span><a href="mailto:jaftalks@gmail.com">jaftalks@gmail.com</a><a href="https://linkedin.com/in/jaffal" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div>
   <div class="cv-layout">
-    <aside class="cv-navigation"><nav aria-label="CV sections"><p class="pub-kicker">ON THIS PAGE</p><a href="#executive-profile">Executive profile</a><a href="#professional-experience">Professional experience</a><a href="#board-experience">Board experience</a><a href="#education">Education</a><a href="#languages">Languages</a></nav><div class="cv-context"><p>This is my professional background. For the mission and approach behind my writing:</p><a class="pub-link" href="{{ '/aboutme/' | relative_url }}">About the author →</a></div></aside>
+    <aside class="cv-navigation"><nav aria-label="CV sections"><p class="pub-kicker">On this page</p><a href="#executive-profile">Executive profile</a><a href="#professional-experience">Professional experience</a><a href="#board-experience">Board experience</a><a href="#education">Education</a><a href="#languages">Languages</a></nav><div class="cv-context"><p>This is my professional background. For the mission and approach behind my writing:</p><a class="pub-link" href="{{ '/aboutme/' | relative_url }}">About the author →</a></div></aside>
     <article class="cv-content" aria-label="Professional background">{{ content }}</article>
   </div>
   <div class="cv-end"><a class="pub-link" href="{{ '/aboutme/' | relative_url }}">← Back to About</a><a class="pub-link" href="{{ '/writing/' | relative_url }}">Read my articles →</a></div>

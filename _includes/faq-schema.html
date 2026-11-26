@@ -1,3 +1,17 @@
+{%- comment -%} FAQ structured data: from the article's `faq` list when present, otherwise one question built from a question-style title. {%- endcomment -%}
+{%- if page.faq -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in page.faq %}{
+    "@type": "Question",
+    "name": {{ item.q | jsonify }},
+    "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | jsonify }} }
+  }{% unless forloop.last %},{% endunless %}{% endfor %}]
+}
+</script>
+{%- else -%}
 {% assign question_words = "Will,Can,Should,Is,Are,Do,Does,How,Why,What,When,Where,Who" | split: "," %}
 {% assign first_word = page.title | split: " " | first | remove: '"' %}
 {% if question_words contains first_word %}
@@ -16,3 +30,4 @@
 }
 </script>
 {% endif %}
+{%- endif -%}

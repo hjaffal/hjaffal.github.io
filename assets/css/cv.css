@@ -1,10 +1,10 @@
 /* A readable career document, aligned with the site's editorial design. */
 .cv-heading { display: flex; align-items: start; justify-content: space-between; gap: 32px; padding: 28px 0 24px; }
-.cv-heading h1 { font-size: clamp(34px, 3.5vw, 46px); line-height: 1.15; font-weight: 650; letter-spacing: -.035em; margin: 0 0 16px; }
-.cv-role { font-size: 23px; font-weight: 500; line-height: 1.4; letter-spacing: -.02em; color: var(--pub-ink); margin: 0 0 6px; }
+.cv-heading h1 { font-size: clamp(34px, 3.5vw, 46px); line-height: 1.15; font-weight: 600; letter-spacing: -.035em; margin: 0 0 16px; }
+.cv-role { font-size: 23px; font-weight: 600; line-height: 1.4; letter-spacing: -.02em; color: var(--pub-ink); margin: 0 0 6px; }
 .cv-specialism { font-size: 17px; line-height: 1.7; color: var(--pub-muted); margin: 0; max-width: 670px; }
 .cv-heading-action { display: flex; flex-direction: column; align-items: end; gap: 10px; padding-top: 32px; flex-shrink: 0; }
-#cv-print { display: inline-flex; gap: 16px; align-items: center; justify-content: center; min-height: 44px; border: 1px solid #91839e; border-radius: 4px; padding: 10px 16px; background: var(--pub-paper); color: var(--pub-purple); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+#cv-print { display: inline-flex; gap: 16px; align-items: center; justify-content: center; min-height: 44px; border: 1px solid #9C93B8; border-radius: 4px; padding: 10px 16px; background: var(--pub-paper); color: var(--pub-purple); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
 #cv-print:hover { background: var(--pub-soft); }
 .cv-heading-action > span { font-size: 12px; line-height: 1.5; color: var(--pub-muted); }
 .cv-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; border-bottom: 3px solid var(--pub-purple); padding: 0 0 18px; color: var(--pub-muted); font-size: 14px; line-height: 1.7; }
@@ -21,7 +21,7 @@
 .cv-content { min-width: 0; max-width: 790px; padding-bottom: 10px; }
 .cv-content h2 { font-size: 25px; line-height: 1.3; font-weight: 600; letter-spacing: -.025em; color: var(--pub-ink); margin: 40px 0 20px; padding-top: 28px; border-top: 1px solid var(--pub-line); scroll-margin-top: 108px; }
 .cv-content h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-.cv-content h3 { font: 400 28px/1.3 Georgia, 'Times New Roman', serif; letter-spacing: -.01em; margin: 32px 0 24px; padding-top: 26px; border-top: 1px solid var(--pub-line); scroll-margin-top: 108px; }
+.cv-content h3 { font: 400 28px/1.3 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.01em; margin: 32px 0 24px; padding-top: 26px; border-top: 1px solid var(--pub-line); scroll-margin-top: 108px; }
 .cv-content #professional-experience + h3 { border-top: 0; padding-top: 0; margin-top: 0; }
 .cv-content h4 { color: var(--pub-ink); font-size: 19px; line-height: 1.4; font-weight: 600; letter-spacing: -.015em; margin: 26px 0 6px; scroll-margin-top: 108px; }
 .cv-content p { font-size: 17px; line-height: 1.8; color: var(--pub-ink); margin: 0 0 18px; }
@@ -37,8 +37,8 @@
 @media (max-width: 480px) { .cv-heading { flex-direction: column; gap: 18px; } .cv-heading h1 { font-size: 36px; } .cv-role { font-size: 21px; } .cv-specialism { font-size: 16px; } .cv-heading-action { padding: 0; align-items: start; } .cv-contact { column-gap: 20px; } .cv-layout { padding-top: 24px; } .cv-content h2 { font-size: 24px; } .cv-content h3 { font-size: 26px; } .cv-content p { font-size: 16px; } .cv-content h4 { font-size: 18px; } .cv-content h4 + p { font-size: 14px; } }
 @media print {
   @page { size: A4; margin: 16mm; }
-  html, body, .pub-page { background: #fff !important; color: #111 !important; }
-  .cv-page { --pub-paper: #fff !important; --pub-ink: #111 !important; --pub-muted: #444 !important; --pub-purple: #54258c !important; --pub-line: #ccc !important; padding-top: 0; }
+  html, body, .pub-page { background: #fff !important; color: #1A1033 !important; }
+  .cv-page { --pub-paper: #fff !important; --pub-ink: #1A1033 !important; --pub-muted: #4A4560 !important; --pub-purple: #4720D9 !important; --pub-line: #E2DDF2 !important; padding-top: 0; }
   .hj-header, .publication-footer, #cookie-banner, .cv-navigation, .cv-heading-action, .cv-end, .pub-breadcrumb, .sub-popup { display: none !important; }
   .cv-page .pub-wrap { max-width: none; padding: 0; margin: 0; }
   .cv-heading { display: block; padding: 0 0 10pt; }
@@ -60,6 +60,31 @@
   .cv-content h2, .cv-content h3, .cv-content h4, .cv-content h4 + p { break-after: avoid; }
   .cv-content li { break-inside: avoid; }
   .cv-content p { orphans: 3; widows: 3; }
-  .cv-page a { color: #111 !important; text-decoration: none !important; }
-  .cv-contact a[href^="mailto:"] { color: #111 !important; }
+  .cv-page a { color: #1A1033 !important; text-decoration: none !important; }
+  .cv-contact a[href^="mailto:"] { color: #1A1033 !important; }
+}
+
+/* Brand identity on screen only (print keeps the paper layout above): violet-black hero with name,
+   role and contact details; clear heading order; dates as violet labels. */
+@media screen {
+  .cv-page .pub-breadcrumb, .cv-heading, .cv-contact { background: #1A1033; box-shadow: 0 0 0 100vmax #1A1033; clip-path: inset(0 -100vmax); }
+  .cv-page .pub-breadcrumb { padding-top: 16px; }
+  .cv-page .pub-breadcrumb a { color: #FFFFFF; }
+  .cv-page .pub-breadcrumb, .cv-page .pub-breadcrumb > span { color: #D4CBFF; }
+  .cv-heading { padding: 32px 0 20px; }
+  .cv-heading .pub-kicker, .cv-specialism, .cv-heading-action > span { color: #D4CBFF; }
+  .cv-page .cv-heading, .cv-page .cv-contact { border: 0 !important; }
+  .cv-page .cv-heading h1 { color: #FFFFFF; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.05; margin-bottom: 20px; }
+  .cv-role { font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF; }
+  #cv-print { background: transparent; color: #FFFFFF; border-color: #8B6CFF; }
+  #cv-print:hover { background: #261A47; }
+  .cv-contact { border-bottom: 0; padding: 0 0 40px; margin-bottom: 8px; color: #D4CBFF; }
+  .cv-contact a { color: #FFFFFF; }
+  .cv-layout { padding-top: 48px; }
+  .cv-content h2 { font-size: 30px; line-height: 1.15; }
+  .cv-content h3 { font: 700 22px/1.25 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.02em; color: #5B2EFF; }
+  .cv-content h4 { font-size: 19px; line-height: 1.3; }
+  .cv-content h4 + p { color: #5B2EFF; font-size: 14px; font-weight: 600; }
+  [data-theme="dark"] .cv-page .pub-breadcrumb, [data-theme="dark"] .cv-heading, [data-theme="dark"] .cv-contact { background: #261A47; box-shadow: 0 0 0 100vmax #261A47; }
+  [data-theme="dark"] .cv-content h3, [data-theme="dark"] .cv-content h4 + p { color: #8B6CFF; }
 }

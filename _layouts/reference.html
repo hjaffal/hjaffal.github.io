@@ -29,7 +29,7 @@ css:
 
       <!-- Auto-generated Table of Contents -->
       <nav class="ref-toc" id="ref-toc">
-        <span class="ref-toc-label">ON THIS PAGE</span>
+        <span class="ref-toc-label">On this page</span>
       </nav>
 
       <div class="blog-post ref-content" id="ref-content">
@@ -71,7 +71,7 @@ css:
   if (!content || !toc) return;
   var headings = content.querySelectorAll('h2');
   if (headings.length < 2) { toc.style.display = 'none'; return; }
-  var html = '<span class="ref-toc-label">ON THIS PAGE</span><ul>';
+  var html = '<span class="ref-toc-label">On this page</span><ul>';
   headings.forEach(function(h, i) {
     var id = 'section-' + i;
     h.id = id;

@@ -1,78 +1,125 @@
 ---
+title: Which Analyst Tasks Does AI Already Automate?
+subtitle: 'AI already handles much of the setup of analysis: queries, cleaning, summaries and routine commentary. What stays with the analyst is the judgement about what the results mean and what to do.'
+share-title: The Analyst Work AI Already Automates, and What Stays
+share-description: AI already drafts queries, cleans data, flags anomalies and writes routine commentary. What stays with analysts is judgement. A one-week plan to shift.
+excerpt: AI tools now draft queries, clean data, flag anomalies and write first-pass commentary. That removes much of the setup work in analysis. The remaining work, deciding what the results mean and what should happen, is where analysts add most value.
+tldr: 'Much of the setup work: drafting exploratory queries, cleaning and matching data, flagging anomalies and changes in trends, writing routine commentary on what moved, sorting and routing tickets, and proposing first hypotheses to test. What stays with the analyst is judgement: deciding which result matters, what it costs to act or wait, which option to recommend and who needs to know.'
+keywords:
+- analyst tasks AI automates
+- AI for data analysts
+- analytics automation
+- future of data analysts
+faq:
+- q: Which analyst tasks can AI already do?
+  a: AI tools can draft exploratory queries from plain-language questions, clean and de-duplicate data, flag anomalies and changes in trends, write first-pass commentary on what moved, sort and route incoming requests, propose hypotheses to test and draft data quality checks. Each output still needs checking, but the time these tasks take is falling quickly.
+- q: What analyst work does AI not do well?
+  a: Deciding which result matters for the business, understanding the context behind a pattern, weighing the cost of acting against the cost of waiting, recommending a specific action and taking responsibility for it. These depend on knowledge of the organisation and on accountability, which AI tools do not provide.
+- q: Is it risky to rely on AI-generated analysis?
+  a: It can be, if outputs are not checked. AI can produce fluent, plausible analysis that rests on a wrong assumption or a misread field. Analysts who check AI output against what they know about the data and the business turn a risk into an advantage.
+- q: How can an analyst adapt within a week?
+  a: Pick one recurring task AI can draft, hand it over and check the output. Use the time saved to take one result and turn it into a recommendation with its cost and owner. Repeat for the rest of the week, and record which recommendations were acted on.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "The Analyst Work AI Already Automates—and a One-Week Playbook to Stay in the Room"
-subtitle: "If AI drafts your queries, charts your spikes, and writes the summary, what’s left is judgment. Set thresholds, own trade-offs, and know when to escalate."
-share-description: "AI is stripping analysts of tool work—SQL drafts, anomaly scans, KPI notes, ticket triage. What keeps you in the room is judgment: thresholds, trade-offs, and clear escalations. Here’s a one-week playbook."
 tags:
-  - ai-job-risk
+- ai-job-risk
 topic: ai-topic
 archetype: write
-author: Hasan J.
 thumbnail-img: /assets/img/posts/2026-06-30-the-analyst-work-ai-already-automates-and-a-one-week-playbook-to-stay-in-the-room.webp
 share-img: /assets/img/posts/2026-06-30-the-analyst-work-ai-already-automates-and-a-one-week-playbook-to-stay-in-the-room.webp
-tldr: "AI now automates big chunks of analyst work: query drafting, data cleanup, anomaly detection, ticket triage, and weekly commentary. That means the safe skill is no longer “I can operate the tools,” it’s judgment under pressure. This post starts with a real scene, names the tasks disappearing right now, and gives a 7-step playbook you can run this week. You’ll map decisions to costs, set cutoffs, convert reports into triggers, and harden your escalation path. There’s one uncomfortable choice you can’t dodge: accept friction or accept loss—and own it out loud."
 ---
 
-9:17 a.m. Monday. The payments war room fills fast. Card-not-present declines just spiked. Merchants are on hold, support is on fire, and the CFO is in the channel.
+## Why does it matter which analyst tasks AI already does?
 
-Lara, the on-call analyst, opens the incident board. The bot has already posted three drafted SQL queries, a breakdown by BIN, device fingerprint, and MCC, and a 90-day overlay with shaded anomaly bands. It grouped 600 tickets into four themes, wrote a one-paragraph summary for execs, and suggested two playbooks: raise risk score by 12 points or pause payouts to three merchants tied to a new IP cluster.
+Much of the conversation about AI and analysts concerns the future. Yet many analytical tasks are already automated, or nearly so, in organisations that use current tools. Knowing which ones is practical information: it shows where an analyst's time is about to be freed, and where the remaining value lies.
 
-Nobody asks for a dashboard. They look at Lara. “Pick a move. What’s your cutoff? Who do we notify?”
+The usual question is whether analysts will be replaced. It is a fair question, and it misses the more immediate one: which parts of the work are already being done by tools, and what is the analyst doing instead? The answer changes how analysts should spend the coming year.
 
-That’s the job now. AI has eaten the setup. The floor is higher. If you only operate tools, you’re exposed.
+Demand for analytical skill overall remains strong. The [US Bureau of Labor Statistics](https://www.bls.gov/ooh/math/data-scientists.htm) projects employment of data scientists to grow by 34% between 2024 and 2034. The shape of the work inside those jobs is what is changing.
 
-Here are the specific tasks AI is removing from analyst roles right now:
+## What does AI change in analysts' work, and what does it not change?
 
-- Query drafting and segmentation. Natural language to SQL gets you 80% of exploratory queries. It also suggests joins and common filters.
-- Data cleanup and de-duplication. Auto-labeling and embeddings handle fuzzy matches and text normalization well enough for first pass.
-- Descriptive analysis. Off-the-shelf anomaly detectors and time-series summaries flag spikes, changepoints, and seasonality.
-- KPI commentary. Weekly notes, incident summaries, and “what moved” blurbs are now fast to auto-draft and accurate with light edits.
-- Ticket triage. Classification, routing, and merging near-duplicate incidents are reliable with a tuned model and feedback loop.
-- Probe generation. The bot proposes hypotheses and checklists of obvious next tests so you don’t start from a blank page.
-- Data quality scaffolding. It can draft assertions for what should never be null, out-of-range, or off-ratio, and wire them into checks.
+AI changes the setup of analysis: getting from a blank screen to a first result. That part of the work is becoming fast, cheap and widely available.
 
-This is good. It removes drag. It’s also dangerous if your value was getting from blank screen to first chart. The scarce skill is judgment: where to set the cutoff, which cost to eat, and when to escalate.
+AI does not decide what a result means for the business, which option to recommend or what it is worth risking. It does not know that a spike in one region coincides with a supplier change only the operations team mentioned, or that a particular executive needs a recommendation before Thursday. Judgement and context remain the analyst's contribution.
 
-Back to the room. The bot’s two options aren’t equal. Raise the risk score threshold by 12 points and you will block good orders. Pause payouts and you’ll preserve funds but anger clean sellers. There’s no third path that costs nothing. Pick your pain.
+## Find the value: which of your tasks are already automatable?
 
-Here’s a one-week playbook to stay useful while AI strips out the tool work.
+The tasks most clearly within reach of current AI tools are these:
 
-1) Run a task audit and stop doing what the bot does well.
-- List your last 10 analyst tasks. Mark which parts the bot can replicate to 80% quality (query drafts, first-pass charts, summaries, triage).
-- For those, set a rule: the bot does first pass; you spend time on decision gates, not formatting. Measure your edit time and drive it down.
+| Task | What AI can do today | What still needs the analyst |
+|---|---|---|
+| Exploratory queries | Draft queries from plain-language questions | Check logic and fit to the question |
+| Data cleaning | Match, de-duplicate and normalise records | Decide what counts as the same thing |
+| Descriptive analysis | Flag anomalies, trend changes and seasonality | Judge which changes matter |
+| Commentary | Draft "what moved" summaries | Explain why it matters and what to do |
+| Request triage | Sort, route and merge similar requests | Decide priorities |
+| Hypotheses | Propose obvious next tests | Choose the tests worth running |
+| Data quality | Draft checks for missing or out-of-range values | Decide which failures matter |
 
-2) Map your top three recurring decisions to explicit costs.
-- For each decision (e.g., raise risk threshold, pause payouts, hold tickets), write a simple cost matrix: false positives, false negatives, time-to-decision burn rate.
-- Put real dollar or customer counts on each cost using past incidents. Imperfect is fine. The point is to make trade-offs explicit.
+In my judgement, most analysts will find that the left-hand column describes a large share of their week. The right-hand column describes where their value is moving. The wider picture is discussed in [will AI replace data analysts](/2026-04-08-will-ai-replace-data-analysts/).
 
-3) Set initial cutoffs and a rollback plan before the next incident.
-- For each decision, pre-commit a default threshold and a trigger to revert (e.g., raise by 8 points for 2 hours unless good-order declines exceed X%).
-- Put these in a runbook with owner, time budget, and rollback signals. No runbook, no change.
+**Decision for you:** which of these tasks take most of your week, and which could you hand to a tool this month?
 
-4) Convert passive reports into active triggers.
-- Take one dashboard you stare at weekly and turn it into an alert with an action attached. Example: “If chargeback rate > Y basis points for Z hours, enable added verification for these segments.”
-- Require the bot to draft the alert and the action message. You approve or adjust. Stop writing commentary no one acts on.
+## Lead the change: how do you shift your time in a week?
 
-5) Build a one-step escalation path that actually moves money or risk.
-- Define who gets paged when a cutoff is hit, what evidence they expect, and the maximum time they can take to say yes or no.
-- Kill consensus-by-committee in incidents. One owner. One approver. Everyone else offers context asynchronously.
+A simple one-week plan makes the shift concrete:
 
-6) Practice the pressure.
-- Run a 60-minute drill using last quarter’s worst spike. Use the bot for prep. Your team must choose a cutoff, execute, and roll back if needed.
-- Time each step. Log where you waited for more data when a decision would have been cheap to make and cheap to reverse.
+- **Day 1: hand over one task.** Choose one recurring task from the table, let a tool draft it and check the output carefully.
+- **Day 2: find one result that matters.** From the week's analysis, pick the result most likely to affect a decision.
+- **Day 3: turn it into a recommendation.** State what should happen, what it costs, what waiting costs and who would act.
+- **Day 4: take it to the person who decides.** Bring the recommendation directly, not only in a report.
+- **Day 5: record what happened.** Note whether it was acted on and what you learned.
 
-7) Instrument your decisions.
-- Keep a decision log: cutoff picked, cost you aimed to minimize, expected side effects, owner, result after 24 and 72 hours.
-- Review weekly. Ratchet thresholds based on error costs, not comfort.
+An illustrative example, not a documented case: during a surge in declined card payments, an AI tool drafts the queries and breakdowns within minutes. The analyst's real contribution is to judge which of two possible responses causes less harm, recommend one with its expected cost, and name who needs to approve it.
 
-This is the uncomfortable trade-off you can’t dodge: accept customer friction today to stop loss, or accept loss today to protect the customer experience. Average teams hide this behind more analysis, prettier charts, and “waiting for the data to settle.” Strong teams pick a side, announce it, and set an automatic rollback.
+**Decision for you:** which task will you hand over on day one, and which decision will you aim to influence by day five?
 
-Average teams also let the bot propose actions while humans keep polishing slides. They treat automation as a junior analyst to babysit. They still write five-page KPI notes the bot already wrote. They escalate late because no one owns the cutoff.
+## Prove the impact: how do you show where your value lies?
 
-Strong teams do something different. They pre-commit thresholds with pain budgets and timescales. They give the bot authority to prepare, not to decide, and they keep decision rights tight. They attach every metric to a decision and a cost. They test runbooks in drills, not in production for the first time. They accept that some days you buy friction to avoid a bigger loss, and vice versa—and they say it out loud.
+Keep the record from day five going. Over weeks, it shows which of your recommendations were acted on and what happened. That record describes your value far better than the volume of analysis you produce.
 
-Back to Lara. She picks a move: raise the threshold by 8 points for two hours, only on the new device cluster; notify the three merchants and waive fees for clean orders caught in the dragnet; review in 30 minutes with a rollback if good-order declines exceed 1.5x baseline. She posts the plan, tags owners, and hits execute.
+Review it regularly and share it with your manager. It supports a role defined by decisions influenced rather than outputs delivered. For a structured view of your exposure, the [AI Job Risk Analyzer](/ai-job-risk-analyzer/) breaks a role down task by task.
 
-Nobody cheers. They move. That’s the job.
+**Decision for you:** how will you keep the record going after the first week, and who will you share it with?
 
-So choose: when the bot hands you the queries, the charts, and the draft summary, are you the person who sets the cutoff and pulls the lever now—or the person who asks for one more chart?
+## What does it cost, and what is the simpler alternative?
+
+Handing tasks to AI carries a risk of errors that pass unchecked, so the checking must be real. Making recommendations carries the risk of being wrong. Both are smaller than the risk of spending a career on work that tools are taking over.
+
+The simpler first step is day one alone: hand one task to a tool and check its output. It shows quickly how much time is available to redirect. The wider split between operating tools and shaping decisions is discussed in [whether AI will split analytics jobs in two](/2026-05-17-analytics-jobs-will-split-in-two-ai-will-automate-tool-operators-decision-shapers-will-control-outcomes/).
+
+Be careful not to hand over the checking along with the work. The value of an analyst who uses AI well lies partly in knowing where the tools tend to go wrong for their particular data and business. That knowledge is built by reviewing AI output closely, especially at first, and it is one of the least replaceable parts of the role.
+
+## Questions to ask yourself
+
+1. How much of my week is setup work that AI can draft?
+2. Which result from this week is most likely to affect a decision?
+3. Do I turn results into recommendations with costs and owners?
+4. Do I take recommendations directly to the people who decide?
+5. Do I check AI output carefully enough to trust it?
+
+## Frequently asked questions
+
+### Which analyst tasks can AI already do?
+
+AI tools can draft exploratory queries from plain-language questions, clean and de-duplicate data, flag anomalies and changes in trends, write first-pass commentary on what moved, sort and route incoming requests, propose hypotheses to test and draft data quality checks. Each output still needs checking, but the time these tasks take is falling quickly.
+
+### What analyst work does AI not do well?
+
+Deciding which result matters for the business, understanding the context behind a pattern, weighing the cost of acting against the cost of waiting, recommending a specific action and taking responsibility for it. These depend on knowledge of the organisation and on accountability, which AI tools do not provide.
+
+### Is it risky to rely on AI-generated analysis?
+
+It can be, if outputs are not checked. AI can produce fluent, plausible analysis that rests on a wrong assumption or a misread field. Analysts who check AI output against what they know about the data and the business turn a risk into an advantage.
+
+### How can an analyst adapt within a week?
+
+Pick one recurring task AI can draft, hand it over and check the output. Use the time saved to take one result and turn it into a recommendation with its cost and owner. Repeat for the rest of the week, and record which recommendations were acted on.
+
+## Sources
+
+- US Bureau of Labor Statistics, [Occupational Outlook Handbook: Data Scientists](https://www.bls.gov/ooh/math/data-scientists.htm), projections for 2024 to 2034.
+
+AI has taken much of the setup out of analysis. What remains is the part that always mattered most: deciding what the results mean and what should happen next. More on this is in the [people and adoption](/topics/people-and-adoption/) and [opportunities](/topics/opportunities/) topics.

@@ -346,13 +346,12 @@ function renderActivity(posts, editions) {
   items.slice(0, 8).forEach(function(item) {
     const icon = item.type === 'post' ? '📝' : '✉️';
     const label = item.type === 'post' ? 'Published' : 'Sent to ' + (item.recipients || '?') + ' subscribers';
-    const encodedTitle = btoa(unescape(encodeURIComponent(item.title)));
 
     let action = '';
     if (item.type === 'edition') {
       action = ' data-action="view-edition" data-id="' + item.id + '"';
     } else if (item.type === 'post') {
-      action = ' data-action="edit-post" data-title="' + encodedTitle + '"';
+      action = ' data-action="open-post" data-url="' + encodeURI(item.url || '') + '"';
     }
 
     html += '<div class="nla-dash-activity-item"' + action + '>' +
@@ -374,9 +373,8 @@ function renderActivity(posts, editions) {
     const action = item.dataset.action;
     if (action === 'view-edition' && window.viewEditionFromOverview) {
       window.viewEditionFromOverview(item.dataset.id);
-    } else if (action === 'edit-post' && window.editPost) {
-      const title = decodeURIComponent(escape(atob(item.dataset.title)));
-      window.editPost(title);
+    } else if (action === 'open-post' && item.dataset.url && item.dataset.url !== '—') {
+      window.open(item.dataset.url, '_blank', 'noopener');
     }
   });
 }
@@ -813,9 +811,6 @@ export async function loadOverview() {
   // Ensure activity link handlers are available
   if (!window.viewEditionFromOverview) {
     import('./analytics.js').then(function(m) { window.viewEditionFromOverview = m.viewEditionFromOverview; });
-  }
-  if (!window.editPost) {
-    import('./new-post.js').then(function(m) { window.editPost = m.editPost; });
   }
 
   // Fetch download stats

@@ -22,7 +22,7 @@
 .wiz-progress-bar {
   height: 100%;
   width: 25%;
-  background: linear-gradient(90deg, var(--accent), #6366F1);
+  background: linear-gradient(90deg, var(--accent), #5B2EFF);
   border-radius: 3px;
   transition: width 0.4s ease-out;
 }
@@ -50,7 +50,7 @@
 
 .wiz-step-dot span {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-soft);
   transition: color 0.3s;
 }
@@ -102,8 +102,8 @@
   font-family: var(--mono);
   font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   display: block;
   margin-bottom: 8px;
@@ -111,7 +111,7 @@
 
 .wiz-step-title {
   font-size: clamp(22px, 3vw, 30px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
   color: var(--dark);
@@ -199,7 +199,7 @@
   border: none;
   border-radius: 8px;
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 600;
   font-family: var(--sans);
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
@@ -216,10 +216,10 @@
 .wiz-btn-accent:hover { background: var(--accent-hover); }
 
 .wiz-btn-reveal {
-  background: linear-gradient(135deg, var(--accent), #6366F1);
+  background: linear-gradient(135deg, var(--accent), #5B2EFF);
   font-size: 1rem;
 }
-.wiz-btn-reveal:hover { background: linear-gradient(135deg, var(--accent-hover), #4F46E5); }
+.wiz-btn-reveal:hover { background: linear-gradient(135deg, var(--accent-hover), #5B2EFF); }
 
 .wiz-btn-back {
   padding: 12px 20px;
@@ -246,12 +246,12 @@
 .wiz-error {
   margin-top: 12px;
   padding: 10px 14px;
-  background: #FEF2F2;
-  border: 1px solid #FECACA;
+  background: #EEE9FF;
+  border: 1px solid #D4CBFF;
   border-radius: 8px;
   font-size: 0.82rem;
-  color: #DC2626;
-  font-weight: 500;
+  color: #C93A22;
+  font-weight: 600;
 }
 
 /* Consent */
@@ -415,7 +415,7 @@
 .wiz-loader-text {
   font-size: 0.92rem;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
   transition: opacity 0.3s;
 }
 
@@ -470,7 +470,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   letter-spacing: -0.03em;
 }
@@ -485,13 +485,13 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .wiz-score-band {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
 }
 
@@ -506,7 +506,7 @@
 
 .wiz-narrative-section h3 {
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 8px;
   display: flex;
@@ -535,15 +535,15 @@
 .wiz-social-card {
   border-radius: 16px;
   overflow: hidden;
-  background: #0F172A;
-  border: 2px solid #334155;
+  background: #1A1033;
+  border: 2px solid #4A4560;
   padding: 0;
   transition: border-color 0.3s;
 }
 
-.wiz-card-high { border-color: #DC2626; box-shadow: 0 0 24px rgba(220,38,38,0.15); }
-.wiz-card-mid { border-color: #F59E0B; box-shadow: 0 0 24px rgba(245,158,11,0.12); }
-.wiz-card-low { border-color: #10B981; box-shadow: 0 0 24px rgba(16,185,129,0.15); }
+.wiz-card-high { border-color: #C93A22; box-shadow: 0 0 24px rgba(220,38,38,0.15); }
+.wiz-card-mid { border-color: #5B2EFF; box-shadow: 0 0 24px rgba(245,158,11,0.12); }
+.wiz-card-low { border-color: #8B6CFF; box-shadow: 0 0 24px rgba(16,185,129,0.15); }
 
 .wiz-card-header {
   padding: 20px 24px 16px;
@@ -553,14 +553,14 @@
 
 .wiz-card-badge {
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  color: #F8FAFC;
+  color: #EEE9FF;
 }
 
-.wiz-card-high .wiz-card-badge { color: #FCA5A5; }
-.wiz-card-mid .wiz-card-badge { color: #FCD34D; }
-.wiz-card-low .wiz-card-badge { color: #6EE7B7; }
+.wiz-card-high .wiz-card-badge { color: #D4CBFF; }
+.wiz-card-mid .wiz-card-badge { color: #D4CBFF; }
+.wiz-card-low .wiz-card-badge { color: #D4CBFF; }
 
 .wiz-card-body {
   padding: 20px 24px;
@@ -570,15 +570,15 @@
 .wiz-card-name {
   display: block;
   font-size: 1rem;
-  font-weight: 700;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   margin-bottom: 4px;
 }
 
 .wiz-card-role {
   display: block;
   font-size: 0.82rem;
-  color: #94A3B8;
+  color: #9C93B8;
   margin-bottom: 16px;
 }
 
@@ -594,16 +594,16 @@
   font-family: var(--mono);
   font-size: 0.58rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  color: #64748B;
+  letter-spacing: 0;
+  color: #4A4560;
   margin-bottom: 4px;
 }
 
 .wiz-card-arch-value {
   display: block;
   font-size: 0.95rem;
-  font-weight: 800;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   letter-spacing: -0.01em;
 }
 
@@ -621,8 +621,8 @@
   font-family: var(--mono);
   font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  color: #64748B;
+  letter-spacing: 0;
+  color: #4A4560;
   margin-bottom: 4px;
 }
 
@@ -630,15 +630,15 @@
   display: block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #CBD5E1;
+  color: #E2DDF2;
   line-height: 1.4;
 }
 
 .wiz-card-watermark {
   font-size: 0.62rem;
-  color: #475569;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  color: #4A4560;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 /* Dashboard link */
@@ -655,7 +655,7 @@
   background: var(--accent);
   color: #fff;
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.2s;

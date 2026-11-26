@@ -1,74 +1,111 @@
 ---
+title: How Do You Turn a Weekly Report Into Something That Triggers Action?
+subtitle: A weekly report describes the week. A useful replacement starts from one recurring decision, sets a trigger and an owner, and records what was done and whether it worked.
+share-title: How Do You Turn a Weekly Report Into Something That Triggers Action?
+share-description: 'Replace a weekly report with a decision record: one recurring decision, a trigger, an owner with authority, a reversible default and a log of results.'
+excerpt: Many weekly reports are read, discussed and followed by nothing. Rebuilding one around a single recurring decision, with a trigger, an owner and a short record of what happened, turns description into action without new tools.
+tldr: Start from the decision, not the data. Choose one recurring decision that costs money when it is late, define the trigger that should prompt it, name an owner with authority to act and agree a reversible default action. Then replace the weekly report with a one-page record of what triggered, what was done, by whom and with what result, and review it briefly each week.
+keywords:
+- weekly report alternative
+- actionable reporting
+- decision log
+- risk intelligence
+faq:
+- q: What should replace a weekly report?
+  a: 'For reports meant to drive action, a short decision record works better: the triggers that fired, the actions taken, by whom and when, any exceptions, the results afterwards, and any change to the trigger or action. It is shorter than most reports and shows whether the organisation actually responded to what it saw.'
+- q: How do you set a threshold for action?
+  a: Set it where the cost of acting when nothing is wrong is lower than the cost of waiting when something is. Start from recent events, estimate both costs roughly, and choose a level you can defend. Then adjust it based on results, rather than waiting for a perfect threshold before acting at all.
+- q: Do you need new tools to make reporting actionable?
+  a: Usually not at first. An alert to the owner, a simple shared log and an agreed default action are enough to start. Tools help later, by attaching evidence to alerts and recording actions automatically, but the hard part is agreeing the decision, the trigger and the owner.
+author: Hasan Jaffal
+last-updated: 2026-11-26
 layout: post
-title: "How to Convert a Weekly Report into an Intelligence Product That Triggers Action"
-subtitle: "Reporting explains what happened. Intelligence changes what happens next. Here’s the smallest system that actually works."
-share-description: "Stop shipping status. Ship decisions. A blunt, practical guide to turning weekly reports into an intelligence product with thresholds, owners, and authority to act."
 tags:
-  - risk-intelligence
+- risk-intelligence
 topic: risk-topic
 archetype: describe
-author: Hasan J.
-tldr: "If your weekly report doesn’t trigger action, it’s decoration. Turn it into intelligence by picking one recurring decision, defining one trigger with a clear threshold, assigning a single owner with authority, and wiring a same-day action and escalation path. Log every trigger, action, and result, and prune anything not used to decide. Strong teams pre-commit cutoffs and live with the cost of speed. Average teams keep talking and accept silent losses. This is the minimum viable system: one trigger, one owner, one action, one log. You’ll make a few wrong calls. That’s the price of impact."
 ---
 
-Stop sending weekly reports that don’t change anything. Start shipping decisions. Here’s the minimum viable version of intelligence you can stand up this week without new tools, headcount, or theater.
+## Why do weekly reports so often change nothing?
 
-Start with the decision. Pick one recurring decision that hurts if it’s late: freeze a merchant, rotate a SKU to locked stock, close a risky feature after dark, hold payouts when chargeback risk spikes. If you can’t name the decision, you don’t have an intelligence need. You have a vanity metric.
+Many organisations have a weekly report that is carefully prepared, widely circulated and followed by nothing. It describes what happened, prompts a discussion on Monday and leaves the same questions open on Friday: who should act, on what, and how far? The report was never designed to produce a decision, so it rarely does.
 
-Define one trigger. Not five. Intelligence begins when a signal has authority to cause action. Write the trigger in plain language: “If X pattern occurs, we will do Y.” If you need a meeting to interpret it, you designed a report, not a trigger.
+Leaders usually try to improve such reports by making them clearer or adding analysis. That helps readers, and it misses the larger question: what decision is this report supposed to support, and what would make that decision happen without waiting for the next report?
 
-Set a threshold you can defend. A threshold is not a vibe. It’s the cutoff where being wrong costs less than waiting. If you keep arguing for a perfect cutoff, you’re signaling fear of owning a mistake. Pick a line, take the hit if it’s wrong, and move.
+In my judgement, the most useful change is to stop starting from the data and start from the decision.
 
-Assign a single owner with permission to act. No committees. Name the person who pulls the lever when the trigger fires. If they need to ask for permission, you have not built intelligence. You’ve built a pager for the same old delays.
+## What does AI change in reporting, and what does it not change?
 
-Wire one default action. Not options. “On trigger, we do this.” Make the default reversible, and pair it with a short escalation path when stakes are high. If you can’t say the default action in one sentence, you’re hiding indecision with process.
+AI changes how quickly reports can be produced and how much they can contain. A weekly summary can now be generated in minutes, with commentary.
 
-Create a small risk budget. Agree upfront how much false positive pain you’ll tolerate to buy speed. If you won’t tolerate any, you’re choosing status reports and slow losses. Own it.
+AI does not change whether anyone is expected or allowed to act on what the report shows. A better-written report that still has no trigger and no owner is still a description of the week.
 
-Replace the weekly with a single-page log. The product is not a dashboard; it’s a living decision record:
-- Triggers that fired
-- Actions taken, by whom, and when
-- Exceptions and who approved them
-- Outcomes after the fact
-- Next threshold or playbook tweaks and the reason
-If a chart doesn’t help with one of those five, delete it.
+## Find the value: which recurring decision should the report support?
 
-Run a tight loop. When a trigger fires, act the same day. When the dust settles, record what happened and adjust the threshold or playbook. Keep the review short. If your review can’t fit in a half-hour, your trigger isn’t specific enough or you’re afraid to cut.
+Choose one recurring decision that costs money or harm when it is made late. Illustrative examples include pausing a supplier or merchant with a rising problem rate, moving high-loss stock into secured storage, tightening verification for a risky group of customers, or holding payments when complaints rise.
 
-A real example: a regional grocer’s loss prevention team used to ship a Friday “shrink summary” to district leads. The same conversation happened every Monday: long emails, no ownership, same stores bleeding. They killed the summary and built a small system.
+For that decision, estimate what lateness costs. If the decision is currently made at the weekly meeting, and the problem it addresses can grow within days, the gap between the two is the value at stake.
 
-They picked one decision: when nighttime theft indicators stacked up at a store, the manager on duty would lock high-loss items and disable self-checkout after dark. One trigger: a combined spike in scan-avoidance patterns and exit alarms within a short window. Clear threshold, written down. Single owner: the store manager on duty, named on the alert. Default action: lock the cases and flip self-checkout to card-only and staff checkout. Escalation: district lead could override for customer impact, but had to write a sentence in the log.
+The best first candidate is a decision that is already being made, just too late. If the weekly meeting regularly ends with the same action, the trigger is usually obvious, and the main change is letting the owner take that action as soon as the condition appears rather than when the meeting next meets.
 
-They sent a simple alert to a phone, opened a small ticket, and updated a one-page log. No dashboards, no long email. Each week they reviewed the log for fifteen minutes, pruned noise, and tuned the threshold. They learned fast where the trigger was too jumpy, and where it caught real bleed. The old report didn’t go on pause; it died. Nobody missed it.
+**Decision for the sponsor:** which recurring decision costs us most when it waits for the weekly report?
 
-This is the uncomfortable trade-off: you either accept a few visible wrong calls now, or you accept a steady, quiet leak forever. Strong teams pick visibility and speed, take heat for it, and write down what they’ll do next time. Average teams hide behind “data quality,” keep sending slides, and pay the leak tax in silence.
+## Lead the change: how is the report rebuilt around the decision?
 
-What strong teams do differently:
-- They define decisions first, not visuals.
-- They give signals authority and owners permission.
-- They commit to thresholds in writing, not in spirit.
-- They default to action with a reversible move.
-- They keep a ruthless log and prune anything not used to decide.
-- They audit exceptions and require a name next to every override.
+Five steps turn a weekly report into something that triggers action:
 
-What average teams do:
-- They summarize everything and decide nothing.
-- They add more metrics to feel thorough.
-- They let meetings substitute for thresholds.
-- They distribute responsibility until nobody owns the risk.
-- They celebrate “visibility” while outcomes don’t change.
+- **Define one trigger.** Write in plain language the condition that should prompt the decision: "if this pattern occurs, we will do that." One trigger, not five.
+- **Set a threshold you can defend.** Place it where acting when nothing is wrong costs less than waiting when something is, and refine it with experience.
+- **Name one owner with authority.** One role acts when the trigger fires, without needing permission. The principle is set out in [who should be allowed to act on an AI signal](/2026-08-20-assign-decision-rights-now-how-to-turn-ai-signals-into-fast-authorized-actions/).
+- **Agree a reversible default.** When the trigger fires, the owner takes an agreed action that can be undone, with a short escalation route for high stakes.
+- **Replace the report with a record.** A one-page log shows the triggers that fired, the actions taken, by whom and when, any exceptions, the results afterwards, and any adjustment to the trigger.
 
-Build it now in the tools you already have:
-- A query or rule that checks the trigger and posts to chat or email.
-- A shared sheet as the decision log with five columns: trigger, action, owner, time, outcome/notes.
-- A canned ticket template for the default action.
-- A short runbook with the trigger, owner, default action, escalation, and risk budget on a single page.
-- A weekly 30-minute review limited to adjusting the threshold or killing the trigger.
+An illustrative example, not a documented case: a store estate's weekly shrink summary is replaced, for one decision, by a trigger. When night-time theft indicators reach an agreed level at a store, the manager on duty secures high-loss items and closes self-checkout after dark. The weekly conversation becomes a fifteen-minute review of the log.
 
-Kill status slides. Keep only what causes motion. If a metric didn’t trigger or justify an action in a month, archive it. If your trigger keeps firing without action, shut it down or fix your authority problem. Intelligence without authority is just a louder report.
+**Decision for the sponsor:** what is the trigger, who owns the response, and what default action may they take?
 
-One more hard rule: treat threshold changes like code changes. Write down what you changed and why. Two people sign it. If this sounds heavy, good. You’re changing how money and risk move.
+## Prove the impact: does the new record change results?
 
-You don’t need more data. You need smaller promises you keep. Turn one weekly report into one decision machine. Then do it again. That’s how intelligence replaces reporting.
+The record itself is the evidence. Over several weeks it shows how often the trigger fired, how quickly the owner acted, how often the action was later judged unnecessary, and what happened to the loss or problem the decision addresses.
 
-Pick a side: will you pre-commit a threshold and give someone the right to act today, or will you keep sending the weekly and pretend that’s leadership?
+Compare the results with the period before the change. If action is faster and the problem smaller, extend the approach to the next decision. If the trigger fires too often or too rarely, adjust it. Retiring the parts of the old report that nobody misses is covered in [how to retire metrics without losing control](/2026-06-18-kill-metrics-that-dont-change-decisions-a-6-step-playbook-to-replace-reporting-with-intelligence/).
+
+Keep the weekly review, but change its purpose. Instead of describing the week, it examines the log: which triggers fired, whether the actions were right, and whether the threshold should move. Fifteen minutes is often enough. When the review regularly finds nothing to change, the decision is working.
+
+**Decision for the sponsor:** on the evidence of the record, is the decision now faster and better, and which decision should be next?
+
+## What does it cost, and what is the simpler alternative?
+
+The costs are mostly in agreement: choosing the decision, agreeing the trigger and threshold, and giving the owner real authority. Some people will miss the old report, and the owner will sometimes act when it later proves unnecessary. That is the price of acting in time, and it should be agreed in advance.
+
+The simpler first step needs no new tools: pick the decision, write the trigger on a page, name the owner and keep the log in a shared document. If that works for one decision, the organisation has its model for the rest. Presenting such decisions to senior leaders is covered in [how risk intelligence should be presented to executives](/2026-10-22-dashboards-dont-move-money-how-to-present-risk-intelligence-that-forces-a-decision/).
+
+Choose the owner carefully. The best owner is usually the person closest to the problem who already has, or can be given, the authority to act. Giving the role to someone senior who is rarely available simply recreates the delay the change was meant to remove.
+
+## Questions to put to your team
+
+1. What decision is our main weekly report supposed to support?
+2. How much does it cost when that decision waits for the report?
+3. What trigger should prompt the decision, and at what threshold?
+4. Who could act when it fires, and what default action could they take?
+5. Would a one-page record of actions and results serve us better than the report?
+
+## Frequently asked questions
+
+### What should replace a weekly report?
+
+For reports meant to drive action, a short decision record works better: the triggers that fired, the actions taken, by whom and when, any exceptions, the results afterwards, and any change to the trigger or action. It is shorter than most reports and shows whether the organisation actually responded to what it saw.
+
+### How do you set a threshold for action?
+
+Set it where the cost of acting when nothing is wrong is lower than the cost of waiting when something is. Start from recent events, estimate both costs roughly, and choose a level you can defend. Then adjust it based on results, rather than waiting for a perfect threshold before acting at all.
+
+### Do you need new tools to make reporting actionable?
+
+Usually not at first. An alert to the owner, a simple shared log and an agreed default action are enough to start. Tools help later, by attaching evidence to alerts and recording actions automatically, but the hard part is agreeing the decision, the trigger and the owner.
+
+## Sources
+
+- This article draws on the author's judgement and on the related articles linked above; it contains no external statistics.
+
+A report that ends in a discussion describes the past. A record that starts from a decision changes what happens next. More on this is in the [outcomes and evidence](/topics/outcomes-and-evidence/) topic.

@@ -3,7 +3,7 @@
 /* Hero */
 .dir-hero {
   padding: 72px 48px 56px;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  background: linear-gradient(135deg, #1A1033 0%, #1A1033 50%, #1A1033 100%);
   position: relative;
   overflow: hidden;
   margin-left: calc(50% - 50vw);
@@ -70,22 +70,22 @@
 .dir-hero-report-label {
   font-family: var(--mono);
   font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #2563EB;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #5B2EFF;
 }
 
 .dir-hero-report-title {
   font-size: 1.05rem;
-  font-weight: 800;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   line-height: 1.3;
   margin: 0;
 }
 
 .dir-hero-report-desc {
   font-size: 0.8rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.5;
   margin: 0;
 }
@@ -95,10 +95,10 @@
   align-items: center;
   gap: 8px;
   padding: 11px 20px;
-  background: #2563EB;
+  background: #5B2EFF;
   color: #fff;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.2s;
@@ -106,7 +106,7 @@
 }
 
 .dir-hero-report-btn:hover {
-  background: #1D4ED8;
+  background: #4720D9;
   color: #fff;
 }
 
@@ -114,42 +114,42 @@
   font-family: var(--mono);
   font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #2563EB;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #5B2EFF;
   display: block;
   margin-bottom: 16px;
 }
 
 .dir-hero-title {
   font-size: clamp(26px, 4vw, 42px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.12;
-  color: #F8FAFC;
+  color: #EEE9FF;
   margin: 0 0 20px;
 }
 
 .dir-hero-title span {
-  color: #2563EB;
+  color: #5B2EFF;
 }
 
 .dir-hero-desc {
   font-size: 0.92rem;
-  color: #CBD5E1;
+  color: #E2DDF2;
   line-height: 1.7;
   margin: 0 0 12px;
 }
 
 .dir-hero-subdesc {
   font-size: 0.85rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.6;
   margin: 0 0 32px;
 }
 
 .dir-hero-subdesc strong {
-  color: #F8FAFC;
+  color: #EEE9FF;
 }
 
 /* Hero search */
@@ -170,11 +170,11 @@
 }
 
 .dir-search-wrap:focus-within {
-  border-color: #2563EB;
+  border-color: #5B2EFF;
 }
 
 .dir-search-icon {
-  color: #64748B;
+  color: #4A4560;
   font-size: 0.85rem;
   margin-right: 12px;
 }
@@ -184,14 +184,14 @@
   background: none;
   border: none;
   outline: none;
-  color: #F8FAFC;
+  color: #EEE9FF;
   font-size: 0.88rem;
   padding: 12px 0;
   font-family: var(--sans);
 }
 
 .dir-search-input::placeholder {
-  color: #64748B;
+  color: #4A4560;
 }
 
 /* Stats row */
@@ -215,17 +215,17 @@
 
 .dir-stat-num {
   font-size: 1.1rem;
-  font-weight: 800;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   letter-spacing: -0.02em;
 }
 
 .dir-stat-text {
   font-size: 0.68rem;
-  font-weight: 500;
-  color: #94A3B8;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #9C93B8;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 /* Directory section */
@@ -243,7 +243,7 @@
 
 .dir-directory-title {
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   letter-spacing: -0.03em;
   margin: 0 0 16px;
@@ -307,9 +307,9 @@
 .dir-table th {
   padding: 12px 16px;
   font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-soft);
   text-align: left;
   white-space: nowrap;
@@ -333,7 +333,7 @@
 }
 
 .dir-cell-title a {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   text-decoration: none;
   transition: color 0.2s;
@@ -360,13 +360,13 @@
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .dir-badge-critical {
   background: rgba(239, 68, 68, 0.12);
-  color: #DC2626;
+  color: #C93A22;
   border: 1px solid rgba(239, 68, 68, 0.25);
 }
 
@@ -378,20 +378,20 @@
 
 .dir-badge-medium {
   background: rgba(234, 179, 8, 0.12);
-  color: #B45309;
+  color: #4720D9;
   border: 1px solid rgba(234, 179, 8, 0.25);
 }
 
 .dir-badge-low {
   background: rgba(34, 197, 94, 0.12);
-  color: #16A34A;
+  color: #8B6CFF;
   border: 1px solid rgba(34, 197, 94, 0.25);
 }
 
 /* Disruption class tag */
 .dir-class-tag {
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-muted);
   padding: 3px 10px;
   background: var(--slate-bg);
@@ -437,7 +437,7 @@
 .dir-pag-info {
   font-size: 0.75rem;
   color: var(--text-soft);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .dir-pag-btns {
@@ -491,7 +491,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: #1E293B;
+  background: #1A1033;
   border: 1px solid rgba(255,255,255,0.15);
   border-top: none;
   border-radius: 0 0 10px 10px;
@@ -526,13 +526,13 @@
 
 .dir-ac-title {
   font-size: 0.85rem;
-  color: #F8FAFC;
-  font-weight: 500;
+  color: #EEE9FF;
+  font-weight: 600;
 }
 
 .dir-ac-title strong {
-  color: #2563EB;
-  font-weight: 700;
+  color: #5B2EFF;
+  font-weight: 600;
 }
 
 .dir-ac-badge {
@@ -564,13 +564,13 @@
 
 .dir-ac-title {
   font-size: 0.85rem;
-  color: #F8FAFC;
-  font-weight: 500;
+  color: #EEE9FF;
+  font-weight: 600;
 }
 
 .dir-ac-title strong {
-  color: #2563EB;
-  font-weight: 700;
+  color: #5B2EFF;
+  font-weight: 600;
 }
 
 .dir-ac-badge {
@@ -601,8 +601,8 @@
   font-family: var(--mono);
   font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   display: block;
   margin-bottom: 14px;
@@ -627,7 +627,7 @@
 .dir-related-title {
   display: block;
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark);
   margin-bottom: 4px;
 }
@@ -655,7 +655,7 @@
 
 .dir-seo-title {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   margin: 0 0 16px;
 }
@@ -721,7 +721,7 @@
   justify-content: center;
   background: rgba(147,51,234,0.12);
   border-radius: 10px;
-  color: #2563EB;
+  color: #5B2EFF;
   font-size: 1.1rem;
   flex-shrink: 0;
 }
@@ -733,23 +733,23 @@
 .dir-report-banner-text strong {
   display: block;
   font-size: 0.9rem;
-  font-weight: 700;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   margin-bottom: 3px;
 }
 
 .dir-report-banner-text span {
   font-size: 0.78rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.5;
 }
 
 .dir-report-banner-btn {
   padding: 10px 20px;
-  background: #2563EB;
+  background: #5B2EFF;
   color: #fff;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 6px;
   text-decoration: none;
   white-space: nowrap;
@@ -757,7 +757,7 @@
 }
 
 .dir-report-banner-btn:hover {
-  background: #1D4ED8;
+  background: #4720D9;
   color: #fff;
 }
 
@@ -767,14 +767,14 @@
   margin-top: 16px;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #2563EB;
+  color: #5B2EFF;
   text-decoration: none;
   transition: opacity 0.2s;
 }
 
 .hp-dw-report-link:hover {
   opacity: 0.8;
-  color: #2563EB;
+  color: #5B2EFF;
 }
 
 /* Homepage widget autocomplete */
@@ -798,7 +798,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: #1E293B;
+  background: #1A1033;
   border: 1px solid rgba(255,255,255,0.15);
   border-top: none;
   border-radius: 0 0 10px 10px;
@@ -823,13 +823,13 @@
 
 .hp-dw-ac-item span:first-child {
   font-size: 0.85rem;
-  color: #F8FAFC;
-  font-weight: 500;
+  color: #EEE9FF;
+  font-weight: 600;
 }
 
 .hp-dw-ac-item span:first-child strong {
-  color: #2563EB;
-  font-weight: 700;
+  color: #5B2EFF;
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {
@@ -845,7 +845,7 @@
   padding: 64px 48px;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  background: linear-gradient(135deg, #1A1033 0%, #1A1033 50%, #1A1033 100%);
 }
 
 .dir-cta-inner {
@@ -865,27 +865,27 @@
   border: 1px solid rgba(147,51,234,0.3);
   border-radius: 14px;
   font-size: 1.3rem;
-  color: #2563EB;
+  color: #5B2EFF;
 }
 
 .dir-cta-title {
   font-size: 1.4rem;
-  font-weight: 800;
-  color: #F8FAFC;
+  font-weight: 600;
+  color: #EEE9FF;
   letter-spacing: -0.03em;
   margin: 0 0 14px;
 }
 
 .dir-cta-desc {
   font-size: 0.9rem;
-  color: #CBD5E1;
+  color: #E2DDF2;
   line-height: 1.7;
   margin: 0 0 10px;
 }
 
 .dir-cta-subdesc {
   font-size: 0.85rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.6;
   margin: 0 0 28px;
 }
@@ -895,23 +895,23 @@
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  background: #2563EB;
+  background: #5B2EFF;
   color: #fff;
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.2s;
 }
 
 .dir-cta-btn:hover {
-  background: #1D4ED8;
+  background: #4720D9;
   color: #fff;
 }
 
 .dir-cta-note {
   font-size: 0.72rem;
-  color: #64748B;
+  color: #4A4560;
   margin: 14px 0 0;
 }
 
@@ -927,7 +927,7 @@
   position: relative;
   overflow: hidden;
   padding: 56px 48px;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  background: linear-gradient(135deg, #1A1033 0%, #1A1033 50%, #1A1033 100%);
 }
 
 .hp-dw-orb-1 {
@@ -961,25 +961,25 @@
   font-family: var(--mono);
   font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #2563EB;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #5B2EFF;
   display: block;
   margin-bottom: 14px;
 }
 
 .hp-dw-title {
   font-size: clamp(22px, 3.2vw, 32px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.15;
-  color: #F8FAFC;
+  color: #EEE9FF;
   margin: 0 0 12px;
 }
 
 .hp-dw-desc {
   font-size: 0.85rem;
-  color: #94A3B8;
+  color: #9C93B8;
   line-height: 1.6;
   margin: 0 0 24px;
 }
@@ -999,7 +999,7 @@
 }
 
 .hp-dw-search-wrap:focus-within {
-  border-color: #2563EB;
+  border-color: #5B2EFF;
 }
 
 .hp-dw-search-input {
@@ -1007,7 +1007,7 @@
   background: none;
   border: none;
   outline: none;
-  color: #F8FAFC;
+  color: #EEE9FF;
   font-size: 0.85rem;
   padding: 14px 18px;
   font-family: var(--sans);
@@ -1015,11 +1015,11 @@
 }
 
 .hp-dw-search-input::placeholder {
-  color: #64748B;
+  color: #4A4560;
 }
 
 .hp-dw-search-btn {
-  background: #2563EB;
+  background: #5B2EFF;
   border: none;
   padding: 14px 20px;
   color: #fff;
@@ -1030,7 +1030,7 @@
 }
 
 .hp-dw-search-btn:hover {
-  background: #1D4ED8;
+  background: #4720D9;
 }
 
 .hp-dw-stats {
@@ -1043,16 +1043,16 @@
 
 .hp-dw-stat {
   font-size: 0.72rem;
-  color: #64748B;
+  color: #4A4560;
 }
 
 .hp-dw-stat strong {
-  color: #CBD5E1;
-  font-weight: 700;
+  color: #E2DDF2;
+  font-weight: 600;
 }
 
 .hp-dw-stat-sep {
-  color: #334155;
+  color: #4A4560;
   font-size: 0.6rem;
 }
 
@@ -1112,7 +1112,7 @@
 
   .dir-cell-title a {
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .dir-cell-index {
