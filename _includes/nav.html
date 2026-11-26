@@ -13,7 +13,7 @@
               <details class="hj-resources">
                 <summary>{{ link[0] }} <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg></summary>
                 <div class="hj-resource-menu">
-                  <p class="hj-menu-label">{% if link[0] == 'Topics' %}READ BY QUESTION{% else %}PUT THE IDEAS INTO PRACTICE{% endif %}</p>
+                  <p class="hj-menu-label">{% if link[0] == 'Topics' %}Read by question{% else %}Put the ideas into practice{% endif %}</p>
                   {% for childlink in link[1] %}{% for parts in childlink %}
                     {% if parts[0] == '_url' %}<a class="hj-resource-overview" href="{{ parts[1] | relative_url }}">{% if link[0] == 'Topics' %}Browse all topics{% else %}Explore all tools{% endif %} <span aria-hidden="true">↗</span></a>
                     {% else %}<a href="{{ parts[1] | relative_url }}">{{ parts[0] }} <span aria-hidden="true">↗</span></a>{% endif %}

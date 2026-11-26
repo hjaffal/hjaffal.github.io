@@ -110,3 +110,16 @@ footer.site-footer.publication-footer { --pf-paper: #1A1033; --pf-ink: #FFFFFF; 
 .hj-nav-link, .hj-resources summary, .hj-menu-label, .hj-resource-menu .hj-resource-overview { font-weight: 600; }
 .publication-footer-name { display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 700 !important; font-size: 19px !important; letter-spacing: .01em; color: #FFFFFF !important; }
 .publication-footer-name:hover { text-decoration: none !important; color: #D4CBFF !important; }
+
+/* Brand: flat colour. Solid header and menus (no translucency, blur or drop shadow), 1px rules,
+   6px menu corners, 4px link corners, sentence-case violet labels. */
+.navbar.hj-header { --hj-header-bg: #FFFFFF; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.hj-resource-menu { background: #FFFFFF; border: 1px solid #E2DDF2; border-radius: 6px; box-shadow: none; }
+.hj-nav-link, .hj-resources summary, .hj-resource-menu a, .hj-theme-toggle, .hj-menu-toggle { border-radius: 4px; }
+.hj-menu-label { color: #5B2EFF; font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.hj-resource-menu .hj-resource-overview { background: #EEE9FF; color: #5B2EFF; }
+[data-theme="dark"] .navbar.hj-header { --hj-header-bg: #1A1033; }
+[data-theme="dark"] .hj-resource-menu { background: #261A47; border-color: #3A2C63; }
+[data-theme="dark"] .hj-resource-menu .hj-resource-overview { background: #1A1033; color: #FFFFFF; }
+[data-theme="dark"] .hj-menu-label { color: #D4CBFF; }
+@media (max-width: 1049px) { .hj-resource-menu { background: #EEE9FF; border: 0; } [data-theme="dark"] .hj-resource-menu { background: #261A47; } }
